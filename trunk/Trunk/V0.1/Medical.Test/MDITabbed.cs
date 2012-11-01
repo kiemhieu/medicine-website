@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Metro;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace Medical.Test
@@ -22,10 +23,20 @@ namespace Medical.Test
             dockPanel.Dock = DockStyle.Fill;
             dockPanel.BackColor = Color.Beige;
             Controls.Add(dockPanel);
+            dockPanel.AllowEndUserNestedDocking = false;
+            dockPanel.AllowEndUserDocking = false;
             dockPanel.BringToFront();
 
             Form1 form = new Form1();
+            form.AllowEndUserDocking = false;
+            form.WindowState = FormWindowState.Maximized;
+            form.MinimizeBox = false;
             form.Show(dockPanel);
+        }
+
+        void dockPanel_DockChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
