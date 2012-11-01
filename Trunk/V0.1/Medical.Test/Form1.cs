@@ -8,10 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace Medical.Test
 {
-    public partial class Form1 : Form
+    public partial class Form1 : DockContent
     {
         private UserRepository userRepository = new UserRepository();
         public Form1()
