@@ -1,0 +1,6 @@
+http://www.codeproject.com/Articles/14841/How-to-write-a-loading-circle-animation-in-NET
+http://sourcegrid.codeplex.com/
+http://sourceforge.net/projects/dockpanelsuite/
+http://ribbon.codeplex.com/
+http://www.codeproject.com/Articles/25907/A-Professional-Ribbon-You-Will-Use-Now-with-orb
+http://stackoverflow.com/questions/361271/best-free-controls-for-net
