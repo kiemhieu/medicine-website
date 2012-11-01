@@ -34,5 +34,20 @@ namespace Medical.Test
             List<User> users = userRepository.GetAll();
             this.dataGridView1.DataSource = users;
         }
+
+        private void Form1_DockStateChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_DockChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_PaddingChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
