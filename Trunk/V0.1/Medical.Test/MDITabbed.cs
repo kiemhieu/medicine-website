@@ -23,15 +23,23 @@ namespace Medical.Test
             dockPanel.Dock = DockStyle.Fill;
             dockPanel.BackColor = Color.Beige;
             Controls.Add(dockPanel);
-            dockPanel.AllowEndUserNestedDocking = false;
+            //dockPanel.AllowEndUserNestedDocking = false;
             dockPanel.AllowEndUserDocking = false;
             dockPanel.BringToFront();
 
             Form1 form = new Form1();
-            form.AllowEndUserDocking = false;
-            form.WindowState = FormWindowState.Maximized;
+            //form.AllowEndUserDocking = false;
+            //form.WindowState = FormWindowState.Maximized;
             form.MinimizeBox = false;
             form.Show(dockPanel);
+
+            Form1 form2 = new Form1(); ;
+            form2.ShowHint = DockState.DockLeft;
+            form2.AllowEndUserDocking = false;
+            form2.CloseButton = false;
+            form2.IsFloat = false;
+            form2.CloseButtonVisible = false;
+            form2.Show(dockPanel);
         }
 
         void dockPanel_DockChanged(object sender, EventArgs e)
