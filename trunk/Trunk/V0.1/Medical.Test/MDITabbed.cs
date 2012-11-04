@@ -11,12 +11,13 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Medical.Test
 {
-    public partial class MDITabbed : Form
+    public partial class MDITabbed : DevComponents.DotNetBar.Office2007Form
     {
         private int childCount = 1;
-
+        private Form1 form3;
         public MDITabbed()
         {
+            
             InitializeComponent();
 
             DockPanel dockPanel = new DockPanel();
@@ -33,6 +34,14 @@ namespace Medical.Test
             form.MinimizeBox = false;
             form.Show(dockPanel);
 
+            form3 = new Form1();
+            form3.Text = "Form 3";
+            //form.AllowEndUserDocking = false;
+            //form.WindowState = FormWindowState.Maximized;
+            form3.MinimizeBox = false;
+            form3.Show(dockPanel);
+            form3.Select();
+
             Form1 form2 = new Form1(); ;
             form2.ShowHint = DockState.DockLeft;
             form2.AllowEndUserDocking = false;
@@ -40,6 +49,9 @@ namespace Medical.Test
             form2.IsFloat = false;
             form2.CloseButtonVisible = false;
             form2.Show(dockPanel);
+            dockPanel.Select();
+            //form2.Select();
+            //MessageBox.Show(dockPanel.Panes.Count.ToString());
         }
 
         void dockPanel_DockChanged(object sender, EventArgs e)
@@ -71,6 +83,11 @@ namespace Medical.Test
             content1.ShowHint = showHint;
             content1.BackColor = backColour;
             return content1;
+        }
+
+        private void MDITabbed_Shown(object sender, EventArgs e)
+        {
+            form3.Activate();
         }
     }
 }
