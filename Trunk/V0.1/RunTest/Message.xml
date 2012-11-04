@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+  <Message>
+    <Code>ERR0001</Code>
+    <Content>{0}</Content>
+    <Type>Error</Type> 
+    <Button>OK</Button>
+  </Message>
+  <Message>
+    <Code>MSG0001</Code>
+    <Content>Action completed successfully</Content>
+    <Type>Information</Type>
+    <Button>OK</Button>
+  </Message>
+  <Message>
+    <Code>MSG0002</Code>
+    <Content>Do you want to exit</Content>
+    <Type>Question</Type>
+    <Button>YesNo</Button>
+  </Message>
+  <Message>
+    <Code>MSG0003</Code>
+    <Content>Cannot leave the current view. It's still in processing.</Content>
+    <Type>Information</Type>
+    <Button>OK</Button>
+  </Message>
+</Root>

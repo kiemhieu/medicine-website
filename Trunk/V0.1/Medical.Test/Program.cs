@@ -20,13 +20,11 @@ namespace Medical.Test
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MDITabbed());
 
-            /*
             var container = new WindsorContainer();
             container.Register(Component.For(typeof(ITest)).ImplementedBy(typeof(Windsor.Test)));
-
-            var test = container.Resolve<ITest>();
+            Type t = typeof(ITest);
+            var test = (ITest) container.Resolve(t);
             test.Speak("Chạy đi con ơi");
-             */
         }
     }
 }
