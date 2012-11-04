@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Configuration;
 using System.Text;
+using Medical.Forms.Entities;
 using Medical.Forms.Implements;
 using Medical.Forms.Interfaces;
 using Medical.Forms.UI;
@@ -38,6 +39,8 @@ namespace RunTest.Implementation
 
             //var viewManager = new ViewManager();
             //this._mainForm.ViewManager = viewManager;
+
+            AppContext.CurrentClinic = new ClinicSetting() { Id = 1, Address = "Số 1A, Hồng Mai", Name = "PKNT Hai Bà Trưng", Type = 1 };
 
             this._mainForm.Text = ConfigurationSettings.AppSettings.Get("Title");
             this._mainForm.Icon = System.Drawing.Icon.ExtractAssociatedIcon(ConfigurationSettings.AppSettings.Get("IconPath"));

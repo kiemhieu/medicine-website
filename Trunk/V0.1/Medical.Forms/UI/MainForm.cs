@@ -305,5 +305,10 @@ namespace Medical.Forms.UI
                     break;
             }
         }
+
+        private void MainForm_Shown(object sender, System.EventArgs e) {
+            Login login = new Login();
+            login.ShowDialog(this);
+        }
     }
 }

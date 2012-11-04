@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.Forms", "Medical.Fo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunTest", "RunTest\RunTest.csproj", "{97EDD8FF-EE86-48FD-9146-3A391C7906DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical", "Medical\Medical.csproj", "{997738FB-AE93-444C-9D9F-A89BCBF68192}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Medical.Data.vsmdi
@@ -81,6 +83,16 @@ Global
 		{97EDD8FF-EE86-48FD-9146-3A391C7906DB}.Release|Mixed Platforms.Build.0 = Release|x86
 		{97EDD8FF-EE86-48FD-9146-3A391C7906DB}.Release|x86.ActiveCfg = Release|x86
 		{97EDD8FF-EE86-48FD-9146-3A391C7906DB}.Release|x86.Build.0 = Release|x86
+		{997738FB-AE93-444C-9D9F-A89BCBF68192}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{997738FB-AE93-444C-9D9F-A89BCBF68192}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{997738FB-AE93-444C-9D9F-A89BCBF68192}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{997738FB-AE93-444C-9D9F-A89BCBF68192}.Debug|x86.ActiveCfg = Debug|x86
+		{997738FB-AE93-444C-9D9F-A89BCBF68192}.Debug|x86.Build.0 = Debug|x86
+		{997738FB-AE93-444C-9D9F-A89BCBF68192}.Release|Any CPU.ActiveCfg = Release|x86
+		{997738FB-AE93-444C-9D9F-A89BCBF68192}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{997738FB-AE93-444C-9D9F-A89BCBF68192}.Release|Mixed Platforms.Build.0 = Release|x86
+		{997738FB-AE93-444C-9D9F-A89BCBF68192}.Release|x86.ActiveCfg = Release|x86
+		{997738FB-AE93-444C-9D9F-A89BCBF68192}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
