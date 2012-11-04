@@ -4,12 +4,32 @@ using System.Linq;
 using System.Text;
 using Medical.Data.Entities;
 
-namespace Medical.Data.Repositories
-{
-    public class UserRepository : RepositoryBase, IUserRepository
-    {
-        public void Insert(User user)
+namespace Medical.Data.Repositories {
+    public class UserRepository : RepositoryBase, IUserRepository {
+
+        public User Get(string username)
         {
+            var user = this.Context.Users.FirstOrDefault(x => x.Name.Equals(username));
+            return user;
+        }
+
+        /// <summary>
+        /// Logins the specified username.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
+        /// <param name="clinic">The clinic.</param>
+        /// <returns></returns>
+        public bool Login(string username, string password, int clinic) {
+            var user =
+                this.Context.Users.FirstOrDefault(
+                    x =>
+                    x.UserName.Equals(username) && x.Password.Equals(password) && x.Active == true &&
+                    x.ClinicId == clinic);
+            return user != null;
+        }
+
+        public void Insert(User user) {
             user.CreatedDate = DateTime.Now;
             user.LastUpdatedDate = DateTime.Now;
             user.Version = 0;
@@ -17,8 +37,7 @@ namespace Medical.Data.Repositories
             this.Context.SaveChanges();
         }
 
-        public void Update(User user)
-        {
+        public void Update(User user) {
             var oldUsr = this.Context.Users.FirstOrDefault(x => x.Id == user.Id);
             if (oldUsr == null) return;
             oldUsr.Name = user.Name;
@@ -32,15 +51,13 @@ namespace Medical.Data.Repositories
             this.Context.SaveChanges();
         }
 
-        public void Delete(int id)
-        {
+        public void Delete(int id) {
             var oldUsr = this.Context.Users.FirstOrDefault(x => x.Id == id);
             this.Context.Users.Remove(oldUsr);
             this.Context.SaveChanges();
         }
 
-        public List<User> GetAll()
-        {
+        public List<User> GetAll() {
             return this.Context.Users.ToList();
         }
     }
