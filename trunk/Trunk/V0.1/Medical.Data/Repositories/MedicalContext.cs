@@ -11,5 +11,7 @@ namespace Medical.Data.Repositories
     {
         public DbSet<Clinic> Clinics { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<MedicineDelivery> MedicineDeliveries { get; set; }
     }
 }
