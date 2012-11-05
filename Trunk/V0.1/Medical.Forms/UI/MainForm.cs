@@ -54,6 +54,8 @@ namespace Medical.Forms.UI
             ExceptionHandler.Instance.Log = this.LogManager;
 
             logViewer.Image = System.Drawing.Image.FromFile(_iconPath + "\\info.png");
+
+            
         }
 
         private void InstanceMethodExecuteUpdateProgressEvent(object sender, ProgressiveUpdateArgs e)
@@ -307,8 +309,13 @@ namespace Medical.Forms.UI
         }
 
         private void MainForm_Shown(object sender, System.EventArgs e) {
+            this.txtClinic.Text = AppContext.CurrentClinic.Name;
             Login login = new Login();
             login.ShowDialog(this);
+            if (AppContext.Authenticated)
+            {
+                this.txtLoggedIn.Text = AppContext.LoggedInUser.UserName;
+            }
         }
     }
 }

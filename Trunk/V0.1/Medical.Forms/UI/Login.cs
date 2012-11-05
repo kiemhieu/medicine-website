@@ -20,11 +20,19 @@ namespace Medical.Forms.UI {
         }
 
         private void btnLogin_Click(object sender, System.EventArgs e) {
-            bool isValid = userRepo.Login(this.txtUser.Text, this.txtPass.Text, AppContext.CurrentClinic.Id);
-            if (isValid) {
-                AppContext.Authenticated = true;
-                AppContext.LoggedInUser = userRepo.Get(this.txtUser.Text);
-                this.Close();
+            try {
+                this.err.Clear();
+                var isValid = userRepo.Login(this.txtUser.Text, this.txtPass.Text, AppContext.CurrentClinic.Id);
+                if (isValid) {
+                    AppContext.Authenticated = true;
+                    AppContext.LoggedInUser = userRepo.Get(this.txtUser.Text);
+                    this.Close();
+                } else {
+                    this.err.SetError(txtPass, "Tài khoản không hợp lệ");
+                    this.err.SetError(txtUser, "Tài khoản không hợp lệ");
+                }
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
         }
 
