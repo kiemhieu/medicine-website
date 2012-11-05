@@ -8,8 +8,8 @@ namespace Medical.Data
 {
     public interface IMedicineRepository
     {
-        void Insert(Medicine user);
-        void Update(Medicine user);
+        void Insert(Medicine medicine);
+        void Update(Medicine medicine);
         void Delete(int id);
         List<Medicine> GetAll();
     }

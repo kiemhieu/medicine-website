@@ -82,6 +82,7 @@
     <Compile Include="Entities\Clinic.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\MedicineRepository.cs" />
     <Compile Include="Repositories\MedicalContext.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
