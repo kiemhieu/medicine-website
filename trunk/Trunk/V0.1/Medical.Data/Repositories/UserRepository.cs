@@ -9,7 +9,7 @@ namespace Medical.Data.Repositories {
 
         public User Get(string username)
         {
-            var user = this.Context.Users.FirstOrDefault(x => x.Name.Equals(username));
+            var user = this.Context.Users.FirstOrDefault(x => x.UserName.Equals(username));
             return user;
         }
 

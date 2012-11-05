@@ -56,7 +56,6 @@
             this.chươngTrìnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trungTâmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar = new System.Windows.Forms.StatusStrip();
-            this.logViewer = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.MainToolBar = new System.Windows.Forms.ToolStrip();
@@ -66,7 +65,9 @@
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.worker = new System.ComponentModel.BackgroundWorker();
             this.dockingPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.txtLoggedIn = new System.Windows.Forms.Label();
+            this.txtLoggedIn = new System.Windows.Forms.ToolStripStatusLabel();
+            this.logViewer = new System.Windows.Forms.ToolStripSplitButton();
+            this.txtClinic = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainMenu.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.MainToolBar.SuspendLayout();
@@ -145,48 +146,40 @@
             // chươngTrìnhToolStripMenuItem
             // 
             this.chươngTrìnhToolStripMenuItem.Name = "chươngTrìnhToolStripMenuItem";
-            this.chươngTrìnhToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.chươngTrìnhToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.chươngTrìnhToolStripMenuItem.Text = "Chương trình";
             // 
             // trungTâmToolStripMenuItem
             // 
             this.trungTâmToolStripMenuItem.Name = "trungTâmToolStripMenuItem";
-            this.trungTâmToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.trungTâmToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.trungTâmToolStripMenuItem.Text = "Trung tâm";
             // 
             // statusBar
             // 
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.logViewer,
+            this.txtLoggedIn,
+            this.txtClinic,
             this.toolStripStatus,
             this.toolStripProgressBar});
-            this.statusBar.Location = new System.Drawing.Point(0, 542);
+            this.statusBar.Location = new System.Drawing.Point(0, 540);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(900, 22);
+            this.statusBar.Size = new System.Drawing.Size(900, 24);
             this.statusBar.TabIndex = 1;
             this.statusBar.Text = "statusStrip1";
-            // 
-            // logViewer
-            // 
-            this.logViewer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.logViewer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.logViewer.Name = "logViewer";
-            this.logViewer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.logViewer.Size = new System.Drawing.Size(16, 20);
-            this.logViewer.Text = "toolStripSplitButton1";
-            this.logViewer.Click += new System.EventHandler(this.LogViewerClick);
             // 
             // toolStripStatus
             // 
             this.toolStripStatus.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatus.Name = "toolStripStatus";
-            this.toolStripStatus.Size = new System.Drawing.Size(38, 17);
+            this.toolStripStatus.Size = new System.Drawing.Size(38, 19);
             this.toolStripStatus.Text = "Ready";
             // 
             // toolStripProgressBar
             // 
             this.toolStripProgressBar.Name = "toolStripProgressBar";
-            this.toolStripProgressBar.Size = new System.Drawing.Size(100, 16);
+            this.toolStripProgressBar.Size = new System.Drawing.Size(100, 18);
             this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.toolStripProgressBar.Visible = false;
             // 
@@ -238,7 +231,7 @@
             this.dockingPanel.Location = new System.Drawing.Point(0, 49);
             this.dockingPanel.Name = "dockingPanel";
             this.dockingPanel.ShowDocumentIcon = true;
-            this.dockingPanel.Size = new System.Drawing.Size(900, 493);
+            this.dockingPanel.Size = new System.Drawing.Size(900, 491);
             dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
             dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
             autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
@@ -289,19 +282,43 @@
             // 
             // txtLoggedIn
             // 
-            this.txtLoggedIn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLoggedIn.Location = new System.Drawing.Point(749, 0);
+            this.txtLoggedIn.AutoSize = false;
+            this.txtLoggedIn.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.txtLoggedIn.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.txtLoggedIn.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLoggedIn.Name = "txtLoggedIn";
-            this.txtLoggedIn.Size = new System.Drawing.Size(151, 24);
-            this.txtLoggedIn.TabIndex = 7;
-            this.txtLoggedIn.Text = "label1";
+            this.txtLoggedIn.Size = new System.Drawing.Size(150, 19);
+            this.txtLoggedIn.Text = "----";
+            // 
+            // logViewer
+            // 
+            this.logViewer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.logViewer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.logViewer.Name = "logViewer";
+            this.logViewer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.logViewer.Size = new System.Drawing.Size(16, 22);
+            this.logViewer.Text = "toolStripSplitButton1";
+            this.logViewer.Click += new System.EventHandler(this.LogViewerClick);
+            // 
+            // txtClinic
+            // 
+            this.txtClinic.AutoSize = false;
+            this.txtClinic.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.txtClinic.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.txtClinic.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClinic.Name = "txtClinic";
+            this.txtClinic.Size = new System.Drawing.Size(200, 19);
+            this.txtClinic.Text = "---";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 564);
-            this.Controls.Add(this.txtLoggedIn);
             this.Controls.Add(this.dockingPanel);
             this.Controls.Add(this.MainToolBar);
             this.Controls.Add(this.statusBar);
@@ -340,7 +357,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.ComponentModel.BackgroundWorker worker;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
-        private System.Windows.Forms.ToolStripSplitButton logViewer;
         private System.Windows.Forms.ToolStripMenuItem thoátToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem đồngBộHóaDữLiệuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cấuHìnhToolStripMenuItem;
@@ -349,6 +365,8 @@
         private System.Windows.Forms.ToolStripMenuItem trungTâmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ngườiSửDụngToolStripMenuItem;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockingPanel;
-        private System.Windows.Forms.Label txtLoggedIn;
+        private System.Windows.Forms.ToolStripSplitButton logViewer;
+        private System.Windows.Forms.ToolStripStatusLabel txtLoggedIn;
+        private System.Windows.Forms.ToolStripStatusLabel txtClinic;
     }
 }
