@@ -56,6 +56,9 @@
             this.chươngTrìnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trungTâmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.logViewer = new System.Windows.Forms.ToolStripSplitButton();
+            this.txtLoggedIn = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtClinic = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.MainToolBar = new System.Windows.Forms.ToolStrip();
@@ -65,9 +68,6 @@
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.worker = new System.ComponentModel.BackgroundWorker();
             this.dockingPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.txtLoggedIn = new System.Windows.Forms.ToolStripStatusLabel();
-            this.logViewer = new System.Windows.Forms.ToolStripSplitButton();
-            this.txtClinic = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainMenu.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.MainToolBar.SuspendLayout();
@@ -168,6 +168,40 @@
             this.statusBar.Size = new System.Drawing.Size(900, 24);
             this.statusBar.TabIndex = 1;
             this.statusBar.Text = "statusStrip1";
+            // 
+            // logViewer
+            // 
+            this.logViewer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.logViewer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.logViewer.Name = "logViewer";
+            this.logViewer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.logViewer.Size = new System.Drawing.Size(16, 22);
+            this.logViewer.Text = "toolStripSplitButton1";
+            this.logViewer.Click += new System.EventHandler(this.LogViewerClick);
+            // 
+            // txtLoggedIn
+            // 
+            this.txtLoggedIn.AutoSize = false;
+            this.txtLoggedIn.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.txtLoggedIn.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.txtLoggedIn.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoggedIn.Name = "txtLoggedIn";
+            this.txtLoggedIn.Size = new System.Drawing.Size(150, 19);
+            this.txtLoggedIn.Text = "----";
+            // 
+            // txtClinic
+            // 
+            this.txtClinic.AutoSize = false;
+            this.txtClinic.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.txtClinic.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.txtClinic.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClinic.Name = "txtClinic";
+            this.txtClinic.Size = new System.Drawing.Size(200, 19);
+            this.txtClinic.Text = "---";
             // 
             // toolStripStatus
             // 
@@ -279,40 +313,6 @@
             dockPanelSkin1.DockPaneStripSkin = dockPaneStripSkin1;
             this.dockingPanel.Skin = dockPanelSkin1;
             this.dockingPanel.TabIndex = 4;
-            // 
-            // txtLoggedIn
-            // 
-            this.txtLoggedIn.AutoSize = false;
-            this.txtLoggedIn.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.txtLoggedIn.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.txtLoggedIn.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLoggedIn.Name = "txtLoggedIn";
-            this.txtLoggedIn.Size = new System.Drawing.Size(150, 19);
-            this.txtLoggedIn.Text = "----";
-            // 
-            // logViewer
-            // 
-            this.logViewer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.logViewer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.logViewer.Name = "logViewer";
-            this.logViewer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.logViewer.Size = new System.Drawing.Size(16, 22);
-            this.logViewer.Text = "toolStripSplitButton1";
-            this.logViewer.Click += new System.EventHandler(this.LogViewerClick);
-            // 
-            // txtClinic
-            // 
-            this.txtClinic.AutoSize = false;
-            this.txtClinic.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.txtClinic.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.txtClinic.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClinic.Name = "txtClinic";
-            this.txtClinic.Size = new System.Drawing.Size(200, 19);
-            this.txtClinic.Text = "---";
             // 
             // MainForm
             // 

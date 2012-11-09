@@ -66,6 +66,10 @@
       <Project>{CBD5E0BA-003F-4B7B-A11E-FC01CEA20C16}</Project>
       <Name>Medical.Forms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Medical\Medical.csproj">
+      <Project>{997738FB-AE93-444C-9D9F-A89BCBF68192}</Project>
+      <Name>Medical</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons\books.png">
