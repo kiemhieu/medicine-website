@@ -133,36 +133,6 @@
     <Compile Include="RibbonForm1.Designer.cs">
       <DependentUpon>RibbonForm1.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ucButtonDelete.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\ucButtonDelete.Designer.cs">
-      <DependentUpon>ucButtonDelete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\ucButtonInsert.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\ucButtonInsert.Designer.cs">
-      <DependentUpon>ucButtonInsert.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\ucButtonEdit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\ucButtonEdit.Designer.cs">
-      <DependentUpon>ucButtonEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\ucButtonUpdate.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\ucButtonUpdate.Designer.cs">
-      <DependentUpon>ucButtonUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\ucButtonRefresh.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\ucButtonRefresh.Designer.cs">
-      <DependentUpon>ucButtonRefresh.cs</DependentUpon>
-    </Compile>
     <Compile Include="Windsor\ITest.cs" />
     <Compile Include="Windsor\Test.cs" />
     <EmbeddedResource Include="Add.resx">
@@ -207,21 +177,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RibbonForm1.resx">
       <DependentUpon>RibbonForm1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucButtonDelete.resx">
-      <DependentUpon>ucButtonDelete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucButtonInsert.resx">
-      <DependentUpon>ucButtonInsert.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucButtonUpdate.resx">
-      <DependentUpon>ucButtonUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UserControl1.resx">
-      <DependentUpon>ucButtonEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucButtonRefresh.resx">
-      <DependentUpon>ucButtonRefresh.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
