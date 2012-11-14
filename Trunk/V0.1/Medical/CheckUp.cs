@@ -13,5 +13,10 @@ namespace Medical {
         public CheckUp() {
             InitializeComponent();
         }
+
+        private void btnRegister_Click(object sender, EventArgs e) {
+            PatientRegister registerform = new PatientRegister();
+            registerform.ShowDialog();
+        }
     }
 }
