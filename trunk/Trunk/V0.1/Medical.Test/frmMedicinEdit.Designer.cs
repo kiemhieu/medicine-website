@@ -1,6 +1,6 @@
 ﻿namespace Medical.Test
 {
-    partial class frmMedicine
+    partial class frmMedicinEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMedicine));
-            this.grd = new System.Windows.Forms.DataGridView();
-            this.btnInsert = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.grpMaster = new System.Windows.Forms.GroupBox();
             this.rdNTCH = new System.Windows.Forms.RadioButton();
             this.rdARV = new System.Windows.Forms.RadioButton();
@@ -52,74 +46,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtMaThuoc = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.lblID = new System.Windows.Forms.Label();
-            this.lblAction = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
+            this.pnButton = new DevComponents.DotNetBar.PanelEx();
+            this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
+            this.btnCancle = new DevComponents.DotNetBar.ButtonX();
             this.grpMaster.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.pnButton.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // grd
-            // 
-            this.grd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grd.Location = new System.Drawing.Point(12, 212);
-            this.grd.Name = "grd";
-            this.grd.ReadOnly = true;
-            this.grd.Size = new System.Drawing.Size(848, 173);
-            this.grd.TabIndex = 0;
-            this.grd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellClick);
-            this.grd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
-            // 
-            // btnInsert
-            // 
-            this.btnInsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInsert.Image = ((System.Drawing.Image)(resources.GetObject("btnInsert.Image")));
-            this.btnInsert.Location = new System.Drawing.Point(72, 12);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(110, 36);
-            this.btnInsert.TabIndex = 1;
-            this.btnInsert.Text = "Thêm mới";
-            this.btnInsert.UseVisualStyleBackColor = true;
-            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(304, 12);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(110, 36);
-            this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "Xóa";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.Location = new System.Drawing.Point(188, 12);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(110, 36);
-            this.btnEdit.TabIndex = 2;
-            this.btnEdit.Text = "Sửa";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(654, 12);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(110, 36);
-            this.btnRefresh.TabIndex = 6;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // grpMaster
             // 
@@ -143,10 +75,9 @@
             this.grpMaster.Location = new System.Drawing.Point(12, 12);
             this.grpMaster.Name = "grpMaster";
             this.grpMaster.Size = new System.Drawing.Size(848, 133);
-            this.grpMaster.TabIndex = 5;
+            this.grpMaster.TabIndex = 6;
             this.grpMaster.TabStop = false;
             this.grpMaster.Text = "Thông tin thuốc";
-            this.grpMaster.Visible = false;
             // 
             // rdNTCH
             // 
@@ -186,7 +117,7 @@
             // 
             this.txtDescription.Location = new System.Drawing.Point(122, 98);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(225, 21);
+            this.txtDescription.Size = new System.Drawing.Size(225, 20);
             this.txtDescription.TabIndex = 4;
             // 
             // label7
@@ -203,8 +134,9 @@
             // 
             this.txtUnit.Location = new System.Drawing.Point(563, 72);
             this.txtUnit.Name = "txtUnit";
-            this.txtUnit.Size = new System.Drawing.Size(100, 21);
+            this.txtUnit.Size = new System.Drawing.Size(100, 20);
             this.txtUnit.TabIndex = 6;
+            this.txtUnit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnit_KeyPress);
             // 
             // label6
             // 
@@ -220,7 +152,7 @@
             // 
             this.txtContentUnit.Location = new System.Drawing.Point(563, 46);
             this.txtContentUnit.Name = "txtContentUnit";
-            this.txtContentUnit.Size = new System.Drawing.Size(100, 21);
+            this.txtContentUnit.Size = new System.Drawing.Size(100, 20);
             this.txtContentUnit.TabIndex = 5;
             // 
             // label5
@@ -237,7 +169,7 @@
             // 
             this.txtTradeName.Location = new System.Drawing.Point(122, 72);
             this.txtTradeName.Name = "txtTradeName";
-            this.txtTradeName.Size = new System.Drawing.Size(225, 21);
+            this.txtTradeName.Size = new System.Drawing.Size(225, 20);
             this.txtTradeName.TabIndex = 3;
             // 
             // label4
@@ -254,7 +186,7 @@
             // 
             this.txtContent.Location = new System.Drawing.Point(563, 20);
             this.txtContent.Name = "txtContent";
-            this.txtContent.Size = new System.Drawing.Size(235, 21);
+            this.txtContent.Size = new System.Drawing.Size(235, 20);
             this.txtContent.TabIndex = 4;
             // 
             // label3
@@ -271,7 +203,7 @@
             // 
             this.txtTenThuoc.Location = new System.Drawing.Point(122, 46);
             this.txtTenThuoc.Name = "txtTenThuoc";
-            this.txtTenThuoc.Size = new System.Drawing.Size(225, 21);
+            this.txtTenThuoc.Size = new System.Drawing.Size(225, 20);
             this.txtTenThuoc.TabIndex = 2;
             // 
             // label2
@@ -288,7 +220,7 @@
             // 
             this.txtMaThuoc.Location = new System.Drawing.Point(122, 20);
             this.txtMaThuoc.Name = "txtMaThuoc";
-            this.txtMaThuoc.Size = new System.Drawing.Size(100, 21);
+            this.txtMaThuoc.Size = new System.Drawing.Size(100, 20);
             this.txtMaThuoc.TabIndex = 1;
             // 
             // label1
@@ -301,98 +233,69 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã thuốc";
             // 
-            // groupBox1
+            // pnButton
             // 
-            this.groupBox1.Controls.Add(this.btnCancel);
-            this.groupBox1.Controls.Add(this.lblID);
-            this.groupBox1.Controls.Add(this.lblAction);
-            this.groupBox1.Controls.Add(this.btnUpdate);
-            this.groupBox1.Controls.Add(this.btnInsert);
-            this.groupBox1.Controls.Add(this.btnDelete);
-            this.groupBox1.Controls.Add(this.btnRefresh);
-            this.groupBox1.Controls.Add(this.btnEdit);
-            this.groupBox1.Location = new System.Drawing.Point(12, 151);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(848, 55);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.Location = new System.Drawing.Point(538, 12);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(110, 36);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Hủy";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(17, 37);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(0, 13);
-            this.lblID.TabIndex = 17;
-            this.lblID.Visible = false;
-            // 
-            // lblAction
-            // 
-            this.lblAction.AutoSize = true;
-            this.lblAction.Location = new System.Drawing.Point(21, 24);
-            this.lblAction.Name = "lblAction";
-            this.lblAction.Size = new System.Drawing.Size(0, 13);
-            this.lblAction.TabIndex = 6;
-            this.lblAction.Visible = false;
+            this.pnButton.CanvasColor = System.Drawing.SystemColors.Control;
+            this.pnButton.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.pnButton.Controls.Add(this.btnCancle);
+            this.pnButton.Controls.Add(this.btnUpdate);
+            this.pnButton.Location = new System.Drawing.Point(12, 149);
+            this.pnButton.Name = "pnButton";
+            this.pnButton.Size = new System.Drawing.Size(847, 49);
+            this.pnButton.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.pnButton.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.pnButton.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.pnButton.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.pnButton.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.pnButton.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.pnButton.Style.GradientAngle = 90;
+            this.pnButton.TabIndex = 7;
+            this.pnButton.Text = "panelEx1";
             // 
             // btnUpdate
             // 
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
-            this.btnUpdate.Location = new System.Drawing.Point(420, 12);
+            this.btnUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnUpdate.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.btnUpdate.Location = new System.Drawing.Point(302, 14);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(110, 36);
-            this.btnUpdate.TabIndex = 4;
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnUpdate.TabIndex = 0;
             this.btnUpdate.Text = "Cập nhật";
-            this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // frmMedicine
+            // btnCancle
+            // 
+            this.btnCancle.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancle.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancle.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.btnCancle.Location = new System.Drawing.Point(495, 14);
+            this.btnCancle.Name = "btnCancle";
+            this.btnCancle.Size = new System.Drawing.Size(75, 23);
+            this.btnCancle.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancle.TabIndex = 1;
+            this.btnCancle.Text = "Hủy";
+            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+            // 
+            // frmMedicinEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(872, 397);
-            this.ControlBox = false;
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(868, 208);
+            this.Controls.Add(this.pnButton);
             this.Controls.Add(this.grpMaster);
-            this.Controls.Add(this.grd);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "frmMedicine";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
-            this.Text = "Thông tin thuốc";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
+            this.Name = "frmMedicinEdit";
+            this.Text = "frmMedicinEdit";
             this.grpMaster.ResumeLayout(false);
             this.grpMaster.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.pnButton.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView grd;
-        private System.Windows.Forms.Button btnInsert;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.GroupBox grpMaster;
         private System.Windows.Forms.RadioButton rdNTCH;
         private System.Windows.Forms.RadioButton rdARV;
@@ -411,11 +314,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMaThuoc;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Label lblAction;
-        private System.Windows.Forms.Label lblID;
-        private System.Windows.Forms.Button btnCancel;
+        private DevComponents.DotNetBar.PanelEx pnButton;
+        private DevComponents.DotNetBar.ButtonX btnUpdate;
+        private DevComponents.DotNetBar.ButtonX btnCancle;
     }
 }
-
