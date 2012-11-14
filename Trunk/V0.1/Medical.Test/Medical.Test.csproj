@@ -65,6 +65,18 @@
     <Compile Include="Add.Designer.cs">
       <DependentUpon>Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFigure.Designer.cs">
+      <DependentUpon>frmFigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFigureEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFigureEdit.Designer.cs">
+      <DependentUpon>frmFigureEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMedicine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +106,12 @@
     </Compile>
     <Compile Include="Form4.Designer.cs">
       <DependentUpon>Form4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMedicinEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMedicinEdit.Designer.cs">
+      <DependentUpon>frmMedicinEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="MDITabbed.cs">
       <SubType>Form</SubType>
@@ -150,6 +168,12 @@
     <EmbeddedResource Include="Add.resx">
       <DependentUpon>Add.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFigure.resx">
+      <DependentUpon>frmFigure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFigureEdit.resx">
+      <DependentUpon>frmFigureEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMedicine.resx">
       <DependentUpon>frmMedicine.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form4.resx">
       <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMedicinEdit.resx">
+      <DependentUpon>frmMedicinEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDITabbed.resx">
       <DependentUpon>MDITabbed.cs</DependentUpon>

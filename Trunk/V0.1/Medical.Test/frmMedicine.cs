@@ -39,6 +39,7 @@ namespace Medical.Test
             List<Medicine> lstMedicines = medicineRepository.GetAll();
             this.grd.DataSource = lstMedicines;
             this.grd.Refresh();
+            this.grd.Parent.Refresh();
             if (grd.Rows.Count == 0)
             { }
             else
@@ -139,10 +140,16 @@ namespace Medical.Test
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            lblAction.Text = "Delete";
-            ButtonEnable(false);
-            btnUpdate.Enabled = true;
-            btnCancel.Enabled = true;
+            if ((lblID.Text == "") || (lblID.Text == "0"))
+            {
+                MessageBox.Show("Bạn hãy chọn bản thuốc cần xóa!");
+                return;
+            }
+            DialogResult dr =MessageBox.Show("Bạn có muốn xóa thuốc này không?", "Xóa thuốc", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if(dr == DialogResult.OK)
+            {
+                medicineRepository.Delete(int.Parse(lblID.Text.Trim()));
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
