@@ -14,6 +14,7 @@ namespace Medical.Test
 {
     public partial class frmMedicine : DockContent
     {
+        public static int IdMedicine = -1;
         private UserRepository userRepository = new UserRepository();
         private MedicineRepository medicineRepository = new MedicineRepository();
         public frmMedicine()
@@ -35,9 +36,9 @@ namespace Medical.Test
         }
         private void FillToGrid()
         {
-            List<Medicine> medicines = medicineRepository.GetAll();
-            this.grd.DataSource = medicines;
-
+            List<Medicine> lstMedicines = medicineRepository.GetAll();
+            this.grd.DataSource = lstMedicines;
+            this.grd.Refresh();
             if (grd.Rows.Count == 0)
             { }
             else
@@ -130,12 +131,10 @@ namespace Medical.Test
         }
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            lblAction.Text = "Insert";
-            cleanItems();
-            ReadOnlyItems(false);
-            ButtonEnable(false);
-            btnUpdate.Enabled = true;
-            btnCancel.Enabled = true;
+           frmMedicinEdit frmedit = new frmMedicinEdit();
+           frmMedicinEdit.IdMedicineEdit = 0;
+            frmedit.ShowDialog();
+            FillToGrid();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -148,11 +147,16 @@ namespace Medical.Test
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            lblAction.Text = "Edit";
-            ReadOnlyItems(false);
-            ButtonEnable(false);
-            btnUpdate.Enabled = true;
-            btnCancel.Enabled = true;
+            
+            if ((lblID.Text == "") || (lblID.Text == "0"))
+            {
+                MessageBox.Show("Bạn hãy chọn bản thuốc cần sửa!");
+                return;
+            }
+            frmMedicinEdit.IdMedicineEdit = int.Parse(lblID.Text);
+            frmMedicinEdit frmedit = new frmMedicinEdit();
+            frmedit.ShowDialog();
+            FillToGrid();
 
         }
         private void ButtonEnable(bool isTrue)
@@ -215,7 +219,33 @@ namespace Medical.Test
         {
             lblID.Text = grd.Rows[e.RowIndex].Cells["ID"].Value == null ? "0" : grd.Rows[e.RowIndex].Cells["ID"].Value.ToString();
             FillToItemByGridIndex(e.RowIndex);
+            foreach (DataGridViewRow row in grd.Rows)
+            {
+                row.DefaultCellStyle.BackColor = Color.Empty;
+            }
+            grd.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.SkyBlue;
         }
+
+      
+
+        private void grd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (grd.Rows[e.RowIndex].Cells["ID"].Value == null)
+            {
+                IdMedicine = 0;
+            }
+
+            else
+            {
+                IdMedicine = int.Parse(grd.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+            }
+            frmMedicinEdit.IdMedicineEdit = IdMedicine;
+            frmMedicinEdit frmEdit = new frmMedicinEdit();
+            frmEdit.ShowDialog();
+            FillToGrid();
+        }
+
+        
 
     }
 }
