@@ -23,7 +23,7 @@ namespace Medical.Data.Repositories {
 
         public void Insert(Figure figure)
         {
-            //figure.CreatedDate = DateTime.Now;
+            figure.LastUpdatedUser = null;
             figure.LastUpdatedDate = DateTime.Now;
             figure.Version = 0;
             this.Context.Figures.Add(figure);
