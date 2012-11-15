@@ -65,5 +65,42 @@ namespace Medical.Test
 
             }
         }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            frmFigureEdit frmedit = new frmFigureEdit();
+            frmFigureEdit.IdFigureEdit = 0;
+            frmedit.ShowDialog();
+            FillToGrid();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if ((lblID.Text == "") || (lblID.Text == "0"))
+            {
+                MessageBox.Show("Bạn hãy chọn phác đồ thuốc cần xóa!");
+                return;
+            }
+            DialogResult dr = MessageBox.Show("Bạn có muốn xóa phác đồ này không?", "Xóa phác đồ thuốc", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dr == DialogResult.OK)
+            {
+                figureRepository.Delete(int.Parse(lblID.Text.Trim()));
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+            if ((lblID.Text == "") || (lblID.Text == "0"))
+            {
+                MessageBox.Show("Bạn hãy chọn phác đồ cần sửa!");
+                return;
+            }
+            frmFigureEdit.IdFigureEdit = int.Parse(lblID.Text);
+            frmFigureEdit frmedit = new frmFigureEdit();
+            frmedit.ShowDialog();
+            FillToGrid();
+
+        }
     }
 }
