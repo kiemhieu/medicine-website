@@ -16,6 +16,7 @@ namespace Medical.Test
         private int childCount = 1;
         private Form1 form3;
         private frmMedicine frmMed;
+        private frmFigure frmFig;
         public MDITabbed()
         {
             
@@ -52,6 +53,15 @@ namespace Medical.Test
             frmMed.Show(dockPanel);
             frmMed.Select();
 
+            frmFig = new frmFigure();
+            frmFig.Text = "Figure";
+            //form.AllowEndUserDocking = false;
+            //form.WindowState = FormWindowState.Maximized;
+            frmFig.MinimizeBox = false;
+            frmFig.Show(dockPanel);
+            frmFig.Select();
+
+            
             Form1 form2 = new Form1(); ;
             form2.ShowHint = DockState.DockLeft;
             form2.AllowEndUserDocking = false;
@@ -103,6 +113,11 @@ namespace Medical.Test
         private void danhMụcThuốcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmMed.Activate();
+        }
+
+        private void phácĐồToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFig.Activate();
         }
     }
 }

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.pnItems = new DevComponents.DotNetBar.PanelEx();
-            this.pnButton = new DevComponents.DotNetBar.PanelEx();
-            this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
-            this.btnCancle = new DevComponents.DotNetBar.ButtonX();
-            this.txtFigureName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.lblFigureName = new DevComponents.DotNetBar.LabelX();
+            this.txtGhiChu = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.lblFigureName = new DevComponents.DotNetBar.LabelX();
+            this.txtFigureName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.pnButton = new DevComponents.DotNetBar.PanelEx();
+            this.btnCancle = new DevComponents.DotNetBar.ButtonX();
+            this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
             this.pnItems.SuspendLayout();
             this.pnButton.SuspendLayout();
             this.SuspendLayout();
@@ -44,7 +44,7 @@
             // 
             this.pnItems.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnItems.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.pnItems.Controls.Add(this.textBoxX1);
+            this.pnItems.Controls.Add(this.txtGhiChu);
             this.pnItems.Controls.Add(this.labelX1);
             this.pnItems.Controls.Add(this.lblFigureName);
             this.pnItems.Controls.Add(this.txtFigureName);
@@ -59,6 +59,60 @@
             this.pnItems.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.pnItems.Style.GradientAngle = 90;
             this.pnItems.TabIndex = 0;
+            // 
+            // txtGhiChu
+            // 
+            // 
+            // 
+            // 
+            this.txtGhiChu.Border.Class = "TextBoxBorder";
+            this.txtGhiChu.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtGhiChu.Location = new System.Drawing.Point(110, 44);
+            this.txtGhiChu.Multiline = true;
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Size = new System.Drawing.Size(403, 48);
+            this.txtGhiChu.TabIndex = 3;
+            // 
+            // labelX1
+            // 
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.Class = "";
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.labelX1.Location = new System.Drawing.Point(19, 44);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(75, 23);
+            this.labelX1.TabIndex = 2;
+            this.labelX1.Text = "Ghi chú";
+            // 
+            // lblFigureName
+            // 
+            // 
+            // 
+            // 
+            this.lblFigureName.BackgroundStyle.Class = "";
+            this.lblFigureName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblFigureName.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.lblFigureName.Location = new System.Drawing.Point(19, 15);
+            this.lblFigureName.Name = "lblFigureName";
+            this.lblFigureName.Size = new System.Drawing.Size(75, 23);
+            this.lblFigureName.TabIndex = 1;
+            this.lblFigureName.Text = "Tên phác đồ";
+            // 
+            // txtFigureName
+            // 
+            // 
+            // 
+            // 
+            this.txtFigureName.Border.Class = "TextBoxBorder";
+            this.txtFigureName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtFigureName.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.txtFigureName.Location = new System.Drawing.Point(110, 14);
+            this.txtFigureName.Name = "txtFigureName";
+            this.txtFigureName.Size = new System.Drawing.Size(170, 20);
+            this.txtFigureName.TabIndex = 0;
             // 
             // pnButton
             // 
@@ -78,18 +132,6 @@
             this.pnButton.Style.GradientAngle = 90;
             this.pnButton.TabIndex = 1;
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnUpdate.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btnUpdate.Location = new System.Drawing.Point(137, 3);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnUpdate.TabIndex = 0;
-            this.btnUpdate.Text = "Cập nhật";
-            // 
             // btnCancle
             // 
             this.btnCancle.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -101,60 +143,20 @@
             this.btnCancle.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCancle.TabIndex = 1;
             this.btnCancle.Text = "Hủy";
+            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
             // 
-            // txtFigureName
+            // btnUpdate
             // 
-            // 
-            // 
-            // 
-            this.txtFigureName.Border.Class = "TextBoxBorder";
-            this.txtFigureName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtFigureName.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.txtFigureName.Location = new System.Drawing.Point(110, 14);
-            this.txtFigureName.Name = "txtFigureName";
-            this.txtFigureName.Size = new System.Drawing.Size(170, 20);
-            this.txtFigureName.TabIndex = 0;
-            // 
-            // lblFigureName
-            // 
-            // 
-            // 
-            // 
-            this.lblFigureName.BackgroundStyle.Class = "";
-            this.lblFigureName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblFigureName.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.lblFigureName.Location = new System.Drawing.Point(19, 15);
-            this.lblFigureName.Name = "lblFigureName";
-            this.lblFigureName.Size = new System.Drawing.Size(75, 23);
-            this.lblFigureName.TabIndex = 1;
-            this.lblFigureName.Text = "Tên phác đồ";
-            // 
-            // labelX1
-            // 
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.Class = "";
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.labelX1.Location = new System.Drawing.Point(19, 44);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(75, 23);
-            this.labelX1.TabIndex = 2;
-            this.labelX1.Text = "Ghi chú";
-            // 
-            // textBoxX1
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(110, 44);
-            this.textBoxX1.Multiline = true;
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.Size = new System.Drawing.Size(403, 48);
-            this.textBoxX1.TabIndex = 3;
+            this.btnUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnUpdate.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.btnUpdate.Location = new System.Drawing.Point(137, 3);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnUpdate.TabIndex = 0;
+            this.btnUpdate.Text = "Cập nhật";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // frmFigureEdit
             // 
@@ -179,7 +181,7 @@
         private DevComponents.DotNetBar.ButtonX btnCancle;
         private DevComponents.DotNetBar.ButtonX btnUpdate;
         private DevComponents.DotNetBar.LabelX lblFigureName;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtGhiChu;
         private DevComponents.DotNetBar.LabelX labelX1;
     }
 }
