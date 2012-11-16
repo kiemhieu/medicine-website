@@ -88,6 +88,7 @@
     <Compile Include="Repositories\FigureRepository.cs" />
     <Compile Include="Repositories\MedicineRepository.cs" />
     <Compile Include="Repositories\MedicalContext.cs" />
+    <Compile Include="Repositories\PatientRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
