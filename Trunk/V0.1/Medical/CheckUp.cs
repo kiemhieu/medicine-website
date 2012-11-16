@@ -15,8 +15,18 @@ namespace Medical {
         }
 
         private void btnRegister_Click(object sender, EventArgs e) {
-            PatientRegister registerform = new PatientRegister();
+            var registerform = new PatientRegister();
             registerform.ShowDialog();
+        }
+
+        private void btnCheckingHistory_Click(object sender, EventArgs e) {
+            var historyForm = new CheckUpHistory();
+            historyForm.ShowDialog(this);
+        }
+
+        private void btnCheck_Click(object sender, EventArgs e) {
+            var checkUpRegister = new CheckUpRegister();
+            checkUpRegister.ShowDialog(this);
         }
     }
 }

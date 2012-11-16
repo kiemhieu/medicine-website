@@ -60,6 +60,24 @@
     <Compile Include="CheckUp.Designer.cs">
       <DependentUpon>CheckUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="CheckUpHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckUpHistory.Designer.cs">
+      <DependentUpon>CheckUpHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckUpRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckUpRegister.Designer.cs">
+      <DependentUpon>CheckUpRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientBrowseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientBrowseForm.Designer.cs">
+      <DependentUpon>PatientBrowseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatientRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +87,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CheckUp.resx">
       <DependentUpon>CheckUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckUpHistory.resx">
+      <DependentUpon>CheckUpHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckUpRegister.resx">
+      <DependentUpon>CheckUpRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientBrowseForm.resx">
+      <DependentUpon>PatientBrowseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientRegister.resx">
       <DependentUpon>PatientRegister.cs</DependentUpon>
