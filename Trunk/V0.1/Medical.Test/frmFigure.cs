@@ -18,10 +18,14 @@ namespace Medical.Test
         public frmFigure()
         {
             InitializeComponent();
+            FillToGrid();
+
         }
 
         private void grd_CellClick(object sender, DataGridViewCellEventArgs e)
+
         {
+            if (e.RowIndex == -1) return;
             lblID.Text = grd.Rows[e.RowIndex].Cells["ID"].Value == null ? "0" : grd.Rows[e.RowIndex].Cells["ID"].Value.ToString();
             foreach (DataGridViewRow row in grd.Rows)
             {
@@ -32,6 +36,7 @@ namespace Medical.Test
 
         private void grd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
             if (grd.Rows[e.RowIndex].Cells["ID"].Value == null)
             {
                 IdFigure = 0;
@@ -61,7 +66,7 @@ namespace Medical.Test
 
                 grd.Rows[0].Selected = true;
                 lblID.Text = grd.Rows[0].Cells["ID"].Value.ToString();
-
+                
 
             }
         }
