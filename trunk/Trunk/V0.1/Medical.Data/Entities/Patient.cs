@@ -13,7 +13,7 @@ namespace Medical.Data.Entities
         public int ClinicId { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
-        public DateTime? BirthYear { get; set; }
+        public int? BirthYear { get; set; }
         public char? Sexual { get; set; }
         public string Address { get; set; }
         public string Description { get; set; }
