@@ -60,8 +60,8 @@
             this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.btnCheck = new DevComponents.DotNetBar.ButtonX();
+            this.btnCheckingHistory = new DevComponents.DotNetBar.ButtonX();
             this.btnRegister = new DevComponents.DotNetBar.ButtonX();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -88,7 +88,7 @@
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Location = new System.Drawing.Point(25, 14);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(58, 17);
+            this.labelX1.Size = new System.Drawing.Size(54, 16);
             this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "Họ và tên";
@@ -129,7 +129,7 @@
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Location = new System.Drawing.Point(13, 22);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(21, 17);
+            this.labelX2.Size = new System.Drawing.Size(19, 16);
             this.labelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX2.TabIndex = 2;
             this.labelX2.Text = "Mã";
@@ -156,7 +156,7 @@
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Location = new System.Drawing.Point(13, 54);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(57, 17);
+            this.labelX3.Size = new System.Drawing.Size(53, 16);
             this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX3.TabIndex = 4;
             this.labelX3.Text = "Năm sinh";
@@ -171,7 +171,7 @@
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.Location = new System.Drawing.Point(267, 85);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(42, 17);
+            this.labelX4.Size = new System.Drawing.Size(39, 16);
             this.labelX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX4.TabIndex = 6;
             this.labelX4.Text = "Địa chỉ";
@@ -198,7 +198,7 @@
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX5.Location = new System.Drawing.Point(13, 85);
             this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(78, 17);
+            this.labelX5.Size = new System.Drawing.Size(73, 16);
             this.labelX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX5.TabIndex = 8;
             this.labelX5.Text = "Số điện thoại";
@@ -225,7 +225,7 @@
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX6.Location = new System.Drawing.Point(484, 54);
             this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(82, 17);
+            this.labelX6.Size = new System.Drawing.Size(76, 16);
             this.labelX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX6.TabIndex = 10;
             this.labelX6.Text = "Ngày đăng ký";
@@ -264,7 +264,7 @@
             this.textBoxX14.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX14.Location = new System.Drawing.Point(346, 20);
             this.textBoxX14.Name = "textBoxX14";
-            this.textBoxX14.Size = new System.Drawing.Size(383, 21);
+            this.textBoxX14.Size = new System.Drawing.Size(321, 21);
             this.textBoxX14.TabIndex = 18;
             // 
             // labelX15
@@ -277,7 +277,7 @@
             this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX15.Location = new System.Drawing.Point(267, 22);
             this.labelX15.Name = "labelX15";
-            this.labelX15.Size = new System.Drawing.Size(75, 17);
+            this.labelX15.Size = new System.Drawing.Size(70, 16);
             this.labelX15.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX15.TabIndex = 17;
             this.labelX15.Text = "Phòng khám";
@@ -304,7 +304,7 @@
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX8.Location = new System.Drawing.Point(759, 54);
             this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(82, 17);
+            this.labelX8.Size = new System.Drawing.Size(76, 16);
             this.labelX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX8.TabIndex = 15;
             this.labelX8.Text = "Ngày kết thúc";
@@ -331,7 +331,7 @@
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX7.Location = new System.Drawing.Point(267, 54);
             this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(52, 17);
+            this.labelX7.Size = new System.Drawing.Size(48, 16);
             this.labelX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX7.TabIndex = 12;
             this.labelX7.Text = "Giới tính";
@@ -358,7 +358,7 @@
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX9.Location = new System.Drawing.Point(10, 23);
             this.labelX9.Name = "labelX9";
-            this.labelX9.Size = new System.Drawing.Size(104, 17);
+            this.labelX9.Size = new System.Drawing.Size(96, 16);
             this.labelX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX9.TabIndex = 13;
             this.labelX9.Text = "Ngày khám trước";
@@ -386,7 +386,7 @@
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX10.Location = new System.Drawing.Point(666, 23);
             this.labelX10.Name = "labelX10";
-            this.labelX10.Size = new System.Drawing.Size(39, 17);
+            this.labelX10.Size = new System.Drawing.Size(36, 16);
             this.labelX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX10.TabIndex = 15;
             this.labelX10.Text = "Bác sĩ";
@@ -413,7 +413,7 @@
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX11.Location = new System.Drawing.Point(10, 54);
             this.labelX11.Name = "labelX11";
-            this.labelX11.Size = new System.Drawing.Size(94, 17);
+            this.labelX11.Size = new System.Drawing.Size(87, 16);
             this.labelX11.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX11.TabIndex = 17;
             this.labelX11.Text = "Tình trạng bệnh";
@@ -428,7 +428,7 @@
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX12.Location = new System.Drawing.Point(437, 23);
             this.labelX12.Name = "labelX12";
-            this.labelX12.Size = new System.Drawing.Size(93, 17);
+            this.labelX12.Size = new System.Drawing.Size(86, 16);
             this.labelX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX12.TabIndex = 19;
             this.labelX12.Text = "Phác đồ điều trị";
@@ -470,7 +470,7 @@
             this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX13.Location = new System.Drawing.Point(235, 23);
             this.labelX13.Name = "labelX13";
-            this.labelX13.Size = new System.Drawing.Size(79, 17);
+            this.labelX13.Size = new System.Drawing.Size(73, 16);
             this.labelX13.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX13.TabIndex = 22;
             this.labelX13.Text = "Hẹn tái khám";
@@ -486,8 +486,8 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.buttonX3);
-            this.panel2.Controls.Add(this.buttonX2);
+            this.panel2.Controls.Add(this.btnCheck);
+            this.panel2.Controls.Add(this.btnCheckingHistory);
             this.panel2.Controls.Add(this.btnRegister);
             this.panel2.Controls.Add(this.textBoxX1);
             this.panel2.Controls.Add(this.labelX1);
@@ -497,27 +497,29 @@
             this.panel2.Size = new System.Drawing.Size(992, 38);
             this.panel2.TabIndex = 25;
             // 
-            // buttonX3
+            // btnCheck
             // 
-            this.buttonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX3.Location = new System.Drawing.Point(869, 11);
-            this.buttonX3.Name = "buttonX3";
-            this.buttonX3.Size = new System.Drawing.Size(111, 22);
-            this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
-            this.buttonX3.TabIndex = 4;
-            this.buttonX3.Text = "Khám bệnh";
+            this.btnCheck.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCheck.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCheck.Location = new System.Drawing.Point(869, 11);
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.Size = new System.Drawing.Size(111, 22);
+            this.btnCheck.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
+            this.btnCheck.TabIndex = 4;
+            this.btnCheck.Text = "Khám bệnh";
+            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
-            // buttonX2
+            // btnCheckingHistory
             // 
-            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(803, 11);
-            this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Size = new System.Drawing.Size(60, 22);
-            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
-            this.buttonX2.TabIndex = 3;
-            this.buttonX2.Text = "Y bạ";
+            this.btnCheckingHistory.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCheckingHistory.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCheckingHistory.Location = new System.Drawing.Point(803, 11);
+            this.btnCheckingHistory.Name = "btnCheckingHistory";
+            this.btnCheckingHistory.Size = new System.Drawing.Size(60, 22);
+            this.btnCheckingHistory.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
+            this.btnCheckingHistory.TabIndex = 3;
+            this.btnCheckingHistory.Text = "Y bạ";
+            this.btnCheckingHistory.Click += new System.EventHandler(this.btnCheckingHistory_Click);
             // 
             // btnRegister
             // 
@@ -606,7 +608,7 @@
             this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX14.Location = new System.Drawing.Point(10, 192);
             this.labelX14.Name = "labelX14";
-            this.labelX14.Size = new System.Drawing.Size(63, 17);
+            this.labelX14.Size = new System.Drawing.Size(58, 16);
             this.labelX14.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX14.TabIndex = 24;
             this.labelX14.Text = "Đơn thuốc";
@@ -684,8 +686,8 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX14;
         private DevComponents.DotNetBar.LabelX labelX15;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX15;
-        private DevComponents.DotNetBar.ButtonX buttonX3;
-        private DevComponents.DotNetBar.ButtonX buttonX2;
+        private DevComponents.DotNetBar.ButtonX btnCheck;
+        private DevComponents.DotNetBar.ButtonX btnCheckingHistory;
         private DevComponents.DotNetBar.ButtonX btnRegister;
 	}
 }

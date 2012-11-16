@@ -57,10 +57,11 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(9, 8);
+            this.labelX1.Location = new System.Drawing.Point(12, 11);
             this.labelX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(86, 17);
+            this.labelX1.Size = new System.Drawing.Size(79, 16);
+            this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "Mã bệnh nhân";
             // 
@@ -72,10 +73,11 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(9, 35);
+            this.labelX2.Location = new System.Drawing.Point(12, 38);
             this.labelX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(58, 17);
+            this.labelX2.Size = new System.Drawing.Size(54, 16);
+            this.labelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX2.TabIndex = 2;
             this.labelX2.Text = "Họ và tên";
             // 
@@ -86,7 +88,7 @@
             // 
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(101, 32);
+            this.textBoxX1.Location = new System.Drawing.Point(104, 35);
             this.textBoxX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.Size = new System.Drawing.Size(230, 21);
@@ -100,10 +102,11 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(380, 35);
+            this.labelX3.Location = new System.Drawing.Point(383, 38);
             this.labelX3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(57, 17);
+            this.labelX3.Size = new System.Drawing.Size(53, 16);
+            this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX3.TabIndex = 4;
             this.labelX3.Text = "Năm sinh";
             // 
@@ -115,7 +118,7 @@
             this.integerInput2.BackgroundStyle.Class = "DateTimeInputBackground";
             this.integerInput2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.integerInput2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.integerInput2.Location = new System.Drawing.Point(449, 32);
+            this.integerInput2.Location = new System.Drawing.Point(452, 35);
             this.integerInput2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.integerInput2.Name = "integerInput2";
             this.integerInput2.ShowUpDown = true;
@@ -130,10 +133,11 @@
             // 
             this.labelX4.BackgroundStyle.Class = "";
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(380, 61);
+            this.labelX4.Location = new System.Drawing.Point(383, 64);
             this.labelX4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(52, 17);
+            this.labelX4.Size = new System.Drawing.Size(48, 16);
+            this.labelX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX4.TabIndex = 6;
             this.labelX4.Text = "Giới tính";
             // 
@@ -145,7 +149,7 @@
             // 
             this.checkBoxX1.BackgroundStyle.Class = "";
             this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Location = new System.Drawing.Point(449, 61);
+            this.checkBoxX1.Location = new System.Drawing.Point(452, 64);
             this.checkBoxX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBoxX1.Name = "checkBoxX1";
             this.checkBoxX1.Size = new System.Drawing.Size(48, 16);
@@ -161,10 +165,11 @@
             // 
             this.labelX5.BackgroundStyle.Class = "";
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(9, 61);
+            this.labelX5.Location = new System.Drawing.Point(12, 64);
             this.labelX5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(78, 17);
+            this.labelX5.Size = new System.Drawing.Size(73, 16);
+            this.labelX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX5.TabIndex = 8;
             this.labelX5.Text = "Số điện thoại";
             // 
@@ -175,7 +180,7 @@
             // 
             this.textBoxX2.Border.Class = "TextBoxBorder";
             this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.Location = new System.Drawing.Point(100, 84);
+            this.textBoxX2.Location = new System.Drawing.Point(103, 87);
             this.textBoxX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.Size = new System.Drawing.Size(471, 21);
@@ -189,10 +194,11 @@
             // 
             this.labelX6.BackgroundStyle.Class = "";
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(9, 87);
+            this.labelX6.Location = new System.Drawing.Point(12, 90);
             this.labelX6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(43, 17);
+            this.labelX6.Size = new System.Drawing.Size(40, 16);
+            this.labelX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX6.TabIndex = 10;
             this.labelX6.Text = "Địa chí";
             // 
@@ -204,10 +210,11 @@
             // 
             this.labelX7.BackgroundStyle.Class = "";
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(9, 111);
+            this.labelX7.Location = new System.Drawing.Point(12, 114);
             this.labelX7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(43, 17);
+            this.labelX7.Size = new System.Drawing.Size(40, 16);
+            this.labelX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX7.TabIndex = 12;
             this.labelX7.Text = "Chi tiết";
             // 
@@ -218,11 +225,11 @@
             // 
             this.textBoxX3.Border.Class = "TextBoxBorder";
             this.textBoxX3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX3.Location = new System.Drawing.Point(100, 111);
+            this.textBoxX3.Location = new System.Drawing.Point(103, 114);
             this.textBoxX3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxX3.Multiline = true;
             this.textBoxX3.Name = "textBoxX3";
-            this.textBoxX3.Size = new System.Drawing.Size(471, 215);
+            this.textBoxX3.Size = new System.Drawing.Size(471, 214);
             this.textBoxX3.TabIndex = 13;
             // 
             // labelX8
@@ -233,10 +240,11 @@
             // 
             this.labelX8.BackgroundStyle.Class = "";
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(380, 8);
+            this.labelX8.Location = new System.Drawing.Point(383, 11);
             this.labelX8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(33, 17);
+            this.labelX8.Size = new System.Drawing.Size(31, 16);
+            this.labelX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX8.TabIndex = 14;
             this.labelX8.Text = "Ngày";
             // 
@@ -252,7 +260,7 @@
             this.dateTimeInput1.CustomFormat = "dd/mm/yyyy";
             this.dateTimeInput1.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.dateTimeInput1.IsPopupCalendarOpen = false;
-            this.dateTimeInput1.Location = new System.Drawing.Point(449, 6);
+            this.dateTimeInput1.Location = new System.Drawing.Point(452, 9);
             this.dateTimeInput1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             // 
             // 
@@ -301,7 +309,7 @@
             // 
             this.textBoxX4.Border.Class = "TextBoxBorder";
             this.textBoxX4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX4.Location = new System.Drawing.Point(101, 6);
+            this.textBoxX4.Location = new System.Drawing.Point(104, 9);
             this.textBoxX4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxX4.Name = "textBoxX4";
             this.textBoxX4.Size = new System.Drawing.Size(93, 21);
@@ -315,7 +323,7 @@
             // 
             this.checkBoxX2.BackgroundStyle.Class = "";
             this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX2.Location = new System.Drawing.Point(510, 61);
+            this.checkBoxX2.Location = new System.Drawing.Point(513, 64);
             this.checkBoxX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBoxX2.Name = "checkBoxX2";
             this.checkBoxX2.Size = new System.Drawing.Size(39, 16);
@@ -330,7 +338,7 @@
             // 
             this.textBoxX5.Border.Class = "TextBoxBorder";
             this.textBoxX5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX5.Location = new System.Drawing.Point(101, 58);
+            this.textBoxX5.Location = new System.Drawing.Point(104, 61);
             this.textBoxX5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxX5.Name = "textBoxX5";
             this.textBoxX5.Size = new System.Drawing.Size(124, 21);
@@ -340,7 +348,7 @@
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(484, 333);
+            this.buttonX1.Location = new System.Drawing.Point(487, 345);
             this.buttonX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Size = new System.Drawing.Size(87, 26);
@@ -352,7 +360,7 @@
             // 
             this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(380, 333);
+            this.buttonX2.Location = new System.Drawing.Point(383, 345);
             this.buttonX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(87, 26);
@@ -364,7 +372,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 366);
+            this.ClientSize = new System.Drawing.Size(593, 392);
             this.Controls.Add(this.buttonX2);
             this.Controls.Add(this.buttonX1);
             this.Controls.Add(this.textBoxX5);
