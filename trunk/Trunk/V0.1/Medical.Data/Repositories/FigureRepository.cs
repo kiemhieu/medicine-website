@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Medical.Data.Entities;
+using Medical.Forms.Implements;
+
 
 namespace Medical.Data.Repositories {
     public class FigureRepository : RepositoryBase, IFigureRepository
@@ -23,7 +25,7 @@ namespace Medical.Data.Repositories {
 
         public void Insert(Figure figure)
         {
-            figure.LastUpdatedUser = null;
+            figure.LastUpdatedUser = AppContext.LoggedInUser;
             figure.LastUpdatedDate = DateTime.Now;
             figure.Version = 0;
             this.Context.Figures.Add(figure);
@@ -36,7 +38,7 @@ namespace Medical.Data.Repositories {
             if (oldFigure == null) return;
             oldFigure.Name = figure.Name;
             oldFigure.Description = figure.Description;
-            //oldFigure.LastUpdatedUser = "";
+            oldFigure.LastUpdatedUser =  AppContext.LoggedInUser;
             oldFigure.LastUpdatedDate = DateTime.Now;
             oldFigure.Version++;
             this.Context.SaveChanges();

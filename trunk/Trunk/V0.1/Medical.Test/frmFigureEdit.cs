@@ -78,6 +78,7 @@ namespace Medical.Test
 
             ent.Name = txtFigureName.Text.Trim();
             ent.Description = txtGhiChu.Text.Trim();
+            
             return ent;
         }
 
@@ -88,8 +89,8 @@ namespace Medical.Test
                 return;
             Figure ent   = figureRepository.GetById(IdFigureEdit);
 
-            this.txtFigureName.Text = ent.Name.ToString();
-            this.txtGhiChu.Text = ent.Description.ToString();
+            this.txtFigureName.Text = ent.Name;
+            this.txtGhiChu.Text = ent.Description;
         }
     }
 }
