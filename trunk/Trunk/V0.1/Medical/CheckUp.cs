@@ -28,5 +28,11 @@ namespace Medical {
             var checkUpRegister = new CheckUpRegister();
             checkUpRegister.ShowDialog(this);
         }
+
+        private void textBoxX1_ButtonCustomClick(object sender, EventArgs e)
+        {
+            var patientBrowse = new PatientBrowseForm();
+            patientBrowse.ShowDialog(this);
+        }
     }
 }
