@@ -16,7 +16,7 @@ namespace RunTest
                 var manager = new ApplicationManager();
                 Application.Run(manager.EntryForm);
 
-                //manager.EntryForm.ShowDialog();
+                // manager.EntryForm.ShowDialog();
             }
             catch (Exception ex)
             {
