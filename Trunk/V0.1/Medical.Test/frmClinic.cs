@@ -14,7 +14,6 @@ namespace Medical.Test
     public partial class frmClinic : DockContent
     {
         public int IdClinic;
-        public static int IdMedicine = -1;
         private ClinicRepository clinicRepository = new ClinicRepository();
         public frmClinic()
         {

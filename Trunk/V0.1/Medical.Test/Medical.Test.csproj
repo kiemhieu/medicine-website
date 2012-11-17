@@ -143,6 +143,12 @@
     <Compile Include="frmWareHouseDetail.Designer.cs">
       <DependentUpon>frmWareHouseDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmWareHouseDetailEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWareHouseDetailEdit.Designer.cs">
+      <DependentUpon>frmWareHouseDetailEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="MDITabbed.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmWareHouseDetail.resx">
       <DependentUpon>frmWareHouseDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWareHouseDetailEdit.resx">
+      <DependentUpon>frmWareHouseDetailEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDITabbed.resx">
       <DependentUpon>MDITabbed.cs</DependentUpon>
