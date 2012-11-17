@@ -25,7 +25,7 @@ namespace Medical.Data.Repositories {
 
         public void Insert(Figure figure)
         {
-            figure.LastUpdatedUser = AppContext.LoggedInUser;
+            figure.LastUpdatedUser = AppContext.LoggedInUser.Id;
             figure.LastUpdatedDate = DateTime.Now;
             figure.Version = 0;
             this.Context.Figures.Add(figure);
@@ -34,21 +34,39 @@ namespace Medical.Data.Repositories {
 
         public void Update(Figure figure)
         {
-            var oldFigure = this.Context.Figures.FirstOrDefault(x => x.Id == figure.Id);
-            if (oldFigure == null) return;
-            oldFigure.Name = figure.Name;
-            oldFigure.Description = figure.Description;
-            oldFigure.LastUpdatedUser =  AppContext.LoggedInUser;
-            oldFigure.LastUpdatedDate = DateTime.Now;
-            oldFigure.Version++;
-            this.Context.SaveChanges();
+            try
+            {
+                var oldFigure = this.Context.Figures.FirstOrDefault(x => x.Id == figure.Id);
+                if (oldFigure == null) return;
+                oldFigure.Name = figure.Name;
+                oldFigure.Description = figure.Description;
+                oldFigure.LastUpdatedUser = AppContext.LoggedInUser.Id;
+                oldFigure.LastUpdatedDate = DateTime.Now;
+                oldFigure.Version++;
+                this.Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+         
         }
 
     
         public void Delete(int id) {
-            var oldFigure = this.Context.Figures.FirstOrDefault(x => x.Id == id);
-            this.Context.Figures.Remove(oldFigure);
-            this.Context.SaveChanges();
+            try
+            {
+                var oldFigure = this.Context.Figures.FirstOrDefault(x => x.Id == id);
+                this.Context.Figures.Remove(oldFigure);
+                this.Context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
         }
 
         List<Figure> IFigureRepository.GetAll()
@@ -57,7 +75,15 @@ namespace Medical.Data.Repositories {
         }
 
         public List<Figure> GetAll() {
-            return this.Context.Figures.ToList();
+            try
+            {
+                List<Figure> lst = this.Context.Figures.ToList();
+                return lst;
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
     }
 }

@@ -8,9 +8,10 @@ using System.Text;
 using System.Windows.Forms;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
+using WeifenLuo.WinFormsUI.Docking;
 namespace Medical.Test
 {
-    public partial class frmFigure : Form
+    public partial class frmFigure : DockContent
     {
         public int IdFigure;
         public static int IdMedicine = -1;
@@ -18,6 +19,7 @@ namespace Medical.Test
         public frmFigure()
         {
             InitializeComponent();
+           
             FillToGrid();
 
         }
@@ -26,25 +28,25 @@ namespace Medical.Test
 
         {
             if (e.RowIndex == -1) return;
-            lblID.Text = grd.Rows[e.RowIndex].Cells["ID"].Value == null ? "0" : grd.Rows[e.RowIndex].Cells["ID"].Value.ToString();
-            foreach (DataGridViewRow row in grd.Rows)
-            {
-                row.DefaultCellStyle.BackColor = Color.Empty;
-            }
-            grd.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.SkyBlue;
+            lblID.Text = grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value == null ? "0" : grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString();
+            //foreach (DataGridViewRow row in grd.Rows)
+            //{
+            //    row.DefaultCellStyle.BackColor = Color.Empty;
+            //}
+            //grd.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.SkyBlue;
         }
 
         private void grd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-            if (grd.Rows[e.RowIndex].Cells["ID"].Value == null)
+            if (grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value == null)
             {
                 IdFigure = 0;
             }
 
             else
             {
-                IdFigure = int.Parse(grd.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+                IdFigure = int.Parse(grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString());
             }
             lblID.Text = IdFigure.ToString();
 
@@ -55,8 +57,14 @@ namespace Medical.Test
         }
         private void FillToGrid()
         {
-            List<Figure> lst = figureRepository.GetAll();
-            this.grd.DataSource = lst;
+            //List<Figure> lst = figureRepository.GetAll();
+            //bindingSource1.DataSource = new List<Figure>();
+            bindingSource1.DataSource = figureRepository.GetAll();
+            //bindingSource1.ResetBindings(true);
+            bindingSource1.ResetCurrentItem();
+            //this.grd.DataSource = lst;
+            //grd.DataSource = bindingSource1;
+            //grd.Update();
             this.grd.Refresh();
             this.grd.Parent.Refresh();
             if (grd.Rows.Count == 0)
@@ -65,7 +73,7 @@ namespace Medical.Test
             {
 
                 grd.Rows[0].Selected = true;
-                lblID.Text = grd.Rows[0].Cells["ID"].Value.ToString();
+                lblID.Text = grd.Rows[0].Cells["idDataGridViewTextBoxColumn"].Value.ToString();
                 
 
             }
@@ -91,6 +99,7 @@ namespace Medical.Test
             {
                 figureRepository.Delete(int.Parse(lblID.Text.Trim()));
             }
+            FillToGrid();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
