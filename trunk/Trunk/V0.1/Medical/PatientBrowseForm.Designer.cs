@@ -26,6 +26,13 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdPatient = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sexualDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdgPatient = new System.Windows.Forms.BindingSource(this.components);
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.txtPatientName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
@@ -33,17 +40,10 @@
             this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.btnRegister = new DevComponents.DotNetBar.ButtonX();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.bdgPatient = new System.Windows.Forms.BindingSource(this.components);
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sexualDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdPatient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdgPatient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthYear)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdgPatient)).BeginInit();
             this.SuspendLayout();
             // 
             // grdPatient
@@ -71,14 +71,66 @@
             this.grdPatient.DefaultCellStyle = dataGridViewCellStyle1;
             this.grdPatient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdPatient.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.grdPatient.Location = new System.Drawing.Point(0, 37);
+            this.grdPatient.HighlightSelectedColumnHeaders = false;
+            this.grdPatient.Location = new System.Drawing.Point(0, 30);
             this.grdPatient.MultiSelect = false;
             this.grdPatient.Name = "grdPatient";
             this.grdPatient.ReadOnly = true;
             this.grdPatient.RowHeadersVisible = false;
             this.grdPatient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdPatient.Size = new System.Drawing.Size(899, 421);
+            this.grdPatient.Size = new System.Drawing.Size(899, 428);
             this.grdPatient.TabIndex = 0;
+            this.grdPatient.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdPatient_CellDoubleClick);
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Mã";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codeDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Họ và tên";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // birthYearDataGridViewTextBoxColumn
+            // 
+            this.birthYearDataGridViewTextBoxColumn.DataPropertyName = "BirthYear";
+            this.birthYearDataGridViewTextBoxColumn.HeaderText = "Năm sinh";
+            this.birthYearDataGridViewTextBoxColumn.Name = "birthYearDataGridViewTextBoxColumn";
+            this.birthYearDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sexualDataGridViewTextBoxColumn
+            // 
+            this.sexualDataGridViewTextBoxColumn.DataPropertyName = "Sexual";
+            this.sexualDataGridViewTextBoxColumn.HeaderText = "Giới tính";
+            this.sexualDataGridViewTextBoxColumn.Name = "sexualDataGridViewTextBoxColumn";
+            this.sexualDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Địa chỉ";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
+            this.addressDataGridViewTextBoxColumn.Width = 300;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Ghi chú";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bdgPatient
+            // 
+            this.bdgPatient.DataSource = typeof(Medical.Data.Entities.Patient);
             // 
             // labelX1
             // 
@@ -88,7 +140,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(12, 10);
+            this.labelX1.Location = new System.Drawing.Point(12, 7);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(54, 16);
             this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -102,7 +154,7 @@
             // 
             this.txtPatientName.Border.Class = "TextBoxBorder";
             this.txtPatientName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPatientName.Location = new System.Drawing.Point(73, 8);
+            this.txtPatientName.Location = new System.Drawing.Point(73, 5);
             this.txtPatientName.Name = "txtPatientName";
             this.txtPatientName.Size = new System.Drawing.Size(201, 21);
             this.txtPatientName.TabIndex = 2;
@@ -115,7 +167,7 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(304, 10);
+            this.labelX2.Location = new System.Drawing.Point(304, 7);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(53, 16);
             this.labelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -130,7 +182,7 @@
             this.txtBirthYear.BackgroundStyle.Class = "DateTimeInputBackground";
             this.txtBirthYear.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtBirthYear.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtBirthYear.Location = new System.Drawing.Point(364, 8);
+            this.txtBirthYear.Location = new System.Drawing.Point(364, 5);
             this.txtBirthYear.Name = "txtBirthYear";
             this.txtBirthYear.Size = new System.Drawing.Size(80, 21);
             this.txtBirthYear.TabIndex = 4;
@@ -139,7 +191,7 @@
             // 
             this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSearch.Location = new System.Drawing.Point(717, 8);
+            this.btnSearch.Location = new System.Drawing.Point(717, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -151,7 +203,7 @@
             // 
             this.btnRegister.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnRegister.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnRegister.Location = new System.Drawing.Point(798, 8);
+            this.btnRegister.Location = new System.Drawing.Point(798, 4);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(89, 23);
             this.btnRegister.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -167,60 +219,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(899, 37);
+            this.panel1.Size = new System.Drawing.Size(899, 30);
             this.panel1.TabIndex = 8;
-            // 
-            // bdgPatient
-            // 
-            this.bdgPatient.DataSource = typeof(Medical.Data.Entities.Patient);
-            // 
-            // codeDataGridViewTextBoxColumn
-            // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
-            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codeDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // birthYearDataGridViewTextBoxColumn
-            // 
-            this.birthYearDataGridViewTextBoxColumn.DataPropertyName = "BirthYear";
-            this.birthYearDataGridViewTextBoxColumn.HeaderText = "BirthYear";
-            this.birthYearDataGridViewTextBoxColumn.Name = "birthYearDataGridViewTextBoxColumn";
-            this.birthYearDataGridViewTextBoxColumn.ReadOnly = true;
-            this.birthYearDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // sexualDataGridViewTextBoxColumn
-            // 
-            this.sexualDataGridViewTextBoxColumn.DataPropertyName = "Sexual";
-            this.sexualDataGridViewTextBoxColumn.HeaderText = "Sexual";
-            this.sexualDataGridViewTextBoxColumn.Name = "sexualDataGridViewTextBoxColumn";
-            this.sexualDataGridViewTextBoxColumn.ReadOnly = true;
-            this.sexualDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // addressDataGridViewTextBoxColumn
-            // 
-            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
-            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
-            this.addressDataGridViewTextBoxColumn.Width = 300;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // PatientBrowseForm
             // 
@@ -232,13 +232,20 @@
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "PatientBrowseForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tìm kiếm bệnh nhân";
+            this.Shown += new System.EventHandler(this.PatientBrowseForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.grdPatient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdgPatient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthYear)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdgPatient)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

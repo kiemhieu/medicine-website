@@ -29,10 +29,12 @@ namespace Medical {
             checkUpRegister.ShowDialog(this);
         }
 
-        private void textBoxX1_ButtonCustomClick(object sender, EventArgs e)
-        {
-            var patientBrowse = new PatientBrowseForm();
-            patientBrowse.ShowDialog(this);
+        private void textBoxX1_ButtonCustomClick(object sender, EventArgs e) {
+            var patientBrowse = new PatientBrowseForm(this.txtSeachName.Text);
+            var result = patientBrowse.ShowDialog(this);
+            if (result == System.Windows.Forms.DialogResult.Yes) {
+                this.bdsPatient.DataSource = patientBrowse.SelectedPatient;
+            }
         }
     }
 }
