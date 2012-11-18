@@ -11,6 +11,7 @@ namespace Medical.Data
         void Insert(Patient user);
         void Update(Patient user);
         void Delete(int id);
+        Patient GetById(int id);
         List<Patient> GetAll();
         List<Patient> GetByNameAndYear(string name, int? year);
     }

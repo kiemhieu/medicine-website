@@ -7,24 +7,21 @@ using Medical.Forms.Implements;
 
 
 namespace Medical.Data.Repositories {
-    public class ClinicRepository : RepositoryBase, IClinicRepository
-    {
+    public class ClinicRepository : RepositoryBase, IClinicRepository {
 
-        public Clinic Get(int id)
-        {
-            var clinic = this.Context.Clinics.FirstOrDefault(x => x.Id.Equals(id));
-            return clinic;
-        }
-        public Clinic GetById(int id)
-        {
+        public Clinic Get(int id) {
             var clinic = this.Context.Clinics.FirstOrDefault(x => x.Id.Equals(id));
             return clinic;
         }
 
-     
+        public Clinic GetById(int id) {
+            var clinic = this.Context.Clinics.FirstOrDefault(x => x.Id.Equals(id));
+            return clinic;
+        }
 
-        public void Insert(Clinic clinic)
-        {
+
+
+        public void Insert(Clinic clinic) {
             clinic.CreatedDate = DateTime.Now;
             clinic.CreatedUser = AppContext.LoggedInUser.Id;
             clinic.LastUpdatedUser = AppContext.LoggedInUser.Id;
@@ -34,15 +31,13 @@ namespace Medical.Data.Repositories {
             this.Context.SaveChanges();
         }
 
-        public void Update(Clinic clinic)
-        {
-            try
-            {
+        public void Update(Clinic clinic) {
+            try {
                 var oldClinic = this.Context.Clinics.FirstOrDefault(x => x.Id == clinic.Id);
                 if (oldClinic == null) return;
                 oldClinic.Name = clinic.Name;
                 oldClinic.Address = clinic.Address;
-                
+
                 oldClinic.Description = clinic.Description;
                 oldClinic.CreatedDate = clinic.CreatedDate;
                 oldClinic.CreatedUser = clinic.CreatedUser;
@@ -52,43 +47,35 @@ namespace Medical.Data.Repositories {
                 oldClinic.LastUpdatedDate = DateTime.Now;
                 oldClinic.Version++;
                 this.Context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
 
                 throw;
             }
-         
+
         }
 
-    
+
         public void Delete(int id) {
-            try
-            {
+            try {
                 var oldClinic = this.Context.Clinics.FirstOrDefault(x => x.Id == id);
                 this.Context.Clinics.Remove(oldClinic);
                 this.Context.SaveChanges();
-            }
-            catch (Exception)
-            {
-                
+            } catch (Exception) {
+
                 throw;
             }
-            
+
         }
 
-        List<Clinic> IClinicRepository.GetAll()
-        {
+        List<Clinic> IClinicRepository.GetAll() {
             throw new NotImplementedException();
         }
 
         public List<Clinic> GetAll() {
-            try
-            {
+            try {
                 List<Clinic> lst = this.Context.Clinics.ToList();
                 return lst;
-            }catch(Exception ex)
-            {
+            } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
                 return null;
             }
