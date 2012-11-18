@@ -23,7 +23,7 @@ namespace Medical.Data.Entities {
         public int LastUpdatedUser { get; set; }
         public int Version { get; set; }
 
-        public Clinic Clinic { get; set; }
+        public virtual Clinic Clinic { get; set; }
 
         [NotMapped]
         public String Sex
