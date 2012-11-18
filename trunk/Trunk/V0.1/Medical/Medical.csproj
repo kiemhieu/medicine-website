@@ -85,7 +85,6 @@
       <DependentUpon>PatientRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\CheckUpViewModel.cs" />
     <EmbeddedResource Include="CheckUp.resx">
       <DependentUpon>CheckUp.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +111,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\DataSources\Medical.Data.Entities.Patient.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.Prescription.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.PrescriptionDetail.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
