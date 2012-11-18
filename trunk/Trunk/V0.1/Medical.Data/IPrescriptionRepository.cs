@@ -11,6 +11,8 @@ namespace Medical.Data
         void Insert(Prescription user);
         void Update(Prescription user);
         void Delete(int id);
+        Prescription GetLastByPatient(int patientId);
         List<Prescription> GetAll();
+
     }
 }
