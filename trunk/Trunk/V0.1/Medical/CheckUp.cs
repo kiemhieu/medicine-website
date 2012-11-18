@@ -6,10 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Medical.Data;
+using Medical.Data.Entities;
+using Medical.Data.Repositories;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace Medical {
     public partial class CheckUp : DockContent {
+
+
         public CheckUp() {
             InitializeComponent();
         }

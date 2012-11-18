@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.txtSeachName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.bdsPatient = new System.Windows.Forms.BindingSource(this.components);
             this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -66,14 +67,13 @@
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.textBoxX15 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX14 = new DevComponents.DotNetBar.LabelX();
-            this.bdsPatient = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPatient)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPatient)).BeginInit();
             this.SuspendLayout();
             // 
             // labelX1
@@ -107,6 +107,10 @@
             this.txtSeachName.Size = new System.Drawing.Size(169, 21);
             this.txtSeachName.TabIndex = 1;
             this.txtSeachName.ButtonCustomClick += new System.EventHandler(this.textBoxX1_ButtonCustomClick);
+            // 
+            // bdsPatient
+            // 
+            this.bdsPatient.DataSource = typeof(Medical.Data.Entities.Patient);
             // 
             // textBoxX2
             // 
@@ -269,6 +273,7 @@
             // 
             this.textBoxX14.Border.Class = "TextBoxBorder";
             this.textBoxX14.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX14.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "ClinicName", true));
             this.textBoxX14.Location = new System.Drawing.Point(346, 20);
             this.textBoxX14.Name = "textBoxX14";
             this.textBoxX14.ReadOnly = true;
@@ -604,10 +609,6 @@
             this.labelX14.TabIndex = 24;
             this.labelX14.Text = "Đơn thuốc";
             // 
-            // bdsPatient
-            // 
-            this.bdsPatient.DataSource = typeof(Medical.Data.Entities.Patient);
-            // 
             // CheckUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -624,6 +625,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Khám bệnh";
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPatient)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -634,7 +636,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPatient)).EndInit();
             this.ResumeLayout(false);
 
 		}
