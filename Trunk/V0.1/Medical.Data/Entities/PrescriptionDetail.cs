@@ -17,5 +17,8 @@ namespace Medical.Data.Entities
         public int VolumnPerDay { get; set; }
         public int Amount { get; set; }
         public int Version { get; set; }
+
+        public virtual Medicine Medicine { get; set; }
+        public virtual FigureDetail FigureDetail { get; set; }
   }
 }

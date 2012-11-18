@@ -20,6 +20,8 @@ namespace Medical.Data.Repositories
         public DbSet<WareHouseMinimumAllow> WareHouseMinimumAllows { get; set; }
         public DbSet<WareHousePaper> WareHousePapers { get; set; }
         public DbSet<WareHousePaperDetail> WareHousePaperDetails { get; set; }
+        public DbSet<Prescription> Prescription { get; set; }
+        public DbSet<PrescriptionDetail> PrescriptionDetails { get; set; }
     }
 }
 
