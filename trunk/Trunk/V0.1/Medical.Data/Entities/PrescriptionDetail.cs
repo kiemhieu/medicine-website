@@ -16,9 +16,15 @@ namespace Medical.Data.Entities
         public int Day { get; set; }
         public int VolumnPerDay { get; set; }
         public int Amount { get; set; }
+        public string Description { get; set; }
         public int Version { get; set; }
 
         public virtual Medicine Medicine { get; set; }
         public virtual FigureDetail FigureDetail { get; set; }
+
+        public String MedicineName
+        {
+            get { return this.Medicine == null ? string.Empty : this.Medicine.Name;  }
+        }
   }
 }
