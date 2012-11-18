@@ -32,12 +32,14 @@ namespace Medical.Forms.UI
 
 
             // Init Tree view
-            treeMenu = new TreeMenu();
-            treeMenu.ShowHint = DockState.DockLeft;
-            treeMenu.AllowEndUserDocking = false;
-            treeMenu.CloseButton = false;
-            treeMenu.IsFloat = false;
-            treeMenu.CloseButtonVisible = false;
+            treeMenu = new TreeMenu
+                           {
+                               ShowHint = DockState.DockLeft,
+                               AllowEndUserDocking = false,
+                               CloseButton = false,
+                               IsFloat = false,
+                               CloseButtonVisible = false
+                           };
             treeMenu.Show(dockingPanel);
         }
 
