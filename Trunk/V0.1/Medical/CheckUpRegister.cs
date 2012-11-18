@@ -6,9 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Medical.Data.Entities;
 
 namespace Medical {
-    public partial class CheckUpRegister : Form {
+    public partial class CheckUpRegister : Form
+    {
+        private Patient patient;
+
         public CheckUpRegister() {
             InitializeComponent();
         }
