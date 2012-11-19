@@ -110,6 +110,8 @@ namespace Medical.Test
         {
             var patientBrowse = new frmMedicineSearch("",txtSeachName.Text.Trim());
             var result = patientBrowse.ShowDialog(this);
+            txtSeachName.Text = this.medicineName;
+            bindingSource1.DataSource = whDetailRepository.GetByIdMedicine(this.IdMedicine);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 txtSeachName.Text = this.medicineName;

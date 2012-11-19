@@ -71,6 +71,12 @@
     <Compile Include="Add.Designer.cs">
       <DependentUpon>Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmExportWH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExportWH.Designer.cs">
+      <DependentUpon>frmExportWH.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form5.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,12 @@
     </Compile>
     <Compile Include="frmFigureEdit.Designer.cs">
       <DependentUpon>frmFigureEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportWH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportWH.Designer.cs">
+      <DependentUpon>frmImportWH.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMedicine.cs">
       <SubType>Form</SubType>
@@ -180,6 +192,9 @@
     <EmbeddedResource Include="Add.resx">
       <DependentUpon>Add.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmExportWH.resx">
+      <DependentUpon>frmExportWH.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form5.resx">
       <DependentUpon>Form5.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmFigureEdit.resx">
       <DependentUpon>frmFigureEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportWH.resx">
+      <DependentUpon>frmImportWH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMedicine.resx">
       <DependentUpon>frmMedicine.cs</DependentUpon>
@@ -245,6 +263,8 @@
     <None Include="Properties\DataSources\Medical.Data.Entities.Figure.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Medicine.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.WareHouseDetail.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.WareHousePaper.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.WareHousePaperDetail.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -32,11 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClinic));
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbtnInsert = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnDelete = new System.Windows.Forms.ToolStripButton();
-            this.lblID = new System.Windows.Forms.Label();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,9 +44,14 @@
             this.lastUpdatedUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbtnInsert = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnEdit = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnDelete = new System.Windows.Forms.ToolStripButton();
+            this.lblID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // grd
@@ -92,54 +92,6 @@
             this.grd.TabIndex = 3;
             this.grd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellClick);
             this.grd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbtnInsert,
-            this.tsbtnEdit,
-            this.tsbtnDelete});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(510, 25);
-            this.toolStrip1.TabIndex = 5;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // tsbtnInsert
-            // 
-            this.tsbtnInsert.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnInsert.Image")));
-            this.tsbtnInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnInsert.Name = "tsbtnInsert";
-            this.tsbtnInsert.Size = new System.Drawing.Size(72, 22);
-            this.tsbtnInsert.Text = "Thêm mới";
-            this.tsbtnInsert.Click += new System.EventHandler(this.btnInsert_Click);
-            // 
-            // tsbtnEdit
-            // 
-            this.tsbtnEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnEdit.Image")));
-            this.tsbtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnEdit.Name = "tsbtnEdit";
-            this.tsbtnEdit.Size = new System.Drawing.Size(46, 22);
-            this.tsbtnEdit.Text = "Sửa";
-            this.tsbtnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // tsbtnDelete
-            // 
-            this.tsbtnDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDelete.Image")));
-            this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnDelete.Name = "tsbtnDelete";
-            this.tsbtnDelete.Size = new System.Drawing.Size(45, 22);
-            this.tsbtnDelete.Text = "Xóa";
-            this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(393, 8);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(0, 13);
-            this.lblID.TabIndex = 6;
-            this.lblID.Visible = false;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -218,6 +170,54 @@
             // 
             this.bindingSource1.DataSource = typeof(Medical.Data.Entities.Clinic);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbtnInsert,
+            this.tsbtnEdit,
+            this.tsbtnDelete});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(510, 25);
+            this.toolStrip1.TabIndex = 5;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsbtnInsert
+            // 
+            this.tsbtnInsert.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnInsert.Image")));
+            this.tsbtnInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnInsert.Name = "tsbtnInsert";
+            this.tsbtnInsert.Size = new System.Drawing.Size(72, 22);
+            this.tsbtnInsert.Text = "Thêm mới";
+            this.tsbtnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
+            // tsbtnEdit
+            // 
+            this.tsbtnEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnEdit.Image")));
+            this.tsbtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnEdit.Name = "tsbtnEdit";
+            this.tsbtnEdit.Size = new System.Drawing.Size(46, 22);
+            this.tsbtnEdit.Text = "Sửa";
+            this.tsbtnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // tsbtnDelete
+            // 
+            this.tsbtnDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDelete.Image")));
+            this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnDelete.Name = "tsbtnDelete";
+            this.tsbtnDelete.Size = new System.Drawing.Size(45, 22);
+            this.tsbtnDelete.Text = "Xóa";
+            this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(393, 8);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(0, 13);
+            this.lblID.TabIndex = 6;
+            this.lblID.Visible = false;
+            // 
             // frmClinic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,11 +228,11 @@
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmClinic";
-            this.Text = "frmClinic";
+            this.Text = "Quản lý phòng khám";
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
