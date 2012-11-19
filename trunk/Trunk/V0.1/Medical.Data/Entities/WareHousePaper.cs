@@ -22,5 +22,9 @@ namespace Medical.Data.Entities
         public DateTime LastUpdatedDate { get; set; }
         public int LastUpdatedUser { get; set; }
         public int Version { get; set; }
+        private Medicine Medicine { get; set; }
+        private Clinic Clinic { get; set; }
+        public string MedicineName { get { return this.Medicine.Name; } }
+        public string ClinicName { get { return this.Clinic.Name; } }
     }
 }
