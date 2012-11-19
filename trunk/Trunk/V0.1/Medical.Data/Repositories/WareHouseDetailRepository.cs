@@ -25,7 +25,7 @@ namespace Medical.Data.Repositories {
 
         public void Insert(WareHouseDetail whDetail)
         {
-            whDetail.CrearedUser = AppContext.LoggedInUser.Id;
+            whDetail.CreatedUser = AppContext.LoggedInUser.Id;
             whDetail.CreatedDate = DateTime.Now;
             whDetail.LastUpdatedUser = AppContext.LoggedInUser.Id;
             whDetail.LastUpdatedDate = DateTime.Now;
@@ -42,7 +42,7 @@ namespace Medical.Data.Repositories {
                 if (oldWhDetail == null) return;
                 oldWhDetail.BadVolumn = whDetail.BadVolumn;
                 oldWhDetail.ClinicId = whDetail.ClinicId;
-                oldWhDetail.CrearedUser = whDetail.CrearedUser;
+                oldWhDetail.CreatedUser = whDetail.CreatedUser;
                 oldWhDetail.CreatedDate = whDetail.CreatedDate;
                 oldWhDetail.ExpiredDate = whDetail.ExpiredDate;
                 oldWhDetail.LotNo = whDetail.LotNo;
@@ -85,6 +85,20 @@ namespace Medical.Data.Repositories {
                 List<WareHouseDetail> lst = this.Context.WareHouseDetails.ToList();
                 return lst;
             }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public List<WareHouseDetail> GetByIdMedicine(int idMedicine)
+        {
+            try
+            {
+                List<WareHouseDetail> lst =
+                    this.Context.WareHouseDetails.Where(x => x.MedicineId.Equals(idMedicine)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;

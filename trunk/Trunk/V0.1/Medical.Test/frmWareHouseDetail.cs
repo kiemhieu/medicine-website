@@ -14,6 +14,8 @@ namespace Medical.Test
     public partial class frmWareHouseDetail : DockContent
     {
         public int IdWareHouseDetail;
+        public int IdMedicine;
+        public  string medicineName = "";
         private WareHouseDetailRepository whDetailRepository = new WareHouseDetailRepository();
         public frmWareHouseDetail()
         {
@@ -98,6 +100,35 @@ namespace Medical.Test
             frmedit.ShowDialog();
             FillToGrid();
 
+        }
+        /// <summary>
+        /// Handles the ButtonCustomClick event of the textBoxX1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void textBoxX1_ButtonCustomClick(object sender, EventArgs e)
+        {
+            var patientBrowse = new frmMedicineSearch("",txtSeachName.Text.Trim());
+            var result = patientBrowse.ShowDialog(this);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                txtSeachName.Text = this.medicineName;
+                bindingSource1.DataSource = whDetailRepository.GetByIdMedicine(this.IdMedicine);
+                //this.bdsPrescription.Clear();
+                //this.bdsPrescriptionDetail.Clear();
+
+                //var patient = patientBrowse.SelectedPatient;
+                //this.bdsPatient.DataSource = patient;
+                //if (patient != null)
+                //{
+                //    lastPrescription = prescriptionRepo.GetLastByPatient(patient.Id);
+                //    if (lastPrescription != null)
+                //    {
+                //        this.bdsPrescription.DataSource = lastPrescription;
+                //        if (lastPrescription.PrescriptionDetails != null) this.bdsPrescriptionDetail.DataSource = lastPrescription.PrescriptionDetails;
+                //    }
+                //}
+            }
         }
     }
 }

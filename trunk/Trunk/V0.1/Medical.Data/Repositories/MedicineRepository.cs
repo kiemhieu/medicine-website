@@ -13,6 +13,7 @@ namespace Medical.Data.Repositories {
             var medicine = this.Context.Medicines.FirstOrDefault(x => x.MedicineCode.Equals(medicineCode));
             return medicine;
         }
+       
         public Medicine GetById(int id)
         {
             var medicine = this.Context.Medicines.FirstOrDefault(x => x.Id.Equals(id));
@@ -73,6 +74,10 @@ namespace Medical.Data.Repositories {
 
         public List<Medicine> GetAll() {
             return this.Context.Medicines.ToList();
+        }
+        public List<Medicine> GetByName(string name)
+        {
+            return Context.Medicines.Where(x => x.Name.Contains(name)).ToList();
         }
     }
 }

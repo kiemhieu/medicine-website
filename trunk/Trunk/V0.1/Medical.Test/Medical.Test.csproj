@@ -137,6 +137,12 @@
     <Compile Include="frmMedicinEdit.Designer.cs">
       <DependentUpon>frmMedicinEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMedicineSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMedicineSearch.Designer.cs">
+      <DependentUpon>frmMedicineSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmWareHouseDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMedicinEdit.resx">
       <DependentUpon>frmMedicinEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMedicineSearch.resx">
+      <DependentUpon>frmMedicineSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmWareHouseDetail.resx">
       <DependentUpon>frmWareHouseDetail.cs</DependentUpon>
