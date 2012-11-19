@@ -32,15 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWareHouseDetail));
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbtnInsert = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnDelete = new System.Windows.Forms.ToolStripButton();
-            this.lblID = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtSeachName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clinicIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clinicNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +46,15 @@
             this.lastUpdatedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastUpdatedUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbtnInsert = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnEdit = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnDelete = new System.Windows.Forms.ToolStripButton();
+            this.lblID = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSeachName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -100,99 +100,6 @@
             this.grd.Name = "grd";
             this.grd.Size = new System.Drawing.Size(643, 409);
             this.grd.TabIndex = 5;
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.WareHouseDetail);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbtnInsert,
-            this.tsbtnEdit,
-            this.tsbtnDelete});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(643, 25);
-            this.toolStrip1.TabIndex = 7;
-            this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.Visible = false;
-            // 
-            // tsbtnInsert
-            // 
-            this.tsbtnInsert.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnInsert.Image")));
-            this.tsbtnInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnInsert.Name = "tsbtnInsert";
-            this.tsbtnInsert.Size = new System.Drawing.Size(72, 22);
-            this.tsbtnInsert.Text = "Thêm mới";
-            this.tsbtnInsert.Click += new System.EventHandler(this.btnInsert_Click);
-            // 
-            // tsbtnEdit
-            // 
-            this.tsbtnEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnEdit.Image")));
-            this.tsbtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnEdit.Name = "tsbtnEdit";
-            this.tsbtnEdit.Size = new System.Drawing.Size(46, 22);
-            this.tsbtnEdit.Text = "Sửa";
-            this.tsbtnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // tsbtnDelete
-            // 
-            this.tsbtnDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDelete.Image")));
-            this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnDelete.Name = "tsbtnDelete";
-            this.tsbtnDelete.Size = new System.Drawing.Size(45, 22);
-            this.tsbtnDelete.Text = "Xóa";
-            this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(522, 8);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(0, 13);
-            this.lblID.TabIndex = 8;
-            this.lblID.Visible = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtSeachName);
-            this.panel1.Controls.Add(this.labelX1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(643, 41);
-            this.panel1.TabIndex = 9;
-            // 
-            // txtSeachName
-            // 
-            // 
-            // 
-            // 
-            this.txtSeachName.Border.Class = "TextBoxBorder";
-            this.txtSeachName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSeachName.ButtonCustom.DisplayPosition = 1;
-            this.txtSeachName.ButtonCustom.Visible = true;
-            this.txtSeachName.Location = new System.Drawing.Point(93, 7);
-            this.txtSeachName.Name = "txtSeachName";
-            this.txtSeachName.ReadOnly = true;
-            this.txtSeachName.Size = new System.Drawing.Size(169, 20);
-            this.txtSeachName.TabIndex = 2;
-            this.txtSeachName.ButtonCustomClick += new System.EventHandler(this.textBoxX1_ButtonCustomClick);
-            // 
-            // labelX1
-            // 
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.Class = "";
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX1.Location = new System.Drawing.Point(12, 5);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(75, 23);
-            this.labelX1.TabIndex = 1;
-            this.labelX1.Text = "Tên thuốc";
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -290,6 +197,99 @@
             this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
             this.versionDataGridViewTextBoxColumn.Visible = false;
             // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.WareHouseDetail);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbtnInsert,
+            this.tsbtnEdit,
+            this.tsbtnDelete});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(643, 25);
+            this.toolStrip1.TabIndex = 7;
+            this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.Visible = false;
+            // 
+            // tsbtnInsert
+            // 
+            this.tsbtnInsert.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnInsert.Image")));
+            this.tsbtnInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnInsert.Name = "tsbtnInsert";
+            this.tsbtnInsert.Size = new System.Drawing.Size(72, 22);
+            this.tsbtnInsert.Text = "Thêm mới";
+            this.tsbtnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
+            // tsbtnEdit
+            // 
+            this.tsbtnEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnEdit.Image")));
+            this.tsbtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnEdit.Name = "tsbtnEdit";
+            this.tsbtnEdit.Size = new System.Drawing.Size(46, 22);
+            this.tsbtnEdit.Text = "Sửa";
+            this.tsbtnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // tsbtnDelete
+            // 
+            this.tsbtnDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDelete.Image")));
+            this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnDelete.Name = "tsbtnDelete";
+            this.tsbtnDelete.Size = new System.Drawing.Size(45, 22);
+            this.tsbtnDelete.Text = "Xóa";
+            this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(522, 8);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(0, 13);
+            this.lblID.TabIndex = 8;
+            this.lblID.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtSeachName);
+            this.panel1.Controls.Add(this.labelX1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(643, 41);
+            this.panel1.TabIndex = 9;
+            // 
+            // txtSeachName
+            // 
+            // 
+            // 
+            // 
+            this.txtSeachName.Border.Class = "TextBoxBorder";
+            this.txtSeachName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSeachName.ButtonCustom.DisplayPosition = 1;
+            this.txtSeachName.ButtonCustom.Visible = true;
+            this.txtSeachName.Location = new System.Drawing.Point(93, 7);
+            this.txtSeachName.Name = "txtSeachName";
+            this.txtSeachName.ReadOnly = true;
+            this.txtSeachName.Size = new System.Drawing.Size(169, 20);
+            this.txtSeachName.TabIndex = 2;
+            this.txtSeachName.ButtonCustomClick += new System.EventHandler(this.textBoxX1_ButtonCustomClick);
+            // 
+            // labelX1
+            // 
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.Class = "";
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX1.Location = new System.Drawing.Point(12, 5);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(75, 23);
+            this.labelX1.TabIndex = 1;
+            this.labelX1.Text = "Tên thuốc";
+            // 
             // frmWareHouseDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,7 +301,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmWareHouseDetail";
-            this.Text = "frmWareHouseDetail";
+            this.Text = "Kho thuốc";
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
