@@ -46,9 +46,10 @@
             this.panel1.Controls.Add(this.labelX1);
             this.panel1.Controls.Add(this.lblFigureName);
             this.panel1.Controls.Add(this.txtFigureName);
-            this.panel1.Location = new System.Drawing.Point(10, 6);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(529, 90);
+            this.panel1.Size = new System.Drawing.Size(552, 90);
             this.panel1.TabIndex = 2;
             // 
             // txtGhiChu
@@ -109,9 +110,10 @@
             // 
             this.panel2.Controls.Add(this.btnCancle);
             this.panel2.Controls.Add(this.btnUpdate);
-            this.panel2.Location = new System.Drawing.Point(10, 102);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 90);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(530, 46);
+            this.panel2.Size = new System.Drawing.Size(552, 46);
             this.panel2.TabIndex = 3;
             // 
             // btnCancle
@@ -119,7 +121,7 @@
             this.btnCancle.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCancle.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCancle.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btnCancle.Location = new System.Drawing.Point(289, 14);
+            this.btnCancle.Location = new System.Drawing.Point(436, 3);
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(75, 23);
             this.btnCancle.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -132,7 +134,7 @@
             this.btnUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnUpdate.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btnUpdate.Location = new System.Drawing.Point(162, 14);
+            this.btnUpdate.Location = new System.Drawing.Point(309, 3);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;

@@ -18,7 +18,7 @@ namespace Medical.Data.Entities
         public int BadVolumn { get; set; }
         public int UnitPrice { get; set; }
         public DateTime CreatedDate { get; set; }
-        public int CrearedUser { get; set; }
+        public int CreatedUser { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public int LastUpdatedUser { get; set; } 
         public int Version { get; set; }

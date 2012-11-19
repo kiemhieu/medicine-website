@@ -46,11 +46,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtMaThuoc = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnButton = new DevComponents.DotNetBar.PanelEx();
-            this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancle = new DevComponents.DotNetBar.ButtonX();
+            this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
             this.grpMaster.SuspendLayout();
-            this.pnButton.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpMaster
@@ -72,9 +72,10 @@
             this.grpMaster.Controls.Add(this.label2);
             this.grpMaster.Controls.Add(this.txtMaThuoc);
             this.grpMaster.Controls.Add(this.label1);
-            this.grpMaster.Location = new System.Drawing.Point(12, 12);
+            this.grpMaster.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grpMaster.Location = new System.Drawing.Point(0, 0);
             this.grpMaster.Name = "grpMaster";
-            this.grpMaster.Size = new System.Drawing.Size(848, 133);
+            this.grpMaster.Size = new System.Drawing.Size(868, 133);
             this.grpMaster.TabIndex = 6;
             this.grpMaster.TabStop = false;
             this.grpMaster.Text = "Thông tin thuốc";
@@ -233,63 +234,54 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã thuốc";
             // 
-            // pnButton
+            // panel1
             // 
-            this.pnButton.CanvasColor = System.Drawing.SystemColors.Control;
-            this.pnButton.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.pnButton.Controls.Add(this.btnCancle);
-            this.pnButton.Controls.Add(this.btnUpdate);
-            this.pnButton.Location = new System.Drawing.Point(12, 149);
-            this.pnButton.Name = "pnButton";
-            this.pnButton.Size = new System.Drawing.Size(847, 49);
-            this.pnButton.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.pnButton.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.pnButton.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.pnButton.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.pnButton.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.pnButton.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.pnButton.Style.GradientAngle = 90;
-            this.pnButton.TabIndex = 7;
-            this.pnButton.Text = "panelEx1";
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnUpdate.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btnUpdate.Location = new System.Drawing.Point(302, 14);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnUpdate.TabIndex = 0;
-            this.btnUpdate.Text = "Cập nhật";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.panel1.Controls.Add(this.btnCancle);
+            this.panel1.Controls.Add(this.btnUpdate);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 133);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(868, 38);
+            this.panel1.TabIndex = 8;
             // 
             // btnCancle
             // 
             this.btnCancle.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCancle.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCancle.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btnCancle.Location = new System.Drawing.Point(495, 14);
+            this.btnCancle.Location = new System.Drawing.Point(723, 12);
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(75, 23);
             this.btnCancle.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancle.TabIndex = 1;
+            this.btnCancle.TabIndex = 3;
             this.btnCancle.Text = "Hủy";
             this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnUpdate.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.btnUpdate.Location = new System.Drawing.Point(580, 12);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.Text = "Cập nhật";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // frmMedicinEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(868, 208);
-            this.Controls.Add(this.pnButton);
+            this.ClientSize = new System.Drawing.Size(868, 182);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.grpMaster);
             this.Name = "frmMedicinEdit";
             this.Text = "frmMedicinEdit";
             this.grpMaster.ResumeLayout(false);
             this.grpMaster.PerformLayout();
-            this.pnButton.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -314,8 +306,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMaThuoc;
         private System.Windows.Forms.Label label1;
-        private DevComponents.DotNetBar.PanelEx pnButton;
-        private DevComponents.DotNetBar.ButtonX btnUpdate;
+        private System.Windows.Forms.Panel panel1;
         private DevComponents.DotNetBar.ButtonX btnCancle;
+        private DevComponents.DotNetBar.ButtonX btnUpdate;
     }
 }
