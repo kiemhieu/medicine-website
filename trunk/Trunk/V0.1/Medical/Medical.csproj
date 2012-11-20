@@ -128,6 +128,10 @@
       <Project>{169CF0C0-C72D-424A-9CC4-55D95E275755}</Project>
       <Name>Medical.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Medical.Forms\Medical.Forms.csproj">
+      <Project>{CBD5E0BA-003F-4B7B-A11E-FC01CEA20C16}</Project>
+      <Name>Medical.Forms</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Search.png" />
@@ -140,6 +144,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
