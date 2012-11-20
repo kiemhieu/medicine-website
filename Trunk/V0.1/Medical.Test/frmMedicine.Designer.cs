@@ -37,21 +37,21 @@
             this.tsbtnDelete = new System.Windows.Forms.ToolStripButton();
             this.lblID = new System.Windows.Forms.Label();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.medicineCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contentUnitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tradeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TypeMedicine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.createdDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdByDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastUpdatedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastUpdatedByDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -111,13 +111,13 @@
             this.grd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
-            this.medicineCodeDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
             this.contentDataGridViewTextBoxColumn,
             this.contentUnitDataGridViewTextBoxColumn,
             this.unitDataGridViewTextBoxColumn,
             this.tradeNameDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn,
+            this.TypeMedicine,
             this.typeDataGridViewCheckBoxColumn,
             this.createdDateDataGridViewTextBoxColumn,
             this.createdByDataGridViewTextBoxColumn,
@@ -137,71 +137,87 @@
             this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.grd.Location = new System.Drawing.Point(0, 25);
             this.grd.Name = "grd";
+            this.grd.ReadOnly = true;
             this.grd.Size = new System.Drawing.Size(872, 372);
             this.grd.TabIndex = 8;
             this.grd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellClick);
             this.grd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.Medicine);
             // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // medicineCodeDataGridViewTextBoxColumn
-            // 
-            this.medicineCodeDataGridViewTextBoxColumn.DataPropertyName = "MedicineCode";
-            this.medicineCodeDataGridViewTextBoxColumn.HeaderText = "Mã";
-            this.medicineCodeDataGridViewTextBoxColumn.Name = "medicineCodeDataGridViewTextBoxColumn";
             // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "Tên";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // contentDataGridViewTextBoxColumn
             // 
             this.contentDataGridViewTextBoxColumn.DataPropertyName = "Content";
             this.contentDataGridViewTextBoxColumn.HeaderText = "Thành phần";
             this.contentDataGridViewTextBoxColumn.Name = "contentDataGridViewTextBoxColumn";
+            this.contentDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // contentUnitDataGridViewTextBoxColumn
             // 
             this.contentUnitDataGridViewTextBoxColumn.DataPropertyName = "ContentUnit";
             this.contentUnitDataGridViewTextBoxColumn.HeaderText = "Hàm lượng";
             this.contentUnitDataGridViewTextBoxColumn.Name = "contentUnitDataGridViewTextBoxColumn";
+            this.contentUnitDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // unitDataGridViewTextBoxColumn
             // 
             this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
             this.unitDataGridViewTextBoxColumn.HeaderText = "Đơn vị";
             this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
+            this.unitDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tradeNameDataGridViewTextBoxColumn
             // 
             this.tradeNameDataGridViewTextBoxColumn.DataPropertyName = "TradeName";
             this.tradeNameDataGridViewTextBoxColumn.HeaderText = "Hãng sản xuất";
             this.tradeNameDataGridViewTextBoxColumn.Name = "tradeNameDataGridViewTextBoxColumn";
+            this.tradeNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "Ghi chú";
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // TypeMedicine
+            // 
+            this.TypeMedicine.DataPropertyName = "TypeMedicine";
+            this.TypeMedicine.HeaderText = "Loại";
+            this.TypeMedicine.Name = "TypeMedicine";
+            this.TypeMedicine.ReadOnly = true;
             // 
             // typeDataGridViewCheckBoxColumn
             // 
             this.typeDataGridViewCheckBoxColumn.DataPropertyName = "Type";
-            this.typeDataGridViewCheckBoxColumn.HeaderText = "Loại";
+            this.typeDataGridViewCheckBoxColumn.HeaderText = "Type";
             this.typeDataGridViewCheckBoxColumn.Name = "typeDataGridViewCheckBoxColumn";
+            this.typeDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.typeDataGridViewCheckBoxColumn.Visible = false;
             // 
             // createdDateDataGridViewTextBoxColumn
             // 
             this.createdDateDataGridViewTextBoxColumn.DataPropertyName = "CreatedDate";
             this.createdDateDataGridViewTextBoxColumn.HeaderText = "CreatedDate";
             this.createdDateDataGridViewTextBoxColumn.Name = "createdDateDataGridViewTextBoxColumn";
+            this.createdDateDataGridViewTextBoxColumn.ReadOnly = true;
             this.createdDateDataGridViewTextBoxColumn.Visible = false;
             // 
             // createdByDataGridViewTextBoxColumn
@@ -209,6 +225,7 @@
             this.createdByDataGridViewTextBoxColumn.DataPropertyName = "CreatedBy";
             this.createdByDataGridViewTextBoxColumn.HeaderText = "CreatedBy";
             this.createdByDataGridViewTextBoxColumn.Name = "createdByDataGridViewTextBoxColumn";
+            this.createdByDataGridViewTextBoxColumn.ReadOnly = true;
             this.createdByDataGridViewTextBoxColumn.Visible = false;
             // 
             // lastUpdatedDateDataGridViewTextBoxColumn
@@ -216,6 +233,7 @@
             this.lastUpdatedDateDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedDate";
             this.lastUpdatedDateDataGridViewTextBoxColumn.HeaderText = "LastUpdatedDate";
             this.lastUpdatedDateDataGridViewTextBoxColumn.Name = "lastUpdatedDateDataGridViewTextBoxColumn";
+            this.lastUpdatedDateDataGridViewTextBoxColumn.ReadOnly = true;
             this.lastUpdatedDateDataGridViewTextBoxColumn.Visible = false;
             // 
             // lastUpdatedByDataGridViewTextBoxColumn
@@ -223,6 +241,7 @@
             this.lastUpdatedByDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedBy";
             this.lastUpdatedByDataGridViewTextBoxColumn.HeaderText = "LastUpdatedBy";
             this.lastUpdatedByDataGridViewTextBoxColumn.Name = "lastUpdatedByDataGridViewTextBoxColumn";
+            this.lastUpdatedByDataGridViewTextBoxColumn.ReadOnly = true;
             this.lastUpdatedByDataGridViewTextBoxColumn.Visible = false;
             // 
             // versionDataGridViewTextBoxColumn
@@ -230,11 +249,8 @@
             this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
             this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
             this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
+            this.versionDataGridViewTextBoxColumn.ReadOnly = true;
             this.versionDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.Medicine);
             // 
             // frmMedicine
             // 
@@ -273,13 +289,13 @@
         private DevComponents.DotNetBar.Controls.DataGridViewX grd;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn medicineCodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contentDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contentUnitDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tradeNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TypeMedicine;
         private System.Windows.Forms.DataGridViewCheckBoxColumn typeDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdByDataGridViewTextBoxColumn;

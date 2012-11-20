@@ -20,7 +20,7 @@ namespace Medical.Test
         public frmMedicine()
         {
             InitializeComponent();
-           FillToGrid();
+            FillToGrid();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -46,13 +46,13 @@ namespace Medical.Test
 
                 grd.Rows[0].Selected = true;
                 lblID.Text = grd.Rows[0].Cells["idDataGridViewTextBoxColumn"].Value.ToString();
-           }
+            }
         }
-      
+
         private void btnInsert_Click(object sender, EventArgs e)
         {
-           frmMedicinEdit frmedit = new frmMedicinEdit();
-           frmMedicinEdit.IdMedicineEdit = 0;
+            frmMedicinEdit frmedit = new frmMedicinEdit();
+            frmMedicinEdit.IdMedicineEdit = 0;
             frmedit.ShowDialog();
             FillToGrid();
         }
@@ -64,16 +64,17 @@ namespace Medical.Test
                 MessageBox.Show("Bạn hãy chọn bản thuốc cần xóa!");
                 return;
             }
-            DialogResult dr =MessageBox.Show("Bạn có muốn xóa thuốc này không?", "Xóa thuốc", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if(dr == DialogResult.OK)
+            DialogResult dr = MessageBox.Show("Bạn có muốn xóa thuốc này không?", "Xóa thuốc", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dr == DialogResult.OK)
             {
                 medicineRepository.Delete(int.Parse(lblID.Text.Trim()));
+                FillToGrid();
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            
+
             if ((lblID.Text == "") || (lblID.Text == "0"))
             {
                 MessageBox.Show("Bạn hãy chọn bản thuốc cần sửa!");
@@ -85,14 +86,14 @@ namespace Medical.Test
             FillToGrid();
 
         }
-      
+
         private void grd_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             lblID.Text = grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value == null ? "0" : grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString();
-           
+
         }
 
-      
+
 
         private void grd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -111,7 +112,7 @@ namespace Medical.Test
             FillToGrid();
         }
 
-        
+
 
     }
 }

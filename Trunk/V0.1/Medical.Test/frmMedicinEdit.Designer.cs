@@ -44,8 +44,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtTenThuoc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtMaThuoc = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancle = new DevComponents.DotNetBar.ButtonX();
             this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
@@ -70,8 +68,6 @@
             this.grpMaster.Controls.Add(this.label3);
             this.grpMaster.Controls.Add(this.txtTenThuoc);
             this.grpMaster.Controls.Add(this.label2);
-            this.grpMaster.Controls.Add(this.txtMaThuoc);
-            this.grpMaster.Controls.Add(this.label1);
             this.grpMaster.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpMaster.Location = new System.Drawing.Point(0, 0);
             this.grpMaster.Name = "grpMaster";
@@ -84,7 +80,7 @@
             // 
             this.rdNTCH.AutoSize = true;
             this.rdNTCH.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.rdNTCH.Location = new System.Drawing.Point(654, 101);
+            this.rdNTCH.Location = new System.Drawing.Point(212, 99);
             this.rdNTCH.Name = "rdNTCH";
             this.rdNTCH.Size = new System.Drawing.Size(114, 17);
             this.rdNTCH.TabIndex = 8;
@@ -96,7 +92,7 @@
             // 
             this.rdARV.AutoSize = true;
             this.rdARV.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.rdARV.Location = new System.Drawing.Point(563, 100);
+            this.rdARV.Location = new System.Drawing.Point(121, 98);
             this.rdARV.Name = "rdARV";
             this.rdARV.Size = new System.Drawing.Size(45, 17);
             this.rdARV.TabIndex = 7;
@@ -108,7 +104,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.label8.Location = new System.Drawing.Point(470, 98);
+            this.label8.Location = new System.Drawing.Point(28, 96);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(64, 13);
             this.label8.TabIndex = 14;
@@ -116,7 +112,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(122, 98);
+            this.txtDescription.Location = new System.Drawing.Point(121, 72);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(225, 20);
             this.txtDescription.TabIndex = 4;
@@ -125,7 +121,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.label7.Location = new System.Drawing.Point(17, 98);
+            this.label7.Location = new System.Drawing.Point(16, 72);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 13);
             this.label7.TabIndex = 12;
@@ -168,7 +164,7 @@
             // 
             // txtTradeName
             // 
-            this.txtTradeName.Location = new System.Drawing.Point(122, 72);
+            this.txtTradeName.Location = new System.Drawing.Point(121, 46);
             this.txtTradeName.Name = "txtTradeName";
             this.txtTradeName.Size = new System.Drawing.Size(225, 20);
             this.txtTradeName.TabIndex = 3;
@@ -177,7 +173,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.label4.Location = new System.Drawing.Point(17, 72);
+            this.label4.Location = new System.Drawing.Point(16, 46);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 13);
             this.label4.TabIndex = 6;
@@ -202,7 +198,7 @@
             // 
             // txtTenThuoc
             // 
-            this.txtTenThuoc.Location = new System.Drawing.Point(122, 46);
+            this.txtTenThuoc.Location = new System.Drawing.Point(121, 20);
             this.txtTenThuoc.Name = "txtTenThuoc";
             this.txtTenThuoc.Size = new System.Drawing.Size(225, 20);
             this.txtTenThuoc.TabIndex = 2;
@@ -211,28 +207,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.label2.Location = new System.Drawing.Point(17, 46);
+            this.label2.Location = new System.Drawing.Point(16, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Tên thuốc";
-            // 
-            // txtMaThuoc
-            // 
-            this.txtMaThuoc.Location = new System.Drawing.Point(122, 20);
-            this.txtMaThuoc.Name = "txtMaThuoc";
-            this.txtMaThuoc.Size = new System.Drawing.Size(100, 20);
-            this.txtMaThuoc.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.label1.Location = new System.Drawing.Point(17, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mã thuốc";
             // 
             // panel1
             // 
@@ -304,8 +283,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTenThuoc;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtMaThuoc;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private DevComponents.DotNetBar.ButtonX btnCancle;
         private DevComponents.DotNetBar.ButtonX btnUpdate;
