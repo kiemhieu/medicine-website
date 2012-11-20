@@ -8,13 +8,7 @@ namespace Medical.Data.Repositories {
     public class MedicineRepository : RepositoryBase, IMedicineRepository
     {
 
-        public Medicine Get(string  medicineCode)
-        {
-            var medicine = this.Context.Medicines.FirstOrDefault(x => x.MedicineCode.Equals(medicineCode));
-            return medicine;
-        }
-       
-        public Medicine GetById(int id)
+       public Medicine GetById(int id)
         {
             var medicine = this.Context.Medicines.FirstOrDefault(x => x.Id.Equals(id));
             return medicine;
@@ -50,7 +44,6 @@ namespace Medical.Data.Repositories {
             var oldMedicine = this.Context.Medicines.FirstOrDefault(x => x.Id == medicine.Id);
             if (oldMedicine == null) return;
             oldMedicine.Name = medicine.Name;
-            oldMedicine.MedicineCode = medicine.MedicineCode;
             oldMedicine.TradeName = medicine.TradeName;
             oldMedicine.Unit = medicine.Unit;
             oldMedicine.Content = medicine.Content;

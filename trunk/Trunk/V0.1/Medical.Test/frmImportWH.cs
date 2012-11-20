@@ -14,14 +14,26 @@ namespace Medical.Test
     public partial class frmImportWH : DockContent
     {
         private ClinicRepository repClinic;
+        private MedicineRepository repMedicine;
         
         public frmImportWH()
         {
-
+            repClinic = new ClinicRepository();
+            repMedicine = new MedicineRepository();
             InitializeComponent();
             repClinic = new ClinicRepository();
             FillToComboboxClinic(0);
             dateImport.Value = DateTime.Now.Date;
+            try
+            {
+                bindingSource3.DataSource = repMedicine.GetAll();
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+           
         }
         private void  FillToComboboxClinic(int clinicId)
         {

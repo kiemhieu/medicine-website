@@ -22,11 +22,10 @@ namespace Medical.Data.Entities
         public string Note { get; set; }
         public int Version { get; set; }
 
-        private Medicine Medicine { get; set; }
-        private Clinic Clinic { get; set; }
-        private WareHousePaper WareHousePaper { get; set; }
+        public virtual Medicine Medicine { get; set; }
+       
+        public virtual WareHousePaper WareHousePaper { get; set; }
         public string MedicineName { get { return this.Medicine.Name; } }
-        public string ClinicName { get { return this.Clinic.Name; } }
         public string WareHousePaperNo { get { return this.WareHousePaper.No; } }
   }
 }

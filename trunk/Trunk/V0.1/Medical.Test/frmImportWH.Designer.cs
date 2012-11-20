@@ -45,30 +45,28 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paperIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.medicineIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clinicNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lotNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalVolumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.badVolumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.realityVolumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wareHousePaperNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource4 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnInsert = new DevComponents.DotNetBar.ButtonX();
+            this.MedicineName = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.LotNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalVolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BadVolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RealityVolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateImport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -293,25 +291,18 @@
             // 
             // dataGridViewX1
             // 
-            this.dataGridViewX1.AutoGenerateColumns = false;
+            this.dataGridViewX1.AllowUserToOrderColumns = true;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.paperIdDataGridViewTextBoxColumn,
-            this.medicineNameDataGridViewTextBoxColumn,
-            this.medicineIdDataGridViewTextBoxColumn,
-            this.clinicNameDataGridViewTextBoxColumn,
-            this.lotNoDataGridViewTextBoxColumn,
-            this.totalVolumnDataGridViewTextBoxColumn,
-            this.badVolumnDataGridViewTextBoxColumn,
-            this.realityVolumnDataGridViewTextBoxColumn,
-            this.unitDataGridViewTextBoxColumn,
-            this.unitPriceDataGridViewTextBoxColumn,
-            this.amountDataGridViewTextBoxColumn,
-            this.noteDataGridViewTextBoxColumn,
-            this.versionDataGridViewTextBoxColumn,
-            this.wareHousePaperNoDataGridViewTextBoxColumn});
-            this.dataGridViewX1.DataSource = this.bindingSource1;
+            this.MedicineName,
+            this.LotNo,
+            this.TotalVolumn,
+            this.BadVolumn,
+            this.RealityVolumn,
+            this.Unit,
+            this.UnitPrice,
+            this.Amount,
+            this.Note});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -324,119 +315,16 @@
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 136);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.Size = new System.Drawing.Size(804, 259);
             this.dataGridViewX1.TabIndex = 1;
             // 
-            // idDataGridViewTextBoxColumn
+            // bindingSource3
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
+            this.bindingSource3.DataSource = typeof(Medical.Data.Entities.Medicine);
             // 
-            // paperIdDataGridViewTextBoxColumn
+            // bindingSource4
             // 
-            this.paperIdDataGridViewTextBoxColumn.DataPropertyName = "PaperId";
-            this.paperIdDataGridViewTextBoxColumn.HeaderText = "PaperId";
-            this.paperIdDataGridViewTextBoxColumn.Name = "paperIdDataGridViewTextBoxColumn";
-            this.paperIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.paperIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // medicineNameDataGridViewTextBoxColumn
-            // 
-            this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
-            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "Tên thuốc";
-            this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
-            this.medicineNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // medicineIdDataGridViewTextBoxColumn
-            // 
-            this.medicineIdDataGridViewTextBoxColumn.DataPropertyName = "MedicineId";
-            this.medicineIdDataGridViewTextBoxColumn.HeaderText = "MedicineId";
-            this.medicineIdDataGridViewTextBoxColumn.Name = "medicineIdDataGridViewTextBoxColumn";
-            this.medicineIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.medicineIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // clinicNameDataGridViewTextBoxColumn
-            // 
-            this.clinicNameDataGridViewTextBoxColumn.DataPropertyName = "ClinicName";
-            this.clinicNameDataGridViewTextBoxColumn.HeaderText = "Tên kho";
-            this.clinicNameDataGridViewTextBoxColumn.Name = "clinicNameDataGridViewTextBoxColumn";
-            this.clinicNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lotNoDataGridViewTextBoxColumn
-            // 
-            this.lotNoDataGridViewTextBoxColumn.DataPropertyName = "LotNo";
-            this.lotNoDataGridViewTextBoxColumn.HeaderText = "Số lô";
-            this.lotNoDataGridViewTextBoxColumn.Name = "lotNoDataGridViewTextBoxColumn";
-            this.lotNoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // totalVolumnDataGridViewTextBoxColumn
-            // 
-            this.totalVolumnDataGridViewTextBoxColumn.DataPropertyName = "TotalVolumn";
-            this.totalVolumnDataGridViewTextBoxColumn.HeaderText = "Số lượng";
-            this.totalVolumnDataGridViewTextBoxColumn.Name = "totalVolumnDataGridViewTextBoxColumn";
-            this.totalVolumnDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // badVolumnDataGridViewTextBoxColumn
-            // 
-            this.badVolumnDataGridViewTextBoxColumn.DataPropertyName = "BadVolumn";
-            this.badVolumnDataGridViewTextBoxColumn.HeaderText = "Số lượng hỏng";
-            this.badVolumnDataGridViewTextBoxColumn.Name = "badVolumnDataGridViewTextBoxColumn";
-            this.badVolumnDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // realityVolumnDataGridViewTextBoxColumn
-            // 
-            this.realityVolumnDataGridViewTextBoxColumn.DataPropertyName = "RealityVolumn";
-            this.realityVolumnDataGridViewTextBoxColumn.HeaderText = "Số lượng thực tế";
-            this.realityVolumnDataGridViewTextBoxColumn.Name = "realityVolumnDataGridViewTextBoxColumn";
-            this.realityVolumnDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // unitDataGridViewTextBoxColumn
-            // 
-            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
-            this.unitDataGridViewTextBoxColumn.HeaderText = "Đơn vị";
-            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
-            this.unitDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // unitPriceDataGridViewTextBoxColumn
-            // 
-            this.unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
-            this.unitPriceDataGridViewTextBoxColumn.HeaderText = "Đơn giá/đơn vị";
-            this.unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
-            this.unitPriceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // amountDataGridViewTextBoxColumn
-            // 
-            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
-            this.amountDataGridViewTextBoxColumn.HeaderText = "Thành tiền";
-            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // noteDataGridViewTextBoxColumn
-            // 
-            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
-            this.noteDataGridViewTextBoxColumn.HeaderText = "Chú thích";
-            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
-            this.noteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // versionDataGridViewTextBoxColumn
-            // 
-            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
-            this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
-            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
-            this.versionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.versionDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // wareHousePaperNoDataGridViewTextBoxColumn
-            // 
-            this.wareHousePaperNoDataGridViewTextBoxColumn.DataPropertyName = "WareHousePaperNo";
-            this.wareHousePaperNoDataGridViewTextBoxColumn.HeaderText = "WareHousePaperNo";
-            this.wareHousePaperNoDataGridViewTextBoxColumn.Name = "wareHousePaperNoDataGridViewTextBoxColumn";
-            this.wareHousePaperNoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.wareHousePaperNoDataGridViewTextBoxColumn.Visible = false;
+            this.bindingSource4.DataSource = typeof(Medical.Data.Entities.Clinic);
             // 
             // bindingSource1
             // 
@@ -486,6 +374,62 @@
             this.btnInsert.TabIndex = 0;
             this.btnInsert.Text = "Thêm mới";
             // 
+            // MedicineName
+            // 
+            this.MedicineName.DataPropertyName = "Name";
+            this.MedicineName.DataSource = this.bindingSource3;
+            this.MedicineName.DisplayMember = "Name";
+            this.MedicineName.DropDownHeight = 106;
+            this.MedicineName.DropDownWidth = 121;
+            this.MedicineName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MedicineName.HeaderText = "Thuốc";
+            this.MedicineName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.MedicineName.IntegralHeight = false;
+            this.MedicineName.ItemHeight = 15;
+            this.MedicineName.Name = "MedicineName";
+            this.MedicineName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.MedicineName.ValueMember = "Id";
+            // 
+            // LotNo
+            // 
+            this.LotNo.HeaderText = "Số lô";
+            this.LotNo.Name = "LotNo";
+            // 
+            // TotalVolumn
+            // 
+            this.TotalVolumn.HeaderText = "Số lượng thuốc";
+            this.TotalVolumn.Name = "TotalVolumn";
+            // 
+            // BadVolumn
+            // 
+            this.BadVolumn.HeaderText = "Số lượng hỏng";
+            this.BadVolumn.Name = "BadVolumn";
+            // 
+            // RealityVolumn
+            // 
+            this.RealityVolumn.HeaderText = "Số lượng thực";
+            this.RealityVolumn.Name = "RealityVolumn";
+            // 
+            // Unit
+            // 
+            this.Unit.HeaderText = "Đơn vị";
+            this.Unit.Name = "Unit";
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "Đơn giá";
+            this.UnitPrice.Name = "UnitPrice";
+            // 
+            // Amount
+            // 
+            this.Amount.HeaderText = "Thành tiền";
+            this.Amount.Name = "Amount";
+            // 
+            // Note
+            // 
+            this.Note.HeaderText = "Chú thích";
+            this.Note.Name = "Note";
+            // 
             // frmImportWH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,6 +445,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateImport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -525,24 +471,21 @@
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.BindingSource bindingSource2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paperIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn medicineNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn medicineIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clinicNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lotNoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalVolumnDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn badVolumnDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn realityVolumnDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn wareHousePaperNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.Panel panel1;
         private DevComponents.DotNetBar.ButtonX btnCancel;
         private DevComponents.DotNetBar.ButtonX btnSave;
         private DevComponents.DotNetBar.ButtonX btnInsert;
+        private System.Windows.Forms.BindingSource bindingSource3;
+        private System.Windows.Forms.BindingSource bindingSource4;
+        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn clinicNameDataGridViewTextBoxColumn;
+        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn MedicineName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LotNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalVolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BadVolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RealityVolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Note;
     }
 }
