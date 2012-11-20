@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Medical.Data.Entities;
+using Medical.Forms.Implements;
 
 namespace Medical.Data.Repositories {
     public class PatientRepository : RepositoryBase, IPatientRepository {
 
         public void Insert(Patient user) {
-            throw new NotImplementedException();
+             user.StartDate = DateTime.Today;
+            user.Version = 0;
+            user.ClinicId = AppContext.CurrentClinic.Id;
+            user.CreatedDate = DateTime.Now;
+            user.CreatedUser = AppContext.LoggedInUser.Id;
+            user.LastUpdatedDate = DateTime.Now;
+            user.LastUpdatedUser = AppContext.LoggedInUser.Id;
+            this.Context.Patients.Add(user);
+            this.Context.SaveChanges();
         }
 
         public void Update(Patient user) {
