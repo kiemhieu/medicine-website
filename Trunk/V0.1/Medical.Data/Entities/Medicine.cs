@@ -10,7 +10,7 @@ namespace Medical.Data.Entities
     public class Medicine
     {
         public int Id { get; set; }
-        public string MedicineCode { get; set; }
+        //public string MedicineCode { get; set; }
         public string Name { get; set; }
         public int? Content { get; set; }
         public int? ContentUnit { get; set; }
@@ -23,5 +23,25 @@ namespace Medical.Data.Entities
         public DateTime LastUpdatedDate { get; set; }
         public int LastUpdatedBy { get; set; }
         public int Version { get; set; }
+
+        
+        [NotMapped]
+        public String TypeMedicine
+        {
+            get
+            {
+                
+                if (this.Type)
+                {
+
+                    return "ARV";
+                }
+                else
+                {
+                    return "Nhiễm trùng cơ hội";
+                }
+                return "";
+            }
+        }
   }
 }
