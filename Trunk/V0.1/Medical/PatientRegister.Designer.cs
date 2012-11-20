@@ -26,27 +26,26 @@
             this.components = new System.ComponentModel.Container();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.bdsPatient = new System.Windows.Forms.BindingSource(this.components);
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.integerInput2 = new DevComponents.Editors.IntegerInput();
+            this.txtYear = new DevComponents.Editors.IntegerInput();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtAddress = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
-            this.dateTimeInput1 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.textBoxX4 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.textBoxX5 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.txtDescription = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtCode = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtPhone = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.rdaMale = new System.Windows.Forms.RadioButton();
+            this.rdaFemale = new System.Windows.Forms.RadioButton();
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
+            this.errPatient = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPatient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPatient)).BeginInit();
             this.SuspendLayout();
             // 
             // labelX1
@@ -57,13 +56,13 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(23, 22);
+            this.labelX1.Location = new System.Drawing.Point(13, 12);
             this.labelX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(79, 16);
-            this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.labelX1.Size = new System.Drawing.Size(19, 16);
+            this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.labelX1.TabIndex = 0;
-            this.labelX1.Text = "Mã bệnh nhân";
+            this.labelX1.Text = "Mã";
             // 
             // labelX2
             // 
@@ -73,7 +72,7 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(270, 22);
+            this.labelX2.Location = new System.Drawing.Point(13, 37);
             this.labelX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(54, 16);
@@ -81,18 +80,26 @@
             this.labelX2.TabIndex = 2;
             this.labelX2.Text = "Họ và tên";
             // 
-            // textBoxX1
+            // txtName
+            // 
+            this.txtName.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
+            this.txtName.Border.Class = "TextBoxBorder";
+            this.txtName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Name", true));
+            this.txtName.ForeColor = System.Drawing.Color.Black;
+            this.txtName.Location = new System.Drawing.Point(75, 35);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtName.MaxLength = 100;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(250, 21);
+            this.txtName.TabIndex = 3;
             // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(330, 21);
-            this.textBoxX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.Size = new System.Drawing.Size(230, 21);
-            this.textBoxX1.TabIndex = 3;
+            // bdsPatient
+            // 
+            this.bdsPatient.DataSource = typeof(Medical.Data.Entities.Patient);
             // 
             // labelX3
             // 
@@ -102,7 +109,7 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(23, 51);
+            this.labelX3.Location = new System.Drawing.Point(345, 37);
             this.labelX3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(53, 16);
@@ -110,20 +117,24 @@
             this.labelX3.TabIndex = 4;
             this.labelX3.Text = "Năm sinh";
             // 
-            // integerInput2
+            // txtYear
             // 
             // 
             // 
             // 
-            this.integerInput2.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.integerInput2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.integerInput2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.integerInput2.Location = new System.Drawing.Point(115, 49);
-            this.integerInput2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.integerInput2.Name = "integerInput2";
-            this.integerInput2.ShowUpDown = true;
-            this.integerInput2.Size = new System.Drawing.Size(124, 21);
-            this.integerInput2.TabIndex = 5;
+            this.txtYear.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtYear.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtYear.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtYear.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "BirthYear", true));
+            this.txtYear.DisplayFormat = "####";
+            this.txtYear.Location = new System.Drawing.Point(425, 35);
+            this.txtYear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtYear.MaxValue = 2500;
+            this.txtYear.MinValue = 1900;
+            this.txtYear.Name = "txtYear";
+            this.txtYear.Size = new System.Drawing.Size(120, 21);
+            this.txtYear.TabIndex = 5;
+            this.txtYear.Value = 1900;
             // 
             // labelX4
             // 
@@ -133,29 +144,13 @@
             // 
             this.labelX4.BackgroundStyle.Class = "";
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(270, 73);
+            this.labelX4.Location = new System.Drawing.Point(13, 62);
             this.labelX4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(48, 16);
             this.labelX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX4.TabIndex = 6;
             this.labelX4.Text = "Giới tính";
-            // 
-            // checkBoxX1
-            // 
-            this.checkBoxX1.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX1.BackgroundStyle.Class = "";
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Location = new System.Drawing.Point(330, 73);
-            this.checkBoxX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(48, 16);
-            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX1.TabIndex = 7;
-            this.checkBoxX1.Text = "Nam";
             // 
             // labelX5
             // 
@@ -165,7 +160,7 @@
             // 
             this.labelX5.BackgroundStyle.Class = "";
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(23, 74);
+            this.labelX5.Location = new System.Drawing.Point(345, 62);
             this.labelX5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(73, 16);
@@ -173,18 +168,22 @@
             this.labelX5.TabIndex = 8;
             this.labelX5.Text = "Số điện thoại";
             // 
-            // textBoxX2
+            // txtAddress
+            // 
+            this.txtAddress.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
-            // 
-            this.textBoxX2.Border.Class = "TextBoxBorder";
-            this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.Location = new System.Drawing.Point(114, 99);
-            this.textBoxX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBoxX2.Name = "textBoxX2";
-            this.textBoxX2.Size = new System.Drawing.Size(471, 21);
-            this.textBoxX2.TabIndex = 11;
+            this.txtAddress.Border.Class = "TextBoxBorder";
+            this.txtAddress.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Address", true));
+            this.txtAddress.ForeColor = System.Drawing.Color.Black;
+            this.txtAddress.Location = new System.Drawing.Point(75, 85);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtAddress.MaxLength = 200;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(470, 21);
+            this.txtAddress.TabIndex = 11;
             // 
             // labelX6
             // 
@@ -194,13 +193,13 @@
             // 
             this.labelX6.BackgroundStyle.Class = "";
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(23, 101);
+            this.labelX6.Location = new System.Drawing.Point(13, 87);
             this.labelX6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(40, 16);
+            this.labelX6.Size = new System.Drawing.Size(39, 16);
             this.labelX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX6.TabIndex = 10;
-            this.labelX6.Text = "Địa chí";
+            this.labelX6.Text = "Địa chỉ";
             // 
             // labelX7
             // 
@@ -210,7 +209,7 @@
             // 
             this.labelX7.BackgroundStyle.Class = "";
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(23, 125);
+            this.labelX7.Location = new System.Drawing.Point(13, 110);
             this.labelX7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(40, 16);
@@ -218,187 +217,144 @@
             this.labelX7.TabIndex = 12;
             this.labelX7.Text = "Chi tiết";
             // 
-            // textBoxX3
+            // txtDescription
+            // 
+            this.txtDescription.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
+            this.txtDescription.Border.Class = "TextBoxBorder";
+            this.txtDescription.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Description", true));
+            this.txtDescription.ForeColor = System.Drawing.Color.Black;
+            this.txtDescription.Location = new System.Drawing.Point(75, 110);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(470, 131);
+            this.txtDescription.TabIndex = 13;
             // 
-            this.textBoxX3.Border.Class = "TextBoxBorder";
-            this.textBoxX3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX3.Location = new System.Drawing.Point(114, 125);
-            this.textBoxX3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBoxX3.Multiline = true;
-            this.textBoxX3.Name = "textBoxX3";
-            this.textBoxX3.Size = new System.Drawing.Size(471, 131);
-            this.textBoxX3.TabIndex = 13;
+            // txtCode
             // 
-            // labelX8
-            // 
-            this.labelX8.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX8.BackgroundStyle.Class = "";
-            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(270, 49);
-            this.labelX8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(31, 16);
-            this.labelX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.labelX8.TabIndex = 14;
-            this.labelX8.Text = "Ngày";
-            // 
-            // dateTimeInput1
+            this.txtCode.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
+            this.txtCode.Border.Class = "TextBoxBorder";
+            this.txtCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Code", true));
+            this.txtCode.ForeColor = System.Drawing.Color.Black;
+            this.txtCode.Location = new System.Drawing.Point(75, 10);
+            this.txtCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCode.MaxLength = 5;
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(100, 21);
+            this.txtCode.TabIndex = 16;
             // 
-            this.dateTimeInput1.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.dateTimeInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput1.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.dateTimeInput1.ButtonDropDown.Visible = true;
-            this.dateTimeInput1.CustomFormat = "dd/mm/yyyy";
-            this.dateTimeInput1.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
-            this.dateTimeInput1.IsPopupCalendarOpen = false;
-            this.dateTimeInput1.Location = new System.Drawing.Point(330, 46);
-            this.dateTimeInput1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            // txtPhone
             // 
-            // 
-            // 
-            this.dateTimeInput1.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.dateTimeInput1.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.dateTimeInput1.MonthCalendar.BackgroundStyle.Class = "";
-            this.dateTimeInput1.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput1.MonthCalendar.ClearButtonVisible = true;
+            this.txtPhone.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.Class = "";
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput1.MonthCalendar.DisplayMonth = new System.DateTime(2012, 11, 1, 0, 0, 0, 0);
-            this.dateTimeInput1.MonthCalendar.MarkedDates = new System.DateTime[0];
-            this.dateTimeInput1.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            this.txtPhone.Border.Class = "TextBoxBorder";
+            this.txtPhone.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Phone", true));
+            this.txtPhone.ForeColor = System.Drawing.Color.Black;
+            this.txtPhone.Location = new System.Drawing.Point(425, 60);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPhone.MaxLength = 20;
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(120, 21);
+            this.txtPhone.TabIndex = 18;
             // 
+            // rdaMale
             // 
+            this.rdaMale.AutoSize = true;
+            this.rdaMale.Location = new System.Drawing.Point(75, 61);
+            this.rdaMale.Name = "rdaMale";
+            this.rdaMale.Size = new System.Drawing.Size(52, 19);
+            this.rdaMale.TabIndex = 21;
+            this.rdaMale.TabStop = true;
+            this.rdaMale.Text = "Nam";
+            this.rdaMale.UseVisualStyleBackColor = true;
             // 
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.Class = "";
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput1.MonthCalendar.TodayButtonVisible = true;
-            this.dateTimeInput1.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
-            this.dateTimeInput1.Name = "dateTimeInput1";
-            this.dateTimeInput1.Size = new System.Drawing.Size(122, 21);
-            this.dateTimeInput1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateTimeInput1.TabIndex = 15;
+            // rdaFemale
             // 
-            // textBoxX4
+            this.rdaFemale.AutoSize = true;
+            this.rdaFemale.Location = new System.Drawing.Point(142, 61);
+            this.rdaFemale.Name = "rdaFemale";
+            this.rdaFemale.Size = new System.Drawing.Size(42, 19);
+            this.rdaFemale.TabIndex = 22;
+            this.rdaFemale.TabStop = true;
+            this.rdaFemale.Text = "Nữ";
+            this.rdaFemale.UseVisualStyleBackColor = true;
             // 
+            // btnSave
             // 
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSave.Image = global::Medical.Properties.Resources.accept;
+            this.btnSave.Location = new System.Drawing.Point(365, 256);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(87, 30);
+            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSave.TabIndex = 20;
+            this.btnSave.Text = "Ghi lại";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnCancel
             // 
-            this.textBoxX4.Border.Class = "TextBoxBorder";
-            this.textBoxX4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX4.Location = new System.Drawing.Point(115, 20);
-            this.textBoxX4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBoxX4.Name = "textBoxX4";
-            this.textBoxX4.Size = new System.Drawing.Size(124, 21);
-            this.textBoxX4.TabIndex = 16;
+            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancel.Image = global::Medical.Properties.Resources.cancel;
+            this.btnCancel.Location = new System.Drawing.Point(458, 256);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(87, 30);
+            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancel.TabIndex = 19;
+            this.btnCancel.Text = "Bỏ qua";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // checkBoxX2
+            // errPatient
             // 
-            this.checkBoxX2.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX2.BackgroundStyle.Class = "";
-            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX2.Location = new System.Drawing.Point(410, 74);
-            this.checkBoxX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.checkBoxX2.Name = "checkBoxX2";
-            this.checkBoxX2.Size = new System.Drawing.Size(39, 16);
-            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX2.TabIndex = 17;
-            this.checkBoxX2.Text = "Nữ";
-            // 
-            // textBoxX5
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX5.Border.Class = "TextBoxBorder";
-            this.textBoxX5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX5.Location = new System.Drawing.Point(115, 72);
-            this.textBoxX5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBoxX5.Name = "textBoxX5";
-            this.textBoxX5.Size = new System.Drawing.Size(124, 21);
-            this.textBoxX5.TabIndex = 18;
-            // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(498, 278);
-            this.buttonX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(87, 26);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
-            this.buttonX1.TabIndex = 19;
-            this.buttonX1.Text = "buttonX1";
-            // 
-            // buttonX2
-            // 
-            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(394, 278);
-            this.buttonX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Size = new System.Drawing.Size(87, 26);
-            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
-            this.buttonX2.TabIndex = 20;
-            this.buttonX2.Text = "buttonX2";
+            this.errPatient.ContainerControl = this;
             // 
             // PatientRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 331);
-            this.Controls.Add(this.buttonX2);
-            this.Controls.Add(this.buttonX1);
-            this.Controls.Add(this.textBoxX5);
-            this.Controls.Add(this.checkBoxX2);
-            this.Controls.Add(this.textBoxX4);
-            this.Controls.Add(this.dateTimeInput1);
-            this.Controls.Add(this.labelX8);
-            this.Controls.Add(this.textBoxX3);
+            this.ClientSize = new System.Drawing.Size(558, 295);
+            this.ControlBox = false;
+            this.Controls.Add(this.rdaFemale);
+            this.Controls.Add(this.rdaMale);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.txtPhone);
+            this.Controls.Add(this.txtCode);
+            this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.labelX7);
-            this.Controls.Add(this.textBoxX2);
+            this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.labelX6);
             this.Controls.Add(this.labelX5);
-            this.Controls.Add(this.checkBoxX1);
             this.Controls.Add(this.labelX4);
-            this.Controls.Add(this.integerInput2);
+            this.Controls.Add(this.txtYear);
             this.Controls.Add(this.labelX3);
-            this.Controls.Add(this.textBoxX1);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.labelX1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "PatientRegister";
-            this.Text = "PatientRegister";
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Đăng ký bệnh nhân mới";
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPatient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPatient)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -408,23 +364,22 @@
 
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtName;
         private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.Editors.IntegerInput integerInput2;
+        private DevComponents.Editors.IntegerInput txtYear;
         private DevComponents.DotNetBar.LabelX labelX4;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
         private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtAddress;
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.LabelX labelX7;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX3;
-        private DevComponents.DotNetBar.LabelX labelX8;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput dateTimeInput1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX4;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX2;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX5;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
-        private DevComponents.DotNetBar.ButtonX buttonX2;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtDescription;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtCode;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtPhone;
+        private DevComponents.DotNetBar.ButtonX btnCancel;
+        private DevComponents.DotNetBar.ButtonX btnSave;
+        private System.Windows.Forms.BindingSource bdsPatient;
+        private System.Windows.Forms.RadioButton rdaMale;
+        private System.Windows.Forms.RadioButton rdaFemale;
+        private System.Windows.Forms.ErrorProvider errPatient;
     }
 }
