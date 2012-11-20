@@ -41,7 +41,7 @@ namespace Medical.Test
         {
             this.txtContent.Text = "";
             this.txtContentUnit.Text = "";
-            this.txtMaThuoc.Text = "";
+            //this.txtMaThuoc.Text = "";
             this.txtTenThuoc.Text = "";
             this.txtTradeName.Text = "";
             this.txtUnit.Text = "";
@@ -50,7 +50,7 @@ namespace Medical.Test
         {
             this.txtContent.ReadOnly = isTrue;
             this.txtContentUnit.ReadOnly = isTrue;
-            this.txtMaThuoc.ReadOnly = isTrue;
+            //this.txtMaThuoc.ReadOnly = isTrue;
             this.txtTenThuoc.ReadOnly = isTrue;
             this.txtTradeName.ReadOnly = isTrue;
             this.txtUnit.ReadOnly = isTrue;
@@ -70,9 +70,10 @@ namespace Medical.Test
             }
 
             medicine.Content = Convert.ToInt32(txtContent.Text.Trim());
+            medicine.Unit = Convert.ToInt32((txtUnit.Text.Trim()));
             medicine.ContentUnit = Convert.ToInt32(txtContentUnit.Text.Trim());
             medicine.Description = txtDescription.Text.Trim();
-            medicine.MedicineCode = txtMaThuoc.Text.Trim();
+           // medicine.MedicineCode = txtMaThuoc.Text.Trim();
             medicine.Name = txtTenThuoc.Text.Trim();
             medicine.TradeName = txtTradeName.Text.Trim();
             medicine.Type = rdARV.Checked;
@@ -89,16 +90,25 @@ namespace Medical.Test
 
             this.txtContent.Text = medicine.Content.ToString();
             this.txtContentUnit.Text = medicine.ContentUnit.ToString();
-            this.txtMaThuoc.Text = medicine.MedicineCode;
+           //this.txtMaThuoc.Text = medicine.MedicineCode;
             this.txtTenThuoc.Text = medicine.Name;
             this.txtTradeName.Text = medicine.TradeName;
             this.txtUnit.Text = medicine.Unit.ToString();
+            this.txtDescription.Text = medicine.Description;
+            if (medicine.Type) {rdARV.Checked = true;
+                rdNTCH.Checked = false;
+            }
+            else
+            {
+                rdARV.Checked = false;
+                rdNTCH.Checked = true;
+            }
         }
 
        
         private void txtUnit_KeyPress(object sender, KeyPressEventArgs e)
         {
-            DialogResult dr =MessageBox.Show("Bạn có muốn cập nhật khônsdfasdfdsafsdag?", "Cập nhật", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult dr =MessageBox.Show("Bạn có muốn cập nhật không?", "Cập nhật", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             
 
             if(dr == DialogResult.OK)
