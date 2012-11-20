@@ -69,6 +69,7 @@
     <Compile Include="Implements\ExceptionHandler.cs" />
     <Compile Include="Implements\MethodExecuter.cs" />
     <Compile Include="Implements\TopMenuItem.cs" />
+    <Compile Include="Implements\ValidationUtil.cs" />
     <Compile Include="Implements\ViewBase.cs" />
     <Compile Include="Implements\ViewManager.cs" />
     <Compile Include="Interfaces\IContainnerProvider.cs" />
