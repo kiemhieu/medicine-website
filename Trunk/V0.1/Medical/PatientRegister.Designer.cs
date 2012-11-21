@@ -95,7 +95,7 @@
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(250, 21);
-            this.txtName.TabIndex = 3;
+            this.txtName.TabIndex = 1;
             // 
             // bdsPatient
             // 
@@ -125,15 +125,15 @@
             this.txtYear.BackgroundStyle.Class = "DateTimeInputBackground";
             this.txtYear.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtYear.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtYear.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "BirthYear", true));
-            this.txtYear.DisplayFormat = "####";
+            this.txtYear.DataBindings.Add(new System.Windows.Forms.Binding("ValueObject", this.bdsPatient, "BirthYear", true));
             this.txtYear.Location = new System.Drawing.Point(425, 35);
             this.txtYear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtYear.MaxValue = 2500;
-            this.txtYear.MinValue = 1900;
+            this.txtYear.MinValue = 0;
             this.txtYear.Name = "txtYear";
+            this.txtYear.ShowUpDown = true;
             this.txtYear.Size = new System.Drawing.Size(120, 21);
-            this.txtYear.TabIndex = 5;
+            this.txtYear.TabIndex = 2;
             this.txtYear.Value = 1900;
             // 
             // labelX4
@@ -183,7 +183,7 @@
             this.txtAddress.MaxLength = 200;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(470, 21);
-            this.txtAddress.TabIndex = 11;
+            this.txtAddress.TabIndex = 6;
             // 
             // labelX6
             // 
@@ -232,7 +232,7 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(470, 131);
-            this.txtDescription.TabIndex = 13;
+            this.txtDescription.TabIndex = 7;
             // 
             // txtCode
             // 
@@ -249,7 +249,7 @@
             this.txtCode.MaxLength = 5;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(100, 21);
-            this.txtCode.TabIndex = 16;
+            this.txtCode.TabIndex = 0;
             // 
             // txtPhone
             // 
@@ -266,7 +266,7 @@
             this.txtPhone.MaxLength = 20;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(120, 21);
-            this.txtPhone.TabIndex = 18;
+            this.txtPhone.TabIndex = 5;
             // 
             // rdaMale
             // 
@@ -274,7 +274,7 @@
             this.rdaMale.Location = new System.Drawing.Point(75, 61);
             this.rdaMale.Name = "rdaMale";
             this.rdaMale.Size = new System.Drawing.Size(52, 19);
-            this.rdaMale.TabIndex = 21;
+            this.rdaMale.TabIndex = 3;
             this.rdaMale.TabStop = true;
             this.rdaMale.Text = "Nam";
             this.rdaMale.UseVisualStyleBackColor = true;
@@ -285,7 +285,7 @@
             this.rdaFemale.Location = new System.Drawing.Point(142, 61);
             this.rdaFemale.Name = "rdaFemale";
             this.rdaFemale.Size = new System.Drawing.Size(42, 19);
-            this.rdaFemale.TabIndex = 22;
+            this.rdaFemale.TabIndex = 4;
             this.rdaFemale.TabStop = true;
             this.rdaFemale.Text = "Nữ";
             this.rdaFemale.UseVisualStyleBackColor = true;
@@ -300,7 +300,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 30);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSave.TabIndex = 20;
+            this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Ghi lại";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -314,12 +314,13 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(87, 30);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancel.TabIndex = 19;
+            this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Bỏ qua";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // errPatient
             // 
+            this.errPatient.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errPatient.ContainerControl = this;
             // 
             // PatientRegister
