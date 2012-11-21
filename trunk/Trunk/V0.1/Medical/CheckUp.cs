@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
@@ -31,7 +24,9 @@ namespace Medical {
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void btnRegister_Click(object sender, EventArgs e) {
             var registerform = new PatientRegister();
-            registerform.ShowDialog();
+            var result = registerform.ShowDialog();
+            if (result != System.Windows.Forms.DialogResult.Yes) return;
+            UpdateForm(registerform.Patient);
         }
 
         /// <summary>
@@ -62,20 +57,27 @@ namespace Medical {
         private void textBoxX1_ButtonCustomClick(object sender, EventArgs e) {
             var patientBrowse = new PatientBrowseForm(this.txtSeachName.Text);
             var result = patientBrowse.ShowDialog(this);
-            if (result == System.Windows.Forms.DialogResult.Yes) {
-                this.bdsPrescription.Clear();
-                this.bdsPrescriptionDetail.Clear();
+            if (result != System.Windows.Forms.DialogResult.Yes) return;
 
-                var patient = patientBrowse.SelectedPatient;
-                this.bdsPatient.DataSource = patient;
-                if (patient != null) {
-                    lastPrescription = prescriptionRepo.GetLastByPatient(patient.Id);
-                    if (lastPrescription != null) {
-                        this.bdsPrescription.DataSource = lastPrescription;
-                        if (lastPrescription.PrescriptionDetails != null) this.bdsPrescriptionDetail.DataSource = lastPrescription.PrescriptionDetails;
-                    }
-                }
-            }
+            UpdateForm(patientBrowse.SelectedPatient);
+        }
+
+        /// <summary>
+        /// Updates the form.
+        /// </summary>
+        /// <param name="patient">The patient.</param>
+        private void UpdateForm(Patient patient)
+        {
+            this.bdsPrescription.Clear();
+            this.bdsPrescriptionDetail.Clear();
+            this.bdsPatient.DataSource = patient;
+
+            if (patient == null) return;
+            lastPrescription = prescriptionRepo.GetLastByPatient(patient.Id);
+
+            if (lastPrescription == null) return;
+            this.bdsPrescription.DataSource = lastPrescription;
+            if (lastPrescription.PrescriptionDetails != null) this.bdsPrescriptionDetail.DataSource = lastPrescription.PrescriptionDetails;
         }
     }
 }
