@@ -45,7 +45,7 @@ namespace Medical {
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void btnCheck_Click(object sender, EventArgs e) {
-            var checkUpRegister = new CheckUpRegister();
+            var checkUpRegister = new CheckUpRegister((Patient) this.bdsPatient.DataSource);
             checkUpRegister.ShowDialog(this);
         }
 
