@@ -45,7 +45,7 @@ namespace Medical.Data.Entities {
         [NotMapped]
         public string ClinicName
         {
-            get { return this.Clinic.Name;  }
+            get { return this.Clinic == null ? string.Empty: this.Clinic.Name;  }
         }
     }
 }

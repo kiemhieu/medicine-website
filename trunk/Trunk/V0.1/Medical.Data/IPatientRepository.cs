@@ -8,7 +8,7 @@ namespace Medical.Data
 {
     public interface IPatientRepository
     {
-        void Insert(Patient user);
+        void Insert(Patient patient);
         void Update(Patient user);
         void Delete(int id);
         Patient GetById(int id);
