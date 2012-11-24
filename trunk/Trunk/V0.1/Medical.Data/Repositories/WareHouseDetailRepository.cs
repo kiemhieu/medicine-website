@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Medical.Data.Entities;
-using Medical.Forms.Implements;
+//using Medical.Forms.Implements;
 
 
 namespace Medical.Data.Repositories {
@@ -25,9 +25,9 @@ namespace Medical.Data.Repositories {
 
         public void Insert(WareHouseDetail whDetail)
         {
-            whDetail.CreatedUser = AppContext.LoggedInUser.Id;
+            //whDetail.CreatedUser = AppContext.LoggedInUser.Id;
             whDetail.CreatedDate = DateTime.Now;
-            whDetail.LastUpdatedUser = AppContext.LoggedInUser.Id;
+            //whDetail.LastUpdatedUser = AppContext.LoggedInUser.Id;
             whDetail.LastUpdatedDate = DateTime.Now;
             whDetail.Version = 0;
             this.Context.WareHouseDetails.Add(whDetail);
@@ -49,7 +49,7 @@ namespace Medical.Data.Repositories {
                 oldWhDetail.MedicineId = whDetail.MedicineId;
                 oldWhDetail.UnitPrice = whDetail.UnitPrice;
                 oldWhDetail.Volumn = whDetail.Volumn;
-                oldWhDetail.LastUpdatedUser = AppContext.LoggedInUser.Id;
+                // oldWhDetail.LastUpdatedUser = AppContext.LoggedInUser.Id;
                 oldWhDetail.LastUpdatedDate = DateTime.Now;
                 oldWhDetail.Version++;
                 this.Context.SaveChanges();

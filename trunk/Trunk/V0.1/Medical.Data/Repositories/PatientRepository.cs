@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Medical.Data.Entities;
-using Medical.Forms.Implements;
+//using Medical.Forms.Implements;
 
 namespace Medical.Data.Repositories {
     public class PatientRepository : RepositoryBase, IPatientRepository {
@@ -15,11 +15,11 @@ namespace Medical.Data.Repositories {
         public void Insert(Patient patient) {
             patient.StartDate = DateTime.Today;
             patient.Version = 0;
-            patient.ClinicId = AppContext.CurrentClinic.Id;
+            //patient.ClinicId = AppContext.CurrentClinic.Id;
             patient.CreatedDate = DateTime.Now;
-            patient.CreatedUser = AppContext.LoggedInUser.Id;
+            //patient.CreatedUser = AppContext.LoggedInUser.Id;
             patient.LastUpdatedDate = DateTime.Now;
-            patient.LastUpdatedUser = AppContext.LoggedInUser.Id;
+            //patient.LastUpdatedUser = AppContext.LoggedInUser.Id;
             this.Context.Patients.Add(patient);
             this.Context.SaveChanges();
             this.Context.Entry(patient).Reference("Clinic").Load();
