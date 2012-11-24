@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Medical.Data.Entities;
-using Medical.Forms.Implements;
+//using Medical.Forms.Implements;
 
 
 namespace Medical.Data.Repositories {
@@ -36,7 +36,7 @@ namespace Medical.Data.Repositories {
         /// </summary>
         /// <param name="figure">The figure.</param>
         public void Insert(Figure figure) {
-            figure.LastUpdatedUser = AppContext.LoggedInUser.Id;
+            // figure.LastUpdatedUser = AppContext.LoggedInUser.Id;
             figure.LastUpdatedDate = DateTime.Now;
             figure.Version = 0;
             this.Context.Figures.Add(figure);
@@ -52,7 +52,7 @@ namespace Medical.Data.Repositories {
             if (oldFigure == null) return;
             oldFigure.Name = figure.Name;
             oldFigure.Description = figure.Description;
-            oldFigure.LastUpdatedUser = AppContext.LoggedInUser.Id;
+            // oldFigure.LastUpdatedUser = AppContext.LoggedInUser.Id;
             oldFigure.LastUpdatedDate = DateTime.Now;
             oldFigure.Version++;
             this.Context.SaveChanges();
@@ -77,6 +77,11 @@ namespace Medical.Data.Repositories {
 
             return this.Context.Figures.ToList();
 
+        }
+
+        public Prescription GetCurrent(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
