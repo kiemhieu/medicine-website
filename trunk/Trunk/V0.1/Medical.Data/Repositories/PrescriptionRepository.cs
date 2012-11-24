@@ -22,6 +22,10 @@ namespace Medical.Data.Repositories {
             return this.Context.Prescription.Where(x => x.PatientId == patientId).OrderByDescending(x => x.Date).Take(1).FirstOrDefault();
         }
 
+        public Prescription GetCurrent(int id) {
+            return this.Context.Prescription.FirstOrDefault(x => x.Id == id && x.Date == DateTime.Today);
+        }
+
         public List<Prescription> GetAll() {
             throw new NotImplementedException();
         }

@@ -12,5 +12,6 @@ namespace Medical.Data
         void Update(Figure user);
         void Delete(int id);
         List<Figure> GetAll();
+        Prescription GetCurrent(int id);
     }
 }
