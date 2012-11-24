@@ -26,6 +26,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxX15 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.bdsPrescription = new System.Windows.Forms.BindingSource(this.components);
             this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -42,10 +43,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bdsPrescriptionDetail = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsPrescription = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPrescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPrescriptionDetail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPrescription)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxX15
@@ -63,6 +63,10 @@
             this.textBoxX15.Size = new System.Drawing.Size(100, 21);
             this.textBoxX15.TabIndex = 29;
             this.textBoxX15.Text = "12/12/2222";
+            // 
+            // bdsPrescription
+            // 
+            this.bdsPrescription.DataSource = typeof(Medical.Data.Entities.Prescription);
             // 
             // labelX13
             // 
@@ -195,6 +199,7 @@
             this.cboFigure.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsPrescription, "FigureId", true));
             this.cboFigure.DisplayMember = "Name";
             this.cboFigure.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboFigure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFigure.FormattingEnabled = true;
             this.cboFigure.ItemHeight = 15;
             this.cboFigure.Location = new System.Drawing.Point(106, 190);
@@ -278,10 +283,6 @@
             this.panel2.Size = new System.Drawing.Size(700, 60);
             this.panel2.TabIndex = 42;
             // 
-            // bdsPrescription
-            // 
-            this.bdsPrescription.DataSource = typeof(Medical.Data.Entities.Prescription);
-            // 
             // CheckUpRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -309,9 +310,9 @@
             this.Name = "CheckUpRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Lập đơn thuốc";
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPrescription)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPrescriptionDetail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPrescription)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

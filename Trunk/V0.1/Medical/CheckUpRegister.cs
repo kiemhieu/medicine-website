@@ -25,6 +25,12 @@ namespace Medical {
             this.cboFigure.DataSource = figures;
         }
 
+        private void Initialize()
+        {
+            
+        }
+        
+
         
     }
 }
