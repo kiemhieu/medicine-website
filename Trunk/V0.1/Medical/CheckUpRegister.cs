@@ -11,8 +11,7 @@ using Medical.Data.Entities;
 using Medical.Data.Repositories;
 
 namespace Medical {
-    public partial class CheckUpRegister : Form
-    {
+    public partial class CheckUpRegister : Form {
         private Patient patient;
         private List<Figure> figureList;
         private IFigureRepository figureRepo = new FigureRepository();
@@ -20,17 +19,22 @@ namespace Medical {
         public CheckUpRegister(Patient patient) {
             InitializeComponent();
 
+
+        }
+
+        private void Initialize(Patient patient) {
             this.patient = patient;
             var figures = figureRepo.GetAll();
             this.cboFigure.DataSource = figures;
+
+
         }
 
-        private void Initialize()
-        {
-            
-        }
-        
+        private void Initialize(Prescription prescription) {
 
-        
+        }
+
+
+
     }
 }
