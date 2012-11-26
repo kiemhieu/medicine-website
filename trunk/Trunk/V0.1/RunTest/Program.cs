@@ -15,14 +15,13 @@ namespace RunTest
                 Application.SetCompatibleTextRenderingDefault(false);
                 var manager = new ApplicationManager();
                 Application.Run(manager.EntryForm);
-
                 // manager.EntryForm.ShowDialog();
             }
             catch (Exception ex)
             {
                 ApplicationManager.HandleException(ex);
             }
-            
+
         }
     }
 }

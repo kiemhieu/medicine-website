@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppContext.cs" />
+    <Compile Include="EntitiyExtend\Clinic.cs" />
     <Compile Include="IWareHousePaperDetailRepository.cs" />
     <Compile Include="IWareHousePaperRepository.cs" />
     <Compile Include="IWareHouseMinimumAllowRepository.cs" />

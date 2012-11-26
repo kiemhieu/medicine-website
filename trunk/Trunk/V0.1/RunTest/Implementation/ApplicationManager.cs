@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Text;
+using System.Windows.Forms;
 using Medical.Forms.Entities;
 using Medical.Forms.Implements;
 using Medical.Forms.Interfaces;
@@ -53,6 +54,7 @@ namespace RunTest.Implementation
         /// <param name="ex">The ex.</param>
         public static void HandleException(Exception ex)
         {
+            MessageBox.Show(ex.Message);
             var strBuilder = new StringBuilder();
             var exception = ex;
             strBuilder.AppendLine("[Exception] -----------------------------------------------------------------------------");

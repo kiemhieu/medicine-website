@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Medical.Data;
 using Medical.Forms.Enums;
 using Medical.Forms.EventArgs;
 using Medical.Forms.Implements;
