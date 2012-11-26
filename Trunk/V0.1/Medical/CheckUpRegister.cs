@@ -14,6 +14,7 @@ namespace Medical {
     public partial class CheckUpRegister : Form {
 
         private readonly IFigureRepository _figureRepo = new FigureRepository();
+        private readonly IPrescriptionRepository _precriptionRepo = new PrescriptionRepository();
 
         private Patient _patient;
         private List<Figure> _figureList;
@@ -37,7 +38,14 @@ namespace Medical {
             // Initialize combobox
             var figures = _figureRepo.GetAll();
             this.cboFigure.DataSource = figures;
+            // Get Doctor Name
+            this.txtDoctor.Text = AppContext.LoggedInUser.Name;
 
+            this._prescription = _precriptionRepo.GetCurrent(patient.Id);
+            if (this._prescription == null)
+            {
+                
+            }
         }
 
         private void Initialize(Prescription prescription)
