@@ -64,7 +64,6 @@
     <Compile Include="EventArgs\UIViewEventArgs.cs" />
     <Compile Include="EventArgs\ViewChangeEventArgs.cs" />
     <Compile Include="EventArgs\ViewToFormEventArgs.cs" />
-    <Compile Include="Implements\AppContext.cs" />
     <Compile Include="Implements\ApplicationMode.cs" />
     <Compile Include="Implements\ExceptionHandler.cs" />
     <Compile Include="Implements\MethodExecuter.cs" />
