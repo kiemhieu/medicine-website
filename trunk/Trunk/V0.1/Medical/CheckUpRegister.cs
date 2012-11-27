@@ -10,29 +10,45 @@ using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
 
-namespace Medical {
-    public partial class CheckUpRegister : Form {
-
+namespace Medical
+{
+    public partial class CheckUpRegister : Form
+    {
         private readonly IFigureRepository _figureRepo = new FigureRepository();
+        private readonly IFigureDetailRepository _figureDetailRepo = new FigureDetailRepository();
         private readonly IPrescriptionRepository _precriptionRepo = new PrescriptionRepository();
 
+        private const int DefaultVolumn = 7;
+        private bool _isUpdate = false;
         private Patient _patient;
         private List<Figure> _figureList;
-        private bool _isUpdate = false;
         private Prescription _prescription;
         private List<PrescriptionDetail> _prescriptionDetailList;
 
-        public CheckUpRegister(Patient patient) : this() {
-            InitializeComponent();
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CheckUpRegister"/> class.
+        /// </summary>
+        /// <param name="patient">The patient.</param>
+        public CheckUpRegister(Patient patient)
+            : this()
+        {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CheckUpRegister"/> class.
+        /// </summary>
         public CheckUpRegister()
         {
             InitializeComponent();
         }
 
 
-        private void Initialize(Patient patient) {
+        /// <summary>
+        /// Initializes the specified patient.
+        /// </summary>
+        /// <param name="patient">The patient.</param>
+        private void Initialize(Patient patient)
+        {
             this._patient = patient;
 
             // Initialize combobox
@@ -42,12 +58,54 @@ namespace Medical {
             this.txtDoctor.Text = AppContext.LoggedInUser.Name;
 
             this._prescription = _precriptionRepo.GetCurrent(patient.Id);
+            var lastPrescription = _precriptionRepo.GetLastByPatient(patient.Id);
             if (this._prescription == null)
             {
-                
+                this._prescription = new Prescription();
+                this._prescription.Date = DateTime.Today;
+                this._prescription.RecheckDate = DateTime.Today.AddDays(DefaultVolumn);
+                this._prescription.DoctorId = AppContext.LoggedInUser.Id;
+                this._prescription.Doctor = AppContext.LoggedInUser;
+                this._prescription.PatientId = patient.Id;
+
+                this._prescriptionDetailList = new List<PrescriptionDetail>();
+
+                if (lastPrescription != null)
+                {
+                    this._prescription.Note = lastPrescription.Note;
+                    this._prescription.FigureId = lastPrescription.FigureId;
+
+                    // Create FigureId
+                    var figureDetails = this._figureDetailRepo.GetByFigure(lastPrescription.FigureId);
+                    foreach (var figureDetail in figureDetails)
+                    {
+                        var prescriptionDetail = new PrescriptionDetail
+                                                     {
+                                                         FigureDetailId = figureDetail.Id,
+                                                         MedicineId = figureDetail.MedicineId,
+                                                         Medicine = figureDetail.Medicine,
+                                                         VolumnPerDay = figureDetail.Volumn,
+                                                         Day = DefaultVolumn,
+                                                         Amount = DefaultVolumn * figureDetail.Volumn,
+                                                         Version = 0
+                                                     };
+                        this._prescriptionDetailList.Add(prescriptionDetail);
+                    }
+                }
+
+                this._prescription.PrescriptionDetails = this._prescriptionDetailList;
+            }
+            else
+            {
+                this._prescription.DoctorId = AppContext.LoggedInUser.Id;
+                this._prescription.Doctor = AppContext.LoggedInUser;
             }
         }
 
+        /// <summary>
+        /// Initializes the specified prescription.
+        /// </summary>
+        /// <param name="prescription">The prescription.</param>
         private void Initialize(Prescription prescription)
         {
             this.bdsPrescription.DataSource = prescription;
