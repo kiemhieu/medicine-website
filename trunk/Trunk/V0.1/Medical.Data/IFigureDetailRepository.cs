@@ -12,5 +12,6 @@ namespace Medical.Data
         void Update(FigureDetail user);
         void Delete(int id);
         List<FigureDetail> GetAll();
+        List<FigureDetail> GetByFigure(int figureId);
     }
 }
