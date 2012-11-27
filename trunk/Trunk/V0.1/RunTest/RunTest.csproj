@@ -65,6 +65,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Medical.Data\Medical.Data.csproj">
+      <Project>{169CF0C0-C72D-424A-9CC4-55D95E275755}</Project>
+      <Name>Medical.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Medical.Forms\Medical.Forms.csproj">
       <Project>{CBD5E0BA-003F-4B7B-A11E-FC01CEA20C16}</Project>
       <Name>Medical.Forms</Name>
