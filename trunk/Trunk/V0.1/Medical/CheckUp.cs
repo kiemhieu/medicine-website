@@ -9,6 +9,7 @@ namespace Medical {
 
         private IPrescriptionRepository prescriptionRepo = new PrescriptionRepository();
         private Prescription lastPrescription;
+        private Patient selectedPatient;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CheckUp"/> class.
@@ -44,9 +45,15 @@ namespace Medical {
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnCheck_Click(object sender, EventArgs e) {
-            var checkUpRegister = new CheckUpRegister((Patient) this.bdsPatient.DataSource);
-            checkUpRegister.ShowDialog(this);
+        private void btnCheck_Click(object sender, EventArgs e)
+        {
+            if (this.bdsPatient.DataSource is Patient)
+            {
+                var selected = (Patient) this.bdsPatient.DataSource;
+                if (selected == null) return;
+                var checkUpRegister = new CheckUpRegister(selected);
+                checkUpRegister.ShowDialog(this);
+            }
         }
 
         /// <summary>
@@ -71,8 +78,15 @@ namespace Medical {
             this.bdsPrescription.Clear();
             this.bdsPrescriptionDetail.Clear();
             this.bdsPatient.DataSource = patient;
+            this.selectedPatient = patient;
 
-            if (patient == null) return;
+            if (patient == null)
+            {
+                this.btnCheck.Enabled = false;
+                return;
+            }
+
+            this.btnCheck.Enabled = true;
             lastPrescription = prescriptionRepo.GetLastByPatient(patient.Id);
 
             if (lastPrescription == null) return;
