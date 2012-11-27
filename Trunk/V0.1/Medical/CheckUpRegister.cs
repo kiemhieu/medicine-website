@@ -32,6 +32,7 @@ namespace Medical
         public CheckUpRegister(Patient patient)
             : this()
         {
+            Initialize(patient);
         }
 
         /// <summary>
@@ -61,12 +62,14 @@ namespace Medical
             var lastPrescription = _precriptionRepo.GetLastByPatient(patient.Id);
             if (this._prescription == null)
             {
-                this._prescription = new Prescription();
-                this._prescription.Date = DateTime.Today;
-                this._prescription.RecheckDate = DateTime.Today.AddDays(DefaultVolumn);
-                this._prescription.DoctorId = AppContext.LoggedInUser.Id;
-                this._prescription.Doctor = AppContext.LoggedInUser;
-                this._prescription.PatientId = patient.Id;
+                this._prescription = new Prescription
+                                         {
+                                             Date = DateTime.Today,
+                                             RecheckDate = DateTime.Today.AddDays(DefaultVolumn),
+                                             DoctorId = AppContext.LoggedInUser.Id,
+                                             Doctor = AppContext.LoggedInUser,
+                                             PatientId = patient.Id
+                                         };
 
                 this._prescriptionDetailList = new List<PrescriptionDetail>();
 
@@ -100,6 +103,8 @@ namespace Medical
                 this._prescription.DoctorId = AppContext.LoggedInUser.Id;
                 this._prescription.Doctor = AppContext.LoggedInUser;
             }
+
+            Initialize(this._prescription);
         }
 
         /// <summary>
@@ -110,6 +115,19 @@ namespace Medical
         {
             this.bdsPrescription.DataSource = prescription;
             this.bdsPrescriptionDetail.DataSource = prescription.PrescriptionDetails;
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void cboFigure_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var list = (List < PrescriptionDetail>) bdsPrescriptionDetail.List;
+            if (list == null) return;
 
         }
     }
