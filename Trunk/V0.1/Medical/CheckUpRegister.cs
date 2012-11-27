@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
 using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
@@ -126,9 +127,28 @@ namespace Medical
 
         private void cboFigure_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var list = (List < PrescriptionDetail>) bdsPrescriptionDetail.List;
-            if (list == null) return;
+            var removeList = _prescriptionDetailList.Where(x => x.FigureDetailId != null).ToList();
+            foreach (var item in removeList) _prescriptionDetailList.Remove(item);
 
+            var comboboxEx = (ComboBoxEx) sender;
+            var figureId = (int) comboboxEx.SelectedValue;
+            var figureDetails = this._figureDetailRepo.GetByFigure(figureId);
+            foreach (var figureDetail in figureDetails)
+            {
+                var prescriptionDetail = new PrescriptionDetail()
+                                                            {
+                                                                FigureDetailId = figureDetail.Id,
+                                                                MedicineId = figureDetail.MedicineId,
+                                                                Medicine = figureDetail.Medicine,
+                                                                VolumnPerDay = figureDetail.Volumn,
+                                                                Day = DefaultVolumn,
+                                                                Amount = DefaultVolumn*figureDetail.Volumn,
+                                                                Version = 0
+                                                            };
+                _prescriptionDetailList.Insert(0, prescriptionDetail);
+            }
+
+            this.bdsPrescriptionDetail.DataSource = _prescriptionDetailList;
         }
     }
 }
