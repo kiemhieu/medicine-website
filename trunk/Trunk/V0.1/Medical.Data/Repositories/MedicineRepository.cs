@@ -60,14 +60,11 @@ namespace Medical.Data.Repositories {
             this.Context.SaveChanges();
         }
 
-        List<Medicine> IMedicineRepository.GetAll()
-        {
-            throw new NotImplementedException();
-        }
 
         public List<Medicine> GetAll() {
             return this.Context.Medicines.ToList();
         }
+
         public List<Medicine> GetByName(string name)
         {
             return Context.Medicines.Where(x => x.Name.Contains(name)).ToList();

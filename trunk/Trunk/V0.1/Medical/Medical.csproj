@@ -110,6 +110,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\Medical.Data.Entities.Medicine.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Patient.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Prescription.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.PrescriptionDetail.datasource" />
