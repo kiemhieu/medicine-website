@@ -7,8 +7,10 @@ using System.Text;
 namespace Medical.Data.Entities
 {
     [Table("PrescriptionDetail")]
-    public class PrescriptionDetail
+    public class PrescriptionDetail : EntityBase
     {
+        private Dictionary<string, string> _errors = new Dictionary<string, string>(); 
+
         public long Id { get; set; }
         public long PrescriptionId { get; set; }
         public int? FigureDetailId { get; set; }
@@ -22,6 +24,10 @@ namespace Medical.Data.Entities
         public virtual Medicine Medicine { get; set; }
         public virtual FigureDetail FigureDetail { get; set; }
 
+        [NotMapped]
+        public int No { get; set; }
+
+        [NotMapped]
         public String MedicineName
         {
             get { return this.Medicine == null ? string.Empty : this.Medicine.Name;  }

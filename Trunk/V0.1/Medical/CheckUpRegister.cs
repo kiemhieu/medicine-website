@@ -16,9 +16,11 @@ namespace Medical
     public partial class CheckUpRegister : Form
     {
         private readonly IFigureRepository _figureRepo = new FigureRepository();
+        private readonly IMedicineRepository _medicineRepo = new MedicineRepository();
         private readonly IFigureDetailRepository _figureDetailRepo = new FigureDetailRepository();
         private readonly IPrescriptionRepository _precriptionRepo = new PrescriptionRepository();
 
+        private bool isSkipUpdatingFigure = false;
         private const int DefaultVolumn = 7;
         private bool _isUpdate = false;
         private Patient _patient;
@@ -51,61 +53,73 @@ namespace Medical
         /// <param name="patient">The patient.</param>
         private void Initialize(Patient patient)
         {
-            this._patient = patient;
+            this.isSkipUpdatingFigure = true;
 
-            // Initialize combobox
-            var figures = _figureRepo.GetAll();
-            this.cboFigure.DataSource = figures;
-            // Get Doctor Name
-            this.txtDoctor.Text = AppContext.LoggedInUser.Name;
-
-            this._prescription = _precriptionRepo.GetCurrent(patient.Id);
-            var lastPrescription = _precriptionRepo.GetLastByPatient(patient.Id);
-            if (this._prescription == null)
+            try
             {
-                this._prescription = new Prescription
-                                         {
-                                             Date = DateTime.Today,
-                                             RecheckDate = DateTime.Today.AddDays(DefaultVolumn),
-                                             DoctorId = AppContext.LoggedInUser.Id,
-                                             Doctor = AppContext.LoggedInUser,
-                                             PatientId = patient.Id
-                                         };
+                this._patient = patient;
 
-                this._prescriptionDetailList = new List<PrescriptionDetail>();
+                // Initialize combobox
+                var figures = _figureRepo.GetAll();
+                this.cboFigure.DataSource = figures;
+                // Get Doctor Name
+                this.txtDoctor.Text = AppContext.LoggedInUser.Name;
+                List<Medicine> medicines = _medicineRepo.GetAll();
+                medicines.Insert(0, new Medicine() {Id = 0, Name = "..."});
+                this.bdsMedicine.DataSource = medicines;
 
-                if (lastPrescription != null)
+                this._prescription = _precriptionRepo.GetCurrent(patient.Id);
+                var lastPrescription = _precriptionRepo.GetLastByPatient(patient.Id);
+                if (this._prescription == null)
                 {
-                    this._prescription.Note = lastPrescription.Note;
-                    this._prescription.FigureId = lastPrescription.FigureId;
+                    this._prescription = new Prescription
+                                             {
+                                                 Date = DateTime.Today,
+                                                 RecheckDate = DateTime.Today.AddDays(DefaultVolumn),
+                                                 DoctorId = AppContext.LoggedInUser.Id,
+                                                 Doctor = AppContext.LoggedInUser,
+                                                 PatientId = patient.Id
+                                             };
 
-                    // Create FigureId
-                    var figureDetails = this._figureDetailRepo.GetByFigure(lastPrescription.FigureId);
-                    foreach (var figureDetail in figureDetails)
+                    this._prescriptionDetailList = new List<PrescriptionDetail>();
+
+                    if (lastPrescription != null)
                     {
-                        var prescriptionDetail = new PrescriptionDetail
-                                                     {
-                                                         FigureDetailId = figureDetail.Id,
-                                                         MedicineId = figureDetail.MedicineId,
-                                                         Medicine = figureDetail.Medicine,
-                                                         VolumnPerDay = figureDetail.Volumn,
-                                                         Day = DefaultVolumn,
-                                                         Amount = DefaultVolumn * figureDetail.Volumn,
-                                                         Version = 0
-                                                     };
-                        this._prescriptionDetailList.Add(prescriptionDetail);
+                        this._prescription.Note = lastPrescription.Note;
+                        this._prescription.FigureId = lastPrescription.FigureId;
+
+                        // Create FigureId
+                        var figureDetails = this._figureDetailRepo.GetByFigure(lastPrescription.FigureId);
+                        foreach (var figureDetail in figureDetails)
+                        {
+                            var prescriptionDetail = new PrescriptionDetail
+                                                         {
+                                                             FigureDetailId = figureDetail.Id,
+                                                             MedicineId = figureDetail.MedicineId,
+                                                             Medicine = figureDetail.Medicine,
+                                                             VolumnPerDay = figureDetail.Volumn,
+                                                             Day = DefaultVolumn,
+                                                             Amount = DefaultVolumn*figureDetail.Volumn,
+                                                             Version = 0
+                                                         };
+                            this._prescriptionDetailList.Add(prescriptionDetail);
+                        }
                     }
+
+                    this._prescription.PrescriptionDetails = this._prescriptionDetailList;
+                }
+                else
+                {
+                    this._prescription.DoctorId = AppContext.LoggedInUser.Id;
+                    this._prescription.Doctor = AppContext.LoggedInUser;
                 }
 
-                this._prescription.PrescriptionDetails = this._prescriptionDetailList;
-            }
-            else
+                Initialize(this._prescription);
+            } 
+            finally
             {
-                this._prescription.DoctorId = AppContext.LoggedInUser.Id;
-                this._prescription.Doctor = AppContext.LoggedInUser;
+                this.isSkipUpdatingFigure = false;
             }
-
-            Initialize(this._prescription);
         }
 
         /// <summary>
@@ -119,19 +133,32 @@ namespace Medical
 
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnCancel control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the cboFigure control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void cboFigure_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (isSkipUpdatingFigure) return;
+
             var removeList = _prescriptionDetailList.Where(x => x.FigureDetailId != null).ToList();
             foreach (var item in removeList) _prescriptionDetailList.Remove(item);
 
-            var comboboxEx = (ComboBoxEx) sender;
-            var figureId = (int) comboboxEx.SelectedValue;
+
+            var comboboxEx = (ComboBoxEx)sender;
+            var figureId = (int)comboboxEx.SelectedValue;
             var figureDetails = this._figureDetailRepo.GetByFigure(figureId);
             foreach (var figureDetail in figureDetails)
             {
@@ -142,13 +169,38 @@ namespace Medical
                                                                 Medicine = figureDetail.Medicine,
                                                                 VolumnPerDay = figureDetail.Volumn,
                                                                 Day = DefaultVolumn,
-                                                                Amount = DefaultVolumn*figureDetail.Volumn,
+                                                                Amount = DefaultVolumn * figureDetail.Volumn,
                                                                 Version = 0
                                                             };
                 _prescriptionDetailList.Insert(0, prescriptionDetail);
             }
 
             this.bdsPrescriptionDetail.DataSource = _prescriptionDetailList;
+            this.bdsPrescriptionDetail.EndEdit();
+            bdsPrescriptionDetail.ResetBindings(true);
+            //this.dataGridViewX1.Refresh();
+        }
+
+        private void bdsPrescriptionDetail_AddingNew(object sender, AddingNewEventArgs e)
+        {
+            var item = (PrescriptionDetail) e.NewObject;
+
+        }
+
+        private void bdsMedicine_CurrentItemChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void bdsPrescriptionDetail_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            if (e.ListChangedType == ListChangedType.ItemAdded)
+            {
+                var source = (BindingSource) sender;
+                var item = source.List[e.NewIndex] as PrescriptionDetail;
+                item.No = source.List.Count;
+                item.Day = 7;
+            }
         }
     }
 }

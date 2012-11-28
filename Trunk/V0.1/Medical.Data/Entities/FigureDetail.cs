@@ -13,9 +13,9 @@ namespace Medical.Data.Entities
         public int FigureId { get; set; }
         public int MedicineId { get; set; }
         public int Volumn { get; set; }
-        public bool Enable { get; set; }
         public int Version { get; set; }
 
         public virtual Medicine Medicine { get; set; }
+        public virtual Figure Figure { get; set; }
     }
 }
