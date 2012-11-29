@@ -9,8 +9,6 @@ namespace Medical.Data.Entities
     [Table("PrescriptionDetail")]
     public class PrescriptionDetail : EntityBase
     {
-        private Dictionary<string, string> _errors = new Dictionary<string, string>(); 
-
         public long Id { get; set; }
         public long PrescriptionId { get; set; }
         public int? FigureDetailId { get; set; }
@@ -31,6 +29,14 @@ namespace Medical.Data.Entities
         public String MedicineName
         {
             get { return this.Medicine == null ? string.Empty : this.Medicine.Name;  }
+        }
+
+        public void Validate()
+        {
+            base.Validate();
+            if (this.MedicineId == 0) this.AddError("MedicineId", "Chưa chọn thuốc");
+            if (this.Day == 0) this.AddError("Day", "Chưa chọn thuốc");
+            if (this.VolumnPerDay == 0) this.AddError("VolumnPerDay", "Chưa chọn thuốc");
         }
   }
 }

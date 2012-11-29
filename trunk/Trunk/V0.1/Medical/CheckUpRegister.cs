@@ -20,7 +20,7 @@ namespace Medical
         private readonly IFigureDetailRepository _figureDetailRepo = new FigureDetailRepository();
         private readonly IPrescriptionRepository _precriptionRepo = new PrescriptionRepository();
 
-        private bool isSkipUpdatingFigure = false;
+        private bool _isSkipUpdatingFigure = false;
         private const int DefaultVolumn = 7;
         private bool _isUpdate = false;
         private Patient _patient;
@@ -53,7 +53,7 @@ namespace Medical
         /// <param name="patient">The patient.</param>
         private void Initialize(Patient patient)
         {
-            this.isSkipUpdatingFigure = true;
+            this._isSkipUpdatingFigure = true;
 
             try
             {
@@ -118,7 +118,7 @@ namespace Medical
             } 
             finally
             {
-                this.isSkipUpdatingFigure = false;
+                this._isSkipUpdatingFigure = false;
             }
         }
 
@@ -151,7 +151,7 @@ namespace Medical
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void cboFigure_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (isSkipUpdatingFigure) return;
+            if (_isSkipUpdatingFigure) return;
 
             var removeList = _prescriptionDetailList.Where(x => x.FigureDetailId != null).ToList();
             foreach (var item in removeList) _prescriptionDetailList.Remove(item);
@@ -201,6 +201,31 @@ namespace Medical
                 item.No = source.List.Count;
                 item.Day = 7;
             }
+        }
+
+        private void bdsPrescriptionDetail_CurrentChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void bdsPrescriptionDetail_CurrentItemChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewX1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            
+        }
+
+        private void dataGridViewX1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            ((PrescriptionDetail) this.bdsPrescriptionDetail.Current).Validate();
+        }
+
+        private void bdsPrescriptionDetail_DataMemberChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
