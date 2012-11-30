@@ -168,7 +168,7 @@ namespace Medical
                                                                 MedicineId = figureDetail.MedicineId,
                                                                 Medicine = figureDetail.Medicine,
                                                                 VolumnPerDay = figureDetail.Volumn,
-                                                                Day = DefaultVolumn,
+                                                                Day = this.Day,
                                                                 Amount = DefaultVolumn * figureDetail.Volumn,
                                                                 Version = 0
                                                             };
@@ -176,22 +176,15 @@ namespace Medical
             }
 
             this.bdsPrescriptionDetail.DataSource = _prescriptionDetailList;
-            this.bdsPrescriptionDetail.EndEdit();
-            bdsPrescriptionDetail.ResetBindings(true);
-            //this.dataGridViewX1.Refresh();
+            // this.bdsPrescriptionDetail.EndEdit();
+            ReupdateNo();
         }
 
-        private void bdsPrescriptionDetail_AddingNew(object sender, AddingNewEventArgs e)
-        {
-            var item = (PrescriptionDetail) e.NewObject;
-
-        }
-
-        private void bdsMedicine_CurrentItemChanged(object sender, EventArgs e)
-        {
-            
-        }
-
+        /// <summary>
+        /// Handles the ListChanged event of the bdsPrescriptionDetail control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.ComponentModel.ListChangedEventArgs"/> instance containing the event data.</param>
         private void bdsPrescriptionDetail_ListChanged(object sender, ListChangedEventArgs e)
         {
             if (e.ListChangedType == ListChangedType.ItemAdded)
@@ -199,33 +192,77 @@ namespace Medical
                 var source = (BindingSource) sender;
                 var item = source.List[e.NewIndex] as PrescriptionDetail;
                 item.No = source.List.Count;
-                item.Day = 7;
+                item.Day = this.Day;
             }
         }
 
-        private void bdsPrescriptionDetail_CurrentChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Handles the CellEndEdit event of the dataGridViewX1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Forms.DataGridViewCellEventArgs"/> instance containing the event data.</param>
+        private void dataGridViewX1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            
+            var prescriptionDetail = (PrescriptionDetail) this.bdsPrescriptionDetail.Current;
+            if (prescriptionDetail == null) return;
+            if (e.ColumnIndex == 2 || e.ColumnIndex == 3) prescriptionDetail.Calculate();
+            prescriptionDetail.Validate();
+            if (CheckDuplicate(prescriptionDetail.MedicineId)) prescriptionDetail.AddError("MedicineId", "Thuốc đã tồn tại");
         }
 
-        private void bdsPrescriptionDetail_CurrentItemChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Handles the ValueObjectChanged event of the txtReCheckDate control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void txtReCheckDate_ValueObjectChanged(object sender, EventArgs e)
         {
+            var prescriptionList = (List<PrescriptionDetail>) this.bdsPrescriptionDetail.List;
+            if (prescriptionList == null) return;
+            foreach (var item in prescriptionList)
+            {
+                item.Day = this.Day;
+                item.Calculate();
+            }
 
+            this.bdsPrescriptionDetail.ResetBindings(true);
+        }
+
+        /// <summary>
+        /// Reupdates the no.
+        /// </summary>
+        private void ReupdateNo()
+        {
+            var prescriptionList = (List<PrescriptionDetail>)this.bdsPrescriptionDetail.List;
+            if (prescriptionList == null || prescriptionList.Count == 0) return;
+            for (var i= 0; i<prescriptionList.Count; i++)
+            {
+                prescriptionList[i].No = i + 1;
+            }
+            this.bdsPrescriptionDetail.ResetBindings(true);
+        }
+
+        /// <summary>
+        /// Gets the day.
+        /// </summary>
+        private int Day
+        {
+            get { return (this.txtReCheckDate.Value - this.txtCheckDate.Value).Days; }
         }
 
         private void dataGridViewX1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            
+            var prescriptionDetail = (PrescriptionDetail) this.bdsPrescriptionDetail.Current;
+            if (prescriptionDetail == null) e.Cancel = true;
+            if (prescriptionDetail.FigureDetailId.HasValue && prescriptionDetail.FigureDetailId.Value > 0 && (e.ColumnIndex == 1 || e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4)) e.Cancel = true;
         }
 
-        private void dataGridViewX1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private bool CheckDuplicate(int id)
         {
-            ((PrescriptionDetail) this.bdsPrescriptionDetail.Current).Validate();
-        }
-
-        private void bdsPrescriptionDetail_DataMemberChanged(object sender, EventArgs e)
-        {
-
+            var prescriptionList = (List<PrescriptionDetail>)this.bdsPrescriptionDetail.List;
+            if (prescriptionList == null || prescriptionList.Count == 0) return true;
+            if (prescriptionList.Count(x => x.MedicineId == id) > 0) return false;
+            return true;
         }
     }
 }
