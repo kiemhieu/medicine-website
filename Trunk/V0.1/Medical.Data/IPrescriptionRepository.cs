@@ -8,8 +8,8 @@ namespace Medical.Data
 {
     public interface IPrescriptionRepository
     {
-        void Insert(Prescription user);
-        void Update(Prescription user);
+        void Insert(Prescription prescription);
+        void Update(Prescription prescription);
         void Delete(int id);
         Prescription GetLastByPatient(int patientId);
         Prescription GetCurrent(int id);

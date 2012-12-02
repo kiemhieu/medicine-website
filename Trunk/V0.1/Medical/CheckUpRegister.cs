@@ -250,6 +250,11 @@ namespace Medical
             get { return (this.txtReCheckDate.Value - this.txtCheckDate.Value).Days; }
         }
 
+        /// <summary>
+        /// Handles the CellBeginEdit event of the dataGridViewX1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Forms.DataGridViewCellCancelEventArgs"/> instance containing the event data.</param>
         private void dataGridViewX1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             var prescriptionDetail = (PrescriptionDetail) this.bdsPrescriptionDetail.Current;
@@ -257,12 +262,85 @@ namespace Medical
             if (prescriptionDetail.FigureDetailId.HasValue && prescriptionDetail.FigureDetailId.Value > 0 && (e.ColumnIndex == 1 || e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4)) e.Cancel = true;
         }
 
+        /// <summary>
+        /// Checks the duplicate.
+        /// </summary>
+        /// <param name="id">The id.</param>
+        /// <returns></returns>
         private bool CheckDuplicate(int id)
         {
             var prescriptionList = (List<PrescriptionDetail>)this.bdsPrescriptionDetail.List;
             if (prescriptionList == null || prescriptionList.Count == 0) return true;
             if (prescriptionList.Count(x => x.MedicineId == id) > 0) return false;
             return true;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the buttonX4 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void btnDeleteMedicine_Click(object sender, EventArgs e)
+        {
+            // Delete selected row
+            if (this.dataGridViewX1.SelectedRows.Count == 0) return;
+            var prescriptionList = (List<PrescriptionDetail>)this.bdsPrescriptionDetail.List;
+            var row = this.dataGridViewX1.SelectedRows[0];
+            var item = prescriptionList[row.Index];
+            if (item.FigureDetailId.HasValue && item.FigureDetailId > 0)
+            {
+                MessageBox.Show(this, 
+                                "Thuốc theo phác đồ nên không thể xóa.", 
+                                "Thông báo", 
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+            this.dataGridViewX1.Rows.Remove(this.dataGridViewX1.SelectedRows[0]);
+        }
+
+        /// <summary>
+        /// Validates the data.
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidateData()
+        {
+            if (this.Day <= 0)
+            {
+                this.errPro.SetError(txtReCheckDate, "Ngày tái khám không hợp lệ");
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(txtStatus.Text))
+            {
+                this.errPro.SetError(txtStatus, "Chưa ghi lại trình trạng bệnh nhân");
+                return false;
+            }
+
+            var prescriptionList = (List<PrescriptionDetail>)this.bdsPrescriptionDetail.List;
+            foreach (var item in prescriptionList)
+            {
+                item.Validate();
+                if (!item.IsValid) return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the btnSave control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            this.dataGridViewX1.EndEdit();
+            if (!this.ValidateData()) return;
+            this._prescription.CreatedUser = AppContext.LoggedInUser.Id;
+            this._prescription.LastUpdatedUser = AppContext.LoggedInUser.Id;
+            this._prescription.PrescriptionDetails = this._prescriptionDetailList;
+            this._precriptionRepo.Insert(this._prescription);
+            this.Close();
         }
     }
 }

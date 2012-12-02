@@ -10,21 +10,62 @@ namespace Medical.Data.Repositories
     {
 
         /// <summary>
-        /// Inserts the specified user.
+        /// Inserts the specified prescription.
         /// </summary>
-        /// <param name="user">The user.</param>
-        public void Insert(Prescription user)
+        /// <param name="prescription">The prescription.</param>
+        public void Insert(Prescription prescription)
         {
-            throw new NotImplementedException();
+            try
+            {
+                prescription.Version = 0;
+                prescription.LastUpdatedDate = DateTime.Now;
+                prescription.CreatedDate = DateTime.Now;
+
+                foreach (var item in prescription.PrescriptionDetails)
+                {
+                    item.Version = 0;
+                }
+                this.Context.Prescription.Add(prescription);
+                this.Context.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
         }
 
         /// <summary>
-        /// Updates the specified user.
+        /// Updates the specified prescription.
         /// </summary>
-        /// <param name="user">The user.</param>
-        public void Update(Prescription user)
+        /// <param name="prescription">The prescription.</param>
+        public void Update(Prescription prescription)
         {
-            throw new NotImplementedException();
+            var originalPres = this.Context.Prescription.FirstOrDefault(x => x.Id == prescription.Id);
+            if (originalPres == null) throw new Exception("Không tồn tại dữ liệu trong CSDL.");
+            originalPres.RecheckDate = prescription.RecheckDate;
+            originalPres.Note = prescription.Note;
+            originalPres.DoctorId  = prescription.DoctorId;
+            originalPres.FigureId = prescription.FigureId;
+            originalPres.Version++;
+
+            foreach (var orginItem in originalPres.PrescriptionDetails)
+            {
+                var item = prescription.PrescriptionDetails.FirstOrDefault(x => x.Id == orginItem.Id);
+                if (item == null) { this.Context.PrescriptionDetails.Remove(orginItem); }
+                else
+                {
+                    item.MedicineId = 
+                }
+
+            }
+
+            foreach (var orginItem in prescription.PrescriptionDetails)
+            {
+                var item = originalPres.PrescriptionDetails.FirstOrDefault(x => x.Id == orginItem.Id);
+                
+            }
         }
 
         /// <summary>

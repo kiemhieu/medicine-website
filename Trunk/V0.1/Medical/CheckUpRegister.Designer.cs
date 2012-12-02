@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtStatus = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.bdsPrescription = new System.Windows.Forms.BindingSource(this.components);
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
@@ -52,11 +52,12 @@
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtCheckDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtReCheckDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.buttonX4 = new DevComponents.DotNetBar.ButtonX();
+            this.btnDeleteMedicine = new DevComponents.DotNetBar.ButtonX();
             this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.errPro = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bdsPrescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPrescriptionDetail)).BeginInit();
@@ -65,6 +66,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCheckDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReCheckDate)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errPro)).BeginInit();
             this.SuspendLayout();
             // 
             // labelX13
@@ -97,22 +99,22 @@
             this.labelX12.TabIndex = 26;
             this.labelX12.Text = "Phác đồ điều trị";
             // 
-            // textBoxX12
+            // txtStatus
             // 
-            this.textBoxX12.BackColor = System.Drawing.Color.White;
+            this.txtStatus.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
-            this.textBoxX12.Border.Class = "TextBoxBorder";
-            this.textBoxX12.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPrescription, "Note", true));
-            this.textBoxX12.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX12.Location = new System.Drawing.Point(106, 36);
-            this.textBoxX12.Multiline = true;
-            this.textBoxX12.Name = "textBoxX12";
-            this.textBoxX12.Size = new System.Drawing.Size(676, 150);
-            this.textBoxX12.TabIndex = 31;
-            this.textBoxX12.Text = "-xin chao\r\n-benh ngay cang kho";
+            this.txtStatus.Border.Class = "TextBoxBorder";
+            this.txtStatus.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtStatus.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPrescription, "Note", true));
+            this.txtStatus.ForeColor = System.Drawing.Color.Black;
+            this.txtStatus.Location = new System.Drawing.Point(106, 36);
+            this.txtStatus.Multiline = true;
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.Size = new System.Drawing.Size(676, 150);
+            this.txtStatus.TabIndex = 31;
+            this.txtStatus.Text = "-xin chao\r\n-benh ngay cang kho";
             // 
             // bdsPrescription
             // 
@@ -225,7 +227,7 @@
             this.panel1.Controls.Add(this.dataGridViewX1);
             this.panel1.Controls.Add(this.txtCheckDate);
             this.panel1.Controls.Add(this.txtReCheckDate);
-            this.panel1.Controls.Add(this.buttonX4);
+            this.panel1.Controls.Add(this.btnDeleteMedicine);
             this.panel1.Controls.Add(this.labelX10);
             this.panel1.Controls.Add(this.buttonX3);
             this.panel1.Controls.Add(this.txtDoctor);
@@ -268,8 +270,10 @@
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(106, 215);
+            this.dataGridViewX1.MultiSelect = false;
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersVisible = false;
+            this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(676, 188);
             this.dataGridViewX1.TabIndex = 43;
             this.dataGridViewX1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewX1_CellBeginEdit);
@@ -445,16 +449,17 @@
             this.txtReCheckDate.TabIndex = 41;
             this.txtReCheckDate.ValueObjectChanged += new System.EventHandler(this.txtReCheckDate_ValueObjectChanged);
             // 
-            // buttonX4
+            // btnDeleteMedicine
             // 
-            this.buttonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX4.Image = global::Medical.Properties.Resources.remove;
-            this.buttonX4.Location = new System.Drawing.Point(735, 191);
-            this.buttonX4.Name = "buttonX4";
-            this.buttonX4.Size = new System.Drawing.Size(20, 20);
-            this.buttonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX4.TabIndex = 40;
+            this.btnDeleteMedicine.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDeleteMedicine.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDeleteMedicine.Image = global::Medical.Properties.Resources.remove;
+            this.btnDeleteMedicine.Location = new System.Drawing.Point(735, 191);
+            this.btnDeleteMedicine.Name = "btnDeleteMedicine";
+            this.btnDeleteMedicine.Size = new System.Drawing.Size(20, 20);
+            this.btnDeleteMedicine.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDeleteMedicine.TabIndex = 40;
+            this.btnDeleteMedicine.Click += new System.EventHandler(this.btnDeleteMedicine_Click);
             // 
             // buttonX3
             // 
@@ -503,6 +508,11 @@
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSave.TabIndex = 38;
             this.btnSave.Text = "Ghi lại";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // errPro
+            // 
+            this.errPro.ContainerControl = this;
             // 
             // CheckUpRegister
             // 
@@ -513,7 +523,7 @@
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.cboFigure);
             this.Controls.Add(this.labelX14);
-            this.Controls.Add(this.textBoxX12);
+            this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.labelX11);
             this.Controls.Add(this.labelX13);
             this.Controls.Add(this.labelX12);
@@ -533,6 +543,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCheckDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReCheckDate)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errPro)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -542,7 +553,7 @@
 
         private DevComponents.DotNetBar.LabelX labelX13;
         private DevComponents.DotNetBar.LabelX labelX12;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX12;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtStatus;
         private DevComponents.DotNetBar.LabelX labelX11;
         private DevComponents.DotNetBar.LabelX labelX14;
         private DevComponents.DotNetBar.LabelX labelX10;
@@ -555,7 +566,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.BindingSource bdsPrescription;
         private System.Windows.Forms.BindingSource bdsPrescriptionDetail;
-        private DevComponents.DotNetBar.ButtonX buttonX4;
+        private DevComponents.DotNetBar.ButtonX btnDeleteMedicine;
         private DevComponents.DotNetBar.ButtonX buttonX3;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput txtCheckDate;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput txtReCheckDate;
@@ -567,5 +578,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ErrorProvider errPro;
     }
 }
