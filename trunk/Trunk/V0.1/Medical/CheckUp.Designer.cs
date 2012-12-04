@@ -305,7 +305,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(10, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(864, 97);
+            this.groupBox1.Size = new System.Drawing.Size(872, 97);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin bệnh nhân";
@@ -590,7 +590,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 38);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(10, 0, 10, 5);
-            this.panel1.Size = new System.Drawing.Size(884, 102);
+            this.panel1.Size = new System.Drawing.Size(892, 102);
             this.panel1.TabIndex = 24;
             // 
             // panel2
@@ -603,7 +603,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(884, 38);
+            this.panel2.Size = new System.Drawing.Size(892, 38);
             this.panel2.TabIndex = 25;
             // 
             // btnCheck
@@ -613,7 +613,7 @@
             this.btnCheck.AutoSize = true;
             this.btnCheck.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCheck.Image = global::Medical.Properties.Resources.doctor;
-            this.btnCheck.Location = new System.Drawing.Point(761, 9);
+            this.btnCheck.Location = new System.Drawing.Point(769, 9);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(111, 25);
             this.btnCheck.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -628,7 +628,7 @@
             this.btnCheckingHistory.AutoSize = true;
             this.btnCheckingHistory.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCheckingHistory.Image = global::Medical.Properties.Resources.document;
-            this.btnCheckingHistory.Location = new System.Drawing.Point(695, 9);
+            this.btnCheckingHistory.Location = new System.Drawing.Point(703, 9);
             this.btnCheckingHistory.Name = "btnCheckingHistory";
             this.btnCheckingHistory.Size = new System.Drawing.Size(60, 25);
             this.btnCheckingHistory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -644,7 +644,7 @@
             this.btnRegister.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnRegister.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnRegister.Image = global::Medical.Properties.Resources.add;
-            this.btnRegister.Location = new System.Drawing.Point(579, 9);
+            this.btnRegister.Location = new System.Drawing.Point(587, 9);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(110, 25);
             this.btnRegister.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -659,7 +659,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 140);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(10, 5, 10, 10);
-            this.panel3.Size = new System.Drawing.Size(884, 385);
+            this.panel3.Size = new System.Drawing.Size(892, 385);
             this.panel3.TabIndex = 26;
             // 
             // groupBox2
@@ -681,7 +681,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(10, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(864, 370);
+            this.groupBox2.Size = new System.Drawing.Size(872, 370);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tình trạng bệnh";
@@ -840,7 +840,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 525);
+            this.ClientSize = new System.Drawing.Size(892, 525);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
