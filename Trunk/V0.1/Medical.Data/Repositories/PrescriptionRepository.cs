@@ -42,29 +42,64 @@ namespace Medical.Data.Repositories
         /// <param name="prescription">The prescription.</param>
         public void Update(Prescription prescription)
         {
-            var originalPres = this.Context.Prescription.FirstOrDefault(x => x.Id == prescription.Id);
-            if (originalPres == null) throw new Exception("Không tồn tại dữ liệu trong CSDL.");
-            originalPres.RecheckDate = prescription.RecheckDate;
-            originalPres.Note = prescription.Note;
-            originalPres.DoctorId  = prescription.DoctorId;
-            originalPres.FigureId = prescription.FigureId;
-            originalPres.Version++;
-
-            foreach (var orginItem in originalPres.PrescriptionDetails)
+            try
             {
-                var item = prescription.PrescriptionDetails.FirstOrDefault(x => x.Id == orginItem.Id);
-                if (item == null) { this.Context.PrescriptionDetails.Remove(orginItem); }
-                else
+                
+                var originalPres = this.Context.Prescription.FirstOrDefault(x => x.Id == prescription.Id);
+                if (originalPres == null) throw new Exception("Không tồn tại dữ liệu trong CSDL.");
+
+                var prescriptionList = this.Context.PrescriptionDetails.Where(x => x.PrescriptionId == prescription.Id).ToList();
+                
+                originalPres.RecheckDate = prescription.RecheckDate;
+                originalPres.Note = prescription.Note;
+                originalPres.DoctorId = prescription.DoctorId;
+                originalPres.FigureId = prescription.FigureId;
+                originalPres.Version++;
+
+                foreach (var orginItem in prescriptionList)
                 {
-                    item.MedicineId = 
+                    var item = prescription.PrescriptionDetails.FirstOrDefault(x => x.Id == orginItem.Id);
+                    if (item == null)
+                    {
+                        this.Context.PrescriptionDetails.Remove(orginItem);
+                    }
+                    else
+                    {
+                        orginItem.MedicineId = item.MedicineId;
+                        orginItem.Day = item.Day;
+                        orginItem.Description = item.Description;
+                        orginItem.Amount = item.Amount;
+                        orginItem.FigureDetailId = item.FigureDetailId;
+                        orginItem.VolumnPerDay = item.VolumnPerDay;
+                    }
+
                 }
 
-            }
+                foreach (var orginItem in prescription.PrescriptionDetails)
+                {
+                    var item = originalPres.PrescriptionDetails.FirstOrDefault(x => x.Id == orginItem.Id);
+                    if (item != null) continue;
+                    var newItem = new PrescriptionDetail
+                                      {
+                                          Amount = orginItem.Amount,
+                                          Day = orginItem.Day,
+                                          Description = orginItem.Description,
+                                          FigureDetailId = orginItem.FigureDetailId,
+                                          MedicineId = orginItem.MedicineId,
+                                          PrescriptionId = orginItem.PrescriptionId,
+                                          Version = 0
+                                      };
+                    originalPres.PrescriptionDetails.Add(newItem);
+                }
 
-            foreach (var orginItem in prescription.PrescriptionDetails)
-            {
-                var item = originalPres.PrescriptionDetails.FirstOrDefault(x => x.Id == orginItem.Id);
+                originalPres.LastUpdatedDate = DateTime.Now;
                 
+
+                this.Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -90,11 +125,13 @@ namespace Medical.Data.Repositories
         /// <summary>
         /// Gets the current.
         /// </summary>
-        /// <param name="id">The id.</param>
+        /// <param name="id">The patientId.</param>
         /// <returns></returns>
-        public Prescription GetCurrent(int id)
+        public Prescription GetCurrent(int patientId)
         {
-            return this.Context.Prescription.FirstOrDefault(x => x.Id == id && x.Date == DateTime.Today);
+            var date = DateTime.Now.Date;
+            var prescription = this.Context.Prescription.FirstOrDefault(x => x.PatientId == patientId && x.Date >= date);
+            return prescription;
         }
 
         /// <summary>
@@ -104,6 +141,11 @@ namespace Medical.Data.Repositories
         public List<Prescription> GetAll()
         {
             throw new NotImplementedException();
+        }
+
+        public List<Prescription> GetAll(int patientId)
+        {
+            return this.Context.Prescription.Where(x => x.PatientId == patientId).ToList();
         }
     }
 }

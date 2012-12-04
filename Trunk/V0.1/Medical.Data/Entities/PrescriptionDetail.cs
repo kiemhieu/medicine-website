@@ -12,7 +12,7 @@ namespace Medical.Data.Entities
 
         #region Mapping property
         public long Id { get; set; }
-        public long PrescriptionId { get; set; }
+        public long? PrescriptionId { get; set; }
         public int? FigureDetailId { get; set; }
         public int MedicineId { get; set; }
         public int Day { get; set; }
