@@ -23,6 +23,8 @@ namespace Medical.Data.Entities {
 
         public virtual List<PrescriptionDetail> PrescriptionDetails { get; set; }
         public virtual Figure Figure { get; set; }
+
+        [ForeignKey("DoctorId")]
         public virtual User Doctor { get; set; }
 
         [NotMapped]

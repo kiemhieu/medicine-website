@@ -81,7 +81,9 @@ namespace Medical
                                                  RecheckDate = DateTime.Today.AddDays(DefaultVolumn),
                                                  DoctorId = AppContext.LoggedInUser.Id,
                                                  Doctor = AppContext.LoggedInUser,
-                                                 PatientId = patient.Id
+                                                 PatientId = patient.Id,
+                                                 CreatedUser = AppContext.LoggedInUser.Id,
+                                                 LastUpdatedUser = AppContext.LoggedInUser.Id
                                              };
 
                     this._prescriptionDetailList = new List<PrescriptionDetail>();
@@ -117,6 +119,7 @@ namespace Medical
                     this._isUpdate = true;
                     this._prescription.DoctorId = AppContext.LoggedInUser.Id;
                     this._prescription.Doctor = AppContext.LoggedInUser;
+                    this._prescription.LastUpdatedUser = AppContext.LoggedInUser.Id;
                 }
 
                 Initialize(this._prescription);
