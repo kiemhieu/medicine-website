@@ -8,17 +8,18 @@ using Medical.Data.Entities;
 namespace Medical.Data.Repositories {
     public class ClinicRepository : RepositoryBase, IClinicRepository {
 
+        /// <summary>
+        /// Gets the specified id.
+        /// </summary>
+        /// <param name="id">The id.</param>
+        /// <returns></returns>
         public Clinic Get(int id) {
-            var clinic = this.Context.Clinics.FirstOrDefault(x => x.Id.Equals(id));
-            return clinic;
+            return Context.Clinics.FirstOrDefault(x => x.Id.Equals(id));
         }
 
         public Clinic GetById(int id) {
-            var clinic = this.Context.Clinics.FirstOrDefault(x => x.Id.Equals(id));
-            return clinic;
+            return this.Context.Clinics.FirstOrDefault(x => x.Id.Equals(id));
         }
-
-
 
         public void Insert(Clinic clinic) {
             clinic.CreatedDate = DateTime.Now;
@@ -66,18 +67,8 @@ namespace Medical.Data.Repositories {
 
         }
 
-        List<Clinic> IClinicRepository.GetAll() {
-            throw new NotImplementedException();
-        }
-
         public List<Clinic> GetAll() {
-            try {
-                List<Clinic> lst = this.Context.Clinics.ToList();
-                return lst;
-            } catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
+            return this.Context.Clinics.ToList();
         }
     }
 }

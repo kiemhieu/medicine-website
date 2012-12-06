@@ -53,6 +53,7 @@ namespace Medical.Data.Repositories
                 originalPres.RecheckDate = prescription.RecheckDate;
                 originalPres.Note = prescription.Note;
                 originalPres.DoctorId = prescription.DoctorId;
+                originalPres.Doctor = null;
                 originalPres.FigureId = prescription.FigureId;
                 originalPres.Version++;
 
@@ -110,6 +111,11 @@ namespace Medical.Data.Repositories
         public void Delete(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public Prescription Get(int id)
+        {
+            return this.Context.Prescription.FirstOrDefault(x => x.Id == id);
         }
 
         /// <summary>
