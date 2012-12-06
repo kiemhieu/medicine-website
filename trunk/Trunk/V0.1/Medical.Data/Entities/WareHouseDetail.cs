@@ -22,9 +22,11 @@ namespace Medical.Data.Entities
         public DateTime LastUpdatedDate { get; set; }
         public int LastUpdatedUser { get; set; } 
         public int Version { get; set; }
-        private Medicine Medicine { get; set; }
-        private Clinic Clinic { get; set; }
+        public virtual Medicine Medicine { get; set; }
+        public virtual Clinic Clinic { get; set; }
+        [NotMapped]
         public string MedicineName { get { return this.Medicine.Name; } }
+        [NotMapped]
         public string ClinicName { get { return this.Clinic.Name; } }
     }
 }
