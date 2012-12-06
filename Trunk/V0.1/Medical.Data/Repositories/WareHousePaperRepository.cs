@@ -49,6 +49,7 @@ namespace Medical.Data.Repositories {
                 oldwhPaper.Recipient = whPaper.Recipient;
                 oldwhPaper.Deliverer = whPaper.Deliverer;
                 oldwhPaper.Note = whPaper.Note;
+                oldwhPaper.LastUpdatedUser = 1;
                 // oldwhPaper.LastUpdatedUser = AppContext.LoggedInUser.Id;
                 oldwhPaper.LastUpdatedDate = DateTime.Now;
                 oldwhPaper.Version++;
