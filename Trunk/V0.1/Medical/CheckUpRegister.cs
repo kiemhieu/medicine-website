@@ -83,7 +83,8 @@ namespace Medical
                                                  Doctor = AppContext.LoggedInUser,
                                                  PatientId = patient.Id,
                                                  CreatedUser = AppContext.LoggedInUser.Id,
-                                                 LastUpdatedUser = AppContext.LoggedInUser.Id
+                                                 LastUpdatedUser = AppContext.LoggedInUser.Id,
+                                                 ClinicId = AppContext.CurrentClinic.Id
                                              };
 
                     this._prescriptionDetailList = new List<PrescriptionDetail>();

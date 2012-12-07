@@ -46,8 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppContext.cs" />
+    <Compile Include="Entities\Views\VMedicineDeliverList.cs" />
     <Compile Include="EntitiyExtend\Clinic.cs" />
+    <Compile Include="EntitiyExtend\Item.cs" />
     <Compile Include="EntityBase.cs" />
+    <Compile Include="IVMedicineDeliverRepository.cs" />
     <Compile Include="IWareHousePaperDetailRepository.cs" />
     <Compile Include="IWareHousePaperRepository.cs" />
     <Compile Include="IWareHouseMinimumAllowRepository.cs" />

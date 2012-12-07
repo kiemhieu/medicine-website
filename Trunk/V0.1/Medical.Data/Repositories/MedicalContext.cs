@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using Medical.Data.Entities;
+using Medical.Data.Entities.Views;
 
 namespace Medical.Data.Repositories
 {
@@ -22,6 +23,7 @@ namespace Medical.Data.Repositories
         public DbSet<WareHousePaperDetail> WareHousePaperDetails { get; set; }
         public DbSet<Prescription> Prescription { get; set; }
         public DbSet<PrescriptionDetail> PrescriptionDetails { get; set; }
+        public DbSet<VMedicineDeliverList> VMedicineDeliverList { get; set; }
     }
 }
 
