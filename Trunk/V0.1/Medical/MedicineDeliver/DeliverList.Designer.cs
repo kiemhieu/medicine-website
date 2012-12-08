@@ -108,6 +108,7 @@
             this.cboDate.Size = new System.Drawing.Size(100, 22);
             this.cboDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cboDate.TabIndex = 0;
+            this.cboDate.ValueChanged += new System.EventHandler(this.cboDate_ValueChanged);
             // 
             // dataGridViewX1
             // 
@@ -183,6 +184,7 @@
             this.cboStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cboStatus.TabIndex = 5;
             this.cboStatus.ValueMember = "Value";
+            this.cboStatus.SelectedValueChanged += new System.EventHandler(this.cboStatus_SelectedValueChanged);
             // 
             // labelX1
             // 
@@ -209,9 +211,9 @@
             this.cboClinic.FocusCuesEnabled = false;
             this.cboClinic.FormattingEnabled = true;
             this.cboClinic.ItemHeight = 16;
-            this.cboClinic.Location = new System.Drawing.Point(562, 9);
+            this.cboClinic.Location = new System.Drawing.Point(374, 9);
             this.cboClinic.Name = "cboClinic";
-            this.cboClinic.Size = new System.Drawing.Size(300, 22);
+            this.cboClinic.Size = new System.Drawing.Size(488, 22);
             this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cboClinic.TabIndex = 1;
             this.cboClinic.ValueMember = "Id";

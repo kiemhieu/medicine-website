@@ -9,12 +9,12 @@ namespace Medical.Data.Entities.Views
     [Table("VMedicineDeliverList")]
     public class VMedicineDeliverList
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public int ClinicId { get; set; }
         public int PatientId { get; set; }
         public int DoctorId { get; set; }
-        public int Date { get; set; }
-        public int RecheckDate { get; set; }
+        public DateTime Date { get; set; }
+        public DateTime RecheckDate { get; set; }
         public int? DeliverId { get; set; }
         public String DoctorName { get; set; }
         public DateTime? DeliverDate { get; set; }
