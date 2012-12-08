@@ -91,6 +91,7 @@
     <Compile Include="Repositories\ClinicRepository.cs" />
     <Compile Include="Repositories\FigureDetailRepository.cs" />
     <Compile Include="Repositories\PrescriptionDetailRepository.cs" />
+    <Compile Include="Repositories\VMedicineDeliverRepository.cs" />
     <Compile Include="Repositories\WareHousePaperDetailRepository.cs" />
     <Compile Include="Repositories\WareHousePaperRepository.cs" />
     <Compile Include="Repositories\PrescriptionRepository.cs" />
