@@ -29,7 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -38,16 +43,21 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clinicIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.doctorIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.recheckDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliverIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliverDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliverTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsDeliver = new System.Windows.Forms.BindingSource(this.components);
+            this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isDeliveredDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.deliverTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sexDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recheckDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doctorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDeliver = new DevComponents.DotNetBar.ButtonX();
+            this.btnRemove = new DevComponents.DotNetBar.ButtonX();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.cboDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -112,37 +122,58 @@
             // 
             // dataGridViewX1
             // 
+            this.dataGridViewX1.AllowUserToAddRows = false;
+            this.dataGridViewX1.AllowUserToDeleteRows = false;
+            this.dataGridViewX1.AllowUserToResizeColumns = false;
+            this.dataGridViewX1.AllowUserToResizeRows = false;
             this.dataGridViewX1.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.clinicIdDataGridViewTextBoxColumn,
-            this.patientIdDataGridViewTextBoxColumn,
-            this.doctorIdDataGridViewTextBoxColumn,
-            this.dateDataGridViewTextBoxColumn,
+            this.noDataGridViewTextBoxColumn,
+            this.isDeliveredDataGridViewCheckBoxColumn,
+            this.deliverTimeDataGridViewTextBoxColumn,
+            this.codeDataGridViewTextBoxColumn,
+            this.patientNameDataGridViewTextBoxColumn,
+            this.birthYearDataGridViewTextBoxColumn,
+            this.sexDataGridViewTextBoxColumn,
+            this.checkTimeDataGridViewTextBoxColumn,
             this.recheckDateDataGridViewTextBoxColumn,
-            this.deliverIdDataGridViewTextBoxColumn,
-            this.deliverDateDataGridViewTextBoxColumn,
-            this.deliverTimeDataGridViewTextBoxColumn});
+            this.doctorNameDataGridViewTextBoxColumn,
+            this.addressDataGridViewTextBoxColumn});
             this.dataGridViewX1.DataSource = this.bdsDeliver;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataGridViewX1.HighlightSelectedColumnHeaders = false;
             this.dataGridViewX1.Location = new System.Drawing.Point(5, 5);
             this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridViewX1.MultiSelect = false;
             this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.Size = new System.Drawing.Size(857, 548);
+            this.dataGridViewX1.ReadOnly = true;
+            this.dataGridViewX1.RowHeadersVisible = false;
+            this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewX1.Size = new System.Drawing.Size(857, 549);
             this.dataGridViewX1.TabIndex = 1;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnRemove);
+            this.panel1.Controls.Add(this.btnDeliver);
             this.panel1.Controls.Add(this.labelX3);
             this.panel1.Controls.Add(this.cboStatus);
             this.panel1.Controls.Add(this.labelX1);
@@ -153,7 +184,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(867, 41);
+            this.panel1.Size = new System.Drawing.Size(867, 40);
             this.panel1.TabIndex = 2;
             // 
             // labelX3
@@ -164,7 +195,7 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(160, 10);
+            this.labelX3.Location = new System.Drawing.Point(160, 12);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(61, 17);
             this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -194,7 +225,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(9, 13);
+            this.labelX1.Location = new System.Drawing.Point(9, 12);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(33, 17);
             this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -203,17 +234,15 @@
             // 
             // cboClinic
             // 
-            this.cboClinic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.cboClinic.DisplayMember = "Name";
             this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboClinic.Enabled = false;
             this.cboClinic.FocusCuesEnabled = false;
             this.cboClinic.FormattingEnabled = true;
             this.cboClinic.ItemHeight = 16;
-            this.cboClinic.Location = new System.Drawing.Point(374, 9);
+            this.cboClinic.Location = new System.Drawing.Point(364, 9);
             this.cboClinic.Name = "cboClinic";
-            this.cboClinic.Size = new System.Drawing.Size(488, 22);
+            this.cboClinic.Size = new System.Drawing.Size(300, 22);
             this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cboClinic.TabIndex = 1;
             this.cboClinic.ValueMember = "Id";
@@ -222,69 +251,143 @@
             // 
             this.panel2.Controls.Add(this.dataGridViewX1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 41);
+            this.panel2.Location = new System.Drawing.Point(0, 40);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5);
-            this.panel2.Size = new System.Drawing.Size(867, 558);
+            this.panel2.Size = new System.Drawing.Size(867, 559);
             this.panel2.TabIndex = 3;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // clinicIdDataGridViewTextBoxColumn
-            // 
-            this.clinicIdDataGridViewTextBoxColumn.DataPropertyName = "ClinicId";
-            this.clinicIdDataGridViewTextBoxColumn.HeaderText = "ClinicId";
-            this.clinicIdDataGridViewTextBoxColumn.Name = "clinicIdDataGridViewTextBoxColumn";
-            // 
-            // patientIdDataGridViewTextBoxColumn
-            // 
-            this.patientIdDataGridViewTextBoxColumn.DataPropertyName = "PatientId";
-            this.patientIdDataGridViewTextBoxColumn.HeaderText = "PatientId";
-            this.patientIdDataGridViewTextBoxColumn.Name = "patientIdDataGridViewTextBoxColumn";
-            // 
-            // doctorIdDataGridViewTextBoxColumn
-            // 
-            this.doctorIdDataGridViewTextBoxColumn.DataPropertyName = "DoctorId";
-            this.doctorIdDataGridViewTextBoxColumn.HeaderText = "DoctorId";
-            this.doctorIdDataGridViewTextBoxColumn.Name = "doctorIdDataGridViewTextBoxColumn";
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            // 
-            // recheckDateDataGridViewTextBoxColumn
-            // 
-            this.recheckDateDataGridViewTextBoxColumn.DataPropertyName = "RecheckDate";
-            this.recheckDateDataGridViewTextBoxColumn.HeaderText = "RecheckDate";
-            this.recheckDateDataGridViewTextBoxColumn.Name = "recheckDateDataGridViewTextBoxColumn";
-            // 
-            // deliverIdDataGridViewTextBoxColumn
-            // 
-            this.deliverIdDataGridViewTextBoxColumn.DataPropertyName = "DeliverId";
-            this.deliverIdDataGridViewTextBoxColumn.HeaderText = "DeliverId";
-            this.deliverIdDataGridViewTextBoxColumn.Name = "deliverIdDataGridViewTextBoxColumn";
-            // 
-            // deliverDateDataGridViewTextBoxColumn
-            // 
-            this.deliverDateDataGridViewTextBoxColumn.DataPropertyName = "DeliverDate";
-            this.deliverDateDataGridViewTextBoxColumn.HeaderText = "DeliverDate";
-            this.deliverDateDataGridViewTextBoxColumn.Name = "deliverDateDataGridViewTextBoxColumn";
-            // 
-            // deliverTimeDataGridViewTextBoxColumn
-            // 
-            this.deliverTimeDataGridViewTextBoxColumn.DataPropertyName = "DeliverTime";
-            this.deliverTimeDataGridViewTextBoxColumn.HeaderText = "DeliverTime";
-            this.deliverTimeDataGridViewTextBoxColumn.Name = "deliverTimeDataGridViewTextBoxColumn";
             // 
             // bdsDeliver
             // 
             this.bdsDeliver.DataSource = typeof(Medical.Data.Entities.Views.VMedicineDeliverList);
+            // 
+            // noDataGridViewTextBoxColumn
+            // 
+            this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.noDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.noDataGridViewTextBoxColumn.HeaderText = "STT";
+            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
+            this.noDataGridViewTextBoxColumn.ReadOnly = true;
+            this.noDataGridViewTextBoxColumn.Width = 30;
+            // 
+            // isDeliveredDataGridViewCheckBoxColumn
+            // 
+            this.isDeliveredDataGridViewCheckBoxColumn.DataPropertyName = "IsDelivered";
+            this.isDeliveredDataGridViewCheckBoxColumn.HeaderText = "";
+            this.isDeliveredDataGridViewCheckBoxColumn.Name = "isDeliveredDataGridViewCheckBoxColumn";
+            this.isDeliveredDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.isDeliveredDataGridViewCheckBoxColumn.Width = 20;
+            // 
+            // deliverTimeDataGridViewTextBoxColumn
+            // 
+            this.deliverTimeDataGridViewTextBoxColumn.DataPropertyName = "DeliverTime";
+            dataGridViewCellStyle3.Format = "HH:mm tt";
+            dataGridViewCellStyle3.NullValue = null;
+            this.deliverTimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.deliverTimeDataGridViewTextBoxColumn.HeaderText = "Nhận thuốc";
+            this.deliverTimeDataGridViewTextBoxColumn.Name = "deliverTimeDataGridViewTextBoxColumn";
+            this.deliverTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Mã";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codeDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // patientNameDataGridViewTextBoxColumn
+            // 
+            this.patientNameDataGridViewTextBoxColumn.DataPropertyName = "PatientName";
+            this.patientNameDataGridViewTextBoxColumn.HeaderText = "Họ và tên";
+            this.patientNameDataGridViewTextBoxColumn.Name = "patientNameDataGridViewTextBoxColumn";
+            this.patientNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.patientNameDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // birthYearDataGridViewTextBoxColumn
+            // 
+            this.birthYearDataGridViewTextBoxColumn.DataPropertyName = "BirthYear";
+            this.birthYearDataGridViewTextBoxColumn.HeaderText = "Năm sinh";
+            this.birthYearDataGridViewTextBoxColumn.Name = "birthYearDataGridViewTextBoxColumn";
+            this.birthYearDataGridViewTextBoxColumn.ReadOnly = true;
+            this.birthYearDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // sexDataGridViewTextBoxColumn
+            // 
+            this.sexDataGridViewTextBoxColumn.DataPropertyName = "Sex";
+            this.sexDataGridViewTextBoxColumn.HeaderText = "Giới tính";
+            this.sexDataGridViewTextBoxColumn.Name = "sexDataGridViewTextBoxColumn";
+            this.sexDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sexDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // checkTimeDataGridViewTextBoxColumn
+            // 
+            this.checkTimeDataGridViewTextBoxColumn.DataPropertyName = "CheckTime";
+            dataGridViewCellStyle4.Format = "HH:mm";
+            dataGridViewCellStyle4.NullValue = null;
+            this.checkTimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.checkTimeDataGridViewTextBoxColumn.HeaderText = "Khám";
+            this.checkTimeDataGridViewTextBoxColumn.Name = "checkTimeDataGridViewTextBoxColumn";
+            this.checkTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.checkTimeDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // recheckDateDataGridViewTextBoxColumn
+            // 
+            this.recheckDateDataGridViewTextBoxColumn.DataPropertyName = "RecheckDate";
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle5.NullValue = null;
+            this.recheckDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            this.recheckDateDataGridViewTextBoxColumn.HeaderText = "Tái khám";
+            this.recheckDateDataGridViewTextBoxColumn.Name = "recheckDateDataGridViewTextBoxColumn";
+            this.recheckDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // doctorNameDataGridViewTextBoxColumn
+            // 
+            this.doctorNameDataGridViewTextBoxColumn.DataPropertyName = "DoctorName";
+            this.doctorNameDataGridViewTextBoxColumn.HeaderText = "Bác sĩ";
+            this.doctorNameDataGridViewTextBoxColumn.Name = "doctorNameDataGridViewTextBoxColumn";
+            this.doctorNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.doctorNameDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Địa chỉ";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // btnDeliver
+            // 
+            this.btnDeliver.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDeliver.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeliver.Image = global::Medical.Properties.Resources.add;
+            this.btnDeliver.Location = new System.Drawing.Point(761, 8);
+            this.btnDeliver.Name = "btnDeliver";
+            this.btnDeliver.Size = new System.Drawing.Size(101, 25);
+            this.btnDeliver.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDeliver.TabIndex = 7;
+            this.btnDeliver.Text = "Phát thuốc";
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemove.Image = global::Medical.Properties.Resources.cancel;
+            this.btnRemove.Location = new System.Drawing.Point(680, 8);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 25);
+            this.btnRemove.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnRemove.TabIndex = 8;
+            this.btnRemove.Text = "Hủy";
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
             // 
             // DeliverList
             // 
@@ -316,16 +419,21 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.BindingSource bdsDeliver;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clinicIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn patientIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn doctorIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn recheckDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deliverIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deliverDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deliverTimeDataGridViewTextBoxColumn;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cboStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isDeliveredDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deliverTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn patientNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn birthYearDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sexDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn checkTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn recheckDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn doctorNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+        private DevComponents.DotNetBar.ButtonX btnDeliver;
+        private DevComponents.DotNetBar.ButtonX btnRemove;
+        private DevComponents.DotNetBar.StyleManager styleManager1;
     }
 }
