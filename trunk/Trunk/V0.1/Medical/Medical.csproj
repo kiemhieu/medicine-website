@@ -84,6 +84,12 @@
     <Compile Include="MedicineDeliver\DeliverList.Designer.cs">
       <DependentUpon>DeliverList.cs</DependentUpon>
     </Compile>
+    <Compile Include="MedicineDeliver\DeliveryRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicineDeliver\DeliveryRegister.Designer.cs">
+      <DependentUpon>DeliveryRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatientBrowseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MedicineDeliver\DeliverList.resx">
       <DependentUpon>DeliverList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicineDeliver\DeliveryRegister.resx">
+      <DependentUpon>DeliveryRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientBrowseForm.resx">
       <DependentUpon>PatientBrowseForm.cs</DependentUpon>

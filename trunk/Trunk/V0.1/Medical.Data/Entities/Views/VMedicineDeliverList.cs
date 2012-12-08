@@ -20,5 +20,36 @@ namespace Medical.Data.Entities.Views
         public DateTime? DeliverDate { get; set; }
         public DateTime? DeliverTime { get; set; }
         public DateTime? CheckTime { get; set; }
+        public String PatientName { get; set; }
+        public String Code { get; set; }
+        public int? BirthYear { get; set; }
+        public String Address { get; set; }
+        public String Sexual { get; set; }
+
+        [NotMapped]
+        public Boolean IsDelivered
+        {
+            get { return this.DeliverId.HasValue; }
+        }
+
+        [NotMapped]
+        public int No { get; set; }
+
+        [NotMapped]
+        public String Sex
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.Sexual)) return null;
+                switch (this.Sexual)
+                {
+                    case "F":
+                        return "Nữ";
+                    case "M":
+                        return "Nam";
+                }
+                return null;
+            }
+        }
     }
 }
