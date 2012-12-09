@@ -72,6 +72,18 @@
     <Compile Include="CheckUpRegister.Designer.cs">
       <DependentUpon>CheckUpRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClinicForm\frmClinic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClinicForm\frmClinic.Designer.cs">
+      <DependentUpon>frmClinic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClinicForm\frmClinicEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClinicForm\frmClinicEdit.Designer.cs">
+      <DependentUpon>frmClinicEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="History\History.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +102,24 @@
     <Compile Include="MedicineDeliver\DeliveryRegister.Designer.cs">
       <DependentUpon>DeliveryRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="MedicineForm\frmMedicine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicineForm\frmMedicine.Designer.cs">
+      <DependentUpon>frmMedicine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicineForm\frmMedicinEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicineForm\frmMedicinEdit.Designer.cs">
+      <DependentUpon>frmMedicinEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicineForm\frmMedicineSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicineForm\frmMedicineSearch.Designer.cs">
+      <DependentUpon>frmMedicineSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatientBrowseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +133,24 @@
       <DependentUpon>PatientRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Warehouse\frmWareHouseDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\frmWareHouseDetail.Designer.cs">
+      <DependentUpon>frmWareHouseDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Warehouse\frmWareHouseDetailEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\frmWareHouseDetailEdit.Designer.cs">
+      <DependentUpon>frmWareHouseDetailEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Warehouse\frmWHPageHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\frmWHPageHistory.Designer.cs">
+      <DependentUpon>frmWHPageHistory.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CheckUp.resx">
       <DependentUpon>CheckUp.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +160,12 @@
     <EmbeddedResource Include="CheckUpRegister.resx">
       <DependentUpon>CheckUpRegister.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClinicForm\frmClinic.resx">
+      <DependentUpon>frmClinic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClinicForm\frmClinicEdit.resx">
+      <DependentUpon>frmClinicEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="History\History.resx">
       <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,6 +174,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MedicineDeliver\DeliveryRegister.resx">
       <DependentUpon>DeliveryRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicineForm\frmMedicine.resx">
+      <DependentUpon>frmMedicine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicineForm\frmMedicinEdit.resx">
+      <DependentUpon>frmMedicinEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicineForm\frmMedicineSearch.resx">
+      <DependentUpon>frmMedicineSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientBrowseForm.resx">
       <DependentUpon>PatientBrowseForm.cs</DependentUpon>
@@ -137,6 +200,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Warehouse\frmWareHouseDetail.resx">
+      <DependentUpon>frmWareHouseDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\frmWareHouseDetailEdit.resx">
+      <DependentUpon>frmWareHouseDetailEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\frmWHPageHistory.resx">
+      <DependentUpon>frmWHPageHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\Medical.Data.Entities.Medicine.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Patient.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Prescription.datasource" />
