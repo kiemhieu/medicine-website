@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Medical.Data.Entities;
+using Medical.Data.EntitiyExtend;
 using Medical.Data.Repositories;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -11,37 +12,36 @@ namespace Medical.MedicineForm
     {
         public static int IdMedicine = -1;
         private UserRepository _userRepository = new UserRepository();
+
         private readonly MedicineRepository _medicineRepository = new MedicineRepository();
+
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FrmMedicine"/> class.
+        /// </summary>
         public FrmMedicine()
         {
             InitializeComponent();
-            FillToGrid();
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Initialize()
         {
-
-
-            //Add add = new Add();
-            //add.ShowDialog(this);
-
-            //List<User> users = userRepository.GetAll();
-            //this.grd.DataSource = users;
+            var items = new List<Item>(new Item[] { new Item(0, "Tất cả"), new Item(1, "ARV"), new Item(2, "NTCH") });
+            this.cboType.ComboBox.DisplayMember = "Name";
+            this.cboType.ComboBox.ValueMember = "Id";
+            this.cboType.ComboBox.DataSource = items;
         }
+
+        /// <summary>
+        /// Fills to grid.
+        /// </summary>
         private void FillToGrid()
         {
-            List<Medicine> lstMedicines = _medicineRepository.GetAll();
-            this.grd.DataSource = lstMedicines;
-            this.grd.Refresh();
-            this.grd.Parent.Refresh();
-            if (grd.Rows.Count == 0)
-            { }
-            else
-            {
-
-                grd.Rows[0].Selected = true;
-                lblID.Text = grd.Rows[0].Cells["idDataGridViewTextBoxColumn"].Value.ToString();
-            }
+            var medicines = _medicineRepository.GetAll();
+            var index = 0;
+            foreach (var item in medicines) item.No = ++index;
+            this.grd.DataSource = medicines;
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -84,7 +84,7 @@ namespace Medical.MedicineForm
 
         private void grd_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            lblID.Text = grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value == null ? "0" : grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString();
+            //lblID.Text = grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value == null ? "0" : grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString();
 
         }
 
@@ -92,6 +92,7 @@ namespace Medical.MedicineForm
 
         private void grd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            /*
             if (grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value == null)
             {
                 IdMedicine = 0;
@@ -105,9 +106,13 @@ namespace Medical.MedicineForm
             frmMedicinEdit frmEdit = new frmMedicinEdit();
             frmEdit.ShowDialog();
             FillToGrid();
+             */
         }
 
-
-
+        private void FrmMedicine_Load(object sender, EventArgs e)
+        {
+            FillToGrid();
+            Initialize();
+        }
     }
 }

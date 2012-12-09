@@ -34,6 +34,8 @@ namespace RunTest.Implementation
             var messageProvider = Activator.CreateInstance(Type.GetType(obj.ClassName), obj.ConfigFile) as IMessageManager;
             this._mainForm.MessageContainer = messageProvider;
 
+            Medical.Forms.Implements.MessageManager.Instance.Load(obj.ConfigFile);
+            
             obj = (ContainerConfiger)ConfigurationSettings.GetConfig("LogProvider");
             var logProvider = Activator.CreateInstance(Type.GetType(obj.ClassName)) as ILogManager;
             logProvider.MessageProvider = messageProvider;

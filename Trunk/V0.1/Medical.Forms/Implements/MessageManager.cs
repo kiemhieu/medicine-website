@@ -4,14 +4,16 @@ using System.Xml;
 using System.Windows.Forms;
 using Medical.Forms.Entities;
 using Medical.Forms.Interfaces;
-using System.Data;
 
-namespace RunTest.Implementation
+namespace Medical.Forms.Implements
 {
     public class MessageManager : IMessageManager
     {
+
+        private static MessageManager _instance;
         readonly Dictionary<string, SystemMessage> _messageDic = new Dictionary<string, SystemMessage>();
-        private readonly string _configFile;
+        private string _configFile;
+        
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MessageManager"/> class.
@@ -28,7 +30,14 @@ namespace RunTest.Implementation
         {
             this._configFile = file;
             LoadConfigFile();
-            var dt = new DataTable();
+            //var dt = new DataTable();
+        }
+
+        public void Load(String file)
+        {
+            this._configFile = file;
+            LoadConfigFile();
+            
         }
 
         /// <summary>
@@ -62,7 +71,6 @@ namespace RunTest.Implementation
             SystemMessage msg;
             this._messageDic.TryGetValue(id, out msg);
             if (param == null || param.Length == 0) return msg;
-
             msg.Content = string.Format(msg.Content, param);
             return msg;
         }
@@ -83,7 +91,7 @@ namespace RunTest.Implementation
         /// </summary>
         /// <param name="node">The node.</param>
         /// <returns></returns>
-        private static SystemMessage CreateMessageFromRootXmlNode(XmlNode node)
+        private SystemMessage CreateMessageFromRootXmlNode(XmlNode node)
         {
             if (node.ChildNodes.Count != 4) return null;
             var message = new SystemMessage();
@@ -129,6 +137,28 @@ namespace RunTest.Implementation
         private static MessageBoxButtons MappingButtonFromString(string str)
         {
             return (MessageBoxButtons)Enum.Parse(typeof(MessageBoxButtons), str, true);
+        }
+
+        /// <summary>
+        /// Shows the message.
+        /// </summary>
+        /// <param name="owner">The owner.</param>
+        /// <param name="mesageId">The mesage id.</param>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
+        public DialogResult ShowMessage(Form owner, string mesageId, params object [] value)
+        {
+            var message = GetMessageByID(mesageId, value);
+            return MessageBox.Show(owner, message.Content, message.Type.ToString(), message.Button, message.Type, MessageBoxDefaultButton.Button1);
+        }
+
+
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        public static MessageManager Instance
+        {
+            get { return _instance ?? (_instance = new MessageManager()); }
         }
     }
 }
