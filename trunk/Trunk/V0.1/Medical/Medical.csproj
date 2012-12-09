@@ -102,11 +102,11 @@
     <Compile Include="MedicineDeliver\DeliveryRegister.Designer.cs">
       <DependentUpon>DeliveryRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="MedicineForm\frmMedicine.cs">
+    <Compile Include="MedicineForm\FrmMedicine.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MedicineForm\frmMedicine.Designer.cs">
-      <DependentUpon>frmMedicine.cs</DependentUpon>
+    <Compile Include="MedicineForm\FrmMedicine.Designer.cs">
+      <DependentUpon>FrmMedicine.cs</DependentUpon>
     </Compile>
     <Compile Include="MedicineForm\frmMedicinEdit.cs">
       <SubType>Form</SubType>
@@ -175,8 +175,8 @@
     <EmbeddedResource Include="MedicineDeliver\DeliveryRegister.resx">
       <DependentUpon>DeliveryRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MedicineForm\frmMedicine.resx">
-      <DependentUpon>frmMedicine.cs</DependentUpon>
+    <EmbeddedResource Include="MedicineForm\FrmMedicine.resx">
+      <DependentUpon>FrmMedicine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MedicineForm\frmMedicinEdit.resx">
       <DependentUpon>frmMedicinEdit.cs</DependentUpon>

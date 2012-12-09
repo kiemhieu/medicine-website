@@ -7,12 +7,12 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Medical.MedicineForm
 {
-    public partial class frmMedicine : DockContent
+    public partial class FrmMedicine : DockContent
     {
         public static int IdMedicine = -1;
-        private UserRepository userRepository = new UserRepository();
-        private MedicineRepository medicineRepository = new MedicineRepository();
-        public frmMedicine()
+        private UserRepository _userRepository = new UserRepository();
+        private readonly MedicineRepository _medicineRepository = new MedicineRepository();
+        public FrmMedicine()
         {
             InitializeComponent();
             FillToGrid();
@@ -30,7 +30,7 @@ namespace Medical.MedicineForm
         }
         private void FillToGrid()
         {
-            List<Medicine> lstMedicines = medicineRepository.GetAll();
+            List<Medicine> lstMedicines = _medicineRepository.GetAll();
             this.grd.DataSource = lstMedicines;
             this.grd.Refresh();
             this.grd.Parent.Refresh();
@@ -62,7 +62,7 @@ namespace Medical.MedicineForm
             DialogResult dr = MessageBox.Show("Bạn có muốn xóa thuốc này không?", "Xóa thuốc", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dr == DialogResult.OK)
             {
-                medicineRepository.Delete(int.Parse(lblID.Text.Trim()));
+                _medicineRepository.Delete(int.Parse(lblID.Text.Trim()));
                 FillToGrid();
             }
         }
