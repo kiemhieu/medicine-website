@@ -28,20 +28,10 @@ namespace Medical.Data.Entities
         [NotMapped]
         public String TypeMedicine
         {
-            get
-            {
-                
-                if (this.Type)
-                {
-
-                    return "ARV";
-                }
-                else
-                {
-                    return "Nhiễm trùng cơ hội";
-                }
-                return "";
-            }
+            get { return this.Type ? "ARV" : "Nhiễm trùng cơ hội"; }
         }
+
+        [NotMapped]
+        public int No { get; set; }
   }
 }

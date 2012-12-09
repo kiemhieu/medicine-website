@@ -5,7 +5,7 @@ namespace Medical.Forms.Entities
 
     public class SystemMessage
     {
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         public string Content { get; set; }
 

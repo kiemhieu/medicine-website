@@ -66,6 +66,7 @@
     <Compile Include="EventArgs\ViewToFormEventArgs.cs" />
     <Compile Include="Implements\ApplicationMode.cs" />
     <Compile Include="Implements\ExceptionHandler.cs" />
+    <Compile Include="Implements\MessageManager.cs" />
     <Compile Include="Implements\MethodExecuter.cs" />
     <Compile Include="Implements\TopMenuItem.cs" />
     <Compile Include="Implements\ValidationUtil.cs" />

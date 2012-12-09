@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using Medical.Data.Entities;
 
-namespace Medical.Data.Repositories {
+namespace Medical.Data.Repositories
+{
     public class MedicineRepository : RepositoryBase, IMedicineRepository
     {
 
-       public Medicine GetById(int id)
+        public Medicine GetById(int id)
         {
             var medicine = this.Context.Medicines.FirstOrDefault(x => x.Id.Equals(id));
             return medicine;
@@ -21,7 +22,8 @@ namespace Medical.Data.Repositories {
         /// <param name="password">The password.</param>
         /// <param name="clinic">The clinic.</param>
         /// <returns></returns>
-        public bool Login(string username, string password, int clinic) {
+        public bool Login(string username, string password, int clinic)
+        {
             var user =
                 this.Context.Users.FirstOrDefault(
                     x =>
@@ -53,15 +55,17 @@ namespace Medical.Data.Repositories {
             this.Context.SaveChanges();
         }
 
-    
-        public void Delete(int id) {
+
+        public void Delete(int id)
+        {
             var oldMedicine = this.Context.Medicines.FirstOrDefault(x => x.Id == id);
             this.Context.Medicines.Remove(oldMedicine);
             this.Context.SaveChanges();
         }
 
 
-        public List<Medicine> GetAll() {
+        public List<Medicine> GetAll()
+        {
             return this.Context.Medicines.ToList();
         }
 
