@@ -63,6 +63,19 @@ namespace Medical.Data.Repositories
             this.Context.SaveChanges();
         }
 
+        public List<Medicine> Get(int type)
+        {
+            switch (type)
+            {
+                case 0:
+                    return this.Context.Medicines.ToList();
+                case 1:
+                    return this.Context.Medicines.Where(x => x.Type == true).ToList();
+                default:
+                    return this.Context.Medicines.Where(x => x.Type == false).ToList();
+            }
+        }
+
 
         public List<Medicine> GetAll()
         {

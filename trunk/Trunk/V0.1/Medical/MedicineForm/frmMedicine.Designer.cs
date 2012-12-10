@@ -33,24 +33,26 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbtnInsert = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnEdit = new System.Windows.Forms.ToolStripButton();
+            this.cboType = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbtnDelete = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnEdit = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnInsert = new System.Windows.Forms.ToolStripButton();
             this.lblID = new System.Windows.Forms.Label();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsDefine = new System.Windows.Forms.BindingSource(this.components);
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeMedicineDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tradeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboType = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.contentStringDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDefine)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -59,26 +61,40 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cboType,
             this.toolStripSeparator1,
-            this.tsbtnInsert,
+            this.tsbtnDelete,
             this.tsbtnEdit,
-            this.tsbtnDelete});
+            this.tsbtnInsert});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(838, 25);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // tsbtnInsert
+            // cboType
             // 
-            this.tsbtnInsert.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnInsert.Image")));
-            this.tsbtnInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnInsert.Name = "tsbtnInsert";
-            this.tsbtnInsert.Size = new System.Drawing.Size(87, 22);
-            this.tsbtnInsert.Text = "Thêm mới";
-            this.tsbtnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboType.DropDownWidth = 120;
+            this.cboType.Name = "cboType";
+            this.cboType.Size = new System.Drawing.Size(121, 25);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbtnDelete
+            // 
+            this.tsbtnDelete.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbtnDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDelete.Image")));
+            this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnDelete.Name = "tsbtnDelete";
+            this.tsbtnDelete.Size = new System.Drawing.Size(49, 22);
+            this.tsbtnDelete.Text = "Xóa";
+            this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // tsbtnEdit
             // 
+            this.tsbtnEdit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsbtnEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnEdit.Image")));
             this.tsbtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnEdit.Name = "tsbtnEdit";
@@ -86,14 +102,15 @@
             this.tsbtnEdit.Text = "Sửa";
             this.tsbtnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // tsbtnDelete
+            // tsbtnInsert
             // 
-            this.tsbtnDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDelete.Image")));
-            this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnDelete.Name = "tsbtnDelete";
-            this.tsbtnDelete.Size = new System.Drawing.Size(49, 22);
-            this.tsbtnDelete.Text = "Xóa";
-            this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.tsbtnInsert.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbtnInsert.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnInsert.Image")));
+            this.tsbtnInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnInsert.Name = "tsbtnInsert";
+            this.tsbtnInsert.Size = new System.Drawing.Size(87, 22);
+            this.tsbtnInsert.Text = "Thêm mới";
+            this.tsbtnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // lblID
             // 
@@ -124,10 +141,10 @@
             this.noDataGridViewTextBoxColumn,
             this.typeMedicineDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
-            this.contentDataGridViewTextBoxColumn,
-            this.unitDataGridViewTextBoxColumn,
             this.tradeNameDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn});
+            this.contentStringDataGridViewTextBoxColumn,
+            this.unitDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn1});
             this.grd.DataSource = this.bindingSource1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -155,6 +172,10 @@
             // 
             this.bindingSource1.DataSource = typeof(Medical.Data.Entities.Medicine);
             // 
+            // bdsDefine
+            // 
+            this.bdsDefine.DataSource = typeof(Medical.Data.Entities.Define);
+            // 
             // noDataGridViewTextBoxColumn
             // 
             this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
@@ -169,6 +190,7 @@
             this.typeMedicineDataGridViewTextBoxColumn.HeaderText = "Loại";
             this.typeMedicineDataGridViewTextBoxColumn.Name = "typeMedicineDataGridViewTextBoxColumn";
             this.typeMedicineDataGridViewTextBoxColumn.ReadOnly = true;
+            this.typeMedicineDataGridViewTextBoxColumn.Width = 80;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -176,22 +198,7 @@
             this.nameDataGridViewTextBoxColumn.HeaderText = "Thuốc";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // contentDataGridViewTextBoxColumn
-            // 
-            this.contentDataGridViewTextBoxColumn.DataPropertyName = "Content";
-            this.contentDataGridViewTextBoxColumn.HeaderText = "Hàm lượng";
-            this.contentDataGridViewTextBoxColumn.Name = "contentDataGridViewTextBoxColumn";
-            this.contentDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // unitDataGridViewTextBoxColumn
-            // 
-            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
-            this.unitDataGridViewTextBoxColumn.HeaderText = "Đơn vị";
-            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
-            this.unitDataGridViewTextBoxColumn.ReadOnly = true;
-            this.unitDataGridViewTextBoxColumn.Width = 80;
+            this.nameDataGridViewTextBoxColumn.Width = 200;
             // 
             // tradeNameDataGridViewTextBoxColumn
             // 
@@ -199,27 +206,34 @@
             this.tradeNameDataGridViewTextBoxColumn.HeaderText = "Tên thương mại";
             this.tradeNameDataGridViewTextBoxColumn.Name = "tradeNameDataGridViewTextBoxColumn";
             this.tradeNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tradeNameDataGridViewTextBoxColumn.Width = 150;
+            this.tradeNameDataGridViewTextBoxColumn.Width = 200;
             // 
-            // descriptionDataGridViewTextBoxColumn
+            // contentStringDataGridViewTextBoxColumn
             // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Ghi chú";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.contentStringDataGridViewTextBoxColumn.DataPropertyName = "ContentString";
+            this.contentStringDataGridViewTextBoxColumn.HeaderText = "Hàm lượng";
+            this.contentStringDataGridViewTextBoxColumn.Name = "contentStringDataGridViewTextBoxColumn";
+            this.contentStringDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // cboType
+            // unitDataGridViewTextBoxColumn
             // 
-            this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboType.DropDownWidth = 120;
-            this.cboType.Name = "cboType";
-            this.cboType.Size = new System.Drawing.Size(121, 25);
+            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
+            this.unitDataGridViewTextBoxColumn.DataSource = this.bdsDefine;
+            this.unitDataGridViewTextBoxColumn.DisplayMember = "Name";
+            this.unitDataGridViewTextBoxColumn.HeaderText = "Đơn vị";
+            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
+            this.unitDataGridViewTextBoxColumn.ReadOnly = true;
+            this.unitDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.unitDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.unitDataGridViewTextBoxColumn.ValueMember = "Id";
             // 
-            // toolStripSeparator1
+            // dataGridViewTextBoxColumn1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Description";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Ghi chú";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // FrmMedicine
             // 
@@ -245,6 +259,7 @@
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDefine)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,15 +274,17 @@
         private System.Windows.Forms.Label lblID;
         private DevComponents.DotNetBar.Controls.DataGridViewX grd;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeMedicineDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tradeNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripComboBox cboType;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.BindingSource bdsDefine;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeMedicineDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tradeNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contentStringDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn unitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
 
     }
 }

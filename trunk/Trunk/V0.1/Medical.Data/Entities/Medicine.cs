@@ -24,11 +24,19 @@ namespace Medical.Data.Entities
         public int LastUpdatedBy { get; set; }
         public int Version { get; set; }
 
+        [NotMapped]
+        public String ContentString
+        {
+            get { return string.Format("{0}{1}", this.Content, this.ContentUnitDefile == null ? "" : "(" + this.ContentUnitDefile.Name + ")"); }
+        }
+
+        [ForeignKey("ContentUnit")]
+        public virtual Define ContentUnitDefile { get; set; }
         
         [NotMapped]
         public String TypeMedicine
         {
-            get { return this.Type ? "ARV" : "Nhiễm trùng cơ hội"; }
+            get { return this.Type ? "ARV" : "NTCH"; }
         }
 
         [NotMapped]

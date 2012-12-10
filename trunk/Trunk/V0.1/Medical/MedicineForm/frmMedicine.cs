@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.EntitiyExtend;
 using Medical.Data.Repositories;
@@ -14,6 +15,7 @@ namespace Medical.MedicineForm
         private UserRepository _userRepository = new UserRepository();
 
         private readonly MedicineRepository _medicineRepository = new MedicineRepository();
+        private readonly IDefineRepository _defineRepository = new DefineRepository();
 
 
         /// <summary>
@@ -29,8 +31,19 @@ namespace Medical.MedicineForm
         {
             var items = new List<Item>(new Item[] { new Item(0, "Tất cả"), new Item(1, "ARV"), new Item(2, "NTCH") });
             this.cboType.ComboBox.DisplayMember = "Name";
-            this.cboType.ComboBox.ValueMember = "Id";
+            this.cboType.ComboBox.ValueMember = "Value";
             this.cboType.ComboBox.DataSource = items;
+            this.cboType.ComboBox.SelectedValueChanged += new EventHandler(ComboBox_SelectedValueChanged);
+
+
+            var units = _defineRepository.GetUnit();
+            this.bdsDefine.DataSource = units;
+
+        }
+
+        private void ComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            FillToGrid();
         }
 
         /// <summary>
@@ -38,7 +51,8 @@ namespace Medical.MedicineForm
         /// </summary>
         private void FillToGrid()
         {
-            var medicines = _medicineRepository.GetAll();
+            var type = Convert.ToInt32(this.cboType.ComboBox.SelectedValue);
+            var medicines = _medicineRepository.Get(type);
             var index = 0;
             foreach (var item in medicines) item.No = ++index;
             this.grd.DataSource = medicines;
@@ -46,8 +60,9 @@ namespace Medical.MedicineForm
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
+
             frmMedicinEdit frmedit = new frmMedicinEdit();
-            frmMedicinEdit.IdMedicineEdit = 0;
+            frmMedicinEdit.IdMedicineEdit = 0;   
             frmedit.ShowDialog();
             FillToGrid();
         }
