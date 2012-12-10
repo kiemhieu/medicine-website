@@ -6,12 +6,13 @@ using Medical.Data.Repositories;
 namespace Medical.MedicineForm
 {
 
-    public partial class frmMedicinEdit : Form
+    public partial class FrmMedicinEdit : Form
     {
         private UserRepository userRepository = new UserRepository();
         private MedicineRepository medicineRepository = new MedicineRepository();
         public static int IdMedicineEdit;
-        public frmMedicinEdit()
+
+        public FrmMedicinEdit()
         {
             //IdMedicineEdit = frmMedicine.IdMedicine;
             InitializeComponent();
@@ -33,15 +34,18 @@ namespace Medical.MedicineForm
 
         private void cleanItems()
         {
+            /*
             this.txtContent.Text = "";
             this.txtContentUnit.Text = "";
             //this.txtMaThuoc.Text = "";
             this.txtTenThuoc.Text = "";
             this.txtTradeName.Text = "";
             this.txtUnit.Text = "";
+             */
         }
         private void ReadOnlyItems(bool isTrue)
         {
+            /*
             this.txtContent.ReadOnly = isTrue;
             this.txtContentUnit.ReadOnly = isTrue;
             //this.txtMaThuoc.ReadOnly = isTrue;
@@ -49,9 +53,12 @@ namespace Medical.MedicineForm
             this.txtTradeName.ReadOnly = isTrue;
             this.txtUnit.ReadOnly = isTrue;
             this.txtDescription.ReadOnly = isTrue;
+             */
         }
+
         private Medicine FillToEntity()
         {
+            /*
             Medicine medicine;
             if (IdMedicineEdit <=0)
             {
@@ -73,11 +80,14 @@ namespace Medical.MedicineForm
             medicine.Type = rdARV.Checked;
 
             return medicine;
+             */
+            return null;
         }
 
      
         private void FillToItemByID()
         {
+            /*
             if (IdMedicineEdit <= 0)
                 return;
             Medicine medicine = medicineRepository.GetById(IdMedicineEdit);
@@ -97,6 +107,7 @@ namespace Medical.MedicineForm
                 rdARV.Checked = false;
                 rdNTCH.Checked = true;
             }
+             */
         }
 
        
@@ -118,7 +129,7 @@ namespace Medical.MedicineForm
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            frmMedicinEdit.IdMedicineEdit = -1;
+            FrmMedicinEdit.IdMedicineEdit = -1;
             this.Close(); 
         }
 
