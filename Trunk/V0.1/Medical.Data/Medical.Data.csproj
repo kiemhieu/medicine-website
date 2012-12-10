@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppContext.cs" />
+    <Compile Include="Definication.cs" />
     <Compile Include="Entities\Views\VMedicineDeliverList.cs" />
     <Compile Include="EntitiyExtend\Clinic.cs" />
     <Compile Include="EntitiyExtend\Item.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClinicRepository.cs" />
+    <Compile Include="Repositories\DefineRepository.cs" />
     <Compile Include="Repositories\FigureDetailRepository.cs" />
     <Compile Include="Repositories\PrescriptionDetailRepository.cs" />
     <Compile Include="Repositories\VMedicineDeliverRepository.cs" />

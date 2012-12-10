@@ -11,6 +11,8 @@ namespace Medical.Data
         void Insert(Medicine medicine);
         void Update(Medicine medicine);
         void Delete(int id);
+        List<Medicine> Get(int type);
         List<Medicine> GetAll();
+        
     }
 }

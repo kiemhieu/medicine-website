@@ -209,6 +209,7 @@
     <EmbeddedResource Include="Warehouse\frmWHPageHistory.resx">
       <DependentUpon>frmWHPageHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Medical.Data.Entities.Define.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Medicine.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Patient.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Prescription.datasource" />
