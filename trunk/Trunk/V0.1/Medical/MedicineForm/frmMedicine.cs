@@ -61,8 +61,8 @@ namespace Medical.MedicineForm
         private void btnInsert_Click(object sender, EventArgs e)
         {
 
-            frmMedicinEdit frmedit = new frmMedicinEdit();
-            frmMedicinEdit.IdMedicineEdit = 0;   
+            FrmMedicinEdit frmedit = new FrmMedicinEdit();
+            FrmMedicinEdit.IdMedicineEdit = 0;   
             frmedit.ShowDialog();
             FillToGrid();
         }
@@ -90,8 +90,8 @@ namespace Medical.MedicineForm
                 MessageBox.Show("Bạn hãy chọn bản thuốc cần sửa!");
                 return;
             }
-            frmMedicinEdit.IdMedicineEdit = int.Parse(lblID.Text);
-            frmMedicinEdit frmedit = new frmMedicinEdit();
+            FrmMedicinEdit.IdMedicineEdit = int.Parse(lblID.Text);
+            FrmMedicinEdit frmedit = new FrmMedicinEdit();
             frmedit.ShowDialog();
             FillToGrid();
 
