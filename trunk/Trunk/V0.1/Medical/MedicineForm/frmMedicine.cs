@@ -60,11 +60,12 @@ namespace Medical.MedicineForm
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-
+            
             FrmMedicinEdit frmedit = new FrmMedicinEdit();
-            FrmMedicinEdit.IdMedicineEdit = 0;   
+            //FrmMedicinEdit IdMedicineEdit = 0;   
             frmedit.ShowDialog();
             FillToGrid();
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -85,15 +86,15 @@ namespace Medical.MedicineForm
         private void btnEdit_Click(object sender, EventArgs e)
         {
 
-            if ((lblID.Text == "") || (lblID.Text == "0"))
-            {
-                MessageBox.Show("Bạn hãy chọn bản thuốc cần sửa!");
-                return;
-            }
-            FrmMedicinEdit.IdMedicineEdit = int.Parse(lblID.Text);
-            FrmMedicinEdit frmedit = new FrmMedicinEdit();
-            frmedit.ShowDialog();
-            FillToGrid();
+            //if ((lblID.Text == "") || (lblID.Text == "0"))
+            //{
+            //    MessageBox.Show("Bạn hãy chọn bản thuốc cần sửa!");
+            //    return;
+            //}
+            //FrmMedicinEdit.IdMedicineEdit = int.Parse(lblID.Text);
+            //FrmMedicinEdit frmedit = new FrmMedicinEdit();
+            //frmedit.ShowDialog();
+            //FillToGrid();
 
         }
 
