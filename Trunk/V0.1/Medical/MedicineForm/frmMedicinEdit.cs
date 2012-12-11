@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
 
@@ -8,14 +10,19 @@ namespace Medical.MedicineForm
 
     public partial class FrmMedicinEdit : Form
     {
-        private UserRepository userRepository = new UserRepository();
-        private MedicineRepository medicineRepository = new MedicineRepository();
-        public static int IdMedicineEdit;
+        private int _medicineId;
+        private bool _isAddnew = true;
+        private Medicine _medicine;
+
+        // private UserRepository userRepository = new UserRepository();
+        private readonly MedicineRepository _medicineRepository = new MedicineRepository();
+        private readonly IDefineRepository _defineRepository = new DefineRepository();
+        
 
         public FrmMedicinEdit()
         {
-            //IdMedicineEdit = frmMedicine.IdMedicine;
             InitializeComponent();
+            /*
             if (IdMedicineEdit <= 0)
             {
                 cleanItems();
@@ -28,9 +35,33 @@ namespace Medical.MedicineForm
                 FillToItemByID();
                 ReadOnlyItems(false);
             }
+            */
+        }
+
+        public FrmMedicinEdit(int id) : this()
+        {
+            this._medicineId = id;
+            this._isAddnew = false;
+            this.initialize();
         }
         
-      
+        private void initialize()
+        {
+            // Load unit
+            var defines = _defineRepository.GetUnit();
+            defines.Insert(0, new Define() {Id = 0, Name = ""});
+            this.cboUnit.DataSource = defines;
+            this.cboContentUnit.DataSource = defines;
+
+            // Load Medicine
+            this._medicine = this._isAddnew ? new Medicine() : this._medicineRepository.GetById(this._medicineId);
+            this.bdsMedicine.DataSource = this._medicine;
+
+            if (!this._isAddnew)
+            {
+                // if (this.)
+            }
+        }
 
         private void cleanItems()
         {
@@ -119,8 +150,8 @@ namespace Medical.MedicineForm
             if(dr == DialogResult.OK)
             {
                 Medicine medicine = FillToEntity();
-                if(medicine.Id == 0) medicineRepository.Insert(medicine);
-                else medicineRepository.Update(medicine);
+                if(medicine.Id == 0) _medicineRepository.Insert(medicine);
+                else _medicineRepository.Update(medicine);
 
                 this.Close();
             }
@@ -129,7 +160,7 @@ namespace Medical.MedicineForm
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            FrmMedicinEdit.IdMedicineEdit = -1;
+            // FrmMedicinEdit.IdMedicineEdit = -1;
             this.Close(); 
         }
 
@@ -140,8 +171,8 @@ namespace Medical.MedicineForm
             if (dr == DialogResult.OK)
             {
                 Medicine medicine = FillToEntity();
-                if (medicine.Id == 0) medicineRepository.Insert(medicine);
-                else medicineRepository.Update(medicine);
+                if (medicine.Id == 0) _medicineRepository.Insert(medicine);
+                else _medicineRepository.Update(medicine);
 
                 this.Close();
             }

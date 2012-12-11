@@ -12,6 +12,7 @@ namespace Medical.Data
         void Update(Medicine medicine);
         void Delete(int id);
         List<Medicine> Get(int type);
+        Medicine GetById(int id);
         List<Medicine> GetAll();
         
     }

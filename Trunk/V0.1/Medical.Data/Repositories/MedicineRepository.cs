@@ -11,8 +11,7 @@ namespace Medical.Data.Repositories
 
         public Medicine GetById(int id)
         {
-            var medicine = this.Context.Medicines.FirstOrDefault(x => x.Id.Equals(id));
-            return medicine;
+            return this.Context.Medicines.FirstOrDefault(x => x.Id.Equals(id));
         }
 
         /// <summary>
