@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Validator.cs" />
     <Compile Include="Entities\ApplicationConfig.cs" />
     <Compile Include="Entities\ClinicSetting.cs" />
     <Compile Include="Entities\SystemMessage.cs" />
