@@ -33,6 +33,8 @@ namespace Medical.Data.Repositories
 
         public void Insert(Medicine medicine)
         {
+            medicine.CreatedBy = AppContext.LoggedInUser.Id;
+            medicine.LastUpdatedBy = AppContext.LoggedInUser.Id;
             medicine.CreatedDate = DateTime.Now;
             medicine.LastUpdatedDate = DateTime.Now;
             medicine.Version = 0;

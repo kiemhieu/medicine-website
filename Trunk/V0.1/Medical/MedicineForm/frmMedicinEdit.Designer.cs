@@ -33,15 +33,15 @@
             this.btnCancle = new DevComponents.DotNetBar.ButtonX();
             this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtDescription = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
             this.cboUnit = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.cboContentUnit = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.integerInput1 = new DevComponents.Editors.IntegerInput();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.txtContent = new DevComponents.Editors.IntegerInput();
+            this.txtTradeName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.rdoNTCh = new System.Windows.Forms.RadioButton();
+            this.rdoArv = new System.Windows.Forms.RadioButton();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
@@ -53,7 +53,7 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +79,7 @@
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(87, 30);
             this.btnCancle.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancle.TabIndex = 3;
+            this.btnCancle.TabIndex = 1;
             this.btnCancle.Text = "Bỏ qua";
             this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
             // 
@@ -94,20 +94,20 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(87, 30);
             this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.TabIndex = 0;
             this.btnUpdate.Text = "Ghi lại";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBoxX3);
+            this.panel2.Controls.Add(this.txtDescription);
             this.panel2.Controls.Add(this.cboUnit);
             this.panel2.Controls.Add(this.cboContentUnit);
-            this.panel2.Controls.Add(this.integerInput1);
-            this.panel2.Controls.Add(this.textBoxX2);
-            this.panel2.Controls.Add(this.textBoxX1);
-            this.panel2.Controls.Add(this.radioButton2);
-            this.panel2.Controls.Add(this.radioButton1);
+            this.panel2.Controls.Add(this.txtContent);
+            this.panel2.Controls.Add(this.txtTradeName);
+            this.panel2.Controls.Add(this.txtName);
+            this.panel2.Controls.Add(this.rdoNTCh);
+            this.panel2.Controls.Add(this.rdoArv);
             this.panel2.Controls.Add(this.labelX7);
             this.panel2.Controls.Add(this.labelX6);
             this.panel2.Controls.Add(this.labelX5);
@@ -120,20 +120,20 @@
             this.panel2.Size = new System.Drawing.Size(625, 174);
             this.panel2.TabIndex = 9;
             // 
-            // textBoxX3
+            // txtDescription
             // 
-            this.textBoxX3.BackColor = System.Drawing.Color.White;
+            this.txtDescription.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
-            this.textBoxX3.Border.Class = "TextBoxBorder";
-            this.textBoxX3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsMedicine, "Description", true));
-            this.textBoxX3.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX3.Location = new System.Drawing.Point(113, 147);
-            this.textBoxX3.Name = "textBoxX3";
-            this.textBoxX3.Size = new System.Drawing.Size(500, 22);
-            this.textBoxX3.TabIndex = 29;
+            this.txtDescription.Border.Class = "TextBoxBorder";
+            this.txtDescription.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsMedicine, "Description", true));
+            this.txtDescription.ForeColor = System.Drawing.Color.Black;
+            this.txtDescription.Location = new System.Drawing.Point(113, 147);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(500, 22);
+            this.txtDescription.TabIndex = 7;
             // 
             // bdsMedicine
             // 
@@ -144,13 +144,14 @@
             this.cboUnit.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsMedicine, "Unit", true));
             this.cboUnit.DisplayMember = "Name";
             this.cboUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUnit.FormattingEnabled = true;
             this.cboUnit.ItemHeight = 16;
             this.cboUnit.Location = new System.Drawing.Point(113, 120);
             this.cboUnit.Name = "cboUnit";
-            this.cboUnit.Size = new System.Drawing.Size(121, 22);
+            this.cboUnit.Size = new System.Drawing.Size(80, 22);
             this.cboUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboUnit.TabIndex = 28;
+            this.cboUnit.TabIndex = 6;
             this.cboUnit.ValueMember = "Id";
             // 
             // cboContentUnit
@@ -158,81 +159,82 @@
             this.cboContentUnit.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsMedicine, "ContentUnit", true));
             this.cboContentUnit.DisplayMember = "Name";
             this.cboContentUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboContentUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboContentUnit.FormattingEnabled = true;
             this.cboContentUnit.ItemHeight = 16;
             this.cboContentUnit.Location = new System.Drawing.Point(244, 93);
             this.cboContentUnit.Name = "cboContentUnit";
-            this.cboContentUnit.Size = new System.Drawing.Size(120, 22);
+            this.cboContentUnit.Size = new System.Drawing.Size(80, 22);
             this.cboContentUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboContentUnit.TabIndex = 27;
+            this.cboContentUnit.TabIndex = 5;
             this.cboContentUnit.ValueMember = "Id";
             // 
-            // integerInput1
+            // txtContent
             // 
             // 
             // 
             // 
-            this.integerInput1.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.integerInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.integerInput1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.integerInput1.DataBindings.Add(new System.Windows.Forms.Binding("ValueObject", this.bdsMedicine, "Content", true));
-            this.integerInput1.Location = new System.Drawing.Point(114, 93);
-            this.integerInput1.Name = "integerInput1";
-            this.integerInput1.ShowUpDown = true;
-            this.integerInput1.Size = new System.Drawing.Size(120, 22);
-            this.integerInput1.TabIndex = 26;
+            this.txtContent.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtContent.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtContent.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtContent.DataBindings.Add(new System.Windows.Forms.Binding("ValueObject", this.bdsMedicine, "Content", true));
+            this.txtContent.Location = new System.Drawing.Point(114, 93);
+            this.txtContent.Name = "txtContent";
+            this.txtContent.ShowUpDown = true;
+            this.txtContent.Size = new System.Drawing.Size(120, 22);
+            this.txtContent.TabIndex = 4;
             // 
-            // textBoxX2
+            // txtTradeName
             // 
-            this.textBoxX2.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.textBoxX2.Border.Class = "TextBoxBorder";
-            this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsMedicine, "TradeName", true));
-            this.textBoxX2.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX2.Location = new System.Drawing.Point(114, 65);
-            this.textBoxX2.Name = "textBoxX2";
-            this.textBoxX2.Size = new System.Drawing.Size(250, 22);
-            this.textBoxX2.TabIndex = 25;
-            // 
-            // textBoxX1
-            // 
-            this.textBoxX1.BackColor = System.Drawing.Color.White;
+            this.txtTradeName.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsMedicine, "Name", true));
-            this.textBoxX1.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX1.Location = new System.Drawing.Point(114, 37);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.Size = new System.Drawing.Size(250, 22);
-            this.textBoxX1.TabIndex = 24;
+            this.txtTradeName.Border.Class = "TextBoxBorder";
+            this.txtTradeName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTradeName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsMedicine, "TradeName", true));
+            this.txtTradeName.ForeColor = System.Drawing.Color.Black;
+            this.txtTradeName.Location = new System.Drawing.Point(114, 65);
+            this.txtTradeName.Name = "txtTradeName";
+            this.txtTradeName.Size = new System.Drawing.Size(250, 22);
+            this.txtTradeName.TabIndex = 3;
             // 
-            // radioButton2
+            // txtName
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(173, 9);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(137, 20);
-            this.radioButton2.TabIndex = 23;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Nhiễm trùng cơ hội";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.txtName.BackColor = System.Drawing.Color.White;
             // 
-            // radioButton1
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(114, 9);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(53, 20);
-            this.radioButton1.TabIndex = 22;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "ARV";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            this.txtName.Border.Class = "TextBoxBorder";
+            this.txtName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsMedicine, "Name", true));
+            this.txtName.ForeColor = System.Drawing.Color.Black;
+            this.txtName.Location = new System.Drawing.Point(114, 37);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(250, 22);
+            this.txtName.TabIndex = 2;
+            // 
+            // rdoNTCh
+            // 
+            this.rdoNTCh.AutoSize = true;
+            this.rdoNTCh.Location = new System.Drawing.Point(173, 9);
+            this.rdoNTCh.Name = "rdoNTCh";
+            this.rdoNTCh.Size = new System.Drawing.Size(137, 20);
+            this.rdoNTCh.TabIndex = 1;
+            this.rdoNTCh.TabStop = true;
+            this.rdoNTCh.Text = "Nhiễm trùng cơ hội";
+            this.rdoNTCh.UseVisualStyleBackColor = true;
+            // 
+            // rdoArv
+            // 
+            this.rdoArv.AutoSize = true;
+            this.rdoArv.Location = new System.Drawing.Point(114, 9);
+            this.rdoArv.Name = "rdoArv";
+            this.rdoArv.Size = new System.Drawing.Size(53, 20);
+            this.rdoArv.TabIndex = 0;
+            this.rdoArv.TabStop = true;
+            this.rdoArv.Text = "ARV";
+            this.rdoArv.UseVisualStyleBackColor = true;
             // 
             // labelX7
             // 
@@ -343,15 +345,18 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmMedicinEdit";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tạo thuốc mới";
+            this.Load += new System.EventHandler(this.FrmMedicinEdit_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
             this.ResumeLayout(false);
 
@@ -363,14 +368,14 @@
         private DevComponents.DotNetBar.ButtonX btnCancle;
         private DevComponents.DotNetBar.ButtonX btnUpdate;
         private System.Windows.Forms.Panel panel2;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX3;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtDescription;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cboUnit;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cboContentUnit;
-        private DevComponents.Editors.IntegerInput integerInput1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private DevComponents.Editors.IntegerInput txtContent;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtTradeName;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtName;
+        private System.Windows.Forms.RadioButton rdoNTCh;
+        private System.Windows.Forms.RadioButton rdoArv;
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.LabelX labelX5;

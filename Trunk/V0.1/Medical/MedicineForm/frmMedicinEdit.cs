@@ -1,9 +1,12 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
 using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
+using Medical.Forms.Common;
 
 namespace Medical.MedicineForm
 {
@@ -17,50 +20,66 @@ namespace Medical.MedicineForm
         // private UserRepository userRepository = new UserRepository();
         private readonly MedicineRepository _medicineRepository = new MedicineRepository();
         private readonly IDefineRepository _defineRepository = new DefineRepository();
-        
+
 
         public FrmMedicinEdit()
         {
             InitializeComponent();
-            /*
-            if (IdMedicineEdit <= 0)
-            {
-                cleanItems();
-                ReadOnlyItems(false);
-
-            }
-            else
-            {
-                //Medicine medicine = medicineRepository.GetById(IdMedicineEdit);
-                FillToItemByID();
-                ReadOnlyItems(false);
-            }
-            */
         }
 
-        public FrmMedicinEdit(int id) : this()
+        public FrmMedicinEdit(int id)
+            : this()
         {
             this._medicineId = id;
             this._isAddnew = false;
             this.initialize();
         }
-        
+
         private void initialize()
         {
-            // Load unit
-            var defines = _defineRepository.GetUnit();
-            defines.Insert(0, new Define() {Id = 0, Name = ""});
-            this.cboUnit.DataSource = defines;
-            this.cboContentUnit.DataSource = defines;
+            InitializeCombobox(this.cboUnit);
+            InitializeCombobox(this.cboContentUnit);
 
             // Load Medicine
             this._medicine = this._isAddnew ? new Medicine() : this._medicineRepository.GetById(this._medicineId);
             this.bdsMedicine.DataSource = this._medicine;
-
-            if (!this._isAddnew)
+            if (!_isAddnew)
             {
-                // if (this.)
+                this.rdoArv.Checked = this._medicine.Type;
+                this.rdoNTCh.Checked = !this._medicine.Type;
             }
+        }
+
+        private void InitializeCombobox(ComboBoxEx cbo)
+        {
+            // Load unit
+            var defines = _defineRepository.GetUnit();
+            defines.Insert(0, new Define() { Id = 0, Name = "" });
+            cbo.DataSource = defines;
+        }
+
+        private bool ValidateForm()
+        {
+            var result = true;
+            if (!Validator.MandatoryChecking(new RadioButton[] { rdoArv, rdoNTCh }))
+            {
+                result = false;
+                this.err.SetError(rdoArv, "Chọn loại thuốc");
+                this.err.SetError(rdoNTCh, "Chọn loại thuốc");
+            }
+
+            if (!Validator.MandatoryChecking(txtName))
+            {
+                result = false;
+                this.err.SetError(txtName, "Chưa nhập tên thuốc");
+            }
+
+            if (!Validator.MandatoryChecking(txtName))
+            {
+                result = false;
+                this.err.SetError(txtName, "Chưa nhập tên thuốc");
+            }
+            result = true;
         }
 
         private void cleanItems()
@@ -115,7 +134,7 @@ namespace Medical.MedicineForm
             return null;
         }
 
-     
+
         private void FillToItemByID()
         {
             /*
@@ -141,16 +160,16 @@ namespace Medical.MedicineForm
              */
         }
 
-       
+
         private void txtUnit_KeyPress(object sender, KeyPressEventArgs e)
         {
-            DialogResult dr =MessageBox.Show("Bạn có muốn cập nhật không?", "Cập nhật", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            
+            DialogResult dr = MessageBox.Show("Bạn có muốn cập nhật không?", "Cập nhật", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-            if(dr == DialogResult.OK)
+
+            if (dr == DialogResult.OK)
             {
                 Medicine medicine = FillToEntity();
-                if(medicine.Id == 0) _medicineRepository.Insert(medicine);
+                if (medicine.Id == 0) _medicineRepository.Insert(medicine);
                 else _medicineRepository.Update(medicine);
 
                 this.Close();
@@ -161,13 +180,16 @@ namespace Medical.MedicineForm
         private void btnCancle_Click(object sender, EventArgs e)
         {
             // FrmMedicinEdit.IdMedicineEdit = -1;
-            this.Close(); 
+            this.Close();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Bạn có muốn cập nhật không?", "Cập nhật", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            
+            if ()
+            {
+                DialogResult dr = MessageBox.Show("Bạn có muốn cập nhật không?", "Cập nhật", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            }
+
             if (dr == DialogResult.OK)
             {
                 Medicine medicine = FillToEntity();
@@ -176,6 +198,11 @@ namespace Medical.MedicineForm
 
                 this.Close();
             }
+        }
+
+        private void FrmMedicinEdit_Load(object sender, EventArgs e)
+        {
+            initialize();
         }
     }
 
