@@ -7,6 +7,7 @@ using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
 using Medical.Forms.Common;
+using Medical.Forms.UI;
 
 namespace Medical.MedicineForm
 {
@@ -32,13 +33,13 @@ namespace Medical.MedicineForm
         {
             this._medicineId = id;
             this._isAddnew = false;
-            this.initialize();
+            // this.initialize();
         }
 
         /// <summary>
         /// Initializes this instance.
         /// </summary>
-        private void initialize()
+        private void Initialize()
         {
             InitializeCombobox(this.cboUnit);
             InitializeCombobox(this.cboContentUnit);
@@ -46,11 +47,9 @@ namespace Medical.MedicineForm
             // Load Medicine
             this._medicine = this._isAddnew ? new Medicine() : this._medicineRepository.GetById(this._medicineId);
             this.bdsMedicine.DataSource = this._medicine;
-            if (!_isAddnew)
-            {
-                this.rdoArv.Checked = this._medicine.Type;
-                this.rdoNTCh.Checked = !this._medicine.Type;
-            }
+            if (_isAddnew) return;
+            this.rdoArv.Checked = this._medicine.Type;
+            this.rdoNTCh.Checked = !this._medicine.Type;
         }
 
         /// <summary>
@@ -202,6 +201,10 @@ namespace Medical.MedicineForm
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            MessageDialog.Instance.ShowMessage(this, "Q01");
+            String message = this._isAddnew ? "Đăng ký loại thuốc mới ?" : "Cập nhập lại thông tin thuốc ?";
+            DialogResult dr = MessageBox.Show("message?", "Cập nhật", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
             /*
             if ()
             {
@@ -221,7 +224,7 @@ namespace Medical.MedicineForm
 
         private void FrmMedicinEdit_Load(object sender, EventArgs e)
         {
-            initialize();
+            Initialize();
         }
     }
 
