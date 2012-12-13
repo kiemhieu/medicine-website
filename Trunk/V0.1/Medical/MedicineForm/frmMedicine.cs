@@ -36,7 +36,7 @@ namespace Medical.MedicineForm
             this.cboType.ComboBox.SelectedValueChanged += new EventHandler(ComboBox_SelectedValueChanged);
 
 
-            var units = _defineRepository.GetUnit();
+            var units = _defineRepository.GetContentUnit();
             this.bdsDefine.DataSource = units;
 
         }
@@ -55,19 +55,27 @@ namespace Medical.MedicineForm
             var medicines = _medicineRepository.Get(type);
             var index = 0;
             foreach (var item in medicines) item.No = ++index;
-            this.grd.DataSource = medicines;
+            this.bdsMedicines.DataSource = medicines;
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnInsert control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            
-            FrmMedicinEdit frmedit = new FrmMedicinEdit();
-            //FrmMedicinEdit IdMedicineEdit = 0;   
+            var frmedit = new FrmMedicinEdit();
             frmedit.ShowDialog();
             FillToGrid();
             
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnDelete control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if ((lblID.Text == "") || (lblID.Text == "0"))
@@ -83,48 +91,28 @@ namespace Medical.MedicineForm
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnEdit control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            this.bdsDefine.EndEdit();
+            var medicine = (Medicine) this.bdsMedicines.Current;
+            if (medicine == null) return;
 
-            //if ((lblID.Text == "") || (lblID.Text == "0"))
-            //{
-            //    MessageBox.Show("Bạn hãy chọn bản thuốc cần sửa!");
-            //    return;
-            //}
-            //FrmMedicinEdit.IdMedicineEdit = int.Parse(lblID.Text);
-            //FrmMedicinEdit frmedit = new FrmMedicinEdit();
-            //frmedit.ShowDialog();
-            //FillToGrid();
-
-        }
-
-        private void grd_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //lblID.Text = grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value == null ? "0" : grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString();
-
-        }
-
-
-
-        private void grd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            /*
-            if (grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value == null)
-            {
-                IdMedicine = 0;
-            }
-
-            else
-            {
-                IdMedicine = int.Parse(grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString());
-            }
-            frmMedicinEdit.IdMedicineEdit = IdMedicine;
-            frmMedicinEdit frmEdit = new frmMedicinEdit();
-            frmEdit.ShowDialog();
+            var frmedit = new FrmMedicinEdit(medicine.Id);
+            frmedit.ShowDialog();
             FillToGrid();
-             */
         }
 
+
+        /// <summary>
+        /// Handles the Load event of the FrmMedicine control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void FrmMedicine_Load(object sender, EventArgs e)
         {
             FillToGrid();

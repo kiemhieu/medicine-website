@@ -11,12 +11,11 @@ namespace Medical.Forms.Common
     {
         public static bool MandatoryChecking(RadioButton [] radios)
         {
-            var valid = true;
             for (var i = 0; i < radios.Count(); i++)
             {
-                if (radios[i].Checked) return false;
+                if (radios[i].Checked) return true;
             }
-            return true;
+            return false;
         }
 
         public static bool MandatoryChecking(TextBoxX textbox)
