@@ -14,6 +14,9 @@ namespace Medical.MedicineForm
 
     public partial class FrmMedicinEdit : Form
     {
+        private const String REGISTER_MESSAGE_ID = "Q001";
+        private const String UPDATE_MESSAGE_ID = "Q002";
+
         private int _medicineId;
         private bool _isAddnew = true;
         private Medicine _medicine;
@@ -70,6 +73,8 @@ namespace Medical.MedicineForm
         /// <returns></returns>
         private bool ValidateForm()
         {
+            this.err.Clear();
+
             var result = true;
             if (!Validator.MandatoryChecking(new RadioButton[] { rdoArv, rdoNTCh }))
             {
@@ -201,9 +206,20 @@ namespace Medical.MedicineForm
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            MessageDialog.Instance.ShowMessage(this, "Q01");
-            String message = this._isAddnew ? "Đăng ký loại thuốc mới ?" : "Cập nhập lại thông tin thuốc ?";
-            DialogResult dr = MessageBox.Show("message?", "Cập nhật", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (!this.ValidateForm()) return;
+            var messageId = this._isAddnew ? REGISTER_MESSAGE_ID : UPDATE_MESSAGE_ID;
+            var dr = MessageDialog.Instance.ShowMessage(this, messageId, "loại thuốc");
+            if (dr == DialogResult.No) return;
+            
+            if (this._isAddnew)
+            {
+                this._medicineRepository.Insert(this._medicine);
+            }
+            else
+            {
+                this._medicineRepository.Update(this._medicine);
+            }
+
 
             /*
             if ()

@@ -72,5 +72,49 @@ namespace Medical.Data
         {
             get { return this.Error.Equals(string.Empty); }
         }
+
+        /// <summary>
+        /// Sets the info.
+        /// </summary>
+        /// <param name="isUpdate">if set to <c>true</c> [is update].</param>
+        public void SetInfo(bool isUpdate)
+        {
+            this.SetInfo("LastUpdatedDate", DateTime.Now);
+            this.SetInfo("LastUpdatedUser", AppContext.LoggedInUser.Id);
+            UpdateVersion();
+
+            if (isUpdate) return;
+            this.SetInfo("CreatedDate", DateTime.Now);
+            this.SetInfo("CreatedUser", AppContext.LoggedInUser.Id);
+        }
+
+        /// <summary>
+        /// Sets the info.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        private void SetInfo(String key, Object value)
+        {
+            var property = this.GetType().GetProperty(key);
+            if (property != null) property.SetValue(this, value, null);
+        }
+
+        /// <summary>
+        /// Updates the version.
+        /// </summary>
+        private void UpdateVersion()
+        {
+            var property = this.GetType().GetProperty("Version");
+            if (property == null) return;
+            var value = property.GetValue(this, null);
+            if (value == null)
+            {
+                property.SetValue(this, 0, null);
+                return;
+            }
+
+            var intValue = Convert.ToInt32(value);
+            property.SetValue(this, intValue + 1, null);
+        }
     }
 }

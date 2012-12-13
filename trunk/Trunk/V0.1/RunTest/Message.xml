@@ -24,4 +24,16 @@
     <Type>Information</Type>
     <Button>OK</Button>
   </Message>
+  <Message>
+    <Code>Q001</Code>
+    <Content>Đăng ký mới {0}. Bạn có muốn tiếp tục ?</Content>
+    <Type>Question</Type>
+    <Button>YesNo</Button>
+  </Message>
+  <Message>
+    <Code>Q002</Code>
+    <Content>Cập nhập lại thông tin {0}. Bạn có muốn tiếp tục ?</Content>
+    <Type>Question</Type>
+    <Button>YesNo</Button>
+  </Message>
 </Root>
