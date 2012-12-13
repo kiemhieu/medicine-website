@@ -48,11 +48,11 @@
             this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bdsDefine = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsMedicines = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDefine)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMedicines)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -74,6 +74,7 @@
             // 
             this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboType.DropDownWidth = 120;
+            this.cboType.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboType.Name = "cboType";
             this.cboType.Size = new System.Drawing.Size(121, 25);
             // 
@@ -145,7 +146,7 @@
             this.contentStringDataGridViewTextBoxColumn,
             this.unitDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn1});
-            this.grd.DataSource = this.bindingSource1;
+            this.grd.DataSource = this.bdsMedicines;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -165,8 +166,6 @@
             this.grd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grd.Size = new System.Drawing.Size(838, 464);
             this.grd.TabIndex = 8;
-            this.grd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellClick);
-            this.grd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
             // 
             // noDataGridViewTextBoxColumn
             // 
@@ -231,9 +230,9 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // bindingSource1
+            // bdsMedicines
             // 
-            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.Medicine);
+            this.bdsMedicines.DataSource = typeof(Medical.Data.Entities.Medicine);
             // 
             // FrmMedicine
             // 
@@ -259,7 +258,7 @@
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDefine)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMedicines)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,7 +272,7 @@
         private System.Windows.Forms.ToolStripButton tsbtnDelete;
         private System.Windows.Forms.Label lblID;
         private DevComponents.DotNetBar.Controls.DataGridViewX grd;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.BindingSource bdsMedicines;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripComboBox cboType;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

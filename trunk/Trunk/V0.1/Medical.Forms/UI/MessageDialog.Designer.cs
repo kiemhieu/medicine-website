@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LblMessage = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnNo = new DevComponents.DotNetBar.ButtonX();
@@ -36,27 +35,16 @@
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.btnOK = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
+            this.lblMessage = new DevComponents.DotNetBar.LabelX();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // LblMessage
-            // 
-            this.LblMessage.AutoWordSelection = true;
-            this.LblMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LblMessage.Location = new System.Drawing.Point(59, 10);
-            this.LblMessage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.LblMessage.Name = "LblMessage";
-            this.LblMessage.ReadOnly = true;
-            this.LblMessage.Size = new System.Drawing.Size(354, 91);
-            this.LblMessage.TabIndex = 0;
-            this.LblMessage.Text = "hello";
-            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblMessage);
             this.panel1.Controls.Add(this.pictureBox);
-            this.panel1.Controls.Add(this.LblMessage);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -107,7 +95,7 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.Location = new System.Drawing.Point(6, 15);
+            this.pictureBox.Location = new System.Drawing.Point(6, 7);
             this.pictureBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(47, 49);
@@ -138,6 +126,21 @@
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Bỏ qua";
             // 
+            // lblMessage
+            // 
+            // 
+            // 
+            // 
+            this.lblMessage.BackgroundStyle.Class = "";
+            this.lblMessage.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblMessage.Location = new System.Drawing.Point(59, 7);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(354, 96);
+            this.lblMessage.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.lblMessage.TabIndex = 1;
+            this.lblMessage.TextLineAlignment = System.Drawing.StringAlignment.Near;
+            this.lblMessage.WordWrap = true;
+            // 
             // MessageDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -165,7 +168,6 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox LblMessage;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox;
@@ -173,5 +175,6 @@
         private DevComponents.DotNetBar.ButtonX btnNo;
         private DevComponents.DotNetBar.ButtonX btnCancel;
         private DevComponents.DotNetBar.ButtonX btnOK;
+        private DevComponents.DotNetBar.LabelX lblMessage;
     }
 }

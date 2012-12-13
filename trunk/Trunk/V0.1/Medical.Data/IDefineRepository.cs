@@ -9,5 +9,6 @@ namespace Medical.Data
     public interface IDefineRepository
     {
         List<Define> GetUnit();
+        List<Define> GetContentUnit();
     }
 }

@@ -77,12 +77,12 @@ namespace Medical.Forms.UI
                         break;
                 }
             }
-         
-            this.LblMessage.Text = message;
+
+            this.lblMessage.Text = message;
             return this.ShowDialog(owner);
         }
 
-        public static MessageDialog _instance;
+        private static MessageDialog _instance;
         public static MessageDialog Instance
         {
             get { return _instance ?? (_instance = new MessageDialog()); }

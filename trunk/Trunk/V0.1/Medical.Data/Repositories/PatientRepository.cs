@@ -25,7 +25,6 @@ namespace Medical.Data.Repositories
             //patient.LastUpdatedUser = AppContext.LoggedInUser.Id;
             this.Context.Patients.Add(patient);
             this.Context.SaveChanges();
-            this.Context.Entry(patient).Reference("Clinic").Load();
         }
 
         /// <summary>
