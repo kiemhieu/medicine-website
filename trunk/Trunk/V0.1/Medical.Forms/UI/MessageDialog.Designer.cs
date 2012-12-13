@@ -30,25 +30,26 @@
         {
             this.LblMessage = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnYes = new System.Windows.Forms.Button();
-            this.btnNo = new System.Windows.Forms.Button();
+            this.btnNo = new DevComponents.DotNetBar.ButtonX();
+            this.btnYes = new DevComponents.DotNetBar.ButtonX();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.btnOK = new DevComponents.DotNetBar.ButtonX();
+            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // LblMessage
             // 
             this.LblMessage.AutoWordSelection = true;
             this.LblMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LblMessage.Location = new System.Drawing.Point(56, 8);
+            this.LblMessage.Location = new System.Drawing.Point(59, 10);
+            this.LblMessage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LblMessage.Name = "LblMessage";
             this.LblMessage.ReadOnly = true;
-            this.LblMessage.Size = new System.Drawing.Size(380, 74);
+            this.LblMessage.Size = new System.Drawing.Size(354, 91);
             this.LblMessage.TabIndex = 0;
             this.LblMessage.Text = "hello";
             // 
@@ -58,85 +59,96 @@
             this.panel1.Controls.Add(this.LblMessage);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(445, 91);
+            this.panel1.Size = new System.Drawing.Size(416, 112);
             this.panel1.TabIndex = 1;
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.Location = new System.Drawing.Point(5, 12);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox.TabIndex = 0;
-            this.pictureBox.TabStop = false;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btnOK);
             this.flowLayoutPanel1.Controls.Add(this.btnCancel);
-            this.flowLayoutPanel1.Controls.Add(this.btnYes);
+            this.flowLayoutPanel1.Controls.Add(this.btnOK);
             this.flowLayoutPanel1.Controls.Add(this.btnNo);
+            this.flowLayoutPanel1.Controls.Add(this.btnYes);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 91);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 112);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(445, 29);
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(416, 46);
             this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // btnOK
-            // 
-            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(367, 3);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 0;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Visible = false;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(286, 3);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Visible = false;
-            // 
-            // btnYes
-            // 
-            this.btnYes.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.btnYes.Location = new System.Drawing.Point(205, 3);
-            this.btnYes.Name = "btnYes";
-            this.btnYes.Size = new System.Drawing.Size(75, 23);
-            this.btnYes.TabIndex = 2;
-            this.btnYes.Text = "Yes";
-            this.btnYes.UseVisualStyleBackColor = true;
-            this.btnYes.Visible = false;
             // 
             // btnNo
             // 
+            this.btnNo.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnNo.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnNo.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.btnNo.Location = new System.Drawing.Point(124, 3);
+            this.btnNo.Image = global::Medical.Forms.Properties.Resources.cancel;
+            this.btnNo.Location = new System.Drawing.Point(121, 8);
             this.btnNo.Name = "btnNo";
-            this.btnNo.Size = new System.Drawing.Size(75, 23);
-            this.btnNo.TabIndex = 3;
-            this.btnNo.Text = "No";
-            this.btnNo.UseVisualStyleBackColor = true;
-            this.btnNo.Visible = false;
+            this.btnNo.Size = new System.Drawing.Size(90, 30);
+            this.btnNo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnNo.TabIndex = 5;
+            this.btnNo.Text = "Không";
+            // 
+            // btnYes
+            // 
+            this.btnYes.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnYes.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnYes.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.btnYes.Image = global::Medical.Forms.Properties.Resources.accept;
+            this.btnYes.Location = new System.Drawing.Point(25, 8);
+            this.btnYes.Name = "btnYes";
+            this.btnYes.Size = new System.Drawing.Size(90, 30);
+            this.btnYes.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnYes.TabIndex = 4;
+            this.btnYes.Text = "Có";
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Location = new System.Drawing.Point(6, 15);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(47, 49);
+            this.pictureBox.TabIndex = 0;
+            this.pictureBox.TabStop = false;
+            // 
+            // btnOK
+            // 
+            this.btnOK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnOK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnOK.Image = global::Medical.Forms.Properties.Resources.accept;
+            this.btnOK.Location = new System.Drawing.Point(217, 8);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(90, 30);
+            this.btnOK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOK.TabIndex = 6;
+            this.btnOK.Text = "Đồng ý";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancel.Image = global::Medical.Forms.Properties.Resources.cancel;
+            this.btnCancel.Location = new System.Drawing.Point(313, 8);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(90, 30);
+            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancel.TabIndex = 7;
+            this.btnCancel.Text = "Bỏ qua";
             // 
             // MessageDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 120);
+            this.ClientSize = new System.Drawing.Size(416, 158);
             this.ControlBox = false;
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MessageDialog";
@@ -145,8 +157,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Message";
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -156,10 +168,10 @@
         private System.Windows.Forms.RichTextBox LblMessage;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnYes;
-        private System.Windows.Forms.Button btnNo;
         private System.Windows.Forms.PictureBox pictureBox;
+        private DevComponents.DotNetBar.ButtonX btnYes;
+        private DevComponents.DotNetBar.ButtonX btnNo;
+        private DevComponents.DotNetBar.ButtonX btnCancel;
+        private DevComponents.DotNetBar.ButtonX btnOK;
     }
 }
