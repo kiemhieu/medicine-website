@@ -56,8 +56,8 @@ namespace Medical.Data.Repositories
             origin.Content = medicine.Content;
             origin.ContentUnit = medicine.ContentUnit;
             origin.SetInfo(true);
-            this.Context.Entry(origin).Reload();
             this.Context.SaveChanges();
+            this.Context.Entry(origin).Reload();
         }
 
 
