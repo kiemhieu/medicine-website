@@ -36,7 +36,7 @@ namespace Medical.MedicineForm
             this.cboType.ComboBox.SelectedValueChanged += new EventHandler(ComboBox_SelectedValueChanged);
 
 
-            var units = _defineRepository.GetContentUnit();
+            var units = _defineRepository.GetUnit();
             this.bdsDefine.DataSource = units;
 
         }
@@ -56,6 +56,8 @@ namespace Medical.MedicineForm
             var index = 0;
             foreach (var item in medicines) item.No = ++index;
             this.bdsMedicines.DataSource = medicines;
+            this.bdsMedicines.ResetBindings(true);
+            this.grd.Update();
         }
 
         /// <summary>
@@ -120,3 +122,4 @@ namespace Medical.MedicineForm
         }
     }
 }
+
