@@ -35,6 +35,9 @@ namespace Medical.MedicineForm
             this.initialize();
         }
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         private void initialize()
         {
             InitializeCombobox(this.cboUnit);
@@ -50,6 +53,10 @@ namespace Medical.MedicineForm
             }
         }
 
+        /// <summary>
+        /// Initializes the combobox.
+        /// </summary>
+        /// <param name="cbo">The cbo.</param>
         private void InitializeCombobox(ComboBoxEx cbo)
         {
             // Load unit
@@ -58,6 +65,10 @@ namespace Medical.MedicineForm
             cbo.DataSource = defines;
         }
 
+        /// <summary>
+        /// Validates the form.
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateForm()
         {
             var result = true;
@@ -74,12 +85,18 @@ namespace Medical.MedicineForm
                 this.err.SetError(txtName, "Chưa nhập tên thuốc");
             }
 
-            if (!Validator.MandatoryChecking(txtName))
+            if (!Validator.MandatoryChecking(cboUnit))
             {
                 result = false;
-                this.err.SetError(txtName, "Chưa nhập tên thuốc");
+                this.err.SetError(cboUnit, "Chưa nhập đơn vị");
             }
-            result = true;
+
+            if (txtContent.ValueObject != null && !Validator.MandatoryChecking(cboContentUnit))
+            {
+                result = false;
+                this.err.SetError(txtName, "Chưa nhập đơn vị cho hàm lượng");
+            }
+            return result;
         }
 
         private void cleanItems()
@@ -185,6 +202,7 @@ namespace Medical.MedicineForm
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            /*
             if ()
             {
                 DialogResult dr = MessageBox.Show("Bạn có muốn cập nhật không?", "Cập nhật", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -198,6 +216,7 @@ namespace Medical.MedicineForm
 
                 this.Close();
             }
+             */
         }
 
         private void FrmMedicinEdit_Load(object sender, EventArgs e)
