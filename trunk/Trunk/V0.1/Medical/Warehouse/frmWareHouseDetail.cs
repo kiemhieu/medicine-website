@@ -103,7 +103,7 @@ namespace Medical.Warehouse
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void textBoxX1_ButtonCustomClick(object sender, EventArgs e)
         {
-            var patientBrowse = new frmMedicineSearch("",txtSeachName.Text.Trim());
+            var patientBrowse = new FrmMedicineSearch("",txtSeachName.Text.Trim());
             var result = patientBrowse.ShowDialog(this);
             txtSeachName.Text = this.medicineName;
             bindingSource1.DataSource = whDetailRepository.GetByIdMedicine(this.IdMedicine);

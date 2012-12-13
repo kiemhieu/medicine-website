@@ -5,15 +5,15 @@ using Medical.Warehouse;
 
 namespace Medical.MedicineForm
 {
-    public partial class frmMedicineSearch : Form
+    public partial class FrmMedicineSearch : Form
     {
         private MedicineRepository reposioryMedicine;
-        public frmMedicineSearch()
+        public FrmMedicineSearch()
         {
             reposioryMedicine = new MedicineRepository();
             InitializeComponent();
         }
-        public frmMedicineSearch(string sMa,string sTen)
+        public FrmMedicineSearch(string sMa,string sTen)
             : this()
         {
             this.txtMaThuoc.Text = sMa;

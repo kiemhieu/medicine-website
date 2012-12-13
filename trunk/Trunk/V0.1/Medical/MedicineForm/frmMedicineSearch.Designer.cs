@@ -1,6 +1,6 @@
 ﻿namespace Medical.MedicineForm
 {
-    partial class frmMedicineSearch
+    partial class FrmMedicineSearch
     {
         /// <summary>
         /// Required designer variable.
@@ -286,7 +286,7 @@
             this.ClientSize = new System.Drawing.Size(1118, 317);
             this.Controls.Add(this.grd);
             this.Controls.Add(this.grpMaster);
-            this.Name = "frmMedicineSearch";
+            this.Name = "FrmMedicineSearch";
             this.Text = "frmMedicineSearch";
             this.grpMaster.ResumeLayout(false);
             this.grpMaster.PerformLayout();
