@@ -9,18 +9,17 @@ namespace Medical.Data.Repositories
     public class MedicineRepository : RepositoryBase, IMedicineRepository
     {
 
+        /// <summary>
+        /// Gets the by id.
+        /// </summary>
+        /// <param name="id">The id.</param>
+        /// <returns></returns>
         public Medicine GetById(int id)
         {
             return this.Context.Medicines.FirstOrDefault(x => x.Id.Equals(id));
         }
 
-        /// <summary>
-        /// Logins the specified username.
-        /// </summary>
-        /// <param name="username">The username.</param>
-        /// <param name="password">The password.</param>
-        /// <param name="clinic">The clinic.</param>
-        /// <returns></returns>
+        /*
         public bool Login(string username, string password, int clinic)
         {
             var user =
@@ -30,33 +29,41 @@ namespace Medical.Data.Repositories
                     x.ClinicId == clinic);
             return user != null;
         }
+        */
 
+        /// <summary>
+        /// Inserts the specified medicine.
+        /// </summary>
+        /// <param name="medicine">The medicine.</param>
         public void Insert(Medicine medicine)
         {
-            medicine.CreatedBy = AppContext.LoggedInUser.Id;
-            medicine.LastUpdatedBy = AppContext.LoggedInUser.Id;
-            medicine.CreatedDate = DateTime.Now;
-            medicine.LastUpdatedDate = DateTime.Now;
-            medicine.Version = 0;
+            medicine.SetInfo(false);
             this.Context.Medicines.Add(medicine);
             this.Context.SaveChanges();
         }
 
+        /// <summary>
+        /// Updates the specified medicine.
+        /// </summary>
+        /// <param name="medicine">The medicine.</param>
         public void Update(Medicine medicine)
         {
-            var oldMedicine = this.Context.Medicines.FirstOrDefault(x => x.Id == medicine.Id);
-            if (oldMedicine == null) return;
-            oldMedicine.Name = medicine.Name;
-            oldMedicine.TradeName = medicine.TradeName;
-            oldMedicine.Unit = medicine.Unit;
-            oldMedicine.Content = medicine.Content;
-            oldMedicine.ContentUnit = medicine.ContentUnit;
-            oldMedicine.LastUpdatedDate = DateTime.Now;
-            oldMedicine.Version++;
+            var origin = this.Context.Medicines.FirstOrDefault(x => x.Id == medicine.Id);
+            if (origin == null) return;
+            origin.Name = medicine.Name;
+            origin.TradeName = medicine.TradeName;
+            origin.Unit = medicine.Unit;
+            origin.Content = medicine.Content;
+            origin.ContentUnit = medicine.ContentUnit;
+            origin.SetInfo(true);
             this.Context.SaveChanges();
         }
 
 
+        /// <summary>
+        /// Deletes the specified id.
+        /// </summary>
+        /// <param name="id">The id.</param>
         public void Delete(int id)
         {
             var oldMedicine = this.Context.Medicines.FirstOrDefault(x => x.Id == id);
@@ -64,6 +71,11 @@ namespace Medical.Data.Repositories
             this.Context.SaveChanges();
         }
 
+        /// <summary>
+        /// Gets the specified type.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns></returns>
         public List<Medicine> Get(int type)
         {
             switch (type)
@@ -78,11 +90,20 @@ namespace Medical.Data.Repositories
         }
 
 
+        /// <summary>
+        /// Gets all.
+        /// </summary>
+        /// <returns></returns>
         public List<Medicine> GetAll()
         {
             return this.Context.Medicines.ToList();
         }
 
+        /// <summary>
+        /// Gets the name of the by.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
         public List<Medicine> GetByName(string name)
         {
             return Context.Medicines.Where(x => x.Name.Contains(name)).ToList();
