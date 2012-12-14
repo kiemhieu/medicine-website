@@ -5,6 +5,7 @@ using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.EntitiyExtend;
 using Medical.Data.Repositories;
+using Medical.Forms.UI;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace Medical.MedicineForm
@@ -80,17 +81,26 @@ namespace Medical.MedicineForm
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if ((lblID.Text == "") || (lblID.Text == "0"))
+            this.bdsDefine.EndEdit();
+            var medicine = (Medicine)this.bdsMedicines.Current;
+            if (medicine == null)
             {
-                MessageBox.Show("Bạn hãy chọn bản thuốc cần xóa!");
+                MessageDialog.Instance.ShowMessage(this, "M001", "loại thuốc");
                 return;
             }
-            DialogResult dr = MessageBox.Show("Bạn có muốn xóa thuốc này không?", "Xóa thuốc", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (dr == DialogResult.OK)
+
+            var dialogResult = MessageDialog.Instance.ShowMessage(this, "Q003", String.Format("thuốc {0}", medicine.Name));
+
+            if (dialogResult == DialogResult.No) return;
+            try
             {
-                _medicineRepository.Delete(int.Parse(lblID.Text.Trim()));
-                FillToGrid();
+                this._medicineRepository.Delete(medicine.Id);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            FillToGrid();
         }
 
         /// <summary>
