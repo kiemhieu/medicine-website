@@ -63,7 +63,7 @@ namespace RunTest.Implementation
             this._messageDic.TryGetValue(id, out msg);
             if (param == null || param.Length == 0) return msg;
 
-            msg.Content = string.Format(msg.Content, param);
+            // msg.Content = string.Format(msg.Content, param);
             return msg;
         }
 

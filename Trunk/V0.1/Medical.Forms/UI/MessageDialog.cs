@@ -32,15 +32,19 @@ namespace Medical.Forms.UI
                 switch (msg.Type)
                 {
                     case MessageBoxIcon.Error:
+                        this.Text = "Lỗi";
                         this.pictureBox.Image = System.Drawing.Image.FromFile(_iconPath + "\\" + error);
                         break;
                     case MessageBoxIcon.Information:
+                        this.Text = "Thông báo";
                         this.pictureBox.Image = System.Drawing.Image.FromFile(_iconPath + "\\" + info);
                         break;
                     case MessageBoxIcon.Question:
+                        this.Text = "Xác nhận";
                         this.pictureBox.Image = System.Drawing.Image.FromFile(_iconPath + "\\" + confirm);
                         break;
                     case MessageBoxIcon.Warning:
+                        this.Text = "Cảnh báo";
                         this.pictureBox.Image = System.Drawing.Image.FromFile(_iconPath + "\\" + warning);
                         break;
                     default:
@@ -78,7 +82,7 @@ namespace Medical.Forms.UI
                 }
             }
 
-            this.lblMessage.Text = message;
+            this.lblMessage.Text = string.Format(message, parameter);
             return this.ShowDialog(owner);
         }
 

@@ -7,8 +7,8 @@
     <Button>OK</Button>
   </Message>
   <Message>
-    <Code>MSG0001</Code>
-    <Content>Action completed successfully</Content>
+    <Code>M001</Code>
+    <Content>Hãy chọn {0} cần xóa.</Content>
     <Type>Information</Type>
     <Button>OK</Button>
   </Message>
@@ -33,6 +33,12 @@
   <Message>
     <Code>Q002</Code>
     <Content>Cập nhập lại thông tin {0}. Bạn có muốn tiếp tục ?</Content>
+    <Type>Question</Type>
+    <Button>YesNo</Button>
+  </Message>
+  <Message>
+    <Code>Q003</Code>
+    <Content>Bạn có chắc muốn xóa {0} ?</Content>
     <Type>Question</Type>
     <Button>YesNo</Button>
   </Message>
