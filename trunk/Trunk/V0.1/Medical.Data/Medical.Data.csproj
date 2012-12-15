@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="AppContext.cs" />
     <Compile Include="Definication.cs" />
+    <Compile Include="Entities\MedicineDeliveryDetailAllocate.cs" />
     <Compile Include="Entities\Views\VMedicineDeliverList.cs" />
     <Compile Include="EntitiyExtend\Clinic.cs" />
     <Compile Include="EntitiyExtend\Item.cs" />
