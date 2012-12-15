@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMedicine));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -86,7 +85,7 @@
             // tsbtnDelete
             // 
             this.tsbtnDelete.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbtnDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDelete.Image")));
+            this.tsbtnDelete.Image = global::Medical.Properties.Resources.delete;
             this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnDelete.Name = "tsbtnDelete";
             this.tsbtnDelete.Size = new System.Drawing.Size(49, 22);
@@ -96,7 +95,7 @@
             // tsbtnEdit
             // 
             this.tsbtnEdit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbtnEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnEdit.Image")));
+            this.tsbtnEdit.Image = global::Medical.Properties.Resources.edit;
             this.tsbtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnEdit.Name = "tsbtnEdit";
             this.tsbtnEdit.Size = new System.Drawing.Size(53, 22);
@@ -106,7 +105,7 @@
             // tsbtnInsert
             // 
             this.tsbtnInsert.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbtnInsert.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnInsert.Image")));
+            this.tsbtnInsert.Image = global::Medical.Properties.Resources.add;
             this.tsbtnInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnInsert.Name = "tsbtnInsert";
             this.tsbtnInsert.Size = new System.Drawing.Size(87, 22);
