@@ -81,7 +81,7 @@ namespace Medical.Data
         {
             this.SetInfo("LastUpdatedDate", DateTime.Now);
             this.SetInfo("LastUpdatedUser", AppContext.LoggedInUser.Id);
-            UpdateVersion();
+            this.UpdateVersion();
 
             if (isUpdate) return;
             this.SetInfo("CreatedDate", DateTime.Now);
