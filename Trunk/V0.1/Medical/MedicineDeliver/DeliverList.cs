@@ -74,8 +74,8 @@ namespace Medical.MedicineDeliver
 
         private void btnDeliver_Click(object sender, EventArgs e)
         {
-            var deliveryRegister = new DeliveryRegister();
-            deliveryRegister.ShowDialog();
+            // var deliveryRegister = new DeliveryRegister();
+            // deliveryRegister.ShowDialog();
         }
     }
 }
