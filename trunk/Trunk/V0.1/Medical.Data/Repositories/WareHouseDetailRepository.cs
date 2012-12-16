@@ -15,13 +15,17 @@ namespace Medical.Data.Repositories {
             var whDetail = this.Context.WareHouseDetails.FirstOrDefault(x => x.Id.Equals(id));
             return whDetail;
         }
+
         public WareHouseDetail GetById(int id)
         {
             var whDetail = this.Context.WareHouseDetails.FirstOrDefault(x => x.Id.Equals(id));
             return whDetail;
         }
 
-     
+        public List<WareHouseDetail> GetInstockProduct(int pdtId)
+        {
+            throw new NotImplementedException();
+        }
 
         public void Insert(WareHouseDetail whDetail)
         {
@@ -61,7 +65,6 @@ namespace Medical.Data.Repositories {
             }
          
         }
-
     
         public void Delete(int id) {
             try
@@ -77,7 +80,6 @@ namespace Medical.Data.Repositories {
             }
             
         }
-
  
         public List<WareHouseDetail> GetAll() {
             try
@@ -90,6 +92,7 @@ namespace Medical.Data.Repositories {
                 return null;
             }
         }
+
         public List<WareHouseDetail> GetByIdMedicine(int idMedicine)
         {
             try
