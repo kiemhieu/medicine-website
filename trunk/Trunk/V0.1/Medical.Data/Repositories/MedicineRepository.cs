@@ -107,7 +107,16 @@ namespace Medical.Data.Repositories
         /// <returns></returns>
         public List<Medicine> GetByName(string name)
         {
-            return Context.Medicines.Where(x => x.Name.Contains(name)).ToList();
+            try
+            {
+                var s = Context.Medicines.Where(x => x.Name.Contains(name)).ToList();
+                return s;
+            }
+            catch
+            { 
+                
+            }
+            return null;
         }
     }
 }
