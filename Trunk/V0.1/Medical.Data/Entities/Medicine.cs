@@ -19,9 +19,9 @@ namespace Medical.Data.Entities
         public string Description { get; set; }
         public bool Type { get; set; }
         public DateTime CreatedDate { get; set; }
-        public int CreatedUser { get; set; }
+        public int CreatedBy { get; set; }
         public DateTime LastUpdatedDate { get; set; }
-        public int LastUpdatedUser { get; set; }
+        public int LastUpdatedBy { get; set; }
         public int Version { get; set; }
 
         [NotMapped]

@@ -25,9 +25,16 @@ namespace Medical.Data.Repositories {
 
         public void Insert(WareHousePaperDetail whPaperDetail)
         {
-            whPaperDetail.Version = 0;
-            this.Context.WareHousePaperDetails.Add(whPaperDetail);
-            this.Context.SaveChanges();
+            try
+            {
+                whPaperDetail.Version = 0;
+                this.Context.WareHousePaperDetails.Add(whPaperDetail);
+                this.Context.SaveChanges();
+            }
+            catch (Exception ex)
+            { 
+                
+            }
         }
 
         public void Update(WareHousePaperDetail whPaperDetail)

@@ -8,6 +8,8 @@ namespace Medical.MedicineForm
     public partial class FrmMedicineSearch : Form
     {
         private MedicineRepository reposioryMedicine;
+        public int IdMedicine { get; set; }
+
         public FrmMedicineSearch()
         {
             reposioryMedicine = new MedicineRepository();
@@ -27,9 +29,9 @@ namespace Medical.MedicineForm
 
         private void grd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmWareHouseDetail frmWHDetail = new frmWareHouseDetail();
-            frmWHDetail.IdMedicine = int.Parse(grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString());
-            frmWHDetail.medicineName = grd.Rows[e.RowIndex].Cells["nameDataGridViewTextBoxColumn"].Value.ToString();
+            //frmWareHouseDetail frmWHDetail = new frmWareHouseDetail();
+            IdMedicine = int.Parse(grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString());//frmWHDetail.IdMedicine = int.Parse(grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString());
+            //frmWHDetail.medicineName = grd.Rows[e.RowIndex].Cells["nameDataGridViewTextBoxColumn"].Value.ToString();
             this.Close();
         }
     }
