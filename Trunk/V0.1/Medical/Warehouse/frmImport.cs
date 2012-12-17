@@ -10,6 +10,7 @@ using Medical.Data.Repositories;
 using WeifenLuo.WinFormsUI.Docking;
 using Medical.Data;
 using Medical.Data.Entities;
+using DevComponents.DotNetBar.Controls;
 
 namespace Medical.Warehouse
 {
@@ -19,6 +20,7 @@ namespace Medical.Warehouse
         private DefineRepository repDefine;
         private MedicineRepository repMedicine;
         private WareHouseDetailRepository repwhDetail;
+        private WareHouseRepository repwh;
         private WareHousePaperRepository repwhPaper;
         private WareHousePaperDetailRepository repwhPaperDetail;
         private int ClinicId;
@@ -29,6 +31,7 @@ namespace Medical.Warehouse
             repClinic = new ClinicRepository();
             repDefine = new DefineRepository();
             repMedicine = new MedicineRepository();
+            repwh = new WareHouseRepository();
             repwhDetail = new WareHouseDetailRepository();
             repwhPaper = new WareHousePaperRepository();
             repwhPaperDetail = new WareHousePaperDetailRepository();
@@ -78,27 +81,12 @@ namespace Medical.Warehouse
             var txtLotno = new DataGridViewTextBoxColumn { HeaderText = "Số lô", DataPropertyName = "LotNo", Name = "LotNo" };
             grd.Columns.Add(txtLotno);
 
-            var txtSoLuong = new DataGridViewTextBoxColumn { HeaderText = "Số lượng", DataPropertyName = "TotalVolumn", Name = "TotalVolumn" };
+            var txtSoLuong = new DataGridViewTextBoxColumn { HeaderText = "Số lượng", DataPropertyName = "Volumn", Name = "Volumn" };
             grd.Columns.Add(txtSoLuong);
 
-            var txtSoLuongHong = new DataGridViewTextBoxColumn { HeaderText = "Số lượng hỏng", DataPropertyName = "BadVolumn", Name = "BadVolumn" };
-            grd.Columns.Add(txtSoLuongHong);
-
-            var txtSoLuongThuc = new DataGridViewTextBoxColumn { HeaderText = "Số lượng thực", DataPropertyName = "RealityVolumn", Name = "RealityVolumn" };
-            txtSoLuongThuc.ReadOnly = true;
-            grd.Columns.Add(txtSoLuongThuc);
-
-
-            var cbDonVi = new DataGridViewComboBoxColumn
-            {
-                DataSource = repDefine.GetUnit(),
-                DisplayMember = "Name",
-                ValueMember = "Id",
-                DataPropertyName = "Id",
-                HeaderText = "Đơn vị",
-                Name = "Unit"
-            };
-            grd.Columns.Add(cbDonVi);
+            var txtDonVi = new DataGridViewTextBoxColumn { HeaderText = "Đơn vị", DataPropertyName = "Unit", Name = "Unit" };
+            txtDonVi.ReadOnly = true;
+            grd.Columns.Add(txtDonVi);
 
             var txtDonGia = new DataGridViewTextBoxColumn { HeaderText = "Đơn giá", DataPropertyName = "UnitPrice", Name = "UnitPrice" };
             grd.Columns.Add(txtDonGia);
@@ -106,6 +94,9 @@ namespace Medical.Warehouse
             var txtThanhTien = new DataGridViewTextBoxColumn { HeaderText = "Thành tiền", DataPropertyName = "Amount", Name = "Amount" };
             txtThanhTien.ReadOnly = true;
             grd.Columns.Add(txtThanhTien);
+
+            var dtExpireDate = new DataGridViewDateTimeInputColumn { HeaderText = "Ngày hết hạn", DataPropertyName = "ExpireDate", Name = "ExpireDate" };
+            grd.Columns.Add(dtExpireDate);
 
             var txtGhiChu = new DataGridViewTextBoxColumn { HeaderText = "Ghi chú", DataPropertyName = "Note", Name = "Note" };
             txtGhiChu.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -149,11 +140,11 @@ namespace Medical.Warehouse
             WareHousePaperDetail whPaperDetail = new WareHousePaperDetail();
             whPaperDetail.Id = 0;
             whPaperDetail.Amount = int.Parse(grd.Rows[0].Cells["Amount"].Value.ToString());
-            whPaperDetail.BadVolumn = int.Parse(grd.Rows[0].Cells["BadVolumn"].Value.ToString());
+            whPaperDetail.Volumn = int.Parse(grd.Rows[0].Cells["Volumn"].Value.ToString());
             whPaperDetail.LotNo = grd.Rows[0].Cells["LotNo"].Value.ToString();
             whPaperDetail.MedicineId = int.Parse(grd.Rows[0].Cells["MedicineId"].Value.ToString());
             whPaperDetail.Note = grd.Rows[0].Cells["Note"].Value.ToString();
-            whPaperDetail.PaperId = this.WHPaperId;
+            whPaperDetail.WareHousePaperId = this.WHPaperId;
             return whPaperDetail;
         }
 
@@ -165,8 +156,9 @@ namespace Medical.Warehouse
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
+            //Insert data to WareHousePaper
             WareHousePaper wareHousePaper = new WareHousePaper();
-            wareHousePaper.ClinicId = 0;
+            wareHousePaper.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());
             wareHousePaper.Date = dateImport.Value;
             wareHousePaper.Deliverer = txtDeliverer.Text;
             wareHousePaper.Recipient = txtRecipient.Text;
@@ -176,61 +168,100 @@ namespace Medical.Warehouse
             wareHousePaper.Note = txtNote.Text;
             WareHousePaperRepository wareHousePaperRepository = new WareHousePaperRepository();
             wareHousePaperRepository.Insert(wareHousePaper);
+
+            //Insert data to WareHousePaperDetail
             foreach (DataGridViewRow row in grd.Rows)
             {
                 if (ValidateRowData(row))
                 {
                     WareHousePaperDetail item = new WareHousePaperDetail();
-                    item.PaperId = wareHousePaper.Id;                    
+                    item.WareHousePaperId = wareHousePaper.Id;
                     item.LotNo = row.Cells["LotNo"].Value.ToString();
                     item.MedicineId = int.Parse(row.Cells["MedicineId"].Value.ToString());
-                    item.TotalVolumn = int.Parse(row.Cells["TotalVolumn"].Value.ToString());
-                    item.BadVolumn = int.Parse(row.Cells["BadVolumn"].Value.ToString());
-                    item.RealityVolumn = int.Parse(row.Cells["RealityVolumn"].Value.ToString());
+                    item.Volumn = int.Parse(row.Cells["Volumn"].Value.ToString());
                     item.Unit = int.Parse(row.Cells["Unit"].Value.ToString());
                     item.UnitPrice = int.Parse(row.Cells["UnitPrice"].Value.ToString());
                     item.Amount = int.Parse(row.Cells["Amount"].Value.ToString());
+                    item.ExpireDate = DateTime.Parse(row.Cells["ExpireDate"].Value.ToString());
                     if (row.Cells["Note"].Value != null)
                         item.Note = row.Cells["Note"].Value.ToString();
                     repwhPaperDetail.Insert(item);
+
+                    //Insert data to WareHouse
+                    var wareHouse = repwh.GetByIdMedicine(item.MedicineId, wareHousePaper.ClinicId);
+                    if (wareHouse != null)
+                    {
+                        wareHouse.Volumn += item.Volumn;
+                        repwh.Update(wareHouse);
+                    }
+                    else
+                    {
+                        wareHouse = new WareHouse();
+                        wareHouse.MedicineId = item.MedicineId;
+                        wareHouse.ClinicId = wareHousePaper.ClinicId;
+                        wareHouse.Volumn = item.Volumn;
+                        wareHouse.MinAllowed = 0;
+                        repwh.Insert(wareHouse);
+                    }
+
+                    //Insert data to WareHouseDetail
+                    WareHouseDetail wareHouseDetail = new WareHouseDetail();
+                    wareHouseDetail.MedicineId = item.MedicineId;
+                    wareHouseDetail.WareHouseId = wareHouse.Id;
+                    wareHouseDetail.WareHousePaperDetailId = item.Id;
+                    wareHouseDetail.LotNo = item.LotNo;
+                    wareHouseDetail.ExpiredDate = item.ExpireDate;
+                    wareHouseDetail.OriginalVolumn = item.Volumn;
+                    wareHouseDetail.CurrentVolumn = item.Volumn;
+                    wareHouseDetail.BadVolumn = 0;
+                    wareHouseDetail.Unit = item.Unit;
+                    wareHouseDetail.UnitPrice = item.UnitPrice.Value;
+                    wareHouseDetail.CreatedDate = DateTime.Now;
+                    wareHouseDetail.LastUpdatedDate = DateTime.Now;
+                    repwhDetail.Insert(wareHouseDetail);
                 }
             }
         }
 
         private void grd_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            int totalVolumn = 0;
-            int badVolumn = 0;
-            int realityVolumn = 0;
+            int volumn = 0;
             int unitPrice = 0;
-            if (grd.Columns[e.ColumnIndex].Name == "TotalVolumn" || grd.Columns[e.ColumnIndex].Name == "BadVolumn")
+
+            if (grd.Columns[e.ColumnIndex].Name == "MedicineId")
             {
-                if (grd.Rows[e.RowIndex].Cells["TotalVolumn"].Value != null && int.TryParse(grd.Rows[e.RowIndex].Cells["TotalVolumn"].Value.ToString(), out totalVolumn) && grd.Rows[e.RowIndex].Cells["BadVolumn"].Value != null && int.TryParse(grd.Rows[e.RowIndex].Cells["BadVolumn"].Value.ToString(), out badVolumn))
+                if (grd.Rows[e.RowIndex].Cells["MedicineId"].Value != null)
                 {
-                    grd.Rows[e.RowIndex].Cells["RealityVolumn"].Value = totalVolumn - badVolumn;
+                    var medicine = repMedicine.GetById(int.Parse(grd.Rows[e.RowIndex].Cells["MedicineId"].Value.ToString()));
+                    grd.Rows[e.RowIndex].Cells["Unit"].Value = medicine.Unit;
                 }
             }
 
-            if (grd.Columns[e.ColumnIndex].Name == "UnitPrice")
+            if (grd.Columns[e.ColumnIndex].Name == "Volumn" || grd.Columns[e.ColumnIndex].Name == "UnitPrice")
             {
-                if (grd.Rows[e.RowIndex].Cells["RealityVolumn"].Value != null && int.TryParse(grd.Rows[e.RowIndex].Cells["RealityVolumn"].Value.ToString(), out realityVolumn) && grd.Rows[e.RowIndex].Cells["UnitPrice"].Value != null && int.TryParse(grd.Rows[e.RowIndex].Cells["UnitPrice"].Value.ToString(), out unitPrice))
+                if (grd.Rows[e.RowIndex].Cells["Volumn"].Value != null && int.TryParse(grd.Rows[e.RowIndex].Cells["Volumn"].Value.ToString(), out volumn) && grd.Rows[e.RowIndex].Cells["UnitPrice"].Value != null && int.TryParse(grd.Rows[e.RowIndex].Cells["UnitPrice"].Value.ToString(), out unitPrice))
                 {
-                    grd.Rows[e.RowIndex].Cells["Amount"].Value = realityVolumn * unitPrice;
+                    grd.Rows[e.RowIndex].Cells["Amount"].Value = unitPrice * volumn;
                 }
             }
         }
 
         private bool ValidateRowData(DataGridViewRow row)
         {
-            int totalVolumn = 0;
-            int badVolumn = 0;
-            if (row.Cells["LotNo"].Value == null || row.Cells["MedicineId"].Value == null || row.Cells["TotalVolumn"].Value == null || row.Cells["BadVolumn"].Value == null
-                || row.Cells["Unit"].Value == null || !int.TryParse(row.Cells["TotalVolumn"].Value.ToString(), out totalVolumn) || !int.TryParse(row.Cells["BadVolumn"].Value.ToString(), out badVolumn))
+            int volumn = 0;
+            DateTime dtExpireDate = new DateTime();
+            if (row.Cells["LotNo"].Value == null || row.Cells["MedicineId"].Value == null || row.Cells["Volumn"].Value == null || !int.TryParse(row.Cells["Volumn"].Value.ToString(), out volumn)
+                || row.Cells["ExpireDate"].Value == null || !DateTime.TryParse(row.Cells["ExpireDate"].Value.ToString(), out dtExpireDate) || row.Cells["Unit"].Value == null)
             {
                 return false;
             }
 
             return true;
+        }
+
+        private void grd_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
