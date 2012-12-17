@@ -41,19 +41,23 @@ namespace Medical.Data.Repositories {
         {
             try
             {
-                var oldwhPaper = this.Context.WareHousePaperDetails.FirstOrDefault(x => x.Id == whPaperDetail.Id);
-                if (oldwhPaper == null) return;
-                oldwhPaper.PaperId = whPaperDetail.PaperId;
-                oldwhPaper.MedicineId = whPaperDetail.MedicineId;
-                oldwhPaper.LotNo= whPaperDetail.LotNo;
-                oldwhPaper.TotalVolumn = whPaperDetail.TotalVolumn;
-                oldwhPaper.BadVolumn = whPaperDetail.BadVolumn;
-                oldwhPaper.RealityVolumn = whPaperDetail.RealityVolumn;
-                oldwhPaper.Unit = whPaperDetail.Unit;
-                oldwhPaper.UnitPrice = whPaperDetail.UnitPrice;
-                oldwhPaper.Amount = whPaperDetail.Amount;
-                oldwhPaper.Note = whPaperDetail.Note;
-                oldwhPaper.Version++;
+                var oldWhDetail = this.Context.WareHouseDetails.FirstOrDefault(x => x.Id == whDetail.Id);
+                if (oldWhDetail == null) return;
+                oldWhDetail.WareHouseId = whDetail.WareHouseId;
+                oldWhDetail.MedicineId = whDetail.MedicineId;
+                oldWhDetail.WareHousePaperDetailId = whDetail.WareHousePaperDetailId;
+                oldWhDetail.CreatedUser = whDetail.CreatedUser;
+                oldWhDetail.CreatedDate = whDetail.CreatedDate;
+                oldWhDetail.ExpiredDate = whDetail.ExpiredDate;
+                oldWhDetail.LotNo = whDetail.LotNo;
+                oldWhDetail.Unit = whDetail.Unit;
+                oldWhDetail.UnitPrice = whDetail.UnitPrice;
+                oldWhDetail.OriginalVolumn = whDetail.OriginalVolumn;
+                oldWhDetail.CurrentVolumn = whDetail.CurrentVolumn;
+                oldWhDetail.BadVolumn = whDetail.BadVolumn;
+                // oldWhDetail.LastUpdatedUser = AppContext.LoggedInUser.Id;
+                oldWhDetail.LastUpdatedDate = DateTime.Now;
+                oldWhDetail.Version++;
                 this.Context.SaveChanges();
             }
             catch (Exception ex)
@@ -97,7 +101,7 @@ namespace Medical.Data.Repositories {
             try
             {
                 List<WareHousePaperDetail> lst =
-                    this.Context.WareHousePaperDetails.Where(x => x.PaperId.Equals(idPaper)).ToList();
+                    this.Context.WareHousePaperDetails.Where(x => x.WareHousePaperId.Equals(idPaper)).ToList();
                 return lst;
             }
             catch (Exception ex)

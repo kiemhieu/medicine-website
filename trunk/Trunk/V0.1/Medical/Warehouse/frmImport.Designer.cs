@@ -36,29 +36,26 @@
             this.dateImport = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtDeliverer = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtRecipient = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtMST = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtNote = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.txtNo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnInsert = new DevComponents.DotNetBar.ButtonX();
             this.bindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource4 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateImport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -66,16 +63,17 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.cbClinic);
+            this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.dateImport);
+            this.groupBox1.Controls.Add(this.btnInsert);
             this.groupBox1.Controls.Add(this.txtDeliverer);
             this.groupBox1.Controls.Add(this.txtRecipient);
-            this.groupBox1.Controls.Add(this.txtMST);
             this.groupBox1.Controls.Add(this.txtNote);
             this.groupBox1.Controls.Add(this.labelX7);
             this.groupBox1.Controls.Add(this.txtNo);
             this.groupBox1.Controls.Add(this.labelX6);
-            this.groupBox1.Controls.Add(this.labelX5);
             this.groupBox1.Controls.Add(this.labelX3);
             this.groupBox1.Controls.Add(this.labelX4);
             this.groupBox1.Controls.Add(this.labelX2);
@@ -96,7 +94,7 @@
             this.cbClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbClinic.FormattingEnabled = true;
             this.cbClinic.ItemHeight = 15;
-            this.cbClinic.Location = new System.Drawing.Point(542, 22);
+            this.cbClinic.Location = new System.Drawing.Point(541, 22);
             this.cbClinic.Name = "cbClinic";
             this.cbClinic.Size = new System.Drawing.Size(192, 21);
             this.cbClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -166,9 +164,9 @@
             // 
             this.txtDeliverer.Border.Class = "TextBoxBorder";
             this.txtDeliverer.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtDeliverer.Location = new System.Drawing.Point(542, 73);
+            this.txtDeliverer.Location = new System.Drawing.Point(541, 49);
             this.txtDeliverer.Name = "txtDeliverer";
-            this.txtDeliverer.Size = new System.Drawing.Size(234, 21);
+            this.txtDeliverer.Size = new System.Drawing.Size(192, 21);
             this.txtDeliverer.TabIndex = 1;
             // 
             // txtRecipient
@@ -182,18 +180,6 @@
             this.txtRecipient.Name = "txtRecipient";
             this.txtRecipient.Size = new System.Drawing.Size(278, 21);
             this.txtRecipient.TabIndex = 1;
-            // 
-            // txtMST
-            // 
-            // 
-            // 
-            // 
-            this.txtMST.Border.Class = "TextBoxBorder";
-            this.txtMST.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtMST.Location = new System.Drawing.Point(542, 46);
-            this.txtMST.Name = "txtMST";
-            this.txtMST.Size = new System.Drawing.Size(84, 21);
-            this.txtMST.TabIndex = 1;
             // 
             // txtNote
             // 
@@ -214,7 +200,7 @@
             // 
             this.labelX7.BackgroundStyle.Class = "";
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(431, 73);
+            this.labelX7.Location = new System.Drawing.Point(431, 47);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(105, 23);
             this.labelX7.TabIndex = 0;
@@ -244,19 +230,6 @@
             this.labelX6.Size = new System.Drawing.Size(75, 23);
             this.labelX6.TabIndex = 0;
             this.labelX6.Text = "Người nhận";
-            // 
-            // labelX5
-            // 
-            // 
-            // 
-            // 
-            this.labelX5.BackgroundStyle.Class = "";
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(431, 47);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(75, 23);
-            this.labelX5.TabIndex = 0;
-            this.labelX5.Text = "Mã số thuế";
             // 
             // labelX3
             // 
@@ -324,28 +297,18 @@
             this.grd.DefaultCellStyle = dataGridViewCellStyle1;
             this.grd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.grd.Location = new System.Drawing.Point(0, 136);
+            this.grd.Location = new System.Drawing.Point(0, 115);
             this.grd.Name = "grd";
-            this.grd.Size = new System.Drawing.Size(804, 259);
+            this.grd.Size = new System.Drawing.Size(804, 280);
             this.grd.TabIndex = 1;
+            this.grd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellContentClick);
             this.grd.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellEndEdit);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnCancel);
-            this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Controls.Add(this.btnInsert);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 100);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(804, 36);
-            this.panel1.TabIndex = 2;
             // 
             // btnCancel
             // 
             this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCancel.Location = new System.Drawing.Point(689, 7);
+            this.btnCancel.Location = new System.Drawing.Point(657, 77);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -356,7 +319,7 @@
             // 
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(576, 7);
+            this.btnSave.Location = new System.Drawing.Point(545, 77);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -368,7 +331,7 @@
             // 
             this.btnInsert.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnInsert.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnInsert.Location = new System.Drawing.Point(461, 7);
+            this.btnInsert.Location = new System.Drawing.Point(431, 77);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 23);
             this.btnInsert.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -388,6 +351,14 @@
             // 
             this.bindingSource1.DataSource = typeof(Medical.Data.Entities.WareHousePaperDetail);
             // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 100);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(804, 15);
+            this.panel1.TabIndex = 2;
+            // 
             // frmImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,7 +374,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateImport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
@@ -421,14 +391,12 @@
         private DevComponents.DotNetBar.Controls.TextBoxX txtRecipient;
         private DevComponents.DotNetBar.Controls.TextBoxX txtNote;
         private DevComponents.DotNetBar.LabelX labelX6;
-        private DevComponents.DotNetBar.LabelX labelX5;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.Controls.DataGridViewX grd;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.BindingSource bindingSource2;
-        private System.Windows.Forms.Panel panel1;
         private DevComponents.DotNetBar.ButtonX btnCancel;
         private DevComponents.DotNetBar.ButtonX btnSave;
         private DevComponents.DotNetBar.ButtonX btnInsert;
@@ -437,6 +405,6 @@
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn clinicNameDataGridViewTextBoxColumn;
         private DevComponents.DotNetBar.Controls.TextBoxX txtDeliverer;
         private DevComponents.DotNetBar.LabelX labelX7;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtMST;
+        private System.Windows.Forms.Panel panel1;
     }
 }

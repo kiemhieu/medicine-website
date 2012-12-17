@@ -7,8 +7,9 @@ using System.Text;
 namespace Medical.Data.Entities
 {
     [Table("WareHousePaper")]
-    public class WareHousePaper
+    public class WareHousePaper : EntityBase
     {
+        [Key]
         public int Id { get; set; }
         public int ClinicId { get; set; }
         public decimal Type { get; set; }
@@ -22,6 +23,7 @@ namespace Medical.Data.Entities
         public DateTime LastUpdatedDate { get; set; }
         public int LastUpdatedUser { get; set; }
         public int Version { get; set; }
+        public ICollection<WareHousePaperDetail> WareHousePaperDetails { get; set; }
         //private Medicine Medicine { get; set; }
         //private Clinic Clinic { get; set; }
         //public string MedicineName { get { return this.Medicine.Name; } }

@@ -17,6 +17,7 @@ namespace Medical.Data.Repositories
         public DbSet<Figure> Figures { get; set; }
         public DbSet<FigureDetail> FigureDetails { get; set; }
         public DbSet<Patient> Patients { get; set; }
+        public DbSet<WareHouse> WareHouses { get; set; }
         public DbSet<WareHouseDetail> WareHouseDetails { get; set; }
         public DbSet<WareHouseMinimumAllow> WareHouseMinimumAllows { get; set; }
         public DbSet<WareHousePaper> WareHousePapers { get; set; }

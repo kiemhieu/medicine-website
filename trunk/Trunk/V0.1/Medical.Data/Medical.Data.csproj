@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="AppContext.cs" />
     <Compile Include="Definication.cs" />
+    <Compile Include="Entities\WareHouse.cs" />
     <Compile Include="Entities\MedicineDeliveryDetailAllocate.cs" />
     <Compile Include="Entities\Views\VMedicineDeliverList.cs" />
     <Compile Include="Entities\Views\VMedicineDeliveryDetailList.cs" />
@@ -94,6 +95,8 @@
     <Compile Include="IWareHouseRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClinicRepository.cs" />
+    <Compile Include="IWareHouseRepository.cs" />
+    <Compile Include="Repositories\WareHouseRepository.cs" />
     <Compile Include="Repositories\DefineRepository.cs" />
     <Compile Include="Repositories\FigureDetailRepository.cs" />
     <Compile Include="Repositories\MedicineDeliveryDetailAllocateRepository.cs" />
