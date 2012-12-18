@@ -9,6 +9,10 @@ using Medical.Data.Entities;
 namespace Medical.Data.Repositories {
     public class WareHouseDetailRepository : RepositoryBase, IWareHouseDetailRepository
     {
+        public List<WareHouseDetail> GetByMedicine(List<int> medicineIdList)
+        {
+            return this.Context.WareHouseDetails.Where(x => medicineIdList.Contains(x.MedicineId)).ToList();
+        }
 
         public WareHouseDetail Get(int id)
         {
@@ -66,10 +70,11 @@ namespace Medical.Data.Repositories {
 
                 throw;
             }
-         
+
         }
-    
-        public void Delete(int id) {
+
+        public void Delete(int id)
+        {
             try
             {
                 var oldWHDetail = this.Context.WareHouseDetails.FirstOrDefault(x => x.Id == id);
@@ -78,18 +83,20 @@ namespace Medical.Data.Repositories {
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
-            
+
         }
- 
-        public List<WareHouseDetail> GetAll() {
+
+        public List<WareHouseDetail> GetAll()
+        {
             try
             {
                 List<WareHouseDetail> lst = this.Context.WareHouseDetails.ToList();
                 return lst;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;

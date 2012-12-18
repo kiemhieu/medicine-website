@@ -12,5 +12,6 @@ namespace Medical.Data
         void Update(MedicineDelivery user);
         void Delete(int id);
         List<MedicineDelivery> GetAll();
+        MedicineDelivery GetByPrescriptionId(int prescriptionId);
     }
 }

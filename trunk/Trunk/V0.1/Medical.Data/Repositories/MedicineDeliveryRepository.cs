@@ -27,5 +27,10 @@ namespace Medical.Data.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public MedicineDelivery GetByPrescriptionId(int prescriptionId)
+        {
+            return this.Context.MedicineDeliveries.FirstOrDefault(x => x.PrescriptionId == prescriptionId);
+        }
     }
 }

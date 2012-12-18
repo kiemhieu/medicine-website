@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Medical.Data.Entities;
+
 namespace Medical.Data
 {
     public interface IWareHouseRepository
@@ -12,5 +16,6 @@ namespace Medical.Data
         void Insert(Medical.Data.Entities.WareHouse whDetail);
         void Update(Medical.Data.Entities.WareHouse whDetail);
         WareHouse GetByIdMedicine(int idMedicine, int clinicId);
+
     }
 }
