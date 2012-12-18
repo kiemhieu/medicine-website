@@ -44,15 +44,18 @@ namespace Medical.Data.Repositories {
             {
                 var oldWhDetail = this.Context.WareHouseDetails.FirstOrDefault(x => x.Id == whDetail.Id);
                 if (oldWhDetail == null) return;
-                oldWhDetail.BadVolumn = whDetail.BadVolumn;
-                oldWhDetail.ClinicId = whDetail.ClinicId;
+                oldWhDetail.WareHouseId = whDetail.WareHouseId;
+                oldWhDetail.MedicineId = whDetail.MedicineId;
+                oldWhDetail.WareHousePaperDetailId = whDetail.WareHousePaperDetailId;
                 oldWhDetail.CreatedUser = whDetail.CreatedUser;
                 oldWhDetail.CreatedDate = whDetail.CreatedDate;
                 oldWhDetail.ExpiredDate = whDetail.ExpiredDate;
                 oldWhDetail.LotNo = whDetail.LotNo;
-                oldWhDetail.MedicineId = whDetail.MedicineId;
+                oldWhDetail.Unit = whDetail.Unit;
                 oldWhDetail.UnitPrice = whDetail.UnitPrice;
-                oldWhDetail.Volumn = whDetail.Volumn;
+                oldWhDetail.OriginalVolumn = whDetail.OriginalVolumn;
+                oldWhDetail.CurrentVolumn = whDetail.CurrentVolumn;
+                oldWhDetail.BadVolumn = whDetail.BadVolumn;
                 // oldWhDetail.LastUpdatedUser = AppContext.LoggedInUser.Id;
                 oldWhDetail.LastUpdatedDate = DateTime.Now;
                 oldWhDetail.Version++;
