@@ -11,6 +11,7 @@ using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
 
+
 namespace Medical
 {
     public partial class CheckUpRegister : Form
@@ -80,7 +81,7 @@ namespace Medical
                                                  Date = DateTime.Today,
                                                  RecheckDate = DateTime.Today.AddDays(DefaultVolumn),
                                                  DoctorId = AppContext.LoggedInUser.Id,
-                                                 Doctor = AppContext.LoggedInUser,
+                                                 //Doctor = AppContext.LoggedInUser,
                                                  PatientId = patient.Id,
                                                  CreatedUser = AppContext.LoggedInUser.Id,
                                                  LastUpdatedUser = AppContext.LoggedInUser.Id,
@@ -119,7 +120,7 @@ namespace Medical
                 {
                     this._isUpdate = true;
                     this._prescription.DoctorId = AppContext.LoggedInUser.Id;
-                    this._prescription.Doctor = AppContext.LoggedInUser;
+                    //this._prescription.Doctor = AppContext.LoggedInUser;
                     this._prescription.LastUpdatedUser = AppContext.LoggedInUser.Id;
                 }
 
@@ -258,8 +259,8 @@ namespace Medical
         {
             this.dataGridViewX1.EndEdit();
             if (!this.ValidateData()) return;
-            this._prescription.CreatedUser = AppContext.LoggedInUser.Id;
-            this._prescription.LastUpdatedUser = AppContext.LoggedInUser.Id;
+            //this._prescription.CreatedUser = AppContext.LoggedInUser.Id;
+            //this._prescription.LastUpdatedUser = AppContext.LoggedInUser.Id;
             // this._prescription.PrescriptionDetails = this._prescriptionDetailList;
 
             var message = !this._isUpdate ? "Ghi lại dữ liệu vừa tạo ?" : "Cập nhập dữ liệu vừa thay đổi ?";
@@ -310,7 +311,7 @@ namespace Medical
                 {
                     FigureDetailId = figureDetail.Id,
                     MedicineId = figureDetail.MedicineId,
-                    Medicine = figureDetail.Medicine,
+                    //Medicine = figureDetail.Medicine,
                     VolumnPerDay = figureDetail.Volumn,
                     Day = this.Day,
                     Amount = DefaultVolumn * figureDetail.Volumn,

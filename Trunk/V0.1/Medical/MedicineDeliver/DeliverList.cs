@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Medical.Data;
+using Medical.Data.Entities.Views;
 using Medical.Data.EntitiyExtend;
 using Medical.Data.Repositories;
 using WeifenLuo.WinFormsUI.Docking;
@@ -74,8 +75,10 @@ namespace Medical.MedicineDeliver
 
         private void btnDeliver_Click(object sender, EventArgs e)
         {
-            // var deliveryRegister = new DeliveryRegister();
-            // deliveryRegister.ShowDialog();
+            this.bdsDeliver.EndEdit();
+            var selectedItem = (VMedicineDeliverList) this.bdsDeliver.Current;
+            var deliveryRegister = new DeliveryRegister(selectedItem.Id);
+            deliveryRegister.ShowDialog();
         }
     }
 }

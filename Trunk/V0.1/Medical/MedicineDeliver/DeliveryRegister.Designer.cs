@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.node1 = new DevComponents.AdvTree.Node();
             this.elementStyle1 = new DevComponents.DotNetBar.ElementStyle();
@@ -38,13 +39,23 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lotNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expiredDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inStockQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.allocatedQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // node1
             // 
-            this.node1.Expanded = true;
             this.node1.Name = "node1";
             this.node1.Text = "node1";
             // 
@@ -175,7 +186,19 @@
             // 
             // dataGridViewX1
             // 
+            this.dataGridViewX1.AutoGenerateColumns = false;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.noDataGridViewTextBoxColumn,
+            this.subNoDataGridViewTextBoxColumn,
+            this.medicineNameDataGridViewTextBoxColumn,
+            this.lotNoDataGridViewTextBoxColumn,
+            this.expiredDateDataGridViewTextBoxColumn,
+            this.qtyDataGridViewTextBoxColumn,
+            this.inStockQtyDataGridViewTextBoxColumn,
+            this.allocatedQtyDataGridViewTextBoxColumn});
+            this.dataGridViewX1.DataSource = this.bindingSource1;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -185,11 +208,73 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 25);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.Size = new System.Drawing.Size(955, 537);
             this.dataGridViewX1.TabIndex = 1;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(Medical.Data.EntitiyExtend.MedicineDeliveryAllocationEntity);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // noDataGridViewTextBoxColumn
+            // 
+            this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
+            this.noDataGridViewTextBoxColumn.HeaderText = "No";
+            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
+            // 
+            // subNoDataGridViewTextBoxColumn
+            // 
+            this.subNoDataGridViewTextBoxColumn.DataPropertyName = "SubNo";
+            this.subNoDataGridViewTextBoxColumn.HeaderText = "SubNo";
+            this.subNoDataGridViewTextBoxColumn.Name = "subNoDataGridViewTextBoxColumn";
+            // 
+            // medicineNameDataGridViewTextBoxColumn
+            // 
+            this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
+            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "MedicineName";
+            this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
+            // 
+            // lotNoDataGridViewTextBoxColumn
+            // 
+            this.lotNoDataGridViewTextBoxColumn.DataPropertyName = "LotNo";
+            this.lotNoDataGridViewTextBoxColumn.HeaderText = "LotNo";
+            this.lotNoDataGridViewTextBoxColumn.Name = "lotNoDataGridViewTextBoxColumn";
+            // 
+            // expiredDateDataGridViewTextBoxColumn
+            // 
+            this.expiredDateDataGridViewTextBoxColumn.DataPropertyName = "ExpiredDate";
+            this.expiredDateDataGridViewTextBoxColumn.HeaderText = "ExpiredDate";
+            this.expiredDateDataGridViewTextBoxColumn.Name = "expiredDateDataGridViewTextBoxColumn";
+            // 
+            // qtyDataGridViewTextBoxColumn
+            // 
+            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
+            this.qtyDataGridViewTextBoxColumn.HeaderText = "Qty";
+            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
+            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // inStockQtyDataGridViewTextBoxColumn
+            // 
+            this.inStockQtyDataGridViewTextBoxColumn.DataPropertyName = "InStockQty";
+            this.inStockQtyDataGridViewTextBoxColumn.HeaderText = "InStockQty";
+            this.inStockQtyDataGridViewTextBoxColumn.Name = "inStockQtyDataGridViewTextBoxColumn";
+            this.inStockQtyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // allocatedQtyDataGridViewTextBoxColumn
+            // 
+            this.allocatedQtyDataGridViewTextBoxColumn.DataPropertyName = "AllocatedQty";
+            this.allocatedQtyDataGridViewTextBoxColumn.HeaderText = "AllocatedQty";
+            this.allocatedQtyDataGridViewTextBoxColumn.Name = "allocatedQtyDataGridViewTextBoxColumn";
+            this.allocatedQtyDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // DeliveryRegister
             // 
@@ -206,6 +291,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,5 +308,15 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn medicineNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lotNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expiredDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inStockQtyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn allocatedQtyDataGridViewTextBoxColumn;
     }
 }
