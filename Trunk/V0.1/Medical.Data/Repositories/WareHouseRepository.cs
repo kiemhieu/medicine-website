@@ -106,7 +106,7 @@ namespace Medical.Data.Repositories
         {
             try
             {
-                WareHouse item =
+                var item =
                     this.Context.WareHouses.Where(x => x.MedicineId.Equals(idMedicine) && x.ClinicId.Equals(clinicId)).FirstOrDefault();
                 return item;
             }
@@ -115,6 +115,11 @@ namespace Medical.Data.Repositories
                 Console.WriteLine(ex.Message);
                 return null;
             }
+        }
+
+        public List<WareHouse> GetByMedicineId(List<int> medicineId, int clinicId)
+        {
+            return this.Context.WareHouses.Where(x => medicineId.Contains(x.MedicineId) && x.ClinicId == clinicId).ToList();
         }
     }
 }

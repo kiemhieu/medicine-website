@@ -17,13 +17,14 @@ namespace Medical.Data.Repositories
         {
             try
             {
-                prescription.Version = 0;
-                prescription.LastUpdatedDate = DateTime.Now;
-                prescription.CreatedDate = DateTime.Now;
+                prescription.SetInfo(false);
+                // prescription.Version = 0;
+                // prescription.LastUpdatedDate = DateTime.Now;
+                // prescription.CreatedDate = DateTime.Now;
 
                 foreach (var item in prescription.PrescriptionDetails)
                 {
-                    item.Version = 0;
+                    item.SetInfo(false); // Version = 0);
                 }
                 this.Context.Prescription.Add(prescription);
                 this.Context.SaveChanges();
@@ -56,6 +57,7 @@ namespace Medical.Data.Repositories
                 originalPres.Doctor = null;
                 originalPres.FigureId = prescription.FigureId;
                 originalPres.Version++;
+
 
                 foreach (var orginItem in prescriptionList)
                 {
@@ -113,7 +115,7 @@ namespace Medical.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Prescription Get(int id)
+        public Prescription Get(long id)
         {
             return this.Context.Prescription.FirstOrDefault(x => x.Id == id);
         }

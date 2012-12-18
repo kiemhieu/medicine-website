@@ -16,6 +16,7 @@ namespace Medical.Data
         void Insert(Medical.Data.Entities.WareHouse whDetail);
         void Update(Medical.Data.Entities.WareHouse whDetail);
         WareHouse GetByIdMedicine(int idMedicine, int clinicId);
+        List<WareHouse> GetByMedicineId(List<int> medicineId, int clinicId);
 
     }
 }
