@@ -12,6 +12,6 @@ namespace Medical.Data
         void Update(PrescriptionDetail user);
         void Delete(int id);
         List<PrescriptionDetail> GetAll();
-        List<PrescriptionDetail> GetByPrescription(int prescriptionId);
+        List<PrescriptionDetail> GetByPrescription(long prescriptionId);
     }
 }

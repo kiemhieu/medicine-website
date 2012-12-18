@@ -44,7 +44,7 @@ namespace Medical.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public List<PrescriptionDetail> GetByPrescription(int prescriptionId)
+        public List<PrescriptionDetail> GetByPrescription(long prescriptionId)
         {
             return this.Context.PrescriptionDetails.Where(x => x.PrescriptionId == prescriptionId).ToList();
         }
