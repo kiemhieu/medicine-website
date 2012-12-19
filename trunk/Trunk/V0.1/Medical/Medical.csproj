@@ -151,11 +151,11 @@
     <Compile Include="Warehouse\frmWareHouse.Designer.cs">
       <DependentUpon>frmWareHouse.cs</DependentUpon>
     </Compile>
-    <Compile Include="Warehouse\frmWareHouseDetailEdit.cs">
+    <Compile Include="Warehouse\frmWareHouseEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Warehouse\frmWareHouseDetailEdit.Designer.cs">
-      <DependentUpon>frmWareHouseDetailEdit.cs</DependentUpon>
+    <Compile Include="Warehouse\frmWareHouseEdit.Designer.cs">
+      <DependentUpon>frmWareHouseEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Warehouse\frmWHPageHistory.cs">
       <SubType>Form</SubType>
@@ -221,8 +221,8 @@
     <EmbeddedResource Include="Warehouse\frmWareHouse.resx">
       <DependentUpon>frmWareHouse.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Warehouse\frmWareHouseDetailEdit.resx">
-      <DependentUpon>frmWareHouseDetailEdit.cs</DependentUpon>
+    <EmbeddedResource Include="Warehouse\frmWareHouseEdit.resx">
+      <DependentUpon>frmWareHouseEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\frmWHPageHistory.resx">
       <DependentUpon>frmWHPageHistory.cs</DependentUpon>

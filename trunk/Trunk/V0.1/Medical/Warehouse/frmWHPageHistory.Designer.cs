@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.dpkToDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dpkFromDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
@@ -40,20 +41,19 @@
             this.cbItemNhap = new DevComponents.Editors.ComboItem();
             this.cbItemXuat = new DevComponents.Editors.ComboItem();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.btnSearch = new DevComponents.DotNetBar.ButtonX();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clinicIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.recipientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delivererDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastUpdatedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastUpdatedUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUpdatedUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUpdatedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delivererDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recipientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clinicIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dpkToDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpkFromDate)).BeginInit();
@@ -77,6 +77,18 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tra cứu lịch sử nhập xuất kho";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSearch.Location = new System.Drawing.Point(689, 16);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 20);
+            this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSearch.TabIndex = 4;
+            this.btnSearch.Text = "Tìm kiếm";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // dpkToDate
             // 
@@ -244,7 +256,6 @@
             // 
             // grd
             // 
-            this.grd.AutoGenerateColumns = false;
             this.grd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -259,7 +270,6 @@
             this.lastUpdatedDateDataGridViewTextBoxColumn,
             this.lastUpdatedUserDataGridViewTextBoxColumn,
             this.versionDataGridViewTextBoxColumn});
-            this.grd.DataSource = this.bindingSource1;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -276,100 +286,9 @@
             this.grd.Size = new System.Drawing.Size(855, 301);
             this.grd.TabIndex = 1;
             // 
-            // btnSearch
+            // bindingSource1
             // 
-            this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSearch.Location = new System.Drawing.Point(689, 16);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 20);
-            this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSearch.TabIndex = 4;
-            this.btnSearch.Text = "Tìm kiếm";
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // clinicIdDataGridViewTextBoxColumn
-            // 
-            this.clinicIdDataGridViewTextBoxColumn.DataPropertyName = "ClinicId";
-            this.clinicIdDataGridViewTextBoxColumn.HeaderText = "ClinicId";
-            this.clinicIdDataGridViewTextBoxColumn.Name = "clinicIdDataGridViewTextBoxColumn";
-            this.clinicIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.clinicIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "TypeName";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Nhập/Xuất kho";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Ngày nhập xuất";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // noDataGridViewTextBoxColumn
-            // 
-            this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
-            this.noDataGridViewTextBoxColumn.HeaderText = "Mã chứng từ";
-            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
-            this.noDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // recipientDataGridViewTextBoxColumn
-            // 
-            this.recipientDataGridViewTextBoxColumn.DataPropertyName = "Recipient";
-            this.recipientDataGridViewTextBoxColumn.HeaderText = "Người nhập xuất";
-            this.recipientDataGridViewTextBoxColumn.Name = "recipientDataGridViewTextBoxColumn";
-            this.recipientDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // delivererDataGridViewTextBoxColumn
-            // 
-            this.delivererDataGridViewTextBoxColumn.DataPropertyName = "Deliverer";
-            this.delivererDataGridViewTextBoxColumn.HeaderText = "Người giao";
-            this.delivererDataGridViewTextBoxColumn.Name = "delivererDataGridViewTextBoxColumn";
-            this.delivererDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // noteDataGridViewTextBoxColumn
-            // 
-            this.noteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
-            this.noteDataGridViewTextBoxColumn.HeaderText = "chú thích";
-            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
-            this.noteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // createdDateDataGridViewTextBoxColumn
-            // 
-            this.createdDateDataGridViewTextBoxColumn.DataPropertyName = "CreatedDate";
-            this.createdDateDataGridViewTextBoxColumn.HeaderText = "CreatedDate";
-            this.createdDateDataGridViewTextBoxColumn.Name = "createdDateDataGridViewTextBoxColumn";
-            this.createdDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.createdDateDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // lastUpdatedDateDataGridViewTextBoxColumn
-            // 
-            this.lastUpdatedDateDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedDate";
-            this.lastUpdatedDateDataGridViewTextBoxColumn.HeaderText = "LastUpdatedDate";
-            this.lastUpdatedDateDataGridViewTextBoxColumn.Name = "lastUpdatedDateDataGridViewTextBoxColumn";
-            this.lastUpdatedDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastUpdatedDateDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // lastUpdatedUserDataGridViewTextBoxColumn
-            // 
-            this.lastUpdatedUserDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedUser";
-            this.lastUpdatedUserDataGridViewTextBoxColumn.HeaderText = "LastUpdatedUser";
-            this.lastUpdatedUserDataGridViewTextBoxColumn.Name = "lastUpdatedUserDataGridViewTextBoxColumn";
-            this.lastUpdatedUserDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastUpdatedUserDataGridViewTextBoxColumn.Visible = false;
+            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.WareHousePaper);
             // 
             // versionDataGridViewTextBoxColumn
             // 
@@ -379,9 +298,88 @@
             this.versionDataGridViewTextBoxColumn.ReadOnly = true;
             this.versionDataGridViewTextBoxColumn.Visible = false;
             // 
-            // bindingSource1
+            // lastUpdatedUserDataGridViewTextBoxColumn
             // 
-            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.WareHousePaper);
+            this.lastUpdatedUserDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedUser";
+            this.lastUpdatedUserDataGridViewTextBoxColumn.HeaderText = "LastUpdatedUser";
+            this.lastUpdatedUserDataGridViewTextBoxColumn.Name = "lastUpdatedUserDataGridViewTextBoxColumn";
+            this.lastUpdatedUserDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastUpdatedUserDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // lastUpdatedDateDataGridViewTextBoxColumn
+            // 
+            this.lastUpdatedDateDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedDate";
+            this.lastUpdatedDateDataGridViewTextBoxColumn.HeaderText = "LastUpdatedDate";
+            this.lastUpdatedDateDataGridViewTextBoxColumn.Name = "lastUpdatedDateDataGridViewTextBoxColumn";
+            this.lastUpdatedDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastUpdatedDateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // createdDateDataGridViewTextBoxColumn
+            // 
+            this.createdDateDataGridViewTextBoxColumn.DataPropertyName = "CreatedDate";
+            this.createdDateDataGridViewTextBoxColumn.HeaderText = "CreatedDate";
+            this.createdDateDataGridViewTextBoxColumn.Name = "createdDateDataGridViewTextBoxColumn";
+            this.createdDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.createdDateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // noteDataGridViewTextBoxColumn
+            // 
+            this.noteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
+            this.noteDataGridViewTextBoxColumn.HeaderText = "chú thích";
+            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
+            this.noteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // delivererDataGridViewTextBoxColumn
+            // 
+            this.delivererDataGridViewTextBoxColumn.DataPropertyName = "Deliverer";
+            this.delivererDataGridViewTextBoxColumn.HeaderText = "Người giao";
+            this.delivererDataGridViewTextBoxColumn.Name = "delivererDataGridViewTextBoxColumn";
+            this.delivererDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // recipientDataGridViewTextBoxColumn
+            // 
+            this.recipientDataGridViewTextBoxColumn.DataPropertyName = "Recipient";
+            this.recipientDataGridViewTextBoxColumn.HeaderText = "Người nhập xuất";
+            this.recipientDataGridViewTextBoxColumn.Name = "recipientDataGridViewTextBoxColumn";
+            this.recipientDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // noDataGridViewTextBoxColumn
+            // 
+            this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
+            this.noDataGridViewTextBoxColumn.HeaderText = "Mã chứng từ";
+            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
+            this.noDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Ngày nhập xuất";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "TypeName";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Nhập/Xuất kho";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // clinicIdDataGridViewTextBoxColumn
+            // 
+            this.clinicIdDataGridViewTextBoxColumn.DataPropertyName = "ClinicId";
+            this.clinicIdDataGridViewTextBoxColumn.HeaderText = "ClinicId";
+            this.clinicIdDataGridViewTextBoxColumn.Name = "clinicIdDataGridViewTextBoxColumn";
+            this.clinicIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.clinicIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
             // frmWHPageHistory
             // 
@@ -410,7 +408,6 @@
         private DevComponents.Editors.ComboItem cbItemNhap;
         private DevComponents.Editors.ComboItem cbItemXuat;
         private DevComponents.DotNetBar.Controls.DataGridViewX grd;
-        private System.Windows.Forms.BindingSource bindingSource1;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dpkToDate;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dpkFromDate;
         private DevComponents.DotNetBar.LabelX labelX3;
@@ -430,5 +427,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdatedDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdatedUserDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
