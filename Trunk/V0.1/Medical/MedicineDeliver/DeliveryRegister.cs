@@ -68,19 +68,40 @@ namespace Medical.MedicineDeliver
                 // this._warehouseDetailList  = this._warehouseDetailRepo
                 var medincineIdList = this._prescriptionDetailList.Select(item => item.MedicineId).ToList();
                 this._warehouseList = this._warehouseRepo.GetByMedicineId(medincineIdList, AppContext.CurrentClinic.Id);
-                this._warehouseDetailList = this._warehouseDetailRepo.GetByMedicine(medincineIdList);
-
+                this._warehouseDetailList = this._warehouseDetailRepo.GetByMedicine(medincineIdList, AppContext.CurrentClinic.Id);
                 this._medicineDelivery = CreatePrescription(this._prescription);
                 this._medicineDeliveryDetailList = CreateMedicineDeliveryDetail(this._prescriptionDetailList);
                 this._mdecidineDeliveryDetailAllocate = AutoAllocate(this._medicineDeliveryDetailList, this._warehouseDetailList);
 
-                foreach(var deliveryItem in this._medicineDeliveryDetailList)
+                // var item = this._warehouseDetailList.Select(x => new { x.MedicineId, x.LotNo, x.ExpiredDate}).GroupBy(x => new { x.MedicineId, x.LotNo, x.ExpiredDate }).ToList();
+
+                int no = 1;
+                foreach (var deliveryItem in this._medicineDeliveryDetailList)
                 {
                     var allocatedList = this._mdecidineDeliveryDetailAllocate.Where(x => x.MedicineDeliveryDetailId == deliveryItem.Id).ToList();
                     var warehouse = this._warehouseList.FirstOrDefault(x => x.MedicineId == deliveryItem.MedicineId);
                     var warehouseDetailList = this._warehouseDetailList.Where(x => x.MedicineId == deliveryItem.MedicineId).ToList();
                     var displayItem = new MedicineDeliveryAllocationEntity(allocatedList, deliveryItem, warehouseDetailList, warehouse);
+                    displayItem.No = no++;
+                    //displayItem.MedicineName = deliveryItem.M
                     medDeliveryAllocationList.Add(displayItem);
+
+                    var itemList = this._warehouseDetailList.Where(x => x.MedicineId == deliveryItem.MedicineId).GroupBy(x => new { x.LotNo, x.ExpiredDate }).ToList();
+
+                    int subNo = 1;
+                    foreach (var itm in itemList)
+                    {
+                        var whDetailList = warehouseDetailList.Where(x => x.LotNo == itm.First().LotNo && x.ExpiredDate == itm.First().ExpiredDate).ToList();
+                        var idList = whDetailList.Select(x => x.Id).ToList();
+                        var aldList = allocatedList.Where(x => idList.Contains(x.WareHouseDetailId)).ToList();
+                        var subItem = new MedicineDeliveryAllocationEntity(aldList, null, whDetailList, warehouse)
+                                          {
+                                              LotNo = itm.First().LotNo,
+                                              ExpiredDate = itm.First().ExpiredDate
+                                          };
+                        subItem.SubNo = subNo++;
+                        medDeliveryAllocationList.Add(subItem);
+                    }
                 }
 
             }
@@ -91,7 +112,7 @@ namespace Medical.MedicineDeliver
             var medicineDelivery = new MedicineDelivery();
             medicineDelivery.ClinicId = AppContext.CurrentClinic.Id;
             medicineDelivery.Date = DateTime.Today;
-            medicineDelivery.PatienId = prescription.PatientId;
+            medicineDelivery.PatientId = prescription.PatientId;
             medicineDelivery.PrescriptionId = prescription.Id;
             return medicineDelivery;
         }
@@ -121,42 +142,47 @@ namespace Medical.MedicineDeliver
             var allocatedItems = new List<MedicineDeliveryDetailAllocate>();
             foreach (var deliveryDetailItem in medicineDeliveryDetails)
             {
-                var warehouseDetailAllocationList =
+                deliveryDetailItem.Allocated = new List<MedicineDeliveryDetailAllocate>();
+                var warehouseDetailList =
                     wareHouseDetails.Where(x => x.MedicineId == deliveryDetailItem.MedicineId).
                                         OrderBy(x => x.ExpiredDate).
                                         OrderBy(x => x.Id).ToList();
 
-                for (int i = 0; i < warehouseDetailAllocationList.Count; i++)
+                foreach (var t in warehouseDetailList)
                 {
-                    if (deliveryDetailItem.Volumn <= warehouseDetailAllocationList[i].CurrentVolumn)
+                    t.DeliveryAllocate = new List<MedicineDeliveryDetailAllocate>();
+                    if (deliveryDetailItem.Volumn <= t.CurrentVolumn)
                     {
                         var allocatedItem = new MedicineDeliveryDetailAllocate
                                                 {
                                                     MedicineDeliveryDetailId = deliveryDetailItem.Id,
                                                     Unit = deliveryDetailItem.Unit,
                                                     Volumn = deliveryDetailItem.Volumn,
-                                                    WareHouseDetailId = warehouseDetailAllocationList[i].Id
+                                                    WareHouseDetailId = t.Id
                                                 };
                         deliveryDetailItem.NotAllocatedQty = 0;
                         allocatedItems.Add(allocatedItem);
-                        warehouseDetailAllocationList[i].CurrentVolumn -= deliveryDetailItem.Volumn;
+                        t.CurrentVolumn -= deliveryDetailItem.Volumn;
+                        deliveryDetailItem.Allocated.Add(allocatedItem);
+                        t.DeliveryAllocate.Add(allocatedItem);
                     }
                     else
                     {
                         var allocatedItem = new MedicineDeliveryDetailAllocate
-                        {
-                            MedicineDeliveryDetailId = deliveryDetailItem.Id,
-                            Unit = deliveryDetailItem.Unit,
-                            Volumn = warehouseDetailAllocationList[i].CurrentVolumn,
-                            WareHouseDetailId = warehouseDetailAllocationList[i].Id
-                        };
+                                                {
+                                                    MedicineDeliveryDetailId = deliveryDetailItem.Id,
+                                                    Unit = deliveryDetailItem.Unit,
+                                                    Volumn = t.CurrentVolumn,
+                                                    WareHouseDetailId = t.Id
+                                                };
                         deliveryDetailItem.NotAllocatedQty -= allocatedItem.Volumn;
                         allocatedItems.Add(allocatedItem);
-                        warehouseDetailAllocationList[i].CurrentVolumn = 0;
+                        t.CurrentVolumn = 0;
+                        deliveryDetailItem.Allocated.Add(allocatedItem);
+                        t.DeliveryAllocate.Add(allocatedItem);
                     }
+                    if (deliveryDetailItem.NotAllocatedQty == 0) break;
                 }
-
-                if (deliveryDetailItem.NotAllocatedQty == 0) break;
             }
 
             return allocatedItems;

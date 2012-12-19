@@ -207,7 +207,7 @@ namespace Medical.Warehouse
                     //Insert data to WareHouseDetail
                     WareHouseDetail wareHouseDetail = new WareHouseDetail();
                     wareHouseDetail.MedicineId = item.MedicineId;
-                    wareHouseDetail.WareHouseId = wareHouse.Id;
+                    // wareHouseDetail.WareHouseId = wareHouse.Id;
                     wareHouseDetail.WareHousePaperDetailId = item.Id;
                     wareHouseDetail.LotNo = item.LotNo;
                     wareHouseDetail.ExpiredDate = item.ExpireDate;

@@ -141,11 +141,11 @@ namespace Medical.Test
             WareHousePaperDetail whPaperDetail = new WareHousePaperDetail();
             whPaperDetail.Id = 0;
             whPaperDetail.Amount = int.Parse(grd.Rows[0].Cells["Amount"].Value.ToString());
-            whPaperDetail.BadVolumn = int.Parse(grd.Rows[0].Cells["BadVolumn"].Value.ToString());
+            // whPaperDetail.BadVolumn = int.Parse(grd.Rows[0].Cells["BadVolumn"].Value.ToString());
             whPaperDetail.LotNo = grd.Rows[0].Cells["LotNo"].Value.ToString();
             whPaperDetail.MedicineId = int.Parse(grd.Rows[0].Cells["MedicineId"].Value.ToString());
             whPaperDetail.Note = grd.Rows[0].Cells["Note"].Value.ToString();
-            whPaperDetail.PaperId = this.WHPaperId;
+            // whPaperDetail.PaperId = this.WHPaperId;
             return whPaperDetail;
         }
 
