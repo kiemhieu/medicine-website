@@ -21,9 +21,9 @@ namespace Medical.Data.EntitiyExtend
             this.deliveryDetail = deliveryDetail;
         }
 
-        public long Id
+        public long? Id
         {
-            get { return this.deliveryDetail.Id; }
+            get { return this.deliveryDetail == null ? (long?)null : this.deliveryDetail.Id; }
         }
 
         public int? No { set; get; }
@@ -32,8 +32,8 @@ namespace Medical.Data.EntitiyExtend
         public String LotNo { get; set; }
         public DateTime ExpiredDate { get; set; }
 
-        public int Qty { 
-            get { return this.deliveryDetail.Volumn; }
+        public int? Qty {
+            get { return this.deliveryDetail == null ? (int?)null : this.deliveryDetail.Volumn; }
         }
 
         public int InStockQty 

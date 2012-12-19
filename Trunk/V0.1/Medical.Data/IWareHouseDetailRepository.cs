@@ -8,7 +8,7 @@ namespace Medical.Data
 {
     public interface IWareHouseDetailRepository
     {
-        List<WareHouseDetail> GetByMedicine(List<int> medicineIdList);
+        List<WareHouseDetail> GetByMedicine(List<int> medicineIdList, int clinicId);
         void Insert(WareHouseDetail user);
         void Update(WareHouseDetail user);
         void Delete(int id);
