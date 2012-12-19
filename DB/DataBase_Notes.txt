@@ -1,0 +1,1 @@
+- Bang WareHousePaperDetail sua field tu PaperId thanh WareHousePaperDetailId

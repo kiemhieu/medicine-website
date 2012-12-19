@@ -12,7 +12,7 @@ namespace Medical.Data.Entities
         [Key]
         public int Id { get; set; }
         public int ClinicId { get; set; }
-        public decimal Type { get; set; }
+        public int Type { get; set; }
         public DateTime Date { get; set; }
         public string No { get; set; }
         public string Recipient { get; set; }
@@ -28,5 +28,16 @@ namespace Medical.Data.Entities
         //private Clinic Clinic { get; set; }
         //public string MedicineName { get { return this.Medicine.Name; } }
         //public string ClinicName { get { return this.Clinic.Name; } }
+        [NotMapped]
+        public string TypeName
+        {
+            get
+            {
+                if (this.Type == 0)
+                    return "Xuất kho";
+                else
+                    return "Nhập kho";
+            }
+        }
     }
 }

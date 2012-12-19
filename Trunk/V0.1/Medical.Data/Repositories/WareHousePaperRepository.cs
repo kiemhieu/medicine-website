@@ -6,7 +6,8 @@ using Medical.Data.Entities;
 //using Medical.Forms.Implements;
 
 
-namespace Medical.Data.Repositories {
+namespace Medical.Data.Repositories
+{
     public class WareHousePaperRepository : RepositoryBase, IWareHousePaperRepository
     {
 
@@ -60,11 +61,12 @@ namespace Medical.Data.Repositories {
 
                 throw;
             }
-         
+
         }
 
-    
-        public void Delete(int id) {
+
+        public void Delete(int id)
+        {
             try
             {
                 var oldwhPaper = this.Context.WareHousePapers.FirstOrDefault(x => x.Id == id);
@@ -73,19 +75,21 @@ namespace Medical.Data.Repositories {
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
-            
+
         }
 
- 
-        public List<WareHousePaper> GetAll() {
+
+        public List<WareHousePaper> GetAll()
+        {
             try
             {
                 List<WareHousePaper> lst = this.Context.WareHousePapers.ToList();
                 return lst;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;
@@ -102,6 +106,18 @@ namespace Medical.Data.Repositories {
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public List<WareHousePaper> Search(int type, DateTime fromDate, DateTime toDate)
+        {
+            try
+            {
+                return this.Context.WareHousePapers.Where(x => x.Type == type && x.Date >= fromDate && x.Date <= toDate).ToList();
+            }
+            catch (Exception ex)
+            {
                 return null;
             }
         }
