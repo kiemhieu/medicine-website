@@ -129,7 +129,7 @@ namespace Medical.Warehouse
             whPaper.Recipient = txtRecipient.Text.Trim();
             whPaper.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());
             whPaper.Deliverer = txtDeliverer.Text.Trim();
-            whPaper.Type = 1;
+            whPaper.Type = 0;
             return whPaper;
         }
 
@@ -259,9 +259,14 @@ namespace Medical.Warehouse
             return true;
         }
 
-        private void grd_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            grd.DataSource = null;
+            txtNo.Text = string.Empty;
+            txtDeliverer.Text = string.Empty;
+            txtNote.Text = string.Empty;
+            txtRecipient.Text = string.Empty;
+            dateImport.Value = DateTime.Now;
         }
     }
 }

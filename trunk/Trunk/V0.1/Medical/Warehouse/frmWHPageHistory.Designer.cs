@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dateDenNgay = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.dateTuNgay = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.dpkToDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.dpkFromDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
@@ -40,9 +40,8 @@
             this.cbItemNhap = new DevComponents.Editors.ComboItem();
             this.cbItemXuat = new DevComponents.Editors.ComboItem();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clinicNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clinicIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,21 +50,22 @@
             this.delivererDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.crearedUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastUpdatedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastUpdatedUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDenNgay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateTuNgay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dpkToDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dpkFromDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateDenNgay);
-            this.groupBox1.Controls.Add(this.dateTuNgay);
+            this.groupBox1.Controls.Add(this.btnSearch);
+            this.groupBox1.Controls.Add(this.dpkToDate);
+            this.groupBox1.Controls.Add(this.dpkFromDate);
             this.groupBox1.Controls.Add(this.labelX3);
             this.groupBox1.Controls.Add(this.labelX2);
             this.groupBox1.Controls.Add(this.labelX1);
@@ -73,112 +73,112 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(751, 45);
+            this.groupBox1.Size = new System.Drawing.Size(855, 45);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tra cứu lịch sử nhập xuất kho";
             // 
-            // dateDenNgay
+            // dpkToDate
             // 
             // 
             // 
             // 
-            this.dateDenNgay.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.dateDenNgay.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateDenNgay.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.dateDenNgay.ButtonDropDown.Visible = true;
-            this.dateDenNgay.IsPopupCalendarOpen = false;
-            this.dateDenNgay.Location = new System.Drawing.Point(557, 16);
+            this.dpkToDate.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dpkToDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dpkToDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dpkToDate.ButtonDropDown.Visible = true;
+            this.dpkToDate.IsPopupCalendarOpen = false;
+            this.dpkToDate.Location = new System.Drawing.Point(557, 16);
             // 
             // 
             // 
-            this.dateDenNgay.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            this.dpkToDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
             // 
             // 
             // 
-            this.dateDenNgay.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.dateDenNgay.MonthCalendar.BackgroundStyle.Class = "";
-            this.dateDenNgay.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateDenNgay.MonthCalendar.ClearButtonVisible = true;
+            this.dpkToDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.dpkToDate.MonthCalendar.BackgroundStyle.Class = "";
+            this.dpkToDate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dpkToDate.MonthCalendar.ClearButtonVisible = true;
             // 
             // 
             // 
-            this.dateDenNgay.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.dateDenNgay.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateDenNgay.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.dateDenNgay.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.dateDenNgay.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.dateDenNgay.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.dateDenNgay.MonthCalendar.CommandsBackgroundStyle.Class = "";
-            this.dateDenNgay.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateDenNgay.MonthCalendar.DisplayMonth = new System.DateTime(2012, 11, 1, 0, 0, 0, 0);
-            this.dateDenNgay.MonthCalendar.MarkedDates = new System.DateTime[0];
-            this.dateDenNgay.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            this.dpkToDate.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dpkToDate.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dpkToDate.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dpkToDate.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dpkToDate.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dpkToDate.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dpkToDate.MonthCalendar.CommandsBackgroundStyle.Class = "";
+            this.dpkToDate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dpkToDate.MonthCalendar.DisplayMonth = new System.DateTime(2012, 11, 1, 0, 0, 0, 0);
+            this.dpkToDate.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dpkToDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
             // 
             // 
             // 
-            this.dateDenNgay.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.dateDenNgay.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateDenNgay.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.dateDenNgay.MonthCalendar.NavigationBackgroundStyle.Class = "";
-            this.dateDenNgay.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateDenNgay.MonthCalendar.TodayButtonVisible = true;
-            this.dateDenNgay.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
-            this.dateDenNgay.Name = "dateDenNgay";
-            this.dateDenNgay.Size = new System.Drawing.Size(107, 20);
-            this.dateDenNgay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateDenNgay.TabIndex = 3;
+            this.dpkToDate.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dpkToDate.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dpkToDate.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dpkToDate.MonthCalendar.NavigationBackgroundStyle.Class = "";
+            this.dpkToDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dpkToDate.MonthCalendar.TodayButtonVisible = true;
+            this.dpkToDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dpkToDate.Name = "dpkToDate";
+            this.dpkToDate.Size = new System.Drawing.Size(107, 20);
+            this.dpkToDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.dpkToDate.TabIndex = 3;
             // 
-            // dateTuNgay
-            // 
-            // 
-            // 
-            // 
-            this.dateTuNgay.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.dateTuNgay.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTuNgay.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.dateTuNgay.ButtonDropDown.Visible = true;
-            this.dateTuNgay.IsPopupCalendarOpen = false;
-            this.dateTuNgay.Location = new System.Drawing.Point(333, 16);
+            // dpkFromDate
             // 
             // 
             // 
-            this.dateTuNgay.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            this.dpkFromDate.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dpkFromDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dpkFromDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dpkFromDate.ButtonDropDown.Visible = true;
+            this.dpkFromDate.IsPopupCalendarOpen = false;
+            this.dpkFromDate.Location = new System.Drawing.Point(333, 16);
             // 
             // 
             // 
-            this.dateTuNgay.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.dateTuNgay.MonthCalendar.BackgroundStyle.Class = "";
-            this.dateTuNgay.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTuNgay.MonthCalendar.ClearButtonVisible = true;
+            this.dpkFromDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
             // 
             // 
             // 
-            this.dateTuNgay.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.dateTuNgay.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateTuNgay.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.dateTuNgay.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.dateTuNgay.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.dateTuNgay.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.dateTuNgay.MonthCalendar.CommandsBackgroundStyle.Class = "";
-            this.dateTuNgay.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTuNgay.MonthCalendar.DisplayMonth = new System.DateTime(2012, 11, 1, 0, 0, 0, 0);
-            this.dateTuNgay.MonthCalendar.MarkedDates = new System.DateTime[0];
-            this.dateTuNgay.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            this.dpkFromDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.dpkFromDate.MonthCalendar.BackgroundStyle.Class = "";
+            this.dpkFromDate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dpkFromDate.MonthCalendar.ClearButtonVisible = true;
             // 
             // 
             // 
-            this.dateTuNgay.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.dateTuNgay.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateTuNgay.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.dateTuNgay.MonthCalendar.NavigationBackgroundStyle.Class = "";
-            this.dateTuNgay.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTuNgay.MonthCalendar.TodayButtonVisible = true;
-            this.dateTuNgay.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
-            this.dateTuNgay.Name = "dateTuNgay";
-            this.dateTuNgay.Size = new System.Drawing.Size(107, 20);
-            this.dateTuNgay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateTuNgay.TabIndex = 3;
+            this.dpkFromDate.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dpkFromDate.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dpkFromDate.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dpkFromDate.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dpkFromDate.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dpkFromDate.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dpkFromDate.MonthCalendar.CommandsBackgroundStyle.Class = "";
+            this.dpkFromDate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dpkFromDate.MonthCalendar.DisplayMonth = new System.DateTime(2012, 11, 1, 0, 0, 0, 0);
+            this.dpkFromDate.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dpkFromDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dpkFromDate.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dpkFromDate.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dpkFromDate.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dpkFromDate.MonthCalendar.NavigationBackgroundStyle.Class = "";
+            this.dpkFromDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dpkFromDate.MonthCalendar.TodayButtonVisible = true;
+            this.dpkFromDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dpkFromDate.Name = "dpkFromDate";
+            this.dpkFromDate.Size = new System.Drawing.Size(107, 20);
+            this.dpkFromDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.dpkFromDate.TabIndex = 3;
             // 
             // labelX3
             // 
@@ -187,7 +187,7 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(495, 16);
+            this.labelX3.Location = new System.Drawing.Point(495, 14);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(56, 23);
             this.labelX3.TabIndex = 2;
@@ -200,7 +200,7 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(281, 16);
+            this.labelX2.Location = new System.Drawing.Point(281, 14);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(46, 23);
             this.labelX2.TabIndex = 2;
@@ -213,7 +213,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(6, 16);
+            this.labelX1.Location = new System.Drawing.Point(6, 14);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(82, 23);
             this.labelX1.TabIndex = 1;
@@ -248,7 +248,6 @@
             this.grd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
-            this.clinicNameDataGridViewTextBoxColumn,
             this.clinicIdDataGridViewTextBoxColumn,
             this.typeDataGridViewTextBoxColumn,
             this.dateDataGridViewTextBoxColumn,
@@ -257,7 +256,6 @@
             this.delivererDataGridViewTextBoxColumn,
             this.noteDataGridViewTextBoxColumn,
             this.createdDateDataGridViewTextBoxColumn,
-            this.crearedUserDataGridViewTextBoxColumn,
             this.lastUpdatedDateDataGridViewTextBoxColumn,
             this.lastUpdatedUserDataGridViewTextBoxColumn,
             this.versionDataGridViewTextBoxColumn});
@@ -275,12 +273,20 @@
             this.grd.Location = new System.Drawing.Point(0, 45);
             this.grd.Name = "grd";
             this.grd.ReadOnly = true;
-            this.grd.Size = new System.Drawing.Size(751, 301);
+            this.grd.Size = new System.Drawing.Size(855, 301);
             this.grd.TabIndex = 1;
             // 
-            // bindingSource1
+            // btnSearch
             // 
-            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.WareHousePaper);
+            this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSearch.Location = new System.Drawing.Point(689, 16);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 20);
+            this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSearch.TabIndex = 4;
+            this.btnSearch.Text = "Tìm kiếm";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -289,13 +295,6 @@
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // clinicNameDataGridViewTextBoxColumn
-            // 
-            this.clinicNameDataGridViewTextBoxColumn.DataPropertyName = "ClinicName";
-            this.clinicNameDataGridViewTextBoxColumn.HeaderText = "Tên kho";
-            this.clinicNameDataGridViewTextBoxColumn.Name = "clinicNameDataGridViewTextBoxColumn";
-            this.clinicNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // clinicIdDataGridViewTextBoxColumn
             // 
@@ -307,7 +306,7 @@
             // 
             // typeDataGridViewTextBoxColumn
             // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "TypeName";
             this.typeDataGridViewTextBoxColumn.HeaderText = "Nhập/Xuất kho";
             this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
             this.typeDataGridViewTextBoxColumn.ReadOnly = true;
@@ -342,6 +341,7 @@
             // 
             // noteDataGridViewTextBoxColumn
             // 
+            this.noteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
             this.noteDataGridViewTextBoxColumn.HeaderText = "chú thích";
             this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
@@ -354,14 +354,6 @@
             this.createdDateDataGridViewTextBoxColumn.Name = "createdDateDataGridViewTextBoxColumn";
             this.createdDateDataGridViewTextBoxColumn.ReadOnly = true;
             this.createdDateDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // crearedUserDataGridViewTextBoxColumn
-            // 
-            this.crearedUserDataGridViewTextBoxColumn.DataPropertyName = "CrearedUser";
-            this.crearedUserDataGridViewTextBoxColumn.HeaderText = "CrearedUser";
-            this.crearedUserDataGridViewTextBoxColumn.Name = "crearedUserDataGridViewTextBoxColumn";
-            this.crearedUserDataGridViewTextBoxColumn.ReadOnly = true;
-            this.crearedUserDataGridViewTextBoxColumn.Visible = false;
             // 
             // lastUpdatedDateDataGridViewTextBoxColumn
             // 
@@ -387,19 +379,23 @@
             this.versionDataGridViewTextBoxColumn.ReadOnly = true;
             this.versionDataGridViewTextBoxColumn.Visible = false;
             // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.WareHousePaper);
+            // 
             // frmWHPageHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 346);
+            this.ClientSize = new System.Drawing.Size(855, 346);
             this.Controls.Add(this.grd);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmWHPageHistory";
             this.Text = "Lịch sử xuất nhập kho";
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dateDenNgay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateTuNgay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dpkToDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dpkFromDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -415,12 +411,14 @@
         private DevComponents.Editors.ComboItem cbItemXuat;
         private DevComponents.DotNetBar.Controls.DataGridViewX grd;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput dateDenNgay;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput dateTuNgay;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dpkToDate;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dpkFromDate;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn clinicNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn crearedUserDataGridViewTextBoxColumn;
+        private DevComponents.DotNetBar.ButtonX btnSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn clinicIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
@@ -429,7 +427,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn delivererDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn crearedUserDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdatedDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdatedUserDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
