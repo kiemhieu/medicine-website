@@ -11,13 +11,13 @@ namespace Medical.Data.Entities
     {
         public long Id { get; set; }
         public int ClinicId { get; set; }
-        public int PatienId { get; set; }
+        public int PatientId { get; set; }
         public long? PrescriptionId { get; set; }
         public DateTime Date { get; set; }
         public DateTime CreatedDate { get; set; }
-        public int CreateBy { get; set; }
+        public int CreatedUser { get; set; }
         public DateTime LastUpdatedDate { get; set; }
-        public int LastUpdateBy { get; set; }
+        public int LastUpdatedUser { get; set; }
         public int Version { get; set; }
   }
 }

@@ -18,6 +18,7 @@ namespace Medical.Data.Entities
         public DateTime LastUpdatedDate { get; set; }
         public int Version { get; set; }
 
+        public virtual List<MedicineDeliveryDetailAllocate> Allocated { get; set; }
         [NotMapped]
         public int NotAllocatedQty { get; set; }
   }

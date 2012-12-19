@@ -9,7 +9,7 @@ using Medical.Data.Entities;
 namespace Medical.Data.Repositories {
     public class WareHouseDetailRepository : RepositoryBase, IWareHouseDetailRepository
     {
-        public List<WareHouseDetail> GetByMedicine(List<int> medicineIdList)
+        public List<WareHouseDetail> GetByMedicine(List<int> medicineIdList, int clinicId)
         {
             return this.Context.WareHouseDetails.Where(x => medicineIdList.Contains(x.MedicineId)).ToList();
         }
@@ -48,7 +48,7 @@ namespace Medical.Data.Repositories {
             {
                 var oldWhDetail = this.Context.WareHouseDetails.FirstOrDefault(x => x.Id == whDetail.Id);
                 if (oldWhDetail == null) return;
-                oldWhDetail.WareHouseId = whDetail.WareHouseId;
+                // oldWhDetail.WareHouseId = whDetail.WareHouseId;
                 oldWhDetail.MedicineId = whDetail.MedicineId;
                 oldWhDetail.WareHousePaperDetailId = whDetail.WareHousePaperDetailId;
                 oldWhDetail.CreatedUser = whDetail.CreatedUser;
