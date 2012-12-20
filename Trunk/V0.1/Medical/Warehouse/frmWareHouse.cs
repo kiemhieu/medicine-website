@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Medical.Data.Repositories;
 using Medical.MedicineForm;
 using WeifenLuo.WinFormsUI.Docking;
+using System.Collections.Generic;
 
 namespace Medical.Warehouse
 {
@@ -10,13 +11,22 @@ namespace Medical.Warehouse
     {
         public int IdWareHouse;
         public int IdMedicine;
+        private int minAllowed;
         public string medicineName = "";
+        public int rowIndex;
         private WareHouseRepository whRepository = new WareHouseRepository();
+        private ClinicRepository clinicRepository = new ClinicRepository();
         public frmWareHouse()
         {
             InitializeComponent();
+            LoadToCiline();
             BuildGrid();
             FillToGrid();
+        }
+
+        private void LoadToCiline()
+        {
+            cboClinic.DataSource = clinicRepository.GetAll();         
         }
 
         private void BuildGrid()
@@ -47,77 +57,77 @@ namespace Medical.Warehouse
             clmVolumn.ReadOnly = true;
             grd.Columns.Add(clmVolumn);
 
-            var clmMinAllowed = new DataGridViewTextBoxColumn { HeaderText = "Người cập nhật", DataPropertyName = "LastUpdatedUser", Name = "LastUpdatedUser" };
-            clmMedicineName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            var clmMinAllowed = new DataGridViewTextBoxColumn { HeaderText = "Số lượng thấp nhất cho phép", DataPropertyName = "MinAllowed", Name = "MinAllowed" };
             grd.Columns.Add(clmMinAllowed);
 
-            var clmLastUpdatedUser = new DataGridViewTextBoxColumn { HeaderText = "Thời gian cập nhật", DataPropertyName = "LastUpdatedDate", Name = "LastUpdatedDate" };
-            clmLastUpdatedUser.ReadOnly = true;
+            var clmLastUpdatedUser = new DataGridViewTextBoxColumn { HeaderText = "Người cập nhật", DataPropertyName = "LastUpdatedUser", Name = "LastUpdatedUser" };
             clmLastUpdatedUser.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             grd.Columns.Add(clmLastUpdatedUser);
-        }
 
-        private void grd_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex == -1) return;
-            lblID.Text = grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value == null ? "0" : grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString();
-
+            var clmLastUpdatedDate = new DataGridViewTextBoxColumn { HeaderText = "Thời gian cập nhật", DataPropertyName = "LastUpdatedDate", Name = "LastUpdatedDate" };
+            clmLastUpdatedDate.ReadOnly = true;
+            clmLastUpdatedDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            grd.Columns.Add(clmLastUpdatedDate);
         }
 
         private void grd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
+            rowIndex = e.RowIndex;
+
             if (grd.Rows[e.RowIndex].Cells["MedicineId"].Value == null)
             {
                 IdWareHouse = 0;
                 IdMedicine = 0;
+                minAllowed = 0;
             }
-
             else
             {
                 IdWareHouse = int.Parse(grd.Rows[e.RowIndex].Cells["Id"].Value.ToString());
                 IdMedicine = int.Parse(grd.Rows[e.RowIndex].Cells["MedicineId"].Value.ToString());
-            }
-            lblID.Text = IdWareHouse.ToString();
+                minAllowed = int.Parse(grd.Rows[e.RowIndex].Cells["MinAllowed"].Value.ToString());
+            }            
 
             if (IdWareHouse > 0)
             {
-                frmWareHouseEdit frmEdit = new frmWareHouseEdit(IdWareHouse, IdMedicine);                
+                int clinicId = 0;
+                int.TryParse(cboClinic.SelectedValue.ToString(), out clinicId);
+                frmWareHouseEdit frmEdit = new frmWareHouseEdit(clinicId, IdWareHouse, IdMedicine, minAllowed);
                 frmEdit.ShowDialog();
-            }
-            FillToGrid();
+
+                if (rowIndex < 0)
+                    FillToGrid();
+                else
+                    grd.Rows[rowIndex].Cells["MinAllowed"].Value = frmEdit.MinAllowed;
+            }           
         }
+
         private void FillToGrid()
         {
-            //this.grd.Refresh();
-            //this.grd.Parent.Refresh();
-            //if (grd.Rows.Count == 0)
-            //{ }
-            //else
-            //{
-
-            //    grd.Rows[0].Selected = true;
-            //    lblID.Text = grd.Rows[0].Cells["idDataGridViewTextBoxColumn"].Value.ToString();
-            //}
+            this.grd.Refresh();
             grd.DataSource = whRepository.GetAll();
         }
 
-        private void btnInsert_Click(object sender, EventArgs e)
-        {
-            frmWareHouseEdit frmedit = new frmWareHouseEdit();            
-            frmedit.ShowDialog();
-            FillToGrid();
-        }
-      
         /// <summary>
         /// Handles the ButtonCustomClick event of the textBoxX1 control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void textBoxX1_ButtonCustomClick(object sender, EventArgs e)
-        {            
-            frmWareHouseEdit frmedit = new frmWareHouseEdit();
+        {
+            int clinicId = 0;
+            int.TryParse(cboClinic.SelectedValue.ToString(), out clinicId);
+            frmWareHouseEdit frmedit = new frmWareHouseEdit(clinicId, 0, 0, 0);
             frmedit.ShowDialog();
+            if (frmedit.IsOK)
+            {
+                FillToGrid();
+            }
         }
+
+        private void cboClinic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            grd.DataSource = whRepository.GetByClinicId(int.Parse(cboClinic.SelectedValue.ToString()));
+        }      
     }
 }

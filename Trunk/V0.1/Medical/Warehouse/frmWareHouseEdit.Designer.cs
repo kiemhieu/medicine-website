@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
+            this.btnInsert = new DevComponents.DotNetBar.ButtonX();
+            this.cboMedicine = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.txtMinAllowed = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboMedicine = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.buttonX2);
-            this.panel1.Controls.Add(this.buttonX1);
+            this.panel1.Controls.Add(this.btnCancel);
+            this.panel1.Controls.Add(this.btnInsert);
             this.panel1.Controls.Add(this.cboMedicine);
-            this.panel1.Controls.Add(this.txtName);
+            this.panel1.Controls.Add(this.txtMinAllowed);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
@@ -51,17 +51,54 @@
             this.panel1.Size = new System.Drawing.Size(477, 123);
             this.panel1.TabIndex = 2;
             // 
-            // txtName
+            // btnCancel
+            // 
+            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancel.Location = new System.Drawing.Point(374, 58);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancel.TabIndex = 8;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnInsert
+            // 
+            this.btnInsert.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnInsert.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnInsert.Location = new System.Drawing.Point(374, 16);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(75, 23);
+            this.btnInsert.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnInsert.TabIndex = 7;
+            this.btnInsert.Text = "Thêm mới";
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
+            // cboMedicine
+            // 
+            this.cboMedicine.DisplayMember = "Text";
+            this.cboMedicine.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboMedicine.FormattingEnabled = true;
+            this.cboMedicine.ItemHeight = 14;
+            this.cboMedicine.Location = new System.Drawing.Point(190, 16);
+            this.cboMedicine.Name = "cboMedicine";
+            this.cboMedicine.Size = new System.Drawing.Size(147, 20);
+            this.cboMedicine.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboMedicine.TabIndex = 2;
+            // 
+            // txtMinAllowed
             // 
             // 
             // 
             // 
-            this.txtName.Border.Class = "TextBoxBorder";
-            this.txtName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtName.Location = new System.Drawing.Point(190, 58);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(147, 20);
-            this.txtName.TabIndex = 1;
+            this.txtMinAllowed.Border.Class = "TextBoxBorder";
+            this.txtMinAllowed.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtMinAllowed.Location = new System.Drawing.Point(190, 58);
+            this.txtMinAllowed.Name = "txtMinAllowed";
+            this.txtMinAllowed.Size = new System.Drawing.Size(147, 20);
+            this.txtMinAllowed.TabIndex = 1;
+            this.txtMinAllowed.TextChanged += new System.EventHandler(this.txtMinAllowed_TextChanged);
             // 
             // label4
             // 
@@ -81,40 +118,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Số lượng thuốc thấp nhất cho phép";
             // 
-            // cboMedicine
-            // 
-            this.cboMedicine.DisplayMember = "Text";
-            this.cboMedicine.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cboMedicine.FormattingEnabled = true;
-            this.cboMedicine.ItemHeight = 14;
-            this.cboMedicine.Location = new System.Drawing.Point(190, 16);
-            this.cboMedicine.Name = "cboMedicine";
-            this.cboMedicine.Size = new System.Drawing.Size(147, 20);
-            this.cboMedicine.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboMedicine.TabIndex = 2;
-            // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(374, 16);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(75, 23);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 7;
-            this.buttonX1.Text = "Cập nhật";
-            // 
-            // buttonX2
-            // 
-            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(374, 58);
-            this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Size = new System.Drawing.Size(75, 23);
-            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX2.TabIndex = 8;
-            this.buttonX2.Text = "Hủy";
-            // 
             // frmWareHouseEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,11 +135,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtName;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtMinAllowed;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private DevComponents.DotNetBar.ButtonX buttonX2;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.ButtonX btnCancel;
+        private DevComponents.DotNetBar.ButtonX btnInsert;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cboMedicine;
     }
 }

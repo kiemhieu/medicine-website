@@ -37,7 +37,7 @@
             this.lblID = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.cobClini = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.txtSeachName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
@@ -54,19 +54,15 @@
             this.tsbtnDelete});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(643, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(801, 25);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.Visible = false;
             // 
             // tsbtnInsert
             // 
-            this.tsbtnInsert.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnInsert.Image")));
-            this.tsbtnInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnInsert.Name = "tsbtnInsert";
-            this.tsbtnInsert.Size = new System.Drawing.Size(82, 22);
-            this.tsbtnInsert.Text = "Thêm mới";
-            this.tsbtnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            this.tsbtnInsert.Size = new System.Drawing.Size(23, 22);
             // 
             // tsbtnEdit
             // 
@@ -96,13 +92,13 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.labelX2);
-            this.panel1.Controls.Add(this.cobClini);
+            this.panel1.Controls.Add(this.cboClinic);
             this.panel1.Controls.Add(this.txtSeachName);
             this.panel1.Controls.Add(this.labelX1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(745, 41);
+            this.panel1.Size = new System.Drawing.Size(801, 41);
             this.panel1.TabIndex = 9;
             // 
             // labelX2
@@ -119,17 +115,19 @@
             this.labelX2.TabIndex = 4;
             this.labelX2.Text = "Tên phòng khám";
             // 
-            // cobClini
+            // cboClinic
             // 
-            this.cobClini.DisplayMember = "Text";
-            this.cobClini.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cobClini.FormattingEnabled = true;
-            this.cobClini.ItemHeight = 14;
-            this.cobClini.Location = new System.Drawing.Point(133, 8);
-            this.cobClini.Name = "cobClini";
-            this.cobClini.Size = new System.Drawing.Size(121, 20);
-            this.cobClini.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cobClini.TabIndex = 3;
+            this.cboClinic.DisplayMember = "Name";
+            this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboClinic.FormattingEnabled = true;
+            this.cboClinic.ItemHeight = 14;
+            this.cboClinic.Location = new System.Drawing.Point(133, 8);
+            this.cboClinic.Name = "cboClinic";
+            this.cboClinic.Size = new System.Drawing.Size(254, 20);
+            this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboClinic.TabIndex = 3;
+            this.cboClinic.ValueMember = "Id";
+            this.cboClinic.SelectedValueChanged += new System.EventHandler(this.cboClinic_SelectedIndexChanged);
             // 
             // txtSeachName
             // 
@@ -140,7 +138,7 @@
             this.txtSeachName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtSeachName.ButtonCustom.DisplayPosition = 1;
             this.txtSeachName.ButtonCustom.Visible = true;
-            this.txtSeachName.Location = new System.Drawing.Point(492, 8);
+            this.txtSeachName.Location = new System.Drawing.Point(586, 8);
             this.txtSeachName.Name = "txtSeachName";
             this.txtSeachName.ReadOnly = true;
             this.txtSeachName.Size = new System.Drawing.Size(169, 20);
@@ -155,7 +153,7 @@
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX1.Location = new System.Drawing.Point(380, 6);
+            this.labelX1.Location = new System.Drawing.Point(474, 6);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(106, 23);
             this.labelX1.TabIndex = 1;
@@ -177,15 +175,15 @@
             this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.grd.Location = new System.Drawing.Point(0, 41);
             this.grd.Name = "grd";
-            this.grd.Size = new System.Drawing.Size(745, 409);
+            this.grd.Size = new System.Drawing.Size(801, 409);
             this.grd.TabIndex = 10;
-            this.grd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
+            this.grd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
             // 
             // frmWareHouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(745, 450);
+            this.ClientSize = new System.Drawing.Size(801, 450);
             this.Controls.Add(this.grd);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblID);
@@ -218,6 +216,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn volumnDataGridViewTextBoxColumn;
         private DevComponents.DotNetBar.Controls.DataGridViewX grd;
         private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cobClini;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cboClinic;
     }
 }

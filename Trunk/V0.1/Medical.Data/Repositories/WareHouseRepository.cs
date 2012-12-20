@@ -121,5 +121,10 @@ namespace Medical.Data.Repositories
         {
             return this.Context.WareHouses.Where(x => medicineId.Contains(x.MedicineId) && x.ClinicId == clinicId).ToList();
         }
+
+        public List<WareHouse> GetByClinicId(int clinicId)
+        {
+            return this.Context.WareHouses.Where(x => x.ClinicId == clinicId).ToList();
+        }
     }
 }

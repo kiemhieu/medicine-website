@@ -163,6 +163,7 @@
     <Compile Include="Warehouse\frmWHPageHistory.Designer.cs">
       <DependentUpon>frmWHPageHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\List.cs" />
     <EmbeddedResource Include="CheckUp.resx">
       <DependentUpon>CheckUp.cs</DependentUpon>
     </EmbeddedResource>
