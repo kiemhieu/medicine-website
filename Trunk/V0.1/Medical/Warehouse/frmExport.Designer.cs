@@ -44,21 +44,15 @@
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paperIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.medicineIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lotNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalVolumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.badVolumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.realityVolumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wareHousePaperNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
@@ -67,7 +61,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateImport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -166,11 +160,13 @@
             // 
             // txtRecipient
             // 
+            this.txtRecipient.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtRecipient.Border.Class = "TextBoxBorder";
             this.txtRecipient.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtRecipient.ForeColor = System.Drawing.Color.Black;
             this.txtRecipient.Location = new System.Drawing.Point(93, 73);
             this.txtRecipient.Name = "txtRecipient";
             this.txtRecipient.Size = new System.Drawing.Size(278, 21);
@@ -178,11 +174,13 @@
             // 
             // txtNote
             // 
+            this.txtNote.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtNote.Border.Class = "TextBoxBorder";
             this.txtNote.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtNote.ForeColor = System.Drawing.Color.Black;
             this.txtNote.Location = new System.Drawing.Point(93, 47);
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(278, 21);
@@ -190,11 +188,13 @@
             // 
             // txtMST
             // 
+            this.txtMST.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtMST.Border.Class = "";
             this.txtMST.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtMST.ForeColor = System.Drawing.Color.Black;
             this.txtMST.Location = new System.Drawing.Point(512, 47);
             this.txtMST.Name = "txtMST";
             this.txtMST.Size = new System.Drawing.Size(100, 14);
@@ -202,11 +202,13 @@
             // 
             // txtNo
             // 
+            this.txtNo.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtNo.Border.Class = "TextBoxBorder";
             this.txtNo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtNo.ForeColor = System.Drawing.Color.Black;
             this.txtNo.Location = new System.Drawing.Point(93, 20);
             this.txtNo.Name = "txtNo";
             this.txtNo.Size = new System.Drawing.Size(100, 21);
@@ -290,26 +292,20 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "Mã chứng từ";
             // 
-            // dataGridViewX1
+            // grd
             // 
-            this.dataGridViewX1.AutoGenerateColumns = false;
-            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grd.AutoGenerateColumns = false;
+            this.grd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
-            this.paperIdDataGridViewTextBoxColumn,
-            this.medicineNameDataGridViewTextBoxColumn,
             this.medicineIdDataGridViewTextBoxColumn,
             this.lotNoDataGridViewTextBoxColumn,
-            this.totalVolumnDataGridViewTextBoxColumn,
-            this.badVolumnDataGridViewTextBoxColumn,
-            this.realityVolumnDataGridViewTextBoxColumn,
             this.unitDataGridViewTextBoxColumn,
             this.unitPriceDataGridViewTextBoxColumn,
             this.amountDataGridViewTextBoxColumn,
             this.noteDataGridViewTextBoxColumn,
-            this.versionDataGridViewTextBoxColumn,
-            this.wareHousePaperNoDataGridViewTextBoxColumn});
-            this.dataGridViewX1.DataSource = this.bindingSource1;
+            this.versionDataGridViewTextBoxColumn});
+            this.grd.DataSource = this.bindingSource1;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -317,14 +313,14 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(0, 136);
-            this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.ReadOnly = true;
-            this.dataGridViewX1.Size = new System.Drawing.Size(804, 259);
-            this.dataGridViewX1.TabIndex = 1;
+            this.grd.DefaultCellStyle = dataGridViewCellStyle1;
+            this.grd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.grd.Location = new System.Drawing.Point(0, 136);
+            this.grd.Name = "grd";
+            this.grd.ReadOnly = true;
+            this.grd.Size = new System.Drawing.Size(804, 259);
+            this.grd.TabIndex = 1;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -333,21 +329,6 @@
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // paperIdDataGridViewTextBoxColumn
-            // 
-            this.paperIdDataGridViewTextBoxColumn.DataPropertyName = "PaperId";
-            this.paperIdDataGridViewTextBoxColumn.HeaderText = "PaperId";
-            this.paperIdDataGridViewTextBoxColumn.Name = "paperIdDataGridViewTextBoxColumn";
-            this.paperIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.paperIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // medicineNameDataGridViewTextBoxColumn
-            // 
-            this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
-            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "Tên thuốc";
-            this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
-            this.medicineNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // medicineIdDataGridViewTextBoxColumn
             // 
@@ -363,27 +344,6 @@
             this.lotNoDataGridViewTextBoxColumn.HeaderText = "Số lô";
             this.lotNoDataGridViewTextBoxColumn.Name = "lotNoDataGridViewTextBoxColumn";
             this.lotNoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // totalVolumnDataGridViewTextBoxColumn
-            // 
-            this.totalVolumnDataGridViewTextBoxColumn.DataPropertyName = "TotalVolumn";
-            this.totalVolumnDataGridViewTextBoxColumn.HeaderText = "Số lượng";
-            this.totalVolumnDataGridViewTextBoxColumn.Name = "totalVolumnDataGridViewTextBoxColumn";
-            this.totalVolumnDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // badVolumnDataGridViewTextBoxColumn
-            // 
-            this.badVolumnDataGridViewTextBoxColumn.DataPropertyName = "BadVolumn";
-            this.badVolumnDataGridViewTextBoxColumn.HeaderText = "Số lượng hỏng";
-            this.badVolumnDataGridViewTextBoxColumn.Name = "badVolumnDataGridViewTextBoxColumn";
-            this.badVolumnDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // realityVolumnDataGridViewTextBoxColumn
-            // 
-            this.realityVolumnDataGridViewTextBoxColumn.DataPropertyName = "RealityVolumn";
-            this.realityVolumnDataGridViewTextBoxColumn.HeaderText = "Số lượng thực tế";
-            this.realityVolumnDataGridViewTextBoxColumn.Name = "realityVolumnDataGridViewTextBoxColumn";
-            this.realityVolumnDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // unitDataGridViewTextBoxColumn
             // 
@@ -420,14 +380,6 @@
             this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
             this.versionDataGridViewTextBoxColumn.ReadOnly = true;
             this.versionDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // wareHousePaperNoDataGridViewTextBoxColumn
-            // 
-            this.wareHousePaperNoDataGridViewTextBoxColumn.DataPropertyName = "WareHousePaperNo";
-            this.wareHousePaperNoDataGridViewTextBoxColumn.HeaderText = "WareHousePaperNo";
-            this.wareHousePaperNoDataGridViewTextBoxColumn.Name = "wareHousePaperNoDataGridViewTextBoxColumn";
-            this.wareHousePaperNoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.wareHousePaperNoDataGridViewTextBoxColumn.Visible = false;
             // 
             // bindingSource1
             // 
@@ -483,7 +435,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 395);
-            this.Controls.Add(this.dataGridViewX1);
+            this.Controls.Add(this.grd);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -492,7 +444,7 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateImport)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -514,7 +466,7 @@
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
+        private DevComponents.DotNetBar.Controls.DataGridViewX grd;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.BindingSource bindingSource2;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;

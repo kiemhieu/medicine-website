@@ -176,8 +176,9 @@
             this.grd.Location = new System.Drawing.Point(0, 41);
             this.grd.Name = "grd";
             this.grd.Size = new System.Drawing.Size(801, 409);
-            this.grd.TabIndex = 10;
-            this.grd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
+            this.grd.TabIndex = 10;            
+            this.grd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
+            this.grd.AutoGenerateColumns = false;
             // 
             // frmWareHouse
             // 
