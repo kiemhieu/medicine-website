@@ -14,7 +14,7 @@ namespace Medical.Warehouse
     {
         public frmExport()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void btnInsert_Click(object sender, EventArgs e)

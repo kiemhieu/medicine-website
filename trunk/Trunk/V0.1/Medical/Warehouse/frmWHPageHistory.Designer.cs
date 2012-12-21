@@ -285,6 +285,7 @@
             this.grd.ReadOnly = true;
             this.grd.Size = new System.Drawing.Size(855, 301);
             this.grd.TabIndex = 1;
+            this.grd.AutoGenerateColumns = false;
             // 
             // bindingSource1
             // 

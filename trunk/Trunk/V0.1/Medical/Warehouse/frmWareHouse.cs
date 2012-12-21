@@ -30,9 +30,7 @@ namespace Medical.Warehouse
         }
 
         private void BuildGrid()
-        {
-            grd.AutoGenerateColumns = false;
-
+        {           
             var clmId = new DataGridViewTextBoxColumn { HeaderText = "Id", DataPropertyName = "Id", Name = "Id" };
             clmId.Visible = false;
             grd.Columns.Add(clmId);
@@ -58,6 +56,7 @@ namespace Medical.Warehouse
             grd.Columns.Add(clmVolumn);
 
             var clmMinAllowed = new DataGridViewTextBoxColumn { HeaderText = "Số lượng thấp nhất cho phép", DataPropertyName = "MinAllowed", Name = "MinAllowed" };
+            clmMinAllowed.ReadOnly = true;
             grd.Columns.Add(clmMinAllowed);
 
             var clmLastUpdatedUser = new DataGridViewTextBoxColumn { HeaderText = "Người cập nhật", DataPropertyName = "LastUpdatedUser", Name = "LastUpdatedUser" };
@@ -93,6 +92,7 @@ namespace Medical.Warehouse
                 int clinicId = 0;
                 int.TryParse(cboClinic.SelectedValue.ToString(), out clinicId);
                 frmWareHouseEdit frmEdit = new frmWareHouseEdit(clinicId, IdWareHouse, IdMedicine, minAllowed);
+                frmEdit.StartPosition = FormStartPosition.CenterScreen;
                 frmEdit.ShowDialog();
 
                 if (rowIndex < 0)
@@ -118,6 +118,7 @@ namespace Medical.Warehouse
             int clinicId = 0;
             int.TryParse(cboClinic.SelectedValue.ToString(), out clinicId);
             frmWareHouseEdit frmedit = new frmWareHouseEdit(clinicId, 0, 0, 0);
+            frmedit.StartPosition = FormStartPosition.CenterScreen;
             frmedit.ShowDialog();
             if (frmedit.IsOK)
             {
