@@ -13,10 +13,12 @@ namespace Medical.Data.Entities
         public int PlanId { get; set; }
         public int MedicineId { get; set; }
         public int InStock { get; set; }
-        public int Usage { get; set; }
+        public int LastMonthUsage { get; set; }
+        public int CurrentMonthUsage { get; set; }          
         public int Required { get; set; }
         public int UnitPrice { get; set; }
         public int Amount { get; set; }
         public int Version { get; set; }
+        public DateTime LastUpdatedDate { get; set; }
   }
 }
