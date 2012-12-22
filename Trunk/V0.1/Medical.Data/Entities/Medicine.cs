@@ -40,6 +40,6 @@ namespace Medical.Data.Entities
         }
 
         [NotMapped]
-        public int No { get; set; }
+        public int No { get; set; }        
   }
 }

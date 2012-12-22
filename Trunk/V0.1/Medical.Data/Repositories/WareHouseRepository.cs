@@ -126,5 +126,41 @@ namespace Medical.Data.Repositories
         {
             return this.Context.WareHouses.Where(x => x.ClinicId == clinicId).ToList();
         }
+
+        public List<MedicinePlanDetail> GetByPlan(int clinicId, int year, int month)
+        {
+            List<MedicinePlanDetail> list = new List<MedicinePlanDetail>();
+            try
+            {
+                var listWareHouse = (from x in Context.WareHouses where x.ClinicId == clinicId select x).ToList();
+
+                foreach (WareHouse whItem in listWareHouse)
+                {
+                    MedicinePlanDetail item = new MedicinePlanDetail();
+                    item.MedicineId = whItem.MedicineId;
+                    item.MedicineName = whItem.MedicineName;
+                    item.InStock = whItem.Volumn;
+                    item.LastMonthUsage = GetMedicineInMonth(year, month - 1, 1, whItem.MedicineId);
+                    item.CurrentMonthUsage = GetMedicineInMonth(year, month, 1, whItem.MedicineId);
+                    list.Add(item);
+                }
+            }
+            catch (Exception ex)
+            { }
+
+            return list;
+        }
+
+        private int GetMedicineInMonth(int year, int month, int type, int medicineId)
+        {
+            var s = from c in Context.WareHousePaperDetails
+                    where c.MedicineId == medicineId && c.Type == type && c.CreatedDate.Year == year && c.CreatedDate.Month == month
+                    group c by c.MedicineId into g
+                    select new { TotalInStock = g.Sum(x => x.Volumn) };
+            if (s.FirstOrDefault() != null)
+                return s.FirstOrDefault().TotalInStock;
+
+            return 0;
+        }
     }
 }
