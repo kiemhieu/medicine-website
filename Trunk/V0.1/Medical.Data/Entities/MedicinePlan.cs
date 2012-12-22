@@ -18,7 +18,7 @@ namespace Medical.Data.Entities
         public decimal Status { get; set; }
         public int? ApproveId { get; set; }
         public DateTime CreatedDate { get; set; }
-        public int CrearedUser { get; set; }
+        public int CreatedUser { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public int LastUpdatedUser { get; set; }
         public int Version { get; set; }

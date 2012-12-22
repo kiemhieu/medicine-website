@@ -6,7 +6,8 @@ using Medical.Data.Entities;
 //using Medical.Forms.Implements;
 
 
-namespace Medical.Data.Repositories {
+namespace Medical.Data.Repositories
+{
     public class WareHouseDetailRepository : RepositoryBase, IWareHouseDetailRepository
     {
         public List<WareHouseDetail> GetByMedicine(List<int> medicineIdList, int clinicId)
@@ -33,13 +34,19 @@ namespace Medical.Data.Repositories {
 
         public void Insert(WareHouseDetail whDetail)
         {
-            //whDetail.CreatedUser = AppContext.LoggedInUser.Id;
-            whDetail.CreatedDate = DateTime.Now;
-            //whDetail.LastUpdatedUser = AppContext.LoggedInUser.Id;
-            whDetail.LastUpdatedDate = DateTime.Now;
-            whDetail.Version = 0;
-            this.Context.WareHouseDetails.Add(whDetail);
-            this.Context.SaveChanges();
+            try
+            {
+                whDetail.CreatedUser = AppContext.LoggedInUser.Id;
+                whDetail.CreatedDate = DateTime.Now;                
+                whDetail.LastUpdatedDate = DateTime.Now;
+                whDetail.Version = 0;
+                this.Context.WareHouseDetails.Add(whDetail);
+                this.Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void Update(WareHouseDetail whDetail)
@@ -60,7 +67,7 @@ namespace Medical.Data.Repositories {
                 oldWhDetail.OriginalVolumn = whDetail.OriginalVolumn;
                 oldWhDetail.CurrentVolumn = whDetail.CurrentVolumn;
                 oldWhDetail.BadVolumn = whDetail.BadVolumn;
-                // oldWhDetail.LastUpdatedUser = AppContext.LoggedInUser.Id;
+                oldWhDetail.LastUpdatedUser = AppContext.LoggedInUser.Id;
                 oldWhDetail.LastUpdatedDate = DateTime.Now;
                 oldWhDetail.Version++;
                 this.Context.SaveChanges();

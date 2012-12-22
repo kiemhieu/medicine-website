@@ -8,7 +8,7 @@ namespace Medical.Data.Entities
     public class WareHouseDetail
     {
         public long Id { get; set; }
-        //public int ClinicId { get; set; }
+        public int WareHouseId { get; set; }
         public int? WareHousePaperDetailId { get; set; }        
         public int MedicineId { get; set; }
         public string LotNo { get; set; }
@@ -24,11 +24,7 @@ namespace Medical.Data.Entities
         public int LastUpdatedUser { get; set; }
         public int Version { get; set; }
 
-        public virtual List<MedicineDeliveryDetailAllocate> DeliveryAllocate { get; set; }
-
-        [NotMapped]
-        public int WareHouseId { get; set; }
-
+        public virtual List<MedicineDeliveryDetailAllocate> DeliveryAllocate { get; set; }        
         public virtual Medicine Medicine { get; set; }        
         // public virtual WareHouse WareHouse { get; set; }
         [NotMapped]

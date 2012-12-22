@@ -8,9 +8,11 @@ namespace Medical.Data
 {
     public interface IMedicinePlanDetailRepository
     {
-        void Insert(MedicinePlanDetail user);
-        void Update(MedicinePlanDetail user);
         void Delete(int id);
-        List<MedicinePlanDetail> GetAll();
+        Medical.Data.Entities.MedicinePlanDetail Get(int id);
+        System.Collections.Generic.List<Medical.Data.Entities.MedicinePlanDetail> GetAll();
+        Medical.Data.Entities.MedicinePlanDetail GetById(int id);
+        void Insert(Medical.Data.Entities.MedicinePlanDetail MedicinePlanDetail);
+        void Update(Medical.Data.Entities.MedicinePlanDetail medicinePlanDetail);
     }
 }
