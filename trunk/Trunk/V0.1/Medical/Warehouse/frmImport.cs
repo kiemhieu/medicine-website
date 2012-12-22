@@ -179,6 +179,7 @@ namespace Medical.Warehouse
                         WareHousePaperDetail item = new WareHousePaperDetail();
                         item.WareHousePaperId = wareHousePaper.Id;
                         item.LotNo = row.Cells["LotNo"].Value.ToString();
+                        item.Type = 0;
                         item.MedicineId = int.Parse(row.Cells["MedicineId"].Value.ToString());
                         item.Volumn = int.Parse(row.Cells["Volumn"].Value.ToString());
                         item.Unit = int.Parse(row.Cells["Unit"].Value.ToString());
@@ -187,6 +188,7 @@ namespace Medical.Warehouse
                         item.ExpireDate = DateTime.Parse(row.Cells["ExpireDate"].Value.ToString());
                         if (row.Cells["Note"].Value != null)
                             item.Note = row.Cells["Note"].Value.ToString();
+                        item.CreatedDate = wareHousePaper.CreatedDate;
                         repwhPaperDetail.Insert(item);
 
                         //Insert data to WareHouse

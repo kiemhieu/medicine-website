@@ -20,5 +20,8 @@ namespace Medical.Data.Entities
         public int Amount { get; set; }
         public int Version { get; set; }
         public DateTime LastUpdatedDate { get; set; }
+
+        [NotMapped]
+        public string MedicineName { get; set; }
   }
 }
