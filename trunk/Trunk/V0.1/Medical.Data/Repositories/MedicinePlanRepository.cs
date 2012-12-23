@@ -28,8 +28,9 @@ namespace Medical.Data.Repositories
         public void Insert(MedicinePlan MedicinePlan)
         {
             MedicinePlan.CreatedDate = DateTime.Now;
-            MedicinePlan.CreatedUser = AppContext.LoggedInUser.Id;            
+            MedicinePlan.CreatedUser = AppContext.LoggedInUser.Id;
             MedicinePlan.LastUpdatedDate = DateTime.Now;
+            MedicinePlan.LastUpdatedUser = AppContext.LoggedInUser.Id;
             MedicinePlan.Version = 0;
             this.Context.MedicinePlans.Add(MedicinePlan);
             this.Context.SaveChanges();
@@ -60,7 +61,7 @@ namespace Medical.Data.Repositories
             }
 
         }
-        
+
         public void Delete(int id)
         {
             try
@@ -80,6 +81,18 @@ namespace Medical.Data.Repositories
         public List<MedicinePlan> GetAll()
         {
             return this.Context.MedicinePlans.ToList();
-        }       
+        }
+
+        public List<MedicinePlan> FilterPlan(int year, int month, int clinicId, string status)
+        {
+            if (clinicId > 0 && !string.IsNullOrEmpty(status))
+                return this.Context.MedicinePlans.Where(c => c.Year == year && c.Month == month && c.ClinicId == clinicId && c.Status == status).ToList();
+            else if (clinicId > 0)
+                return this.Context.MedicinePlans.Where(c => c.Year == year && c.Month == month && c.ClinicId == clinicId).ToList();
+            else if (!string.IsNullOrEmpty(status))
+                return this.Context.MedicinePlans.Where(c => c.Year == year && c.Month == month && c.Status == status).ToList();
+
+            return null;
+        }
     }
 }

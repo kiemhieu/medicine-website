@@ -84,6 +84,8 @@
     <Compile Include="ClinicForm\frmClinicEdit.Designer.cs">
       <DependentUpon>frmClinicEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Utilities.cs" />
     <Compile Include="History\History.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +121,18 @@
     </Compile>
     <Compile Include="MedicineForm\FrmMedicineSearch.Designer.cs">
       <DependentUpon>FrmMedicineSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicinePlan\frmMedicinePlanDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicinePlan\frmMedicinePlanDetail.Designer.cs">
+      <DependentUpon>frmMedicinePlanDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicinePlan\frmMedicinePlanList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicinePlan\frmMedicinePlanList.Designer.cs">
+      <DependentUpon>frmMedicinePlanList.cs</DependentUpon>
     </Compile>
     <Compile Include="MedicinePlan\frmMedicinePlan.cs">
       <SubType>Form</SubType>
@@ -201,6 +215,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MedicineForm\FrmMedicineSearch.resx">
       <DependentUpon>FrmMedicineSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicinePlan\frmMedicinePlanDetail.resx">
+      <DependentUpon>frmMedicinePlanDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicinePlan\frmMedicinePlanList.resx">
+      <DependentUpon>frmMedicinePlanList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MedicinePlan\frmMedicinePlan.resx">
       <DependentUpon>frmMedicinePlan.cs</DependentUpon>

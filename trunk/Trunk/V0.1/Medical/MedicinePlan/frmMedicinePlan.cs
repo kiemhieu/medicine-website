@@ -11,31 +11,24 @@ using WeifenLuo.WinFormsUI.Docking;
 using Medical.Data;
 using Medical.Data.Entities;
 using DevComponents.DotNetBar.Controls;
+using Medical.Common;
 
 namespace Medical.MedicinePlan
 {
     public partial class frmMedicinePlan : DockContent
     {
         private ClinicRepository repClinic;
-        private DefineRepository repDefine;
-        private MedicineRepository repMedicine;
         private MedicinePlanRepository repMedicinePlan;
         private MedicinePlanDetailRepository repMedicinePlanDetail;
         private WareHouseRepository repwh;
-        private WareHousePaperRepository repwhPaper;
-        private WareHousePaperDetailRepository repwhPaperDetail;
         public frmMedicinePlan()
         {
 
             repClinic = new ClinicRepository();
-            repDefine = new DefineRepository();
-            repMedicine = new MedicineRepository();
             repwh = new WareHouseRepository();
-            repwhPaper = new WareHousePaperRepository();
-            repwhPaperDetail = new WareHousePaperDetailRepository();
+            repMedicinePlan = new MedicinePlanRepository();
             repMedicinePlanDetail = new MedicinePlanDetailRepository();
             InitializeComponent();
-            repClinic = new ClinicRepository();
 
             try
             {
@@ -93,6 +86,10 @@ namespace Medical.MedicinePlan
             }
 
             cbClinic.DataSource = repClinic.GetAll();
+
+            cboYear.SelectedItem = DateTime.Now.Year;
+            cboMonth.SelectedItem = DateTime.Now.Month;
+            cbClinic.SelectedValue = AppContext.CurrentClinic.Id;
         }
 
         private void BindGridViewData()
@@ -101,28 +98,14 @@ namespace Medical.MedicinePlan
             int year = 0;
             int month = 0;
 
-            grd.Rows.Clear();
             if (cbClinic.SelectedValue != null && cboYear.SelectedItem != null && cboMonth.SelectedItem != null && int.TryParse(cbClinic.SelectedValue.ToString(), out clinicId) && int.TryParse(cboYear.SelectedItem.ToString(), out year) && int.TryParse(cboMonth.SelectedItem.ToString(), out month))
             {
                 grd.DataSource = repwh.GetByPlan(clinicId, year, month);
             }
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            // Insert into WareHousePaper
-            try
+            else
             {
-                WareHousePaper whPaper = GetWareHousePaperEntity();
-                repwhPaper.Insert(whPaper);
-
+                grd.DataSource = new List<MedicinePlanDetail>();
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
         }
 
         private WareHousePaper GetWareHousePaperEntity()
@@ -151,27 +134,34 @@ namespace Medical.MedicinePlan
         {
             try
             {
-                //Insert data to WareHousePaperDetail
+                //Insert data to MedicinePlan
+                Medical.Data.Entities.MedicinePlan medicinePlan = new Medical.Data.Entities.MedicinePlan();
+                medicinePlan.Year = int.Parse(cboYear.SelectedItem.ToString());
+                medicinePlan.Month = int.Parse(cboMonth.SelectedItem.ToString());
+                medicinePlan.Status = Constants.Status_Wait;
+                medicinePlan.Date = DateTime.Now;
+                medicinePlan.Note = txtNote.Text;
+                medicinePlan.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());
+                repMedicinePlan.Insert(medicinePlan);
+
+                //Insert data to MedicinePlanDetail
                 foreach (DataGridViewRow row in grd.Rows)
                 {
                     if (ValidateRowData(row))
                     {
-                        WareHousePaperDetail item = new WareHousePaperDetail();
-                        item.LotNo = row.Cells["LotNo"].Value.ToString();
+                        MedicinePlanDetail item = new MedicinePlanDetail();
+                        item.PlanId = medicinePlan.Id;
                         item.MedicineId = int.Parse(row.Cells["MedicineId"].Value.ToString());
-                        item.Volumn = int.Parse(row.Cells["Volumn"].Value.ToString());
-                        item.Unit = int.Parse(row.Cells["Unit"].Value.ToString());
-                        item.UnitPrice = int.Parse(row.Cells["UnitPrice"].Value.ToString());
-                        item.Amount = int.Parse(row.Cells["Amount"].Value.ToString());
-                        item.ExpireDate = DateTime.Parse(row.Cells["ExpireDate"].Value.ToString());
-                        if (row.Cells["Note"].Value != null)
-                            item.Note = row.Cells["Note"].Value.ToString();
-                        repwhPaperDetail.Insert(item);
+                        item.InStock = int.Parse(row.Cells["InStock"].Value.ToString());
+                        item.LastMonthUsage = int.Parse(row.Cells["LastMonthUsage"].Value.ToString());
+                        item.CurrentMonthUsage = int.Parse(row.Cells["CurrentMonthUsage"].Value.ToString());
+                        item.Required = int.Parse(row.Cells["Required"].Value.ToString());
+                        repMedicinePlanDetail.Insert(item);
                     }
                 }
 
-                MessageBox.Show("Nhập kho thành công!");
-                grd.Rows.Clear();
+                MessageBox.Show("Tạo kế hoạch thành công!");
+                grd.DataSource = new List<MedicinePlanDetail>();
             }
             catch (Exception ex)
             {
@@ -179,36 +169,12 @@ namespace Medical.MedicinePlan
             }
         }
 
-        private void grd_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            int volumn = 0;
-            int unitPrice = 0;
-
-            if (grd.Columns[e.ColumnIndex].Name == "MedicineId")
-            {
-                if (grd.Rows[e.RowIndex].Cells["MedicineId"].Value != null)
-                {
-                    var medicine = repMedicine.GetById(int.Parse(grd.Rows[e.RowIndex].Cells["MedicineId"].Value.ToString()));
-                    grd.Rows[e.RowIndex].Cells["Unit"].Value = medicine.Unit;
-                }
-            }
-
-            if (grd.Columns[e.ColumnIndex].Name == "Volumn" || grd.Columns[e.ColumnIndex].Name == "UnitPrice")
-            {
-                if (grd.Rows[e.RowIndex].Cells["Volumn"].Value != null && int.TryParse(grd.Rows[e.RowIndex].Cells["Volumn"].Value.ToString(), out volumn) && grd.Rows[e.RowIndex].Cells["UnitPrice"].Value != null && int.TryParse(grd.Rows[e.RowIndex].Cells["UnitPrice"].Value.ToString(), out unitPrice))
-                {
-                    grd.Rows[e.RowIndex].Cells["Amount"].Value = unitPrice * volumn;
-                }
-            }
-        }
-
         private bool ValidateRowData(DataGridViewRow row)
         {
-            int volumn = 0;
-            DateTime dtExpireDate = new DateTime();
-            if (row.Cells["LotNo"].Value == null || row.Cells["MedicineId"].Value == null || row.Cells["Volumn"].Value == null || !int.TryParse(row.Cells["Volumn"].Value.ToString(), out volumn)
-                || row.Cells["ExpireDate"].Value == null || !DateTime.TryParse(row.Cells["ExpireDate"].Value.ToString(), out dtExpireDate) || row.Cells["Unit"].Value == null)
+            int required = 0;
+            if (row.Cells["Required"].Value == null || !int.TryParse(row.Cells["Required"].Value.ToString(), out required))
             {
+                row.Cells["Required"].Style.ForeColor = Color.Red;
                 return false;
             }
 
@@ -219,22 +185,7 @@ namespace Medical.MedicinePlan
         {
             grd.DataSource = null;
         }
-
-        private void cbClinic_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            BindGridViewData();
-        }
-
-        private void cboYear_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            BindGridViewData();
-        }
-
-        private void cboMonth_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            BindGridViewData();
-        }
-
+        
         private void cboYear_SelectedValueChanged(object sender, EventArgs e)
         {
             BindGridViewData();
