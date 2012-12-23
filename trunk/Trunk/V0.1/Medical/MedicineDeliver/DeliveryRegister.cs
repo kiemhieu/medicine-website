@@ -26,6 +26,7 @@ namespace Medical.MedicineDeliver
         private IWareHouseDetailRepository _warehouseDetailAllocateRepo = new WareHouseDetailRepository();
         private IWareHouseRepository _warehouseRepo = new WareHouseRepository();
         private IWareHouseDetailRepository _warehouseDetailRepo = new WareHouseDetailRepository();
+        private IMedicineRepository _medicineRepo = new MedicineRepository();
 
         // Entity & List
         private Prescription _prescription;
@@ -49,6 +50,8 @@ namespace Medical.MedicineDeliver
 
         private void Initialize()
         {
+            this.bdsMedicine.DataSource = _medicineRepo.GetAll();
+
             medDeliveryAllocationList = new List<MedicineDeliveryAllocationEntity>();
 
             this._prescription = _prescriptionRepo.Get(this._prescriptionId);
@@ -81,9 +84,11 @@ namespace Medical.MedicineDeliver
                     var allocatedList = this._mdecidineDeliveryDetailAllocate.Where(x => x.MedicineDeliveryDetailId == deliveryItem.Id).ToList();
                     var warehouse = this._warehouseList.FirstOrDefault(x => x.MedicineId == deliveryItem.MedicineId);
                     var warehouseDetailList = this._warehouseDetailList.Where(x => x.MedicineId == deliveryItem.MedicineId).ToList();
-                    var displayItem = new MedicineDeliveryAllocationEntity(allocatedList, deliveryItem, warehouseDetailList, warehouse);
-                    displayItem.No = no++;
-                    //displayItem.MedicineName = deliveryItem.M
+                    var displayItem = new MedicineDeliveryAllocationEntity(allocatedList, deliveryItem, warehouseDetailList, warehouse)
+                                          {
+                                              No = no++,
+                                              MedicineId = deliveryItem.MedicineId
+                                          };
                     medDeliveryAllocationList.Add(displayItem);
 
                     var itemList = this._warehouseDetailList.Where(x => x.MedicineId == deliveryItem.MedicineId).GroupBy(x => new { x.LotNo, x.ExpiredDate }).ToList();
@@ -93,13 +98,15 @@ namespace Medical.MedicineDeliver
                     {
                         var whDetailList = warehouseDetailList.Where(x => x.LotNo == itm.First().LotNo && x.ExpiredDate == itm.First().ExpiredDate).ToList();
                         var idList = whDetailList.Select(x => x.Id).ToList();
-                        var aldList = allocatedList.Where(x => idList.Contains(x.WareHouseDetailId)).ToList();
+                        var aldList = allocatedList.Where(x => idList.Contains(x.WareHouseDetailId) && x.MedicineDeliveryDetailId == deliveryItem.Id).ToList();
+                        if (aldList.Count == 0) continue;
+
                         var subItem = new MedicineDeliveryAllocationEntity(aldList, null, whDetailList, warehouse)
                                           {
                                               LotNo = itm.First().LotNo,
-                                              ExpiredDate = itm.First().ExpiredDate
+                                              ExpiredDate = itm.First().ExpiredDate,
+                                              SubNo = subNo++
                                           };
-                        subItem.SubNo = subNo++;
                         medDeliveryAllocationList.Add(subItem);
                     }
                 }
@@ -150,19 +157,19 @@ namespace Medical.MedicineDeliver
 
                 foreach (var t in warehouseDetailList)
                 {
-                    t.DeliveryAllocate = new List<MedicineDeliveryDetailAllocate>();
-                    if (deliveryDetailItem.Volumn <= t.CurrentVolumn)
+                    // t.DeliveryAllocate = new List<MedicineDeliveryDetailAllocate>();
+                    if (deliveryDetailItem.NotAllocatedQty <= t.CurrentVolumn)
                     {
                         var allocatedItem = new MedicineDeliveryDetailAllocate
                                                 {
                                                     MedicineDeliveryDetailId = deliveryDetailItem.Id,
                                                     Unit = deliveryDetailItem.Unit,
-                                                    Volumn = deliveryDetailItem.Volumn,
+                                                    Volumn = deliveryDetailItem.NotAllocatedQty,
                                                     WareHouseDetailId = t.Id
                                                 };
                         deliveryDetailItem.NotAllocatedQty = 0;
                         allocatedItems.Add(allocatedItem);
-                        t.CurrentVolumn -= deliveryDetailItem.Volumn;
+                        // t.CurrentVolumn = deliveryDetailItem.Volumn;
                         deliveryDetailItem.Allocated.Add(allocatedItem);
                         t.DeliveryAllocate.Add(allocatedItem);
                     }
@@ -177,7 +184,7 @@ namespace Medical.MedicineDeliver
                                                 };
                         deliveryDetailItem.NotAllocatedQty -= allocatedItem.Volumn;
                         allocatedItems.Add(allocatedItem);
-                        t.CurrentVolumn = 0;
+                        // t.CurrentVolumn = 0;
                         deliveryDetailItem.Allocated.Add(allocatedItem);
                         t.DeliveryAllocate.Add(allocatedItem);
                     }
@@ -203,6 +210,55 @@ namespace Medical.MedicineDeliver
 
             this.advTree1.Nodes[0
              */
+        }
+
+        private void dataGridViewX1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var row = this.dataGridViewX1.Rows[e.RowIndex];
+            if (row.Cells[1].Value == null) row.DefaultCellStyle.BackColor = Color.DarkGray;
+
+        }
+
+        private void dataGridViewX1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex == 1)
+            {
+                if (e.ColumnIndex == 1)
+                {
+                    e.PaintBackground(e.ClipBounds, true);
+                    Rectangle r = e.CellBounds;
+                    Rectangle r1 = this.dataGridViewX1.GetCellDisplayRectangle(2, 1, true);
+                    r.Width += r1.Width - 1;
+                    r.Height -= 1;
+
+                    using (SolidBrush brBk = new SolidBrush(e.CellStyle.BackColor))
+                    using (SolidBrush brFr = new SolidBrush(e.CellStyle.ForeColor))
+                    {
+
+                        e.Graphics.FillRectangle(brBk, r);
+                        StringFormat sf = new StringFormat();
+                        sf.Alignment = StringAlignment.Center;
+                        sf.LineAlignment = StringAlignment.Center;
+                        e.Graphics.DrawString("cell merged", e.CellStyle.Font, brFr, r, sf);
+                    }
+
+                    e.Handled = true;
+                }
+
+                if (e.ColumnIndex == 2)
+                {
+                    using (Pen p = new Pen(this.dataGridViewX1.GridColor))
+                    {
+                        e.Graphics.DrawLine(p, e.CellBounds.Left, e.CellBounds.Bottom - 1,
+                            e.CellBounds.Right, e.CellBounds.Bottom - 1);
+                        e.Graphics.DrawLine(p, e.CellBounds.Right - 1, e.CellBounds.Top,
+                            e.CellBounds.Right - 1, e.CellBounds.Bottom);
+
+                    }
+                    e.Handled = true;
+                }
+            }
+
         }
     }
 }
