@@ -25,10 +25,11 @@ namespace Medical.Data.Repositories
             return this.Context.MedicinePlanDetails.FirstOrDefault(x => x.Id.Equals(id));
         }
 
-        public void Insert(MedicinePlanDetail MedicinePlanDetail)
+        public void Insert(MedicinePlanDetail medicinePlanDetail)
         {
-            MedicinePlanDetail.Version = 0;
-            this.Context.MedicinePlanDetails.Add(MedicinePlanDetail);
+            medicinePlanDetail.Version = 0;
+            medicinePlanDetail.LastUpdatedDate = DateTime.Now;
+            this.Context.MedicinePlanDetails.Add(medicinePlanDetail);
             this.Context.SaveChanges();
         }
 
@@ -77,6 +78,11 @@ namespace Medical.Data.Repositories
         public List<MedicinePlanDetail> GetAll()
         {
             return this.Context.MedicinePlanDetails.ToList();
+        }
+
+        public List<MedicinePlanDetail> GetByPlanId(int planId)
+        {
+            return this.Context.MedicinePlanDetails.Where(c => c.PlanId == planId).ToList();
         }
     }
 }
