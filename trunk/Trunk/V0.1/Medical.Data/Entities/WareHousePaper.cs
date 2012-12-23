@@ -34,9 +34,9 @@ namespace Medical.Data.Entities
             get
             {
                 if (this.Type == 0)
-                    return "Xuất kho";
-                else
                     return "Nhập kho";
+                else
+                    return "Xuất kho";
             }
         }
     }

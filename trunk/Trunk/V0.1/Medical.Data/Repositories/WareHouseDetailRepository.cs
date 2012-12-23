@@ -37,7 +37,7 @@ namespace Medical.Data.Repositories
             try
             {
                 whDetail.CreatedUser = AppContext.LoggedInUser.Id;
-                whDetail.CreatedDate = DateTime.Now;                
+                whDetail.CreatedDate = DateTime.Now;
                 whDetail.LastUpdatedDate = DateTime.Now;
                 whDetail.Version = 0;
                 this.Context.WareHouseDetails.Add(whDetail);
@@ -116,6 +116,21 @@ namespace Medical.Data.Repositories
             {
                 List<WareHouseDetail> lst =
                     this.Context.WareHouseDetails.Where(x => x.MedicineId.Equals(idMedicine)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public List<WareHouseDetail> GetMeicineExport(int wareHouseId, int medicineId)
+        {
+            try
+            {
+                List<WareHouseDetail> lst =
+                    this.Context.WareHouseDetails.Where(x => x.MedicineId.Equals(medicineId) && x.WareHouseId == wareHouseId).OrderBy(c => c.ExpiredDate).ToList();
                 return lst;
             }
             catch (Exception ex)

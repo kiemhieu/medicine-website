@@ -7,7 +7,7 @@ namespace Medical.Data.Entities
     [Table("WareHouseDetail")]
     public class WareHouseDetail
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public int WareHouseId { get; set; }
         public int? WareHousePaperDetailId { get; set; }        
         public int MedicineId { get; set; }

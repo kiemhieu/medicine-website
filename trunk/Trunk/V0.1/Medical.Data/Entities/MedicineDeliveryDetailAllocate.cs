@@ -11,7 +11,7 @@ namespace Medical.Data.Entities
     {
         public long Id { get; set; }
         public long MedicineDeliveryDetailId { get; set; }
-        public long WareHouseDetailId { get; set; }
+        public int WareHouseDetailId { get; set; }
         public int Volumn { get; set; }
         public int Unit { get; set; }
         public DateTime LastUpdatedDate { get; set; }
