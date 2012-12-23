@@ -214,20 +214,25 @@ namespace Medical.MedicineDeliver
 
         private void dataGridViewX1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            var row = this.dataGridViewX1.Rows[e.RowIndex];
-            if (row.Cells[1].Value == null) row.DefaultCellStyle.BackColor = Color.DarkGray;
+            var row = this.dataGridView1.Rows[e.RowIndex];
+            if (row.Cells[1].Value == null) row.DefaultCellStyle.BackColor = Color.LightGray;
+            row.DefaultCellStyle.BackColor = Color.Gray;
 
         }
 
         private void dataGridViewX1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.RowIndex == 1)
+            /*
+            if (e.RowIndex <= 0) return;
+            
+            var row = this.dataGridView1.Rows[e.RowIndex];
+            if (row.Cells[1].Value != null) 
             {
-                if (e.ColumnIndex == 1)
+                if (e.ColumnIndex == 2)
                 {
                     e.PaintBackground(e.ClipBounds, true);
                     Rectangle r = e.CellBounds;
-                    Rectangle r1 = this.dataGridViewX1.GetCellDisplayRectangle(2, 1, true);
+                    Rectangle r1 = this.dataGridView1.GetCellDisplayRectangle(2, 1, true);
                     r.Width += r1.Width - 1;
                     r.Height -= 1;
 
@@ -239,15 +244,15 @@ namespace Medical.MedicineDeliver
                         StringFormat sf = new StringFormat();
                         sf.Alignment = StringAlignment.Center;
                         sf.LineAlignment = StringAlignment.Center;
-                        e.Graphics.DrawString("cell merged", e.CellStyle.Font, brFr, r, sf);
+                        // e.Graphics.DrawString("cell merged", e.CellStyle.Font, brFr, r, sf);
                     }
 
                     e.Handled = true;
                 }
 
-                if (e.ColumnIndex == 2)
+                if (e.ColumnIndex == 3)
                 {
-                    using (Pen p = new Pen(this.dataGridViewX1.GridColor))
+                    using (Pen p = new Pen(this.dataGridView1.GridColor))
                     {
                         e.Graphics.DrawLine(p, e.CellBounds.Left, e.CellBounds.Bottom - 1,
                             e.CellBounds.Right, e.CellBounds.Bottom - 1);
@@ -257,8 +262,27 @@ namespace Medical.MedicineDeliver
                     }
                     e.Handled = true;
                 }
-            }
+                if (e.ColumnIndex == 4)
+                {
+                    using (Pen p = new Pen(this.dataGridView1.GridColor))
+                    {
+                        e.Graphics.DrawLine(p, e.CellBounds.Left, e.CellBounds.Bottom - 1,
+                            e.CellBounds.Right, e.CellBounds.Bottom - 1);
+                        e.Graphics.DrawLine(p, e.CellBounds.Right - 1, e.CellBounds.Top,
+                            e.CellBounds.Right - 1, e.CellBounds.Bottom);
 
+                    }
+                    e.Handled = true;
+                }
+             
+            }
+             * */
+
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }

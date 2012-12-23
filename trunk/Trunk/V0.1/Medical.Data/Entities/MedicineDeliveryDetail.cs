@@ -17,9 +17,12 @@ namespace Medical.Data.Entities
         public int Unit { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public int Version { get; set; }
-
+        [ForeignKey("MedicineId")]
+        public virtual Medicine Medicine { get; set; }
         public virtual List<MedicineDeliveryDetailAllocate> Allocated { get; set; }
         [NotMapped]
         public int NotAllocatedQty { get; set; }
+
+        
   }
 }

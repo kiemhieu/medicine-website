@@ -29,6 +29,7 @@ namespace Medical.Data.EntitiyExtend
         public int? No { set; get; }
         public int? SubNo { set; get; }
         public String MedicineName { get; set; }
+        public int? MedicineId { get; set; }
         public String LotNo { get; set; }
         public DateTime ExpiredDate { get; set; }
 
