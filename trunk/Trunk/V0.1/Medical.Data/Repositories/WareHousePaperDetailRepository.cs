@@ -27,6 +27,7 @@ namespace Medical.Data.Repositories {
         {
             try
             {
+                whPaperDetail.CreatedDate = DateTime.Now;
                 whPaperDetail.Version = 0;
                 this.Context.WareHousePaperDetails.Add(whPaperDetail);
                 this.Context.SaveChanges();

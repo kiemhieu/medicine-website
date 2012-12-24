@@ -14,20 +14,29 @@ namespace Medical.Data.Entities
         public int MedicineId { get; set; }
         public int InStock { get; set; }
         public int LastMonthUsage { get; set; }
-        public int CurrentMonthUsage { get; set; }          
+        public int CurrentMonthUsage { get; set; }
         public int Required { get; set; }
         public int UnitPrice { get; set; }
         public int Amount { get; set; }
         public int Version { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public virtual Medicine Medicine { get; set; }
-
-        [NotMapped]
-        public string MedicineName {
-            get {
-                if (Medicine != null) return Medicine.Name;
-                else return string.Empty;
+        
+        [NotMapped]        
+        public string MedicineName
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(medicineName)) return medicineName;
+                else if (Medicine != null) return Medicine.Name;
+                return string.Empty;
+            }
+            set
+            {
+                medicineName = value;
             }
         }
-  }
+
+        private string medicineName;
+    }
 }

@@ -10,7 +10,7 @@ namespace Medical.Data.Repositories
 {
     public class MedicalContext: DbContext
     {
-        public DbSet<Clinic> Clinics { get; set; }
+        public DbSet<Clinic> Clinics { get; set; }               
         public DbSet<User> Users { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
         public DbSet<MedicinePlan> MedicinePlans { get; set; }
@@ -27,7 +27,8 @@ namespace Medical.Data.Repositories
         public DbSet<Prescription> Prescription { get; set; }
         public DbSet<PrescriptionDetail> PrescriptionDetails { get; set; }
         public DbSet<VMedicineDeliverList> VMedicineDeliverList { get; set; }
-        public DbSet<VMedicineDeliveryDetailList> VMedicineDeliveryDetailList { get; set; }
+        public DbSet<WareHouseExportAllocate> WareHouseExportAllocates { get; set; } 
+        public DbSet<VMedicineDeliveryDetailList> VMedicineDeliveryDetailList { get; set; }        
         public DbSet<Define> Defines { get; set; }
         public DbSet<MedicineDeliveryDetailAllocate> MedicineDeliveryDetailAllocates { get; set; }
     }

@@ -103,8 +103,7 @@ namespace Medical.Warehouse
         }
 
         private void FillToGrid()
-        {
-            this.grd.Refresh();
+        {          
             grd.DataSource = whRepository.GetAll();
         }
 

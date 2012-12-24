@@ -28,12 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWareHouse));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbtnInsert = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnDelete = new System.Windows.Forms.ToolStripButton();
             this.lblID = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
@@ -41,44 +36,9 @@
             this.txtSeachName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.SuspendLayout();
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbtnInsert,
-            this.tsbtnEdit,
-            this.tsbtnDelete});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(801, 25);
-            this.toolStrip1.TabIndex = 7;
-            this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.Visible = false;
-            // 
-            // tsbtnInsert
-            // 
-            this.tsbtnInsert.Name = "tsbtnInsert";
-            this.tsbtnInsert.Size = new System.Drawing.Size(23, 22);
-            // 
-            // tsbtnEdit
-            // 
-            this.tsbtnEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnEdit.Image")));
-            this.tsbtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnEdit.Name = "tsbtnEdit";
-            this.tsbtnEdit.Size = new System.Drawing.Size(46, 22);
-            this.tsbtnEdit.Text = "Sửa";
-            // 
-            // tsbtnDelete
-            // 
-            this.tsbtnDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDelete.Image")));
-            this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnDelete.Name = "tsbtnDelete";
-            this.tsbtnDelete.Size = new System.Drawing.Size(47, 22);
-            this.tsbtnDelete.Text = "Xóa";
             // 
             // lblID
             // 
@@ -176,9 +136,9 @@
             this.grd.Location = new System.Drawing.Point(0, 41);
             this.grd.Name = "grd";
             this.grd.Size = new System.Drawing.Size(801, 409);
-            this.grd.TabIndex = 10;            
-            this.grd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
+            this.grd.TabIndex = 10;
             this.grd.AutoGenerateColumns = false;
+            this.grd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
             // 
             // frmWareHouse
             // 
@@ -188,12 +148,9 @@
             this.Controls.Add(this.grd);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblID);
-            this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmWareHouse";
             this.Text = "Kho thuốc";
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             this.ResumeLayout(false);
@@ -204,10 +161,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridViewTextBoxColumn crearedUserDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsbtnInsert;
-        private System.Windows.Forms.ToolStripButton tsbtnEdit;
-        private System.Windows.Forms.ToolStripButton tsbtnDelete;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Panel panel1;
         private DevComponents.DotNetBar.LabelX labelX1;
