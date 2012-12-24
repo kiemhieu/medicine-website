@@ -138,7 +138,7 @@ namespace Medical.Data.Repositories
                 {
                     MedicinePlanDetail item = new MedicinePlanDetail();
                     item.MedicineId = whItem.MedicineId;
-                    //item.MedicineName = whItem.MedicineName;
+                    item.MedicineName = whItem.MedicineName;
                     item.InStock = whItem.Volumn;
                     item.LastMonthUsage = GetMedicineInMonth(year, month - 1, 1, whItem.MedicineId);
                     item.CurrentMonthUsage = GetMedicineInMonth(year, month, 1, whItem.MedicineId);

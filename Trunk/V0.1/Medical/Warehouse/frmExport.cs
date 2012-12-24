@@ -23,6 +23,7 @@ namespace Medical.Warehouse
         private WareHouseRepository repwh;
         private WareHousePaperRepository repwhPaper;
         private WareHousePaperDetailRepository repwhPaperDetail;
+        private WareHouseExportAllocateRepository whExport;
         private int ClinicId;
         private int WHPaperId;
         public frmExport()
@@ -35,7 +36,7 @@ namespace Medical.Warehouse
             repwhDetail = new WareHouseDetailRepository();
             repwhPaper = new WareHousePaperRepository();
             repwhPaperDetail = new WareHousePaperDetailRepository();
-
+            whExport = new WareHouseExportAllocateRepository();
             InitializeComponent();
             repClinic = new ClinicRepository();
             FillToComboboxClinic(0);
@@ -99,6 +100,7 @@ namespace Medical.Warehouse
             grd.Columns.Add(clmMinAllowed);
 
             var btnDelete = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            btnDelete.Width = 50;
             btnDelete.HeaderText = "Xóa";
             btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             btnDelete.Name = "Delete";
@@ -164,6 +166,14 @@ namespace Medical.Warehouse
                                 item.UnitPrice = obj.UnitPrice;
                                 item.ExpireDate = obj.ExpiredDate;
                                 repwhPaperDetail.Insert(item);
+
+                                //Insert whExportAllocate
+                                WareHouseExportAllocate wareHouseExportAllocate = new WareHouseExportAllocate();
+                                wareHouseExportAllocate.WareHouseDetailId = obj.Id;
+                                wareHouseExportAllocate.WareHoudePaperDetailId = item.Id;
+                                wareHouseExportAllocate.Volumn = export;
+                                wareHouseExportAllocate.Unit = obj.Unit;
+                                whExport.Insert(wareHouseExportAllocate);
                                 break;
                             }
                             else
@@ -185,6 +195,14 @@ namespace Medical.Warehouse
                                 //Update whDetail
                                 obj.CurrentVolumn = 0;
                                 repwhDetail.Update(obj);
+
+                                //Insert whExportAllocate
+                                WareHouseExportAllocate wareHouseExportAllocate = new WareHouseExportAllocate();
+                                wareHouseExportAllocate.WareHouseDetailId = obj.Id;
+                                wareHouseExportAllocate.WareHoudePaperDetailId = item.Id;
+                                wareHouseExportAllocate.Volumn = obj.CurrentVolumn;
+                                wareHouseExportAllocate.Unit = obj.Unit;
+                                whExport.Insert(wareHouseExportAllocate);
                             }
                         }
                     }
