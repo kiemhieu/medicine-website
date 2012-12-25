@@ -16,8 +16,8 @@ namespace Medical.Warehouse
         private void btnSearch_Click(object sender, EventArgs e)
         {
             WareHousePaperRepository whPaperRepository = new WareHousePaperRepository();
-            int type = cbTypeWHPage.Text.Equals("Nhập kho", StringComparison.OrdinalIgnoreCase) ? 0 : 1;
-            grd.DataSource = whPaperRepository.Search(type, dpkFromDate.Value, dpkToDate.Value);            
+            int type = cbTypeWHPage.Text.Equals("Nhập kho", StringComparison.OrdinalIgnoreCase) ? 0 : (cbTypeWHPage.Text.Equals("Xuất kho", StringComparison.OrdinalIgnoreCase) ? 1 : -1);
+            grd.DataSource = whPaperRepository.Search(type, dpkFromDate.Value, dpkToDate.Value);
         }
     }
 }

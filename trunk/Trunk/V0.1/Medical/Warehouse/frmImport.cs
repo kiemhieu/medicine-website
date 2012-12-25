@@ -84,9 +84,13 @@ namespace Medical.Warehouse
             var txtSoLuong = new DataGridViewTextBoxColumn { HeaderText = "Số lượng", DataPropertyName = "Volumn", Name = "Volumn" };
             grd.Columns.Add(txtSoLuong);
 
-            var txtDonVi = new DataGridViewTextBoxColumn { HeaderText = "Đơn vị", DataPropertyName = "Unit", Name = "Unit" };
-            txtDonVi.ReadOnly = true;
-            grd.Columns.Add(txtDonVi);
+            var clmUnit = new DataGridViewTextBoxColumn { HeaderText = "UnitID", DataPropertyName = "Unit", Name = "Unit" };
+            clmUnit.Visible = false;            
+            grd.Columns.Add(clmUnit);
+
+            var clmUnitName = new DataGridViewTextBoxColumn { HeaderText = "Đơn vị", DataPropertyName = "UnitName", Name = "UnitName" };
+            clmUnitName.ReadOnly = true;
+            grd.Columns.Add(clmUnitName);
 
             var txtDonGia = new DataGridViewTextBoxColumn { HeaderText = "Đơn giá", DataPropertyName = "UnitPrice", Name = "UnitPrice" };
             grd.Columns.Add(txtDonGia);
@@ -161,7 +165,7 @@ namespace Medical.Warehouse
                 //Insert data to WareHousePaper
                 WareHousePaper wareHousePaper = new WareHousePaper();
                 wareHousePaper.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());
-                wareHousePaper.Date = dateImport.Value;
+                wareHousePaper.Date = dateImport.Value.Date;
                 wareHousePaper.Deliverer = txtDeliverer.Text;
                 wareHousePaper.Recipient = txtRecipient.Text;
                 wareHousePaper.Type = 0;
@@ -250,7 +254,8 @@ namespace Medical.Warehouse
                 if (grd.Rows[e.RowIndex].Cells["MedicineId"].Value != null)
                 {
                     var medicine = repMedicine.GetById(int.Parse(grd.Rows[e.RowIndex].Cells["MedicineId"].Value.ToString()));
-                    grd.Rows[e.RowIndex].Cells["Unit"].Value = medicine.Unit;
+                    grd.Rows[e.RowIndex].Cells["Unit"].Value = medicine.Define.Id;
+                    grd.Rows[e.RowIndex].Cells["UnitName"].Value = medicine.Define.Name;
                 }
             }
 

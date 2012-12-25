@@ -114,7 +114,10 @@ namespace Medical.Data.Repositories
         {
             try
             {
-                return this.Context.WareHousePapers.Where(x => x.Type == type && x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                if (type >= 0)
+                    return this.Context.WareHousePapers.Where(x => x.Type == type && x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                else
+                    return this.Context.WareHousePapers.Where(x => x.Date >= fromDate.Date && x.Date <= toDate).ToList();
             }
             catch (Exception ex)
             {
