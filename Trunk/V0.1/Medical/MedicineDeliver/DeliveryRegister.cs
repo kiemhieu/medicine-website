@@ -214,7 +214,7 @@ namespace Medical.MedicineDeliver
 
         private void dataGridViewX1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            var row = this.dataGridView1.Rows[e.RowIndex];
+            var row = this.dataGridViewX1.Rows[e.RowIndex];
             if (row.Cells[1].Value == null) row.DefaultCellStyle.BackColor = Color.LightGray;
             row.DefaultCellStyle.BackColor = Color.Gray;
 
