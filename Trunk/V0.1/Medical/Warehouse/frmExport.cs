@@ -121,7 +121,7 @@ namespace Medical.Warehouse
                 //Insert data to WareHousePaper
                 WareHousePaper wareHousePaper = new WareHousePaper();
                 wareHousePaper.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());
-                wareHousePaper.Date = dateImport.Value;
+                wareHousePaper.Date = dateImport.Value.Date;
                 wareHousePaper.Deliverer = txtDeliverer.Text;
                 wareHousePaper.Recipient = txtRecipient.Text;
                 wareHousePaper.Type = 1;

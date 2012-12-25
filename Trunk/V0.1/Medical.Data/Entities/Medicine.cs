@@ -23,7 +23,7 @@ namespace Medical.Data.Entities
         public DateTime LastUpdatedDate { get; set; }
         public int LastUpdatedBy { get; set; }
         public int Version { get; set; }
-        public ICollection<MedicinePlanDetail> MedicinePlanDetails { get; set; }
+        public ICollection<MedicinePlanDetail> MedicinePlanDetails { get; set; }        
         [NotMapped]
         public String ContentString
         {
@@ -32,6 +32,9 @@ namespace Medical.Data.Entities
 
         [ForeignKey("ContentUnit")]
         public virtual Define ContentUnitDefile { get; set; }
+
+        [ForeignKey("Unit")]
+        public virtual Define Define { get; set; }
 
         [NotMapped]
         public String TypeMedicine
