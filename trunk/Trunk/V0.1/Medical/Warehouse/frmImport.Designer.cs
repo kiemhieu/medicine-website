@@ -324,6 +324,7 @@
             this.grd.Size = new System.Drawing.Size(804, 280);
             this.grd.TabIndex = 1;
             this.grd.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellEndEdit);
+            this.grd.AutoGenerateColumns = false;
             // 
             // bindingSource3
             // 

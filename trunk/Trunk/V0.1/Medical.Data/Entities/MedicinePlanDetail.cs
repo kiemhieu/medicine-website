@@ -21,8 +21,18 @@ namespace Medical.Data.Entities
         public int Version { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public virtual Medicine Medicine { get; set; }
-        
-        [NotMapped]        
+
+        [NotMapped]
+        public string UnitName { get; set; }
+        [NotMapped]
+        public int Remaining
+        {
+            get
+            {
+                return InStock - CurrentMonthUsage;
+            }
+        }
+        [NotMapped]
         public string MedicineName
         {
             get
