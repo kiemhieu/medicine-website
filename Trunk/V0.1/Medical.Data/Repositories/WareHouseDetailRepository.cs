@@ -138,6 +138,6 @@ namespace Medical.Data.Repositories
                 Console.WriteLine(ex.Message);
                 return null;
             }
-        }
+        }       
     }
 }

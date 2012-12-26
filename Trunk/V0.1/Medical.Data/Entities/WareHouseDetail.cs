@@ -9,7 +9,7 @@ namespace Medical.Data.Entities
     {
         public int Id { get; set; }
         public int WareHouseId { get; set; }
-        public int? WareHousePaperDetailId { get; set; }        
+        public int? WareHousePaperDetailId { get; set; }
         public int MedicineId { get; set; }
         public string LotNo { get; set; }
         public DateTime ExpiredDate { get; set; }
@@ -24,8 +24,8 @@ namespace Medical.Data.Entities
         public int LastUpdatedUser { get; set; }
         public int Version { get; set; }
 
-        public virtual List<MedicineDeliveryDetailAllocate> DeliveryAllocate { get; set; }        
-        public virtual Medicine Medicine { get; set; }        
+        public virtual List<MedicineDeliveryDetailAllocate> DeliveryAllocate { get; set; }
+        public virtual Medicine Medicine { get; set; }
         // public virtual WareHouse WareHouse { get; set; }
         [NotMapped]
         public string MedicineName { get { return this.Medicine.Name; } }

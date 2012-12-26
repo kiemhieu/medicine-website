@@ -127,6 +127,52 @@ namespace Medical.Data.Repositories
             return this.Context.WareHouses.Where(x => x.ClinicId == clinicId).ToList();
         }
 
+        public List<MedicinePlanDetail> GetInventory(int clinicId, DateTime fromDate, DateTime toDate)
+        {
+            fromDate = fromDate.AddDays(-1);
+            toDate = toDate.AddDays(1);
+            List<MedicinePlanDetail> list = new List<MedicinePlanDetail>();
+            try
+            {
+                List<int> listId = new List<int>();
+                if (clinicId > 0)
+                {
+                    listId = (from c in Context.WareHouses where c.ClinicId == clinicId select c.MedicineId).ToList();
+                }
+                else
+                {
+                    listId = (from c in Context.Medicines select c.Id).ToList();
+                }
+
+                foreach (int id in listId)
+                {
+                    list.Add(
+                                new MedicinePlanDetail
+                                {
+                                    UnitName = Context.Medicines.Where(c => c.Id == id).FirstOrDefault().Define.Name,
+                                    MedicineName = Context.Medicines.Where(c => c.Id == id).FirstOrDefault().Name,
+                                    InStock = GetInventory(0, id, fromDate, toDate),
+                                    CurrentMonthUsage = GetInventory(1, id, fromDate, toDate)
+                                }
+                            );
+                }
+
+            }
+            catch (Exception ex)
+            { }
+
+            return list;
+        }
+
+        private int GetInventory(int type, int medicineId, DateTime fromDate, DateTime toDate)
+        {
+            var item = (from p in Context.WareHousePaperDetails
+                        where p.MedicineId == medicineId && p.Type == type && p.CreatedDate < toDate && p.CreatedDate > fromDate
+                        group p by p.MedicineId into g
+                        select new { Volumn = g.Sum(p => p.Volumn) }).FirstOrDefault();
+            return item != null ? item.Volumn : 0;
+        }
+
         public List<MedicinePlanDetail> GetByPlan(int clinicId, int year, int month)
         {
             List<MedicinePlanDetail> list = new List<MedicinePlanDetail>();
