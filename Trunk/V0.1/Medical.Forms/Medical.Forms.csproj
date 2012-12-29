@@ -46,6 +46,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DataGridViewDisableButtonXCell.cs" />
+    <Compile Include="Common\DataGridViewDisableButtonCell.cs" />
+    <Compile Include="Common\DataGridViewDisableButtonColumn.cs" />
     <Compile Include="Common\Validator.cs" />
     <Compile Include="Entities\ApplicationConfig.cs" />
     <Compile Include="Entities\ClinicSetting.cs" />
