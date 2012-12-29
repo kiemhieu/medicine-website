@@ -6,17 +6,20 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
 using Medical.Data;
 using Medical.Data.Entities;
+using Medical.Data.Entities.Views;
 using Medical.Data.EntitiyExtend;
 using Medical.Data.Repositories;
+using Medical.Forms.Common;
 using Medical.Forms.Enums;
 
 namespace Medical.MedicineDeliver
 {
     public partial class DeliveryRegister : Form
     {
-        private List<MedicineDeliveryAllocationEntity> medDeliveryAllocationList;
+        private List<MedicineDeliveryAllocationEntity> _medDeliveryAllocationList;
         // Repositpry
         private IPrescriptionRepository _prescriptionRepo = new PrescriptionRepository();
         private IPrescriptionDetailRepository _prescriptionDetailRepo = new PrescriptionDetailRepository();
@@ -27,6 +30,7 @@ namespace Medical.MedicineDeliver
         private IWareHouseRepository _warehouseRepo = new WareHouseRepository();
         private IWareHouseDetailRepository _warehouseDetailRepo = new WareHouseDetailRepository();
         private IMedicineRepository _medicineRepo = new MedicineRepository();
+        private IVWareHouseDetailRespository _vWareHouseDetailRepo = new VWareHouseDetailRepository();
 
         // Entity & List
         private Prescription _prescription;
@@ -36,24 +40,32 @@ namespace Medical.MedicineDeliver
         private List<MedicineDeliveryDetailAllocate> _mdecidineDeliveryDetailAllocate;
         private List<WareHouse> _warehouseList;
         private List<WareHouseDetail> _warehouseDetailList;
+        private List<VWareHouseDetail> _vWareHouseDetailList;
 
         private long _prescriptionId;
         private ViewModes _formMode;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DeliveryRegister"/> class.
+        /// </summary>
+        /// <param name="prescriptionId">The prescription id.</param>
         public DeliveryRegister(long prescriptionId)
         {
             InitializeComponent();
             this._prescriptionId = prescriptionId;
-            Initialize();
-            this.bindingSource1.DataSource = this.medDeliveryAllocationList;
+            this.Initialize();
+            this.bindingSource1.DataSource = this._medDeliveryAllocationList;
         }
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         private void Initialize()
         {
+            this._vWareHouseDetailList = new List<VWareHouseDetail>();
+
             this.bdsMedicine.DataSource = _medicineRepo.GetAll();
-
-            medDeliveryAllocationList = new List<MedicineDeliveryAllocationEntity>();
-
+            this._medDeliveryAllocationList = new List<MedicineDeliveryAllocationEntity>();
             this._prescription = _prescriptionRepo.Get(this._prescriptionId);
             this._prescriptionDetailList = _prescriptionDetailRepo.GetByPrescription(this._prescriptionId);
             if (_prescription == null || this._prescriptionDetailList == null) throw new Exception("Data dosenot existed");
@@ -71,49 +83,37 @@ namespace Medical.MedicineDeliver
                 // this._warehouseDetailList  = this._warehouseDetailRepo
                 var medincineIdList = this._prescriptionDetailList.Select(item => item.MedicineId).ToList();
                 this._warehouseList = this._warehouseRepo.GetByMedicineId(medincineIdList, AppContext.CurrentClinic.Id);
-                this._warehouseDetailList = this._warehouseDetailRepo.GetByMedicine(medincineIdList, AppContext.CurrentClinic.Id);
+                this._vWareHouseDetailList = this._vWareHouseDetailRepo.GetByMedicine(medincineIdList);
+                // this._warehouseDetailList = this._warehouseDetailRepo.GetByMedicine(medincineIdList, AppContext.CurrentClinic.Id);)
                 this._medicineDelivery = CreatePrescription(this._prescription);
                 this._medicineDeliveryDetailList = CreateMedicineDeliveryDetail(this._prescriptionDetailList);
-                this._mdecidineDeliveryDetailAllocate = AutoAllocate(this._medicineDeliveryDetailList, this._warehouseDetailList);
-
+                this.AutoAllocate(this._medicineDeliveryDetailList, this._vWareHouseDetailList);
+                // this._mdecidineDeliveryDetailAllocate = AutoAllocate(this._medicineDeliveryDetailList, this._warehouseDetailList);
                 // var item = this._warehouseDetailList.Select(x => new { x.MedicineId, x.LotNo, x.ExpiredDate}).GroupBy(x => new { x.MedicineId, x.LotNo, x.ExpiredDate }).ToList();
 
-                int no = 1;
+                var no = 1;
                 foreach (var deliveryItem in this._medicineDeliveryDetailList)
                 {
-                    var allocatedList = this._mdecidineDeliveryDetailAllocate.Where(x => x.MedicineDeliveryDetailId == deliveryItem.Id).ToList();
+                    // var allocatedList = this._mdecidineDeliveryDetailAllocate.Where(x => x.MedicineDeliveryDetailId == deliveryItem.Id).ToList();
                     var warehouse = this._warehouseList.FirstOrDefault(x => x.MedicineId == deliveryItem.MedicineId);
-                    var warehouseDetailList = this._warehouseDetailList.Where(x => x.MedicineId == deliveryItem.MedicineId).ToList();
-                    var displayItem = new MedicineDeliveryAllocationEntity(allocatedList, deliveryItem, warehouseDetailList, warehouse)
-                                          {
-                                              No = no++,
-                                              MedicineId = deliveryItem.MedicineId
-                                          };
-                    medDeliveryAllocationList.Add(displayItem);
+                    var item = new MedicineDeliveryAllocationEntity(no++, deliveryItem, warehouse);
+                    this._medDeliveryAllocationList.Add(item);
 
-                    var itemList = this._warehouseDetailList.Where(x => x.MedicineId == deliveryItem.MedicineId).GroupBy(x => new { x.LotNo, x.ExpiredDate }).ToList();
-
-                    int subNo = 1;
-                    foreach (var itm in itemList)
+                    var subNo = 1;
+                    foreach (var itm in deliveryItem.AllocatedWareHouseDetail)
                     {
-                        var whDetailList = warehouseDetailList.Where(x => x.LotNo == itm.First().LotNo && x.ExpiredDate == itm.First().ExpiredDate).ToList();
-                        var idList = whDetailList.Select(x => x.Id).ToList();
-                        var aldList = allocatedList.Where(x => idList.Contains(x.WareHouseDetailId) && x.MedicineDeliveryDetailId == deliveryItem.Id).ToList();
-                        if (aldList.Count == 0) continue;
-
-                        var subItem = new MedicineDeliveryAllocationEntity(aldList, null, whDetailList, warehouse)
-                                          {
-                                              LotNo = itm.First().LotNo,
-                                              ExpiredDate = itm.First().ExpiredDate,
-                                              SubNo = subNo++
-                                          };
-                        medDeliveryAllocationList.Add(subItem);
+                        var subItem = new MedicineDeliveryAllocationEntity(subNo++, itm);
+                        _medDeliveryAllocationList.Add(subItem);
                     }
                 }
-
             }
         }
 
+        /// <summary>
+        /// Creates the prescription.
+        /// </summary>
+        /// <param name="prescription">The prescription.</param>
+        /// <returns></returns>
         private MedicineDelivery CreatePrescription(Prescription prescription)
         {
             var medicineDelivery = new MedicineDelivery();
@@ -124,75 +124,75 @@ namespace Medical.MedicineDeliver
             return medicineDelivery;
         }
 
+        /// <summary>
+        /// Creates the medicine delivery detail.
+        /// </summary>
+        /// <param name="prescriptionDetails">The prescription details.</param>
+        /// <returns></returns>
         private List<MedicineDeliveryDetail> CreateMedicineDeliveryDetail(List<PrescriptionDetail> prescriptionDetails)
         {
-            var medicineDeliveryList = new List<MedicineDeliveryDetail>();
-            int index = 0;
-            foreach (var prescriptionDetail in prescriptionDetails)
-            {
-                var medicineDeliveryDetail = new MedicineDeliveryDetail
-                                                 {
-                                                     Id = ++index,
-                                                     MedicineId = prescriptionDetail.MedicineId,
-                                                     PrescriptionDetailId = prescriptionDetail.Id,
-                                                     Unit = prescriptionDetail.Medicine.Unit,
-                                                     Volumn = prescriptionDetail.Amount,
-                                                     NotAllocatedQty = prescriptionDetail.Amount
-                                                 };
-                medicineDeliveryList.Add(medicineDeliveryDetail);
-            }
-            return medicineDeliveryList;
+            var index = 0;
+            return prescriptionDetails.Select(prescriptionDetail => new MedicineDeliveryDetail
+                                                                        {
+                                                                            Id = ++index, 
+                                                                            MedicineId = prescriptionDetail.MedicineId, 
+                                                                            Medicine = prescriptionDetail.Medicine, 
+                                                                            PrescriptionDetailId = prescriptionDetail.Id, 
+                                                                            Unit = prescriptionDetail.Medicine.Unit, 
+                                                                            Volumn = prescriptionDetail.Amount, 
+                                                                            NotAllocatedQty = prescriptionDetail.Amount
+                                                                        }).ToList();
         }
 
-        private List<MedicineDeliveryDetailAllocate> AutoAllocate(List<MedicineDeliveryDetail> medicineDeliveryDetails, List<WareHouseDetail> wareHouseDetails)
+        /// <summary>
+        /// Autoes the allocate.
+        /// </summary>
+        /// <param name="medicineDeliveryDetails">The medicine delivery details.</param>
+        /// <param name="wareHouseDetails">The ware house details.</param>
+        /// <returns></returns>
+        private void AutoAllocate(List<MedicineDeliveryDetail> medicineDeliveryDetails, List<VWareHouseDetail> wareHouseDetails)
         {
-            var allocatedItems = new List<MedicineDeliveryDetailAllocate>();
             foreach (var deliveryDetailItem in medicineDeliveryDetails)
             {
-                deliveryDetailItem.Allocated = new List<MedicineDeliveryDetailAllocate>();
-                var warehouseDetailList =
-                    wareHouseDetails.Where(x => x.MedicineId == deliveryDetailItem.MedicineId).
-                                        OrderBy(x => x.ExpiredDate).
-                                        OrderBy(x => x.Id).ToList();
-
+                deliveryDetailItem.AllocatedWareHouseDetail = new List<VWareHouseDetail>();
+                var warehouseDetailList = wareHouseDetails.Where(x => x.MedicineId == deliveryDetailItem.MedicineId).OrderBy(x => x.ExpiredDate).OrderBy(x => x.Id).ToList();
                 foreach (var t in warehouseDetailList)
                 {
-                    // t.DeliveryAllocate = new List<MedicineDeliveryDetailAllocate>();
-                    if (deliveryDetailItem.NotAllocatedQty <= t.CurrentVolumn)
+                    if (deliveryDetailItem.NotAllocatedQty <= 0) break;
+                    if (deliveryDetailItem.NotAllocatedQty <= t.Qty)
                     {
-                        var allocatedItem = new MedicineDeliveryDetailAllocate
-                                                {
-                                                    MedicineDeliveryDetailId = deliveryDetailItem.Id,
-                                                    Unit = deliveryDetailItem.Unit,
-                                                    Volumn = deliveryDetailItem.NotAllocatedQty,
-                                                    WareHouseDetailId = t.Id
-                                                };
+                        var allocated = new VWareHouseDetail
+                                            {
+                                                MedicineId = t.MedicineId,
+                                                ClinicId = t.ClinicId,
+                                                LotNo = t.LotNo,
+                                                ExpiredDate = t.ExpiredDate,
+                                                Qty = t.Qty,
+                                                AllocatedQty = deliveryDetailItem.NotAllocatedQty,
+                                                InStockQty =  t.InStockQty
+                                            };
                         deliveryDetailItem.NotAllocatedQty = 0;
-                        allocatedItems.Add(allocatedItem);
-                        // t.CurrentVolumn = deliveryDetailItem.Volumn;
-                        deliveryDetailItem.Allocated.Add(allocatedItem);
-                        t.DeliveryAllocate.Add(allocatedItem);
+                        deliveryDetailItem.AllocatedWareHouseDetail.Add(allocated);
+                        deliveryDetailItem.NotAllocatedQty = 0;
                     }
                     else
                     {
-                        var allocatedItem = new MedicineDeliveryDetailAllocate
-                                                {
-                                                    MedicineDeliveryDetailId = deliveryDetailItem.Id,
-                                                    Unit = deliveryDetailItem.Unit,
-                                                    Volumn = t.CurrentVolumn,
-                                                    WareHouseDetailId = t.Id
-                                                };
-                        deliveryDetailItem.NotAllocatedQty -= allocatedItem.Volumn;
-                        allocatedItems.Add(allocatedItem);
-                        // t.CurrentVolumn = 0;
-                        deliveryDetailItem.Allocated.Add(allocatedItem);
-                        t.DeliveryAllocate.Add(allocatedItem);
+                        var allocated = new VWareHouseDetail
+                                            {
+                                                MedicineId = t.MedicineId,
+                                                ClinicId = t.ClinicId,
+                                                LotNo = t.LotNo,
+                                                ExpiredDate = t.ExpiredDate,
+                                                Qty = t.Qty,
+                                                AllocatedQty = t.Qty,
+                                                InStockQty = t.InStockQty
+                                            };
+                        deliveryDetailItem.NotAllocatedQty -= allocated.AllocatedQty;
+                        deliveryDetailItem.AllocatedWareHouseDetail.Add(allocated);
                     }
                     if (deliveryDetailItem.NotAllocatedQty == 0) break;
                 }
             }
-
-            return allocatedItems;
         }
 
         private void DeliveryRegister_Load(object sender, EventArgs e)
@@ -215,8 +215,8 @@ namespace Medical.MedicineDeliver
         private void dataGridViewX1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             var row = this.dataGridViewX1.Rows[e.RowIndex];
-            if (row.Cells[1].Value == null) row.DefaultCellStyle.BackColor = Color.LightGray;
-            row.DefaultCellStyle.BackColor = Color.Gray;
+            if (row.Cells[1].Value == null) row.DefaultCellStyle.BackColor = Color.PaleTurquoise;
+            // row.DefaultCellStyle.BackColor = Color.Gray;
 
         }
 
@@ -282,6 +282,39 @@ namespace Medical.MedicineDeliver
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+        }
+
+        private void dataGridViewX1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MedicineDeliveryAllocationEntity ent = (MedicineDeliveryAllocationEntity) this.bindingSource1.Current;
+            if (ent.SubNo != null) return;
+            DeliveryAllocateDetail detailDialog = new DeliveryAllocateDetail(ent.MedicineDeliveryDetail);
+            detailDialog.ShowDialog(this);
+            // if (ent == null || !ent.Id.HasValue) return;
+
+        }
+
+        private void dataGridViewX1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            /*
+            MessageBox.Show(this.dataGridViewX1.Rows[e.RowIndex].Cells[8].Value + ": " +
+                            this.dataGridViewX1.Rows[e.RowIndex].Cells[8].ValueType);
+            var a = ((DataGridViewButtonCell) this.dataGridViewX1.Rows[e.RowIndex].Cells[10]);
+            a.UseColumnTextForButtonValue = true;
+            a.DetachEditingControl();
+
+             */
+
+            // var b = ((DataGridViewButtonXCell)this.dataGridViewX1.Rows[e.RowIndex].Cells[10]);
+
+            /*
+            for(int i = e.RowIndex;i<e.RowCount + e.RowIndex; i++)
+            {
+                var a = ((DataGridViewDisableButtonXCell)this.dataGridViewX1.Rows[i].Cells[11]);
+                if (i == 6) a.Enabled = false;
+            }
+             */
             
         }
     }
