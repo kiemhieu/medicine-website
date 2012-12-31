@@ -286,6 +286,6 @@ namespace Medical.Warehouse
                     grd.Rows.Remove(grd.Rows[e.RowIndex]);
                 }
             }
-        }
+        }       
     }
 }

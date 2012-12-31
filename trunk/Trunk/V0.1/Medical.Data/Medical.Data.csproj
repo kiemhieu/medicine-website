@@ -60,6 +60,7 @@
     <Compile Include="IMedicineDeliveryDetailAllocateRepository.cs" />
     <Compile Include="IVMedicineDeliverRepository.cs" />
     <Compile Include="IVWareHouseDetailRespository.cs" />
+    <Compile Include="IWareHouseExportAllocateRepository.cs" />
     <Compile Include="IWareHousePaperDetailRepository.cs" />
     <Compile Include="IWareHousePaperRepository.cs" />
     <Compile Include="IWareHouseMinimumAllowRepository.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Repositories\MedicinePlanDetailRepository.cs" />
     <Compile Include="Repositories\MedicinePlanRepository.cs" />
     <Compile Include="Repositories\VWareHouseDetailRepository.cs" />
+    <Compile Include="Repositories\WareHouseExportAllocateRepository.cs" />
     <Compile Include="Repositories\WareHouseRepository.cs" />
     <Compile Include="Repositories\DefineRepository.cs" />
     <Compile Include="Repositories\FigureDetailRepository.cs" />

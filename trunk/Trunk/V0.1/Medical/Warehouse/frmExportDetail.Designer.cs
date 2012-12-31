@@ -1,6 +1,6 @@
 ﻿namespace Medical.Warehouse
 {
-    partial class frmExport
+    partial class frmExportDetail
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.cbClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dateImport = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.btnInsert = new DevComponents.DotNetBar.ButtonX();
+            this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.txtDeliverer = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtRecipient = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtNote = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -47,17 +45,10 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.bindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateImport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -65,7 +56,7 @@
             this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.cbClinic);
             this.groupBox1.Controls.Add(this.dateImport);
-            this.groupBox1.Controls.Add(this.btnInsert);
+            this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.txtDeliverer);
             this.groupBox1.Controls.Add(this.txtRecipient);
             this.groupBox1.Controls.Add(this.txtNote);
@@ -99,8 +90,6 @@
             // 
             // cbClinic
             // 
-            this.cbClinic.DataSource = this.bindingSource2;
-            this.cbClinic.DisplayMember = "Name";
             this.cbClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbClinic.FormattingEnabled = true;
             this.cbClinic.ItemHeight = 15;
@@ -109,12 +98,7 @@
             this.cbClinic.Size = new System.Drawing.Size(192, 21);
             this.cbClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbClinic.TabIndex = 3;
-            this.cbClinic.ValueMember = "Id";
-            this.cbClinic.SelectedIndexChanged += new System.EventHandler(this.cbClinic_SelectedIndexChanged);
-            // 
-            // bindingSource2
-            // 
-            this.bindingSource2.DataSource = typeof(Medical.Data.Entities.Clinic);
+            this.cbClinic.ValueMember = "Id";         
             // 
             // dateImport
             // 
@@ -126,7 +110,7 @@
             this.dateImport.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dateImport.ButtonDropDown.Visible = true;
             this.dateImport.IsPopupCalendarOpen = false;
-            this.dateImport.Location = new System.Drawing.Point(291, 22);
+            this.dateImport.Location = new System.Drawing.Point(281, 22);
             // 
             // 
             // 
@@ -163,21 +147,21 @@
             this.dateImport.MonthCalendar.TodayButtonVisible = true;
             this.dateImport.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.dateImport.Name = "dateImport";
-            this.dateImport.Size = new System.Drawing.Size(80, 21);
+            this.dateImport.Size = new System.Drawing.Size(90, 21);
             this.dateImport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dateImport.TabIndex = 2;
             // 
-            // btnInsert
+            // btnDelete
             // 
-            this.btnInsert.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnInsert.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnInsert.Location = new System.Drawing.Point(541, 77);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(75, 23);
-            this.btnInsert.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnInsert.TabIndex = 0;
-            this.btnInsert.Text = "Thêm mới";
-            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDelete.Location = new System.Drawing.Point(541, 77);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDelete.TabIndex = 0;
+            this.btnDelete.Text = "Xóa";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // txtDeliverer
             // 
@@ -286,7 +270,7 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(228, 18);
+            this.labelX2.Location = new System.Drawing.Point(225, 18);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(57, 23);
             this.labelX2.TabIndex = 0;
@@ -309,35 +293,21 @@
             // 
             this.grd.AllowUserToOrderColumns = true;
             this.grd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grd.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grd.DefaultCellStyle = dataGridViewCellStyle2;
             this.grd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.grd.Location = new System.Drawing.Point(0, 115);
             this.grd.Name = "grd";
             this.grd.Size = new System.Drawing.Size(804, 280);
-            this.grd.TabIndex = 1;            
-            this.grd.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellEndEdit);
-            this.grd.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grd_CellMouseClick);
+            this.grd.TabIndex = 1;
             this.grd.AutoGenerateColumns = false;
-            // 
-            // bindingSource3
-            // 
-            this.bindingSource3.DataSource = typeof(Medical.Data.Entities.Medicine);
-            // 
-            // bindingSource4
-            // 
-            this.bindingSource4.DataSource = typeof(Medical.Data.Entities.Clinic);
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.WareHousePaperDetail);
             // 
             // panel1
             // 
@@ -347,7 +317,7 @@
             this.panel1.Size = new System.Drawing.Size(804, 15);
             this.panel1.TabIndex = 2;
             // 
-            // frmExport
+            // frmExportDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -356,15 +326,11 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "frmExport";
+            this.Name = "frmExportDetail";
             this.Text = "Xuất kho";
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateImport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -383,12 +349,8 @@
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.Controls.DataGridViewX grd;
-        private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.BindingSource bindingSource2;
         private DevComponents.DotNetBar.ButtonX btnCancel;
-        private DevComponents.DotNetBar.ButtonX btnInsert;
-        private System.Windows.Forms.BindingSource bindingSource3;
-        private System.Windows.Forms.BindingSource bindingSource4;
+        private DevComponents.DotNetBar.ButtonX btnDelete;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn clinicNameDataGridViewTextBoxColumn;
         private DevComponents.DotNetBar.Controls.TextBoxX txtDeliverer;
         private DevComponents.DotNetBar.LabelX labelX7;
