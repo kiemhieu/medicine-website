@@ -15,17 +15,22 @@ namespace Medical.Data.Entities
         public int Type { get; set; }
         public int MedicineId { get; set; }
         public string LotNo { get; set; }
-        public int Volumn { get; set; }        
+        public int Volumn { get; set; }
         public int Unit { get; set; }
         public int? UnitPrice { get; set; }
         public int Amount { get; set; }
         public DateTime ExpireDate { get; set; }
         public string Note { get; set; }
         public DateTime CreatedDate { get; set; }
-        public int Version { get; set; }        
-        public virtual Medicine Medicine { get; set; }      
+        public int Version { get; set; }
+        public virtual Medicine Medicine { get; set; }
         public virtual WareHousePaper WareHousePaper { get; set; }
-        //public string MedicineName { get { return this.Medicine.Name; } }
+
+        [NotMapped]
+        public string MedicineName { get { return this.Medicine.Name; } }
+
+        [NotMapped]
+        public string UnitName { get { return this.Medicine.Define.Name; } }
         //public string WareHousePaperNo { get { return this.WareHousePaper.No; } }
-  }
+    }
 }
