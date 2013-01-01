@@ -8,9 +8,19 @@ namespace Medical.Data.Repositories
 {
     public class MedicineDeliveryDetailRepository : RepositoryBase, IMedicineDeliveryDetailRepository
     {
-        public void Insert(MedicineDeliveryDetail user)
+        public void Insert(MedicineDeliveryDetail medicineDeliveryDetail)
         {
-            throw new NotImplementedException();
+            // Insert DeliveryDetail
+            // Get WareHouseDetail
+            // Allocate Qty
+            // Insert Allocate
+            // Update WareHouseDetail
+            // Update WareHouse
+            var warehouseDetailAllocatedList = medicineDeliveryDetail.AllocatedWareHouseDetail;
+
+
+
+
         }
 
         public void Update(MedicineDeliveryDetail user)

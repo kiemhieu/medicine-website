@@ -7,7 +7,7 @@ using System.Text;
 namespace Medical.Data.Entities
 {
     [Table("MedicineDelivery")]
-    public class MedicineDelivery
+    public class MedicineDelivery : EntityBase
     {
         public long Id { get; set; }
         public int ClinicId { get; set; }
