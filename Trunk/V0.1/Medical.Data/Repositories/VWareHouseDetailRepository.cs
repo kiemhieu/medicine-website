@@ -9,11 +9,29 @@ namespace Medical.Data.Repositories {
 
         public List<VWareHouseDetail> GetByMedicine(List<int> medicineId)
         {
-            return this.Context.VWareHouseDetails.Where(x => medicineId.Contains(x.MedicineId) && x.ClinicId == AppContext.CurrentClinic.Id).ToList();
+            // TODO: Remove try catch
+            try
+            {
+                var vWareHouseDetails =
+                    this.Context.VWareHouseDetails.Where(
+                        x => medicineId.Contains(x.MedicineId) && x.ClinicId == AppContext.CurrentClinic.Id).ToList();
+                return vWareHouseDetails;
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
 
         public List<VWareHouseDetail> GetByMedicine(int medicineId) {
-            return this.Context.VWareHouseDetails.Where(x => x.MedicineId == medicineId && x.ClinicId == AppContext.CurrentClinic.Id).ToList();
+            List<VWareHouseDetail> vWareHouseDetails = this.Context.VWareHouseDetails.Where(x => x.MedicineId == medicineId && x.ClinicId == AppContext.CurrentClinic.Id).ToList();
+            return vWareHouseDetails;
+        }
+
+        public List<VWareHouseDetailList> GetAll()
+        {
+            List<VWareHouseDetailList> list = this.Context.VWareHouseDetailList.ToList();
+            return list;
         }
     }
 }

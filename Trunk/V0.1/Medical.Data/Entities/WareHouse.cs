@@ -7,7 +7,7 @@ using System.Text;
 namespace Medical.Data.Entities
 {
     [Table("WareHouse")]
-    public class WareHouse
+    public class WareHouse : EntityBase
     {
         public int Id { get; set; }
         public int ClinicId { get; set; }
@@ -22,7 +22,20 @@ namespace Medical.Data.Entities
         // public virtual ICollection<WareHouseDetail> WareHouseDetails { get; set; }
         [NotMapped]
         public string MedicineName { get { return this.Medicine.Name; } }
+
         [NotMapped]
         public string ClinicName { get { return this.Clinic.Name; } }
+
+        private int _remainQty;
+
+        [NotMapped]
+        public int RemainQty
+        {
+            set { if (value == _remainQty) return;
+                _remainQty = value;
+                this.OnPropertyChanged("RemainQty");
+            }
+            get { return _remainQty; }
+        }
     }
 }

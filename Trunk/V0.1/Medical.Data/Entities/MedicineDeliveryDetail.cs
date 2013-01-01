@@ -8,7 +8,7 @@ using Medical.Data.Entities.Views;
 namespace Medical.Data.Entities
 {
     [Table("MedicineDeliveryDetail")]
-    public class MedicineDeliveryDetail
+    public class MedicineDeliveryDetail : EntityBase
     {
         public long Id { get; set; }
         public long MedicineDeliveryId { get; set; }
@@ -27,8 +27,17 @@ namespace Medical.Data.Entities
         [NotMapped]
         public int NotAllocatedQty { get; set; }
 
+        private int _allocatedQty;
         [NotMapped]
-        public int AllocatedQty { get; set; }
+        public int AllocatedQty {
+            get { return _allocatedQty; }
+            set {
+                if (value == _allocatedQty) return;
+                _allocatedQty = value;
+                this.NotAllocatedQty = this.Volumn - _allocatedQty;
+                this.OnPropertyChanged("AllocatedQty");
+            }
+        }
 
         [NotMapped]
         public List<VWareHouseDetail> AllocatedWareHouseDetail { get; set; }
