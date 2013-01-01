@@ -54,7 +54,7 @@ namespace Medical.MedicineDeliver
             InitializeComponent();
             this._prescriptionId = prescriptionId;
             this.Initialize();
-            this.bindingSource1.DataSource = this._medDeliveryAllocationList;
+            
         }
 
         /// <summary>
@@ -62,8 +62,10 @@ namespace Medical.MedicineDeliver
         /// </summary>
         private void Initialize()
         {
-            this._vWareHouseDetailList = new List<VWareHouseDetail>();
 
+            var list = this._vWareHouseDetailRepo.GetAll();
+
+            this._vWareHouseDetailList = new List<VWareHouseDetail>();
             this.bdsMedicine.DataSource = _medicineRepo.GetAll();
             this._medDeliveryAllocationList = new List<MedicineDeliveryAllocationEntity>();
             this._prescription = _prescriptionRepo.Get(this._prescriptionId);
@@ -106,6 +108,7 @@ namespace Medical.MedicineDeliver
                         _medDeliveryAllocationList.Add(subItem);
                     }
                 }
+                this.bindingSource1.DataSource = this._medDeliveryAllocationList;
             }
         }
 
@@ -291,8 +294,26 @@ namespace Medical.MedicineDeliver
             if (ent.SubNo != null) return;
             DeliveryAllocateDetail detailDialog = new DeliveryAllocateDetail(ent.MedicineDeliveryDetail);
             detailDialog.ShowDialog(this);
-            // if (ent == null || !ent.Id.HasValue) return;
+            if (detailDialog.DialogResult == DialogResult.Cancel) return;
+            ent.MedicineDeliveryDetail.AllocatedWareHouseDetail = detailDialog.Result;
 
+            var no = 1;
+            this._medDeliveryAllocationList= new List<MedicineDeliveryAllocationEntity>();
+            foreach (var deliveryItem in this._medicineDeliveryDetailList) {
+                // var allocatedList = this._mdecidineDeliveryDetailAllocate.Where(x => x.MedicineDeliveryDetailId == deliveryItem.Id).ToList();
+                var warehouse = this._warehouseList.FirstOrDefault(x => x.MedicineId == deliveryItem.MedicineId);
+                var item = new MedicineDeliveryAllocationEntity(no++, deliveryItem, warehouse);
+                this._medDeliveryAllocationList.Add(item);
+
+                var subNo = 1;
+                foreach (var itm in deliveryItem.AllocatedWareHouseDetail) {
+                    var subItem = new MedicineDeliveryAllocationEntity(subNo++, itm);
+                    _medDeliveryAllocationList.Add(subItem);
+                }
+            }
+            this.bindingSource1.DataSource = this._medDeliveryAllocationList;
+            this.bindingSource1.ResetBindings(true);
+            this.dataGridViewX1.ResetBindings();
         }
 
         private void dataGridViewX1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
