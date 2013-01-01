@@ -8,7 +8,7 @@ namespace Medical.Data
 {
     public interface IMedicineDeliveryRepository
     {
-        void Insert(MedicineDelivery user);
+        void Insert(MedicineDelivery medicineDelivery, List<MedicineDeliveryDetail> medicineDeliveryDetails);
         void Update(MedicineDelivery user);
         void Delete(int id);
         List<MedicineDelivery> GetAll();
