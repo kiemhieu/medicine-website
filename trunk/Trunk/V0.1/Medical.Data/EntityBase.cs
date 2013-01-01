@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
 namespace Medical.Data
 {
-    public class EntityBase : System.ComponentModel.IDataErrorInfo
+    public class EntityBase : System.ComponentModel.IDataErrorInfo, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         private string errorString = string.Empty;
         private Dictionary<string, string> errorDic = new Dictionary<string, string>();
 
@@ -115,6 +117,13 @@ namespace Medical.Data
 
             var intValue = Convert.ToInt32(value);
             property.SetValue(this, intValue + 1, null);
+        }
+
+        protected void OnPropertyChanged(string name) {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
         }
     }
 }
