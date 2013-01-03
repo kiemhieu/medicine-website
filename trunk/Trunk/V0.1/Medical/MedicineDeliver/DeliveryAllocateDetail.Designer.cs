@@ -50,6 +50,7 @@
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
             this.txtWareHouseRemainQty = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.bdsWareHouse = new System.Windows.Forms.BindingSource(this.components);
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.txtNotAllocatedQty = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
@@ -58,7 +59,6 @@
             this.txtQty = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.txtWareHouseQty = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.bdsWareHouse = new System.Windows.Forms.BindingSource(this.components);
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
@@ -121,7 +121,7 @@
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(677, 314);
+            this.dataGridViewX1.Size = new System.Drawing.Size(692, 296);
             this.dataGridViewX1.TabIndex = 1;
             this.dataGridViewX1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellEndEdit);
             this.dataGridViewX1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewX1_CellPainting);
@@ -209,7 +209,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(677, 48);
+            this.panelEx1.Size = new System.Drawing.Size(692, 48);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
@@ -290,6 +290,10 @@
             this.txtWareHouseRemainQty.Name = "txtWareHouseRemainQty";
             this.txtWareHouseRemainQty.Size = new System.Drawing.Size(80, 20);
             this.txtWareHouseRemainQty.TabIndex = 11;
+            // 
+            // bdsWareHouse
+            // 
+            this.bdsWareHouse.DataSource = typeof(Medical.Data.Entities.WareHouse);
             // 
             // labelX6
             // 
@@ -413,10 +417,6 @@
             this.txtWareHouseQty.TabIndex = 3;
             this.txtWareHouseQty.Text = "999,999,999";
             // 
-            // bdsWareHouse
-            // 
-            this.bdsWareHouse.DataSource = typeof(Medical.Data.Entities.WareHouse);
-            // 
             // labelX2
             // 
             this.labelX2.AutoSize = true;
@@ -460,9 +460,10 @@
             this.panelEx2.Controls.Add(this.btnSave);
             this.panelEx2.Controls.Add(this.btnCancel);
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx2.Location = new System.Drawing.Point(0, 362);
+            this.panelEx2.Location = new System.Drawing.Point(0, 344);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(677, 29);
+            this.panelEx2.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.panelEx2.Size = new System.Drawing.Size(692, 29);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
             this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
@@ -473,9 +474,10 @@
             // btnSave
             // 
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSave.Image = global::Medical.Properties.Resources.accept;
-            this.btnSave.Location = new System.Drawing.Point(524, 3);
+            this.btnSave.Location = new System.Drawing.Point(539, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -487,9 +489,10 @@
             // btnCancel
             // 
             this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCancel.Image = global::Medical.Properties.Resources.cancel;
-            this.btnCancel.Location = new System.Drawing.Point(600, 3);
+            this.btnCancel.Location = new System.Drawing.Point(615, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -513,7 +516,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 391);
+            this.ClientSize = new System.Drawing.Size(692, 373);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.panelEx2);
             this.Controls.Add(this.panelEx1);

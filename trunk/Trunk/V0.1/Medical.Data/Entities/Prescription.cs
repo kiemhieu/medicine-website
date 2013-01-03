@@ -25,6 +25,10 @@ namespace Medical.Data.Entities {
         public virtual List<PrescriptionDetail> PrescriptionDetails { get; set; }
         public virtual Figure Figure { get; set; }
 
+        [ForeignKey("PatientId")]
+        public virtual Patient Patient { get; set; }
+
+
         [ForeignKey("DoctorId")]
         public virtual User Doctor { get; set; }
 
@@ -38,6 +42,11 @@ namespace Medical.Data.Entities {
         public String DoctorName
         {
             get { return this.Doctor == null ? "" : this.Doctor.Name; }
+        }
+
+        [NotMapped]
+        public String PatientName {
+            get { return this.Patient == null ? "" : this.Patient.Name; }
         }
     }
 }
