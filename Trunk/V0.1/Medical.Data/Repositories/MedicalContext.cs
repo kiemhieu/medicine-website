@@ -16,6 +16,7 @@ namespace Medical.Data.Repositories
         public DbSet<MedicinePlan> MedicinePlans { get; set; }
         public DbSet<MedicinePlanDetail> MedicinePlanDetails { get; set; }
         public DbSet<MedicineDelivery> MedicineDeliveries { get; set; }
+        public DbSet<MedicineDeliveryDetail> MedicineDeliveryDetails { get; set; }
         public DbSet<Figure> Figures { get; set; }
         public DbSet<FigureDetail> FigureDetails { get; set; }
         public DbSet<Patient> Patients { get; set; }
@@ -32,7 +33,6 @@ namespace Medical.Data.Repositories
         public DbSet<Define> Defines { get; set; }
         public DbSet<MedicineDeliveryDetailAllocate> MedicineDeliveryDetailAllocates { get; set; }
         public DbSet<VWareHouseDetail> VWareHouseDetails { get; set; }
-        public DbSet<VWareHouseDetailList> VWareHouseDetailList { get; set; }
     }
 }
 

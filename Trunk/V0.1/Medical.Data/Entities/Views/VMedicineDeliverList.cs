@@ -15,7 +15,7 @@ namespace Medical.Data.Entities.Views
         public int DoctorId { get; set; }
         public DateTime Date { get; set; }
         public DateTime RecheckDate { get; set; }
-        public int? DeliverId { get; set; }
+        public long? DeliverId { get; set; }
         public String DoctorName { get; set; }
         public DateTime? DeliverDate { get; set; }
         public DateTime? DeliverTime { get; set; }

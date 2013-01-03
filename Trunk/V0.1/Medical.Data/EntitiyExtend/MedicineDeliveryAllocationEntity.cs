@@ -7,7 +7,7 @@ using Medical.Data.Entities.Views;
 
 namespace Medical.Data.EntitiyExtend
 {
-    public class MedicineDeliveryAllocationEntity
+    public class MedicineDeliveryAllocationEntity : EntityBase
     {
         private WareHouse _warehouse;
 
@@ -78,6 +78,12 @@ namespace Medical.Data.EntitiyExtend
             {
                 return this.MedicineDeliveryDetail != null ? this.MedicineDeliveryDetail.Medicine.Define.Name : null;
             }
+        }
+
+        public override void Validate() {
+            base.Validate();
+            if (this.Qty.HasValue && this.AllocatedQty != this.Qty) this.AddError("AllocatedQty", "Số lượng chọn chưa đủ với số cần xuất");
+            if (this.AllocatedQty > this.InStockQty) this.AddError("AllocatedQty", "Số lượng chọn vượt quá mức có trong kho");
         }
     }
 }

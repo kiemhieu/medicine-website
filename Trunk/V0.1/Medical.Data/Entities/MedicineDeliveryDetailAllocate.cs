@@ -7,7 +7,7 @@ using System.Text;
 namespace Medical.Data.Entities
 {
     [Table("MedicineDeliveryDetailAllocate")]
-    public class MedicineDeliveryDetailAllocate
+    public class MedicineDeliveryDetailAllocate : EntityBase
     {
         public long Id { get; set; }
         public long MedicineDeliveryDetailId { get; set; }
