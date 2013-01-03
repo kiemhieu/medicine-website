@@ -23,7 +23,7 @@ namespace Medical.Warehouse
         private WareHouseRepository repwh;
         private WareHousePaperRepository repwhPaper;
         private WareHousePaperDetailRepository repwhPaperDetail;
-        private WareHouseExportAllocateRepository whExport;
+        // private WareHouseExportAllocateRepository whExport;
         private int ClinicId;
         private int WHPaperId;
         public frmExport()
@@ -36,7 +36,7 @@ namespace Medical.Warehouse
             repwhDetail = new WareHouseDetailRepository();
             repwhPaper = new WareHousePaperRepository();
             repwhPaperDetail = new WareHousePaperDetailRepository();
-            whExport = new WareHouseExportAllocateRepository();
+            // whExport = new WareHouseExportAllocateRepository();
             InitializeComponent();
             repClinic = new ClinicRepository();
             FillToComboboxClinic(0);
@@ -173,7 +173,7 @@ namespace Medical.Warehouse
                                 wareHouseExportAllocate.WareHoudePaperDetailId = item.Id;
                                 wareHouseExportAllocate.Volumn = export;
                                 wareHouseExportAllocate.Unit = obj.Unit;
-                                whExport.Insert(wareHouseExportAllocate);
+                                // whExport.Insert(wareHouseExportAllocate);
                                 break;
                             }
                             else
@@ -202,7 +202,7 @@ namespace Medical.Warehouse
                                 wareHouseExportAllocate.WareHoudePaperDetailId = item.Id;
                                 wareHouseExportAllocate.Volumn = obj.CurrentVolumn;
                                 wareHouseExportAllocate.Unit = obj.Unit;
-                                whExport.Insert(wareHouseExportAllocate);
+                                // whExport.Insert(wareHouseExportAllocate);
                             }
                         }
                     }

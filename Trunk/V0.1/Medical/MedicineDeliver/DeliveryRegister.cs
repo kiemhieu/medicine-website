@@ -63,8 +63,6 @@ namespace Medical.MedicineDeliver
         private void Initialize()
         {
 
-            var list = this._vWareHouseDetailRepo.GetAll();
-
             this._vWareHouseDetailList = new List<VWareHouseDetail>();
             this.bdsMedicine.DataSource = _medicineRepo.GetAll();
             this._medDeliveryAllocationList = new List<MedicineDeliveryAllocationEntity>();
@@ -119,11 +117,13 @@ namespace Medical.MedicineDeliver
         /// <returns></returns>
         private MedicineDelivery CreatePrescription(Prescription prescription)
         {
-            var medicineDelivery = new MedicineDelivery();
-            medicineDelivery.ClinicId = AppContext.CurrentClinic.Id;
-            medicineDelivery.Date = DateTime.Today;
-            medicineDelivery.PatientId = prescription.PatientId;
-            medicineDelivery.PrescriptionId = prescription.Id;
+            var medicineDelivery = new MedicineDelivery
+                                       {
+                                           ClinicId = AppContext.CurrentClinic.Id,
+                                           Date = DateTime.Today,
+                                           PatientId = prescription.PatientId,
+                                           PrescriptionId = prescription.Id
+                                       };
             return medicineDelivery;
         }
 
@@ -137,7 +137,7 @@ namespace Medical.MedicineDeliver
             var index = 0;
             return prescriptionDetails.Select(prescriptionDetail => new MedicineDeliveryDetail
                                                                         {
-                                                                            Id = ++index, 
+                                                                            // Id = ++index, 
                                                                             MedicineId = prescriptionDetail.MedicineId, 
                                                                             Medicine = prescriptionDetail.Medicine, 
                                                                             PrescriptionDetailId = prescriptionDetail.Id, 
@@ -337,6 +337,25 @@ namespace Medical.MedicineDeliver
             }
              */
             
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (!ValidateForms()) return;
+            this._medicineDeliveryRepo.Insert(this._medicineDelivery, this._medicineDeliveryDetailList);
+        }
+
+        private bool ValidateForms()
+        {
+            var result = true;
+            var list = (List<MedicineDeliveryAllocationEntity>) this.bindingSource1.List;
+            foreach (var item in list)
+            {
+                item.Validate();
+                if (item.IsValid == false) result = false;
+            }
+
+            return result;
         }
     }
 }
