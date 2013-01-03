@@ -67,6 +67,7 @@ namespace Medical.MedicineDeliver
             this.bdsMedicine.DataSource = _medicineRepo.GetAll();
             this._medDeliveryAllocationList = new List<MedicineDeliveryAllocationEntity>();
             this._prescription = _prescriptionRepo.Get(this._prescriptionId);
+            this.bdsPrescription.DataSource = this._prescription;
             this._prescriptionDetailList = _prescriptionDetailRepo.GetByPrescription(this._prescriptionId);
             if (_prescription == null || this._prescriptionDetailList == null) throw new Exception("Data dosenot existed");
 

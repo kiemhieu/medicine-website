@@ -81,8 +81,7 @@
             this.trợGiúpToolStripMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.MainMenu.Size = new System.Drawing.Size(1050, 24);
+            this.MainMenu.Size = new System.Drawing.Size(900, 24);
             this.MainMenu.TabIndex = 0;
             this.MainMenu.Text = "menuStrip1";
             // 
@@ -164,10 +163,9 @@
             this.txtClinic,
             this.toolStripStatus,
             this.toolStripProgressBar});
-            this.statusBar.Location = new System.Drawing.Point(0, 664);
+            this.statusBar.Location = new System.Drawing.Point(0, 581);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusBar.Size = new System.Drawing.Size(1050, 30);
+            this.statusBar.Size = new System.Drawing.Size(900, 26);
             this.statusBar.TabIndex = 1;
             this.statusBar.Text = "statusStrip1";
             // 
@@ -177,7 +175,7 @@
             this.logViewer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.logViewer.Name = "logViewer";
             this.logViewer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.logViewer.Size = new System.Drawing.Size(16, 28);
+            this.logViewer.Size = new System.Drawing.Size(16, 24);
             this.logViewer.Text = "toolStripSplitButton1";
             this.logViewer.Click += new System.EventHandler(this.LogViewerClick);
             // 
@@ -190,7 +188,7 @@
             this.txtLoggedIn.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.txtLoggedIn.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLoggedIn.Name = "txtLoggedIn";
-            this.txtLoggedIn.Size = new System.Drawing.Size(150, 25);
+            this.txtLoggedIn.Size = new System.Drawing.Size(150, 21);
             this.txtLoggedIn.Text = "----";
             // 
             // txtClinic
@@ -202,20 +200,20 @@
             this.txtClinic.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.txtClinic.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClinic.Name = "txtClinic";
-            this.txtClinic.Size = new System.Drawing.Size(200, 25);
+            this.txtClinic.Size = new System.Drawing.Size(200, 21);
             this.txtClinic.Text = "---";
             // 
             // toolStripStatus
             // 
             this.toolStripStatus.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatus.Name = "toolStripStatus";
-            this.toolStripStatus.Size = new System.Drawing.Size(38, 25);
+            this.toolStripStatus.Size = new System.Drawing.Size(38, 21);
             this.toolStripStatus.Text = "Ready";
             // 
             // toolStripProgressBar
             // 
             this.toolStripProgressBar.Name = "toolStripProgressBar";
-            this.toolStripProgressBar.Size = new System.Drawing.Size(117, 22);
+            this.toolStripProgressBar.Size = new System.Drawing.Size(100, 21);
             this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.toolStripProgressBar.Visible = false;
             // 
@@ -226,7 +224,7 @@
             this.MainToolBar.Location = new System.Drawing.Point(0, 24);
             this.MainToolBar.Name = "MainToolBar";
             this.MainToolBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.MainToolBar.Size = new System.Drawing.Size(1050, 25);
+            this.MainToolBar.Size = new System.Drawing.Size(900, 25);
             this.MainToolBar.TabIndex = 2;
             this.MainToolBar.Text = "toolStrip1";
             // 
@@ -264,11 +262,12 @@
             this.dockingPanel.AllowEndUserDocking = false;
             this.dockingPanel.AllowEndUserNestedDocking = false;
             this.dockingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockingPanel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dockingPanel.Location = new System.Drawing.Point(0, 49);
             this.dockingPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dockingPanel.Name = "dockingPanel";
             this.dockingPanel.ShowDocumentIcon = true;
-            this.dockingPanel.Size = new System.Drawing.Size(1050, 615);
+            this.dockingPanel.Size = new System.Drawing.Size(900, 532);
             dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
             dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
             autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
@@ -319,14 +318,14 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1050, 694);
+            this.ClientSize = new System.Drawing.Size(900, 607);
             this.Controls.Add(this.dockingPanel);
             this.Controls.Add(this.MainToolBar);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.MainMenu);
-            this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.MainMenu;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
