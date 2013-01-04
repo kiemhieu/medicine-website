@@ -108,6 +108,31 @@ namespace Medical.MedicineDeliver
                     }
                 }
                 this.bindingSource1.DataSource = this._medDeliveryAllocationList;
+            } else {
+                var medincineIdList = this._prescriptionDetailList.Select(item => item.MedicineId).ToList();
+                this._warehouseList = this._warehouseRepo.GetByMedicineId(medincineIdList, AppContext.CurrentClinic.Id);
+                this._vWareHouseDetailList = this._vWareHouseDetailRepo.GetByMedicine(medincineIdList);
+                // this._warehouseDetailList = this._warehouseDetailRepo.GetByMedicine(medincineIdList, AppContext.CurrentClinic.Id);)
+                this._medicineDelivery = this._medicineDeliveryRepo.GetByPrescriptionId(this._prescription.Id);
+                this._medicineDeliveryDetailList = this._medicineDeliveryDetailRepo.GetByDelivery(this._medicineDelivery.Id);
+                
+                // this._mdecidineDeliveryDetailAllocate = AutoAllocate(this._medicineDeliveryDetailList, this._warehouseDetailList);
+                // var item = this._warehouseDetailList.Select(x => new { x.MedicineId, x.LotNo, x.ExpiredDate}).GroupBy(x => new { x.MedicineId, x.LotNo, x.ExpiredDate }).ToList();
+
+                var no = 1;
+                foreach (var deliveryItem in this._medicineDeliveryDetailList) {
+                    // var allocatedList = this._mdecidineDeliveryDetailAllocate.Where(x => x.MedicineDeliveryDetailId == deliveryItem.Id).ToList();
+                    var warehouse = this._warehouseList.FirstOrDefault(x => x.MedicineId == deliveryItem.MedicineId);
+                    var item = new MedicineDeliveryAllocationEntity(no++, deliveryItem, warehouse);
+                    this._medDeliveryAllocationList.Add(item);
+
+                    var subNo = 1;
+                    foreach (var itm in deliveryItem.AllocatedWareHouseDetail) {
+                        var subItem = new MedicineDeliveryAllocationEntity(subNo++, itm);
+                        _medDeliveryAllocationList.Add(subItem);
+                    }
+                }
+                this.bindingSource1.DataSource = this._medDeliveryAllocationList;
             }
         }
 
@@ -357,6 +382,12 @@ namespace Medical.MedicineDeliver
             }
 
             return result;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }
