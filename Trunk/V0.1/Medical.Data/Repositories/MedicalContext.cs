@@ -29,7 +29,8 @@ namespace Medical.Data.Repositories
         public DbSet<PrescriptionDetail> PrescriptionDetails { get; set; }
         public DbSet<VMedicineDeliverList> VMedicineDeliverList { get; set; }
         public DbSet<WareHouseExportAllocate> WareHouseExportAllocates { get; set; } 
-        public DbSet<VMedicineDeliveryDetailList> VMedicineDeliveryDetailList { get; set; }        
+        public DbSet<VMedicineDeliveryDetailList> VMedicineDeliveryDetailList { get; set; }
+        public DbSet<VMedicineDeliveryDetailAllocated> VMedicineDeliveryDetailAllocated { get; set; }
         public DbSet<Define> Defines { get; set; }
         public DbSet<MedicineDeliveryDetailAllocate> MedicineDeliveryDetailAllocates { get; set; }
         public DbSet<VWareHouseDetail> VWareHouseDetails { get; set; }
