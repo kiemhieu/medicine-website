@@ -10,7 +10,7 @@ namespace Medical.Data
     {
         void Insert(MedicineDelivery medicineDelivery, List<MedicineDeliveryDetail> medicineDeliveryDetails);
         void Update(MedicineDelivery user);
-        void Delete(int id);
+        void Delete(long id);
         List<MedicineDelivery> GetAll();
         MedicineDelivery GetByPrescriptionId(long prescriptionId);
     }

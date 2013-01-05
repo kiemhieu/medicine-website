@@ -13,8 +13,7 @@ namespace Medical.Data.Repositories {
             try
             {
                 var vWareHouseDetails =
-                    this.Context.VWareHouseDetails.Where(
-                        x => medicineId.Contains(x.MedicineId) && x.ClinicId == AppContext.CurrentClinic.Id).ToList();
+                    this.Context.VWareHouseDetails.Where(x => medicineId.Contains(x.MedicineId) && x.ClinicId == AppContext.CurrentClinic.Id && x.Qty > 0).ToList();
                 return vWareHouseDetails;
             }
             catch (Exception ex) {
@@ -24,7 +23,7 @@ namespace Medical.Data.Repositories {
         }
 
         public List<VWareHouseDetail> GetByMedicine(int medicineId) {
-            List<VWareHouseDetail> vWareHouseDetails = this.Context.VWareHouseDetails.Where(x => x.MedicineId == medicineId && x.ClinicId == AppContext.CurrentClinic.Id).ToList();
+            List<VWareHouseDetail> vWareHouseDetails = this.Context.VWareHouseDetails.Where(x => x.MedicineId == medicineId && x.ClinicId == AppContext.CurrentClinic.Id ).ToList();
             return vWareHouseDetails;
         }
     }

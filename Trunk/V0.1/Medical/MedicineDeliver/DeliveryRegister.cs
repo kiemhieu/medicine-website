@@ -14,6 +14,7 @@ using Medical.Data.EntitiyExtend;
 using Medical.Data.Repositories;
 using Medical.Forms.Common;
 using Medical.Forms.Enums;
+using Medical.Forms.UI;
 
 namespace Medical.MedicineDeliver
 {
@@ -41,6 +42,7 @@ namespace Medical.MedicineDeliver
         private List<WareHouse> _warehouseList;
         private List<WareHouseDetail> _warehouseDetailList;
         private List<VWareHouseDetail> _vWareHouseDetailList;
+        private List<VMedicineDeliveryDetailAllocated> _vMedicineDeliveryDetailAllocateds;
 
         private long _prescriptionId;
         private ViewModes _formMode;
@@ -54,7 +56,6 @@ namespace Medical.MedicineDeliver
             InitializeComponent();
             this._prescriptionId = prescriptionId;
             this.Initialize();
-            
         }
 
         /// <summary>
@@ -85,10 +86,10 @@ namespace Medical.MedicineDeliver
                 var medincineIdList = this._prescriptionDetailList.Select(item => item.MedicineId).ToList();
                 this._warehouseList = this._warehouseRepo.GetByMedicineId(medincineIdList, AppContext.CurrentClinic.Id);
                 this._vWareHouseDetailList = this._vWareHouseDetailRepo.GetByMedicine(medincineIdList);
-                // this._warehouseDetailList = this._warehouseDetailRepo.GetByMedicine(medincineIdList, AppContext.CurrentClinic.Id);)
                 this._medicineDelivery = CreatePrescription(this._prescription);
                 this._medicineDeliveryDetailList = CreateMedicineDeliveryDetail(this._prescriptionDetailList);
                 this.AutoAllocate(this._medicineDeliveryDetailList, this._vWareHouseDetailList);
+                // this._warehouseDetailList = this._warehouseDetailRepo.GetByMedicine(medincineIdList, AppContext.CurrentClinic.Id);)
                 // this._mdecidineDeliveryDetailAllocate = AutoAllocate(this._medicineDeliveryDetailList, this._warehouseDetailList);
                 // var item = this._warehouseDetailList.Select(x => new { x.MedicineId, x.LotNo, x.ExpiredDate}).GroupBy(x => new { x.MedicineId, x.LotNo, x.ExpiredDate }).ToList();
 
@@ -112,12 +113,14 @@ namespace Medical.MedicineDeliver
                 var medincineIdList = this._prescriptionDetailList.Select(item => item.MedicineId).ToList();
                 this._warehouseList = this._warehouseRepo.GetByMedicineId(medincineIdList, AppContext.CurrentClinic.Id);
                 this._vWareHouseDetailList = this._vWareHouseDetailRepo.GetByMedicine(medincineIdList);
-                // this._warehouseDetailList = this._warehouseDetailRepo.GetByMedicine(medincineIdList, AppContext.CurrentClinic.Id);)
+                
                 this._medicineDelivery = this._medicineDeliveryRepo.GetByPrescriptionId(this._prescription.Id);
                 this._medicineDeliveryDetailList = this._medicineDeliveryDetailRepo.GetByDelivery(this._medicineDelivery.Id);
-                
+                var deliveryDetailList = this._medicineDeliveryDetailList.Select(x => x.Id).ToList();
+                this._vMedicineDeliveryDetailAllocateds = this._medicineDeliveryDetailRepo.GetDeliveryDetailAllocateds(deliveryDetailList);
                 // this._mdecidineDeliveryDetailAllocate = AutoAllocate(this._medicineDeliveryDetailList, this._warehouseDetailList);
                 // var item = this._warehouseDetailList.Select(x => new { x.MedicineId, x.LotNo, x.ExpiredDate}).GroupBy(x => new { x.MedicineId, x.LotNo, x.ExpiredDate }).ToList();
+                // this._warehouseDetailList = this._warehouseDetailRepo.GetByMedicine(medincineIdList, AppContext.CurrentClinic.Id);)
 
                 var no = 1;
                 foreach (var deliveryItem in this._medicineDeliveryDetailList) {
@@ -126,13 +129,20 @@ namespace Medical.MedicineDeliver
                     var item = new MedicineDeliveryAllocationEntity(no++, deliveryItem, warehouse);
                     this._medDeliveryAllocationList.Add(item);
 
+                    List<VMedicineDeliveryDetailAllocated> allocatedWareHouseDetailList =
+                        this._vMedicineDeliveryDetailAllocateds.Where(x => x.MedicineDeliveryDetailId == deliveryItem.Id)
+                            .ToList();
                     var subNo = 1;
-                    foreach (var itm in deliveryItem.AllocatedWareHouseDetail) {
+                    foreach (var itm in allocatedWareHouseDetailList) {
                         var subItem = new MedicineDeliveryAllocationEntity(subNo++, itm);
                         _medDeliveryAllocationList.Add(subItem);
                     }
                 }
+                this.dataGridViewX1.Columns[6].Visible = false;
+                this.dataGridViewX1.Columns[8].Visible = false;
                 this.bindingSource1.DataSource = this._medDeliveryAllocationList;
+
+
             }
         }
 
@@ -226,19 +236,16 @@ namespace Medical.MedicineDeliver
 
         private void DeliveryRegister_Load(object sender, EventArgs e)
         {
-            /*
-            List<MedicineDeliveryDetail> deliveryList = new List<MedicineDeliveryDetail>();
-            for (int i = 0; i < 10; i++)
-            {
-                var item = new MedicineDeliveryDetail();
-                item.Id = i;
-                item.MedicineId = i;
-                deliveryList.Add(item);
-            }
-            this.bindingSource1.DataSource = deliveryList;
-
-            this.advTree1.Nodes[0
-             */
+           if (this._formMode == ViewModes.Add)
+           {
+               this.btnDelete.Visible = false;
+               this.btnSave.Visible = true;
+           }
+           else
+           {
+               this.btnDelete.Visible = true;
+               this.btnSave.Visible = false;  
+           }
         }
 
         private void dataGridViewX1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -316,6 +323,7 @@ namespace Medical.MedicineDeliver
 
         private void dataGridViewX1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (this._formMode != ViewModes.Add) return;
             MedicineDeliveryAllocationEntity ent = (MedicineDeliveryAllocationEntity) this.bindingSource1.Current;
             if (ent.SubNo != null) return;
             DeliveryAllocateDetail detailDialog = new DeliveryAllocateDetail(ent.MedicineDeliveryDetail);
@@ -387,6 +395,22 @@ namespace Medical.MedicineDeliver
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e) {
+            var dialogResult = MessageDialog.Instance.ShowMessage(this, "Q003", "bản ghi cấp thuốc này");
+            if (dialogResult == DialogResult.No) return;
+            this._medicineDeliveryRepo.Delete(this._medicineDelivery.Id);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e) {
+            if (!ValidateForms()) return;
+            var dialogResult = MessageDialog.Instance.ShowMessage(this, "Q004", this._prescription.Patient.Name);
+            this._medicineDeliveryRepo.Insert(this._medicineDelivery, this._medicineDeliveryDetailList);
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

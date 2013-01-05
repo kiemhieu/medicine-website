@@ -42,4 +42,10 @@
     <Type>Question</Type>
     <Button>YesNo</Button>
   </Message>
+  <Message>
+    <Code>Q004</Code>
+    <Content>Phát thuốc cho bệnh nhân {0} ?</Content>
+    <Type>Question</Type>
+    <Button>YesNo</Button>
+  </Message>
 </Root>
