@@ -37,14 +37,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.btnRemove = new DevComponents.DotNetBar.ButtonX();
-            this.btnDeliver = new DevComponents.DotNetBar.ButtonX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.cboStatus = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isDeliveredDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.deliverTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,12 +49,24 @@
             this.doctorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsDeliver = new System.Windows.Forms.BindingSource(this.components);
+            this.btnRemove = new DevComponents.DotNetBar.ButtonX();
+            this.btnDeliver = new DevComponents.DotNetBar.ButtonX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.cboStatus = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.hủyPhátThuốcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.cboDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDeliver)).BeginInit();
+            this.panel2.SuspendLayout();
             this.panelEx1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cboDate
@@ -148,6 +152,7 @@
             this.recheckDateDataGridViewTextBoxColumn,
             this.doctorNameDataGridViewTextBoxColumn,
             this.addressDataGridViewTextBoxColumn});
+            this.dataGridViewX1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridViewX1.DataSource = this.bdsDeliver;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
@@ -169,108 +174,6 @@
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(980, 491);
             this.dataGridViewX1.TabIndex = 1;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemove.Image = global::Medical.Properties.Resources.cancel;
-            this.btnRemove.Location = new System.Drawing.Point(824, -1);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(64, 23);
-            this.btnRemove.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnRemove.TabIndex = 8;
-            this.btnRemove.Text = "Hủy";
-            this.btnRemove.ThemeAware = true;
-            // 
-            // btnDeliver
-            // 
-            this.btnDeliver.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDeliver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeliver.Image = global::Medical.Properties.Resources.add;
-            this.btnDeliver.Location = new System.Drawing.Point(893, -1);
-            this.btnDeliver.Name = "btnDeliver";
-            this.btnDeliver.Size = new System.Drawing.Size(87, 23);
-            this.btnDeliver.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDeliver.TabIndex = 7;
-            this.btnDeliver.Text = "Phát thuốc";
-            this.btnDeliver.Click += new System.EventHandler(this.btnDeliver_Click);
-            // 
-            // labelX3
-            // 
-            this.labelX3.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.Class = "";
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(133, 3);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(52, 15);
-            this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.labelX3.TabIndex = 6;
-            this.labelX3.Text = "Trạng thái";
-            // 
-            // cboStatus
-            // 
-            this.cboStatus.DisplayMember = "Name";
-            this.cboStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.ItemHeight = 14;
-            this.cboStatus.Location = new System.Drawing.Point(189, 0);
-            this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(94, 20);
-            this.cboStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboStatus.TabIndex = 5;
-            this.cboStatus.ValueMember = "Value";
-            this.cboStatus.SelectedValueChanged += new System.EventHandler(this.cboStatus_SelectedValueChanged);
-            // 
-            // labelX1
-            // 
-            this.labelX1.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.Class = "";
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(4, 3);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(28, 15);
-            this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.labelX1.TabIndex = 3;
-            this.labelX1.Text = "Ngày";
-            // 
-            // cboClinic
-            // 
-            this.cboClinic.DisplayMember = "Name";
-            this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboClinic.Enabled = false;
-            this.cboClinic.FocusCuesEnabled = false;
-            this.cboClinic.FormattingEnabled = true;
-            this.cboClinic.ItemHeight = 14;
-            this.cboClinic.Location = new System.Drawing.Point(314, 0);
-            this.cboClinic.Name = "cboClinic";
-            this.cboClinic.Size = new System.Drawing.Size(300, 20);
-            this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboClinic.TabIndex = 1;
-            this.cboClinic.ValueMember = "Id";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dataGridViewX1);
-            this.panel2.Controls.Add(this.panelEx1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel2.Size = new System.Drawing.Size(988, 524);
-            this.panel2.TabIndex = 3;
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
             // 
             // noDataGridViewTextBoxColumn
             // 
@@ -373,6 +276,103 @@
             // 
             this.bdsDeliver.DataSource = typeof(Medical.Data.Entities.Views.VMedicineDeliverList);
             // 
+            // btnRemove
+            // 
+            this.btnRemove.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemove.Image = global::Medical.Properties.Resources.cancel;
+            this.btnRemove.Location = new System.Drawing.Point(827, -1);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(64, 23);
+            this.btnRemove.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnRemove.TabIndex = 8;
+            this.btnRemove.Text = "Hủy";
+            this.btnRemove.ThemeAware = true;
+            // 
+            // btnDeliver
+            // 
+            this.btnDeliver.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDeliver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeliver.Image = global::Medical.Properties.Resources.add;
+            this.btnDeliver.Location = new System.Drawing.Point(893, -1);
+            this.btnDeliver.Name = "btnDeliver";
+            this.btnDeliver.Size = new System.Drawing.Size(87, 23);
+            this.btnDeliver.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDeliver.TabIndex = 7;
+            this.btnDeliver.Text = "Phát thuốc";
+            this.btnDeliver.Click += new System.EventHandler(this.btnDeliver_Click);
+            // 
+            // labelX3
+            // 
+            this.labelX3.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.Class = "";
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(133, 3);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(52, 15);
+            this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.labelX3.TabIndex = 6;
+            this.labelX3.Text = "Trạng thái";
+            // 
+            // cboStatus
+            // 
+            this.cboStatus.DisplayMember = "Name";
+            this.cboStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboStatus.FormattingEnabled = true;
+            this.cboStatus.ItemHeight = 14;
+            this.cboStatus.Location = new System.Drawing.Point(189, 0);
+            this.cboStatus.Name = "cboStatus";
+            this.cboStatus.Size = new System.Drawing.Size(94, 20);
+            this.cboStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboStatus.TabIndex = 5;
+            this.cboStatus.ValueMember = "Value";
+            this.cboStatus.SelectedValueChanged += new System.EventHandler(this.cboStatus_SelectedValueChanged);
+            // 
+            // labelX1
+            // 
+            this.labelX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.Class = "";
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(4, 3);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(28, 15);
+            this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.labelX1.TabIndex = 3;
+            this.labelX1.Text = "Ngày";
+            // 
+            // cboClinic
+            // 
+            this.cboClinic.DisplayMember = "Name";
+            this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboClinic.Enabled = false;
+            this.cboClinic.FocusCuesEnabled = false;
+            this.cboClinic.FormattingEnabled = true;
+            this.cboClinic.ItemHeight = 14;
+            this.cboClinic.Location = new System.Drawing.Point(314, 0);
+            this.cboClinic.Name = "cboClinic";
+            this.cboClinic.Size = new System.Drawing.Size(300, 20);
+            this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboClinic.TabIndex = 1;
+            this.cboClinic.ValueMember = "Id";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dataGridViewX1);
+            this.panel2.Controls.Add(this.panelEx1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(4);
+            this.panel2.Size = new System.Drawing.Size(988, 524);
+            this.panel2.TabIndex = 3;
+            // 
             // panelEx1
             // 
             this.panelEx1.AutoSize = true;
@@ -397,6 +397,31 @@
             this.panelEx1.TabIndex = 2;
             this.panelEx1.ThemeAware = true;
             // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.hủyPhátThuốcToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 48);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem1.Text = "Phát thuốc";
+            // 
+            // hủyPhátThuốcToolStripMenuItem
+            // 
+            this.hủyPhátThuốcToolStripMenuItem.Name = "hủyPhátThuốcToolStripMenuItem";
+            this.hủyPhátThuốcToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.hủyPhátThuốcToolStripMenuItem.Text = "Hủy phát thuốc";
+            // 
             // DeliverList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -409,11 +434,12 @@
             this.Text = "DeliverList";
             ((System.ComponentModel.ISupportInitialize)(this.cboDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDeliver)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsDeliver)).EndInit();
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -443,5 +469,8 @@
         private DevComponents.DotNetBar.ButtonX btnRemove;
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.PanelEx panelEx1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem hủyPhátThuốcToolStripMenuItem;
     }
 }

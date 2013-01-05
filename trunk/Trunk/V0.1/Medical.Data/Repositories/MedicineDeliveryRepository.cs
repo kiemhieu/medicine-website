@@ -51,7 +51,7 @@ namespace Medical.Data.Repositories
                     // Update WareHouse
                     var warehouseItem = warehouseList.FirstOrDefault(x => x.MedicineId == detailItem.MedicineId);
                     if (warehouseItem == null) throw new Exception("Data is incompleted");
-                    warehouseItem.Volumn -= detailItem.AllocatedQty;
+                    warehouseItem.Volumn -= detailItem.Volumn;
 
                     // Update WareHouseAllocated
                     var allocatedWareHouseDetail = detailItem.AllocatedWareHouseDetail;
@@ -106,9 +106,43 @@ namespace Medical.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public void Delete(int id)
+        public void Delete(long id)
         {
-            throw new NotImplementedException();
+            using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted }))
+            {
+                var delivery = this.Context.MedicineDeliveries.FirstOrDefault(x => x.Id == id);
+                if (delivery == null) return;
+
+                var deliveryDetail = this.Context.MedicineDeliveryDetails.Where(x => x.MedicineDeliveryId == delivery.Id).ToList();
+                var deliveryDetailId = deliveryDetail.Select(x => x.Id).ToList();
+                var medicineId = deliveryDetail.Select(x => x.MedicineId).ToList();
+                var deliveryAllocatedDetail = this.Context.MedicineDeliveryDetailAllocates.Where(x => deliveryDetailId.Contains(x.MedicineDeliveryDetailId)).ToList();
+                var warehouseDetailId = deliveryAllocatedDetail.Select(x => x.WareHouseDetailId);
+                var warehouseDetail = this.Context.WareHouseDetails.Where(x => warehouseDetailId.Contains(x.Id)).ToList();
+                var warehouse = this.Context.WareHouses.Where(x => medicineId.Contains(x.MedicineId)).ToList();
+
+                foreach (var allocated in deliveryAllocatedDetail)
+                {
+                    WareHouseDetail wareHouseDetail = warehouseDetail.FirstOrDefault(x => x.Id == allocated.WareHouseDetailId);
+                    wareHouseDetail.CurrentVolumn += allocated.Volumn;
+
+                    WareHouse wareHouse = warehouse.FirstOrDefault(x => x.Id == wareHouseDetail.WareHouseId);
+                    wareHouse.Volumn += allocated.Volumn;
+                    this.Context.MedicineDeliveryDetailAllocates.Remove(allocated);
+                }
+                this.Context.SaveChanges();
+
+                foreach (var detail in deliveryDetail)
+                {
+                    this.Context.MedicineDeliveryDetails.Remove(detail);
+                }
+                this.Context.SaveChanges();
+
+                this.Context.MedicineDeliveries.Remove(delivery);
+
+                this.Context.SaveChanges();
+                scope.Complete();
+            }
         }
 
         public List<MedicineDelivery> GetAll()

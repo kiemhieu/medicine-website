@@ -14,14 +14,31 @@ namespace Medical.Data.EntitiyExtend
         // private List<MedicineDeliveryDetailAllocate> allocatedList;
         // private List<WareHouseDetail> _wareHouseDetails;
         public MedicineDeliveryAllocationEntity(int no, MedicineDeliveryDetail deliveryDetail, WareHouse warehouse) {
+            this.No = no;
             this._warehouse = warehouse;
             this.MedicineDeliveryDetail = deliveryDetail;
-            this.No = no;
+            this.MedicineName = this.MedicineDeliveryDetail.Medicine == null
+                                    ? String.Empty
+                                    : this.MedicineDeliveryDetail.Medicine.Name;
+            this.Qty= this.MedicineDeliveryDetail == null ? (int?)null : this.MedicineDeliveryDetail.Volumn;
+            this.InStockQty = warehouse.Volumn;
+            this.AllocatedQty = this.MedicineDeliveryDetail.AllocatedWareHouseDetail == null ? this.MedicineDeliveryDetail.Volumn : this.MedicineDeliveryDetail.AllocatedWareHouseDetail.Sum(x => x.AllocatedQty);
         }
 
         public MedicineDeliveryAllocationEntity(int subNo, VWareHouseDetail vWareHouseDetail) {
-            this.VWareHouseDetail = vWareHouseDetail;
             this.SubNo = subNo;
+            this.VWareHouseDetail = vWareHouseDetail;
+            this.LotNo = this.VWareHouseDetail == null ? null : this.VWareHouseDetail.LotNo;
+            this.ExpiredDate = this.VWareHouseDetail == null ? (DateTime?)null : this.VWareHouseDetail.ExpiredDate;
+            this.InStockQty = VWareHouseDetail.Qty;
+            this.AllocatedQty = vWareHouseDetail.AllocatedQty;
+        }
+
+        public MedicineDeliveryAllocationEntity(int subNo, VMedicineDeliveryDetailAllocated vWareHouseDetail) {
+            this.SubNo = subNo;
+            this.AllocatedQty = vWareHouseDetail.AllocatedQty;
+            this.LotNo = vWareHouseDetail.LotNo;
+            this.ExpiredDate = vWareHouseDetail.ExpiredDate;
         }
 
         public long? DeliverDetailId
@@ -33,40 +50,19 @@ namespace Medical.Data.EntitiyExtend
 
         public int? SubNo { set; get; }
 
-        public String MedicineName { get
-        {
-            return (this.MedicineDeliveryDetail == null || this.MedicineDeliveryDetail.Medicine == null)
-                       ? String.Empty
-                       : this.MedicineDeliveryDetail.Medicine.Name;
-        }}
+        public String MedicineName { get; set; }
 
-        public String LotNo { get { return this.VWareHouseDetail == null ? null : this.VWareHouseDetail.LotNo; } }
+        public String LotNo { get; set; }
 
-        public DateTime? ExpiredDate { get { return this.VWareHouseDetail == null ? (DateTime?) null : this.VWareHouseDetail.ExpiredDate; } }
+        public DateTime? ExpiredDate { get; set; }
 
-        public int? Qty {
-            get { return this.MedicineDeliveryDetail == null ? (int?)null : this.MedicineDeliveryDetail.Volumn; }
-        }
+        public int? Qty { get; set; }
 
-        public int? RemainQty {
-            get { return this.InStockQty - this.AllocatedQty; }
-        }
+        public int? RemainQty { get { return this.InStockQty - this.AllocatedQty; } }
 
-        public int InStockQty {
-            get {
-                if (this._warehouse != null) return this._warehouse.Volumn;
-                return this.VWareHouseDetail != null ? this.VWareHouseDetail.Qty : 0;
-            }
-        }
+        public int InStockQty { get; set; }
 
-        public int AllocatedQty 
-        { 
-            get
-            {
-                if (this.MedicineDeliveryDetail != null) return this.MedicineDeliveryDetail.AllocatedWareHouseDetail.Sum(x=>x.AllocatedQty);
-                return this.VWareHouseDetail != null ? this.VWareHouseDetail.AllocatedQty : 0;
-            }
-        }
+        public int AllocatedQty { get; set; }
 
         public MedicineDeliveryDetail MedicineDeliveryDetail { get; private set; }
 
