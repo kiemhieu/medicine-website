@@ -8,12 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace Medical.History
-{
-    public partial class History : DockContent
-    {
-        public History()
-        {
+namespace Medical.CheckOnDate {
+    public partial class CheckOnDate : DockContent {
+        public CheckOnDate() {
             InitializeComponent();
         }
     }

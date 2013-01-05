@@ -36,6 +36,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cboFigure = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +49,6 @@
             this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
@@ -122,7 +122,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(639, 384);
+            this.groupBox1.Size = new System.Drawing.Size(639, 379);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
@@ -159,6 +159,23 @@
             this.textBoxX3.ReadOnly = true;
             this.textBoxX3.Size = new System.Drawing.Size(103, 21);
             this.textBoxX3.TabIndex = 33;
+            // 
+            // labelX3
+            // 
+            this.labelX3.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.Class = "";
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX3.Location = new System.Drawing.Point(9, 175);
+            this.labelX3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(48, 16);
+            this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.labelX3.TabIndex = 21;
+            this.labelX3.Text = "Phác đồ ";
             // 
             // labelX4
             // 
@@ -217,7 +234,7 @@
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(569, 183);
+            this.dataGridViewX1.Size = new System.Drawing.Size(569, 178);
             this.dataGridViewX1.TabIndex = 31;
             // 
             // noDataGridViewTextBoxColumn
@@ -331,23 +348,6 @@
             this.labelX11.TabIndex = 28;
             this.labelX11.Text = "Tình trạng ";
             // 
-            // labelX3
-            // 
-            this.labelX3.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.Class = "";
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX3.Location = new System.Drawing.Point(9, 175);
-            this.labelX3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(48, 16);
-            this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.labelX3.TabIndex = 21;
-            this.labelX3.Text = "Phác đồ ";
-            // 
             // textBoxX1
             // 
             this.textBoxX1.BackColor = System.Drawing.Color.White;
@@ -389,7 +389,7 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnClose.Image = global::Medical.Properties.Resources.cancel;
-            this.btnClose.Location = new System.Drawing.Point(675, 0);
+            this.btnClose.Location = new System.Drawing.Point(674, 4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -402,9 +402,9 @@
             this.panel1.AutoSize = true;
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 384);
+            this.panel1.Location = new System.Drawing.Point(0, 379);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(755, 25);
+            this.panel1.Size = new System.Drawing.Size(755, 30);
             this.panel1.TabIndex = 22;
             // 
             // panel2
@@ -413,7 +413,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(755, 384);
+            this.panel2.Size = new System.Drawing.Size(755, 379);
             this.panel2.TabIndex = 23;
             // 
             // lsbDate
