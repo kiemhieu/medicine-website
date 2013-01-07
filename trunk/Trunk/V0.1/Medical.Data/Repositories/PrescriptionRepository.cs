@@ -115,6 +115,11 @@ namespace Medical.Data.Repositories
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Gets the specified id.
+        /// </summary>
+        /// <param name="id">The id.</param>
+        /// <returns></returns>
         public Prescription Get(long id)
         {
             return this.Context.Prescription.FirstOrDefault(x => x.Id == id);
@@ -154,6 +159,13 @@ namespace Medical.Data.Repositories
         public List<Prescription> GetAll(int patientId)
         {
             return this.Context.Prescription.Where(x => x.PatientId == patientId).ToList();
+        }
+
+        public List<Prescription> GetAll(DateTime dateTime)
+        {
+            return
+                this.Context.Prescription.Where(
+                    x => x.Date == dateTime && x.ClinicId == AppContext.CurrentClinic.Id).ToList();
         }
     }
 }

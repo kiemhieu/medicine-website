@@ -48,5 +48,8 @@ namespace Medical.Data.Entities {
         public String PatientName {
             get { return this.Patient == null ? "" : this.Patient.Name; }
         }
+
+        [NotMapped]
+        public int No { get; set; }
     }
 }
