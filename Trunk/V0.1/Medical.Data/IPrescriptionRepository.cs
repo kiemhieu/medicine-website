@@ -16,6 +16,7 @@ namespace Medical.Data
         Prescription GetLastByPatient(int patientId);
         List<Prescription> GetAll();
         List<Prescription> GetAll(int patientId);
+        List<Prescription> GetAll(DateTime dateTime);
 
     }
 }

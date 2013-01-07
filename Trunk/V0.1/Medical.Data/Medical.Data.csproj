@@ -125,6 +125,12 @@
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Medical.Common\Medical.Common.csproj">
+      <Project>{221944A4-3B72-48C7-9328-D58AA0D05FF3}</Project>
+      <Name>Medical.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
