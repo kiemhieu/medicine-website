@@ -35,16 +35,17 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.txtDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.bdsPrescriptionHistory = new System.Windows.Forms.BindingSource(this.components);
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.patientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastUpdatedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recheckDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.figureNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDetail = new System.Windows.Forms.ToolStripMenuItem();
+            this.bdsPrescriptionHistory = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
@@ -160,7 +161,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.HighlightSelectedColumnHeaders = false;
             this.dataGridViewX1.Location = new System.Drawing.Point(3, 27);
             this.dataGridViewX1.MultiSelect = false;
@@ -170,25 +171,7 @@
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(846, 477);
             this.dataGridViewX1.TabIndex = 3;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnDelete});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Image = global::Medical.Properties.Resources.delete;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(152, 22);
-            this.btnDelete.Text = "Xóa";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // bdsPrescriptionHistory
-            // 
-            this.bdsPrescriptionHistory.DataSource = typeof(Medical.Data.Entities.Prescription);
+            this.dataGridViewX1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellDoubleClick);
             // 
             // No
             // 
@@ -197,6 +180,22 @@
             this.No.Name = "No";
             this.No.ReadOnly = true;
             this.No.Width = 40;
+            // 
+            // Note
+            // 
+            this.Note.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Note.DataPropertyName = "Note";
+            this.Note.HeaderText = "Tình trạng ";
+            this.Note.Name = "Note";
+            this.Note.ReadOnly = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnDelete,
+            this.btnDetail});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(130, 48);
             // 
             // patientNameDataGridViewTextBoxColumn
             // 
@@ -238,13 +237,26 @@
             this.figureNameDataGridViewTextBoxColumn.Name = "figureNameDataGridViewTextBoxColumn";
             this.figureNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Note
+            // btnDelete
             // 
-            this.Note.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Note.DataPropertyName = "Note";
-            this.Note.HeaderText = "Tình trạng ";
-            this.Note.Name = "Note";
-            this.Note.ReadOnly = true;
+            this.btnDelete.Image = global::Medical.Properties.Resources.delete;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.btnDelete.Size = new System.Drawing.Size(129, 22);
+            this.btnDelete.Text = "Xóa";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnDetail
+            // 
+            this.btnDetail.Image = global::Medical.Properties.Resources.document;
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Size = new System.Drawing.Size(129, 22);
+            this.btnDetail.Text = "Xem chi tiết";
+            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
+            // 
+            // bdsPrescriptionHistory
+            // 
+            this.bdsPrescriptionHistory.DataSource = typeof(Medical.Data.Entities.Prescription);
             // 
             // History
             // 
@@ -283,5 +295,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn recheckDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn figureNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Note;
+        private System.Windows.Forms.ToolStripMenuItem btnDetail;
     }
 }

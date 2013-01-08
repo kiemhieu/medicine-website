@@ -29,7 +29,7 @@ namespace Medical.History
 
         private void txtDate_TextChanged(object sender, EventArgs e)
         {
-            this.Enabled = false;
+            // this.Enabled = false;
             try
             {
                 loadData();
@@ -40,7 +40,7 @@ namespace Medical.History
             }
             finally
             {
-                this.Enabled = true;
+                // this.Enabled = true;
             }
             
         }
@@ -61,6 +61,20 @@ namespace Medical.History
             var item = (Prescription) this.bdsPrescriptionHistory.Current;
             if (item == null) return;
             
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e) {
+
+        }
+
+        private void dataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Prescription prescription = (Prescription)this.bdsPrescriptionHistory.Current;
+            if (prescription == null) return;
+
+            HistoryDetail historyDetail = new HistoryDetail(prescription.Id);
+            historyDetail.ShowDialog(this);
+
         }
     }
 }
