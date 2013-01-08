@@ -10,7 +10,7 @@ namespace Medical.Data
     {
         void Insert(Prescription prescription);
         void Update(Prescription prescription);
-        void Delete(int id);
+        void Delete(long id);
         Prescription Get(long id);
         Prescription GetCurrent(int patientId);
         Prescription GetLastByPatient(int patientId);

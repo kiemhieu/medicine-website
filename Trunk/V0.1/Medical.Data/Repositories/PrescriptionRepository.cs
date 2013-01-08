@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Medical.Common.Exceptions;
 using Medical.Data.Entities;
 
 namespace Medical.Data.Repositories
@@ -110,9 +111,22 @@ namespace Medical.Data.Repositories
         /// Deletes the specified id.
         /// </summary>
         /// <param name="id">The id.</param>
-        public void Delete(int id)
+        public void Delete(long id)
         {
-            throw new NotImplementedException();
+            if (this.Context.MedicineDeliveries.Count(x=>x.PrescriptionId == id) > 0)
+            {
+                throw new ProgramLogicalException("Không thể xóa dữ liệu khám bệnh vì tồn tại bản cấp phát thuốc tương ứng. Hãy xóa nhứng bản ghi này trước.");
+            }
+            var prescription = this.Context.Prescription.FirstOrDefault(x => x.Id == id);
+            if (prescription == null) throw new ProgramLogicalException("Không tồn tại dữ liệu.");
+            foreach (var prescriptionDetail in prescription.PrescriptionDetails)
+            {
+                this.Context.PrescriptionDetails.Remove(prescriptionDetail);
+            }
+
+            this.Context.Prescription.Remove(prescription);
+            this.Context.SaveChanges();
+
         }
 
         /// <summary>

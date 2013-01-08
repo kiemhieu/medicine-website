@@ -98,6 +98,12 @@
     <Compile Include="History\History.Designer.cs">
       <DependentUpon>History.cs</DependentUpon>
     </Compile>
+    <Compile Include="History\HistoryDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History\HistoryDetail.Designer.cs">
+      <DependentUpon>HistoryDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="MedicineDeliver\DeliverList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="History\History.resx">
       <DependentUpon>History.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="History\HistoryDetail.resx">
+      <DependentUpon>HistoryDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MedicineDeliver\DeliverList.resx">
       <DependentUpon>DeliverList.cs</DependentUpon>
