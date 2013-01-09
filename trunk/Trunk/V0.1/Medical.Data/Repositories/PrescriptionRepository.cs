@@ -119,7 +119,10 @@ namespace Medical.Data.Repositories
             }
             var prescription = this.Context.Prescription.FirstOrDefault(x => x.Id == id);
             if (prescription == null) throw new ProgramLogicalException("Không tồn tại dữ liệu.");
-            foreach (var prescriptionDetail in prescription.PrescriptionDetails)
+
+            var prescriptionDetails = this.Context.PrescriptionDetails.Where(x => x.PrescriptionId == prescription.Id).ToList();
+
+            foreach (var prescriptionDetail in prescriptionDetails)
             {
                 this.Context.PrescriptionDetails.Remove(prescriptionDetail);
             }

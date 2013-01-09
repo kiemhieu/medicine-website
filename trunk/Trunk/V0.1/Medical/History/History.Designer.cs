@@ -36,13 +36,13 @@
             this.txtDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.patientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastUpdatedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recheckDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.figureNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDetail = new System.Windows.Forms.ToolStripMenuItem();
             this.bdsPrescriptionHistory = new System.Windows.Forms.BindingSource(this.components);
@@ -62,7 +62,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(3, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(846, 27);
+            this.panelEx1.Size = new System.Drawing.Size(822, 27);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -161,7 +161,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.dataGridViewX1.HighlightSelectedColumnHeaders = false;
             this.dataGridViewX1.Location = new System.Drawing.Point(3, 27);
             this.dataGridViewX1.MultiSelect = false;
@@ -169,7 +169,7 @@
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(846, 477);
+            this.dataGridViewX1.Size = new System.Drawing.Size(822, 465);
             this.dataGridViewX1.TabIndex = 3;
             this.dataGridViewX1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellDoubleClick);
             // 
@@ -180,22 +180,6 @@
             this.No.Name = "No";
             this.No.ReadOnly = true;
             this.No.Width = 40;
-            // 
-            // Note
-            // 
-            this.Note.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Note.DataPropertyName = "Note";
-            this.Note.HeaderText = "Tình trạng ";
-            this.Note.Name = "Note";
-            this.Note.ReadOnly = true;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnDelete,
-            this.btnDetail});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(130, 48);
             // 
             // patientNameDataGridViewTextBoxColumn
             // 
@@ -237,6 +221,22 @@
             this.figureNameDataGridViewTextBoxColumn.Name = "figureNameDataGridViewTextBoxColumn";
             this.figureNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // Note
+            // 
+            this.Note.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Note.DataPropertyName = "Note";
+            this.Note.HeaderText = "Tình trạng ";
+            this.Note.Name = "Note";
+            this.Note.ReadOnly = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnDelete,
+            this.btnDetail});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(130, 48);
+            // 
             // btnDelete
             // 
             this.btnDelete.Image = global::Medical.Properties.Resources.delete;
@@ -262,7 +262,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 507);
+            this.ClientSize = new System.Drawing.Size(828, 495);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
