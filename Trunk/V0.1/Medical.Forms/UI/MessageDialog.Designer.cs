@@ -97,18 +97,20 @@
             // 
             this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Ignore;
             this.btnCancel.Image = global::Medical.Forms.Properties.Resources.cancel;
             this.btnCancel.Location = new System.Drawing.Point(313, 8);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 30);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "Bỏ qua";
+            this.btnCancel.Text = "Đóng lại";
             // 
             // btnOK
             // 
             this.btnOK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnOK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.Image = global::Medical.Forms.Properties.Resources.accept;
             this.btnOK.Location = new System.Drawing.Point(217, 8);
             this.btnOK.Name = "btnOK";

@@ -331,6 +331,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Medical.Common\Medical.Common.csproj">
+      <Project>{221944A4-3B72-48C7-9328-D58AA0D05FF3}</Project>
+      <Name>Medical.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Medical.Data\Medical.Data.csproj">
       <Project>{169CF0C0-C72D-424A-9CC4-55D95E275755}</Project>
       <Name>Medical.Data</Name>
