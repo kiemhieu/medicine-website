@@ -13,5 +13,9 @@ namespace Medical.CheckOnDate {
         public CheckOnDate() {
             InitializeComponent();
         }
+
+        private void CheckOnDate_Load(object sender, EventArgs e) {
+            S
+        }
     }
 }
