@@ -75,6 +75,7 @@ namespace Medical.History
             HistoryDetail historyDetail = new HistoryDetail(prescription.Id);
             historyDetail.ShowDialog(this);
 
+            loadData();
         }
     }
 }

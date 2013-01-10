@@ -71,6 +71,7 @@ namespace Medical.History {
 
             try {
                 this._prescriptionRepo.Delete(this._prescriptionId);
+                this.Close();
             } catch (ProgramLogicalException ex) {
                 MessageDialog.Instance.ShowMessage(this, "ERR0001", ex.Message);
             }

@@ -173,6 +173,11 @@ namespace Medical.Data.Repositories
             throw new NotImplementedException();
         }
 
+        public List<Prescription> GetAllOnLate()
+        {
+            return this.Context.Prescription.
+        }
+
         public List<Prescription> GetAll(int patientId)
         {
             return this.Context.Prescription.Where(x => x.PatientId == patientId).ToList();
