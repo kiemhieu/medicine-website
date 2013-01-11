@@ -34,6 +34,7 @@ namespace Medical.Data.Repositories
         public DbSet<Define> Defines { get; set; }
         public DbSet<MedicineDeliveryDetailAllocate> MedicineDeliveryDetailAllocates { get; set; }
         public DbSet<VWareHouseDetail> VWareHouseDetails { get; set; }
+        public DbSet<VPatientLastPrescription> VPatientLastPrescription { get; set; }
     }
 }
 

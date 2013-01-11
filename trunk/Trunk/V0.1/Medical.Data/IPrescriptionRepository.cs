@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Medical.Data.Entities;
+using Medical.Data.Entities.Views;
 
 namespace Medical.Data
 {
@@ -15,7 +16,7 @@ namespace Medical.Data
         Prescription GetCurrent(int patientId);
         Prescription GetLastByPatient(int patientId);
         List<Prescription> GetAll();
-        List<Prescription> GetAllOnLate();
+        List<VPatientLastPrescription> GetAllOnLate(String patientName);
         List<Prescription> GetAll(int patientId);
         List<Prescription> GetAll(DateTime dateTime);
 
