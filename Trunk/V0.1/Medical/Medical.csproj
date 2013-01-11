@@ -171,6 +171,11 @@
       <DependentUpon>PatientRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\frmImportDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,14 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Warehouse\frmImportDetail.resx">
       <DependentUpon>frmImportDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -317,6 +317,7 @@
     <None Include="Properties\DataSources\Medical.Data.Entities.Prescription.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.PrescriptionDetail.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Views.VMedicineDeliverList.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.Views.VPatientLastPrescription.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Views.VWareHouseDetail.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.WareHouse.datasource" />
     <None Include="Properties\DataSources\Medical.Data.EntitiyExtend.MedicineDeliveryAllocationEntity.datasource" />
@@ -385,6 +386,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grey_search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

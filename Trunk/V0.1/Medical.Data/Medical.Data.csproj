@@ -49,6 +49,7 @@
     <Compile Include="AppContext.cs" />
     <Compile Include="Definication.cs" />
     <Compile Include="Entities\Views\VMedicineDeliveryDetailAllocated.cs" />
+    <Compile Include="Entities\Views\VPatientLastPrescription.cs" />
     <Compile Include="Entities\Views\VWareHouseDetail.cs" />
     <Compile Include="Entities\WareHouseExportAllocate.cs" />
     <Compile Include="Entities\WareHouse.cs" />

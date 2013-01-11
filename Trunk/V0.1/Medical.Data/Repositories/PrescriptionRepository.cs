@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Medical.Common.Exceptions;
 using Medical.Data.Entities;
+using Medical.Data.Entities.Views;
 
 namespace Medical.Data.Repositories
 {
@@ -173,9 +174,11 @@ namespace Medical.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public List<Prescription> GetAllOnLate()
+        public List<VPatientLastPrescription> GetAllOnLate(String patientName)
         {
-            return this.Context.Prescription.
+            return String.IsNullOrEmpty(patientName)
+                       ? this.Context.VPatientLastPrescription.Where(x => x.LatestRecheckDate <= DateTime.Today && x.ClinicId == AppContext.CurrentClinic.Id).ToList()
+                       : this.Context.VPatientLastPrescription.Where(x => x.LatestRecheckDate <= DateTime.Today && x.ClinicId == AppContext.CurrentClinic.Id && x.Name.Contains(patientName)).ToList();
         }
 
         public List<Prescription> GetAll(int patientId)

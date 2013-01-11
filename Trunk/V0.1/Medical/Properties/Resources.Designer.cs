@@ -123,6 +123,13 @@ namespace Medical.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap grey_search {
+            get {
+                object obj = ResourceManager.GetObject("grey_search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap last {
             get {
                 object obj = ResourceManager.GetObject("last", resourceCulture);
