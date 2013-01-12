@@ -6,24 +6,24 @@ using System.Text;
 
 namespace Medical.Data.Entities
 {
-    [Table("WareHousePaper")]
-    public class WareHousePaper
+    [Table("WareHouseIO")]
+    public class WareHouseIO
     {
         [Key]
         public int Id { get; set; }
         public int ClinicId { get; set; }
-        public int Type { get; set; }
+        public String Type { get; set; }
         public DateTime Date { get; set; }
-        public string No { get; set; }
-        public string Recipient { get; set; }
-        public string Deliverer { get; set; }
-        public string Note { get; set; }
+        public String No { get; set; }
+        public String Person { get; set; }
+        public String Phone { get; set; }
+        public String Address { get; set; }
+        public String Note { get; set; }
+        public String AttachmentNo { get; set; }
         public DateTime CreatedDate { get; set; }
         public int CreatedUser { get; set; }
-        public DateTime LastUpdatedDate { get; set; }
-        public int LastUpdatedUser { get; set; }
         public int Version { get; set; }
-        public ICollection<WareHousePaperDetail> WareHousePaperDetails { get; set; }
+        public ICollection<WareHouseIODetail> WareHousePaperDetails { get; set; }
         //private Medicine Medicine { get; set; }
         //private Clinic Clinic { get; set; }
         //public string MedicineName { get { return this.Medicine.Name; } }
@@ -33,7 +33,7 @@ namespace Medical.Data.Entities
         {
             get
             {
-                if (this.Type == 0)
+                if (this.Type == "I")
                     return "Nhập kho";
                 else
                     return "Xuất kho";

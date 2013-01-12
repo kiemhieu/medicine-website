@@ -337,7 +337,7 @@
             // 
             // bindingSource1
             // 
-            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.WareHousePaperDetail);
+            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.WareHouseIODetail);
             // 
             // panel1
             // 

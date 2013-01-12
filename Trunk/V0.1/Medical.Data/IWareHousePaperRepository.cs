@@ -8,9 +8,9 @@ namespace Medical.Data
 {
     public interface IWareHousePaperRepository
     {
-        void Insert(WareHousePaper user);
-        void Update(WareHousePaper user);
+        void Insert(WareHouseIO user);
+        void Update(WareHouseIO user);
         void Delete(int id);
-        List<WareHousePaper> GetAll();
+        List<WareHouseIO> GetAll();
     }
 }

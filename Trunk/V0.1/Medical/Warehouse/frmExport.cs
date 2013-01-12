@@ -119,17 +119,17 @@ namespace Medical.Warehouse
             try
             {
                 //Insert data to WareHousePaper
-                WareHousePaper wareHousePaper = new WareHousePaper();
-                wareHousePaper.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());
-                wareHousePaper.Date = dateImport.Value.Date;
-                wareHousePaper.Deliverer = txtDeliverer.Text;
-                wareHousePaper.Recipient = txtRecipient.Text;
-                wareHousePaper.Type = 1;
-                wareHousePaper.Version = 0;
-                wareHousePaper.No = txtNo.Text;
-                wareHousePaper.Note = txtNote.Text;
+                WareHouseIO wareHouseIo = new WareHouseIO();
+                wareHouseIo.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());
+                wareHouseIo.Date = dateImport.Value.Date;
+                wareHouseIo.Deliverer = txtDeliverer.Text;
+                wareHouseIo.Recipient = txtRecipient.Text;
+                wareHouseIo.Type = 1;
+                wareHouseIo.Version = 0;
+                wareHouseIo.No = txtNo.Text;
+                wareHouseIo.Note = txtNote.Text;
                 WareHousePaperRepository wareHousePaperRepository = new WareHousePaperRepository();
-                wareHousePaperRepository.Insert(wareHousePaper);
+                wareHousePaperRepository.Insert(wareHouseIo);
 
                 foreach (DataGridViewRow row in grd.Rows)
                 {
@@ -156,8 +156,8 @@ namespace Medical.Warehouse
                                 repwhDetail.Update(obj);
 
                                 //Insert data to WareHousePaperDetail
-                                WareHousePaperDetail item = new WareHousePaperDetail();
-                                item.WareHousePaperId = wareHousePaper.Id;
+                                WareHouseIODetail item = new WareHouseIODetail();
+                                item.WareHousePaperId = wareHouseIo.Id;
                                 item.LotNo = obj.LotNo;
                                 item.Type = 1;
                                 item.MedicineId = obj.MedicineId;
@@ -179,8 +179,8 @@ namespace Medical.Warehouse
                             else
                             {
                                 //Insert data to WareHousePaperDetail
-                                WareHousePaperDetail item = new WareHousePaperDetail();
-                                item.WareHousePaperId = wareHousePaper.Id;
+                                WareHouseIODetail item = new WareHouseIODetail();
+                                item.WareHousePaperId = wareHouseIo.Id;
                                 item.LotNo = obj.LotNo;
                                 item.Type = 1;
                                 item.MedicineId = obj.MedicineId;

@@ -166,11 +166,13 @@ namespace Medical.Data.Repositories
 
         private int GetInventory(int type, int medicineId, DateTime fromDate, DateTime toDate)
         {
-            var item = (from p in Context.WareHousePaperDetails
-                        where p.MedicineId == medicineId && p.Type == type && p.CreatedDate < toDate && p.CreatedDate > fromDate
+            /*
+            var item = (from p in Context.WareHousePaperDetails where p.MedicineId == medicineId && p.Type == type && p.CreatedDate < toDate && p.CreatedDate > fromDate
                         group p by p.MedicineId into g
                         select new { Volumn = g.Sum(p => p.Volumn) }).FirstOrDefault();
             return item != null ? item.Volumn : 0;
+             */
+            return 0;
         }
 
         public List<MedicinePlanDetail> GetByPlan(int clinicId, int year, int month)
@@ -199,6 +201,7 @@ namespace Medical.Data.Repositories
 
         private int GetMedicineInMonth(int year, int month, int type, int medicineId)
         {
+            /*
             var s = from c in Context.WareHousePaperDetails
                     where c.MedicineId == medicineId && c.Type == type && c.CreatedDate.Year == year && c.CreatedDate.Month == month
                     group c by c.MedicineId into g
@@ -206,6 +209,8 @@ namespace Medical.Data.Repositories
             if (s.FirstOrDefault() != null)
                 return s.FirstOrDefault().TotalInStock;
 
+            return 0;
+             */
             return 0;
         }
     }
