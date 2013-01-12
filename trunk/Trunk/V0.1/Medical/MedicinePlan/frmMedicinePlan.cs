@@ -108,26 +108,26 @@ namespace Medical.MedicinePlan
             }
         }
 
-        private WareHousePaper GetWareHousePaperEntity()
+        private WareHouseIO GetWareHousePaperEntity()
         {
-            WareHousePaper whPaper = new WareHousePaper();
-            whPaper.Id = 0;
-            whPaper.Type = 0;
-            return whPaper;
+            WareHouseIO whIo = new WareHouseIO();
+            whIo.Id = 0;
+            whIo.Type = 0;
+            return whIo;
         }
 
-        private WareHousePaperDetail GetWareHousePaperDetailEntity(int GridIndex)
+        private WareHouseIODetail GetWareHousePaperDetailEntity(int GridIndex)
         {
-            if (GridIndex < 0) return new WareHousePaperDetail();
+            if (GridIndex < 0) return new WareHouseIODetail();
 
-            WareHousePaperDetail whPaperDetail = new WareHousePaperDetail();
-            whPaperDetail.Id = 0;
-            whPaperDetail.Amount = int.Parse(grd.Rows[0].Cells["Amount"].Value.ToString());
-            whPaperDetail.Volumn = int.Parse(grd.Rows[0].Cells["Volumn"].Value.ToString());
-            whPaperDetail.LotNo = grd.Rows[0].Cells["LotNo"].Value.ToString();
-            whPaperDetail.MedicineId = int.Parse(grd.Rows[0].Cells["MedicineId"].Value.ToString());
-            whPaperDetail.Note = grd.Rows[0].Cells["Note"].Value.ToString();
-            return whPaperDetail;
+            WareHouseIODetail whIoDetail = new WareHouseIODetail();
+            whIoDetail.Id = 0;
+            whIoDetail.Amount = int.Parse(grd.Rows[0].Cells["Amount"].Value.ToString());
+            whIoDetail.Volumn = int.Parse(grd.Rows[0].Cells["Volumn"].Value.ToString());
+            whIoDetail.LotNo = grd.Rows[0].Cells["LotNo"].Value.ToString();
+            whIoDetail.MedicineId = int.Parse(grd.Rows[0].Cells["MedicineId"].Value.ToString());
+            whIoDetail.Note = grd.Rows[0].Cells["Note"].Value.ToString();
+            return whIoDetail;
         }
 
         private void btnInsert_Click(object sender, EventArgs e)

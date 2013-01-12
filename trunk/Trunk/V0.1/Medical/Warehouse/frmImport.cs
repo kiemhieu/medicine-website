@@ -112,8 +112,8 @@ namespace Medical.Warehouse
             // Insert into WareHousePaper
             try
             {
-                WareHousePaper whPaper = GetWareHousePaperEntity();
-                repwhPaper.Insert(whPaper);
+                WareHouseIO whIo = GetWareHousePaperEntity();
+                repwhPaper.Insert(whIo);
 
             }
             catch (Exception)
@@ -124,32 +124,32 @@ namespace Medical.Warehouse
 
         }
 
-        private WareHousePaper GetWareHousePaperEntity()
+        private WareHouseIO GetWareHousePaperEntity()
         {
-            WareHousePaper whPaper = new WareHousePaper();
-            whPaper.Id = 0;
-            whPaper.No = txtNo.Text.Trim();
-            whPaper.Note = txtNote.Text.Trim();
-            whPaper.Recipient = txtRecipient.Text.Trim();
-            whPaper.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());
-            whPaper.Deliverer = txtDeliverer.Text.Trim();
-            whPaper.Type = 0;
-            return whPaper;
+            WareHouseIO whIo = new WareHouseIO();
+            whIo.Id = 0;
+            whIo.No = txtNo.Text.Trim();
+            whIo.Note = txtNote.Text.Trim();
+            whIo.Recipient = txtRecipient.Text.Trim();
+            whIo.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());
+            whIo.Deliverer = txtDeliverer.Text.Trim();
+            whIo.Type = 0;
+            return whIo;
         }
 
-        private WareHousePaperDetail GetWareHousePaperDetailEntity(int GridIndex)
+        private WareHouseIODetail GetWareHousePaperDetailEntity(int GridIndex)
         {
-            if (GridIndex < 0) return new WareHousePaperDetail();
+            if (GridIndex < 0) return new WareHouseIODetail();
 
-            WareHousePaperDetail whPaperDetail = new WareHousePaperDetail();
-            whPaperDetail.Id = 0;
-            whPaperDetail.Amount = int.Parse(grd.Rows[0].Cells["Amount"].Value.ToString());
-            whPaperDetail.Volumn = int.Parse(grd.Rows[0].Cells["Volumn"].Value.ToString());
-            whPaperDetail.LotNo = grd.Rows[0].Cells["LotNo"].Value.ToString();
-            whPaperDetail.MedicineId = int.Parse(grd.Rows[0].Cells["MedicineId"].Value.ToString());
-            whPaperDetail.Note = grd.Rows[0].Cells["Note"].Value.ToString();
-            whPaperDetail.WareHousePaperId = this.WHPaperId;
-            return whPaperDetail;
+            WareHouseIODetail whIoDetail = new WareHouseIODetail();
+            whIoDetail.Id = 0;
+            whIoDetail.Amount = int.Parse(grd.Rows[0].Cells["Amount"].Value.ToString());
+            whIoDetail.Volumn = int.Parse(grd.Rows[0].Cells["Volumn"].Value.ToString());
+            whIoDetail.LotNo = grd.Rows[0].Cells["LotNo"].Value.ToString();
+            whIoDetail.MedicineId = int.Parse(grd.Rows[0].Cells["MedicineId"].Value.ToString());
+            whIoDetail.Note = grd.Rows[0].Cells["Note"].Value.ToString();
+            whIoDetail.WareHousePaperId = this.WHPaperId;
+            return whIoDetail;
         }
 
         private void cbClinic_SelectedIndexChanged(object sender, EventArgs e)
@@ -163,25 +163,25 @@ namespace Medical.Warehouse
             try
             {
                 //Insert data to WareHousePaper
-                WareHousePaper wareHousePaper = new WareHousePaper();
-                wareHousePaper.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());
-                wareHousePaper.Date = dateImport.Value.Date;
-                wareHousePaper.Deliverer = txtDeliverer.Text;
-                wareHousePaper.Recipient = txtRecipient.Text;
-                wareHousePaper.Type = 0;
-                wareHousePaper.Version = 0;
-                wareHousePaper.No = txtNo.Text;
-                wareHousePaper.Note = txtNote.Text;
+                WareHouseIO wareHouseIo = new WareHouseIO();
+                wareHouseIo.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());
+                wareHouseIo.Date = dateImport.Value.Date;
+                wareHouseIo.Deliverer = txtDeliverer.Text;
+                wareHouseIo.Recipient = txtRecipient.Text;
+                wareHouseIo.Type = 0;
+                wareHouseIo.Version = 0;
+                wareHouseIo.No = txtNo.Text;
+                wareHouseIo.Note = txtNote.Text;
                 WareHousePaperRepository wareHousePaperRepository = new WareHousePaperRepository();
-                wareHousePaperRepository.Insert(wareHousePaper);
+                wareHousePaperRepository.Insert(wareHouseIo);
 
                 //Insert data to WareHousePaperDetail
                 foreach (DataGridViewRow row in grd.Rows)
                 {
                     if (ValidateRowData(row))
                     {
-                        WareHousePaperDetail item = new WareHousePaperDetail();
-                        item.WareHousePaperId = wareHousePaper.Id;
+                        WareHouseIODetail item = new WareHouseIODetail();
+                        item.WareHousePaperId = wareHouseIo.Id;
                         item.LotNo = row.Cells["LotNo"].Value.ToString();
                         item.Type = 0;
                         item.MedicineId = int.Parse(row.Cells["MedicineId"].Value.ToString());
@@ -192,11 +192,11 @@ namespace Medical.Warehouse
                         item.ExpireDate = DateTime.Parse(row.Cells["ExpireDate"].Value.ToString());
                         if (row.Cells["Note"].Value != null)
                             item.Note = row.Cells["Note"].Value.ToString();
-                        item.CreatedDate = wareHousePaper.CreatedDate;
+                        item.CreatedDate = wareHouseIo.CreatedDate;
                         repwhPaperDetail.Insert(item);
 
                         //Insert data to WareHouse
-                        var wareHouse = repwh.GetByIdMedicine(item.MedicineId, wareHousePaper.ClinicId);
+                        var wareHouse = repwh.GetByIdMedicine(item.MedicineId, wareHouseIo.ClinicId);
                         if (wareHouse != null)
                         {
                             wareHouse.Volumn += item.Volumn;
@@ -206,7 +206,7 @@ namespace Medical.Warehouse
                         {
                             wareHouse = new WareHouse();
                             wareHouse.MedicineId = item.MedicineId;
-                            wareHouse.ClinicId = wareHousePaper.ClinicId;
+                            wareHouse.ClinicId = wareHouseIo.ClinicId;
                             wareHouse.Volumn = item.Volumn;
                             wareHouse.MinAllowed = 0;
                             repwh.Insert(wareHouse);

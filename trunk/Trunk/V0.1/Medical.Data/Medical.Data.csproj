@@ -81,8 +81,8 @@
     <Compile Include="IFigureRepository.cs" />
     <Compile Include="IDefineRepository.cs" />
     <Compile Include="IClinicRepository.cs" />
-    <Compile Include="Entities\WareHousePaperDetail.cs" />
-    <Compile Include="Entities\WareHousePaper.cs" />
+    <Compile Include="Entities\WareHouseIODetail.cs" />
+    <Compile Include="Entities\WareHouseIO.cs" />
     <Compile Include="Entities\WareHouseMinimumAllow.cs" />
     <Compile Include="Entities\WareHouseDetail.cs" />
     <Compile Include="Entities\PrescriptionDetail.cs" />

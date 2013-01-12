@@ -10,12 +10,12 @@ namespace Medical.Data.Repositories {
     public class WareHousePaperDetailRepository : RepositoryBase, IWareHousePaperDetailRepository
     {
 
-        public WareHousePaperDetail Get(int id)
+        public WareHouseIODetail Get(int id)
         {
             var whPaperDetail = this.Context.WareHousePaperDetails.FirstOrDefault(x => x.Id.Equals(id));
             return whPaperDetail;
         }
-        public WareHousePaperDetail GetById(int id)
+        public WareHouseIODetail GetById(int id)
         {
             var whPaperDetail = this.Context.WareHousePaperDetails.FirstOrDefault(x => x.Id.Equals(id));
             return whPaperDetail;
@@ -23,13 +23,13 @@ namespace Medical.Data.Repositories {
 
 
 
-        public void Insert(WareHousePaperDetail whPaperDetail)
+        public void Insert(WareHouseIODetail whIoDetail)
         {
             try
             {
-                whPaperDetail.CreatedDate = DateTime.Now;
-                whPaperDetail.Version = 0;
-                this.Context.WareHousePaperDetails.Add(whPaperDetail);
+                whIoDetail.CreatedDate = DateTime.Now;
+                whIoDetail.Version = 0;
+                this.Context.WareHousePaperDetails.Add(whIoDetail);
                 this.Context.SaveChanges();
             }
             catch (Exception ex)
@@ -38,19 +38,19 @@ namespace Medical.Data.Repositories {
             }
         }
 
-        public void Update(WareHousePaperDetail whPaperDetail)
+        public void Update(WareHouseIODetail whIoDetail)
         {
             try
             {
-                var oldwhPaperDetail = this.Context.WareHousePaperDetails.FirstOrDefault(x => x.Id == whPaperDetail.Id);
+                var oldwhPaperDetail = this.Context.WareHousePaperDetails.FirstOrDefault(x => x.Id == whIoDetail.Id);
                 if (oldwhPaperDetail == null) return;
-                oldwhPaperDetail.WareHousePaperId = whPaperDetail.WareHousePaperId;
-                oldwhPaperDetail.MedicineId = whPaperDetail.MedicineId;                                
-                oldwhPaperDetail.ExpireDate = whPaperDetail.ExpireDate;
-                oldwhPaperDetail.LotNo = whPaperDetail.LotNo;
-                oldwhPaperDetail.Unit = whPaperDetail.Unit;
-                oldwhPaperDetail.UnitPrice = whPaperDetail.UnitPrice;
-                oldwhPaperDetail.Volumn = whPaperDetail.Volumn;              
+                // oldwhPaperDetail.WareHousePaperId = whIoDetail.WareHousePaperId;
+                oldwhPaperDetail.MedicineId = whIoDetail.MedicineId;                                
+                oldwhPaperDetail.ExpireDate = whIoDetail.ExpireDate;
+                oldwhPaperDetail.LotNo = whIoDetail.LotNo;
+                // oldwhPaperDetail.Unit = whIoDetail.Unit;
+                oldwhPaperDetail.UnitPrice = whIoDetail.UnitPrice;
+                // oldwhPaperDetail.Volumn = whIoDetail.Volumn;              
                 // oldwhPaperDetail.LastUpdatedUser = AppContext.LoggedInUser.Id;                
                 oldwhPaperDetail.Version++;
                 this.Context.SaveChanges();
@@ -80,10 +80,10 @@ namespace Medical.Data.Repositories {
         }
 
  
-        public List<WareHousePaperDetail> GetAll() {
+        public List<WareHouseIODetail> GetAll() {
             try
             {
-                List<WareHousePaperDetail> lst = this.Context.WareHousePaperDetails.ToList();
+                List<WareHouseIODetail> lst = this.Context.WareHousePaperDetails.ToList();
                 return lst;
             }catch(Exception ex)
             {
@@ -91,12 +91,12 @@ namespace Medical.Data.Repositories {
                 return null;
             }
         }
-        public List<WareHousePaperDetail> GetByPaperId(int idPaper)
+        public List<WareHouseIODetail> GetByPaperId(int idPaper)
         {
             try
             {
-                List<WareHousePaperDetail> lst =
-                    this.Context.WareHousePaperDetails.Where(x => x.WareHousePaperId.Equals(idPaper)).ToList();
+                List<WareHouseIODetail> lst =
+                    this.Context.WareHousePaperDetails.Where(x => x.WareHouseIOId.Equals(idPaper)).ToList();
                 return lst;
             }
             catch (Exception ex)

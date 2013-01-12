@@ -11,12 +11,12 @@ namespace Medical.Data.Repositories
     public class WareHousePaperRepository : RepositoryBase, IWareHousePaperRepository
     {
 
-        public WareHousePaper Get(int id)
+        public WareHouseIO Get(int id)
         {
             var whPaper = this.Context.WareHousePapers.FirstOrDefault(x => x.Id.Equals(id));
             return whPaper;
         }
-        public WareHousePaper GetById(int id)
+        public WareHouseIO GetById(int id)
         {
             var whPaper = this.Context.WareHousePapers.FirstOrDefault(x => x.Id.Equals(id));
             return whPaper;
@@ -24,35 +24,35 @@ namespace Medical.Data.Repositories
 
 
 
-        public void Insert(WareHousePaper whPaper)
+        public void Insert(WareHouseIO whIo)
         {
             //whPaper.CreatedUser = AppContext.LoggedInUser.Id;
-            whPaper.CreatedDate = DateTime.Now;
+            whIo.CreatedDate = DateTime.Now;
             //whPaper.LastUpdatedUser = AppContext.LoggedInUser.Id;
-            whPaper.LastUpdatedDate = DateTime.Now;
-            whPaper.Version = 0;
-            this.Context.WareHousePapers.Add(whPaper);
+            // whIo.LastUpdatedDate = DateTime.Now;
+            whIo.Version = 0;
+            this.Context.WareHousePapers.Add(whIo);
             this.Context.SaveChanges();
         }
 
-        public void Update(WareHousePaper whPaper)
+        public void Update(WareHouseIO whIo)
         {
             try
             {
-                var oldwhPaper = this.Context.WareHousePapers.FirstOrDefault(x => x.Id == whPaper.Id);
+                var oldwhPaper = this.Context.WareHousePapers.FirstOrDefault(x => x.Id == whIo.Id);
                 if (oldwhPaper == null) return;
-                oldwhPaper.Type = whPaper.Type;
-                oldwhPaper.ClinicId = whPaper.ClinicId;
-                oldwhPaper.CreatedUser = whPaper.CreatedUser;
-                oldwhPaper.CreatedDate = whPaper.CreatedDate;
-                oldwhPaper.Date = whPaper.Date;
-                oldwhPaper.No = whPaper.No;
-                oldwhPaper.Recipient = whPaper.Recipient;
-                oldwhPaper.Deliverer = whPaper.Deliverer;
-                oldwhPaper.Note = whPaper.Note;
-                oldwhPaper.LastUpdatedUser = 1;
+                oldwhPaper.Type = whIo.Type;
+                oldwhPaper.ClinicId = whIo.ClinicId;
+                oldwhPaper.CreatedUser = whIo.CreatedUser;
+                oldwhPaper.CreatedDate = whIo.CreatedDate;
+                oldwhPaper.Date = whIo.Date;
+                oldwhPaper.No = whIo.No;
+                // oldwhPaper.Recipient = whIo.Recipient;
+                // oldwhPaper.Deliverer = whIo.Deliverer;
+                oldwhPaper.Note = whIo.Note;
+                // oldwhPaper.LastUpdatedUser = 1;
                 // oldwhPaper.LastUpdatedUser = AppContext.LoggedInUser.Id;
-                oldwhPaper.LastUpdatedDate = DateTime.Now;
+                // oldwhPaper.LastUpdatedDate = DateTime.Now;
                 oldwhPaper.Version++;
                 this.Context.SaveChanges();
             }
@@ -82,11 +82,11 @@ namespace Medical.Data.Repositories
         }
 
 
-        public List<WareHousePaper> GetAll()
+        public List<WareHouseIO> GetAll()
         {
             try
             {
-                List<WareHousePaper> lst = this.Context.WareHousePapers.ToList();
+                List<WareHouseIO> lst = this.Context.WareHousePapers.ToList();
                 return lst;
             }
             catch (Exception ex)
@@ -95,11 +95,11 @@ namespace Medical.Data.Repositories
                 return null;
             }
         }
-        public List<WareHousePaper> GetByClinicID(int idClinic)
+        public List<WareHouseIO> GetByClinicID(int idClinic)
         {
             try
             {
-                List<WareHousePaper> lst =
+                List<WareHouseIO> lst =
                     this.Context.WareHousePapers.Where(x => x.ClinicId.Equals(idClinic)).ToList();
                 return lst;
             }
@@ -110,12 +110,14 @@ namespace Medical.Data.Repositories
             }
         }
 
-        public List<WareHousePaper> Search(int type, DateTime fromDate, DateTime toDate)
+        public List<WareHouseIO> Search(int type, DateTime fromDate, DateTime toDate)
         {
             try
             {
                 if (type >= 0)
-                    return this.Context.WareHousePapers.Where(x => x.Type == type && x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                    // return this.Context.WareHousePapers.Where(x => x.Type == type && x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                    return this.Context.WareHousePapers.Where(x => x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+
                 else
                     return this.Context.WareHousePapers.Where(x => x.Date >= fromDate.Date && x.Date <= toDate).ToList();
             }

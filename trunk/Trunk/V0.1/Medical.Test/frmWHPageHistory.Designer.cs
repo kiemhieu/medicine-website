@@ -280,7 +280,7 @@
             // 
             // bindingSource1
             // 
-            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.WareHousePaper);
+            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.WareHouseIO);
             // 
             // idDataGridViewTextBoxColumn
             // 
