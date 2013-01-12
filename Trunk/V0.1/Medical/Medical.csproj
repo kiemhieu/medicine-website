@@ -182,6 +182,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="WareHouseIO\WareHouseImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WareHouseIO\WareHouseImport.Designer.cs">
+      <DependentUpon>WareHouseImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WareHouseIO\WareHouseIOHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WareHouseIO\WareHouseIOHistory.Designer.cs">
+      <DependentUpon>WareHouseIOHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\frmImportDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,6 +306,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WareHouseIO\WareHouseImport.resx">
+      <DependentUpon>WareHouseImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WareHouseIO\WareHouseIOHistory.resx">
+      <DependentUpon>WareHouseIOHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\frmImportDetail.resx">
       <DependentUpon>frmImportDetail.cs</DependentUpon>
