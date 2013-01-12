@@ -19,8 +19,22 @@ namespace Medical.CheckOnDate {
             InitializeComponent();
         }
 
-        private void CheckOnDate_Load(object sender, EventArgs e) {
-            
+        private void CheckOnDate_Load(object sender, EventArgs e)
+        {
+            load();
+        }
+
+        private void load()
+        {
+            var patientList = prescriptionRepo.GetAllOnLate(this.txtPatientName.Text);
+            var index = 1;
+            foreach (var item in patientList)
+            {
+                item.No = index++;
+            }
+            this.bdsCheckOnDate.DataSource = patientList;
+            this.bdsCheckOnDate.ResetBindings(true);
+            this.dataGridViewX1.Refresh();
         }
     }
 }

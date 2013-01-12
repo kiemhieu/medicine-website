@@ -104,6 +104,12 @@
     <Compile Include="History\HistoryDetail.Designer.cs">
       <DependentUpon>HistoryDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="MedicineDeliverHistory\MedicineDeliveryHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicineDeliverHistory\MedicineDeliveryHistory.Designer.cs">
+      <DependentUpon>MedicineDeliveryHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="MedicineDeliver\DeliverList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +254,9 @@
     <EmbeddedResource Include="History\HistoryDetail.resx">
       <DependentUpon>HistoryDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MedicineDeliverHistory\MedicineDeliveryHistory.resx">
+      <DependentUpon>MedicineDeliveryHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MedicineDeliver\DeliverList.resx">
       <DependentUpon>DeliverList.cs</DependentUpon>
     </EmbeddedResource>
@@ -390,6 +399,7 @@
   <ItemGroup>
     <None Include="Resources\grey_search.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

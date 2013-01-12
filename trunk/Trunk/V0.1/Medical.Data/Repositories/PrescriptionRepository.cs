@@ -177,8 +177,8 @@ namespace Medical.Data.Repositories
         public List<VPatientLastPrescription> GetAllOnLate(String patientName)
         {
             return String.IsNullOrEmpty(patientName)
-                       ? this.Context.VPatientLastPrescription.Where(x => x.LatestRecheckDate <= DateTime.Today && x.ClinicId == AppContext.CurrentClinic.Id).ToList()
-                       : this.Context.VPatientLastPrescription.Where(x => x.LatestRecheckDate <= DateTime.Today && x.ClinicId == AppContext.CurrentClinic.Id && x.Name.Contains(patientName)).ToList();
+                       ? this.Context.VPatientLastPrescription.Where(x => x.LatestRecheckDate <= DateTime.Today && x.ClinicId == AppContext.CurrentClinic.Id).OrderBy(x=>x.LatestRecheckDate).ToList()
+                       : this.Context.VPatientLastPrescription.Where(x => x.LatestRecheckDate <= DateTime.Today && x.ClinicId == AppContext.CurrentClinic.Id && x.Name.Contains(patientName)).OrderBy(x=>x.LatestRecheckDate).ToList();
         }
 
         public List<Prescription> GetAll(int patientId)
