@@ -12,5 +12,6 @@ namespace Medical.WareHouseIO {
         public WareHouseIOHistory() {
             InitializeComponent();
         }
+
     }
 }
