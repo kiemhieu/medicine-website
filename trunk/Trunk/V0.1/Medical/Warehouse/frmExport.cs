@@ -122,9 +122,9 @@ namespace Medical.Warehouse
                 WareHouseIO wareHouseIo = new WareHouseIO();
                 wareHouseIo.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());
                 wareHouseIo.Date = dateImport.Value.Date;
-                wareHouseIo.Deliverer = txtDeliverer.Text;
-                wareHouseIo.Recipient = txtRecipient.Text;
-                wareHouseIo.Type = 1;
+                //wareHouseIo.Deliverer = txtDeliverer.Text;
+                //wareHouseIo.Recipient = txtRecipient.Text;
+                //wareHouseIo.Type = 1;
                 wareHouseIo.Version = 0;
                 wareHouseIo.No = txtNo.Text;
                 wareHouseIo.Note = txtNote.Text;
@@ -157,12 +157,12 @@ namespace Medical.Warehouse
 
                                 //Insert data to WareHousePaperDetail
                                 WareHouseIODetail item = new WareHouseIODetail();
-                                item.WareHousePaperId = wareHouseIo.Id;
+                                //item.WareHousePaperId = wareHouseIo.Id;
                                 item.LotNo = obj.LotNo;
-                                item.Type = 1;
+                                //item.Type = 1;
                                 item.MedicineId = obj.MedicineId;
-                                item.Volumn = export;
-                                item.Unit = obj.Unit;
+                                //item.Volumn = export;
+                                //item.Unit = obj.Unit;
                                 item.UnitPrice = obj.UnitPrice;
                                 item.ExpireDate = obj.ExpiredDate;
                                 repwhPaperDetail.Insert(item);
@@ -180,12 +180,12 @@ namespace Medical.Warehouse
                             {
                                 //Insert data to WareHousePaperDetail
                                 WareHouseIODetail item = new WareHouseIODetail();
-                                item.WareHousePaperId = wareHouseIo.Id;
+                                //item.WareHousePaperId = wareHouseIo.Id;
                                 item.LotNo = obj.LotNo;
-                                item.Type = 1;
+                                //item.Type = 1;
                                 item.MedicineId = obj.MedicineId;
-                                item.Volumn = obj.CurrentVolumn;
-                                item.Unit = obj.Unit;
+                                //item.Volumn = obj.CurrentVolumn;
+                                //item.Unit = obj.Unit;
                                 item.UnitPrice = obj.UnitPrice;
                                 item.ExpireDate = obj.ExpiredDate;
                                 repwhPaperDetail.Insert(item);

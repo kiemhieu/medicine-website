@@ -130,8 +130,8 @@ namespace Medical.Warehouse
                 {
                     txtNo.Text = item.No;
                     txtNote.Text = item.Note;
-                    txtRecipient.Text = item.Recipient;
-                    txtDeliverer.Text = item.Deliverer;
+                    //txtRecipient.Text = item.Recipient;
+                    //txtDeliverer.Text = item.Deliverer;
                     dateImport.Value = item.Date;
                     cbClinic.SelectedIndex = GetComboIndex(cbClinic, item.ClinicId);
                     grd.DataSource = repwhPaperDetail.GetByPaperId(exportId);

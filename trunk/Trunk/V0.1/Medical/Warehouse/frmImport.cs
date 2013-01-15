@@ -130,10 +130,10 @@ namespace Medical.Warehouse
             whIo.Id = 0;
             whIo.No = txtNo.Text.Trim();
             whIo.Note = txtNote.Text.Trim();
-            whIo.Recipient = txtRecipient.Text.Trim();
+            //whIo.Recipient = txtRecipient.Text.Trim();
             whIo.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());
-            whIo.Deliverer = txtDeliverer.Text.Trim();
-            whIo.Type = 0;
+            //whIo.Deliverer = txtDeliverer.Text.Trim();
+            //whIo.Type = 0;
             return whIo;
         }
 
@@ -144,11 +144,11 @@ namespace Medical.Warehouse
             WareHouseIODetail whIoDetail = new WareHouseIODetail();
             whIoDetail.Id = 0;
             whIoDetail.Amount = int.Parse(grd.Rows[0].Cells["Amount"].Value.ToString());
-            whIoDetail.Volumn = int.Parse(grd.Rows[0].Cells["Volumn"].Value.ToString());
+            // whIoDetail.Volumn = int.Parse(grd.Rows[0].Cells["Volumn"].Value.ToString());
             whIoDetail.LotNo = grd.Rows[0].Cells["LotNo"].Value.ToString();
             whIoDetail.MedicineId = int.Parse(grd.Rows[0].Cells["MedicineId"].Value.ToString());
-            whIoDetail.Note = grd.Rows[0].Cells["Note"].Value.ToString();
-            whIoDetail.WareHousePaperId = this.WHPaperId;
+            //whIoDetail.Note = grd.Rows[0].Cells["Note"].Value.ToString();
+            //whIoDetail.WareHousePaperId = this.WHPaperId;
             return whIoDetail;
         }
 
@@ -166,9 +166,9 @@ namespace Medical.Warehouse
                 WareHouseIO wareHouseIo = new WareHouseIO();
                 wareHouseIo.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());
                 wareHouseIo.Date = dateImport.Value.Date;
-                wareHouseIo.Deliverer = txtDeliverer.Text;
-                wareHouseIo.Recipient = txtRecipient.Text;
-                wareHouseIo.Type = 0;
+                // wareHouseIo.Deliverer = txtDeliverer.Text;
+                //wareHouseIo.Recipient = txtRecipient.Text;
+                //wareHouseIo.Type = 0;
                 wareHouseIo.Version = 0;
                 wareHouseIo.No = txtNo.Text;
                 wareHouseIo.Note = txtNote.Text;
@@ -181,17 +181,17 @@ namespace Medical.Warehouse
                     if (ValidateRowData(row))
                     {
                         WareHouseIODetail item = new WareHouseIODetail();
-                        item.WareHousePaperId = wareHouseIo.Id;
+                        //item.WareHousePaperId = wareHouseIo.Id;
                         item.LotNo = row.Cells["LotNo"].Value.ToString();
-                        item.Type = 0;
+                        //item.Type = 0;
                         item.MedicineId = int.Parse(row.Cells["MedicineId"].Value.ToString());
-                        item.Volumn = int.Parse(row.Cells["Volumn"].Value.ToString());
-                        item.Unit = int.Parse(row.Cells["Unit"].Value.ToString());
+                        //item.Volumn = int.Parse(row.Cells["Volumn"].Value.ToString());
+                        //item.Unit = int.Parse(row.Cells["Unit"].Value.ToString());
                         item.UnitPrice = int.Parse(row.Cells["UnitPrice"].Value.ToString());
                         item.Amount = int.Parse(row.Cells["Amount"].Value.ToString());
                         item.ExpireDate = DateTime.Parse(row.Cells["ExpireDate"].Value.ToString());
                         if (row.Cells["Note"].Value != null)
-                            item.Note = row.Cells["Note"].Value.ToString();
+                            //item.Note = row.Cells["Note"].Value.ToString();
                         item.CreatedDate = wareHouseIo.CreatedDate;
                         repwhPaperDetail.Insert(item);
 
@@ -199,7 +199,7 @@ namespace Medical.Warehouse
                         var wareHouse = repwh.GetByIdMedicine(item.MedicineId, wareHouseIo.ClinicId);
                         if (wareHouse != null)
                         {
-                            wareHouse.Volumn += item.Volumn;
+                            //wareHouse.Volumn += item.Volumn;
                             repwh.Update(wareHouse);
                         }
                         else
@@ -207,7 +207,7 @@ namespace Medical.Warehouse
                             wareHouse = new WareHouse();
                             wareHouse.MedicineId = item.MedicineId;
                             wareHouse.ClinicId = wareHouseIo.ClinicId;
-                            wareHouse.Volumn = item.Volumn;
+                            //wareHouse.Volumn = item.Volumn;
                             wareHouse.MinAllowed = 0;
                             repwh.Insert(wareHouse);
                         }
@@ -219,10 +219,10 @@ namespace Medical.Warehouse
                         wareHouseDetail.WareHousePaperDetailId = item.Id;
                         wareHouseDetail.LotNo = item.LotNo;
                         wareHouseDetail.ExpiredDate = item.ExpireDate;
-                        wareHouseDetail.OriginalVolumn = item.Volumn;
-                        wareHouseDetail.CurrentVolumn = item.Volumn;
+                        //wareHouseDetail.OriginalVolumn = item.Volumn;
+                        //wareHouseDetail.CurrentVolumn = item.Volumn;
                         wareHouseDetail.BadVolumn = 0;
-                        wareHouseDetail.Unit = item.Unit;
+                        //wareHouseDetail.Unit = item.Unit;
                         wareHouseDetail.UnitPrice = item.UnitPrice.Value;
                         wareHouseDetail.CreatedDate = DateTime.Now;
                         wareHouseDetail.LastUpdatedDate = DateTime.Now;

@@ -182,16 +182,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="WareHouseIO\WareHouseImport.cs">
+    <Compile Include="WareHouses\WareHouseImport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WareHouseIO\WareHouseImport.Designer.cs">
+    <Compile Include="WareHouses\WareHouseImport.Designer.cs">
       <DependentUpon>WareHouseImport.cs</DependentUpon>
     </Compile>
-    <Compile Include="WareHouseIO\WareHouseIOHistory.cs">
+    <Compile Include="WareHouses\WareHouseIOHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WareHouseIO\WareHouseIOHistory.Designer.cs">
+    <Compile Include="WareHouses\WareHouseIOHistory.Designer.cs">
       <DependentUpon>WareHouseIOHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="Warehouse\frmImportDetail.cs">
@@ -307,10 +307,10 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WareHouseIO\WareHouseImport.resx">
+    <EmbeddedResource Include="WareHouses\WareHouseImport.resx">
       <DependentUpon>WareHouseImport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WareHouseIO\WareHouseIOHistory.resx">
+    <EmbeddedResource Include="WareHouses\WareHouseIOHistory.resx">
       <DependentUpon>WareHouseIOHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\frmImportDetail.resx">
@@ -347,6 +347,8 @@
     <None Include="Properties\DataSources\Medical.Data.Entities.Views.VPatientLastPrescription.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Views.VWareHouseDetail.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.WareHouse.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.WareHouseIO.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.WareHouseIODetail.datasource" />
     <None Include="Properties\DataSources\Medical.Data.EntitiyExtend.MedicineDeliveryAllocationEntity.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
