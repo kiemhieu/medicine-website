@@ -112,7 +112,7 @@ namespace Medical.MedicinePlan
         {
             WareHouseIO whIo = new WareHouseIO();
             whIo.Id = 0;
-            whIo.Type = 0;
+            //whIo.Type = 0;
             return whIo;
         }
 
@@ -123,10 +123,10 @@ namespace Medical.MedicinePlan
             WareHouseIODetail whIoDetail = new WareHouseIODetail();
             whIoDetail.Id = 0;
             whIoDetail.Amount = int.Parse(grd.Rows[0].Cells["Amount"].Value.ToString());
-            whIoDetail.Volumn = int.Parse(grd.Rows[0].Cells["Volumn"].Value.ToString());
+            //whIoDetail.Volumn = int.Parse(grd.Rows[0].Cells["Volumn"].Value.ToString());
             whIoDetail.LotNo = grd.Rows[0].Cells["LotNo"].Value.ToString();
             whIoDetail.MedicineId = int.Parse(grd.Rows[0].Cells["MedicineId"].Value.ToString());
-            whIoDetail.Note = grd.Rows[0].Cells["Note"].Value.ToString();
+            //whIoDetail.Note = grd.Rows[0].Cells["Note"].Value.ToString();
             return whIoDetail;
         }
 

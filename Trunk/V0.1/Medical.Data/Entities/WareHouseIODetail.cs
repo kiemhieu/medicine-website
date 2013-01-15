@@ -20,6 +20,7 @@ namespace Medical.Data.Entities
         public int Amount { get; set; }
         public DateTime CreatedDate { get; set; }
         public int Version { get; set; }
+        public int Unit { get; set; }
 
         public virtual Medicine Medicine { get; set; }
         public virtual WareHouseIO WareHouseIO { get; set; }
