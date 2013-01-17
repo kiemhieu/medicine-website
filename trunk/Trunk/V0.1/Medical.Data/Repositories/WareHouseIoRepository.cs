@@ -8,17 +8,17 @@ using Medical.Data.Entities;
 
 namespace Medical.Data.Repositories
 {
-    public class WareHousePaperRepository : RepositoryBase, IWareHousePaperRepository
+    public class WareHouseIORepository : RepositoryBase, IWareHouseIORepository
     {
 
         public WareHouseIO Get(int id)
         {
-            var whPaper = this.Context.WareHousePapers.FirstOrDefault(x => x.Id.Equals(id));
+            var whPaper = this.Context.WareHouseIO.FirstOrDefault(x => x.Id.Equals(id));
             return whPaper;
         }
         public WareHouseIO GetById(int id)
         {
-            var whPaper = this.Context.WareHousePapers.FirstOrDefault(x => x.Id.Equals(id));
+            var whPaper = this.Context.WareHouseIO.FirstOrDefault(x => x.Id.Equals(id));
             return whPaper;
         }
 
@@ -31,7 +31,7 @@ namespace Medical.Data.Repositories
             //whPaper.LastUpdatedUser = AppContext.LoggedInUser.Id;
             // whIo.LastUpdatedDate = DateTime.Now;
             whIo.Version = 0;
-            this.Context.WareHousePapers.Add(whIo);
+            this.Context.WareHouseIO.Add(whIo);
             this.Context.SaveChanges();
         }
 
@@ -39,7 +39,7 @@ namespace Medical.Data.Repositories
         {
             try
             {
-                var oldwhPaper = this.Context.WareHousePapers.FirstOrDefault(x => x.Id == whIo.Id);
+                var oldwhPaper = this.Context.WareHouseIO.FirstOrDefault(x => x.Id == whIo.Id);
                 if (oldwhPaper == null) return;
                 oldwhPaper.Type = whIo.Type;
                 oldwhPaper.ClinicId = whIo.ClinicId;
@@ -69,8 +69,8 @@ namespace Medical.Data.Repositories
         {
             try
             {
-                var oldwhPaper = this.Context.WareHousePapers.FirstOrDefault(x => x.Id == id);
-                this.Context.WareHousePapers.Remove(oldwhPaper);
+                var oldwhPaper = this.Context.WareHouseIO.FirstOrDefault(x => x.Id == id);
+                this.Context.WareHouseIO.Remove(oldwhPaper);
                 this.Context.SaveChanges();
             }
             catch (Exception)
@@ -86,7 +86,7 @@ namespace Medical.Data.Repositories
         {
             try
             {
-                List<WareHouseIO> lst = this.Context.WareHousePapers.ToList();
+                List<WareHouseIO> lst = this.Context.WareHouseIO.ToList();
                 return lst;
             }
             catch (Exception ex)
@@ -95,12 +95,22 @@ namespace Medical.Data.Repositories
                 return null;
             }
         }
+
+        public List<WareHouseIO> GetAll(DateTime? fromDate, DateTime? toDate, int? clinicId)
+        {
+            return
+                this.Context.WareHouseIO.Where(
+                    x =>
+                    (!fromDate.HasValue || x.Date >= fromDate.Value) && (!toDate.HasValue || x.Date <= toDate.Value) &&
+                    (!clinicId.HasValue || x.ClinicId == clinicId)).OrderByDescending(x=>x.Id).ToList();
+        }
+
         public List<WareHouseIO> GetByClinicID(int idClinic)
         {
             try
             {
                 List<WareHouseIO> lst =
-                    this.Context.WareHousePapers.Where(x => x.ClinicId.Equals(idClinic)).ToList();
+                    this.Context.WareHouseIO.Where(x => x.ClinicId.Equals(idClinic)).ToList();
                 return lst;
             }
             catch (Exception ex)
@@ -116,10 +126,10 @@ namespace Medical.Data.Repositories
             {
                 if (type >= 0)
                     // return this.Context.WareHousePapers.Where(x => x.Type == type && x.Date >= fromDate.Date && x.Date <= toDate).ToList();
-                    return this.Context.WareHousePapers.Where(x => x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                    return this.Context.WareHouseIO.Where(x => x.Date >= fromDate.Date && x.Date <= toDate).ToList();
 
                 else
-                    return this.Context.WareHousePapers.Where(x => x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                    return this.Context.WareHouseIO.Where(x => x.Date >= fromDate.Date && x.Date <= toDate).ToList();
             }
             catch (Exception ex)
             {

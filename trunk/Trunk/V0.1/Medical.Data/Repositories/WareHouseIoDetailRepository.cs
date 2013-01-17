@@ -7,17 +7,17 @@ using Medical.Data.Entities;
 
 
 namespace Medical.Data.Repositories {
-    public class WareHousePaperDetailRepository : RepositoryBase, IWareHousePaperDetailRepository
+    public class WareHouseIODetailRepository : RepositoryBase, IWareHouseIODetailRepository
     {
 
         public WareHouseIODetail Get(int id)
         {
-            var whPaperDetail = this.Context.WareHousePaperDetails.FirstOrDefault(x => x.Id.Equals(id));
+            var whPaperDetail = this.Context.WareHouseIODetail.FirstOrDefault(x => x.Id.Equals(id));
             return whPaperDetail;
         }
         public WareHouseIODetail GetById(int id)
         {
-            var whPaperDetail = this.Context.WareHousePaperDetails.FirstOrDefault(x => x.Id.Equals(id));
+            var whPaperDetail = this.Context.WareHouseIODetail.FirstOrDefault(x => x.Id.Equals(id));
             return whPaperDetail;
         }
 
@@ -29,7 +29,7 @@ namespace Medical.Data.Repositories {
             {
                 whIoDetail.CreatedDate = DateTime.Now;
                 whIoDetail.Version = 0;
-                this.Context.WareHousePaperDetails.Add(whIoDetail);
+                this.Context.WareHouseIODetail.Add(whIoDetail);
                 this.Context.SaveChanges();
             }
             catch (Exception ex)
@@ -42,7 +42,7 @@ namespace Medical.Data.Repositories {
         {
             try
             {
-                var oldwhPaperDetail = this.Context.WareHousePaperDetails.FirstOrDefault(x => x.Id == whIoDetail.Id);
+                var oldwhPaperDetail = this.Context.WareHouseIODetail.FirstOrDefault(x => x.Id == whIoDetail.Id);
                 if (oldwhPaperDetail == null) return;
                 // oldwhPaperDetail.WareHousePaperId = whIoDetail.WareHousePaperId;
                 oldwhPaperDetail.MedicineId = whIoDetail.MedicineId;                                
@@ -67,8 +67,8 @@ namespace Medical.Data.Repositories {
         public void Delete(int id) {
             try
             {
-                var oldwhPaper = this.Context.WareHousePaperDetails.FirstOrDefault(x => x.Id == id);
-                this.Context.WareHousePaperDetails.Remove(oldwhPaper);
+                var oldwhPaper = this.Context.WareHouseIODetail.FirstOrDefault(x => x.Id == id);
+                this.Context.WareHouseIODetail.Remove(oldwhPaper);
                 this.Context.SaveChanges();
             }
             catch (Exception)
@@ -83,7 +83,7 @@ namespace Medical.Data.Repositories {
         public List<WareHouseIODetail> GetAll() {
             try
             {
-                List<WareHouseIODetail> lst = this.Context.WareHousePaperDetails.ToList();
+                List<WareHouseIODetail> lst = this.Context.WareHouseIODetail.ToList();
                 return lst;
             }catch(Exception ex)
             {
@@ -96,7 +96,7 @@ namespace Medical.Data.Repositories {
             try
             {
                 List<WareHouseIODetail> lst =
-                    this.Context.WareHousePaperDetails.Where(x => x.WareHouseIOId.Equals(idPaper)).ToList();
+                    this.Context.WareHouseIODetail.Where(x => x.WareHouseIOId.Equals(idPaper)).ToList();
                 return lst;
             }
             catch (Exception ex)

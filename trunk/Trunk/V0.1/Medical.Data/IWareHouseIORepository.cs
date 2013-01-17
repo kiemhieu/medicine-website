@@ -6,11 +6,12 @@ using Medical.Data.Entities;
 
 namespace Medical.Data
 {
-    public interface IWareHousePaperRepository
+    public interface IWareHouseIORepository
     {
         void Insert(WareHouseIO user);
         void Update(WareHouseIO user);
         void Delete(int id);
         List<WareHouseIO> GetAll();
+        List<WareHouseIO> GetAll(DateTime? fromDate, DateTime? toDate, int? clinicId);
     }
 }
