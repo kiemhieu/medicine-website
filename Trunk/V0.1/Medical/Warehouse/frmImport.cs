@@ -21,8 +21,8 @@ namespace Medical.Warehouse
         private MedicineRepository repMedicine;
         private WareHouseDetailRepository repwhDetail;
         private WareHouseRepository repwh;
-        private WareHousePaperRepository repwhPaper;
-        private WareHousePaperDetailRepository repwhPaperDetail;
+        private WareHouseIORepository _repwhIo;
+        private WareHouseIODetailRepository _repwhIoDetail;
         private int ClinicId;
         private int WHPaperId;
         public frmImport()
@@ -33,8 +33,8 @@ namespace Medical.Warehouse
             repMedicine = new MedicineRepository();
             repwh = new WareHouseRepository();
             repwhDetail = new WareHouseDetailRepository();
-            repwhPaper = new WareHousePaperRepository();
-            repwhPaperDetail = new WareHousePaperDetailRepository();
+            _repwhIo = new WareHouseIORepository();
+            _repwhIoDetail = new WareHouseIODetailRepository();
 
             InitializeComponent();
             repClinic = new ClinicRepository();
@@ -113,7 +113,7 @@ namespace Medical.Warehouse
             try
             {
                 WareHouseIO whIo = GetWareHousePaperEntity();
-                repwhPaper.Insert(whIo);
+                _repwhIo.Insert(whIo);
 
             }
             catch (Exception)
@@ -172,8 +172,8 @@ namespace Medical.Warehouse
                 wareHouseIo.Version = 0;
                 wareHouseIo.No = txtNo.Text;
                 wareHouseIo.Note = txtNote.Text;
-                WareHousePaperRepository wareHousePaperRepository = new WareHousePaperRepository();
-                wareHousePaperRepository.Insert(wareHouseIo);
+                WareHouseIORepository wareHouseIoRepository = new WareHouseIORepository();
+                wareHouseIoRepository.Insert(wareHouseIo);
 
                 //Insert data to WareHousePaperDetail
                 foreach (DataGridViewRow row in grd.Rows)
@@ -193,7 +193,7 @@ namespace Medical.Warehouse
                         if (row.Cells["Note"].Value != null)
                             //item.Note = row.Cells["Note"].Value.ToString();
                         item.CreatedDate = wareHouseIo.CreatedDate;
-                        repwhPaperDetail.Insert(item);
+                        _repwhIoDetail.Insert(item);
 
                         //Insert data to WareHouse
                         var wareHouse = repwh.GetByIdMedicine(item.MedicineId, wareHouseIo.ClinicId);

@@ -182,6 +182,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="WareHouses\WareHouseExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WareHouses\WareHouseExport.Designer.cs">
+      <DependentUpon>WareHouseExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="WareHouses\WareHouseImport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +313,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="WareHouses\WareHouseExport.resx">
+      <DependentUpon>WareHouseExport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WareHouses\WareHouseImport.resx">
       <DependentUpon>WareHouseImport.cs</DependentUpon>
     </EmbeddedResource>
@@ -337,6 +346,7 @@
     <EmbeddedResource Include="Warehouse\frmWHPageHistory.resx">
       <DependentUpon>frmWHPageHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Medical.Data.Entities.Clinic.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Define.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Medicine.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.MedicineDeliveryDetail.datasource" />
@@ -419,7 +429,12 @@
   <ItemGroup>
     <None Include="Resources\grey_search.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\export.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -76,9 +76,9 @@ namespace Medical.Warehouse
 
         private void LoadData()
         {
-            WareHousePaperRepository whPaperRepository = new WareHousePaperRepository();
+            WareHouseIORepository whIoRepository = new WareHouseIORepository();
             int type = cbTypeWHPage.Text.Equals("Nhập kho", StringComparison.OrdinalIgnoreCase) ? 0 : (cbTypeWHPage.Text.Equals("Xuất kho", StringComparison.OrdinalIgnoreCase) ? 1 : -1);
-            grd.DataSource = whPaperRepository.Search(type, dpkFromDate.Value, dpkToDate.Value);
+            grd.DataSource = whIoRepository.Search(type, dpkFromDate.Value, dpkToDate.Value);
         }
     }
 }

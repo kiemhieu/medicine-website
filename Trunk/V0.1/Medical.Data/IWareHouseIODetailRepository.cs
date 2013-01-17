@@ -6,7 +6,7 @@ using Medical.Data.Entities;
 
 namespace Medical.Data
 {
-    public interface IWareHousePaperDetailRepository
+    public interface IWareHouseIODetailRepository
     {
         void Insert(WareHouseIODetail user);
         void Update(WareHouseIODetail user);

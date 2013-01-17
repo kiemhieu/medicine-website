@@ -21,8 +21,8 @@ namespace Medical.Warehouse
         private MedicineRepository repMedicine;
         private WareHouseDetailRepository repwhDetail;
         private WareHouseRepository repwh;
-        private WareHousePaperRepository repwhPaper;
-        private WareHousePaperDetailRepository repwhPaperDetail;
+        private WareHouseIORepository _repwhIo;
+        private WareHouseIODetailRepository _repwhIoDetail;
         private WareHouseExportAllocateRepository whExport;
         private int whPaperId;
         public bool Status;
@@ -34,8 +34,8 @@ namespace Medical.Warehouse
             repMedicine = new MedicineRepository();
             repwh = new WareHouseRepository();
             repwhDetail = new WareHouseDetailRepository();
-            repwhPaper = new WareHousePaperRepository();
-            repwhPaperDetail = new WareHousePaperDetailRepository();
+            _repwhIo = new WareHouseIORepository();
+            _repwhIoDetail = new WareHouseIODetailRepository();
             whExport = new WareHouseExportAllocateRepository();
             InitializeComponent();
             repClinic = new ClinicRepository();
@@ -95,7 +95,7 @@ namespace Medical.Warehouse
             Status = false;
             if (MessageBox.Show("", "", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
-                var listPaperDetail = repwhPaperDetail.GetByPaperId(whPaperId);
+                var listPaperDetail = _repwhIoDetail.GetByPaperId(whPaperId);
                 foreach (var paperDetail in listPaperDetail)
                 {
                     var listExport = whExport.GetByPaperDetailId(paperDetail.Id);
@@ -112,10 +112,10 @@ namespace Medical.Warehouse
                         whExport.Delete(export.Id);
                     }
 
-                    repwhPaperDetail.Delete(paperDetail.Id);
+                    _repwhIoDetail.Delete(paperDetail.Id);
                 }
 
-                repwhPaper.Delete(whPaperId);
+                _repwhIo.Delete(whPaperId);
                 Status = true;
                 this.Close();
             }
@@ -125,7 +125,7 @@ namespace Medical.Warehouse
         {
             if (exportId > 0)
             {
-                var item = repwhPaper.Get(exportId);
+                var item = _repwhIo.Get(exportId);
                 if (item != null)
                 {
                     txtNo.Text = item.No;
@@ -134,7 +134,7 @@ namespace Medical.Warehouse
                     //txtDeliverer.Text = item.Deliverer;
                     dateImport.Value = item.Date;
                     cbClinic.SelectedIndex = GetComboIndex(cbClinic, item.ClinicId);
-                    grd.DataSource = repwhPaperDetail.GetByPaperId(exportId);
+                    grd.DataSource = _repwhIoDetail.GetByPaperId(exportId);
                 }
             }
         }

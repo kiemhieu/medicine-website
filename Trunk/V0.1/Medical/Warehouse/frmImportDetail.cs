@@ -21,8 +21,8 @@ namespace Medical.Warehouse
         private MedicineRepository repMedicine;
         private WareHouseDetailRepository repwhDetail;
         private WareHouseRepository repwh;
-        private WareHousePaperRepository repwhPaper;
-        private WareHousePaperDetailRepository repwhPaperDetail;
+        private WareHouseIORepository _repwhIo;
+        private WareHouseIODetailRepository _repwhIoDetail;
         private int ClinicId;
         public frmImportDetail(int importId)
         {
@@ -32,8 +32,8 @@ namespace Medical.Warehouse
             repMedicine = new MedicineRepository();
             repwh = new WareHouseRepository();
             repwhDetail = new WareHouseDetailRepository();
-            repwhPaper = new WareHousePaperRepository();
-            repwhPaperDetail = new WareHousePaperDetailRepository();
+            _repwhIo = new WareHouseIORepository();
+            _repwhIoDetail = new WareHouseIODetailRepository();
 
             InitializeComponent();
             repClinic = new ClinicRepository();
@@ -91,7 +91,7 @@ namespace Medical.Warehouse
         {
             if (importId > 0)
             {
-                var item = repwhPaper.Get(importId);
+                var item = _repwhIo.Get(importId);
                 if (item != null)
                 {
                     txtNo.Text = item.No;
@@ -101,7 +101,7 @@ namespace Medical.Warehouse
                     dateImport.Value = item.Date;
                     cbClinic.SelectedIndex = GetComboIndex(cbClinic, item.ClinicId);
 
-                    grd.DataSource = repwhPaperDetail.GetByPaperId(importId);
+                    grd.DataSource = _repwhIoDetail.GetByPaperId(importId);
                 }
             }
         }

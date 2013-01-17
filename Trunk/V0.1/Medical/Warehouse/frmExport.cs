@@ -21,8 +21,8 @@ namespace Medical.Warehouse
         private MedicineRepository repMedicine;
         private WareHouseDetailRepository repwhDetail;
         private WareHouseRepository repwh;
-        private WareHousePaperRepository repwhPaper;
-        private WareHousePaperDetailRepository repwhPaperDetail;
+        private WareHouseIORepository _repwhIo;
+        private WareHouseIODetailRepository _repwhIoDetail;
         // private WareHouseExportAllocateRepository whExport;
         private int ClinicId;
         private int WHPaperId;
@@ -34,8 +34,8 @@ namespace Medical.Warehouse
             repMedicine = new MedicineRepository();
             repwh = new WareHouseRepository();
             repwhDetail = new WareHouseDetailRepository();
-            repwhPaper = new WareHousePaperRepository();
-            repwhPaperDetail = new WareHousePaperDetailRepository();
+            _repwhIo = new WareHouseIORepository();
+            _repwhIoDetail = new WareHouseIODetailRepository();
             // whExport = new WareHouseExportAllocateRepository();
             InitializeComponent();
             repClinic = new ClinicRepository();
@@ -128,8 +128,8 @@ namespace Medical.Warehouse
                 wareHouseIo.Version = 0;
                 wareHouseIo.No = txtNo.Text;
                 wareHouseIo.Note = txtNote.Text;
-                WareHousePaperRepository wareHousePaperRepository = new WareHousePaperRepository();
-                wareHousePaperRepository.Insert(wareHouseIo);
+                WareHouseIORepository wareHouseIoRepository = new WareHouseIORepository();
+                wareHouseIoRepository.Insert(wareHouseIo);
 
                 foreach (DataGridViewRow row in grd.Rows)
                 {
@@ -165,7 +165,7 @@ namespace Medical.Warehouse
                                 //item.Unit = obj.Unit;
                                 item.UnitPrice = obj.UnitPrice;
                                 item.ExpireDate = obj.ExpiredDate;
-                                repwhPaperDetail.Insert(item);
+                                _repwhIoDetail.Insert(item);
 
                                 //Insert whExportAllocate
                                 WareHouseExportAllocate wareHouseExportAllocate = new WareHouseExportAllocate();
@@ -188,7 +188,7 @@ namespace Medical.Warehouse
                                 //item.Unit = obj.Unit;
                                 item.UnitPrice = obj.UnitPrice;
                                 item.ExpireDate = obj.ExpiredDate;
-                                repwhPaperDetail.Insert(item);
+                                _repwhIoDetail.Insert(item);
 
                                 export -= obj.CurrentVolumn;
 
