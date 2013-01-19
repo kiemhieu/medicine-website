@@ -18,7 +18,7 @@ namespace Medical.WareHouses {
         }
 
         private void btnSearch_Click(object sender, System.EventArgs e) {
-            warehouseIORepo.GetAll(txtFrom.ValueObject, txtTo.ValueObject, )
+            //warehouseIORepo.GetAll(txtFrom.ValueObject, txtTo.ValueObject, )
         }
 
         private void dateTimeInput2_Click(object sender, System.EventArgs e) {

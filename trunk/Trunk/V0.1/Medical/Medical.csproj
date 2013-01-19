@@ -182,23 +182,47 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="WareHouses\WareHouseExport.cs">
+    <Compile Include="BadMedicineReport\ReportBadMedicine.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WareHouses\WareHouseExport.Designer.cs">
+    <Compile Include="BadMedicineReport\ReportBadMedicine.Designer.cs">
+      <DependentUpon>ReportBadMedicine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WareHouses\WareHouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WareHouses\WareHouse.Designer.cs">
+      <DependentUpon>WareHouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WareHouses\WareHouseDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WareHouses\WareHouseDetail.Designer.cs">
+      <DependentUpon>WareHouseDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WareHouseIO\WareHouseExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WareHouseIO\WareHouseExport.Designer.cs">
       <DependentUpon>WareHouseExport.cs</DependentUpon>
     </Compile>
-    <Compile Include="WareHouses\WareHouseImport.cs">
+    <Compile Include="WareHouseIO\WareHouseImport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WareHouses\WareHouseImport.Designer.cs">
+    <Compile Include="WareHouseIO\WareHouseImport.Designer.cs">
       <DependentUpon>WareHouseImport.cs</DependentUpon>
     </Compile>
-    <Compile Include="WareHouses\WareHouseIOHistory.cs">
+    <Compile Include="WareHouseIO\WareHouseIOHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WareHouses\WareHouseIOHistory.Designer.cs">
+    <Compile Include="WareHouseIO\WareHouseIOHistory.Designer.cs">
       <DependentUpon>WareHouseIOHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WareHouses\WareHouseSetUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WareHouses\WareHouseSetUp.Designer.cs">
+      <DependentUpon>WareHouseSetUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Warehouse\frmImportDetail.cs">
       <SubType>Form</SubType>
@@ -313,14 +337,26 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WareHouses\WareHouseExport.resx">
+    <EmbeddedResource Include="BadMedicineReport\ReportBadMedicine.resx">
+      <DependentUpon>ReportBadMedicine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WareHouses\WareHouse.resx">
+      <DependentUpon>WareHouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WareHouses\WareHouseDetail.resx">
+      <DependentUpon>WareHouseDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WareHouseIO\WareHouseExport.resx">
       <DependentUpon>WareHouseExport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WareHouses\WareHouseImport.resx">
+    <EmbeddedResource Include="WareHouseIO\WareHouseImport.resx">
       <DependentUpon>WareHouseImport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WareHouses\WareHouseIOHistory.resx">
+    <EmbeddedResource Include="WareHouseIO\WareHouseIOHistory.resx">
       <DependentUpon>WareHouseIOHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WareHouses\WareHouseSetUp.resx">
+      <DependentUpon>WareHouseSetUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\frmImportDetail.resx">
       <DependentUpon>frmImportDetail.cs</DependentUpon>
@@ -357,6 +393,7 @@
     <None Include="Properties\DataSources\Medical.Data.Entities.Views.VPatientLastPrescription.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Views.VWareHouseDetail.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.WareHouse.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.WareHouseDetail.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.WareHouseIO.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.WareHouseIODetail.datasource" />
     <None Include="Properties\DataSources\Medical.Data.EntitiyExtend.MedicineDeliveryAllocationEntity.datasource" />
