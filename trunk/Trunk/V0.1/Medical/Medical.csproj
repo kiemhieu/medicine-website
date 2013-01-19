@@ -39,8 +39,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar2, Version=10.0.0.0, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -193,6 +196,12 @@
     </Compile>
     <Compile Include="WareHouseMonthlyReport\WareHouseMonthlyReport.Designer.cs">
       <DependentUpon>WareHouseMonthlyReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WareHouseMonthlyReport\WareHouseMonthlyReportDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WareHouseMonthlyReport\WareHouseMonthlyReportDetail.Designer.cs">
+      <DependentUpon>WareHouseMonthlyReportDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="WareHouses\WareHouseInitialization.cs">
       <SubType>Form</SubType>
@@ -352,8 +361,12 @@
     <EmbeddedResource Include="BadMedicineReport\ReportBadMedicine.resx">
       <DependentUpon>ReportBadMedicine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WareHouseMonthlyReport\Report1.rdlc" />
     <EmbeddedResource Include="WareHouseMonthlyReport\WareHouseMonthlyReport.resx">
       <DependentUpon>WareHouseMonthlyReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WareHouseMonthlyReport\WareHouseMonthlyReportDetail.resx">
+      <DependentUpon>WareHouseMonthlyReportDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WareHouses\WareHouseInitialization.resx">
       <DependentUpon>WareHouseInitialization.cs</DependentUpon>
