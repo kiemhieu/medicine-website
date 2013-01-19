@@ -38,6 +38,12 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\Lib\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\Lib\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\log4net.dll</HintPath>
@@ -61,6 +67,7 @@
     </Compile>
     <Compile Include="Implementation\MenuProvider.cs" />
     <Compile Include="Implementation\MessageManager.cs" />
+    <Compile Include="Implementation\WContainer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -83,6 +90,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Components.config.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Icons\books.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
