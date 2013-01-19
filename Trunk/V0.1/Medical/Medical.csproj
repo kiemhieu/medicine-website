@@ -188,6 +188,18 @@
     <Compile Include="BadMedicineReport\ReportBadMedicine.Designer.cs">
       <DependentUpon>ReportBadMedicine.cs</DependentUpon>
     </Compile>
+    <Compile Include="WareHouseMonthlyReport\WareHouseMonthlyReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WareHouseMonthlyReport\WareHouseMonthlyReport.Designer.cs">
+      <DependentUpon>WareHouseMonthlyReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WareHouses\WareHouseInitialization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WareHouses\WareHouseInitialization.Designer.cs">
+      <DependentUpon>WareHouseInitialization.cs</DependentUpon>
+    </Compile>
     <Compile Include="WareHouses\WareHouse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -340,6 +352,12 @@
     <EmbeddedResource Include="BadMedicineReport\ReportBadMedicine.resx">
       <DependentUpon>ReportBadMedicine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WareHouseMonthlyReport\WareHouseMonthlyReport.resx">
+      <DependentUpon>WareHouseMonthlyReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WareHouses\WareHouseInitialization.resx">
+      <DependentUpon>WareHouseInitialization.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WareHouses\WareHouse.resx">
       <DependentUpon>WareHouse.cs</DependentUpon>
     </EmbeddedResource>
@@ -472,6 +490,7 @@
   <ItemGroup>
     <None Include="Resources\export.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
