@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.cbClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -181,11 +181,13 @@
             // 
             // txtDeliverer
             // 
+            this.txtDeliverer.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtDeliverer.Border.Class = "TextBoxBorder";
             this.txtDeliverer.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDeliverer.ForeColor = System.Drawing.Color.Black;
             this.txtDeliverer.Location = new System.Drawing.Point(541, 49);
             this.txtDeliverer.Name = "txtDeliverer";
             this.txtDeliverer.Size = new System.Drawing.Size(192, 21);
@@ -193,11 +195,13 @@
             // 
             // txtRecipient
             // 
+            this.txtRecipient.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtRecipient.Border.Class = "TextBoxBorder";
             this.txtRecipient.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtRecipient.ForeColor = System.Drawing.Color.Black;
             this.txtRecipient.Location = new System.Drawing.Point(93, 73);
             this.txtRecipient.Name = "txtRecipient";
             this.txtRecipient.Size = new System.Drawing.Size(278, 21);
@@ -205,11 +209,13 @@
             // 
             // txtNote
             // 
+            this.txtNote.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtNote.Border.Class = "TextBoxBorder";
             this.txtNote.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtNote.ForeColor = System.Drawing.Color.Black;
             this.txtNote.Location = new System.Drawing.Point(93, 47);
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(278, 21);
@@ -230,11 +236,13 @@
             // 
             // txtNo
             // 
+            this.txtNo.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.txtNo.Border.Class = "TextBoxBorder";
             this.txtNo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtNo.ForeColor = System.Drawing.Color.Black;
             this.txtNo.Location = new System.Drawing.Point(93, 20);
             this.txtNo.Name = "txtNo";
             this.txtNo.Size = new System.Drawing.Size(100, 21);
@@ -309,22 +317,21 @@
             // 
             this.grd.AllowUserToOrderColumns = true;
             this.grd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grd.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grd.DefaultCellStyle = dataGridViewCellStyle1;
             this.grd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.grd.Location = new System.Drawing.Point(0, 115);
             this.grd.Name = "grd";
             this.grd.Size = new System.Drawing.Size(804, 280);
             this.grd.TabIndex = 1;
             this.grd.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellEndEdit);
-            this.grd.AutoGenerateColumns = false;
             // 
             // bindingSource3
             // 

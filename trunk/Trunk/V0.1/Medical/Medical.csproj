@@ -221,22 +221,22 @@
     <Compile Include="WareHouses\WareHouseDetail.Designer.cs">
       <DependentUpon>WareHouseDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="WareHouseIO\WareHouseExport.cs">
+    <Compile Include="WareHouseIE\WareHouseExport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WareHouseIO\WareHouseExport.Designer.cs">
+    <Compile Include="WareHouseIE\WareHouseExport.Designer.cs">
       <DependentUpon>WareHouseExport.cs</DependentUpon>
     </Compile>
-    <Compile Include="WareHouseIO\WareHouseImport.cs">
+    <Compile Include="WareHouseIE\WareHouseImport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WareHouseIO\WareHouseImport.Designer.cs">
+    <Compile Include="WareHouseIE\WareHouseImport.Designer.cs">
       <DependentUpon>WareHouseImport.cs</DependentUpon>
     </Compile>
-    <Compile Include="WareHouseIO\WareHouseIOHistory.cs">
+    <Compile Include="WareHouseIE\WareHouseIOHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WareHouseIO\WareHouseIOHistory.Designer.cs">
+    <Compile Include="WareHouseIE\WareHouseIOHistory.Designer.cs">
       <DependentUpon>WareHouseIOHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="WareHouses\WareHouseSetUp.cs">
@@ -377,13 +377,13 @@
     <EmbeddedResource Include="WareHouses\WareHouseDetail.resx">
       <DependentUpon>WareHouseDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WareHouseIO\WareHouseExport.resx">
+    <EmbeddedResource Include="WareHouseIE\WareHouseExport.resx">
       <DependentUpon>WareHouseExport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WareHouseIO\WareHouseImport.resx">
+    <EmbeddedResource Include="WareHouseIE\WareHouseImport.resx">
       <DependentUpon>WareHouseImport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WareHouseIO\WareHouseIOHistory.resx">
+    <EmbeddedResource Include="WareHouseIE\WareHouseIOHistory.resx">
       <DependentUpon>WareHouseIOHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WareHouses\WareHouseSetUp.resx">
