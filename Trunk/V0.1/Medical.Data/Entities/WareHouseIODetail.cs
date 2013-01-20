@@ -26,10 +26,10 @@ namespace Medical.Data.Entities
         public virtual WareHouseIO WareHouseIO { get; set; }
 
         [NotMapped]
-        public string MedicineName { get { return this.Medicine.Name; } }
+        public string MedicineName { get { if (this.Medicine != null) return this.Medicine.Name; else return string.Empty; } }
 
         [NotMapped]
-        public string UnitName { get { return this.Medicine.Define.Name; } }
+        public string UnitName { get { if (this.Medicine != null) return this.Medicine.Define.Name; else return string.Empty; } }
         //public string WareHousePaperNo { get { return this.WareHousePaper.No; } }
     }
 }
