@@ -57,7 +57,7 @@ namespace Medical.Data.Repositories
                 if (oldWhDetail == null) return;
                 // oldWhDetail.WareHouseId = whDetail.WareHouseId;
                 oldWhDetail.MedicineId = whDetail.MedicineId;
-                oldWhDetail.WareHousePaperDetailId = whDetail.WareHousePaperDetailId;
+                oldWhDetail.WareHouseIODetailId = whDetail.WareHouseIODetailId;
                 oldWhDetail.CreatedUser = whDetail.CreatedUser;
                 oldWhDetail.CreatedDate = whDetail.CreatedDate;
                 oldWhDetail.ExpiredDate = whDetail.ExpiredDate;

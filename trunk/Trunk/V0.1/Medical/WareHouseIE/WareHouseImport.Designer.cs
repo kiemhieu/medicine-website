@@ -25,21 +25,22 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.btnRemove = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
-            this.txtStock = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtClinic = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtRecipient = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.txtOriginalNo = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.bdsWareHouse = new System.Windows.Forms.BindingSource(this.components);
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.txtNote = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.txtAddress = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtPhone = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.txtDeliverer = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
@@ -48,10 +49,8 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dateImport = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.bdsMeidcine = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsWareHouseIODetail = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsWareHouse = new System.Windows.Forms.BindingSource(this.components);
             this.cboMedicine = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.bdsMeidcine = new System.Windows.Forms.BindingSource(this.components);
             this.lotNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expireDateDataGridViewTextBoxColumn = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
@@ -60,12 +59,13 @@
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MedicineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsWareHouseIODetail = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateImport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMeidcine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseIODetail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -75,7 +75,7 @@
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx1.Controls.Add(this.btnRemove);
             this.panelEx1.Controls.Add(this.btnSave);
-            this.panelEx1.Controls.Add(this.txtStock);
+            this.panelEx1.Controls.Add(this.txtClinic);
             this.panelEx1.Controls.Add(this.txtRecipient);
             this.panelEx1.Controls.Add(this.labelX9);
             this.panelEx1.Controls.Add(this.labelX8);
@@ -85,7 +85,7 @@
             this.panelEx1.Controls.Add(this.labelX6);
             this.panelEx1.Controls.Add(this.txtAddress);
             this.panelEx1.Controls.Add(this.labelX5);
-            this.panelEx1.Controls.Add(this.textBoxX3);
+            this.panelEx1.Controls.Add(this.txtPhone);
             this.panelEx1.Controls.Add(this.labelX4);
             this.panelEx1.Controls.Add(this.txtDeliverer);
             this.panelEx1.Controls.Add(this.labelX3);
@@ -93,7 +93,6 @@
             this.panelEx1.Controls.Add(this.labelX2);
             this.panelEx1.Controls.Add(this.labelX1);
             this.panelEx1.Controls.Add(this.dateImport);
-            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
             this.panelEx1.Size = new System.Drawing.Size(864, 517);
@@ -124,7 +123,7 @@
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Image = global::Medical.Properties.Resources.add;
-            this.btnSave.Location = new System.Drawing.Point(730, 75);
+            this.btnSave.Location = new System.Drawing.Point(729, 75);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 23);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -132,19 +131,20 @@
             this.btnSave.Text = "Thêm mới";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtStock
+            // txtClinic
             // 
-            this.txtStock.BackColor = System.Drawing.Color.White;
+            this.txtClinic.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
-            this.txtStock.Border.Class = "TextBoxBorder";
-            this.txtStock.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtStock.ForeColor = System.Drawing.Color.Black;
-            this.txtStock.Location = new System.Drawing.Point(502, 2);
-            this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(314, 20);
-            this.txtStock.TabIndex = 18;
+            this.txtClinic.Border.Class = "TextBoxBorder";
+            this.txtClinic.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtClinic.ForeColor = System.Drawing.Color.Black;
+            this.txtClinic.Location = new System.Drawing.Point(502, 2);
+            this.txtClinic.Name = "txtClinic";
+            this.txtClinic.ReadOnly = true;
+            this.txtClinic.Size = new System.Drawing.Size(314, 20);
+            this.txtClinic.TabIndex = 18;
             // 
             // txtRecipient
             // 
@@ -202,6 +202,10 @@
             this.txtOriginalNo.Name = "txtOriginalNo";
             this.txtOriginalNo.Size = new System.Drawing.Size(130, 20);
             this.txtOriginalNo.TabIndex = 13;
+            // 
+            // bdsWareHouse
+            // 
+            this.bdsWareHouse.DataSource = typeof(Medical.Data.Entities.WareHouseIO);
             // 
             // labelX7
             // 
@@ -275,20 +279,20 @@
             this.labelX5.TabIndex = 8;
             this.labelX5.Text = "Địa chỉ";
             // 
-            // textBoxX3
+            // txtPhone
             // 
-            this.textBoxX3.BackColor = System.Drawing.Color.White;
+            this.txtPhone.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
-            this.textBoxX3.Border.Class = "TextBoxBorder";
-            this.textBoxX3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsWareHouse, "Phone", true));
-            this.textBoxX3.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX3.Location = new System.Drawing.Point(301, 25);
-            this.textBoxX3.Name = "textBoxX3";
-            this.textBoxX3.Size = new System.Drawing.Size(130, 20);
-            this.textBoxX3.TabIndex = 7;
+            this.txtPhone.Border.Class = "TextBoxBorder";
+            this.txtPhone.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsWareHouse, "Phone", true));
+            this.txtPhone.ForeColor = System.Drawing.Color.Black;
+            this.txtPhone.Location = new System.Drawing.Point(301, 25);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(130, 20);
+            this.txtPhone.TabIndex = 7;
             // 
             // labelX4
             // 
@@ -443,14 +447,14 @@
             this.MedicineId,
             this.Unit});
             this.grd.DataSource = this.bdsWareHouseIODetail;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grd.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grd.DefaultCellStyle = dataGridViewCellStyle3;
             this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.grd.Location = new System.Drawing.Point(0, 116);
             this.grd.Name = "grd";
@@ -458,18 +462,6 @@
             this.grd.TabIndex = 2;
             this.grd.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellEndEdit);
             this.grd.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.grd_DataError);
-            // 
-            // bdsMeidcine
-            // 
-            this.bdsMeidcine.DataSource = typeof(Medical.Data.Entities.Medicine);
-            // 
-            // bdsWareHouseIODetail
-            // 
-            this.bdsWareHouseIODetail.DataSource = typeof(Medical.Data.Entities.WareHouseIODetail);
-            // 
-            // bdsWareHouse
-            // 
-            this.bdsWareHouse.DataSource = typeof(Medical.Data.Entities.WareHouseIO);
             // 
             // cboMedicine
             // 
@@ -479,6 +471,10 @@
             this.cboMedicine.HeaderText = "Tên thuốc";
             this.cboMedicine.Name = "cboMedicine";
             this.cboMedicine.ValueMember = "Id";
+            // 
+            // bdsMeidcine
+            // 
+            this.bdsMeidcine.DataSource = typeof(Medical.Data.Entities.Medicine);
             // 
             // lotNoDataGridViewTextBoxColumn
             // 
@@ -548,6 +544,7 @@
             this.Amount.DataPropertyName = "Amount";
             this.Amount.HeaderText = "Thành tiền";
             this.Amount.Name = "Amount";
+            this.Amount.ReadOnly = true;
             // 
             // MedicineId
             // 
@@ -563,6 +560,10 @@
             this.Unit.Name = "Unit";
             this.Unit.Visible = false;
             // 
+            // bdsWareHouseIODetail
+            // 
+            this.bdsWareHouseIODetail.DataSource = typeof(Medical.Data.Entities.WareHouseIODetail);
+            // 
             // WareHouseImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -575,11 +576,11 @@
             this.Text = "Nhập kho";
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateImport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMeidcine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseIODetail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -594,7 +595,7 @@
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.Controls.TextBoxX txtAddress;
         private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX3;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtPhone;
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.Controls.TextBoxX txtDeliverer;
         private DevComponents.DotNetBar.LabelX labelX3;
@@ -607,7 +608,7 @@
         private System.Windows.Forms.BindingSource bdsWareHouseIODetail;
         private System.Windows.Forms.BindingSource bdsWareHouse;
         private DevComponents.DotNetBar.Controls.TextBoxX txtRecipient;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtStock;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtClinic;
         private DevComponents.DotNetBar.ButtonX btnRemove;
         private DevComponents.DotNetBar.ButtonX btnSave;
         private System.Windows.Forms.BindingSource bdsMeidcine;
