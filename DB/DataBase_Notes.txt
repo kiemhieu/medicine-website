@@ -1,1 +1,7 @@
-- Bang WareHousePaperDetail sua field tu PaperId thanh WareHousePaperDetailId
+21/1/2013:
+
+	Table                               Note
+	WareHouseIODetail					Add "Type" column
+	WareHouseDetail   					Sua WareHousePaperDetailId --> WareHouseIODetailId
+	WareHouseDetail						WareHousePaperDetailId --> WareHouseIODetailId
+	WareHouseExportAllocate					WareHousePaperDetailId --> WareHouseIODetailId

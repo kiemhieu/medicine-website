@@ -23,7 +23,7 @@ namespace Medical.Data.Entities
         public DateTime CreatedDate { get; set; }
         public int CreatedUser { get; set; }
         public int Version { get; set; }
-        public ICollection<WareHouseIODetail> WareHousePaperDetails { get; set; }
+        public ICollection<WareHouseIODetail> WareHouseIODetails { get; set; }
         //private Medicine Medicine { get; set; }
         //private Clinic Clinic { get; set; }
         //public string MedicineName { get { return this.Medicine.Name; } }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Medical.Data.Entities
 {
-    [Table("WareHousePaperDetail")]
+    [Table("WareHouseIODetail")]
     public class WareHouseIODetail
     {
         [Key]
@@ -14,6 +14,7 @@ namespace Medical.Data.Entities
         public int WareHouseIOId { get; set; }
         public int MedicineId { get; set; }
         public string LotNo { get; set; }
+        public string Type { get; set; }
         public DateTime ExpireDate { get; set; }
         public int Qty { get; set; }
         public int? UnitPrice { get; set; }
