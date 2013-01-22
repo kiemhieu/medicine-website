@@ -15,8 +15,9 @@ namespace Medical.Data.Entities
         public int Month { get; set; }
         public DateTime Date { get; set; }
         public string Note { get; set; }
-        public string Status { get; set; }
+        public int Status { get; set; }
         public int? ApproveId { get; set; }
+        public DateTime? ApproveDate { get; set; }
         public DateTime CreatedDate { get; set; }
         public int CreatedUser { get; set; }
         public DateTime LastUpdatedDate { get; set; }

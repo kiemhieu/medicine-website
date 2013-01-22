@@ -20,6 +20,11 @@ namespace Medical.Data.Repositories
             return Context.MedicinePlans.FirstOrDefault(x => x.Id.Equals(id));
         }
 
+        public List<MedicinePlan> GetUncompletedPlan(int? clinicId)
+        {
+            return !clinicId.HasValue || clinicId.Value == 0 ? this.Context.MedicinePlans.Where(x => x.Status != MedicinePlaningStatus.Approved).ToList() : this.Context.MedicinePlans.Where(x => x.Status != MedicinePlaningStatus.Approved && x.ClinicId == clinicId.Value).ToList();
+        }
+
         public MedicinePlan GetById(int id)
         {
             return this.Context.MedicinePlans.FirstOrDefault(x => x.Id.Equals(id));
@@ -85,6 +90,7 @@ namespace Medical.Data.Repositories
 
         public List<MedicinePlan> FilterPlan(int year, int month, int clinicId, string status)
         {
+            /*
             if (clinicId > 0 && !string.IsNullOrEmpty(status))
                 return this.Context.MedicinePlans.Where(c => c.Year == year && c.Month == month && c.ClinicId == clinicId && c.Status == status).ToList();
             else if (clinicId > 0)
@@ -92,6 +98,7 @@ namespace Medical.Data.Repositories
             else if (!string.IsNullOrEmpty(status))
                 return this.Context.MedicinePlans.Where(c => c.Year == year && c.Month == month && c.Status == status).ToList();
 
+             */
             return null;
         }
     }

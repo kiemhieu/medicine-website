@@ -7,12 +7,13 @@ namespace Medical.WareHouses {
 
         private ViewModes _formMode;
 
+
         public WareHouseImport() {
             InitializeComponent();
         }
 
         private void WareHouseImport_Load(object sender, EventArgs e) {
-
+            
         }
     }
 }

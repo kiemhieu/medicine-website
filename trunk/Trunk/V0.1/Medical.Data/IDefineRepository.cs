@@ -10,5 +10,6 @@ namespace Medical.Data
     {
         List<Define> GetUnit();
         List<Define> GetContentUnit();
+        List<Define> GetPlanningStatus();
     }
 }

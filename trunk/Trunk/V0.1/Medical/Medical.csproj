@@ -149,6 +149,18 @@
     <Compile Include="MedicineForm\FrmMedicineSearch.Designer.cs">
       <DependentUpon>FrmMedicineSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="MedicinePlanning\MedicinePlanning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicinePlanning\MedicinePlanning.Designer.cs">
+      <DependentUpon>MedicinePlanning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicinePlanning\MedicinePlanningDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicinePlanning\MedicinePlanningDetail.Designer.cs">
+      <DependentUpon>MedicinePlanningDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="MedicinePlan\frmMedicinePlanDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -344,6 +356,12 @@
     <EmbeddedResource Include="MedicineForm\FrmMedicineSearch.resx">
       <DependentUpon>FrmMedicineSearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MedicinePlanning\MedicinePlanning.resx">
+      <DependentUpon>MedicinePlanning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicinePlanning\MedicinePlanningDetail.resx">
+      <DependentUpon>MedicinePlanningDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MedicinePlan\frmMedicinePlanDetail.resx">
       <DependentUpon>frmMedicinePlanDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -426,9 +444,11 @@
     <None Include="Properties\DataSources\Medical.Data.Entities.Define.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Medicine.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.MedicineDeliveryDetail.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.MedicinePlan.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Patient.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Prescription.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.PrescriptionDetail.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.User.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Views.VMedicineDeliverList.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Views.VPatientLastPrescription.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Views.VWareHouseDetail.datasource" />

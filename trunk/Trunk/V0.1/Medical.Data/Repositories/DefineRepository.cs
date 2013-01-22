@@ -17,5 +17,10 @@ namespace Medical.Data.Repositories
         {
             return this.Context.Defines.Where(x => x.GroupId == Definication.ContentUnit).ToList();
         }
+
+        public List<Define> GetPlanningStatus()
+        {
+            return this.Context.Defines.Where(x => x.GroupId == Definication.MedicinePlanningStatus).ToList();
+        }
     }
 }
