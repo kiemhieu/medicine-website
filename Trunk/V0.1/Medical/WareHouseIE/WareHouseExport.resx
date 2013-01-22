@@ -132,9 +132,6 @@
   <metadata name="MinAllowed.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="MedicineId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="btnExportAllocate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -186,14 +183,23 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEQAACxEBf2RfkQAAANlJREFUOE+10zEKAjEQ
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALDAAACwwBP0AiyAAAANlJREFUOE+10zEKAjEQ
         BdCAjXgF0V4FEQJiZSv2tiqI4Ak8gL3YWQt7JbETBEs9gRbG/5eZRRaTzQoWDzKZ4UOyG+OcM9baCezB
         ReJsBYwGnKSxgT4MPdjjDGfbkAVcZLPOzQKc4WyHdWxADRqy/imAwzcYSX2ALtexATwv+09YyF7KFzCF
         K/Byj3AG9ukFvMhgwFrqkATs3wJCR6DCI+TpJT5gJXup2IAW3GEsdenPWIWmrDnD2VI/0icN6LHWAH1M
         W5jD0mMGO+DsALKA/HPmz/KN9uU5W/MGVDsqyUHq/RUAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="MedicineId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="Id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Flag.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ClinicId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="bdsWareHouse.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -246,11 +252,14 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEgAACxIB0t1+/AAAANlJREFUOE+10zEKAjEQ
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALDAAACwwBP0AiyAAAANlJREFUOE+10zEKAjEQ
         BdCAjXgF0V4FEQJiZSv2tiqI4Ak8gL3YWQt7JbETBEs9gRbG/5eZRRaTzQoWDzKZ4UOyG+OcM9baCezB
         ReJsBYwGnKSxgT4MPdjjDGfbkAVcZLPOzQKc4WyHdWxADRqy/imAwzcYSX2ALtexATwv+09YyF7KFzCF
         K/Byj3AG9ukFvMhgwFrqkATs3wJCR6DCI+TpJT5gJXup2IAW3GEsdenPWIWmrDnD2VI/0icN6LHWAH1M
         W5jD0mMGO+DsALKA/HPmz/KN9uU5W/MGVDsqyUHq/RUAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="bdsMedicine.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>154, 17</value>
+  </metadata>
 </root>

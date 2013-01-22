@@ -21,13 +21,15 @@ namespace Medical.WareHouseIE
         private readonly WareHouseDetailRepository repwhDetail = new WareHouseDetailRepository();
         private readonly WareHouseRepository repwh = new WareHouseRepository();
         private readonly WareHouseIORepository _repwhIo = new WareHouseIORepository();
+        private readonly WareHouseExportAllocateRepository whExport = new WareHouseExportAllocateRepository();
         private readonly WareHouseIODetailRepository _repwhIoDetail = new WareHouseIODetailRepository();
-
+        private Dictionary<string, List<WareHouseDetail>> dic = new Dictionary<string, List<WareHouseDetail>>();
         public WareHouseExport()
         {
             InitializeComponent();
             bdsMedicine.DataSource = repwh.GetByClinicId(AppContext.CurrentClinic.Id);
             txtClinic.Text = AppContext.CurrentClinic.Name;
+            dateExport.Value = DateTime.Now;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -39,6 +41,8 @@ namespace Medical.WareHouseIE
                 wareHouseIo.ClinicId = AppContext.CurrentClinic.Id;
                 wareHouseIo.Date = dateExport.Value.Date;
                 wareHouseIo.Person = txtDeliverer.Text;
+                wareHouseIo.Address = txtAddress.Text;
+                wareHouseIo.AttachmentNo = txtOriginalNo.Text;
                 //wareHouseIo.Recipient = txtRecipient.Text;
                 wareHouseIo.Phone = txtPhone.Text;
                 wareHouseIo.Type = "1";
@@ -48,90 +52,56 @@ namespace Medical.WareHouseIE
                 WareHouseIORepository wareHouseIoRepository = new WareHouseIORepository();
                 wareHouseIoRepository.Insert(wareHouseIo);
 
-                foreach (DataGridViewRow row in grd.Rows)
+                foreach (WareHouse wareHouse in bdsWareHouse)
                 {
-                    if (row.Cells["Volumn"].Value != null)
+                    if (wareHouse.Export > 0)
                     {
-                        int medicineId = int.Parse(row.Cells["MedicineIdHidden"].Value.ToString());
-                        int export = int.Parse(row.Cells["Export"].Value.ToString());
-                        //update data to WareHouse
-                        var wareHouse = repwh.GetByIdMedicine(medicineId, AppContext.CurrentClinic.Id);
+                        //update data to WareHouse                     
                         if (wareHouse != null)
                         {
-                            wareHouse.Volumn -= export;
+                            wareHouse.Volumn -= wareHouse.Export;
                             repwh.Update(wareHouse);
                         }
 
-                        var list = repwhDetail.GetMeicineExport(wareHouse.Id, medicineId);
+                        List<WareHouseDetail> list = new List<WareHouseDetail>();
+                        if (dic.Keys.Contains(wareHouse.MedicineId.ToString()))
+                            list = dic[wareHouse.MedicineId.ToString()];
+                        else
+                            list = repwhDetail.GetMeicineExport(wareHouse.Id, wareHouse.MedicineId, wareHouse.Export);
 
-                        foreach (var obj in list)
+                        foreach (var wareHouseDetail in list)
                         {
-                            if (obj.CurrentVolumn >= export)
+                            if (wareHouseDetail.ExportVolumn > 0)
                             {
-                                //Update whDetail
-                                obj.CurrentVolumn -= export;
-                                repwhDetail.Update(obj);
+                                //Update WareHouseDetail
+                                wareHouseDetail.CurrentVolumn -= wareHouseDetail.ExportVolumn;
+                                repwhDetail.Update(wareHouseDetail);
 
-                                //Insert data to WareHousePaperDetail
+                                //Insert data to WareHouseIODetail
                                 WareHouseIODetail item = new WareHouseIODetail();
-                                //item.WareHousePaperId = wareHouseIo.Id;
-                                item.LotNo = obj.LotNo;
-                                //item.Type = 1;
-                                item.MedicineId = obj.MedicineId;
-                                //item.Volumn = export;
-                                //item.Unit = obj.Unit;
-                                item.UnitPrice = obj.UnitPrice;
-                                item.ExpireDate = obj.ExpiredDate;
+                                item.WareHouseIOId = wareHouseIo.Id;
+                                item.LotNo = wareHouseDetail.LotNo;
+                                item.Type = "1";
+                                item.MedicineId = wareHouseDetail.MedicineId;
+                                item.Qty = wareHouseDetail.ExportVolumn;
+                                item.Unit = wareHouseDetail.Unit;
+                                item.UnitPrice = wareHouseDetail.UnitPrice;
+                                item.ExpireDate = wareHouseDetail.ExpiredDate;
                                 _repwhIoDetail.Insert(item);
 
                                 //Insert whExportAllocate
                                 WareHouseExportAllocate wareHouseExportAllocate = new WareHouseExportAllocate();
-                                wareHouseExportAllocate.WareHouseDetailId = obj.Id;
-                                wareHouseExportAllocate.WareHoudePaperDetailId = item.Id;
-                                wareHouseExportAllocate.Volumn = export;
-                                wareHouseExportAllocate.Unit = obj.Unit;
-                                // whExport.Insert(wareHouseExportAllocate);
-                                break;
-                            }
-                            else
-                            {
-                                //Insert data to WareHousePaperDetail
-                                WareHouseIODetail item = new WareHouseIODetail();
-                                //item.WareHousePaperId = wareHouseIo.Id;
-                                item.LotNo = obj.LotNo;
-                                //item.Type = 1;
-                                item.MedicineId = obj.MedicineId;
-                                //item.Volumn = obj.CurrentVolumn;
-                                //item.Unit = obj.Unit;
-                                item.UnitPrice = obj.UnitPrice;
-                                item.ExpireDate = obj.ExpiredDate;
-                                _repwhIoDetail.Insert(item);
-
-                                export -= obj.CurrentVolumn;
-
-                                //Update whDetail
-                                obj.CurrentVolumn = 0;
-                                repwhDetail.Update(obj);
-
-                                //Insert whExportAllocate
-                                WareHouseExportAllocate wareHouseExportAllocate = new WareHouseExportAllocate();
-                                wareHouseExportAllocate.WareHouseDetailId = obj.Id;
-                                wareHouseExportAllocate.WareHoudePaperDetailId = item.Id;
-                                wareHouseExportAllocate.Volumn = obj.CurrentVolumn;
-                                wareHouseExportAllocate.Unit = obj.Unit;
-                                // whExport.Insert(wareHouseExportAllocate);
+                                wareHouseExportAllocate.WareHouseDetailId = wareHouseDetail.Id;
+                                wareHouseExportAllocate.WareHouseIODetailId = item.Id;
+                                wareHouseExportAllocate.Volumn = wareHouseDetail.ExportVolumn;
+                                wareHouseExportAllocate.Unit = wareHouseDetail.Unit;
+                                whExport.Insert(wareHouseExportAllocate);
                             }
                         }
                     }
                 }
 
                 MessageBox.Show("Xuất kho thành công!");
-                dateExport.Value = DateTime.Now;
-                txtDeliverer.Text = string.Empty;
-                txtNo.Text = string.Empty;
-                txtNote.Text = string.Empty;
-                txtRecipient.Text = string.Empty;
-                grd.Rows.Clear();
             }
             catch (Exception ex)
             {
@@ -141,17 +111,21 @@ namespace Medical.WareHouseIE
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-
+            ClearData();
         }
 
-        private void grd_CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void ClearData()
         {
-            if (grd.Columns[e.ColumnIndex].Name == "btnExportAllocate")
-            {
-                WareHouse item = bdsWareHouse[e.RowIndex] as WareHouse;
-                ExportAllocateDetail frm = new ExportAllocateDetail(item.Id, item.MedicineId, int.Parse(grd.Rows[e.RowIndex].Cells["Export"].Value.ToString()));
-                frm.ShowDialog();
-            }
+            dateExport.Value = DateTime.Now;
+            txtDeliverer.Text = string.Empty;
+            txtOriginalNo.Text = string.Empty;
+            txtPhone.Text = string.Empty;
+            txtNo.Text = string.Empty;
+            txtNote.Text = string.Empty;
+            txtAddress.Text = string.Empty;
+            txtRecipient.Text = string.Empty;
+            bdsWareHouse.DataSource = new List<WareHouse>();
+            grd.Rows.Clear();
         }
 
         private void grd_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -167,6 +141,7 @@ namespace Medical.WareHouseIE
                         grd.Rows[e.RowIndex].Cells["MinAllowed"].Value = warehouseItem.MinAllowed;
                         grd.Rows[e.RowIndex].Cells["MedicineId"].Value = warehouseItem.MedicineId;
                         grd.Rows[e.RowIndex].Cells["Id"].Value = warehouseItem.Id;
+                        grd.Rows[e.RowIndex].Cells["ClinicId"].Value = warehouseItem.ClinicId;
                         grd.Rows[e.RowIndex].Cells["Export"].ReadOnly = false;
                     }
                     else
@@ -183,6 +158,10 @@ namespace Medical.WareHouseIE
                 {
                     grd.Rows[e.RowIndex].Cells["Export"].Value = 0;
                 }
+                else if (export > int.Parse(grd.Rows[e.RowIndex].Cells["Volumn"].Value.ToString()))
+                {
+                    grd.Rows[e.RowIndex].Cells["Export"].Value = grd.Rows[e.RowIndex].Cells["Volumn"].Value;
+                }
             }
         }
 
@@ -197,6 +176,41 @@ namespace Medical.WareHouseIE
             }
 
             return true;
+        }
+
+        private void grd_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (grd.Columns[e.ColumnIndex].Name == "btnExportAllocate")
+            {
+                WareHouse item = bdsWareHouse[e.RowIndex] as WareHouse;
+                if (item.Export > 0)
+                {
+                    string key = grd.Rows[e.RowIndex].Cells["MedicineId"].Value.ToString();
+                    List<WareHouseDetail> listWareHouseDetail = new List<WareHouseDetail>();
+                    if (item.Flag)
+                        listWareHouseDetail = dic[key];
+                    ExportAllocateDetail frm = new ExportAllocateDetail(item.Id, item.MedicineId, item.Export, listWareHouseDetail, item.Flag);
+                    frm.Flag = item.Flag;
+                    frm.StartPosition = FormStartPosition.CenterScreen;
+                    frm.ShowDialog();
+                    if (frm.Flag)
+                    {
+                        item.Flag = true;
+                        if (dic.Keys.Contains(key))
+                            dic[key] = frm.ListWareHouseDetail;
+                        else
+                            dic.Add(key, frm.ListWareHouseDetail);
+                    }
+                }
+            }
+        }
+
+        private void grd_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            if (grd.Columns[e.ColumnIndex].Name == "Export")
+            {
+                MessageBox.Show("Số lượng xuất kho phải là số và lớn hơn 0");
+            }
         }
     }
 }

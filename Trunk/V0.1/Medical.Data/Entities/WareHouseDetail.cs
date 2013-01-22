@@ -22,12 +22,14 @@ namespace Medical.Data.Entities
         public int CreatedUser { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public int LastUpdatedUser { get; set; }
-        public int Version { get; set; }
-
+        public int Version { get; set; }        
         public virtual List<MedicineDeliveryDetailAllocate> DeliveryAllocate { get; set; }
         public virtual Medicine Medicine { get; set; }
         // public virtual WareHouse WareHouse { get; set; }
         [NotMapped]
         public string MedicineName { get { return this.Medicine.Name; } }
+
+        [NotMapped]
+        public int ExportVolumn { get; set; }        
     }
 }

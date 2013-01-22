@@ -33,7 +33,7 @@ namespace Medical.Data.Entities
         {
             get
             {
-                if (this.Type == "I")
+                if (this.Type == "0")
                     return "Nhập kho";
                 else
                     return "Xuất kho";

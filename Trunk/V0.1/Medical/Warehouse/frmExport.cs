@@ -170,7 +170,7 @@ namespace Medical.Warehouse
                                 //Insert whExportAllocate
                                 WareHouseExportAllocate wareHouseExportAllocate = new WareHouseExportAllocate();
                                 wareHouseExportAllocate.WareHouseDetailId = obj.Id;
-                                wareHouseExportAllocate.WareHoudePaperDetailId = item.Id;
+                                wareHouseExportAllocate.WareHouseIODetailId = item.Id;
                                 wareHouseExportAllocate.Volumn = export;
                                 wareHouseExportAllocate.Unit = obj.Unit;
                                 // whExport.Insert(wareHouseExportAllocate);
@@ -199,7 +199,7 @@ namespace Medical.Warehouse
                                 //Insert whExportAllocate
                                 WareHouseExportAllocate wareHouseExportAllocate = new WareHouseExportAllocate();
                                 wareHouseExportAllocate.WareHouseDetailId = obj.Id;
-                                wareHouseExportAllocate.WareHoudePaperDetailId = item.Id;
+                                wareHouseExportAllocate.WareHouseIODetailId = item.Id;
                                 wareHouseExportAllocate.Volumn = obj.CurrentVolumn;
                                 wareHouseExportAllocate.Unit = obj.Unit;
                                 // whExport.Insert(wareHouseExportAllocate);

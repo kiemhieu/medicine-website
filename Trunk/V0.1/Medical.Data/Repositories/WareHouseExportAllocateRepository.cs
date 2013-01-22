@@ -72,7 +72,7 @@ namespace Medical.Data.Repositories
 
         public List<WareHouseExportAllocate> GetByPaperDetailId(int id)
         {
-            return this.Context.WareHouseExportAllocates.Where(c => c.WareHoudePaperDetailId == id).ToList();
+            return this.Context.WareHouseExportAllocates.Where(c => c.WareHouseIODetailId == id).ToList();
         }       
     }
 }

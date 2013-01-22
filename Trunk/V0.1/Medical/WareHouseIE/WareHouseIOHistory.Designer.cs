@@ -25,7 +25,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
@@ -35,32 +35,31 @@
             this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.txtTo = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtFrom = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.bdsClinic = new System.Windows.Forms.BindingSource(this.components);
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clinicIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.attachmentNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.personDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.attachmentNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wareHousePaperDetailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clinicIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsWareHouseIO = new System.Windows.Forms.BindingSource(this.components);
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.bdsClinic = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFrom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseIO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -76,7 +75,7 @@
             this.panelEx1.Controls.Add(this.btnSearch);
             this.panelEx1.Controls.Add(this.txtTo);
             this.panelEx1.Controls.Add(this.txtFrom);
-            this.panelEx1.Controls.Add(this.comboBoxEx1);
+            this.panelEx1.Controls.Add(this.cboClinic);
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
@@ -155,6 +154,7 @@
             this.btnExport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnExport.TabIndex = 4;
             this.btnExport.Text = "Xuất kho";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnSearch
             // 
@@ -218,8 +218,7 @@
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(82, 20);
             this.txtTo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtTo.TabIndex = 2;
-            this.txtTo.Click += new System.EventHandler(this.dateTimeInput2_Click);
+            this.txtTo.TabIndex = 2;            
             // 
             // txtFrom
             // 
@@ -272,53 +271,167 @@
             this.txtFrom.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtFrom.TabIndex = 1;
             // 
-            // comboBoxEx1
+            // cboClinic
             // 
-            this.comboBoxEx1.DisplayMember = "Text";
-            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.FormattingEnabled = true;
-            this.comboBoxEx1.ItemHeight = 14;
-            this.comboBoxEx1.Location = new System.Drawing.Point(60, 3);
-            this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(311, 20);
-            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx1.TabIndex = 0;
+            this.cboClinic.DataSource = this.bdsClinic;
+            this.cboClinic.DisplayMember = "Name";
+            this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboClinic.FormattingEnabled = true;
+            this.cboClinic.ItemHeight = 14;
+            this.cboClinic.Location = new System.Drawing.Point(60, 3);
+            this.cboClinic.Name = "cboClinic";
+            this.cboClinic.Size = new System.Drawing.Size(311, 20);
+            this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboClinic.TabIndex = 0;
+            this.cboClinic.ValueMember = "Id";
             // 
             // dataGridViewX1
             // 
+            this.dataGridViewX1.AllowUserToAddRows = false;
+            this.dataGridViewX1.AllowUserToDeleteRows = false;
             this.dataGridViewX1.AutoGenerateColumns = false;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.clinicIdDataGridViewTextBoxColumn,
-            this.typeDataGridViewTextBoxColumn,
+            this.typeNameDataGridViewTextBoxColumn,
             this.dateDataGridViewTextBoxColumn,
             this.noDataGridViewTextBoxColumn,
+            this.attachmentNoDataGridViewTextBoxColumn,
             this.personDataGridViewTextBoxColumn,
             this.phoneDataGridViewTextBoxColumn,
             this.addressDataGridViewTextBoxColumn,
             this.noteDataGridViewTextBoxColumn,
-            this.attachmentNoDataGridViewTextBoxColumn,
             this.createdDateDataGridViewTextBoxColumn,
             this.createdUserDataGridViewTextBoxColumn,
             this.versionDataGridViewTextBoxColumn,
-            this.wareHousePaperDetailsDataGridViewTextBoxColumn,
-            this.typeNameDataGridViewTextBoxColumn});
+            this.idDataGridViewTextBoxColumn,
+            this.clinicIdDataGridViewTextBoxColumn,
+            this.typeDataGridViewTextBoxColumn});
             this.dataGridViewX1.DataSource = this.bdsWareHouseIO;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 28);
             this.dataGridViewX1.Name = "dataGridViewX1";
+            this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.Size = new System.Drawing.Size(878, 481);
             this.dataGridViewX1.TabIndex = 1;
+            // 
+            // typeNameDataGridViewTextBoxColumn
+            // 
+            this.typeNameDataGridViewTextBoxColumn.DataPropertyName = "TypeName";
+            this.typeNameDataGridViewTextBoxColumn.HeaderText = "Kiểu";
+            this.typeNameDataGridViewTextBoxColumn.Name = "typeNameDataGridViewTextBoxColumn";
+            this.typeNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Ngày";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // noDataGridViewTextBoxColumn
+            // 
+            this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
+            this.noDataGridViewTextBoxColumn.HeaderText = "Chứng từ";
+            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
+            this.noDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // attachmentNoDataGridViewTextBoxColumn
+            // 
+            this.attachmentNoDataGridViewTextBoxColumn.DataPropertyName = "AttachmentNo";
+            this.attachmentNoDataGridViewTextBoxColumn.HeaderText = "Chứng từ gốc";
+            this.attachmentNoDataGridViewTextBoxColumn.Name = "attachmentNoDataGridViewTextBoxColumn";
+            this.attachmentNoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // personDataGridViewTextBoxColumn
+            // 
+            this.personDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.personDataGridViewTextBoxColumn.DataPropertyName = "Person";
+            this.personDataGridViewTextBoxColumn.HeaderText = "Người Xuất/Nhập";
+            this.personDataGridViewTextBoxColumn.Name = "personDataGridViewTextBoxColumn";
+            this.personDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Điện thoại";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Địa chỉ";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // noteDataGridViewTextBoxColumn
+            // 
+            this.noteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
+            this.noteDataGridViewTextBoxColumn.HeaderText = "Ghi chú";
+            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
+            this.noteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // createdDateDataGridViewTextBoxColumn
+            // 
+            this.createdDateDataGridViewTextBoxColumn.DataPropertyName = "CreatedDate";
+            this.createdDateDataGridViewTextBoxColumn.HeaderText = "CreatedDate";
+            this.createdDateDataGridViewTextBoxColumn.Name = "createdDateDataGridViewTextBoxColumn";
+            this.createdDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.createdDateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // createdUserDataGridViewTextBoxColumn
+            // 
+            this.createdUserDataGridViewTextBoxColumn.DataPropertyName = "CreatedUser";
+            this.createdUserDataGridViewTextBoxColumn.HeaderText = "CreatedUser";
+            this.createdUserDataGridViewTextBoxColumn.Name = "createdUserDataGridViewTextBoxColumn";
+            this.createdUserDataGridViewTextBoxColumn.ReadOnly = true;
+            this.createdUserDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // versionDataGridViewTextBoxColumn
+            // 
+            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
+            this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
+            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
+            this.versionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.versionDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // clinicIdDataGridViewTextBoxColumn
+            // 
+            this.clinicIdDataGridViewTextBoxColumn.DataPropertyName = "ClinicId";
+            this.clinicIdDataGridViewTextBoxColumn.HeaderText = "ClinicId";
+            this.clinicIdDataGridViewTextBoxColumn.Name = "clinicIdDataGridViewTextBoxColumn";
+            this.clinicIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.clinicIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.typeDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // bdsWareHouseIO
+            // 
+            this.bdsWareHouseIO.DataSource = typeof(Medical.Data.Entities.WareHouseIO);
             // 
             // styleManager1
             // 
@@ -328,101 +441,6 @@
             // bdsClinic
             // 
             this.bdsClinic.DataSource = typeof(Medical.Data.Entities.Clinic);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // clinicIdDataGridViewTextBoxColumn
-            // 
-            this.clinicIdDataGridViewTextBoxColumn.DataPropertyName = "ClinicId";
-            this.clinicIdDataGridViewTextBoxColumn.HeaderText = "ClinicId";
-            this.clinicIdDataGridViewTextBoxColumn.Name = "clinicIdDataGridViewTextBoxColumn";
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            // 
-            // noDataGridViewTextBoxColumn
-            // 
-            this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
-            this.noDataGridViewTextBoxColumn.HeaderText = "No";
-            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
-            // 
-            // personDataGridViewTextBoxColumn
-            // 
-            this.personDataGridViewTextBoxColumn.DataPropertyName = "Person";
-            this.personDataGridViewTextBoxColumn.HeaderText = "Person";
-            this.personDataGridViewTextBoxColumn.Name = "personDataGridViewTextBoxColumn";
-            // 
-            // phoneDataGridViewTextBoxColumn
-            // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            // 
-            // addressDataGridViewTextBoxColumn
-            // 
-            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
-            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-            // 
-            // noteDataGridViewTextBoxColumn
-            // 
-            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
-            this.noteDataGridViewTextBoxColumn.HeaderText = "Note";
-            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
-            // 
-            // attachmentNoDataGridViewTextBoxColumn
-            // 
-            this.attachmentNoDataGridViewTextBoxColumn.DataPropertyName = "AttachmentNo";
-            this.attachmentNoDataGridViewTextBoxColumn.HeaderText = "AttachmentNo";
-            this.attachmentNoDataGridViewTextBoxColumn.Name = "attachmentNoDataGridViewTextBoxColumn";
-            // 
-            // createdDateDataGridViewTextBoxColumn
-            // 
-            this.createdDateDataGridViewTextBoxColumn.DataPropertyName = "CreatedDate";
-            this.createdDateDataGridViewTextBoxColumn.HeaderText = "CreatedDate";
-            this.createdDateDataGridViewTextBoxColumn.Name = "createdDateDataGridViewTextBoxColumn";
-            // 
-            // createdUserDataGridViewTextBoxColumn
-            // 
-            this.createdUserDataGridViewTextBoxColumn.DataPropertyName = "CreatedUser";
-            this.createdUserDataGridViewTextBoxColumn.HeaderText = "CreatedUser";
-            this.createdUserDataGridViewTextBoxColumn.Name = "createdUserDataGridViewTextBoxColumn";
-            // 
-            // versionDataGridViewTextBoxColumn
-            // 
-            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
-            this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
-            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
-            // 
-            // wareHousePaperDetailsDataGridViewTextBoxColumn
-            // 
-            this.wareHousePaperDetailsDataGridViewTextBoxColumn.DataPropertyName = "WareHousePaperDetails";
-            this.wareHousePaperDetailsDataGridViewTextBoxColumn.HeaderText = "WareHousePaperDetails";
-            this.wareHousePaperDetailsDataGridViewTextBoxColumn.Name = "wareHousePaperDetailsDataGridViewTextBoxColumn";
-            // 
-            // typeNameDataGridViewTextBoxColumn
-            // 
-            this.typeNameDataGridViewTextBoxColumn.DataPropertyName = "TypeName";
-            this.typeNameDataGridViewTextBoxColumn.HeaderText = "TypeName";
-            this.typeNameDataGridViewTextBoxColumn.Name = "typeNameDataGridViewTextBoxColumn";
-            this.typeNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bdsWareHouseIO
-            // 
-            this.bdsWareHouseIO.DataSource = typeof(Medical.Data.Entities.WareHouseIO);
             // 
             // WareHouseIOHistory
             // 
@@ -439,8 +457,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFrom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseIO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -454,28 +472,28 @@
         private DevComponents.DotNetBar.ButtonX btnSearch;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput txtTo;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput txtFrom;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cboClinic;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clinicIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wareHousePaperDetailsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource bdsWareHouseIO;
+        private DevComponents.DotNetBar.LabelX labelX4;
+        private System.Windows.Forms.BindingSource bdsClinic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn attachmentNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn personDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn attachmentNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdUserDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn wareHousePaperDetailsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource bdsWareHouseIO;
-        private DevComponents.DotNetBar.LabelX labelX4;
-        private System.Windows.Forms.BindingSource bdsClinic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clinicIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
     }
 }
