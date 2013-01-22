@@ -129,15 +129,44 @@ namespace Medical.Data.Repositories
         {
             try
             {
-                List<WareHouseDetail> lst =
+                List<WareHouseDetail> list =
                     this.Context.WareHouseDetails.Where(x => x.MedicineId.Equals(medicineId) && x.WareHouseId == wareHouseId).OrderBy(c => c.ExpiredDate).ToList();
-                return lst;
+                return list;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;
             }
-        }       
+        }
+
+        public List<WareHouseDetail> GetMeicineExport(int wareHouseId, int medicineId, int export)
+        {
+            try
+            {
+                List<WareHouseDetail> list =
+                    this.Context.WareHouseDetails.Where(x => x.MedicineId.Equals(medicineId) && x.WareHouseId == wareHouseId).OrderBy(c => c.ExpiredDate).ToList();
+                foreach (var item in list)
+                {
+                    if (export > item.CurrentVolumn)
+                    {
+                        item.ExportVolumn = item.CurrentVolumn;
+                        export = export - item.CurrentVolumn;
+                    }
+                    else
+                    {
+                        item.ExportVolumn = export;
+                        export = 0;
+                    }
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
     }
 }

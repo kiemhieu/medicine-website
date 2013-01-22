@@ -26,10 +26,8 @@ namespace Medical.Data.Repositories
 
         public void Insert(WareHouseIO whIo)
         {
-            //whPaper.CreatedUser = AppContext.LoggedInUser.Id;
+            whIo.CreatedUser = AppContext.LoggedInUser.Id;
             whIo.CreatedDate = DateTime.Now;
-            //whPaper.LastUpdatedUser = AppContext.LoggedInUser.Id;
-            // whIo.LastUpdatedDate = DateTime.Now;
             whIo.Version = 0;
             this.Context.WareHouseIO.Add(whIo);
             this.Context.SaveChanges();
@@ -102,7 +100,7 @@ namespace Medical.Data.Repositories
                 this.Context.WareHouseIO.Where(
                     x =>
                     (!fromDate.HasValue || x.Date >= fromDate.Value) && (!toDate.HasValue || x.Date <= toDate.Value) &&
-                    (!clinicId.HasValue || x.ClinicId == clinicId)).OrderByDescending(x=>x.Id).ToList();
+                    (!clinicId.HasValue || x.ClinicId == clinicId)).OrderByDescending(x => x.Id).ToList();
         }
 
         public List<WareHouseIO> GetByClinicID(int idClinic)
@@ -120,16 +118,24 @@ namespace Medical.Data.Repositories
             }
         }
 
-        public List<WareHouseIO> Search(int type, DateTime fromDate, DateTime toDate)
+        public List<WareHouseIO> Search(string type, int clinicId, DateTime fromDate, DateTime toDate)
         {
             try
             {
-                if (type >= 0)
-                    // return this.Context.WareHousePapers.Where(x => x.Type == type && x.Date >= fromDate.Date && x.Date <= toDate).ToList();
-                    return this.Context.WareHouseIO.Where(x => x.Date >= fromDate.Date && x.Date <= toDate).ToList();
-
+                if (type != string.Empty)
+                {
+                    if (clinicId > 0)
+                        return this.Context.WareHouseIO.Where(x => x.ClinicId == clinicId && x.Type == type && x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                    else
+                        return this.Context.WareHouseIO.Where(x => x.Type == type && x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                }
                 else
-                    return this.Context.WareHouseIO.Where(x => x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                {
+                    if (clinicId > 0)
+                        return this.Context.WareHouseIO.Where(x => x.ClinicId == clinicId && x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                    else
+                        return this.Context.WareHouseIO.Where(x => x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                }
             }
             catch (Exception ex)
             {

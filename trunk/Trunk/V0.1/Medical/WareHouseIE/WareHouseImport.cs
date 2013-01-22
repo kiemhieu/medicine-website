@@ -73,7 +73,7 @@ namespace Medical.WareHouseIE
         {
             try
             {
-                if (bdsWareHouseIODetail.Count > 1)
+                if (bdsWareHouseIODetail.Count >= 1)
                 {
                     //Insert data to WareHouseIO
                     WareHouseIO wareHouseIo = new WareHouseIO();

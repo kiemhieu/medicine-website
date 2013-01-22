@@ -10,7 +10,7 @@ namespace Medical.Data.Entities
     public class WareHouseExportAllocate
     {
         public long Id { get; set; }
-        public int WareHoudePaperDetailId { get; set; }
+        public int WareHouseIODetailId { get; set; }
         public int WareHouseDetailId { get; set; }
         public int Volumn { get; set; }
         public int Unit { get; set; }

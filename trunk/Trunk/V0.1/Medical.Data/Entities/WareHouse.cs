@@ -26,12 +26,20 @@ namespace Medical.Data.Entities
         [NotMapped]
         public string ClinicName { get { return this.Clinic.Name; } }
 
+        [NotMapped]
+        public bool Flag { get; set; }
+
+        [NotMapped]
+        public int Export { get; set; }
+
         private int _remainQty;
 
         [NotMapped]
         public int RemainQty
         {
-            set { if (value == _remainQty) return;
+            set
+            {
+                if (value == _remainQty) return;
                 _remainQty = value;
                 this.OnPropertyChanged("RemainQty");
             }
