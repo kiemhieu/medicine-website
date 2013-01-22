@@ -138,7 +138,7 @@ namespace Medical.MedicinePlan
                 Medical.Data.Entities.MedicinePlan medicinePlan = new Medical.Data.Entities.MedicinePlan();
                 medicinePlan.Year = int.Parse(cboYear.SelectedItem.ToString());
                 medicinePlan.Month = int.Parse(cboMonth.SelectedItem.ToString());
-                medicinePlan.Status = Constants.Status_Wait;
+                // medicinePlan.Status = Constants.Status_Wait;
                 medicinePlan.Date = DateTime.Now;
                 medicinePlan.Note = txtNote.Text;
                 medicinePlan.ClinicId = int.Parse(cbClinic.SelectedValue.ToString());

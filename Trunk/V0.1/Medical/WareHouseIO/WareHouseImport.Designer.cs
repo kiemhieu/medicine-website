@@ -31,6 +31,7 @@
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX6 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.bdsWareHouse = new System.Windows.Forms.BindingSource(this.components);
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX5 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
@@ -47,22 +48,31 @@
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.bdsWareHouseDetail = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsWareHouse = new System.Windows.Forms.BindingSource(this.components);
-            this.medicineIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.lotNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MedicineId = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
             this.expireDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.medicineDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wareHouseIODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
             this.panelEx2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseDetail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -170,6 +180,10 @@
             this.textBoxX6.Name = "textBoxX6";
             this.textBoxX6.Size = new System.Drawing.Size(130, 20);
             this.textBoxX6.TabIndex = 13;
+            // 
+            // bdsWareHouse
+            // 
+            this.bdsWareHouse.DataSource = typeof(Medical.Data.Entities.WareHouseIO);
             // 
             // labelX7
             // 
@@ -441,25 +455,35 @@
             this.buttonX1.TabIndex = 0;
             this.buttonX1.Text = "Bỏ qua";
             // 
+            // bdsWareHouseDetail
+            // 
+            this.bdsWareHouseDetail.DataSource = typeof(Medical.Data.Entities.WareHouseIODetail);
+            // 
             // dataGridViewX1
             // 
             this.dataGridViewX1.AutoGenerateColumns = false;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.medicineIdDataGridViewTextBoxColumn,
-            this.Unit,
-            this.qtyDataGridViewTextBoxColumn,
             this.lotNoDataGridViewTextBoxColumn,
+            this.MedicineId,
             this.expireDateDataGridViewTextBoxColumn,
+            this.qtyDataGridViewTextBoxColumn,
             this.unitPriceDataGridViewTextBoxColumn,
-            this.amountDataGridViewTextBoxColumn});
-            this.dataGridViewX1.DataSource = this.bdsWareHouseDetail;
+            this.amountDataGridViewTextBoxColumn,
+            this.createdDateDataGridViewTextBoxColumn,
+            this.versionDataGridViewTextBoxColumn,
+            this.unitDataGridViewTextBoxColumn,
+            this.medicineDataGridViewTextBoxColumn,
+            this.wareHouseIODataGridViewTextBoxColumn,
+            this.medicineNameDataGridViewTextBoxColumn,
+            this.unitNameDataGridViewTextBoxColumn});
+            this.dataGridViewX1.DataSource = this.bindingSource1;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -469,31 +493,13 @@
             this.dataGridViewX1.Size = new System.Drawing.Size(864, 393);
             this.dataGridViewX1.TabIndex = 2;
             // 
-            // bdsWareHouseDetail
+            // bindingSource1
             // 
-            this.bdsWareHouseDetail.DataSource = typeof(Medical.Data.Entities.WareHouseIODetail);
+            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.WareHouseIODetail);
             // 
-            // bdsWareHouse
+            // bindingSource2
             // 
-            this.bdsWareHouse.DataSource = typeof(Medical.Data.Entities.WareHouseIO);
-            // 
-            // medicineIdDataGridViewTextBoxColumn
-            // 
-            this.medicineIdDataGridViewTextBoxColumn.DataPropertyName = "MedicineId";
-            this.medicineIdDataGridViewTextBoxColumn.HeaderText = "MedicineId";
-            this.medicineIdDataGridViewTextBoxColumn.Name = "medicineIdDataGridViewTextBoxColumn";
-            // 
-            // Unit
-            // 
-            this.Unit.DataPropertyName = "Unit";
-            this.Unit.HeaderText = "Unit";
-            this.Unit.Name = "Unit";
-            // 
-            // qtyDataGridViewTextBoxColumn
-            // 
-            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
-            this.qtyDataGridViewTextBoxColumn.HeaderText = "Qty";
-            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
+            this.bindingSource2.DataSource = typeof(Medical.Data.Entities.Medicine);
             // 
             // lotNoDataGridViewTextBoxColumn
             // 
@@ -501,11 +507,33 @@
             this.lotNoDataGridViewTextBoxColumn.HeaderText = "LotNo";
             this.lotNoDataGridViewTextBoxColumn.Name = "lotNoDataGridViewTextBoxColumn";
             // 
+            // MedicineId
+            // 
+            this.MedicineId.DataPropertyName = "MedicineId";
+            this.MedicineId.DataSource = this.bindingSource2;
+            this.MedicineId.DisplayMember = "Name";
+            this.MedicineId.DropDownHeight = 106;
+            this.MedicineId.DropDownWidth = 121;
+            this.MedicineId.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MedicineId.HeaderText = "MedicineId";
+            this.MedicineId.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.MedicineId.ItemHeight = 15;
+            this.MedicineId.Name = "MedicineId";
+            this.MedicineId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.MedicineId.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.MedicineId.ValueMember = "Id";
+            // 
             // expireDateDataGridViewTextBoxColumn
             // 
             this.expireDateDataGridViewTextBoxColumn.DataPropertyName = "ExpireDate";
             this.expireDateDataGridViewTextBoxColumn.HeaderText = "ExpireDate";
             this.expireDateDataGridViewTextBoxColumn.Name = "expireDateDataGridViewTextBoxColumn";
+            // 
+            // qtyDataGridViewTextBoxColumn
+            // 
+            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
+            this.qtyDataGridViewTextBoxColumn.HeaderText = "Qty";
+            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
             // 
             // unitPriceDataGridViewTextBoxColumn
             // 
@@ -518,6 +546,50 @@
             this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
             this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
             this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+            // 
+            // createdDateDataGridViewTextBoxColumn
+            // 
+            this.createdDateDataGridViewTextBoxColumn.DataPropertyName = "CreatedDate";
+            this.createdDateDataGridViewTextBoxColumn.HeaderText = "CreatedDate";
+            this.createdDateDataGridViewTextBoxColumn.Name = "createdDateDataGridViewTextBoxColumn";
+            // 
+            // versionDataGridViewTextBoxColumn
+            // 
+            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
+            this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
+            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
+            // 
+            // unitDataGridViewTextBoxColumn
+            // 
+            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
+            this.unitDataGridViewTextBoxColumn.HeaderText = "Unit";
+            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
+            // 
+            // medicineDataGridViewTextBoxColumn
+            // 
+            this.medicineDataGridViewTextBoxColumn.DataPropertyName = "Medicine";
+            this.medicineDataGridViewTextBoxColumn.HeaderText = "Medicine";
+            this.medicineDataGridViewTextBoxColumn.Name = "medicineDataGridViewTextBoxColumn";
+            // 
+            // wareHouseIODataGridViewTextBoxColumn
+            // 
+            this.wareHouseIODataGridViewTextBoxColumn.DataPropertyName = "WareHouseIO";
+            this.wareHouseIODataGridViewTextBoxColumn.HeaderText = "WareHouseIO";
+            this.wareHouseIODataGridViewTextBoxColumn.Name = "wareHouseIODataGridViewTextBoxColumn";
+            // 
+            // medicineNameDataGridViewTextBoxColumn
+            // 
+            this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
+            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "MedicineName";
+            this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
+            this.medicineNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // unitNameDataGridViewTextBoxColumn
+            // 
+            this.unitNameDataGridViewTextBoxColumn.DataPropertyName = "UnitName";
+            this.unitNameDataGridViewTextBoxColumn.HeaderText = "UnitName";
+            this.unitNameDataGridViewTextBoxColumn.Name = "unitNameDataGridViewTextBoxColumn";
+            this.unitNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // WareHouseImport
             // 
@@ -533,11 +605,13 @@
             this.Load += new System.EventHandler(this.WareHouseImport_Load);
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).EndInit();
             this.panelEx2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseDetail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -561,7 +635,6 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dateTimeInput1;
         private DevComponents.DotNetBar.PanelEx panelEx2;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
         private DevComponents.DotNetBar.LabelX labelX9;
         private DevComponents.DotNetBar.LabelX labelX8;
         private DevComponents.DotNetBar.ButtonX buttonX2;
@@ -570,13 +643,22 @@
         private System.Windows.Forms.BindingSource bdsWareHouse;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX7;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn medicineIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
+        private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn lotNoDataGridViewTextBoxColumn;
+        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn MedicineId;
+        private System.Windows.Forms.BindingSource bindingSource2;
         private System.Windows.Forms.DataGridViewTextBoxColumn expireDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createdDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn medicineDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wareHouseIODataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn medicineNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitNameDataGridViewTextBoxColumn;
 
     }
 }

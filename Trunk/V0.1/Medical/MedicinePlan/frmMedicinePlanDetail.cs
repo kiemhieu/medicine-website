@@ -107,6 +107,7 @@ namespace Medical.MedicinePlan
             cboYear.Enabled = false;
             cboMonth.Enabled = false;
 
+            /*
             if (item.Status != Constants.Status_Approped)
             {
                 if (item.CreatedUser == AppContext.LoggedInUser.Id)
@@ -135,6 +136,7 @@ namespace Medical.MedicinePlan
             InitGrid(IsOwner);
             cbClinic.DataSource = repClinic.GetAll();
             grd.DataSource = repMedicinePlanDetail.GetByPlanId(PlanId);
+             */
 
         }
 
@@ -143,7 +145,7 @@ namespace Medical.MedicinePlan
             try
             {
                 Medical.Data.Entities.MedicinePlan medicinePlan = repMedicinePlan.GetById(PlanId);
-                medicinePlan.Status = cboStatus.SelectedItem.ToString();
+                // medicinePlan.Status = cboStatus.SelectedItem.ToString();
                 medicinePlan.Date = DateTime.Now;
                 medicinePlan.Note = txtNote.Text;
 
@@ -167,7 +169,7 @@ namespace Medical.MedicinePlan
 
                 repMedicinePlan.Update(medicinePlan);
 
-                Status = medicinePlan.Status;
+                // Status = medicinePlan.Status;
                 MessageBox.Show("Tạo kế hoạch thành công!");
                 this.Close();
             }
