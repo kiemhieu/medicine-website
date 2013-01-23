@@ -102,6 +102,7 @@ namespace Medical.WareHouseIE
                 }
 
                 MessageBox.Show("Xuất kho thành công!");
+                ClearData();
             }
             catch (Exception ex)
             {

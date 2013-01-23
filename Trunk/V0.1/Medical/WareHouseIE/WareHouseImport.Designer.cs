@@ -25,7 +25,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.btnRemove = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
@@ -49,8 +49,9 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dateImport = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.cboMedicine = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bdsMeidcine = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsWareHouseIODetail = new System.Windows.Forms.BindingSource(this.components);
+            this.cboMedicine = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.lotNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expireDateDataGridViewTextBoxColumn = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
@@ -59,7 +60,6 @@
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MedicineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsWareHouseIODetail = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateImport)).BeginInit();
@@ -447,14 +447,14 @@
             this.MedicineId,
             this.Unit});
             this.grd.DataSource = this.bdsWareHouseIODetail;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grd.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grd.DefaultCellStyle = dataGridViewCellStyle1;
             this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.grd.Location = new System.Drawing.Point(0, 116);
             this.grd.Name = "grd";
@@ -462,6 +462,14 @@
             this.grd.TabIndex = 2;
             this.grd.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellEndEdit);
             this.grd.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.grd_DataError);
+            // 
+            // bdsMeidcine
+            // 
+            this.bdsMeidcine.DataSource = typeof(Medical.Data.Entities.Medicine);
+            // 
+            // bdsWareHouseIODetail
+            // 
+            this.bdsWareHouseIODetail.DataSource = typeof(Medical.Data.Entities.WareHouseIODetail);
             // 
             // cboMedicine
             // 
@@ -471,10 +479,6 @@
             this.cboMedicine.HeaderText = "Tên thuốc";
             this.cboMedicine.Name = "cboMedicine";
             this.cboMedicine.ValueMember = "Id";
-            // 
-            // bdsMeidcine
-            // 
-            this.bdsMeidcine.DataSource = typeof(Medical.Data.Entities.Medicine);
             // 
             // lotNoDataGridViewTextBoxColumn
             // 
@@ -486,6 +490,7 @@
             // 
             this.UnitName.HeaderText = "Đơn vị";
             this.UnitName.Name = "UnitName";
+            this.UnitName.ReadOnly = true;
             // 
             // expireDateDataGridViewTextBoxColumn
             // 
@@ -559,10 +564,6 @@
             this.Unit.HeaderText = "Unit";
             this.Unit.Name = "Unit";
             this.Unit.Visible = false;
-            // 
-            // bdsWareHouseIODetail
-            // 
-            this.bdsWareHouseIODetail.DataSource = typeof(Medical.Data.Entities.WareHouseIODetail);
             // 
             // WareHouseImport
             // 
