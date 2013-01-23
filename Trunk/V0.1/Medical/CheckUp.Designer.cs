@@ -106,7 +106,7 @@
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Location = new System.Drawing.Point(12, 5);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(50, 15);
+            this.labelX1.Size = new System.Drawing.Size(50, 16);
             this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "Họ và tên";
@@ -461,7 +461,6 @@
             this.textBoxX9.ReadOnly = true;
             this.textBoxX9.Size = new System.Drawing.Size(86, 20);
             this.textBoxX9.TabIndex = 14;
-            this.textBoxX9.Text = "12/12/2222";
             // 
             // bdsPrescription
             // 
@@ -548,7 +547,6 @@
             this.textBoxX11.ReadOnly = true;
             this.textBoxX11.Size = new System.Drawing.Size(103, 20);
             this.textBoxX11.TabIndex = 20;
-            this.textBoxX11.Text = "1A Rời";
             // 
             // textBoxX12
             // 
@@ -567,7 +565,6 @@
             this.textBoxX12.ReadOnly = true;
             this.textBoxX12.Size = new System.Drawing.Size(653, 125);
             this.textBoxX12.TabIndex = 21;
-            this.textBoxX12.Text = "-xin chao\r\n-benh ngay cang kho";
             // 
             // labelX13
             // 
@@ -590,7 +587,7 @@
             this.panel1.AutoSize = true;
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 27);
+            this.panel1.Location = new System.Drawing.Point(0, 26);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(9, 0, 9, 5);
             this.panel1.Size = new System.Drawing.Size(873, 104);
@@ -607,7 +604,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(873, 27);
+            this.panel2.Size = new System.Drawing.Size(873, 26);
             this.panel2.TabIndex = 25;
             // 
             // btnCheck
@@ -618,7 +615,7 @@
             this.btnCheck.Image = global::Medical.Properties.Resources.doctor;
             this.btnCheck.Location = new System.Drawing.Point(781, 1);
             this.btnCheck.Name = "btnCheck";
-            this.btnCheck.Size = new System.Drawing.Size(89, 23);
+            this.btnCheck.Size = new System.Drawing.Size(89, 21);
             this.btnCheck.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCheck.TabIndex = 3;
             this.btnCheck.Text = "Khám bệnh";
@@ -632,7 +629,7 @@
             this.btnCheckingHistory.Image = global::Medical.Properties.Resources.document;
             this.btnCheckingHistory.Location = new System.Drawing.Point(720, 1);
             this.btnCheckingHistory.Name = "btnCheckingHistory";
-            this.btnCheckingHistory.Size = new System.Drawing.Size(60, 23);
+            this.btnCheckingHistory.Size = new System.Drawing.Size(60, 21);
             this.btnCheckingHistory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCheckingHistory.TabIndex = 2;
             this.btnCheckingHistory.Text = "Y bạ";
@@ -647,7 +644,7 @@
             this.btnRegister.Image = global::Medical.Properties.Resources.add;
             this.btnRegister.Location = new System.Drawing.Point(620, 1);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(99, 23);
+            this.btnRegister.Size = new System.Drawing.Size(99, 21);
             this.btnRegister.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRegister.TabIndex = 1;
             this.btnRegister.Text = "Đăng ký mới";
@@ -657,10 +654,10 @@
             // 
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 131);
+            this.panel3.Location = new System.Drawing.Point(0, 130);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(9, 5, 9, 9);
-            this.panel3.Size = new System.Drawing.Size(873, 359);
+            this.panel3.Size = new System.Drawing.Size(873, 360);
             this.panel3.TabIndex = 26;
             // 
             // groupBox2
@@ -682,7 +679,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(9, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(855, 345);
+            this.groupBox2.Size = new System.Drawing.Size(855, 346);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tình trạng bệnh";
@@ -727,7 +724,7 @@
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersVisible = false;
-            this.dataGridViewX1.Size = new System.Drawing.Size(652, 151);
+            this.dataGridViewX1.Size = new System.Drawing.Size(652, 152);
             this.dataGridViewX1.TabIndex = 26;
             // 
             // noDataGridViewTextBoxColumn
@@ -808,7 +805,6 @@
             this.textBoxX15.ReadOnly = true;
             this.textBoxX15.Size = new System.Drawing.Size(86, 20);
             this.textBoxX15.TabIndex = 25;
-            this.textBoxX15.Text = "12/12/2222";
             // 
             // labelX14
             // 
@@ -838,7 +834,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(773, 37);
