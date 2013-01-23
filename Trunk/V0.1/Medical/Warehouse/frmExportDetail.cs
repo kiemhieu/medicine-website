@@ -95,7 +95,7 @@ namespace Medical.Warehouse
             Status = false;
             if (MessageBox.Show("", "", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
-                var listPaperDetail = _repwhIoDetail.GetByPaperId(whPaperId);
+                var listPaperDetail = _repwhIoDetail.GetByIOId(whPaperId);
                 foreach (var paperDetail in listPaperDetail)
                 {
                     var listExport = whExport.GetByPaperDetailId(paperDetail.Id);
@@ -134,7 +134,7 @@ namespace Medical.Warehouse
                     //txtDeliverer.Text = item.Deliverer;
                     dateImport.Value = item.Date;
                     cbClinic.SelectedIndex = GetComboIndex(cbClinic, item.ClinicId);
-                    grd.DataSource = _repwhIoDetail.GetByPaperId(exportId);
+                    grd.DataSource = _repwhIoDetail.GetByIOId(exportId);
                 }
             }
         }

@@ -209,6 +209,12 @@
     <Compile Include="WareHouseIE\ExportAllocateDetail.Designer.cs">
       <DependentUpon>ExportAllocateDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="WareHouseIE\WareHouseIEDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WareHouseIE\WareHouseIEDetail.Designer.cs">
+      <DependentUpon>WareHouseIEDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="WareHouseMonthlyReport\WareHouseMonthlyReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -387,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WareHouseIE\ExportAllocateDetail.resx">
       <DependentUpon>ExportAllocateDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WareHouseIE\WareHouseIEDetail.resx">
+      <DependentUpon>WareHouseIEDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WareHouseMonthlyReport\Report1.rdlc" />
     <EmbeddedResource Include="WareHouseMonthlyReport\WareHouseMonthlyReport.resx">

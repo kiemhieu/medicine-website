@@ -91,12 +91,12 @@ namespace Medical.Data.Repositories {
                 return null;
             }
         }
-        public List<WareHouseIODetail> GetByPaperId(int idPaper)
+        public List<WareHouseIODetail> GetByIOId(int id)
         {
             try
             {
                 List<WareHouseIODetail> lst =
-                    this.Context.WareHouseIODetail.Where(x => x.WareHouseIOId.Equals(idPaper)).ToList();
+                    this.Context.WareHouseIODetail.Where(x => x.WareHouseIOId.Equals(id)).ToList();
                 return lst;
             }
             catch (Exception ex)
