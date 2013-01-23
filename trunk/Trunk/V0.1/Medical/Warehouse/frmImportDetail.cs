@@ -101,7 +101,7 @@ namespace Medical.Warehouse
                     dateImport.Value = item.Date;
                     cbClinic.SelectedIndex = GetComboIndex(cbClinic, item.ClinicId);
 
-                    grd.DataSource = _repwhIoDetail.GetByPaperId(importId);
+                    grd.DataSource = _repwhIoDetail.GetByIOId(importId);
                 }
             }
         }

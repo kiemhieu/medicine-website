@@ -151,8 +151,8 @@ namespace Medical.Data.Repositories
                                 {
                                     UnitName = Context.Medicines.Where(c => c.Id == id).FirstOrDefault().Define.Name,
                                     MedicineName = Context.Medicines.Where(c => c.Id == id).FirstOrDefault().Name,
-                                    InStock = GetInventory(0, id, fromDate, toDate),
-                                    CurrentMonthUsage = GetInventory(1, id, fromDate, toDate)
+                                    InStock = GetInventory("0", id, fromDate, toDate),
+                                    CurrentMonthUsage = GetInventory("1", id, fromDate, toDate)
                                 }
                             );
                 }
@@ -164,15 +164,13 @@ namespace Medical.Data.Repositories
             return list;
         }
 
-        private int GetInventory(int type, int medicineId, DateTime fromDate, DateTime toDate)
+        private int GetInventory(string type, int medicineId, DateTime fromDate, DateTime toDate)
         {
-            /*
-            var item = (from p in Context.WareHousePaperDetails where p.MedicineId == medicineId && p.Type == type && p.CreatedDate < toDate && p.CreatedDate > fromDate
+            var item = (from p in Context.WareHouseIODetail
+                        where p.MedicineId == medicineId && p.Type == type && p.CreatedDate < toDate && p.CreatedDate > fromDate
                         group p by p.MedicineId into g
-                        select new { Volumn = g.Sum(p => p.Volumn) }).FirstOrDefault();
-            return item != null ? item.Volumn : 0;
-             */
-            return 0;
+                        select new { Qty = g.Sum(p => p.Qty) }).FirstOrDefault();
+            return item != null ? item.Qty : 0;
         }
 
         public List<MedicinePlanDetail> GetByPlan(int clinicId, int year, int month)
