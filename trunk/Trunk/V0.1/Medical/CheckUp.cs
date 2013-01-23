@@ -93,7 +93,14 @@ namespace Medical {
 
             if (lastPrescription == null) return;
             this.bdsPrescription.DataSource = lastPrescription;
-            if (lastPrescription.PrescriptionDetails != null) this.bdsPrescriptionDetail.DataSource = lastPrescription.PrescriptionDetails;
+            if (lastPrescription.PrescriptionDetails != null)
+            {
+                for (int i = lastPrescription.PrescriptionDetails)
+                {
+                    
+                }
+                this.bdsPrescriptionDetail.DataSource = lastPrescription.PrescriptionDetails;
+            }
         }
     }
 }
