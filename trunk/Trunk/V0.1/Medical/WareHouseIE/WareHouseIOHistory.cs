@@ -3,6 +3,8 @@ using Medical.Data;
 using Medical.Data.Repositories;
 using WeifenLuo.WinFormsUI.Docking;
 using System;
+using Medical.Data.Entities;
+using System.Collections.Generic;
 
 namespace Medical.WareHouseIE
 {
@@ -55,6 +57,14 @@ namespace Medical.WareHouseIE
         private void BindClinic()
         {
             bdsClinic.DataSource = repClinic.GetAll();
+        }        
+
+        private void grd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var list = bdsWareHouseIO.DataSource as List<WareHouseIO>;
+            WareHouseIEDetail frm = new WareHouseIEDetail(list[e.RowIndex].Id);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
         }
     }
 }

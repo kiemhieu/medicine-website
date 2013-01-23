@@ -33,6 +33,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MedicineName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lotNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expiredDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CurrentVolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExportVolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsWareHouseDetail = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.txtNotAllocatedQty = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
@@ -40,25 +47,13 @@
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.txtQty = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MedicineName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CurrentVolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExportVolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lotNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expiredDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsWareHouseDetail = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseDetail)).BeginInit();
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseDetail)).BeginInit();
             this.SuspendLayout();
             // 
             // grd
@@ -96,7 +91,6 @@
             this.grd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.grd.HighlightSelectedColumnHeaders = false;
-            this.errorProvider1.SetIconAlignment(this.grd, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
             this.grd.Location = new System.Drawing.Point(0, 32);
             this.grd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grd.MultiSelect = false;
@@ -106,6 +100,55 @@
             this.grd.Size = new System.Drawing.Size(649, 312);
             this.grd.TabIndex = 1;
             this.grd.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellEndEdit);
+            // 
+            // No
+            // 
+            this.No.DataPropertyName = "No";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.No.DefaultCellStyle = dataGridViewCellStyle2;
+            this.No.HeaderText = "STT";
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            this.No.Width = 50;
+            // 
+            // MedicineName
+            // 
+            this.MedicineName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MedicineName.DataPropertyName = "MedicineName";
+            this.MedicineName.HeaderText = "Tên thuốc";
+            this.MedicineName.Name = "MedicineName";
+            this.MedicineName.ReadOnly = true;
+            // 
+            // lotNoDataGridViewTextBoxColumn
+            // 
+            this.lotNoDataGridViewTextBoxColumn.DataPropertyName = "LotNo";
+            this.lotNoDataGridViewTextBoxColumn.HeaderText = "Lô";
+            this.lotNoDataGridViewTextBoxColumn.Name = "lotNoDataGridViewTextBoxColumn";
+            this.lotNoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // expiredDateDataGridViewTextBoxColumn
+            // 
+            this.expiredDateDataGridViewTextBoxColumn.DataPropertyName = "ExpiredDate";
+            this.expiredDateDataGridViewTextBoxColumn.HeaderText = "Hạn sử dụng";
+            this.expiredDateDataGridViewTextBoxColumn.Name = "expiredDateDataGridViewTextBoxColumn";
+            this.expiredDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // CurrentVolumn
+            // 
+            this.CurrentVolumn.DataPropertyName = "CurrentVolumn";
+            this.CurrentVolumn.HeaderText = "Số lượng";
+            this.CurrentVolumn.Name = "CurrentVolumn";
+            this.CurrentVolumn.ReadOnly = true;
+            // 
+            // ExportVolumn
+            // 
+            this.ExportVolumn.DataPropertyName = "ExportVolumn";
+            this.ExportVolumn.HeaderText = "Đã chọn";
+            this.ExportVolumn.Name = "ExportVolumn";
+            // 
+            // bdsWareHouseDetail
+            // 
+            this.bdsWareHouseDetail.DataSource = typeof(Medical.Data.Entities.WareHouseDetail);
             // 
             // panelEx1
             // 
@@ -220,11 +263,6 @@
             this.labelX3.TabIndex = 4;
             this.labelX3.Text = "Cần xuất";
             // 
-            // styleManager1
-            // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
-            // 
             // panelEx2
             // 
             this.panelEx2.AutoSize = true;
@@ -274,65 +312,6 @@
             this.btnCancel.ThemeAware = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // errorProvider2
-            // 
-            this.errorProvider2.ContainerControl = this;
-            this.errorProvider2.DataSource = this.bdsWareHouseDetail;
-            // 
-            // No
-            // 
-            this.No.DataPropertyName = "No";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.No.DefaultCellStyle = dataGridViewCellStyle2;
-            this.No.HeaderText = "STT";
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            this.No.Width = 50;
-            // 
-            // MedicineName
-            // 
-            this.MedicineName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.MedicineName.DataPropertyName = "MedicineName";
-            this.MedicineName.HeaderText = "Tên thuốc";
-            this.MedicineName.Name = "MedicineName";
-            this.MedicineName.ReadOnly = true;
-            // 
-            // CurrentVolumn
-            // 
-            this.CurrentVolumn.DataPropertyName = "CurrentVolumn";
-            this.CurrentVolumn.HeaderText = "Số lượng";
-            this.CurrentVolumn.Name = "CurrentVolumn";
-            this.CurrentVolumn.ReadOnly = true;
-            // 
-            // ExportVolumn
-            // 
-            this.ExportVolumn.DataPropertyName = "ExportVolumn";
-            this.ExportVolumn.HeaderText = "Đã chọn";
-            this.ExportVolumn.Name = "ExportVolumn";
-            // 
-            // lotNoDataGridViewTextBoxColumn
-            // 
-            this.lotNoDataGridViewTextBoxColumn.DataPropertyName = "LotNo";
-            this.lotNoDataGridViewTextBoxColumn.HeaderText = "Lô";
-            this.lotNoDataGridViewTextBoxColumn.Name = "lotNoDataGridViewTextBoxColumn";
-            this.lotNoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // expiredDateDataGridViewTextBoxColumn
-            // 
-            this.expiredDateDataGridViewTextBoxColumn.DataPropertyName = "ExpiredDate";
-            this.expiredDateDataGridViewTextBoxColumn.HeaderText = "Hạn sử dụng";
-            this.expiredDateDataGridViewTextBoxColumn.Name = "expiredDateDataGridViewTextBoxColumn";
-            this.expiredDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bdsWareHouseDetail
-            // 
-            this.bdsWareHouseDetail.DataSource = typeof(Medical.Data.Entities.WareHouseDetail);
-            // 
             // ExportAllocateDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -345,15 +324,13 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ExportAllocateDetail";
-            this.Text = "DeliveryAllocateDetail";
+            this.Text = "Chi tiết xuất kho";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ExportAllocateDetail_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseDetail)).EndInit();
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
             this.panelEx2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseDetail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,7 +341,6 @@
         private DevComponents.DotNetBar.Controls.DataGridViewX grd;
         private System.Windows.Forms.BindingSource bdsWareHouseDetail;
         private DevComponents.DotNetBar.PanelEx panelEx1;
-        private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.Controls.TextBoxX txtNotAllocatedQty;
         private DevComponents.DotNetBar.LabelX labelX5;
         private DevComponents.DotNetBar.Controls.TextBoxX txtAllocatedQty;
@@ -374,8 +350,6 @@
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private DevComponents.DotNetBar.ButtonX btnSave;
         private DevComponents.DotNetBar.ButtonX btnCancel;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ErrorProvider errorProvider2;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn MedicineName;
         private System.Windows.Forms.DataGridViewTextBoxColumn lotNoDataGridViewTextBoxColumn;

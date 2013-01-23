@@ -31,13 +31,8 @@ namespace Medical.WareHouseIE
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnDeliver_Click(object sender, EventArgs e)
-        {
-
-        }
+            ClearData();
+        }      
 
         private void grd_CellEndEdit(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
@@ -73,7 +68,7 @@ namespace Medical.WareHouseIE
         {
             try
             {
-                if (bdsWareHouseIODetail.Count >= 1)
+                if (ValidateItemData())
                 {
                     //Insert data to WareHouseIO
                     WareHouseIO wareHouseIo = new WareHouseIO();
@@ -94,67 +89,59 @@ namespace Medical.WareHouseIE
                     //Insert data to WareHouseIODetail
                     foreach (WareHouseIODetail obj in bdsWareHouseIODetail)
                     {
-                        if (ValidateItemData(obj))
+                        WareHouseIODetail item = new WareHouseIODetail();
+                        item.WareHouseIOId = wareHouseIo.Id;
+                        item.LotNo = obj.LotNo;
+                        item.Type = "0";
+                        item.MedicineId = obj.MedicineId;
+                        item.Qty = obj.Qty;
+                        item.Unit = obj.Unit;
+                        item.UnitPrice = obj.UnitPrice;
+                        item.Amount = obj.Amount;
+                        item.ExpireDate = obj.ExpireDate;
+                        item.CreatedDate = wareHouseIo.CreatedDate;
+                        _wareHouseIoDetailRepository.Insert(item);
+
+                        //Insert data to WareHouse
+                        var wareHouse = _wareHouseRepository.GetByIdMedicine(item.MedicineId, wareHouseIo.ClinicId);
+                        if (wareHouse != null)
                         {
-                            WareHouseIODetail item = new WareHouseIODetail();
-                            item.WareHouseIOId = wareHouseIo.Id;
-                            item.LotNo = obj.LotNo;
-                            item.Type = "0";
-                            item.MedicineId = obj.MedicineId;
-                            item.Qty = obj.Qty;
-                            item.Unit = obj.Unit;
-                            item.UnitPrice = obj.UnitPrice;
-                            item.Amount = obj.Amount;
-                            item.ExpireDate = obj.ExpireDate;
-                            item.CreatedDate = wareHouseIo.CreatedDate;
-                            _wareHouseIoDetailRepository.Insert(item);
-
-                            //Insert data to WareHouse
-                            var wareHouse = _wareHouseRepository.GetByIdMedicine(item.MedicineId, wareHouseIo.ClinicId);
-                            if (wareHouse != null)
-                            {
-                                wareHouse.Volumn += item.Qty;
-                                _wareHouseRepository.Update(wareHouse);
-                            }
-                            else
-                            {
-                                wareHouse = new WareHouse();
-                                wareHouse.MedicineId = item.MedicineId;
-                                wareHouse.ClinicId = wareHouseIo.ClinicId;
-                                wareHouse.Volumn = item.Qty;
-                                wareHouse.MinAllowed = 0;
-                                _wareHouseRepository.Insert(wareHouse);
-                            }
-
-                            //Insert data to WareHouseDetail
-                            WareHouseDetail wareHouseDetail = new WareHouseDetail();
-                            wareHouseDetail.MedicineId = item.MedicineId;
-                            wareHouseDetail.WareHouseId = wareHouse.Id;
-                            wareHouseDetail.WareHouseIODetailId = item.Id;
-                            wareHouseDetail.LotNo = item.LotNo;
-                            wareHouseDetail.ExpiredDate = item.ExpireDate;
-                            wareHouseDetail.OriginalVolumn = item.Qty;
-                            wareHouseDetail.CurrentVolumn = item.Qty;
-                            wareHouseDetail.BadVolumn = 0;
-                            //wareHouseDetail.Unit = item.Unit;
-                            wareHouseDetail.UnitPrice = item.UnitPrice.Value;
-                            wareHouseDetail.CreatedDate = DateTime.Now;
-                            wareHouseDetail.LastUpdatedDate = DateTime.Now;
-                            _wareHowDetailRepository.Insert(wareHouseDetail);
+                            wareHouse.Volumn += item.Qty;
+                            _wareHouseRepository.Update(wareHouse);
                         }
+                        else
+                        {
+                            wareHouse = new WareHouse();
+                            wareHouse.MedicineId = item.MedicineId;
+                            wareHouse.ClinicId = wareHouseIo.ClinicId;
+                            wareHouse.Volumn = item.Qty;
+                            wareHouse.MinAllowed = 0;
+                            _wareHouseRepository.Insert(wareHouse);
+                        }
+
+                        //Insert data to WareHouseDetail
+                        WareHouseDetail wareHouseDetail = new WareHouseDetail();
+                        wareHouseDetail.MedicineId = item.MedicineId;
+                        wareHouseDetail.WareHouseId = wareHouse.Id;
+                        wareHouseDetail.WareHouseIODetailId = item.Id;
+                        wareHouseDetail.LotNo = item.LotNo;
+                        wareHouseDetail.ExpiredDate = item.ExpireDate;
+                        wareHouseDetail.OriginalVolumn = item.Qty;
+                        wareHouseDetail.CurrentVolumn = item.Qty;
+                        wareHouseDetail.BadVolumn = 0;
+                        //wareHouseDetail.Unit = item.Unit;
+                        wareHouseDetail.UnitPrice = item.UnitPrice.Value;
+                        wareHouseDetail.CreatedDate = DateTime.Now;
+                        wareHouseDetail.LastUpdatedDate = DateTime.Now;
+                        _wareHowDetailRepository.Insert(wareHouseDetail);
                     }
 
                     MessageBox.Show("Nhập kho thành công!");
-                    dateImport.Value = DateTime.Now;
-                    txtDeliverer.Text = string.Empty;
-                    txtNo.Text = string.Empty;
-                    txtNote.Text = string.Empty;
-                    txtRecipient.Text = string.Empty;
-                    grd.Rows.Clear();
+                    ClearData();
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng chọn thuốc trước khi nhập kho");
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin trước khi nhập kho");
                 }
             }
             catch (Exception ex)
@@ -163,12 +150,27 @@ namespace Medical.WareHouseIE
             }
         }
 
-        private bool ValidateItemData(WareHouseIODetail item)
+        private void ClearData()
         {
-            if (item.LotNo == null || item.MedicineId == null || item.Qty == null
-                || item.ExpireDate == null || item.Unit == null)
+            dateImport.Value = DateTime.Now;
+            txtDeliverer.Text = string.Empty;
+            txtNo.Text = string.Empty;
+            txtNote.Text = string.Empty;
+            txtRecipient.Text = string.Empty;
+            grd.Rows.Clear();
+        }
+
+        private bool ValidateItemData()
+        {
+            if (bdsWareHouseIODetail.Count == 0) return false;
+
+            foreach (WareHouseIODetail item in bdsWareHouseIODetail)
             {
-                return false;
+                if (item.LotNo == null || item.MedicineId == null || item.Qty == null
+                    || item.ExpireDate == null || item.Unit == null)
+                {
+                    return false;
+                }
             }
 
             return true;
