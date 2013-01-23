@@ -29,12 +29,8 @@ namespace Medical.Data.Entities
         [NotMapped]
         public string ClinicName
         {
-            get
-            {
-                if (Clinic != null)
-                    return Clinic.Name;
-                else
-                    return string.Empty;
+            get {
+                return Clinic != null ? Clinic.Name : string.Empty;
             }
         }
     }

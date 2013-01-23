@@ -23,7 +23,8 @@ namespace Medical.Data.Entities
         public DateTime LastUpdatedDate { get; set; }
         public int LastUpdatedBy { get; set; }
         public int Version { get; set; }
-        public ICollection<MedicinePlanDetail> MedicinePlanDetails { get; set; }        
+        public ICollection<MedicinePlanDetail> MedicinePlanDetails { get; set; } 
+       
         [NotMapped]
         public String ContentString
         {

@@ -20,10 +20,12 @@ namespace Medical.Data.Entities
         public int Amount { get; set; }
         public int Version { get; set; }
         public DateTime LastUpdatedDate { get; set; }
+
         public virtual Medicine Medicine { get; set; }
 
         [NotMapped]
         public string UnitName { get; set; }
+
         [NotMapped]
         public int Remaining
         {
