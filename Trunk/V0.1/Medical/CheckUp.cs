@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
@@ -8,6 +9,7 @@ namespace Medical {
     public partial class CheckUp : DockContent {
 
         private IPrescriptionRepository prescriptionRepo = new PrescriptionRepository();
+        private IPrescriptionDetailRepository prescriptionDetailRepo = new PrescriptionDetailRepository();
         private Prescription lastPrescription;
         private Patient selectedPatient;
 
@@ -55,6 +57,7 @@ namespace Medical {
                 if (selected == null) return;
                 var checkUpRegister = new CheckUpRegister(selected);
                 checkUpRegister.ShowDialog(this);
+                UpdateForm((Patient)this.bdsPatient.DataSource);
             }
         }
 
@@ -64,7 +67,7 @@ namespace Medical {
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void textBoxX1_ButtonCustomClick(object sender, EventArgs e) {
-            var patientBrowse = new PatientBrowseForm(this.txtSeachName.Text);
+            var patientBrowse = new PatientBrowseForm();
             var result = patientBrowse.ShowDialog(this);
             if (result != System.Windows.Forms.DialogResult.Yes) return;
 
@@ -93,13 +96,15 @@ namespace Medical {
 
             if (lastPrescription == null) return;
             this.bdsPrescription.DataSource = lastPrescription;
-            if (lastPrescription.PrescriptionDetails != null)
+
+            List<PrescriptionDetail> detailList = prescriptionDetailRepo.GetByPrescription(lastPrescription.Id);
+            if (detailList != null)
             {
-                for (int i = lastPrescription.PrescriptionDetails)
+                for (int i = 0; i < detailList.Count; i++)
                 {
-                    
+                    detailList[i].No = i + 1;
                 }
-                this.bdsPrescriptionDetail.DataSource = lastPrescription.PrescriptionDetails;
+                this.bdsPrescriptionDetail.DataSource = detailList;
             }
         }
     }
