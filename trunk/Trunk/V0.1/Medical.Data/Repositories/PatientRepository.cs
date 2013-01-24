@@ -18,11 +18,11 @@ namespace Medical.Data.Repositories
         {
             patient.StartDate = DateTime.Today;
             patient.Version = 0;
-            //patient.ClinicId = AppContext.CurrentClinic.Id;
+            patient.ClinicId = AppContext.CurrentClinic.Id;
             patient.CreatedDate = DateTime.Now;
-            //patient.CreatedUser = AppContext.LoggedInUser.Id;
+            patient.CreatedUser = AppContext.LoggedInUser.Id;
             patient.LastUpdatedDate = DateTime.Now;
-            //patient.LastUpdatedUser = AppContext.LoggedInUser.Id;
+            patient.LastUpdatedUser = AppContext.LoggedInUser.Id;
             this.Context.Patients.Add(patient);
             this.Context.SaveChanges();
         }

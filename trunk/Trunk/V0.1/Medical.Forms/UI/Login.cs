@@ -37,7 +37,7 @@ namespace Medical.Forms.UI {
         }
 
         private void btnCancal_Click(object sender, System.EventArgs e) {
-
+            Environment.Exit(0);
         }
 
 

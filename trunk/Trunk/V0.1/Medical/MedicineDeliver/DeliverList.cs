@@ -59,7 +59,15 @@ namespace Medical.MedicineDeliver
         /// <param name="type">The type.</param>
         private void UpdateGrid(DateTime date, int type)
         {
-            this.bdsDeliver.DataSource = vMedicineRepo.Get(date, type);
+            var list = vMedicineRepo.Get(date, type);
+            for (var i = 0; i < list.Count;i++ )
+            {
+                list[i].No = i + 1;
+            }
+            this.bdsDeliver.DataSource = list;
+            this.bdsDeliver.ResetBindings(true);
+            this.dataGridViewX1.Refresh();
+            this.dataGridViewX1.ResetBindings();
         }
 
         private void cboDate_ValueChanged(object sender, EventArgs e)
@@ -79,6 +87,7 @@ namespace Medical.MedicineDeliver
             var selectedItem = (VMedicineDeliverList) this.bdsDeliver.Current;
             var deliveryRegister = new DeliveryRegister(selectedItem.Id);
             deliveryRegister.ShowDialog();
+            UpdateGrid();
         }
     }
 }
