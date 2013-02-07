@@ -15,7 +15,7 @@ namespace Medical.WareHouseMonthlyReport {
 
         private void WareHouseMonthlyReportDetail_Load(object sender, EventArgs e) {
 
-            this.reportViewer1.RefreshReport();
+            /// this.reportViewer1.RefreshReport();
         }
     }
 }
