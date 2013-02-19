@@ -226,12 +226,6 @@
     <Compile Include="WareHouseMonthlyReport\WareHouseMonthlyReport.Designer.cs">
       <DependentUpon>WareHouseMonthlyReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="WareHouseMonthlyReport\WareHouseMonthlyReportDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WareHouseMonthlyReport\WareHouseMonthlyReportDetail.Designer.cs">
-      <DependentUpon>WareHouseMonthlyReportDetail.cs</DependentUpon>
-    </Compile>
     <Compile Include="WareHouses\WareHouseInitialization.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -405,9 +399,6 @@
     <EmbeddedResource Include="WareHouseMonthlyReport\Report1.rdlc" />
     <EmbeddedResource Include="WareHouseMonthlyReport\WareHouseMonthlyReport.resx">
       <DependentUpon>WareHouseMonthlyReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WareHouseMonthlyReport\WareHouseMonthlyReportDetail.resx">
-      <DependentUpon>WareHouseMonthlyReportDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WareHouses\WareHouseInitialization.resx">
       <DependentUpon>WareHouseInitialization.cs</DependentUpon>
