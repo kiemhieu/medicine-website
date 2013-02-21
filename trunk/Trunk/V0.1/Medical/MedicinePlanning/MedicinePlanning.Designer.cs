@@ -24,8 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.CreatedUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,14 +41,14 @@
             this.bdsClinic = new System.Windows.Forms.BindingSource(this.components);
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
-            this.cboMonth = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.cboYear = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.bdsStatus = new System.Windows.Forms.BindingSource(this.components);
             this.bdsUser = new System.Windows.Forms.BindingSource(this.components);
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.txtYear = new DevComponents.Editors.IntegerInput();
+            this.txtMonth = new DevComponents.Editors.IntegerInput();
             this.panelEx2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPlanning)).BeginInit();
@@ -55,6 +56,8 @@
             this.panelEx3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMonth)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx2
@@ -77,14 +80,14 @@
             // dataGridViewX1
             // 
             this.dataGridViewX1.AutoGenerateColumns = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CreatedUser,
@@ -95,19 +98,30 @@
             this.statusDataGridViewTextBoxColumn1,
             this.noteDataGridViewTextBoxColumn1});
             this.dataGridViewX1.DataSource = this.bdsPlanning;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewX1.MultiSelect = false;
             this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.RowHeadersVisible = false;
+            this.dataGridViewX1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.Size = new System.Drawing.Size(838, 488);
             this.dataGridViewX1.TabIndex = 2;
             // 
@@ -197,9 +211,9 @@
             this.panelEx3.AutoSize = true;
             this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx3.Controls.Add(this.cboMonth);
+            this.panelEx3.Controls.Add(this.txtMonth);
+            this.panelEx3.Controls.Add(this.txtYear);
             this.panelEx3.Controls.Add(this.labelX3);
-            this.panelEx3.Controls.Add(this.cboYear);
             this.panelEx3.Controls.Add(this.labelX2);
             this.panelEx3.Controls.Add(this.buttonX1);
             this.panelEx3.Controls.Add(this.cboClinic);
@@ -216,18 +230,6 @@
             this.panelEx3.TabIndex = 2;
             this.panelEx3.ThemeAware = true;
             // 
-            // cboMonth
-            // 
-            this.cboMonth.DisplayMember = "Text";
-            this.cboMonth.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboMonth.FormattingEnabled = true;
-            this.cboMonth.ItemHeight = 14;
-            this.cboMonth.Location = new System.Drawing.Point(458, 3);
-            this.cboMonth.Name = "cboMonth";
-            this.cboMonth.Size = new System.Drawing.Size(68, 20);
-            this.cboMonth.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboMonth.TabIndex = 6;
-            // 
             // labelX3
             // 
             this.labelX3.AutoSize = true;
@@ -236,24 +238,12 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(420, 6);
+            this.labelX3.Location = new System.Drawing.Point(432, 6);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(34, 15);
             this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.labelX3.TabIndex = 5;
             this.labelX3.Text = "Tháng";
-            // 
-            // cboYear
-            // 
-            this.cboYear.DisplayMember = "Text";
-            this.cboYear.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboYear.FormattingEnabled = true;
-            this.cboYear.ItemHeight = 14;
-            this.cboYear.Location = new System.Drawing.Point(348, 3);
-            this.cboYear.Name = "cboYear";
-            this.cboYear.Size = new System.Drawing.Size(68, 20);
-            this.cboYear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboYear.TabIndex = 4;
             // 
             // labelX2
             // 
@@ -296,6 +286,34 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
             // 
+            // txtYear
+            // 
+            // 
+            // 
+            // 
+            this.txtYear.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtYear.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtYear.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtYear.Location = new System.Drawing.Point(346, 3);
+            this.txtYear.Name = "txtYear";
+            this.txtYear.ShowUpDown = true;
+            this.txtYear.Size = new System.Drawing.Size(77, 20);
+            this.txtYear.TabIndex = 7;
+            // 
+            // txtMonth
+            // 
+            // 
+            // 
+            // 
+            this.txtMonth.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtMonth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtMonth.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtMonth.Location = new System.Drawing.Point(472, 3);
+            this.txtMonth.Name = "txtMonth";
+            this.txtMonth.ShowUpDown = true;
+            this.txtMonth.Size = new System.Drawing.Size(45, 20);
+            this.txtMonth.TabIndex = 8;
+            // 
             // MedicinePlanning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,6 +333,8 @@
             this.panelEx3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMonth)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,9 +360,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn1;
         private DevComponents.DotNetBar.StyleManager styleManager1;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cboMonth;
         private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cboYear;
         private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.Editors.IntegerInput txtMonth;
+        private DevComponents.Editors.IntegerInput txtYear;
     }
 }
