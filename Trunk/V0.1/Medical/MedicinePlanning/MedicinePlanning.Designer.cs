@@ -41,6 +41,7 @@
             this.bdsClinic = new System.Windows.Forms.BindingSource(this.components);
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
+            this.txtMonth = new DevComponents.Editors.IntegerInput();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
@@ -48,16 +49,15 @@
             this.bdsUser = new System.Windows.Forms.BindingSource(this.components);
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.txtYear = new DevComponents.Editors.IntegerInput();
-            this.txtMonth = new DevComponents.Editors.IntegerInput();
             this.panelEx2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPlanning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).BeginInit();
             this.panelEx3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMonth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMonth)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx2
@@ -230,6 +230,20 @@
             this.panelEx3.TabIndex = 2;
             this.panelEx3.ThemeAware = true;
             // 
+            // txtMonth
+            // 
+            // 
+            // 
+            // 
+            this.txtMonth.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtMonth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtMonth.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtMonth.Location = new System.Drawing.Point(472, 3);
+            this.txtMonth.Name = "txtMonth";
+            this.txtMonth.ShowUpDown = true;
+            this.txtMonth.Size = new System.Drawing.Size(45, 20);
+            this.txtMonth.TabIndex = 8;
+            // 
             // labelX3
             // 
             this.labelX3.AutoSize = true;
@@ -300,20 +314,6 @@
             this.txtYear.Size = new System.Drawing.Size(77, 20);
             this.txtYear.TabIndex = 7;
             // 
-            // txtMonth
-            // 
-            // 
-            // 
-            // 
-            this.txtMonth.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtMonth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtMonth.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtMonth.Location = new System.Drawing.Point(472, 3);
-            this.txtMonth.Name = "txtMonth";
-            this.txtMonth.ShowUpDown = true;
-            this.txtMonth.Size = new System.Drawing.Size(45, 20);
-            this.txtMonth.TabIndex = 8;
-            // 
             // MedicinePlanning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,10 +331,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).EndInit();
             this.panelEx3.ResumeLayout(false);
             this.panelEx3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMonth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMonth)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -7,7 +7,7 @@ using Medical.Data.Entities;
 
 namespace Medical.Data.Repositories
 {
-    public class MedicinePlanRepository : RepositoryBase, Medical.Data.IMedicinePlanRepository
+    public class MedicinePlanRepository : RepositoryBase, IMedicinePlanRepository
     {
 
         /// <summary>
@@ -18,6 +18,21 @@ namespace Medical.Data.Repositories
         public MedicinePlan Get(int id)
         {
             return Context.MedicinePlans.FirstOrDefault(x => x.Id.Equals(id));
+        }
+
+        public List<MedicinePlan> Get(int? clinicId, int? year, int? month)
+        {
+            var medicinePlans = clinicId.HasValue
+                ? this.Context.MedicinePlans.Where(x => x.ClinicId == clinicId.Value)
+                : this.Context.MedicinePlans;
+
+            medicinePlans = year.HasValue
+                ? medicinePlans.Where(x => x.Year == year.Value)
+                : medicinePlans;
+            medicinePlans = month.HasValue
+                ? medicinePlans.Where(x => x.Month == month.Value)
+                : medicinePlans;
+            return medicinePlans.ToList();
         }
 
         public List<MedicinePlan> GetUncompletedPlan(int? clinicId)
