@@ -27,15 +27,17 @@ namespace Medical.MedicinePlanning {
 
         private void Initialize()
         {
+            // Init Clinic combobox
             List<Clinic> clinic = this.clinicRepo.GetAll();
             clinic.Insert(0, new Clinic(){Id = 0, Name = "Tất cả"});
             this.bdsClinic.DataSource = clinic;
             this.cboClinic.SelectedValue = AppContext.CurrentClinic.Id;
 
+            // Set current year for first time initialize
+            this.txtYear.Value = DateTime.Today.Year;
+
             this.bdsStatus.DataSource = this.defineRepo.GetPlanningStatus();
-
             this.bdsUser.DataSource = this.userRepo.GetAll();
-
             this.bdsPlanning.DataSource = this.medicinePlanRepo.GetUncompletedPlan((int)cboClinic.SelectedValue);
         }
 
