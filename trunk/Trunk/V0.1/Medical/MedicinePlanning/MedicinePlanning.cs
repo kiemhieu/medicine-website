@@ -38,12 +38,38 @@ namespace Medical.MedicinePlanning {
 
             this.bdsStatus.DataSource = this.defineRepo.GetPlanningStatus();
             this.bdsUser.DataSource = this.userRepo.GetAll();
-            this.bdsPlanning.DataSource = this.medicinePlanRepo.GetUncompletedPlan((int)cboClinic.SelectedValue);
+
+            var planningList = medicinePlanRepo.Get(this.ClinicId, this.Year, this.Month);
+            this.bdsPlanning.DataSource = planningList;
         }
 
         private void MedicinePlanning_Load(object sender, EventArgs e)
         {
             Initialize();
         }
+
+        private void btnAddPlanning_Click(object sender, EventArgs e)
+        {
+            var detail =new MedicinePlanningDetail();
+            detail.ShowDialog(this);
+        }
+
+        #region Properties
+        private int? ClinicId
+        {
+            get { return this.cboClinic.SelectedValue == null ? (int?)null : Convert.ToInt32(this.cboClinic.SelectedValue); }
+        }
+
+        private int? Year
+        {
+            get { return this.txtYear.ValueObject == null ? (int?)null : this.txtYear.Value; }
+        }
+
+        private int? Month
+        {
+            get { return this.txtMonth.ValueObject == null ? (int?)null : this.txtMonth.Value; }
+        }
+
+        #endregion
     }
 }
