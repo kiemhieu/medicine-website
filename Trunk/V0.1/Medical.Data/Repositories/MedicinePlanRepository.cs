@@ -20,6 +20,13 @@ namespace Medical.Data.Repositories
             return Context.MedicinePlans.FirstOrDefault(x => x.Id.Equals(id));
         }
 
+        /// <summary>
+        /// Gets the specified clinic id.
+        /// </summary>
+        /// <param name="clinicId">The clinic id.</param>
+        /// <param name="year">The year.</param>
+        /// <param name="month">The month.</param>
+        /// <returns></returns>
         public List<MedicinePlan> Get(int? clinicId, int? year, int? month)
         {
             var medicinePlans = clinicId.HasValue
