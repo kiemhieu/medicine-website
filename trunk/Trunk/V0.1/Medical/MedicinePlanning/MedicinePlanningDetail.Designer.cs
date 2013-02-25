@@ -27,27 +27,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.txtDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.bdsPlanning = new System.Windows.Forms.BindingSource(this.components);
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtMonth = new DevComponents.Editors.IntegerInput();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.bdsClinic = new System.Windows.Forms.BindingSource(this.components);
             this.grdPlanning = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.txtNote = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.cboStatus = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.txtYear = new DevComponents.Editors.IntegerInput();
-            this.txtApprovedDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
-            this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.bdsPlanning = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsPlanningDetail = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.planIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.medicineIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,22 +49,36 @@
             this.unitNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.remainingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsPlanningDetail = new System.Windows.Forms.BindingSource(this.components);
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
+            this.txtNote = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.cboStatus = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.bdsStatus = new System.Windows.Forms.BindingSource(this.components);
+            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.labelX8 = new DevComponents.DotNetBar.LabelX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.txtYear = new DevComponents.Editors.IntegerInput();
+            this.txtApprovedDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.cboPerson = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.bdsEmployee = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsClinic = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsStatus = new System.Windows.Forms.BindingSource(this.components);
+            this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
+            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPlanning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMonth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPlanning)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPlanningDetail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApprovedDate)).BeginInit();
             this.panelEx1.SuspendLayout();
-            this.panelEx2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPlanning)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPlanningDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsEmployee)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsStatus)).BeginInit();
+            this.panelEx2.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelX1
@@ -148,6 +148,10 @@
             this.txtDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtDate.TabIndex = 1;
             // 
+            // bdsPlanning
+            // 
+            this.bdsPlanning.DataSource = typeof(Medical.Data.Entities.MedicinePlan);
+            // 
             // labelX2
             // 
             this.labelX2.AutoSize = true;
@@ -207,8 +211,16 @@
             this.cboClinic.TabIndex = 7;
             this.cboClinic.ValueMember = "Id";
             // 
+            // bdsClinic
+            // 
+            this.bdsClinic.DataSource = typeof(Medical.Data.Entities.Clinic);
+            // 
             // grdPlanning
             // 
+            this.grdPlanning.AllowUserToAddRows = false;
+            this.grdPlanning.AllowUserToDeleteRows = false;
+            this.grdPlanning.AllowUserToResizeColumns = false;
+            this.grdPlanning.AllowUserToResizeRows = false;
             this.grdPlanning.AutoGenerateColumns = false;
             this.grdPlanning.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdPlanning.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -242,6 +254,101 @@
             this.grdPlanning.Name = "grdPlanning";
             this.grdPlanning.Size = new System.Drawing.Size(799, 340);
             this.grdPlanning.TabIndex = 8;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // planIdDataGridViewTextBoxColumn
+            // 
+            this.planIdDataGridViewTextBoxColumn.DataPropertyName = "PlanId";
+            this.planIdDataGridViewTextBoxColumn.HeaderText = "PlanId";
+            this.planIdDataGridViewTextBoxColumn.Name = "planIdDataGridViewTextBoxColumn";
+            // 
+            // medicineIdDataGridViewTextBoxColumn
+            // 
+            this.medicineIdDataGridViewTextBoxColumn.DataPropertyName = "MedicineId";
+            this.medicineIdDataGridViewTextBoxColumn.HeaderText = "MedicineId";
+            this.medicineIdDataGridViewTextBoxColumn.Name = "medicineIdDataGridViewTextBoxColumn";
+            // 
+            // inStockDataGridViewTextBoxColumn
+            // 
+            this.inStockDataGridViewTextBoxColumn.DataPropertyName = "InStock";
+            this.inStockDataGridViewTextBoxColumn.HeaderText = "InStock";
+            this.inStockDataGridViewTextBoxColumn.Name = "inStockDataGridViewTextBoxColumn";
+            // 
+            // lastMonthUsageDataGridViewTextBoxColumn
+            // 
+            this.lastMonthUsageDataGridViewTextBoxColumn.DataPropertyName = "LastMonthUsage";
+            this.lastMonthUsageDataGridViewTextBoxColumn.HeaderText = "LastMonthUsage";
+            this.lastMonthUsageDataGridViewTextBoxColumn.Name = "lastMonthUsageDataGridViewTextBoxColumn";
+            // 
+            // currentMonthUsageDataGridViewTextBoxColumn
+            // 
+            this.currentMonthUsageDataGridViewTextBoxColumn.DataPropertyName = "CurrentMonthUsage";
+            this.currentMonthUsageDataGridViewTextBoxColumn.HeaderText = "CurrentMonthUsage";
+            this.currentMonthUsageDataGridViewTextBoxColumn.Name = "currentMonthUsageDataGridViewTextBoxColumn";
+            // 
+            // requiredDataGridViewTextBoxColumn
+            // 
+            this.requiredDataGridViewTextBoxColumn.DataPropertyName = "Required";
+            this.requiredDataGridViewTextBoxColumn.HeaderText = "Required";
+            this.requiredDataGridViewTextBoxColumn.Name = "requiredDataGridViewTextBoxColumn";
+            // 
+            // unitPriceDataGridViewTextBoxColumn
+            // 
+            this.unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
+            this.unitPriceDataGridViewTextBoxColumn.HeaderText = "UnitPrice";
+            this.unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
+            // 
+            // amountDataGridViewTextBoxColumn
+            // 
+            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
+            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
+            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+            // 
+            // versionDataGridViewTextBoxColumn
+            // 
+            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
+            this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
+            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
+            // 
+            // lastUpdatedDateDataGridViewTextBoxColumn
+            // 
+            this.lastUpdatedDateDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedDate";
+            this.lastUpdatedDateDataGridViewTextBoxColumn.HeaderText = "LastUpdatedDate";
+            this.lastUpdatedDateDataGridViewTextBoxColumn.Name = "lastUpdatedDateDataGridViewTextBoxColumn";
+            // 
+            // medicineDataGridViewTextBoxColumn
+            // 
+            this.medicineDataGridViewTextBoxColumn.DataPropertyName = "Medicine";
+            this.medicineDataGridViewTextBoxColumn.HeaderText = "Medicine";
+            this.medicineDataGridViewTextBoxColumn.Name = "medicineDataGridViewTextBoxColumn";
+            // 
+            // unitNameDataGridViewTextBoxColumn
+            // 
+            this.unitNameDataGridViewTextBoxColumn.DataPropertyName = "UnitName";
+            this.unitNameDataGridViewTextBoxColumn.HeaderText = "UnitName";
+            this.unitNameDataGridViewTextBoxColumn.Name = "unitNameDataGridViewTextBoxColumn";
+            // 
+            // remainingDataGridViewTextBoxColumn
+            // 
+            this.remainingDataGridViewTextBoxColumn.DataPropertyName = "Remaining";
+            this.remainingDataGridViewTextBoxColumn.HeaderText = "Remaining";
+            this.remainingDataGridViewTextBoxColumn.Name = "remainingDataGridViewTextBoxColumn";
+            this.remainingDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // medicineNameDataGridViewTextBoxColumn
+            // 
+            this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
+            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "MedicineName";
+            this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
+            // 
+            // bdsPlanningDetail
+            // 
+            this.bdsPlanningDetail.DataSource = typeof(Medical.Data.Entities.MedicinePlanDetail);
             // 
             // styleManager1
             // 
@@ -307,6 +414,10 @@
             this.cboStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cboStatus.TabIndex = 12;
             this.cboStatus.ValueMember = "Value";
+            // 
+            // bdsStatus
+            // 
+            this.bdsStatus.DataSource = typeof(Medical.Data.EntitiyExtend.Item);
             // 
             // labelX7
             // 
@@ -452,6 +563,25 @@
             this.panelEx1.TabIndex = 17;
             this.panelEx1.ThemeAware = true;
             // 
+            // cboPerson
+            // 
+            this.cboPerson.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsPlanning, "ApproveId", true));
+            this.cboPerson.DataSource = this.bdsEmployee;
+            this.cboPerson.DisplayMember = "Name";
+            this.cboPerson.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboPerson.FormattingEnabled = true;
+            this.cboPerson.ItemHeight = 14;
+            this.cboPerson.Location = new System.Drawing.Point(298, 49);
+            this.cboPerson.Name = "cboPerson";
+            this.cboPerson.Size = new System.Drawing.Size(159, 20);
+            this.cboPerson.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboPerson.TabIndex = 17;
+            this.cboPerson.ValueMember = "Id";
+            // 
+            // bdsEmployee
+            // 
+            this.bdsEmployee.DataSource = typeof(Medical.Data.Entities.User);
+            // 
             // panelEx2
             // 
             this.panelEx2.AutoSize = true;
@@ -495,132 +625,6 @@
             this.buttonX1.TabIndex = 0;
             this.buttonX1.Text = "Bỏ qua";
             // 
-            // bdsPlanning
-            // 
-            this.bdsPlanning.DataSource = typeof(Medical.Data.Entities.MedicinePlan);
-            // 
-            // bdsPlanningDetail
-            // 
-            this.bdsPlanningDetail.DataSource = typeof(Medical.Data.Entities.MedicinePlanDetail);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // planIdDataGridViewTextBoxColumn
-            // 
-            this.planIdDataGridViewTextBoxColumn.DataPropertyName = "PlanId";
-            this.planIdDataGridViewTextBoxColumn.HeaderText = "PlanId";
-            this.planIdDataGridViewTextBoxColumn.Name = "planIdDataGridViewTextBoxColumn";
-            // 
-            // medicineIdDataGridViewTextBoxColumn
-            // 
-            this.medicineIdDataGridViewTextBoxColumn.DataPropertyName = "MedicineId";
-            this.medicineIdDataGridViewTextBoxColumn.HeaderText = "MedicineId";
-            this.medicineIdDataGridViewTextBoxColumn.Name = "medicineIdDataGridViewTextBoxColumn";
-            // 
-            // inStockDataGridViewTextBoxColumn
-            // 
-            this.inStockDataGridViewTextBoxColumn.DataPropertyName = "InStock";
-            this.inStockDataGridViewTextBoxColumn.HeaderText = "InStock";
-            this.inStockDataGridViewTextBoxColumn.Name = "inStockDataGridViewTextBoxColumn";
-            // 
-            // lastMonthUsageDataGridViewTextBoxColumn
-            // 
-            this.lastMonthUsageDataGridViewTextBoxColumn.DataPropertyName = "LastMonthUsage";
-            this.lastMonthUsageDataGridViewTextBoxColumn.HeaderText = "LastMonthUsage";
-            this.lastMonthUsageDataGridViewTextBoxColumn.Name = "lastMonthUsageDataGridViewTextBoxColumn";
-            // 
-            // currentMonthUsageDataGridViewTextBoxColumn
-            // 
-            this.currentMonthUsageDataGridViewTextBoxColumn.DataPropertyName = "CurrentMonthUsage";
-            this.currentMonthUsageDataGridViewTextBoxColumn.HeaderText = "CurrentMonthUsage";
-            this.currentMonthUsageDataGridViewTextBoxColumn.Name = "currentMonthUsageDataGridViewTextBoxColumn";
-            // 
-            // requiredDataGridViewTextBoxColumn
-            // 
-            this.requiredDataGridViewTextBoxColumn.DataPropertyName = "Required";
-            this.requiredDataGridViewTextBoxColumn.HeaderText = "Required";
-            this.requiredDataGridViewTextBoxColumn.Name = "requiredDataGridViewTextBoxColumn";
-            // 
-            // unitPriceDataGridViewTextBoxColumn
-            // 
-            this.unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
-            this.unitPriceDataGridViewTextBoxColumn.HeaderText = "UnitPrice";
-            this.unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
-            // 
-            // amountDataGridViewTextBoxColumn
-            // 
-            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
-            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
-            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-            // 
-            // versionDataGridViewTextBoxColumn
-            // 
-            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
-            this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
-            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
-            // 
-            // lastUpdatedDateDataGridViewTextBoxColumn
-            // 
-            this.lastUpdatedDateDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedDate";
-            this.lastUpdatedDateDataGridViewTextBoxColumn.HeaderText = "LastUpdatedDate";
-            this.lastUpdatedDateDataGridViewTextBoxColumn.Name = "lastUpdatedDateDataGridViewTextBoxColumn";
-            // 
-            // medicineDataGridViewTextBoxColumn
-            // 
-            this.medicineDataGridViewTextBoxColumn.DataPropertyName = "Medicine";
-            this.medicineDataGridViewTextBoxColumn.HeaderText = "Medicine";
-            this.medicineDataGridViewTextBoxColumn.Name = "medicineDataGridViewTextBoxColumn";
-            // 
-            // unitNameDataGridViewTextBoxColumn
-            // 
-            this.unitNameDataGridViewTextBoxColumn.DataPropertyName = "UnitName";
-            this.unitNameDataGridViewTextBoxColumn.HeaderText = "UnitName";
-            this.unitNameDataGridViewTextBoxColumn.Name = "unitNameDataGridViewTextBoxColumn";
-            // 
-            // remainingDataGridViewTextBoxColumn
-            // 
-            this.remainingDataGridViewTextBoxColumn.DataPropertyName = "Remaining";
-            this.remainingDataGridViewTextBoxColumn.HeaderText = "Remaining";
-            this.remainingDataGridViewTextBoxColumn.Name = "remainingDataGridViewTextBoxColumn";
-            this.remainingDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // medicineNameDataGridViewTextBoxColumn
-            // 
-            this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
-            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "MedicineName";
-            this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
-            // 
-            // cboPerson
-            // 
-            this.cboPerson.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsPlanning, "ApproveId", true));
-            this.cboPerson.DataSource = this.bdsEmployee;
-            this.cboPerson.DisplayMember = "Name";
-            this.cboPerson.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboPerson.FormattingEnabled = true;
-            this.cboPerson.ItemHeight = 14;
-            this.cboPerson.Location = new System.Drawing.Point(298, 49);
-            this.cboPerson.Name = "cboPerson";
-            this.cboPerson.Size = new System.Drawing.Size(159, 20);
-            this.cboPerson.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboPerson.TabIndex = 17;
-            this.cboPerson.ValueMember = "Id";
-            // 
-            // bdsEmployee
-            // 
-            this.bdsEmployee.DataSource = typeof(Medical.Data.Entities.User);
-            // 
-            // bdsClinic
-            // 
-            this.bdsClinic.DataSource = typeof(Medical.Data.Entities.Clinic);
-            // 
-            // bdsStatus
-            // 
-            this.bdsStatus.DataSource = typeof(Medical.Data.EntitiyExtend.Item);
-            // 
             // MedicinePlanningDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -632,18 +636,18 @@
             this.Name = "MedicinePlanningDetail";
             this.Text = "MedicinePlanningDetail";
             ((System.ComponentModel.ISupportInitialize)(this.txtDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPlanning)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMonth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPlanning)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPlanningDetail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApprovedDate)).EndInit();
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
-            this.panelEx2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPlanning)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPlanningDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsEmployee)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsStatus)).EndInit();
+            this.panelEx2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

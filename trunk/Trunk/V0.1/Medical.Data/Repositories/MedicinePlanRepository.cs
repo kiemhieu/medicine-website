@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Medical.Data.Entities;
+using Medical.Data.EntitiyExtend;
 
 
 namespace Medical.Data.Repositories
@@ -29,6 +30,7 @@ namespace Medical.Data.Repositories
         /// <returns></returns>
         public List<MedicinePlan> Get(int? clinicId, int? year, int? month)
         {
+            // var item = this.Context.Database.SqlQuery<Item>("Test");
             var medicinePlans = clinicId.HasValue
                 ? this.Context.MedicinePlans.Where(x => x.ClinicId == clinicId.Value)
                 : this.Context.MedicinePlans;
