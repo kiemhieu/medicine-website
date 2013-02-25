@@ -19,6 +19,7 @@ namespace Medical.MedicinePlanning
         private IUserRepository userRepo = new UserRepository();
         private IMedicinePlanRepository planingRepo = new MedicinePlanRepository();
         private IMedicinePlanDetailRepository planingDetail = new MedicinePlanDetailRepository();
+        
         private ViewModes mode;
         private int planningId;
         private Medical.Data.Entities.MedicinePlan medicinePlan;

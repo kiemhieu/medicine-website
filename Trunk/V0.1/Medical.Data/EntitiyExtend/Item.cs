@@ -7,6 +7,11 @@ namespace Medical.Data.EntitiyExtend
 {
     public class Item
     {
+        public Item()
+        {
+            
+        }
+
         public Item(int value, String name)
         {
             this.Value = value;
