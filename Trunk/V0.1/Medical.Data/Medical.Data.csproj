@@ -59,6 +59,7 @@
     <Compile Include="EntitiyExtend\Clinic.cs" />
     <Compile Include="EntitiyExtend\Item.cs" />
     <Compile Include="EntitiyExtend\MedicineDeliveryAllocationEntity.cs" />
+    <Compile Include="EntitiyExtend\MedicineDeliveryTotal.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="IMedicineDeliveryDetailAllocateRepository.cs" />
     <Compile Include="IVMedicineDeliverRepository.cs" />
