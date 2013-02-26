@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Transactions;
 using Medical.Data.Entities;
+using Medical.Data.EntitiyExtend;
 using IsolationLevel = System.Transactions.IsolationLevel;
 
 namespace Medical.Data.Repositories
@@ -153,6 +155,14 @@ namespace Medical.Data.Repositories
         public MedicineDelivery GetByPrescriptionId(long prescriptionId)
         {
             return this.Context.MedicineDeliveries.FirstOrDefault(x => x.PrescriptionId == prescriptionId);
+        }
+
+        public List<MedicineDeliveryTotal> GetMedicineDeliveryTotal(int clinicId, DateTime startDate, DateTime endDate)
+        {
+            SqlParameter clinicParam = new SqlParameter("@clinicId", clinicId);
+            SqlParameter startDateParam = new SqlParameter("@startDate", startDate);
+            SqlParameter endDateParam = new SqlParameter("@endDate", endDate);
+            List<MedicineDeliveryTotal> totals = this.Context.Database.SqlQuery<MedicineDeliveryTotal>("sp_GetMedicineDeliveryTotal", )
         }
     }
 }
