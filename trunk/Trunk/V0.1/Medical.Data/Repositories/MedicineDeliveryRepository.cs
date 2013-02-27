@@ -159,10 +159,14 @@ namespace Medical.Data.Repositories
 
         public List<MedicineDeliveryTotal> GetMedicineDeliveryTotal(int clinicId, DateTime startDate, DateTime endDate)
         {
-            SqlParameter clinicParam = new SqlParameter("@clinicId", clinicId);
-            SqlParameter startDateParam = new SqlParameter("@startDate", startDate);
-            SqlParameter endDateParam = new SqlParameter("@endDate", endDate);
-            List<MedicineDeliveryTotal> totals = this.Context.Database.SqlQuery<MedicineDeliveryTotal>("sp_GetMedicineDeliveryTotal", )
+            var parameters = new SqlParameter[]
+                                 {
+                                     new SqlParameter("@clinicId", clinicId),
+                                     new SqlParameter("@startDate", startDate),
+                                     new SqlParameter("@endDate", endDate)
+                                 };
+            var totals = this.Context.Database.SqlQuery<MedicineDeliveryTotal>("sp_GetMedicineDeliveryTotal", parameters);
+            return null;
         }
     }
 }
