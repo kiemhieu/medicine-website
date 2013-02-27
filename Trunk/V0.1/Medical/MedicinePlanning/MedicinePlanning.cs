@@ -19,6 +19,7 @@ namespace Medical.MedicinePlanning {
         private IClinicRepository clinicRepo = new ClinicRepository();
         private IUserRepository userRepo = new UserRepository();
         private IMedicinePlanRepository medicinePlanRepo = new MedicinePlanRepository();
+        private IMedicineDeliveryRepository medicineDeliveryRepo = new MedicineDeliveryRepository();
 
 
         public MedicinePlanning() {
@@ -41,6 +42,9 @@ namespace Medical.MedicinePlanning {
 
             var planningList = medicinePlanRepo.Get(this.ClinicId, this.Year, this.Month);
             this.bdsPlanning.DataSource = planningList;
+
+            var deliveryTotal = medicineDeliveryRepo.GetMedicineDeliveryTotal(1, new DateTime(2013, 01, 01), new DateTime(2014, 01, 01));
+            Console.WriteLine(deliveryTotal.Count);
         }
 
         private void MedicinePlanning_Load(object sender, EventArgs e)
