@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
 using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
@@ -29,7 +30,7 @@ namespace Medical.MedicinePlanning {
         private void Initialize()
         {
             // Init Clinic combobox
-            List<Clinic> clinic = this.clinicRepo.GetAll();
+            var clinic = this.clinicRepo.GetAll();
             clinic.Insert(0, new Clinic(){Id = 0, Name = "Tất cả"});
             this.bdsClinic.DataSource = clinic;
             this.cboClinic.SelectedValue = AppContext.CurrentClinic.Id;
@@ -37,14 +38,14 @@ namespace Medical.MedicinePlanning {
             // Set current year for first time initialize
             this.txtYear.Value = DateTime.Today.Year;
 
-            this.bdsStatus.DataSource = this.defineRepo.GetPlanningStatus();
+            this.bdsStatus.DataSource = MedicinePlaningStatus.GetPlanningStatus();
             this.bdsUser.DataSource = this.userRepo.GetAll();
 
             var planningList = medicinePlanRepo.Get(this.ClinicId, this.Year, this.Month);
             this.bdsPlanning.DataSource = planningList;
 
-            var deliveryTotal = medicineDeliveryRepo.GetMedicineDeliveryTotal(1, new DateTime(2013, 01, 01), new DateTime(2014, 01, 01));
-            Console.WriteLine(deliveryTotal.Count);
+            // var deliveryTotal = medicineDeliveryRepo.GetMedicineDeliveryTotal(1, new DateTime(2013, 01, 01), new DateTime(2014, 01, 01));
+            // Console.WriteLine(deliveryTotal.Count);
         }
 
         private void MedicinePlanning_Load(object sender, EventArgs e)
@@ -75,5 +76,15 @@ namespace Medical.MedicinePlanning {
         }
 
         #endregion
+
+        private void dataGridViewX1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            var gridView = (DataGridViewX)sender;
+            if (null == gridView) return;
+            foreach (DataGridViewRow r in gridView.Rows)
+            {
+                gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
+            }
+        }
     }
 }

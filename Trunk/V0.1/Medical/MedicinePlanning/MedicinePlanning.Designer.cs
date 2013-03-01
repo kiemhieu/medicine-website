@@ -24,18 +24,13 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.CreatedUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastUpdatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yearDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monthDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noteDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsUser = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsStatus = new System.Windows.Forms.BindingSource(this.components);
             this.bdsPlanning = new System.Windows.Forms.BindingSource(this.components);
             this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.bdsClinic = new System.Windows.Forms.BindingSource(this.components);
@@ -46,18 +41,23 @@
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.btnAddPlanning = new DevComponents.DotNetBar.ButtonX();
-            this.bdsStatus = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsUser = new System.Windows.Forms.BindingSource(this.components);
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.yearDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monthDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreatedUser = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.LastUpdatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.noteDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPlanning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).BeginInit();
             this.panelEx3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMonth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx2
@@ -79,96 +79,67 @@
             // 
             // dataGridViewX1
             // 
+            this.dataGridViewX1.AllowUserToAddRows = false;
+            this.dataGridViewX1.AllowUserToDeleteRows = false;
+            this.dataGridViewX1.AllowUserToResizeColumns = false;
+            this.dataGridViewX1.AllowUserToResizeRows = false;
             this.dataGridViewX1.AutoGenerateColumns = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CreatedUser,
-            this.LastUpdatedDate,
             this.yearDataGridViewTextBoxColumn1,
             this.monthDataGridViewTextBoxColumn1,
+            this.CreatedUser,
+            this.LastUpdatedDate,
             this.dateDataGridViewTextBoxColumn1,
             this.statusDataGridViewTextBoxColumn1,
             this.noteDataGridViewTextBoxColumn1});
+            this.dataGridViewX1.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridViewX1.DataSource = this.bdsPlanning;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewX1.MultiSelect = false;
             this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = null;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewX1.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(838, 488);
             this.dataGridViewX1.TabIndex = 2;
+            this.dataGridViewX1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewX1_DataBindingComplete);
             // 
-            // CreatedUser
+            // bdsUser
             // 
-            this.CreatedUser.DataPropertyName = "CreatedUser";
-            this.CreatedUser.HeaderText = "Người lập";
-            this.CreatedUser.Name = "CreatedUser";
+            this.bdsUser.DataSource = typeof(Medical.Data.Entities.User);
             // 
-            // LastUpdatedDate
+            // bdsStatus
             // 
-            this.LastUpdatedDate.DataPropertyName = "LastUpdatedDate";
-            this.LastUpdatedDate.HeaderText = "Lần sửa cuối";
-            this.LastUpdatedDate.Name = "LastUpdatedDate";
-            // 
-            // yearDataGridViewTextBoxColumn1
-            // 
-            this.yearDataGridViewTextBoxColumn1.DataPropertyName = "Year";
-            this.yearDataGridViewTextBoxColumn1.HeaderText = "Năm";
-            this.yearDataGridViewTextBoxColumn1.Name = "yearDataGridViewTextBoxColumn1";
-            this.yearDataGridViewTextBoxColumn1.Width = 80;
-            // 
-            // monthDataGridViewTextBoxColumn1
-            // 
-            this.monthDataGridViewTextBoxColumn1.DataPropertyName = "Month";
-            this.monthDataGridViewTextBoxColumn1.HeaderText = "Tháng";
-            this.monthDataGridViewTextBoxColumn1.Name = "monthDataGridViewTextBoxColumn1";
-            this.monthDataGridViewTextBoxColumn1.Width = 60;
-            // 
-            // dateDataGridViewTextBoxColumn1
-            // 
-            this.dateDataGridViewTextBoxColumn1.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn1.HeaderText = "Ngày lập";
-            this.dateDataGridViewTextBoxColumn1.Name = "dateDataGridViewTextBoxColumn1";
-            // 
-            // statusDataGridViewTextBoxColumn1
-            // 
-            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn1.HeaderText = "Trạng thái";
-            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
-            // 
-            // noteDataGridViewTextBoxColumn1
-            // 
-            this.noteDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.noteDataGridViewTextBoxColumn1.DataPropertyName = "Note";
-            this.noteDataGridViewTextBoxColumn1.HeaderText = "Ghi chú";
-            this.noteDataGridViewTextBoxColumn1.Name = "noteDataGridViewTextBoxColumn1";
+            this.bdsStatus.DataSource = typeof(Medical.Data.EntitiyExtend.Item);
             // 
             // bdsPlanning
             // 
@@ -302,18 +273,73 @@
             this.btnAddPlanning.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Left;
             this.btnAddPlanning.Click += new System.EventHandler(this.btnAddPlanning_Click);
             // 
-            // bdsStatus
-            // 
-            this.bdsStatus.DataSource = typeof(Medical.Data.Entities.Define);
-            // 
-            // bdsUser
-            // 
-            this.bdsUser.DataSource = typeof(Medical.Data.Entities.User);
-            // 
             // styleManager1
             // 
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
+            // 
+            // yearDataGridViewTextBoxColumn1
+            // 
+            this.yearDataGridViewTextBoxColumn1.DataPropertyName = "Year";
+            this.yearDataGridViewTextBoxColumn1.HeaderText = "Năm";
+            this.yearDataGridViewTextBoxColumn1.Name = "yearDataGridViewTextBoxColumn1";
+            this.yearDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.yearDataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // monthDataGridViewTextBoxColumn1
+            // 
+            this.monthDataGridViewTextBoxColumn1.DataPropertyName = "Month";
+            this.monthDataGridViewTextBoxColumn1.HeaderText = "Tháng";
+            this.monthDataGridViewTextBoxColumn1.Name = "monthDataGridViewTextBoxColumn1";
+            this.monthDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.monthDataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // CreatedUser
+            // 
+            this.CreatedUser.DataPropertyName = "CreatedUser";
+            this.CreatedUser.DataSource = this.bdsUser;
+            this.CreatedUser.DisplayMember = "Name";
+            this.CreatedUser.HeaderText = "Người lập";
+            this.CreatedUser.Name = "CreatedUser";
+            this.CreatedUser.ReadOnly = true;
+            this.CreatedUser.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CreatedUser.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CreatedUser.ValueMember = "Id";
+            this.CreatedUser.Width = 150;
+            // 
+            // LastUpdatedDate
+            // 
+            this.LastUpdatedDate.DataPropertyName = "LastUpdatedDate";
+            this.LastUpdatedDate.HeaderText = "Lần sửa cuối";
+            this.LastUpdatedDate.Name = "LastUpdatedDate";
+            this.LastUpdatedDate.ReadOnly = true;
+            // 
+            // dateDataGridViewTextBoxColumn1
+            // 
+            this.dateDataGridViewTextBoxColumn1.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn1.HeaderText = "Ngày lập";
+            this.dateDataGridViewTextBoxColumn1.Name = "dateDataGridViewTextBoxColumn1";
+            this.dateDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn1
+            // 
+            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn1.DataSource = this.bdsStatus;
+            this.statusDataGridViewTextBoxColumn1.DisplayMember = "Name";
+            this.statusDataGridViewTextBoxColumn1.HeaderText = "Trạng thái";
+            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
+            this.statusDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.statusDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.statusDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.statusDataGridViewTextBoxColumn1.ValueMember = "Value";
+            // 
+            // noteDataGridViewTextBoxColumn1
+            // 
+            this.noteDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.noteDataGridViewTextBoxColumn1.DataPropertyName = "Note";
+            this.noteDataGridViewTextBoxColumn1.HeaderText = "Ghi chú";
+            this.noteDataGridViewTextBoxColumn1.Name = "noteDataGridViewTextBoxColumn1";
+            this.noteDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // MedicinePlanning
             // 
@@ -328,14 +354,14 @@
             this.Load += new System.EventHandler(this.MedicinePlanning_Load);
             this.panelEx2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPlanning)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).EndInit();
             this.panelEx3.ResumeLayout(false);
             this.panelEx3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMonth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,17 +379,17 @@
         private DevComponents.DotNetBar.ButtonX btnAddPlanning;
         private System.Windows.Forms.BindingSource bdsStatus;
         private System.Windows.Forms.BindingSource bdsUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreatedUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LastUpdatedDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn yearDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn monthDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn1;
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.Editors.IntegerInput txtMonth;
         private DevComponents.Editors.IntegerInput txtYear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn yearDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn monthDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn CreatedUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastUpdatedDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn statusDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn1;
     }
 }
