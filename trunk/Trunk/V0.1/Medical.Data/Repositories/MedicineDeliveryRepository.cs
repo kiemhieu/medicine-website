@@ -165,8 +165,11 @@ namespace Medical.Data.Repositories
                                      new SqlParameter("@startDate", startDate),
                                      new SqlParameter("@endDate", endDate)
                                  };
-            var totals = this.Context.Database.SqlQuery<MedicineDeliveryTotal>("sp_GetMedicineDeliveryTotal", parameters);
-            return null;
+            var totals = this.Context.Database.SqlQuery<MedicineDeliveryTotal>("sp_GetMedicineDeliveryTotal @clinicId, @startDate, @endDate",
+                new SqlParameter("@clinicId", clinicId),
+                new SqlParameter("@startDate", startDate),
+                new SqlParameter("@endDate", endDate));
+            return totals.ToList();
         }
     }
 }

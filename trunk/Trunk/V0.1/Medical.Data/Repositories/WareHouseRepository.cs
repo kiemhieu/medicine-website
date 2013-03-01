@@ -75,16 +75,12 @@ namespace Medical.Data.Repositories
 
         public List<WareHouse> GetAll()
         {
-            try
-            {
-                List<WareHouse> lst = this.Context.WareHouses.ToList();
-                return lst;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
+            return this.Context.WareHouses.ToList();
+        }
+
+        public List<WareHouse> GetAll(int clinicId)
+        {
+            return this.Context.WareHouses.Where(x=>x.ClinicId == clinicId).ToList();
         }
 
         public WareHouse GetByIdMedicine(int idMedicine)

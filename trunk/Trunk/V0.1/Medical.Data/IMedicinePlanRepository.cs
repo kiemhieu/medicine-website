@@ -15,6 +15,8 @@ namespace Medical.Data
         List<MedicinePlan> GetUncompletedPlan(int? clinicId);
         MedicinePlan GetById(int id);
         void Insert(MedicinePlan MedicinePlan);
+        void Insert(MedicinePlan medicinePlan, List<MedicinePlanDetail> medicinePlanDetails);
+        void Update(MedicinePlan medicinePlan, List<MedicinePlanDetail> medicinePlanDetails);
         void Update(MedicinePlan medicinePlan);
     }
 }

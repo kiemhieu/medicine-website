@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
+using System.Transactions;
 using Medical.Data.Entities;
 using Medical.Data.EntitiyExtend;
+using IsolationLevel = System.Transactions.IsolationLevel;
 
 
 namespace Medical.Data.Repositories
@@ -63,6 +66,44 @@ namespace Medical.Data.Repositories
             MedicinePlan.Version = 0;
             this.Context.MedicinePlans.Add(MedicinePlan);
             this.Context.SaveChanges();
+        }
+
+        public void Insert(MedicinePlan medicinePlan, List<MedicinePlanDetail> medicinePlanDetails)
+        {
+            using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted }))
+            {
+                medicinePlan.SetInfo(false);
+                this.Context.MedicinePlans.Add(medicinePlan);
+                this.Context.SaveChanges();
+
+                foreach (var detail in medicinePlanDetails)
+                {
+                    detail.PlanId = medicinePlan.Id;
+                    detail.SetInfo(false);
+                    this.Context.MedicinePlanDetails.Add(detail);
+                }
+                this.Context.SaveChanges();
+                scope.Complete();
+            }
+        }
+
+        public void Update(MedicinePlan medicinePlan, List<MedicinePlanDetail> medicinePlanDetails)
+        {
+            using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted }))
+            {
+                medicinePlan.SetInfo(true);
+                this.Context.MedicinePlans.Attach(medicinePlan);
+                this.Context.Entry(medicinePlan).State = EntityState.Modified;
+
+                foreach (var detail in medicinePlanDetails)
+                {
+                    detail.SetInfo(false);
+                    this.Context.MedicinePlanDetails.Attach(detail);
+                    this.Context.Entry(detail).State = EntityState.Modified;
+                }
+                this.Context.SaveChanges();
+                scope.Complete();
+            }
         }
 
         public void Update(MedicinePlan medicinePlan)
