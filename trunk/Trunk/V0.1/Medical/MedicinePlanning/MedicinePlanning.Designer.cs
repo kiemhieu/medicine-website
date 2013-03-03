@@ -29,8 +29,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.yearDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monthDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreatedUser = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bdsUser = new System.Windows.Forms.BindingSource(this.components);
+            this.LastUpdatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bdsStatus = new System.Windows.Forms.BindingSource(this.components);
+            this.noteDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsPlanning = new System.Windows.Forms.BindingSource(this.components);
             this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.bdsClinic = new System.Windows.Forms.BindingSource(this.components);
@@ -42,13 +49,6 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.btnAddPlanning = new DevComponents.DotNetBar.ButtonX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.yearDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monthDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreatedUser = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.LastUpdatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.noteDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).BeginInit();
@@ -131,15 +131,79 @@
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(838, 488);
             this.dataGridViewX1.TabIndex = 2;
+            this.dataGridViewX1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellDoubleClick);
             this.dataGridViewX1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewX1_DataBindingComplete);
+            // 
+            // yearDataGridViewTextBoxColumn1
+            // 
+            this.yearDataGridViewTextBoxColumn1.DataPropertyName = "Year";
+            this.yearDataGridViewTextBoxColumn1.HeaderText = "Năm";
+            this.yearDataGridViewTextBoxColumn1.Name = "yearDataGridViewTextBoxColumn1";
+            this.yearDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.yearDataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // monthDataGridViewTextBoxColumn1
+            // 
+            this.monthDataGridViewTextBoxColumn1.DataPropertyName = "Month";
+            this.monthDataGridViewTextBoxColumn1.HeaderText = "Tháng";
+            this.monthDataGridViewTextBoxColumn1.Name = "monthDataGridViewTextBoxColumn1";
+            this.monthDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.monthDataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // CreatedUser
+            // 
+            this.CreatedUser.DataPropertyName = "CreatedUser";
+            this.CreatedUser.DataSource = this.bdsUser;
+            this.CreatedUser.DisplayMember = "Name";
+            this.CreatedUser.HeaderText = "Người lập";
+            this.CreatedUser.Name = "CreatedUser";
+            this.CreatedUser.ReadOnly = true;
+            this.CreatedUser.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CreatedUser.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CreatedUser.ValueMember = "Id";
+            this.CreatedUser.Width = 150;
             // 
             // bdsUser
             // 
             this.bdsUser.DataSource = typeof(Medical.Data.Entities.User);
             // 
+            // LastUpdatedDate
+            // 
+            this.LastUpdatedDate.DataPropertyName = "LastUpdatedDate";
+            this.LastUpdatedDate.HeaderText = "Lần sửa cuối";
+            this.LastUpdatedDate.Name = "LastUpdatedDate";
+            this.LastUpdatedDate.ReadOnly = true;
+            // 
+            // dateDataGridViewTextBoxColumn1
+            // 
+            this.dateDataGridViewTextBoxColumn1.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn1.HeaderText = "Ngày lập";
+            this.dateDataGridViewTextBoxColumn1.Name = "dateDataGridViewTextBoxColumn1";
+            this.dateDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn1
+            // 
+            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn1.DataSource = this.bdsStatus;
+            this.statusDataGridViewTextBoxColumn1.DisplayMember = "Name";
+            this.statusDataGridViewTextBoxColumn1.HeaderText = "Trạng thái";
+            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
+            this.statusDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.statusDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.statusDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.statusDataGridViewTextBoxColumn1.ValueMember = "Value";
+            // 
             // bdsStatus
             // 
             this.bdsStatus.DataSource = typeof(Medical.Data.EntitiyExtend.Item);
+            // 
+            // noteDataGridViewTextBoxColumn1
+            // 
+            this.noteDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.noteDataGridViewTextBoxColumn1.DataPropertyName = "Note";
+            this.noteDataGridViewTextBoxColumn1.HeaderText = "Ghi chú";
+            this.noteDataGridViewTextBoxColumn1.Name = "noteDataGridViewTextBoxColumn1";
+            this.noteDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // bdsPlanning
             // 
@@ -277,69 +341,6 @@
             // 
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
-            // 
-            // yearDataGridViewTextBoxColumn1
-            // 
-            this.yearDataGridViewTextBoxColumn1.DataPropertyName = "Year";
-            this.yearDataGridViewTextBoxColumn1.HeaderText = "Năm";
-            this.yearDataGridViewTextBoxColumn1.Name = "yearDataGridViewTextBoxColumn1";
-            this.yearDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.yearDataGridViewTextBoxColumn1.Width = 80;
-            // 
-            // monthDataGridViewTextBoxColumn1
-            // 
-            this.monthDataGridViewTextBoxColumn1.DataPropertyName = "Month";
-            this.monthDataGridViewTextBoxColumn1.HeaderText = "Tháng";
-            this.monthDataGridViewTextBoxColumn1.Name = "monthDataGridViewTextBoxColumn1";
-            this.monthDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.monthDataGridViewTextBoxColumn1.Width = 60;
-            // 
-            // CreatedUser
-            // 
-            this.CreatedUser.DataPropertyName = "CreatedUser";
-            this.CreatedUser.DataSource = this.bdsUser;
-            this.CreatedUser.DisplayMember = "Name";
-            this.CreatedUser.HeaderText = "Người lập";
-            this.CreatedUser.Name = "CreatedUser";
-            this.CreatedUser.ReadOnly = true;
-            this.CreatedUser.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CreatedUser.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CreatedUser.ValueMember = "Id";
-            this.CreatedUser.Width = 150;
-            // 
-            // LastUpdatedDate
-            // 
-            this.LastUpdatedDate.DataPropertyName = "LastUpdatedDate";
-            this.LastUpdatedDate.HeaderText = "Lần sửa cuối";
-            this.LastUpdatedDate.Name = "LastUpdatedDate";
-            this.LastUpdatedDate.ReadOnly = true;
-            // 
-            // dateDataGridViewTextBoxColumn1
-            // 
-            this.dateDataGridViewTextBoxColumn1.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn1.HeaderText = "Ngày lập";
-            this.dateDataGridViewTextBoxColumn1.Name = "dateDataGridViewTextBoxColumn1";
-            this.dateDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // statusDataGridViewTextBoxColumn1
-            // 
-            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn1.DataSource = this.bdsStatus;
-            this.statusDataGridViewTextBoxColumn1.DisplayMember = "Name";
-            this.statusDataGridViewTextBoxColumn1.HeaderText = "Trạng thái";
-            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
-            this.statusDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.statusDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.statusDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.statusDataGridViewTextBoxColumn1.ValueMember = "Value";
-            // 
-            // noteDataGridViewTextBoxColumn1
-            // 
-            this.noteDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.noteDataGridViewTextBoxColumn1.DataPropertyName = "Note";
-            this.noteDataGridViewTextBoxColumn1.HeaderText = "Ghi chú";
-            this.noteDataGridViewTextBoxColumn1.Name = "noteDataGridViewTextBoxColumn1";
-            this.noteDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // MedicinePlanning
             // 

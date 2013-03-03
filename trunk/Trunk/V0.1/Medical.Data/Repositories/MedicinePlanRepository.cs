@@ -91,19 +91,35 @@ namespace Medical.Data.Repositories
         {
             using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted }))
             {
-                medicinePlan.SetInfo(true);
-                this.Context.MedicinePlans.Attach(medicinePlan);
-                this.Context.Entry(medicinePlan).State = EntityState.Modified;
+                var plan = this.Context.MedicinePlans.FirstOrDefault(x => x.Id == medicinePlan.Id);
+                if (plan == null) throw new Exception("Dự trù không tồn tại");
+                plan.Note = medicinePlan.Note;
+                plan.Status = MedicinePlaningStatus.ReEdited;
+                plan.SetInfo(true);
 
+                var detailList =this.Context.MedicinePlanDetails.Where(x => x.PlanId == plan.Id).ToList();
                 foreach (var detail in medicinePlanDetails)
                 {
-                    detail.SetInfo(false);
-                    this.Context.MedicinePlanDetails.Attach(detail);
-                    this.Context.Entry(detail).State = EntityState.Modified;
+                    foreach (var original in detailList)
+                    {
+                        if (original.Id != detail.Id) continue;
+                        original.Required = detail.Required;
+                        original.SetInfo(true);
+                        break;
+                    }
                 }
                 this.Context.SaveChanges();
                 scope.Complete();
             }
+        }
+
+        public void UpdateStatus(int medicineDetailPlanningId, int status)
+        {
+            var medicinePlanning = this.Context.MedicinePlans.FirstOrDefault(x => x.Id == medicineDetailPlanningId);
+            if (medicinePlanning == null) throw new Exception("Dự trù không tồn tại");
+            medicinePlanning.Status = status;
+            medicinePlanning.SetInfo(true);
+            this.Context.SaveChanges();
         }
 
         public void Update(MedicinePlan medicinePlan)

@@ -86,5 +86,14 @@ namespace Medical.MedicinePlanning {
                 gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
             }
         }
+
+        private void dataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Data.Entities.MedicinePlan plan = (Data.Entities.MedicinePlan) this.bdsPlanning.Current;
+            if (plan == null) return;
+
+            var medicinePlanningDetail = new MedicinePlanningDetail(plan.Id);
+            medicinePlanningDetail.ShowDialog(this);
+        }
     }
 }

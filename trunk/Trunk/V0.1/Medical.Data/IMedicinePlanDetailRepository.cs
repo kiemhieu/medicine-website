@@ -14,5 +14,7 @@ namespace Medical.Data
         MedicinePlanDetail GetById(int id);
         void Insert(MedicinePlanDetail MedicinePlanDetail);
         void Update(MedicinePlanDetail medicinePlanDetail);
+        List<MedicinePlanDetail> GetByPlanId(int planId);
+        
     }
 }
