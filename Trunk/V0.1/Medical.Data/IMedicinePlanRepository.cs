@@ -18,5 +18,6 @@ namespace Medical.Data
         void Insert(MedicinePlan medicinePlan, List<MedicinePlanDetail> medicinePlanDetails);
         void Update(MedicinePlan medicinePlan, List<MedicinePlanDetail> medicinePlanDetails);
         void Update(MedicinePlan medicinePlan);
+        void UpdateStatus(int medicineDetailPlanningId, int status);
     }
 }

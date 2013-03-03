@@ -19,7 +19,7 @@ namespace Medical.MedicinePlanning
         private IClinicRepository clinicRepo = new ClinicRepository();
         private IUserRepository userRepo = new UserRepository();
         private IMedicinePlanRepository planingRepo = new MedicinePlanRepository();
-        private IMedicinePlanDetailRepository planingDetail = new MedicinePlanDetailRepository();
+        private IMedicinePlanDetailRepository planingDetailRepo = new MedicinePlanDetailRepository();
         private IMedicineRepository medicineRepo = new MedicineRepository();
         private IWareHouseRepository warehouseRepo = new WareHouseRepository();
         private IMedicineDeliveryRepository deliveryRepo = new MedicineDeliveryRepository();
@@ -36,14 +36,12 @@ namespace Medical.MedicinePlanning
         {
             InitializeComponent();
             this.mode = ViewModes.Add;
-            this.medicinePlan = new Data.Entities.MedicinePlan();
-            this.medicinePlanDetails = new List<MedicinePlanDetail>();
         }
 
         public MedicinePlanningDetail(int medicinePlanId) : this()
         {
             this.mode = ViewModes.Update;
-            
+            this.planningId = medicinePlanId;
         }
 
         /// <summary>
@@ -83,6 +81,16 @@ namespace Medical.MedicinePlanning
                 this.medicinePlan.Status = 0;
 
                 ReloadPlannedInfo();
+            } else {
+                this.medicinePlan = this.planingRepo.Get(this.planningId);
+                if (this.medicinePlan == null) throw new Exception("Dự trù thuốc không tồn tại");
+                bdsPlanning.DataSource = this.medicinePlan;
+
+                this.medicinePlanDetails = this.planingDetailRepo.GetByPlanId(this.planningId);
+                bdsPlanningDetail.DataSource = this.medicinePlanDetails;
+
+                this.txtYear.Enabled = false;
+                this.txtMonth.Enabled = false;
             }
         }
       
@@ -167,8 +175,19 @@ namespace Medical.MedicinePlanning
         {
             try
             {
-                planingRepo.Insert(this.medicinePlan, this.medicinePlanDetails);
-                this.Close();
+                if (this.mode == ViewModes.Add) {
+                    planingRepo.Insert(this.medicinePlan, this.medicinePlanDetails);
+                    MessageBox.Show("Insert successfully");
+                    this.Close();
+                } 
+                else
+                {
+                    this.medicinePlan.Status = MedicinePlaningStatus.ReEdited;
+                    planingRepo.Update(this.medicinePlan, this.medicinePlanDetails);
+                    MessageBox.Show("Update successfully");
+                    this.Close();
+                }
+
             }
             catch (Exception ex)
             {
@@ -184,6 +203,16 @@ namespace Medical.MedicinePlanning
         private void txtYear_ValueChanged(object sender, EventArgs e)
         {
             ReloadPlannedInfo();
+        }
+
+        private void btnApproved_Click(object sender, EventArgs e)
+        {
+            this.planingRepo.UpdateStatus(this.planningId, MedicinePlaningStatus.Approved);
+        }
+
+        private void btnUnApproved_Click(object sender, EventArgs e)
+        {
+            this.planingRepo.UpdateStatus(this.planningId, MedicinePlaningStatus.NotApproved);
         }
     }
 }
