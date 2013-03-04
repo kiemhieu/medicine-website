@@ -24,19 +24,22 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.bdsWareHouseDetail = new System.Windows.Forms.BindingSource(this.components);
-            this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.medicineIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lotNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expiredDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.originalVolumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currentVolumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.badVolumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inStockQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clinicIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.allocatedQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isValidDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseDetail)).BeginInit();
@@ -47,28 +50,31 @@
             this.dataGridViewX1.AutoGenerateColumns = false;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.medicineNameDataGridViewTextBoxColumn,
+            this.medicineIdDataGridViewTextBoxColumn,
             this.lotNoDataGridViewTextBoxColumn,
             this.expiredDateDataGridViewTextBoxColumn,
-            this.originalVolumnDataGridViewTextBoxColumn,
-            this.currentVolumnDataGridViewTextBoxColumn,
-            this.badVolumnDataGridViewTextBoxColumn,
-            this.unitDataGridViewTextBoxColumn,
-            this.unitPriceDataGridViewTextBoxColumn});
+            this.qtyDataGridViewTextBoxColumn,
+            this.idDataGridViewTextBoxColumn,
+            this.inStockQtyDataGridViewTextBoxColumn,
+            this.clinicIdDataGridViewTextBoxColumn,
+            this.allocatedQtyDataGridViewTextBoxColumn,
+            this.noDataGridViewTextBoxColumn,
+            this.errorDataGridViewTextBoxColumn,
+            this.isValidDataGridViewCheckBoxColumn});
             this.dataGridViewX1.DataSource = this.bdsWareHouseDetail;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.Size = new System.Drawing.Size(628, 389);
+            this.dataGridViewX1.Size = new System.Drawing.Size(628, 393);
             this.dataGridViewX1.TabIndex = 0;
             // 
             // panelEx1
@@ -78,7 +84,7 @@
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx1.Controls.Add(this.buttonX1);
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx1.Location = new System.Drawing.Point(0, 358);
+            this.panelEx1.Location = new System.Drawing.Point(0, 362);
             this.panelEx1.Name = "panelEx1";
             this.panelEx1.Size = new System.Drawing.Size(628, 31);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -104,14 +110,13 @@
             // 
             // bdsWareHouseDetail
             // 
-            this.bdsWareHouseDetail.DataSource = typeof(Medical.Data.Entities.WareHouseDetail);
+            this.bdsWareHouseDetail.DataSource = typeof(Medical.Data.Entities.Views.VWareHouseDetail);
             // 
-            // medicineNameDataGridViewTextBoxColumn
+            // medicineIdDataGridViewTextBoxColumn
             // 
-            this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
-            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "MedicineName";
-            this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
-            this.medicineNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.medicineIdDataGridViewTextBoxColumn.DataPropertyName = "MedicineId";
+            this.medicineIdDataGridViewTextBoxColumn.HeaderText = "MedicineId";
+            this.medicineIdDataGridViewTextBoxColumn.Name = "medicineIdDataGridViewTextBoxColumn";
             // 
             // lotNoDataGridViewTextBoxColumn
             // 
@@ -125,45 +130,66 @@
             this.expiredDateDataGridViewTextBoxColumn.HeaderText = "ExpiredDate";
             this.expiredDateDataGridViewTextBoxColumn.Name = "expiredDateDataGridViewTextBoxColumn";
             // 
-            // originalVolumnDataGridViewTextBoxColumn
+            // qtyDataGridViewTextBoxColumn
             // 
-            this.originalVolumnDataGridViewTextBoxColumn.DataPropertyName = "OriginalVolumn";
-            this.originalVolumnDataGridViewTextBoxColumn.HeaderText = "OriginalVolumn";
-            this.originalVolumnDataGridViewTextBoxColumn.Name = "originalVolumnDataGridViewTextBoxColumn";
+            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
+            this.qtyDataGridViewTextBoxColumn.HeaderText = "Qty";
+            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
             // 
-            // currentVolumnDataGridViewTextBoxColumn
+            // idDataGridViewTextBoxColumn
             // 
-            this.currentVolumnDataGridViewTextBoxColumn.DataPropertyName = "CurrentVolumn";
-            this.currentVolumnDataGridViewTextBoxColumn.HeaderText = "CurrentVolumn";
-            this.currentVolumnDataGridViewTextBoxColumn.Name = "currentVolumnDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             // 
-            // badVolumnDataGridViewTextBoxColumn
+            // inStockQtyDataGridViewTextBoxColumn
             // 
-            this.badVolumnDataGridViewTextBoxColumn.DataPropertyName = "BadVolumn";
-            this.badVolumnDataGridViewTextBoxColumn.HeaderText = "BadVolumn";
-            this.badVolumnDataGridViewTextBoxColumn.Name = "badVolumnDataGridViewTextBoxColumn";
+            this.inStockQtyDataGridViewTextBoxColumn.DataPropertyName = "InStockQty";
+            this.inStockQtyDataGridViewTextBoxColumn.HeaderText = "InStockQty";
+            this.inStockQtyDataGridViewTextBoxColumn.Name = "inStockQtyDataGridViewTextBoxColumn";
             // 
-            // unitDataGridViewTextBoxColumn
+            // clinicIdDataGridViewTextBoxColumn
             // 
-            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
-            this.unitDataGridViewTextBoxColumn.HeaderText = "Unit";
-            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
+            this.clinicIdDataGridViewTextBoxColumn.DataPropertyName = "ClinicId";
+            this.clinicIdDataGridViewTextBoxColumn.HeaderText = "ClinicId";
+            this.clinicIdDataGridViewTextBoxColumn.Name = "clinicIdDataGridViewTextBoxColumn";
             // 
-            // unitPriceDataGridViewTextBoxColumn
+            // allocatedQtyDataGridViewTextBoxColumn
             // 
-            this.unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
-            this.unitPriceDataGridViewTextBoxColumn.HeaderText = "UnitPrice";
-            this.unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
+            this.allocatedQtyDataGridViewTextBoxColumn.DataPropertyName = "AllocatedQty";
+            this.allocatedQtyDataGridViewTextBoxColumn.HeaderText = "AllocatedQty";
+            this.allocatedQtyDataGridViewTextBoxColumn.Name = "allocatedQtyDataGridViewTextBoxColumn";
+            // 
+            // noDataGridViewTextBoxColumn
+            // 
+            this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
+            this.noDataGridViewTextBoxColumn.HeaderText = "No";
+            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
+            // 
+            // errorDataGridViewTextBoxColumn
+            // 
+            this.errorDataGridViewTextBoxColumn.DataPropertyName = "Error";
+            this.errorDataGridViewTextBoxColumn.HeaderText = "Error";
+            this.errorDataGridViewTextBoxColumn.Name = "errorDataGridViewTextBoxColumn";
+            this.errorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isValidDataGridViewCheckBoxColumn
+            // 
+            this.isValidDataGridViewCheckBoxColumn.DataPropertyName = "IsValid";
+            this.isValidDataGridViewCheckBoxColumn.HeaderText = "IsValid";
+            this.isValidDataGridViewCheckBoxColumn.Name = "isValidDataGridViewCheckBoxColumn";
+            this.isValidDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // WareHouseDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 389);
+            this.ClientSize = new System.Drawing.Size(628, 393);
             this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.dataGridViewX1);
             this.Name = "WareHouseDetail";
             this.Text = "Chi tiết tồn kho";
+            this.Load += new System.EventHandler(this.WareHouseDetail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.panelEx1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseDetail)).EndInit();
@@ -177,15 +203,18 @@
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private DevComponents.DotNetBar.ButtonX buttonX1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn medicineNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource bdsWareHouseDetail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn medicineIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lotNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn expiredDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn originalVolumnDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn currentVolumnDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn badVolumnDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource bdsWareHouseDetail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inStockQtyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clinicIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn allocatedQtyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn errorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isValidDataGridViewCheckBoxColumn;
 
     }
 }

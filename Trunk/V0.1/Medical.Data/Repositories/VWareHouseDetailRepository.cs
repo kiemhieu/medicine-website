@@ -26,5 +26,10 @@ namespace Medical.Data.Repositories {
             List<VWareHouseDetail> vWareHouseDetails = this.Context.VWareHouseDetails.Where(x => x.MedicineId == medicineId && x.ClinicId == AppContext.CurrentClinic.Id ).ToList();
             return vWareHouseDetails;
         }
+
+        public List<VWareHouseDetail> GetByMedicine(int medicineId, int clinicId)
+        {
+            return this.Context.VWareHouseDetails.Where(x => x.MedicineId == medicineId && x.ClinicId == clinicId).ToList();
+        }
     }
 }
