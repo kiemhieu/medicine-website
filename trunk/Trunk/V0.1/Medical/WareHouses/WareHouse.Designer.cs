@@ -24,27 +24,25 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.txtMedicine = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.volumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.minAllowedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clinicDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clinicNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.remainQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsWareHouse = new System.Windows.Forms.BindingSource(this.components);
             this.bdsClinic = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.bdsWareHouse = new System.Windows.Forms.BindingSource(this.components);
+            this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.minAllowedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.volumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnBound = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -80,6 +78,7 @@
             this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Tìm";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtMedicine
             // 
@@ -127,7 +126,8 @@
             // 
             // cboClinic
             // 
-            this.cboClinic.DisplayMember = "Text";
+            this.cboClinic.DataSource = this.bdsClinic;
+            this.cboClinic.DisplayMember = "Name";
             this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboClinic.FormattingEnabled = true;
             this.cboClinic.ItemHeight = 14;
@@ -136,86 +136,84 @@
             this.cboClinic.Size = new System.Drawing.Size(256, 20);
             this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cboClinic.TabIndex = 0;
+            this.cboClinic.ValueMember = "Id";
+            // 
+            // bdsClinic
+            // 
+            this.bdsClinic.DataSource = typeof(Medical.Data.Entities.Clinic);
             // 
             // dataGridViewX1
             // 
+            this.dataGridViewX1.AllowUserToAddRows = false;
+            this.dataGridViewX1.AllowUserToDeleteRows = false;
+            this.dataGridViewX1.AllowUserToResizeColumns = false;
+            this.dataGridViewX1.AllowUserToResizeRows = false;
             this.dataGridViewX1.AutoGenerateColumns = false;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.volumnDataGridViewTextBoxColumn,
-            this.minAllowedDataGridViewTextBoxColumn,
-            this.versionDataGridViewTextBoxColumn,
-            this.clinicDataGridViewTextBoxColumn,
+            this.Column1,
             this.medicineNameDataGridViewTextBoxColumn,
-            this.clinicNameDataGridViewTextBoxColumn,
-            this.remainQtyDataGridViewTextBoxColumn});
+            this.minAllowedDataGridViewTextBoxColumn,
+            this.volumnDataGridViewTextBoxColumn,
+            this.UnBound});
             this.dataGridViewX1.DataSource = this.bdsWareHouse;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 29);
+            this.dataGridViewX1.MultiSelect = false;
             this.dataGridViewX1.Name = "dataGridViewX1";
+            this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(817, 479);
             this.dataGridViewX1.TabIndex = 1;
-            // 
-            // volumnDataGridViewTextBoxColumn
-            // 
-            this.volumnDataGridViewTextBoxColumn.DataPropertyName = "Volumn";
-            this.volumnDataGridViewTextBoxColumn.HeaderText = "Volumn";
-            this.volumnDataGridViewTextBoxColumn.Name = "volumnDataGridViewTextBoxColumn";
-            // 
-            // minAllowedDataGridViewTextBoxColumn
-            // 
-            this.minAllowedDataGridViewTextBoxColumn.DataPropertyName = "MinAllowed";
-            this.minAllowedDataGridViewTextBoxColumn.HeaderText = "MinAllowed";
-            this.minAllowedDataGridViewTextBoxColumn.Name = "minAllowedDataGridViewTextBoxColumn";
-            // 
-            // versionDataGridViewTextBoxColumn
-            // 
-            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
-            this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
-            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
-            // 
-            // clinicDataGridViewTextBoxColumn
-            // 
-            this.clinicDataGridViewTextBoxColumn.DataPropertyName = "Clinic";
-            this.clinicDataGridViewTextBoxColumn.HeaderText = "Clinic";
-            this.clinicDataGridViewTextBoxColumn.Name = "clinicDataGridViewTextBoxColumn";
-            // 
-            // medicineNameDataGridViewTextBoxColumn
-            // 
-            this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
-            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "MedicineName";
-            this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
-            this.medicineNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // clinicNameDataGridViewTextBoxColumn
-            // 
-            this.clinicNameDataGridViewTextBoxColumn.DataPropertyName = "ClinicName";
-            this.clinicNameDataGridViewTextBoxColumn.HeaderText = "ClinicName";
-            this.clinicNameDataGridViewTextBoxColumn.Name = "clinicNameDataGridViewTextBoxColumn";
-            this.clinicNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // remainQtyDataGridViewTextBoxColumn
-            // 
-            this.remainQtyDataGridViewTextBoxColumn.DataPropertyName = "RemainQty";
-            this.remainQtyDataGridViewTextBoxColumn.HeaderText = "RemainQty";
-            this.remainQtyDataGridViewTextBoxColumn.Name = "remainQtyDataGridViewTextBoxColumn";
+            this.dataGridViewX1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellDoubleClick);
+            this.dataGridViewX1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewX1_DataBindingComplete);
             // 
             // bdsWareHouse
             // 
             this.bdsWareHouse.DataSource = typeof(Medical.Data.Entities.WareHouse);
             // 
-            // bdsClinic
+            // Column1
             // 
-            this.bdsClinic.DataSource = typeof(Medical.Data.Entities.Clinic);
+            this.Column1.HeaderText = " ";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 20;
+            // 
+            // medicineNameDataGridViewTextBoxColumn
+            // 
+            this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
+            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "Tên thuốc";
+            this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
+            this.medicineNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.medicineNameDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // minAllowedDataGridViewTextBoxColumn
+            // 
+            this.minAllowedDataGridViewTextBoxColumn.DataPropertyName = "MinAllowed";
+            this.minAllowedDataGridViewTextBoxColumn.HeaderText = "Tồn kho tối thiểu";
+            this.minAllowedDataGridViewTextBoxColumn.Name = "minAllowedDataGridViewTextBoxColumn";
+            this.minAllowedDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // volumnDataGridViewTextBoxColumn
+            // 
+            this.volumnDataGridViewTextBoxColumn.DataPropertyName = "Volumn";
+            this.volumnDataGridViewTextBoxColumn.HeaderText = "Số lượng trong kho";
+            this.volumnDataGridViewTextBoxColumn.Name = "volumnDataGridViewTextBoxColumn";
+            this.volumnDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // UnBound
+            // 
+            this.UnBound.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.UnBound.HeaderText = " ";
+            this.UnBound.Name = "UnBound";
             // 
             // WareHouse
             // 
@@ -224,14 +222,15 @@
             this.ClientSize = new System.Drawing.Size(817, 508);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.panelEx1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "WareHouse";
             this.Text = "Tồn kho";
             this.Load += new System.EventHandler(this.WareHouse_Load);
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,16 +243,14 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx cboClinic;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
         private System.Windows.Forms.BindingSource bdsWareHouse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn volumnDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn minAllowedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clinicDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn medicineNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clinicNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn remainQtyDataGridViewTextBoxColumn;
         private DevComponents.DotNetBar.Controls.TextBoxX txtMedicine;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.ButtonX btnSearch;
         private System.Windows.Forms.BindingSource bdsClinic;
+        private System.Windows.Forms.DataGridViewImageColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn medicineNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn minAllowedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn volumnDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnBound;
     }
 }

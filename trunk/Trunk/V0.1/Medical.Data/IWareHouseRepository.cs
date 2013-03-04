@@ -10,6 +10,7 @@ namespace Medical.Data
     {
         void Delete(int id);
         WareHouse Get(int id);
+        List<WareHouse> Get(int clinicId, String medicines);
         List<WareHouse> GetAll();
         List<WareHouse> GetAll(int clinicId);
         Medical.Data.Entities.WareHouse GetById(int id);

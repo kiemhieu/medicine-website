@@ -20,7 +20,13 @@ namespace Medical.Data.Repositories
             var whDetail = this.Context.WareHouses.FirstOrDefault(x => x.Id.Equals(id));
             return whDetail;
         }
-
+        public List<WareHouse> Get(int clinicId, String medicines)
+        {
+            var list = this.Context.WareHouses.Where(x=>x.ClinicId == clinicId || clinicId == 0);
+            return String.IsNullOrEmpty(medicines)
+                       ? list.ToList()
+                       : list.Where(x => x.Medicine.Name.StartsWith(medicines)).ToList();
+        }
 
 
         public void Insert(WareHouse whItem)
@@ -207,5 +213,7 @@ namespace Medical.Data.Repositories
              */
             return 0;
         }
+
+        
     }
 }

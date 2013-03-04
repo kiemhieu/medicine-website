@@ -17,9 +17,12 @@ namespace Medical.Data.Entities
         public int? Version { get; set; }
         public DateTime? LastUpdatedDate { get; set; }
         public int? LastUpdatedUser { get; set; }
+
         public virtual Medicine Medicine { get; set; }
         public virtual Clinic Clinic { get; set; }
+
         // public virtual ICollection<WareHouseDetail> WareHouseDetails { get; set; }
+
         [NotMapped]
         public string MedicineName { get { return this.Medicine.Name; } }
 
