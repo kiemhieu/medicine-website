@@ -14,6 +14,6 @@ namespace Medical.Data
         List<Medicine> Get(int type);
         Medicine GetById(int id);
         List<Medicine> GetAll();
-        
+        List<string> GetMedicinesName();
     }
 }

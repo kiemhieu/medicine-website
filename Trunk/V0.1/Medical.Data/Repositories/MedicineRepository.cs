@@ -90,6 +90,11 @@ namespace Medical.Data.Repositories
             }
         }
 
+        public List<string> GetMedicinesName()
+        {
+            return this.Context.Medicines.Select(x => x.Name).ToList();
+        }
+
 
         /// <summary>
         /// Gets all.
