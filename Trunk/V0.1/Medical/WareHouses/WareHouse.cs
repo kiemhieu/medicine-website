@@ -76,7 +76,11 @@ namespace Medical.WareHouses {
 
         private void dataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            var warehouse = this.bdsWareHouse.Current as Data.Entities.WareHouse;
+            if (warehouse == null) return;
 
+            var warehouseDetail = new WareHouseDetail(warehouse.Id);
+            warehouseDetail.ShowDialog(this);
         }
     }
 }
