@@ -29,7 +29,7 @@ namespace Medical.Data.Repositories {
 
         public List<VWareHouseDetail> GetByMedicine(int medicineId, int clinicId)
         {
-            return this.Context.VWareHouseDetails.Where(x => x.MedicineId == medicineId && x.ClinicId == clinicId).ToList();
+            return this.Context.VWareHouseDetails.Where(x => x.MedicineId == medicineId && x.ClinicId == clinicId && x.Qty > 0).ToList();
         }
     }
 }
