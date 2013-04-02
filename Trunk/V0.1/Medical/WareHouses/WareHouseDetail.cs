@@ -54,5 +54,10 @@ namespace Medical.WareHouses {
                 gridView.Rows[r.Index].Cells[0].Value = global::Medical.Properties.Resources.accept;
             }
         }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

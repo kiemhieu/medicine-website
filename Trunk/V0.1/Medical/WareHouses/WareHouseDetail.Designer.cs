@@ -155,6 +155,7 @@
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.TabIndex = 0;
             this.buttonX1.Text = "Đóng lại";
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
             // panelEx2
             // 
@@ -221,6 +222,7 @@
             this.comboBoxEx1.DataSource = this.bdsUnit;
             this.comboBoxEx1.DisplayMember = "Name";
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx1.Enabled = false;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 14;
             this.comboBoxEx1.Location = new System.Drawing.Point(304, 7);
