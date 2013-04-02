@@ -11,15 +11,18 @@ using Medical.Data.Entities;
 using Medical.Data.Repositories;
 using Medical.Forms.Implements;
 
-namespace Medical {
-    public partial class PatientRegister : Form {
+namespace Medical
+{
+    public partial class PatientRegister : Form
+    {
         private bool _isAddNew = false;
         private readonly IPatientRepository _patientRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PatientRegister"/> class.
         /// </summary>
-        public PatientRegister() {
+        public PatientRegister()
+        {
             InitializeComponent();
 
             this.Patient = new Patient();
@@ -29,11 +32,25 @@ namespace Medical {
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="PatientRegister"/> class.
+        /// </summary>
+        public PatientRegister(Patient patient)
+        {
+            InitializeComponent();
+
+            this.Patient = patient;
+            this.bdsPatient.DataSource = Patient;
+            this._isAddNew = false;
+            this._patientRepository = new PatientRepository();
+        }
+
+        /// <summary>
         /// Handles the Click event of the btnCancel control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnCancel_Click(object sender, EventArgs e) {
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
             this.Close();
             DialogResult = DialogResult.No;
         }
@@ -42,23 +59,28 @@ namespace Medical {
         /// Validates the form.
         /// </summary>
         /// <returns></returns>
-        private bool ValidateForm() {
-            if (string.IsNullOrEmpty(txtCode.Text)) {
+        private bool ValidateForm()
+        {
+            if (string.IsNullOrEmpty(txtCode.Text))
+            {
                 this.errPatient.SetError(txtCode, "Chưa nhập mã quản lý bệnh nhân");
                 return false;
             }
 
-            if (!ValidationUtil.IsAlphanumeric(txtCode.Text)) {
+            if (!ValidationUtil.IsAlphanumeric(txtCode.Text))
+            {
                 this.errPatient.SetError(txtCode, "Mã bệnh nhân chỉ chấp nhận số hoặc chữ");
                 return false;
             }
 
-            if (string.IsNullOrEmpty(txtName.Text)) {
+            if (string.IsNullOrEmpty(txtName.Text))
+            {
                 this.errPatient.SetError(txtName, "Chưa nhập tên bệnh nhân");
                 return false;
             }
 
-            if (txtName.Text.Length < 3) {
+            if (txtName.Text.Length < 3)
+            {
                 this.errPatient.SetError(txtName, "Tên phải ít nhất 3 kí tự trở lên");
                 return false;
             }
@@ -71,19 +93,29 @@ namespace Medical {
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnSave_Click(object sender, EventArgs e) {
+        private void btnSave_Click(object sender, EventArgs e)
+        {
             try
             {
                 this.bdsPatient.EndEdit();
                 this.Patient.Sexual = rdaMale.Checked ? "M" : "F";
 
                 if (!this.ValidateForm()) return;
-                var result = MessageBox.Show(this, "Đăng kí bệnh nhân mới, tiếp tục ?", "Xác nhận đăng ký",MessageBoxButtons.YesNo);
-                if (result == DialogResult.No) return;
-                this._patientRepository.Insert(this.Patient);
-
+                if (_isAddNew)
+                {
+                    var result = MessageBox.Show(this, "Đăng kí bệnh nhân mới, tiếp tục ?", "Xác nhận đăng ký", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.No) return;
+                    this._patientRepository.Insert(this.Patient);
+                }
+                else
+                {
+                    var result = MessageBox.Show(this, "Thay đổi thông tin bệnh nhân mới, tiếp tục ?", "Xác nhận thay đổi", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.No) return;
+                    this._patientRepository.Update(this.Patient);
+                }
                 DialogResult = DialogResult.Yes;
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 DialogResult = DialogResult.No;
             }

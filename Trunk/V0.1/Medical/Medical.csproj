@@ -100,6 +100,12 @@
     </Compile>
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Utilities.cs" />
+    <Compile Include="PatientManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientManageForm.Designer.cs">
+      <DependentUpon>PatientManageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="History\History.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +213,18 @@
     </Compile>
     <Compile Include="BadMedicineReport\ReportBadMedicine.Designer.cs">
       <DependentUpon>ReportBadMedicine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UserRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\UserRegister.Designer.cs">
+      <DependentUpon>UserRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UserManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\UserManageForm.Designer.cs">
+      <DependentUpon>UserManageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WareHouseIE\ExportAllocateDetail.cs">
       <SubType>Form</SubType>
@@ -334,6 +352,9 @@
     <EmbeddedResource Include="ClinicForm\frmClinicEdit.resx">
       <DependentUpon>frmClinicEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PatientManageForm.resx">
+      <DependentUpon>PatientManageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="History\History.resx">
       <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
@@ -389,6 +410,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BadMedicineReport\ReportBadMedicine.resx">
       <DependentUpon>ReportBadMedicine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\UserRegister.resx">
+      <DependentUpon>UserRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\UserManageForm.resx">
+      <DependentUpon>UserManageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WareHouseIE\ExportAllocateDetail.resx">
       <DependentUpon>ExportAllocateDetail.cs</DependentUpon>

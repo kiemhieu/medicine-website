@@ -251,6 +251,7 @@
     </None>
     <None Include="Properties\DataSources\Medical.Data.Entities.Clinic.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Figure.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.FigureDetail.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Medicine.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.WareHouseDetail.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.WareHousePaper.datasource" />

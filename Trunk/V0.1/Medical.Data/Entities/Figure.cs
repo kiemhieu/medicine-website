@@ -7,7 +7,7 @@ using System.Text;
 namespace Medical.Data.Entities
 {
     [Table("Figure")]
-    public class Figure
+    public class Figure : EntityBase
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,5 +15,8 @@ namespace Medical.Data.Entities
         public DateTime LastUpdatedDate { get; set; }
         public int LastUpdatedUser { get; set; }
         public int Version { get; set; }
-  }
+
+
+        public virtual List<FigureDetail> FigureDetail { get; set; }
+    }
 }

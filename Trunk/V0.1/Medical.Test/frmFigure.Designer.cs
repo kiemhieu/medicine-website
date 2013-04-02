@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFigure));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,15 +40,22 @@
             this.lastUpdatedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastUpdatedUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsFigure = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbtnInsert = new System.Windows.Forms.ToolStripButton();
             this.tsbtnEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbtnDelete = new System.Windows.Forms.ToolStripButton();
             this.lblID = new System.Windows.Forms.Label();
+            this.grdDetail = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.volumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.medicineContentStringDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsFigureDetail = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsFigure)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDetail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsFigureDetail)).BeginInit();
             this.SuspendLayout();
             // 
             // grd
@@ -65,7 +74,7 @@
             this.lastUpdatedDateDataGridViewTextBoxColumn,
             this.lastUpdatedUserDataGridViewTextBoxColumn,
             this.versionDataGridViewTextBoxColumn});
-            this.grd.DataSource = this.bindingSource1;
+            this.grd.DataSource = this.bdsFigure;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -74,11 +83,11 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.grd.DefaultCellStyle = dataGridViewCellStyle1;
-            this.grd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grd.Dock = System.Windows.Forms.DockStyle.Top;
             this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.grd.Location = new System.Drawing.Point(0, 25);
             this.grd.Name = "grd";
-            this.grd.Size = new System.Drawing.Size(509, 303);
+            this.grd.Size = new System.Drawing.Size(510, 162);
             this.grd.TabIndex = 1;
             this.grd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellClick);
             this.grd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
@@ -129,9 +138,9 @@
             this.versionDataGridViewTextBoxColumn.ReadOnly = true;
             this.versionDataGridViewTextBoxColumn.Visible = false;
             // 
-            // bindingSource1
+            // bdsFigure
             // 
-            this.bindingSource1.DataSource = typeof(Medical.Data.Entities.Figure);
+            this.bdsFigure.DataSource = typeof(Medical.Data.Entities.Figure);
             // 
             // toolStrip1
             // 
@@ -141,7 +150,7 @@
             this.tsbtnDelete});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(509, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(510, 25);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -150,7 +159,7 @@
             this.tsbtnInsert.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnInsert.Image")));
             this.tsbtnInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnInsert.Name = "tsbtnInsert";
-            this.tsbtnInsert.Size = new System.Drawing.Size(72, 22);
+            this.tsbtnInsert.Size = new System.Drawing.Size(82, 22);
             this.tsbtnInsert.Text = "Thêm mới";
             this.tsbtnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
@@ -168,7 +177,7 @@
             this.tsbtnDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDelete.Image")));
             this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnDelete.Name = "tsbtnDelete";
-            this.tsbtnDelete.Size = new System.Drawing.Size(45, 22);
+            this.tsbtnDelete.Size = new System.Drawing.Size(47, 22);
             this.tsbtnDelete.Text = "Xóa";
             this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -181,21 +190,86 @@
             this.lblID.TabIndex = 7;
             this.lblID.Visible = false;
             // 
+            // grdDetail
+            // 
+            this.grdDetail.AllowUserToDeleteRows = false;
+            this.grdDetail.AllowUserToResizeColumns = false;
+            this.grdDetail.AllowUserToResizeRows = false;
+            this.grdDetail.AutoGenerateColumns = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.grdDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.medicineNameDataGridViewTextBoxColumn,
+            this.volumnDataGridViewTextBoxColumn,
+            this.medicineContentStringDataGridViewTextBoxColumn});
+            this.grdDetail.DataSource = this.bdsFigureDetail;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdDetail.DefaultCellStyle = dataGridViewCellStyle3;
+            this.grdDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdDetail.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.grdDetail.Location = new System.Drawing.Point(0, 187);
+            this.grdDetail.MultiSelect = false;
+            this.grdDetail.Name = "grdDetail";
+            this.grdDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdDetail.Size = new System.Drawing.Size(510, 230);
+            this.grdDetail.TabIndex = 8;
+            this.grdDetail.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.grdDetail_DataBindingComplete);
+            // 
+            // medicineNameDataGridViewTextBoxColumn
+            // 
+            this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
+            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "Thuốc";
+            this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
+            this.medicineNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // volumnDataGridViewTextBoxColumn
+            // 
+            this.volumnDataGridViewTextBoxColumn.DataPropertyName = "Volumn";
+            this.volumnDataGridViewTextBoxColumn.HeaderText = "Số lượng";
+            this.volumnDataGridViewTextBoxColumn.Name = "volumnDataGridViewTextBoxColumn";
+            // 
+            // medicineContentStringDataGridViewTextBoxColumn
+            // 
+            this.medicineContentStringDataGridViewTextBoxColumn.DataPropertyName = "MedicineContentString";
+            this.medicineContentStringDataGridViewTextBoxColumn.HeaderText = "Hàm lượng";
+            this.medicineContentStringDataGridViewTextBoxColumn.Name = "medicineContentStringDataGridViewTextBoxColumn";
+            this.medicineContentStringDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bdsFigureDetail
+            // 
+            this.bdsFigureDetail.DataSource = typeof(Medical.Data.Entities.FigureDetail);
+            // 
             // frmFigure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 328);
+            this.ClientSize = new System.Drawing.Size(510, 417);
+            this.Controls.Add(this.grdDetail);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.grd);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmFigure";
-            this.Text = "frmFigure";
+            this.Text = "Phác đồ";
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsFigure)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDetail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsFigureDetail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,7 +278,7 @@
         #endregion
 
         private DevComponents.DotNetBar.Controls.DataGridViewX grd;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.BindingSource bdsFigure;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
@@ -216,6 +290,11 @@
         private System.Windows.Forms.ToolStripButton tsbtnEdit;
         private System.Windows.Forms.ToolStripButton tsbtnDelete;
         private System.Windows.Forms.Label lblID;
+        private DevComponents.DotNetBar.Controls.DataGridViewX grdDetail;
+        private System.Windows.Forms.BindingSource bdsFigureDetail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn medicineNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn volumnDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn medicineContentStringDataGridViewTextBoxColumn;
 
     }
 }

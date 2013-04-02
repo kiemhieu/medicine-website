@@ -20,6 +20,7 @@ namespace Medical.WareHouseIE
         public WareHouseImport()
         {
             InitializeComponent();
+            var id = AppContext.CurrentClinic.Id;
             txtClinic.Text = AppContext.CurrentClinic.Name;
             FillToGrid();
         }

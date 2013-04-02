@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
 using WeifenLuo.WinFormsUI.Docking;
+using DevComponents.DotNetBar.Controls;
 namespace Medical.Test
 {
     public partial class frmFigure : DockContent
@@ -16,6 +17,7 @@ namespace Medical.Test
         public int IdFigure;
         public static int IdMedicine = -1;
         private FigureRepository figureRepository = new FigureRepository();
+        private FigureDetailRepository _figureDetailResp = new FigureDetailRepository();
         public frmFigure()
         {
             InitializeComponent();
@@ -29,11 +31,7 @@ namespace Medical.Test
         {
             if (e.RowIndex == -1) return;
             lblID.Text = grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value == null ? "0" : grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString();
-            //foreach (DataGridViewRow row in grd.Rows)
-            //{
-            //    row.DefaultCellStyle.BackColor = Color.Empty;
-            //}
-            //grd.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.SkyBlue;
+            FillToGridDetail(int.Parse(grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString()));
         }
 
         private void grd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -43,7 +41,7 @@ namespace Medical.Test
             {
                 IdFigure = 0;
             }
-
+                
             else
             {
                 IdFigure = int.Parse(grd.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value.ToString());
@@ -57,14 +55,11 @@ namespace Medical.Test
         }
         private void FillToGrid()
         {
-            //List<Figure> lst = figureRepository.GetAll();
-            //bindingSource1.DataSource = new List<Figure>();
-            bindingSource1.DataSource = figureRepository.GetAll();
-            //bindingSource1.ResetBindings(true);
-            bindingSource1.ResetCurrentItem();
-            //this.grd.DataSource = lst;
-            //grd.DataSource = bindingSource1;
-            //grd.Update();
+           
+            bdsFigure.DataSource = figureRepository.GetAll();
+           
+            bdsFigure.ResetCurrentItem();
+          
             this.grd.Refresh();
             this.grd.Parent.Refresh();
             if (grd.Rows.Count == 0)
@@ -79,6 +74,31 @@ namespace Medical.Test
             }
         }
 
+        private bool _isSkipUpdatingFigure = false;
+        private void FillToGridDetail(int figureId)
+        {
+            var figureDetails = this._figureDetailResp.GetByFigure(figureId);
+            grdDetail.DataSource = this._figureDetailResp.GetByFigure(figureId);
+            
+            //foreach (var figureDetail in figureDetails)
+            //{
+            //    var prescriptionDetail = new PrescriptionDetail()
+            //    {
+            //        FigureDetailId = figureDetail.Id,
+            //        MedicineId = figureDetail.MedicineId,
+            //        //Medicine = figureDetail.Medicine,
+            //        VolumnPerDay = figureDetail.Volumn,
+            //        Day = this.Day,
+            //        Amount = DefaultVolumn * figureDetail.Volumn,
+            //        Version = 0
+            //    };
+            //    _prescriptionDetailList.Insert(0, prescriptionDetail);
+            //}
+
+            //this.bdsPrescriptionDetail.DataSource = _prescriptionDetailList;
+            //// this.bdsPrescriptionDetail.EndEdit();
+            //ReupdateNo();
+        }
         private void btnInsert_Click(object sender, EventArgs e)
         {
             frmFigureEdit frmedit = new frmFigureEdit();
@@ -115,6 +135,18 @@ namespace Medical.Test
             frmedit.ShowDialog();
             FillToGrid();
 
+        }
+
+        private void grdDetail_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            var gridView = (DataGridViewX)sender;
+            if (null == gridView) return;
+            foreach (DataGridViewRow r in gridView.Rows)
+            {
+                gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
+                // TODO: Set error and warning icon and good icon follow the quantity remain on stock
+                //gridView.Rows[r.Index].Cells[0].Value = global::Medical.Properties.Resources.accept;
+            }
         }
     }
 }
