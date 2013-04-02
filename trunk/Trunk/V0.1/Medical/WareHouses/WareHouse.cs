@@ -82,5 +82,12 @@ namespace Medical.WareHouses {
             var warehouseDetail = new WareHouseDetail(warehouse.Id);
             warehouseDetail.ShowDialog(this);
         }
+
+        private void cboClinic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var clinicId = (int)cboClinic.SelectedValue;
+            var medicine = txtMedicine.Text.Trim();
+            LoadData(clinicId, medicine);
+        }
     }
 }

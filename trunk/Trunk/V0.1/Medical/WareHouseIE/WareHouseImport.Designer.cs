@@ -49,9 +49,8 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dateImport = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.bdsMeidcine = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsWareHouseIODetail = new System.Windows.Forms.BindingSource(this.components);
             this.cboMedicine = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.bdsMeidcine = new System.Windows.Forms.BindingSource(this.components);
             this.lotNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expireDateDataGridViewTextBoxColumn = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
@@ -60,6 +59,7 @@
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MedicineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsWareHouseIODetail = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateImport)).BeginInit();
@@ -93,9 +93,10 @@
             this.panelEx1.Controls.Add(this.labelX2);
             this.panelEx1.Controls.Add(this.labelX1);
             this.panelEx1.Controls.Add(this.dateImport);
+            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(864, 517);
+            this.panelEx1.Size = new System.Drawing.Size(864, 101);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -455,21 +456,14 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.grd.DefaultCellStyle = dataGridViewCellStyle1;
+            this.grd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.grd.Location = new System.Drawing.Point(0, 116);
+            this.grd.Location = new System.Drawing.Point(0, 101);
             this.grd.Name = "grd";
-            this.grd.Size = new System.Drawing.Size(864, 411);
+            this.grd.Size = new System.Drawing.Size(864, 416);
             this.grd.TabIndex = 2;
             this.grd.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellEndEdit);
             this.grd.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.grd_DataError);
-            // 
-            // bdsMeidcine
-            // 
-            this.bdsMeidcine.DataSource = typeof(Medical.Data.Entities.Medicine);
-            // 
-            // bdsWareHouseIODetail
-            // 
-            this.bdsWareHouseIODetail.DataSource = typeof(Medical.Data.Entities.WareHouseIODetail);
             // 
             // cboMedicine
             // 
@@ -479,6 +473,10 @@
             this.cboMedicine.HeaderText = "Tên thuốc";
             this.cboMedicine.Name = "cboMedicine";
             this.cboMedicine.ValueMember = "Id";
+            // 
+            // bdsMeidcine
+            // 
+            this.bdsMeidcine.DataSource = typeof(Medical.Data.Entities.Medicine);
             // 
             // lotNoDataGridViewTextBoxColumn
             // 
@@ -564,6 +562,10 @@
             this.Unit.HeaderText = "Unit";
             this.Unit.Name = "Unit";
             this.Unit.Visible = false;
+            // 
+            // bdsWareHouseIODetail
+            // 
+            this.bdsWareHouseIODetail.DataSource = typeof(Medical.Data.Entities.WareHouseIODetail);
             // 
             // WareHouseImport
             // 
