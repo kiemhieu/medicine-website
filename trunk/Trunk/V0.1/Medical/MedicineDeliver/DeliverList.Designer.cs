@@ -48,6 +48,9 @@
             this.recheckDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.hủyPhátThuốcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bdsDeliver = new System.Windows.Forms.BindingSource(this.components);
             this.btnRemove = new DevComponents.DotNetBar.ButtonX();
             this.btnDeliver = new DevComponents.DotNetBar.ButtonX();
@@ -58,15 +61,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.hủyPhátThuốcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.cboDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDeliver)).BeginInit();
             this.panel2.SuspendLayout();
             this.panelEx1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cboDate
@@ -272,6 +272,26 @@
             this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
             this.addressDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.hủyPhátThuốcToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 48);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem1.Text = "Phát thuốc";
+            // 
+            // hủyPhátThuốcToolStripMenuItem
+            // 
+            this.hủyPhátThuốcToolStripMenuItem.Name = "hủyPhátThuốcToolStripMenuItem";
+            this.hủyPhátThuốcToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.hủyPhátThuốcToolStripMenuItem.Text = "Hủy phát thuốc";
+            // 
             // bdsDeliver
             // 
             this.bdsDeliver.DataSource = typeof(Medical.Data.Entities.Views.VMedicineDeliverList);
@@ -402,26 +422,6 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.hủyPhátThuốcToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 48);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
-            this.toolStripMenuItem1.Text = "Phát thuốc";
-            // 
-            // hủyPhátThuốcToolStripMenuItem
-            // 
-            this.hủyPhátThuốcToolStripMenuItem.Name = "hủyPhátThuốcToolStripMenuItem";
-            this.hủyPhátThuốcToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.hủyPhátThuốcToolStripMenuItem.Text = "Hủy phát thuốc";
-            // 
             // DeliverList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -431,15 +431,15 @@
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DeliverList";
-            this.Text = "DeliverList";
+            this.Text = "Cấp thuốc";
             ((System.ComponentModel.ISupportInitialize)(this.cboDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsDeliver)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

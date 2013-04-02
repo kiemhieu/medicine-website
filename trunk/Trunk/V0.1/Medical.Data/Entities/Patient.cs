@@ -6,7 +6,8 @@ using System.Text;
 
 namespace Medical.Data.Entities {
     [Table("Patient")]
-    public class Patient {
+    public class Patient : EntityBase
+    {
         public int Id { get; set; }
         public int ClinicId { get; set; }
         public string Code { get; set; }

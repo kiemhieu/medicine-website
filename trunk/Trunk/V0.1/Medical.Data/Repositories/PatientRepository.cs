@@ -31,14 +31,33 @@ namespace Medical.Data.Repositories
         /// Updates the specified user.
         /// </summary>
         /// <param name="user">The user.</param>
-        public void Update(Patient user)
+        public void Update(Patient patient)
         {
-            throw new NotImplementedException();
+            var origin = this.Context.Patients.FirstOrDefault(x => x.Id == patient.Id);
+            if (origin == null) return;
+            origin.Address = patient.Address;
+            origin.BirthYear = patient.BirthYear;
+            origin.ClinicId = patient.ClinicId;
+            origin.Code = patient.Code;
+            origin.Description = patient.Description;
+            origin.SetInfo(true);
+            this.Context.SaveChanges();
+            this.Context.Entry(origin).Reload();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var oldPatient = this.Context.Patients.FirstOrDefault(x => x.Id == id);
+                this.Context.Patients.Remove(oldPatient);
+                this.Context.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public Patient GetById(int id)
@@ -48,7 +67,7 @@ namespace Medical.Data.Repositories
 
         public List<Patient> GetAll()
         {
-            throw new NotImplementedException();
+            return this.Context.Patients.ToList();
         }
 
         /// <summary>

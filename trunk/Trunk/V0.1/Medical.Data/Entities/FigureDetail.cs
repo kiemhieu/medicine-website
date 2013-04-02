@@ -7,7 +7,7 @@ using System.Text;
 namespace Medical.Data.Entities
 {
     [Table("FigureDetail")]
-    public class FigureDetail
+    public class FigureDetail : EntityBase
     {
         public int Id { get; set; }
         public int FigureId { get; set; }
@@ -17,5 +17,17 @@ namespace Medical.Data.Entities
 
         public virtual Medicine Medicine { get; set; }
         public virtual Figure Figure { get; set; }
+
+        [NotMapped]
+        public String MedicineName
+        {
+            get { return this.Medicine == null ? string.Empty : this.Medicine.Name; }
+        }
+
+        [NotMapped]
+        public String MedicineContentString
+        {
+            get { return this.Medicine == null ? string.Empty : this.Medicine.ContentString; }
+        }
     }
 }
