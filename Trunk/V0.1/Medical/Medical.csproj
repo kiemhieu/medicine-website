@@ -100,6 +100,24 @@
     </Compile>
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Utilities.cs" />
+    <Compile Include="MedicineDeliverHistory\DeliveryAllocateDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicineDeliverHistory\DeliveryAllocateDetail.Designer.cs">
+      <DependentUpon>DeliveryAllocateDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicineDeliverHistory\MedicineDeliveryHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicineDeliverHistory\MedicineDeliveryHistory.Designer.cs">
+      <DependentUpon>MedicineDeliveryHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicineDeliverHistory\DeliveryDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicineDeliverHistory\DeliveryDetail.Designer.cs">
+      <DependentUpon>DeliveryDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatientManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,11 +136,11 @@
     <Compile Include="History\HistoryDetail.Designer.cs">
       <DependentUpon>HistoryDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="MedicineDeliverHistory\MedicineDeliveryHistory.cs">
+    <Compile Include="MedicineDeliverHistory\MedicineDeliveryHistory_old.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MedicineDeliverHistory\MedicineDeliveryHistory.Designer.cs">
-      <DependentUpon>MedicineDeliveryHistory.cs</DependentUpon>
+    <Compile Include="MedicineDeliverHistory\MedicineDeliveryHistory_old.Designer.cs">
+      <DependentUpon>MedicineDeliveryHistory_old.cs</DependentUpon>
     </Compile>
     <Compile Include="MedicineDeliver\DeliverList.cs">
       <SubType>Form</SubType>
@@ -352,6 +370,15 @@
     <EmbeddedResource Include="ClinicForm\frmClinicEdit.resx">
       <DependentUpon>frmClinicEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MedicineDeliverHistory\DeliveryAllocateDetail.resx">
+      <DependentUpon>DeliveryAllocateDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicineDeliverHistory\MedicineDeliveryHistory.resx">
+      <DependentUpon>MedicineDeliveryHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicineDeliverHistory\DeliveryDetail.resx">
+      <DependentUpon>DeliveryDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PatientManageForm.resx">
       <DependentUpon>PatientManageForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -361,8 +388,8 @@
     <EmbeddedResource Include="History\HistoryDetail.resx">
       <DependentUpon>HistoryDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MedicineDeliverHistory\MedicineDeliveryHistory.resx">
-      <DependentUpon>MedicineDeliveryHistory.cs</DependentUpon>
+    <EmbeddedResource Include="MedicineDeliverHistory\MedicineDeliveryHistory_old.resx">
+      <DependentUpon>MedicineDeliveryHistory_old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MedicineDeliver\DeliverList.resx">
       <DependentUpon>DeliverList.cs</DependentUpon>
