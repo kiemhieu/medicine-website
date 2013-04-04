@@ -49,6 +49,7 @@ namespace Medical.Test
                 {
                     Id = 0,
                     Name = "",
+                    ClinicId= AppContext.CurrentClinic.Id,
                     LastUpdatedDate = DateTime.Now.Date,
                     Description = "",
                     LastUpdatedUser = AppContext.LoggedInUser.Id,

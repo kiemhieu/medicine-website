@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
 using WeifenLuo.WinFormsUI.Docking;
@@ -55,8 +56,8 @@ namespace Medical.Test
         }
         private void FillToGrid()
         {
-           
-            bdsFigure.DataSource = figureRepository.GetAll();
+            int _ClinicId = AppContext.CurrentClinic.Id;
+            bdsFigure.DataSource = figureRepository.GetByClinicId(_ClinicId);
            
             bdsFigure.ResetCurrentItem();
           

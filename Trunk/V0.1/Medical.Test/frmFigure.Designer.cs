@@ -34,12 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastUpdatedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastUpdatedUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsFigure = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbtnInsert = new System.Windows.Forms.ToolStripButton();
@@ -47,10 +41,16 @@
             this.tsbtnDelete = new System.Windows.Forms.ToolStripButton();
             this.lblID = new System.Windows.Forms.Label();
             this.grdDetail = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.bdsFigureDetail = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUpdatedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUpdatedUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.volumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.medicineContentStringDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsFigureDetail = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsFigure)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -92,52 +92,6 @@
             this.grd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellClick);
             this.grd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastUpdatedDateDataGridViewTextBoxColumn
-            // 
-            this.lastUpdatedDateDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedDate";
-            this.lastUpdatedDateDataGridViewTextBoxColumn.HeaderText = "LastUpdatedDate";
-            this.lastUpdatedDateDataGridViewTextBoxColumn.Name = "lastUpdatedDateDataGridViewTextBoxColumn";
-            this.lastUpdatedDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastUpdatedDateDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // lastUpdatedUserDataGridViewTextBoxColumn
-            // 
-            this.lastUpdatedUserDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedUser";
-            this.lastUpdatedUserDataGridViewTextBoxColumn.HeaderText = "LastUpdatedUser";
-            this.lastUpdatedUserDataGridViewTextBoxColumn.Name = "lastUpdatedUserDataGridViewTextBoxColumn";
-            this.lastUpdatedUserDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastUpdatedUserDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // versionDataGridViewTextBoxColumn
-            // 
-            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
-            this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
-            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
-            this.versionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.versionDataGridViewTextBoxColumn.Visible = false;
-            // 
             // bdsFigure
             // 
             this.bdsFigure.DataSource = typeof(Medical.Data.Entities.Figure);
@@ -145,9 +99,9 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbtnInsert,
+            this.tsbtnDelete,
             this.tsbtnEdit,
-            this.tsbtnDelete});
+            this.tsbtnInsert});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(510, 25);
@@ -156,15 +110,19 @@
             // 
             // tsbtnInsert
             // 
+            this.tsbtnInsert.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsbtnInsert.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnInsert.Image")));
             this.tsbtnInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnInsert.MergeIndex = 0;
             this.tsbtnInsert.Name = "tsbtnInsert";
+            this.tsbtnInsert.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tsbtnInsert.Size = new System.Drawing.Size(82, 22);
             this.tsbtnInsert.Text = "Thêm mới";
             this.tsbtnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // tsbtnEdit
             // 
+            this.tsbtnEdit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsbtnEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnEdit.Image")));
             this.tsbtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnEdit.Name = "tsbtnEdit";
@@ -174,8 +132,10 @@
             // 
             // tsbtnDelete
             // 
+            this.tsbtnDelete.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsbtnDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDelete.Image")));
             this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnDelete.MergeIndex = 1;
             this.tsbtnDelete.Name = "tsbtnDelete";
             this.tsbtnDelete.Size = new System.Drawing.Size(47, 22);
             this.tsbtnDelete.Text = "Xóa";
@@ -228,12 +188,63 @@
             this.grdDetail.TabIndex = 8;
             this.grdDetail.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.grdDetail_DataBindingComplete);
             // 
+            // bdsFigureDetail
+            // 
+            this.bdsFigureDetail.DataSource = typeof(Medical.Data.Entities.FigureDetail);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Tên phác đồ";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Chú thích";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastUpdatedDateDataGridViewTextBoxColumn
+            // 
+            this.lastUpdatedDateDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedDate";
+            this.lastUpdatedDateDataGridViewTextBoxColumn.HeaderText = "LastUpdatedDate";
+            this.lastUpdatedDateDataGridViewTextBoxColumn.Name = "lastUpdatedDateDataGridViewTextBoxColumn";
+            this.lastUpdatedDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastUpdatedDateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // lastUpdatedUserDataGridViewTextBoxColumn
+            // 
+            this.lastUpdatedUserDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedUser";
+            this.lastUpdatedUserDataGridViewTextBoxColumn.HeaderText = "LastUpdatedUser";
+            this.lastUpdatedUserDataGridViewTextBoxColumn.Name = "lastUpdatedUserDataGridViewTextBoxColumn";
+            this.lastUpdatedUserDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastUpdatedUserDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // versionDataGridViewTextBoxColumn
+            // 
+            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
+            this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
+            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
+            this.versionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.versionDataGridViewTextBoxColumn.Visible = false;
+            // 
             // medicineNameDataGridViewTextBoxColumn
             // 
             this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
             this.medicineNameDataGridViewTextBoxColumn.HeaderText = "Thuốc";
             this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
             this.medicineNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.medicineNameDataGridViewTextBoxColumn.Width = 200;
             // 
             // volumnDataGridViewTextBoxColumn
             // 
@@ -243,14 +254,11 @@
             // 
             // medicineContentStringDataGridViewTextBoxColumn
             // 
+            this.medicineContentStringDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.medicineContentStringDataGridViewTextBoxColumn.DataPropertyName = "MedicineContentString";
             this.medicineContentStringDataGridViewTextBoxColumn.HeaderText = "Hàm lượng";
             this.medicineContentStringDataGridViewTextBoxColumn.Name = "medicineContentStringDataGridViewTextBoxColumn";
             this.medicineContentStringDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bdsFigureDetail
-            // 
-            this.bdsFigureDetail.DataSource = typeof(Medical.Data.Entities.FigureDetail);
             // 
             // frmFigure
             // 
@@ -279,12 +287,6 @@
 
         private DevComponents.DotNetBar.Controls.DataGridViewX grd;
         private System.Windows.Forms.BindingSource bdsFigure;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdatedDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdatedUserDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbtnInsert;
         private System.Windows.Forms.ToolStripButton tsbtnEdit;
@@ -292,6 +294,12 @@
         private System.Windows.Forms.Label lblID;
         private DevComponents.DotNetBar.Controls.DataGridViewX grdDetail;
         private System.Windows.Forms.BindingSource bdsFigureDetail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdatedDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdatedUserDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn medicineNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn volumnDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn medicineContentStringDataGridViewTextBoxColumn;
