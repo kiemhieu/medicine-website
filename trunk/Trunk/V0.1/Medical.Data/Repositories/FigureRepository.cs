@@ -75,6 +75,7 @@ namespace Medical.Data.Repositories
                 var figureList = this.Context.FigureDetails.Where(x => x.FigureId == figure.Id).ToList();
 
                 originalFigure.Name = figure.Name;
+                originalFigure.ClinicId = figure.ClinicId;
                 originalFigure.Description = figure.Description;
                 originalFigure.Version++;
 
@@ -145,14 +146,18 @@ namespace Medical.Data.Repositories
         /// <returns></returns>
         public List<Figure> GetAll()
         {
-
             return this.Context.Figures.ToList();
+        }
+        public List<Figure> GetByClinicId(int clinicId)
+        {
+
+            //return this.Context.Figures.Where(x => x.ClinicId == clinicId).ToList();
+            return this.Context.Figures.Where(x => x.ClinicId == clinicId).ToList();
 
         }
-
-        public Prescription GetCurrent(int id)
+        public Figure GetCurrent(int id)
         {
-            throw new NotImplementedException();
+            return this.Context.Figures.FirstOrDefault(x => x.Id.Equals(id));
         }
     }
 }

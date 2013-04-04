@@ -62,7 +62,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(620, 90);
+            this.panel1.Size = new System.Drawing.Size(373, 90);
             this.panel1.TabIndex = 2;
             // 
             // txtGhiChu
@@ -78,7 +78,7 @@
             this.txtGhiChu.Location = new System.Drawing.Point(108, 36);
             this.txtGhiChu.Multiline = true;
             this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(403, 48);
+            this.txtGhiChu.Size = new System.Drawing.Size(259, 48);
             this.txtGhiChu.TabIndex = 7;
             // 
             // bdsFigure
@@ -136,7 +136,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 90);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(620, 40);
+            this.panel2.Size = new System.Drawing.Size(373, 40);
             this.panel2.TabIndex = 3;
             // 
             // btnCancle
@@ -144,7 +144,7 @@
             this.btnCancle.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCancle.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCancle.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btnCancle.Location = new System.Drawing.Point(436, 3);
+            this.btnCancle.Location = new System.Drawing.Point(292, 3);
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(75, 23);
             this.btnCancle.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -157,7 +157,7 @@
             this.btnUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnUpdate.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btnUpdate.Location = new System.Drawing.Point(309, 3);
+            this.btnUpdate.Location = new System.Drawing.Point(211, 3);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -198,7 +198,7 @@
             this.grdDetail.MultiSelect = false;
             this.grdDetail.Name = "grdDetail";
             this.grdDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdDetail.Size = new System.Drawing.Size(620, 329);
+            this.grdDetail.Size = new System.Drawing.Size(373, 257);
             this.grdDetail.TabIndex = 9;
             this.grdDetail.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDetail_CellEndEdit);
             this.grdDetail.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.grdDetail_DataBindingComplete);
@@ -217,28 +217,30 @@
             this.medicineIdDataGridViewTextBoxColumn1.DataPropertyName = "MedicineId";
             this.medicineIdDataGridViewTextBoxColumn1.DataSource = this.bdsMedicine;
             this.medicineIdDataGridViewTextBoxColumn1.DisplayMember = "Name";
-            this.medicineIdDataGridViewTextBoxColumn1.HeaderText = "MedicineId";
+            this.medicineIdDataGridViewTextBoxColumn1.HeaderText = "Thuốc";
             this.medicineIdDataGridViewTextBoxColumn1.Name = "medicineIdDataGridViewTextBoxColumn1";
             this.medicineIdDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.medicineIdDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.medicineIdDataGridViewTextBoxColumn1.ValueMember = "Id";
+            this.medicineIdDataGridViewTextBoxColumn1.Width = 200;
             // 
             // volumnDataGridViewTextBoxColumn
             // 
+            this.volumnDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.volumnDataGridViewTextBoxColumn.DataPropertyName = "Volumn";
-            this.volumnDataGridViewTextBoxColumn.HeaderText = "Volumn";
+            this.volumnDataGridViewTextBoxColumn.HeaderText = "Số lượng";
             this.volumnDataGridViewTextBoxColumn.Name = "volumnDataGridViewTextBoxColumn";
             // 
             // frmFigureEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 459);
+            this.ClientSize = new System.Drawing.Size(373, 387);
             this.Controls.Add(this.grdDetail);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmFigureEdit";
-            this.Text = "frmFigureEdit";
+            this.Text = "Cập nhật phác đồ";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsFigure)).EndInit();
             this.panel2.ResumeLayout(false);

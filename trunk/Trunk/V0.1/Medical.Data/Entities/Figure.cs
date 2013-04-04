@@ -11,6 +11,7 @@ namespace Medical.Data.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int ClinicId { get; set; }
         public string Description { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public int LastUpdatedUser { get; set; }
@@ -18,5 +19,11 @@ namespace Medical.Data.Entities
 
 
         public virtual List<FigureDetail> FigureDetail { get; set; }
+        public virtual Clinic Clinic { get; set; }
+        [NotMapped]
+        public string ClinicName
+        {
+            get { return this.Clinic == null ? string.Empty : this.Clinic.Name; }
+        }
     }
 }
