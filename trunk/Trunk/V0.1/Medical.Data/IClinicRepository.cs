@@ -12,5 +12,6 @@ namespace Medical.Data
         void Update(Clinic user);
         void Delete(int id);
         List<Clinic> GetAll();
+        Clinic Get(int id);
     }
 }
