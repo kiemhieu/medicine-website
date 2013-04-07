@@ -45,7 +45,7 @@ namespace Medical.Test
             form3.Select();
 
 
-             frmMed = new frmMedicine();
+            frmMed = new frmMedicine();
             frmMed.Text = "Medicine";
             //form.AllowEndUserDocking = false;
             //form.WindowState = FormWindowState.Maximized;
