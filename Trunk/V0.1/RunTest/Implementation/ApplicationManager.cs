@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using Medical.Data;
 using Medical.Data.EntitiyExtend;
+using Medical.Data.Repositories;
 using Medical.Forms.Entities;
 using Medical.Forms.Implements;
 using Medical.Forms.Interfaces;
@@ -44,8 +45,9 @@ namespace RunTest.Implementation
 
             //var viewManager = new ViewManager();
             //this._mainForm.ViewManager = viewManager;
-
-            AppContext.CurrentClinic = new Clinic() { Id = 1, Address = "Số 1A, Hồng Mai", Name = "PKNT Hai Bà Trưng", Type = 1 };
+            int clinicId = Int32.Parse(ConfigurationSettings.AppSettings.Get("ID"));
+            IClinicRepository clinicRepository = new ClinicRepository();
+            AppContext.CurrentClinic = clinicRepository.Get(clinicId);
 
             this._mainForm.Text = ConfigurationSettings.AppSettings.Get("Title");
             this._mainForm.Icon = System.Drawing.Icon.ExtractAssociatedIcon(ConfigurationSettings.AppSettings.Get("IconPath"));
