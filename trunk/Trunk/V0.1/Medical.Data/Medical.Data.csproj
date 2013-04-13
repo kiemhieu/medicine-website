@@ -48,6 +48,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppContext.cs" />
+    <Compile Include="Dataset\DS_ReportTotalMedicineDeliveryByMonth.cs">
+      <DependentUpon>DS_ReportTotalMedicineDeliveryByMonth.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\DS_ReportTotalMedicineDeliveryByMonth.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_ReportTotalMedicineDeliveryByMonth.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IReportRepository.cs" />
     <Compile Include="Definication.cs" />
     <Compile Include="Entities\Views\VMedicineDeliveryDetailAllocated.cs" />
     <Compile Include="Entities\Views\VPatientLastPrescription.cs" />
@@ -58,6 +67,7 @@
     <Compile Include="Entities\Views\VMedicineDeliverList.cs" />
     <Compile Include="Entities\Views\VMedicineDeliveryDetailList.cs" />
     <Compile Include="EntitiyExtend\Clinic.cs" />
+    <Compile Include="EntitiyExtend\ReportTotalMedicineDeliveryByMonth.cs" />
     <Compile Include="EntitiyExtend\Item.cs" />
     <Compile Include="EntitiyExtend\MedicineDeliveryAllocationEntity.cs" />
     <Compile Include="EntitiyExtend\MedicineDeliveryTotal.cs" />
@@ -103,8 +113,14 @@
     <Compile Include="Entities\Clinic.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\ClinicRepository.cs" />
     <Compile Include="IWareHouseRepository.cs" />
+    <Compile Include="Repositories\ReportRepository.cs" />
     <Compile Include="Repositories\MedicinePlanDetailRepository.cs" />
     <Compile Include="Repositories\MedicinePlanRepository.cs" />
     <Compile Include="Repositories\VWareHouseDetailRepository.cs" />
@@ -133,6 +149,24 @@
       <Project>{221944A4-3B72-48C7-9328-D58AA0D05FF3}</Project>
       <Name>Medical.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Dataset\DS_ReportTotalMedicineDeliveryByMonth.xsc">
+      <DependentUpon>DS_ReportTotalMedicineDeliveryByMonth.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\DS_ReportTotalMedicineDeliveryByMonth.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_ReportTotalMedicineDeliveryByMonth.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Dataset\DS_ReportTotalMedicineDeliveryByMonth.xss">
+      <DependentUpon>DS_ReportTotalMedicineDeliveryByMonth.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
