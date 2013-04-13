@@ -232,6 +232,12 @@
     <Compile Include="BadMedicineReport\ReportBadMedicine.Designer.cs">
       <DependentUpon>ReportBadMedicine.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\ReportTotalMedicineDelivery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportTotalMedicineDelivery.Designer.cs">
+      <DependentUpon>ReportTotalMedicineDelivery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\UserRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -438,6 +444,10 @@
     <EmbeddedResource Include="BadMedicineReport\ReportBadMedicine.resx">
       <DependentUpon>ReportBadMedicine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportTotalMedicineDelivery.rdlc" />
+    <EmbeddedResource Include="Reports\ReportTotalMedicineDelivery.resx">
+      <DependentUpon>ReportTotalMedicineDelivery.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\UserRegister.resx">
       <DependentUpon>UserRegister.cs</DependentUpon>
     </EmbeddedResource>
@@ -499,6 +509,8 @@
     <EmbeddedResource Include="Warehouse\frmWHPageHistory.resx">
       <DependentUpon>frmWHPageHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\Medical.Data.Dataset.DS_ReportTotalMedicineDeliveryByMonth.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Clinic.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Define.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Medicine.datasource" />
