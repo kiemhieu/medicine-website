@@ -4,6 +4,8 @@ using Medical.Data.Repositories;
 using Medical.MedicineForm;
 using WeifenLuo.WinFormsUI.Docking;
 using System.Collections.Generic;
+using Medical.Data;
+using Medical.Data.Entities;
 
 namespace Medical.Warehouse
 {
@@ -26,11 +28,16 @@ namespace Medical.Warehouse
 
         private void LoadToCiline()
         {
-            cboClinic.DataSource = clinicRepository.GetAll();         
+            if (AppContext.LoggedInUser.Role > MedicineRoles.SupperManager)
+            {
+                cboClinic.DataSource = new List<Clinic> {clinicRepository.GetById(AppContext.CurrentClinic.Id)};
+            }
+            else
+                cboClinic.DataSource = clinicRepository.GetAll();
         }
 
         private void BuildGrid()
-        {           
+        {
             var clmId = new DataGridViewTextBoxColumn { HeaderText = "Id", DataPropertyName = "Id", Name = "Id" };
             clmId.Visible = false;
             grd.Columns.Add(clmId);
@@ -85,7 +92,7 @@ namespace Medical.Warehouse
                 IdWareHouse = int.Parse(grd.Rows[e.RowIndex].Cells["Id"].Value.ToString());
                 IdMedicine = int.Parse(grd.Rows[e.RowIndex].Cells["MedicineId"].Value.ToString());
                 minAllowed = int.Parse(grd.Rows[e.RowIndex].Cells["MinAllowed"].Value.ToString());
-            }            
+            }
 
             if (IdWareHouse > 0)
             {
@@ -99,11 +106,11 @@ namespace Medical.Warehouse
                     FillToGrid();
                 else
                     grd.Rows[rowIndex].Cells["MinAllowed"].Value = frmEdit.MinAllowed;
-            }           
+            }
         }
 
         private void FillToGrid()
-        {          
+        {
             grd.DataSource = whRepository.GetAll();
         }
 
@@ -128,6 +135,6 @@ namespace Medical.Warehouse
         private void cboClinic_SelectedIndexChanged(object sender, EventArgs e)
         {
             grd.DataSource = whRepository.GetByClinicId(int.Parse(cboClinic.SelectedValue.ToString()));
-        }      
+        }
     }
 }
