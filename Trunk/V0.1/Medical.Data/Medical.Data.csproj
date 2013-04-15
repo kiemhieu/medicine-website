@@ -48,6 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppContext.cs" />
+    <Compile Include="Dataset\DS_ReportMedicineIOByMonth.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_ReportMedicineIOByMonth.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Dataset\DS_ReportTotalMedicineDeliveryByMonth.cs">
       <DependentUpon>DS_ReportTotalMedicineDeliveryByMonth.xsd</DependentUpon>
     </Compile>
@@ -56,6 +61,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_ReportTotalMedicineDeliveryByMonth.xsd</DependentUpon>
     </Compile>
+    <Compile Include="EntitiyExtend\ReportMedicineIOByMonth.cs" />
     <Compile Include="IReportRepository.cs" />
     <Compile Include="Definication.cs" />
     <Compile Include="Entities\Views\VMedicineDeliveryDetailAllocated.cs" />
@@ -152,6 +158,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Dataset\DS_ReportMedicineIOByMonth.xsc">
+      <DependentUpon>DS_ReportMedicineIOByMonth.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\DS_ReportMedicineIOByMonth.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_ReportMedicineIOByMonth.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Dataset\DS_ReportMedicineIOByMonth.xss">
+      <DependentUpon>DS_ReportMedicineIOByMonth.xsd</DependentUpon>
+    </None>
     <None Include="Dataset\DS_ReportTotalMedicineDeliveryByMonth.xsc">
       <DependentUpon>DS_ReportTotalMedicineDeliveryByMonth.xsd</DependentUpon>
     </None>
@@ -163,6 +180,15 @@
     <None Include="Dataset\DS_ReportTotalMedicineDeliveryByMonth.xss">
       <DependentUpon>DS_ReportTotalMedicineDeliveryByMonth.xsd</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\Medical.Data.Dataset.DS_ReportMedicineIOByMonth+_ReportMedicineIOByMonthDataTable.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Dataset.DS_ReportMedicineIOByMonth+_ReportMedicineIOByMonthRow.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Dataset.DS_ReportMedicineIOByMonth+_ReportMedicineIOByMonthRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Dataset.DS_ReportMedicineIOByMonth+_ReportMedicineIOByMonthRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Dataset.DS_ReportMedicineIOByMonth.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Dataset.DS_ReportTotalMedicineDeliveryByMonth+_ReportTotalMedicineDeliveryByMonthDataTable.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Dataset.DS_ReportTotalMedicineDeliveryByMonth+_ReportTotalMedicineDeliveryByMonthRow.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Dataset.DS_ReportTotalMedicineDeliveryByMonth+_ReportTotalMedicineDeliveryByMonthRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Dataset.DS_ReportTotalMedicineDeliveryByMonth+_ReportTotalMedicineDeliveryByMonthRowChangeEventHandler.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -2397,40 +2397,39 @@ namespace Medical.Data.Dataset.DS_ReportTotalMedicineDeliveryByMonthTableAdapter
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [_ReportTotalMedicineDeliveryByMonth] WHERE (([ClinicId] = @Original_" +
-                "ClinicId) AND ([MedicineId] = @Original_MedicineId) AND ([YearMonth] = @Original" +
-                "_YearMonth) AND ((@IsNull_MedicineName = 1 AND [MedicineName] IS NULL) OR ([Medi" +
-                "cineName] = @Original_MedicineName)) AND ((@IsNull_Qty1 = 1 AND [Qty1] IS NULL) " +
-                "OR ([Qty1] = @Original_Qty1)) AND ((@IsNull_Qty2 = 1 AND [Qty2] IS NULL) OR ([Qt" +
-                "y2] = @Original_Qty2)) AND ((@IsNull_Qty3 = 1 AND [Qty3] IS NULL) OR ([Qty3] = @" +
-                "Original_Qty3)) AND ((@IsNull_Qty4 = 1 AND [Qty4] IS NULL) OR ([Qty4] = @Origina" +
-                "l_Qty4)) AND ((@IsNull_Qty5 = 1 AND [Qty5] IS NULL) OR ([Qty5] = @Original_Qty5)" +
-                ") AND ((@IsNull_Qty6 = 1 AND [Qty6] IS NULL) OR ([Qty6] = @Original_Qty6)) AND (" +
-                "(@IsNull_Qty7 = 1 AND [Qty7] IS NULL) OR ([Qty7] = @Original_Qty7)) AND ((@IsNul" +
-                "l_Qty8 = 1 AND [Qty8] IS NULL) OR ([Qty8] = @Original_Qty8)) AND ((@IsNull_Qty9 " +
-                "= 1 AND [Qty9] IS NULL) OR ([Qty9] = @Original_Qty9)) AND ((@IsNull_Qty10 = 1 AN" +
-                "D [Qty10] IS NULL) OR ([Qty10] = @Original_Qty10)) AND ((@IsNull_Qty11 = 1 AND [" +
-                "Qty11] IS NULL) OR ([Qty11] = @Original_Qty11)) AND ((@IsNull_Qty12 = 1 AND [Qty" +
-                "12] IS NULL) OR ([Qty12] = @Original_Qty12)) AND ((@IsNull_Qty13 = 1 AND [Qty13]" +
-                " IS NULL) OR ([Qty13] = @Original_Qty13)) AND ((@IsNull_Qty14 = 1 AND [Qty14] IS" +
-                " NULL) OR ([Qty14] = @Original_Qty14)) AND ((@IsNull_Qty15 = 1 AND [Qty15] IS NU" +
-                "LL) OR ([Qty15] = @Original_Qty15)) AND ((@IsNull_Qty16 = 1 AND [Qty16] IS NULL)" +
-                " OR ([Qty16] = @Original_Qty16)) AND ((@IsNull_Qty17 = 1 AND [Qty17] IS NULL) OR" +
-                " ([Qty17] = @Original_Qty17)) AND ((@IsNull_Qty18 = 1 AND [Qty18] IS NULL) OR ([" +
-                "Qty18] = @Original_Qty18)) AND ((@IsNull_Qty19 = 1 AND [Qty19] IS NULL) OR ([Qty" +
-                "19] = @Original_Qty19)) AND ((@IsNull_Qty20 = 1 AND [Qty20] IS NULL) OR ([Qty20]" +
-                " = @Original_Qty20)) AND ((@IsNull_Qty21 = 1 AND [Qty21] IS NULL) OR ([Qty21] = " +
-                "@Original_Qty21)) AND ((@IsNull_Qty22 = 1 AND [Qty22] IS NULL) OR ([Qty22] = @Or" +
-                "iginal_Qty22)) AND ((@IsNull_Qty23 = 1 AND [Qty23] IS NULL) OR ([Qty23] = @Origi" +
-                "nal_Qty23)) AND ((@IsNull_Qty24 = 1 AND [Qty24] IS NULL) OR ([Qty24] = @Original" +
-                "_Qty24)) AND ((@IsNull_Qty25 = 1 AND [Qty25] IS NULL) OR ([Qty25] = @Original_Qt" +
-                "y25)) AND ((@IsNull_Qty26 = 1 AND [Qty26] IS NULL) OR ([Qty26] = @Original_Qty26" +
-                ")) AND ((@IsNull_Qty27 = 1 AND [Qty27] IS NULL) OR ([Qty27] = @Original_Qty27)) " +
-                "AND ((@IsNull_Qty28 = 1 AND [Qty28] IS NULL) OR ([Qty28] = @Original_Qty28)) AND" +
-                " ((@IsNull_Qty29 = 1 AND [Qty29] IS NULL) OR ([Qty29] = @Original_Qty29)) AND ((" +
-                "@IsNull_Qty30 = 1 AND [Qty30] IS NULL) OR ([Qty30] = @Original_Qty30)) AND ((@Is" +
-                "Null_Qty31 = 1 AND [Qty31] IS NULL) OR ([Qty31] = @Original_Qty31)) AND ((@IsNul" +
-                "l_QtyTC = 1 AND [QtyTC] IS NULL) OR ([QtyTC] = @Original_QtyTC)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [_ReportTotalMedicineDeliveryByMonth WHERE (([ClinicId = @Original_Cl" +
+                "inicId) AND ([MedicineId = @Original_MedicineId) AND ([YearMonth = @Original_Yea" +
+                "rMonth) AND ((@IsNull_MedicineName = 1 AND [MedicineName IS NULL) OR ([MedicineN" +
+                "ame = @Original_MedicineName)) AND ((@IsNull_Qty1 = 1 AND [Qty1 IS NULL) OR ([Qt" +
+                "y1 = @Original_Qty1)) AND ((@IsNull_Qty2 = 1 AND [Qty2 IS NULL) OR ([Qty2 = @Ori" +
+                "ginal_Qty2)) AND ((@IsNull_Qty3 = 1 AND [Qty3 IS NULL) OR ([Qty3 = @Original_Qty" +
+                "3)) AND ((@IsNull_Qty4 = 1 AND [Qty4 IS NULL) OR ([Qty4 = @Original_Qty4)) AND (" +
+                "(@IsNull_Qty5 = 1 AND [Qty5 IS NULL) OR ([Qty5 = @Original_Qty5)) AND ((@IsNull_" +
+                "Qty6 = 1 AND [Qty6 IS NULL) OR ([Qty6 = @Original_Qty6)) AND ((@IsNull_Qty7 = 1 " +
+                "AND [Qty7 IS NULL) OR ([Qty7 = @Original_Qty7)) AND ((@IsNull_Qty8 = 1 AND [Qty8" +
+                " IS NULL) OR ([Qty8 = @Original_Qty8)) AND ((@IsNull_Qty9 = 1 AND [Qty9 IS NULL)" +
+                " OR ([Qty9 = @Original_Qty9)) AND ((@IsNull_Qty10 = 1 AND [Qty10 IS NULL) OR ([Q" +
+                "ty10 = @Original_Qty10)) AND ((@IsNull_Qty11 = 1 AND [Qty11 IS NULL) OR ([Qty11 " +
+                "= @Original_Qty11)) AND ((@IsNull_Qty12 = 1 AND [Qty12 IS NULL) OR ([Qty12 = @Or" +
+                "iginal_Qty12)) AND ((@IsNull_Qty13 = 1 AND [Qty13 IS NULL) OR ([Qty13 = @Origina" +
+                "l_Qty13)) AND ((@IsNull_Qty14 = 1 AND [Qty14 IS NULL) OR ([Qty14 = @Original_Qty" +
+                "14)) AND ((@IsNull_Qty15 = 1 AND [Qty15 IS NULL) OR ([Qty15 = @Original_Qty15)) " +
+                "AND ((@IsNull_Qty16 = 1 AND [Qty16 IS NULL) OR ([Qty16 = @Original_Qty16)) AND (" +
+                "(@IsNull_Qty17 = 1 AND [Qty17 IS NULL) OR ([Qty17 = @Original_Qty17)) AND ((@IsN" +
+                "ull_Qty18 = 1 AND [Qty18 IS NULL) OR ([Qty18 = @Original_Qty18)) AND ((@IsNull_Q" +
+                "ty19 = 1 AND [Qty19 IS NULL) OR ([Qty19 = @Original_Qty19)) AND ((@IsNull_Qty20 " +
+                "= 1 AND [Qty20 IS NULL) OR ([Qty20 = @Original_Qty20)) AND ((@IsNull_Qty21 = 1 A" +
+                "ND [Qty21 IS NULL) OR ([Qty21 = @Original_Qty21)) AND ((@IsNull_Qty22 = 1 AND [Q" +
+                "ty22 IS NULL) OR ([Qty22 = @Original_Qty22)) AND ((@IsNull_Qty23 = 1 AND [Qty23 " +
+                "IS NULL) OR ([Qty23 = @Original_Qty23)) AND ((@IsNull_Qty24 = 1 AND [Qty24 IS NU" +
+                "LL) OR ([Qty24 = @Original_Qty24)) AND ((@IsNull_Qty25 = 1 AND [Qty25 IS NULL) O" +
+                "R ([Qty25 = @Original_Qty25)) AND ((@IsNull_Qty26 = 1 AND [Qty26 IS NULL) OR ([Q" +
+                "ty26 = @Original_Qty26)) AND ((@IsNull_Qty27 = 1 AND [Qty27 IS NULL) OR ([Qty27 " +
+                "= @Original_Qty27)) AND ((@IsNull_Qty28 = 1 AND [Qty28 IS NULL) OR ([Qty28 = @Or" +
+                "iginal_Qty28)) AND ((@IsNull_Qty29 = 1 AND [Qty29 IS NULL) OR ([Qty29 = @Origina" +
+                "l_Qty29)) AND ((@IsNull_Qty30 = 1 AND [Qty30 IS NULL) OR ([Qty30 = @Original_Qty" +
+                "30)) AND ((@IsNull_Qty31 = 1 AND [Qty31 IS NULL) OR ([Qty31 = @Original_Qty31)) " +
+                "AND ((@IsNull_QtyTC = 1 AND [QtyTC IS NULL) OR ([QtyTC = @Original_QtyTC)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClinicId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClinicId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MedicineId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MedicineId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -2503,7 +2502,7 @@ namespace Medical.Data.Dataset.DS_ReportTotalMedicineDeliveryByMonthTableAdapter
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_QtyTC", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QtyTC", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [_ReportTotalMedicineDeliveryByMonth] ([ClinicId], [MedicineId], [YearMonth], [MedicineName], [Qty1], [Qty2], [Qty3], [Qty4], [Qty5], [Qty6], [Qty7], [Qty8], [Qty9], [Qty10], [Qty11], [Qty12], [Qty13], [Qty14], [Qty15], [Qty16], [Qty17], [Qty18], [Qty19], [Qty20], [Qty21], [Qty22], [Qty23], [Qty24], [Qty25], [Qty26], [Qty27], [Qty28], [Qty29], [Qty30], [Qty31], [QtyTC]) VALUES (@ClinicId, @MedicineId, @YearMonth, @MedicineName, @Qty1, @Qty2, @Qty3, @Qty4, @Qty5, @Qty6, @Qty7, @Qty8, @Qty9, @Qty10, @Qty11, @Qty12, @Qty13, @Qty14, @Qty15, @Qty16, @Qty17, @Qty18, @Qty19, @Qty20, @Qty21, @Qty22, @Qty23, @Qty24, @Qty25, @Qty26, @Qty27, @Qty28, @Qty29, @Qty30, @Qty31, @QtyTC);
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [_ReportTotalMedicineDeliveryByMonth ([ClinicId, [MedicineId, [YearMonth, [MedicineName, [Qty1, [Qty2, [Qty3, [Qty4, [Qty5, [Qty6, [Qty7, [Qty8, [Qty9, [Qty10, [Qty11, [Qty12, [Qty13, [Qty14, [Qty15, [Qty16, [Qty17, [Qty18, [Qty19, [Qty20, [Qty21, [Qty22, [Qty23, [Qty24, [Qty25, [Qty26, [Qty27, [Qty28, [Qty29, [Qty30, [Qty31, [QtyTC) VALUES (@ClinicId, @MedicineId, @YearMonth, @MedicineName, @Qty1, @Qty2, @Qty3, @Qty4, @Qty5, @Qty6, @Qty7, @Qty8, @Qty9, @Qty10, @Qty11, @Qty12, @Qty13, @Qty14, @Qty15, @Qty16, @Qty17, @Qty18, @Qty19, @Qty20, @Qty21, @Qty22, @Qty23, @Qty24, @Qty25, @Qty26, @Qty27, @Qty28, @Qty29, @Qty30, @Qty31, @QtyTC);
 SELECT ClinicId, MedicineId, YearMonth, MedicineName, Qty1, Qty2, Qty3, Qty4, Qty5, Qty6, Qty7, Qty8, Qty9, Qty10, Qty11, Qty12, Qty13, Qty14, Qty15, Qty16, Qty17, Qty18, Qty19, Qty20, Qty21, Qty22, Qty23, Qty24, Qty25, Qty26, Qty27, Qty28, Qty29, Qty30, Qty31, QtyTC FROM _ReportTotalMedicineDeliveryByMonth WHERE (ClinicId = @ClinicId) AND (MedicineId = @MedicineId) AND (YearMonth = @YearMonth)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClinicId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClinicId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2544,54 +2543,52 @@ SELECT ClinicId, MedicineId, YearMonth, MedicineName, Qty1, Qty2, Qty3, Qty4, Qt
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QtyTC", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QtyTC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [_ReportTotalMedicineDeliveryByMonth] SET [ClinicId] = @ClinicId, [Medicin" +
-                "eId] = @MedicineId, [YearMonth] = @YearMonth, [MedicineName] = @MedicineName, [Q" +
-                "ty1] = @Qty1, [Qty2] = @Qty2, [Qty3] = @Qty3, [Qty4] = @Qty4, [Qty5] = @Qty5, [Q" +
-                "ty6] = @Qty6, [Qty7] = @Qty7, [Qty8] = @Qty8, [Qty9] = @Qty9, [Qty10] = @Qty10, " +
-                "[Qty11] = @Qty11, [Qty12] = @Qty12, [Qty13] = @Qty13, [Qty14] = @Qty14, [Qty15] " +
-                "= @Qty15, [Qty16] = @Qty16, [Qty17] = @Qty17, [Qty18] = @Qty18, [Qty19] = @Qty19" +
-                ", [Qty20] = @Qty20, [Qty21] = @Qty21, [Qty22] = @Qty22, [Qty23] = @Qty23, [Qty24" +
-                "] = @Qty24, [Qty25] = @Qty25, [Qty26] = @Qty26, [Qty27] = @Qty27, [Qty28] = @Qty" +
-                "28, [Qty29] = @Qty29, [Qty30] = @Qty30, [Qty31] = @Qty31, [QtyTC] = @QtyTC WHERE" +
-                " (([ClinicId] = @Original_ClinicId) AND ([MedicineId] = @Original_MedicineId) AN" +
-                "D ([YearMonth] = @Original_YearMonth) AND ((@IsNull_MedicineName = 1 AND [Medici" +
-                "neName] IS NULL) OR ([MedicineName] = @Original_MedicineName)) AND ((@IsNull_Qty" +
-                "1 = 1 AND [Qty1] IS NULL) OR ([Qty1] = @Original_Qty1)) AND ((@IsNull_Qty2 = 1 A" +
-                "ND [Qty2] IS NULL) OR ([Qty2] = @Original_Qty2)) AND ((@IsNull_Qty3 = 1 AND [Qty" +
-                "3] IS NULL) OR ([Qty3] = @Original_Qty3)) AND ((@IsNull_Qty4 = 1 AND [Qty4] IS N" +
-                "ULL) OR ([Qty4] = @Original_Qty4)) AND ((@IsNull_Qty5 = 1 AND [Qty5] IS NULL) OR" +
-                " ([Qty5] = @Original_Qty5)) AND ((@IsNull_Qty6 = 1 AND [Qty6] IS NULL) OR ([Qty6" +
-                "] = @Original_Qty6)) AND ((@IsNull_Qty7 = 1 AND [Qty7] IS NULL) OR ([Qty7] = @Or" +
-                "iginal_Qty7)) AND ((@IsNull_Qty8 = 1 AND [Qty8] IS NULL) OR ([Qty8] = @Original_" +
-                "Qty8)) AND ((@IsNull_Qty9 = 1 AND [Qty9] IS NULL) OR ([Qty9] = @Original_Qty9)) " +
-                "AND ((@IsNull_Qty10 = 1 AND [Qty10] IS NULL) OR ([Qty10] = @Original_Qty10)) AND" +
-                " ((@IsNull_Qty11 = 1 AND [Qty11] IS NULL) OR ([Qty11] = @Original_Qty11)) AND ((" +
-                "@IsNull_Qty12 = 1 AND [Qty12] IS NULL) OR ([Qty12] = @Original_Qty12)) AND ((@Is" +
-                "Null_Qty13 = 1 AND [Qty13] IS NULL) OR ([Qty13] = @Original_Qty13)) AND ((@IsNul" +
-                "l_Qty14 = 1 AND [Qty14] IS NULL) OR ([Qty14] = @Original_Qty14)) AND ((@IsNull_Q" +
-                "ty15 = 1 AND [Qty15] IS NULL) OR ([Qty15] = @Original_Qty15)) AND ((@IsNull_Qty1" +
-                "6 = 1 AND [Qty16] IS NULL) OR ([Qty16] = @Original_Qty16)) AND ((@IsNull_Qty17 =" +
-                " 1 AND [Qty17] IS NULL) OR ([Qty17] = @Original_Qty17)) AND ((@IsNull_Qty18 = 1 " +
-                "AND [Qty18] IS NULL) OR ([Qty18] = @Original_Qty18)) AND ((@IsNull_Qty19 = 1 AND" +
-                " [Qty19] IS NULL) OR ([Qty19] = @Original_Qty19)) AND ((@IsNull_Qty20 = 1 AND [Q" +
-                "ty20] IS NULL) OR ([Qty20] = @Original_Qty20)) AND ((@IsNull_Qty21 = 1 AND [Qty2" +
-                "1] IS NULL) OR ([Qty21] = @Original_Qty21)) AND ((@IsNull_Qty22 = 1 AND [Qty22] " +
-                "IS NULL) OR ([Qty22] = @Original_Qty22)) AND ((@IsNull_Qty23 = 1 AND [Qty23] IS " +
-                "NULL) OR ([Qty23] = @Original_Qty23)) AND ((@IsNull_Qty24 = 1 AND [Qty24] IS NUL" +
-                "L) OR ([Qty24] = @Original_Qty24)) AND ((@IsNull_Qty25 = 1 AND [Qty25] IS NULL) " +
-                "OR ([Qty25] = @Original_Qty25)) AND ((@IsNull_Qty26 = 1 AND [Qty26] IS NULL) OR " +
-                "([Qty26] = @Original_Qty26)) AND ((@IsNull_Qty27 = 1 AND [Qty27] IS NULL) OR ([Q" +
-                "ty27] = @Original_Qty27)) AND ((@IsNull_Qty28 = 1 AND [Qty28] IS NULL) OR ([Qty2" +
-                "8] = @Original_Qty28)) AND ((@IsNull_Qty29 = 1 AND [Qty29] IS NULL) OR ([Qty29] " +
-                "= @Original_Qty29)) AND ((@IsNull_Qty30 = 1 AND [Qty30] IS NULL) OR ([Qty30] = @" +
-                "Original_Qty30)) AND ((@IsNull_Qty31 = 1 AND [Qty31] IS NULL) OR ([Qty31] = @Ori" +
-                "ginal_Qty31)) AND ((@IsNull_QtyTC = 1 AND [QtyTC] IS NULL) OR ([QtyTC] = @Origin" +
-                "al_QtyTC)));\r\nSELECT ClinicId, MedicineId, YearMonth, MedicineName, Qty1, Qty2, " +
-                "Qty3, Qty4, Qty5, Qty6, Qty7, Qty8, Qty9, Qty10, Qty11, Qty12, Qty13, Qty14, Qty" +
-                "15, Qty16, Qty17, Qty18, Qty19, Qty20, Qty21, Qty22, Qty23, Qty24, Qty25, Qty26," +
-                " Qty27, Qty28, Qty29, Qty30, Qty31, QtyTC FROM _ReportTotalMedicineDeliveryByMon" +
-                "th WHERE (ClinicId = @ClinicId) AND (MedicineId = @MedicineId) AND (YearMonth = " +
-                "@YearMonth)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [_ReportTotalMedicineDeliveryByMonth SET [ClinicId = @ClinicId, [MedicineI" +
+                "d = @MedicineId, [YearMonth = @YearMonth, [MedicineName = @MedicineName, [Qty1 =" +
+                " @Qty1, [Qty2 = @Qty2, [Qty3 = @Qty3, [Qty4 = @Qty4, [Qty5 = @Qty5, [Qty6 = @Qty" +
+                "6, [Qty7 = @Qty7, [Qty8 = @Qty8, [Qty9 = @Qty9, [Qty10 = @Qty10, [Qty11 = @Qty11" +
+                ", [Qty12 = @Qty12, [Qty13 = @Qty13, [Qty14 = @Qty14, [Qty15 = @Qty15, [Qty16 = @" +
+                "Qty16, [Qty17 = @Qty17, [Qty18 = @Qty18, [Qty19 = @Qty19, [Qty20 = @Qty20, [Qty2" +
+                "1 = @Qty21, [Qty22 = @Qty22, [Qty23 = @Qty23, [Qty24 = @Qty24, [Qty25 = @Qty25, " +
+                "[Qty26 = @Qty26, [Qty27 = @Qty27, [Qty28 = @Qty28, [Qty29 = @Qty29, [Qty30 = @Qt" +
+                "y30, [Qty31 = @Qty31, [QtyTC = @QtyTC WHERE (([ClinicId = @Original_ClinicId) AN" +
+                "D ([MedicineId = @Original_MedicineId) AND ([YearMonth = @Original_YearMonth) AN" +
+                "D ((@IsNull_MedicineName = 1 AND [MedicineName IS NULL) OR ([MedicineName = @Ori" +
+                "ginal_MedicineName)) AND ((@IsNull_Qty1 = 1 AND [Qty1 IS NULL) OR ([Qty1 = @Orig" +
+                "inal_Qty1)) AND ((@IsNull_Qty2 = 1 AND [Qty2 IS NULL) OR ([Qty2 = @Original_Qty2" +
+                ")) AND ((@IsNull_Qty3 = 1 AND [Qty3 IS NULL) OR ([Qty3 = @Original_Qty3)) AND ((" +
+                "@IsNull_Qty4 = 1 AND [Qty4 IS NULL) OR ([Qty4 = @Original_Qty4)) AND ((@IsNull_Q" +
+                "ty5 = 1 AND [Qty5 IS NULL) OR ([Qty5 = @Original_Qty5)) AND ((@IsNull_Qty6 = 1 A" +
+                "ND [Qty6 IS NULL) OR ([Qty6 = @Original_Qty6)) AND ((@IsNull_Qty7 = 1 AND [Qty7 " +
+                "IS NULL) OR ([Qty7 = @Original_Qty7)) AND ((@IsNull_Qty8 = 1 AND [Qty8 IS NULL) " +
+                "OR ([Qty8 = @Original_Qty8)) AND ((@IsNull_Qty9 = 1 AND [Qty9 IS NULL) OR ([Qty9" +
+                " = @Original_Qty9)) AND ((@IsNull_Qty10 = 1 AND [Qty10 IS NULL) OR ([Qty10 = @Or" +
+                "iginal_Qty10)) AND ((@IsNull_Qty11 = 1 AND [Qty11 IS NULL) OR ([Qty11 = @Origina" +
+                "l_Qty11)) AND ((@IsNull_Qty12 = 1 AND [Qty12 IS NULL) OR ([Qty12 = @Original_Qty" +
+                "12)) AND ((@IsNull_Qty13 = 1 AND [Qty13 IS NULL) OR ([Qty13 = @Original_Qty13)) " +
+                "AND ((@IsNull_Qty14 = 1 AND [Qty14 IS NULL) OR ([Qty14 = @Original_Qty14)) AND (" +
+                "(@IsNull_Qty15 = 1 AND [Qty15 IS NULL) OR ([Qty15 = @Original_Qty15)) AND ((@IsN" +
+                "ull_Qty16 = 1 AND [Qty16 IS NULL) OR ([Qty16 = @Original_Qty16)) AND ((@IsNull_Q" +
+                "ty17 = 1 AND [Qty17 IS NULL) OR ([Qty17 = @Original_Qty17)) AND ((@IsNull_Qty18 " +
+                "= 1 AND [Qty18 IS NULL) OR ([Qty18 = @Original_Qty18)) AND ((@IsNull_Qty19 = 1 A" +
+                "ND [Qty19 IS NULL) OR ([Qty19 = @Original_Qty19)) AND ((@IsNull_Qty20 = 1 AND [Q" +
+                "ty20 IS NULL) OR ([Qty20 = @Original_Qty20)) AND ((@IsNull_Qty21 = 1 AND [Qty21 " +
+                "IS NULL) OR ([Qty21 = @Original_Qty21)) AND ((@IsNull_Qty22 = 1 AND [Qty22 IS NU" +
+                "LL) OR ([Qty22 = @Original_Qty22)) AND ((@IsNull_Qty23 = 1 AND [Qty23 IS NULL) O" +
+                "R ([Qty23 = @Original_Qty23)) AND ((@IsNull_Qty24 = 1 AND [Qty24 IS NULL) OR ([Q" +
+                "ty24 = @Original_Qty24)) AND ((@IsNull_Qty25 = 1 AND [Qty25 IS NULL) OR ([Qty25 " +
+                "= @Original_Qty25)) AND ((@IsNull_Qty26 = 1 AND [Qty26 IS NULL) OR ([Qty26 = @Or" +
+                "iginal_Qty26)) AND ((@IsNull_Qty27 = 1 AND [Qty27 IS NULL) OR ([Qty27 = @Origina" +
+                "l_Qty27)) AND ((@IsNull_Qty28 = 1 AND [Qty28 IS NULL) OR ([Qty28 = @Original_Qty" +
+                "28)) AND ((@IsNull_Qty29 = 1 AND [Qty29 IS NULL) OR ([Qty29 = @Original_Qty29)) " +
+                "AND ((@IsNull_Qty30 = 1 AND [Qty30 IS NULL) OR ([Qty30 = @Original_Qty30)) AND (" +
+                "(@IsNull_Qty31 = 1 AND [Qty31 IS NULL) OR ([Qty31 = @Original_Qty31)) AND ((@IsN" +
+                "ull_QtyTC = 1 AND [QtyTC IS NULL) OR ([QtyTC = @Original_QtyTC)));\r\nSELECT Clini" +
+                "cId, MedicineId, YearMonth, MedicineName, Qty1, Qty2, Qty3, Qty4, Qty5, Qty6, Qt" +
+                "y7, Qty8, Qty9, Qty10, Qty11, Qty12, Qty13, Qty14, Qty15, Qty16, Qty17, Qty18, Q" +
+                "ty19, Qty20, Qty21, Qty22, Qty23, Qty24, Qty25, Qty26, Qty27, Qty28, Qty29, Qty3" +
+                "0, Qty31, QtyTC FROM _ReportTotalMedicineDeliveryByMonth WHERE (ClinicId = @Clin" +
+                "icId) AND (MedicineId = @MedicineId) AND (YearMonth = @YearMonth)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClinicId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClinicId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MedicineId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MedicineId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
