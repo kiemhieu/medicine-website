@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Medical.Data;
+using Medical.Data.Entities;
 using Medical.Data.Entities.Views;
 using Medical.Data.EntitiyExtend;
 using Medical.Data.Repositories;
 using WeifenLuo.WinFormsUI.Docking;
+using Medical.Forms.UI;
 
 namespace Medical.MedicineDeliver
 {
@@ -18,7 +20,7 @@ namespace Medical.MedicineDeliver
     {
         private IClinicRepository _clinicRepo = new ClinicRepository();
         private IVMedicineDeliverRepository vMedicineRepo = new VMedicineDeliverRepository();
-
+        private IMedicineDeliveryRepository _medicineDeliveryRepo = new MedicineDeliveryRepository();
         /// <summary>
         /// Initializes a new instance of the <see cref="DeliverList"/> class.
         /// </summary>
@@ -41,7 +43,7 @@ namespace Medical.MedicineDeliver
         {
             cboClinic.DataSource = _clinicRepo.GetAll();
             cboDate.Value = DateTime.Today;
-            cboStatus.DataSource = new List<Item>(new Item[] { new Item(0, "Tất cả"), new Item(1, "Chưa phát thuốc"), new Item(2, "Đã phát thuốc")});
+            cboStatus.DataSource = new List<Item>(new Item[] { new Item(0, "Tất cả"), new Item(1, "Chưa phát thuốc"), new Item(2, "Đã phát thuốc") });
         }
 
         /// <summary>
@@ -60,7 +62,7 @@ namespace Medical.MedicineDeliver
         private void UpdateGrid(DateTime date, int type)
         {
             var list = vMedicineRepo.Get(date, type);
-            for (var i = 0; i < list.Count;i++ )
+            for (var i = 0; i < list.Count; i++)
             {
                 list[i].No = i + 1;
             }
@@ -83,8 +85,13 @@ namespace Medical.MedicineDeliver
 
         private void btnDeliver_Click(object sender, EventArgs e)
         {
+            if (bdsDeliver.Current == null)
+            {
+                DialogResult dr = MessageBox.Show("Bạn phải chọn đơn thuốc cần phát?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                return;
+            }
             this.bdsDeliver.EndEdit();
-            var selectedItem = (VMedicineDeliverList) this.bdsDeliver.Current;
+            var selectedItem = (VMedicineDeliverList)this.bdsDeliver.Current;
             var deliveryRegister = new DeliveryRegister(selectedItem.Id);
             deliveryRegister.ShowDialog();
             UpdateGrid();
@@ -93,6 +100,24 @@ namespace Medical.MedicineDeliver
         private void DeliverList_Activated_1(object sender, EventArgs e)
         {
             UpdateGrid();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (bdsDeliver.Current == null)
+            {
+                DialogResult dr = MessageBox.Show("Bạn phải chọn đơn thuốc cần phát?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                return;
+            }
+            VMedicineDeliverList _medicineDelivery = (VMedicineDeliverList)bdsDeliver.Current;
+            var dialogResult = MessageDialog.Instance.ShowMessage(this, "Q003", "bản ghi cấp thuốc này");
+            if (dialogResult == DialogResult.No) return;
+            this._medicineDeliveryRepo.Delete(_medicineDelivery.DeliverId.Value);
+            this.DialogResult = DialogResult.OK;
+
+            bdsDeliver.Clear();
+            UpdateGrid();
+            
         }
     }
 }

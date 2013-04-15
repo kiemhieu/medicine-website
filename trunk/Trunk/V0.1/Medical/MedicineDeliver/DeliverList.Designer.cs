@@ -308,6 +308,7 @@
             this.btnRemove.TabIndex = 8;
             this.btnRemove.Text = "Hủy";
             this.btnRemove.ThemeAware = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnDeliver
             // 

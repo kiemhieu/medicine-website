@@ -32,7 +32,11 @@ namespace Medical.Reports
         private void btnReport_Click(object sender, EventArgs e)
         {
             ReportRepository reReps = new ReportRepository();
-            if (dateTimeInput1.Value.Year < 1900) throw new Exception("Hãy chọn tháng xem báo cáo");
+            if (dateTimeInput1.Value.Year < 1900) 
+            {
+                errorProvider1.SetError(dateTimeInput1, "Hãy chọn tháng xem báo cáo");
+                return;
+            }
             var lst = reReps.GetReportTotalMedicineDeliveryByMonth(AppContext.CurrentClinic.Id, dateTimeInput1.Value);
             for (var i = 0; i < lst.Count; i++)
             {
