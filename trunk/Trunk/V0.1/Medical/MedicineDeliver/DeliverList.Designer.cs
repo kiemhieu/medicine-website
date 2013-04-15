@@ -278,18 +278,18 @@
             this.toolStripMenuItem1,
             this.hủyPhátThuốcToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(158, 48);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
             this.toolStripMenuItem1.Text = "Phát thuốc";
             // 
             // hủyPhátThuốcToolStripMenuItem
             // 
             this.hủyPhátThuốcToolStripMenuItem.Name = "hủyPhátThuốcToolStripMenuItem";
-            this.hủyPhátThuốcToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.hủyPhátThuốcToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.hủyPhátThuốcToolStripMenuItem.Text = "Hủy phát thuốc";
             // 
             // bdsDeliver
@@ -432,6 +432,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DeliverList";
             this.Text = "Cấp thuốc";
+            this.Activated += new System.EventHandler(this.DeliverList_Activated_1);
             ((System.ComponentModel.ISupportInitialize)(this.cboDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);

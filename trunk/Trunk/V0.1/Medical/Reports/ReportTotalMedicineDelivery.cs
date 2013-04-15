@@ -34,6 +34,10 @@ namespace Medical.Reports
             ReportRepository reReps = new ReportRepository();
             if (dateTimeInput1.Value.Year < 1900) throw new Exception("Hãy chọn tháng xem báo cáo");
             var lst = reReps.GetReportTotalMedicineDeliveryByMonth(AppContext.CurrentClinic.Id, dateTimeInput1.Value);
+            for (var i = 0; i < lst.Count; i++)
+            {
+                lst[i].STT = i + 1;
+            }
             DS_ReportTotalMedicineDeliveryByMonthBindingSource.DataSource = lst;
             this.reportViewer1.RefreshReport();
         }

@@ -29,30 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.DS_ReportTotalMedicineDeliveryByMonthBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.dateTimeInput1 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.btnReport = new DevComponents.DotNetBar.ButtonX();
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.DS_ReportTotalMedicineDeliveryByMonthBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            ((System.ComponentModel.ISupportInitialize)(this.DS_ReportTotalMedicineDeliveryByMonthBindingSource)).BeginInit();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DS_ReportTotalMedicineDeliveryByMonthBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // reportViewer1
+            // DS_ReportTotalMedicineDeliveryByMonthBindingSource
             // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource2.Name = "DS_ReportTotalMedicineDelivery";
-            reportDataSource2.Value = this.DS_ReportTotalMedicineDeliveryByMonthBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Medical.Reports.ReportTotalMedicineDelivery.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(739, 392);
-            this.reportViewer1.TabIndex = 0;
+            this.DS_ReportTotalMedicineDeliveryByMonthBindingSource.DataMember = "_ReportTotalMedicineDeliveryByMonth";
+            this.DS_ReportTotalMedicineDeliveryByMonthBindingSource.DataSource = typeof(Medical.Data.Dataset.DS_ReportTotalMedicineDeliveryByMonth);
             // 
             // panelEx1
             // 
@@ -72,7 +67,7 @@
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx1.Style.GradientAngle = 90;
-            this.panelEx1.TabIndex = 7;
+            this.panelEx1.TabIndex = 0;
             this.panelEx1.ThemeAware = true;
             // 
             // dateTimeInput1
@@ -127,7 +122,7 @@
             this.dateTimeInput1.Name = "dateTimeInput1";
             this.dateTimeInput1.Size = new System.Drawing.Size(86, 20);
             this.dateTimeInput1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateTimeInput1.TabIndex = 0;
+            this.dateTimeInput1.TabIndex = 1;
             // 
             // btnReport
             // 
@@ -138,7 +133,7 @@
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(103, 23);
             this.btnReport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnReport.TabIndex = 7;
+            this.btnReport.TabIndex = 3;
             this.btnReport.Text = "Xem báo cáo";
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
@@ -154,7 +149,7 @@
             this.comboBoxEx1.Name = "comboBoxEx1";
             this.comboBoxEx1.Size = new System.Drawing.Size(300, 20);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx1.TabIndex = 1;
+            this.comboBoxEx1.TabIndex = 2;
             this.comboBoxEx1.ValueMember = "Id";
             // 
             // labelX2
@@ -172,26 +167,43 @@
             this.labelX2.TabIndex = 3;
             this.labelX2.Text = "Ngày";
             // 
-            // DS_ReportTotalMedicineDeliveryByMonthBindingSource
+            // panel1
             // 
-            this.DS_ReportTotalMedicineDeliveryByMonthBindingSource.DataMember = "_ReportTotalMedicineDeliveryByMonth";
-            this.DS_ReportTotalMedicineDeliveryByMonthBindingSource.DataSource = typeof(Medical.Data.Dataset.DS_ReportTotalMedicineDeliveryByMonth);
+            this.panel1.Controls.Add(this.reportViewer1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 25);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(739, 311);
+            this.panel1.TabIndex = 11;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "DS_ReportTotalMedicineDelivery";
+            reportDataSource1.Value = this.DS_ReportTotalMedicineDeliveryByMonthBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Medical.Reports.ReportTotalMedicineDelivery.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(739, 311);
+            this.reportViewer1.TabIndex = 11;
             // 
             // ReportTotalMedicineDelivery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(739, 392);
+            this.ClientSize = new System.Drawing.Size(739, 336);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelEx1);
-            this.Controls.Add(this.reportViewer1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ReportTotalMedicineDelivery";
             this.Text = "Báo cáo phát thuốc hàng tháng";
             this.Load += new System.EventHandler(this.ReportTotalMedicineDelivery_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DS_ReportTotalMedicineDeliveryByMonthBindingSource)).EndInit();
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DS_ReportTotalMedicineDeliveryByMonthBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,13 +211,14 @@
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        
+
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dateTimeInput1;
         private DevComponents.DotNetBar.ButtonX btnReport;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
         private DevComponents.DotNetBar.LabelX labelX2;
         private System.Windows.Forms.BindingSource DS_ReportTotalMedicineDeliveryByMonthBindingSource;
+        private System.Windows.Forms.Panel panel1;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

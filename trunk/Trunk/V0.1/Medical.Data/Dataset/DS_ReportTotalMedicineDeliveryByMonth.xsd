@@ -349,6 +349,7 @@ SELECT ClinicId, MedicineId, YearMonth, MedicineName, Qty1, Qty2, Qty3, Qty4, Qt
               <xs:element name="QtyTC" msprop:Generator_ColumnVarNameInTable="columnQtyTC" msprop:Generator_ColumnPropNameInRow="QtyTC" msprop:Generator_ColumnPropNameInTable="QtyTCColumn" msprop:Generator_UserColumnName="QtyTC" type="xs:int" minOccurs="0" />
               <xs:element name="ClinicName" msprop:Generator_ColumnVarNameInTable="columnClinicName" msprop:Generator_ColumnPropNameInRow="ClinicName" msprop:Generator_ColumnPropNameInTable="ClinicNameColumn" msprop:Generator_UserColumnName="ClinicName" type="xs:string" minOccurs="0" />
               <xs:element name="STT" msprop:Generator_ColumnVarNameInTable="columnSTT" msprop:Generator_ColumnPropNameInRow="STT" msprop:Generator_ColumnPropNameInTable="STTColumn" msprop:Generator_UserColumnName="STT" type="xs:string" minOccurs="0" />
+              <xs:element name="MedicineUnit" msprop:Generator_ColumnVarNameInTable="columnMedicineUnit" msprop:Generator_ColumnPropNameInRow="MedicineUnit" msprop:Generator_ColumnPropNameInTable="MedicineUnitColumn" msprop:Generator_UserColumnName="MedicineUnit" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

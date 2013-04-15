@@ -41,10 +41,10 @@
             this.btnCancle = new DevComponents.DotNetBar.ButtonX();
             this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
             this.grdDetail = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsFigureDetail = new System.Windows.Forms.BindingSource(this.components);
             this.medicineIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
             this.volumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsFigureDetail = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsFigure)).BeginInit();
             this.panel2.SuspendLayout();
@@ -193,7 +193,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.grdDetail.DefaultCellStyle = dataGridViewCellStyle2;
             this.grdDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdDetail.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.grdDetail.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.grdDetail.Location = new System.Drawing.Point(0, 130);
             this.grdDetail.MultiSelect = false;
             this.grdDetail.Name = "grdDetail";
@@ -202,15 +202,6 @@
             this.grdDetail.TabIndex = 9;
             this.grdDetail.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDetail_CellEndEdit);
             this.grdDetail.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.grdDetail_DataBindingComplete);
-            // 
-            // bdsMedicine
-            // 
-            this.bdsMedicine.DataSource = typeof(Medical.Data.Entities.Medicine);
-            // 
-            // bdsFigureDetail
-            // 
-            this.bdsFigureDetail.DataSource = typeof(Medical.Data.Entities.FigureDetail);
-            this.bdsFigureDetail.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bdsFigureDetail_ListChanged);
             // 
             // medicineIdDataGridViewTextBoxColumn1
             // 
@@ -224,12 +215,21 @@
             this.medicineIdDataGridViewTextBoxColumn1.ValueMember = "Id";
             this.medicineIdDataGridViewTextBoxColumn1.Width = 200;
             // 
+            // bdsMedicine
+            // 
+            this.bdsMedicine.DataSource = typeof(Medical.Data.Entities.Medicine);
+            // 
             // volumnDataGridViewTextBoxColumn
             // 
             this.volumnDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.volumnDataGridViewTextBoxColumn.DataPropertyName = "Volumn";
             this.volumnDataGridViewTextBoxColumn.HeaderText = "Số lượng";
             this.volumnDataGridViewTextBoxColumn.Name = "volumnDataGridViewTextBoxColumn";
+            // 
+            // bdsFigureDetail
+            // 
+            this.bdsFigureDetail.DataSource = typeof(Medical.Data.Entities.FigureDetail);
+            this.bdsFigureDetail.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bdsFigureDetail_ListChanged);
             // 
             // frmFigureEdit
             // 
@@ -241,6 +241,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmFigureEdit";
             this.Text = "Cập nhật phác đồ";
+            this.Activated += new System.EventHandler(this.frmFigureEdit_Activated);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsFigure)).EndInit();
             this.panel2.ResumeLayout(false);

@@ -89,5 +89,10 @@ namespace Medical.MedicineDeliver
             deliveryRegister.ShowDialog();
             UpdateGrid();
         }
+
+        private void DeliverList_Activated_1(object sender, EventArgs e)
+        {
+            UpdateGrid();
+        }
     }
 }

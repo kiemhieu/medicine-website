@@ -355,6 +355,8 @@ namespace Medical.Data.Dataset {
             
             private global::System.Data.DataColumn columnSTT;
             
+            private global::System.Data.DataColumn columnMedicineUnit;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public _ReportTotalMedicineDeliveryByMonthDataTable() {
@@ -694,6 +696,14 @@ namespace Medical.Data.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MedicineUnitColumn {
+                get {
+                    return this.columnMedicineUnit;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -767,7 +777,8 @@ namespace Medical.Data.Dataset {
                         int Qty31, 
                         int QtyTC, 
                         string ClinicName, 
-                        string STT) {
+                        string STT, 
+                        string MedicineUnit) {
                 _ReportTotalMedicineDeliveryByMonthRow row_ReportTotalMedicineDeliveryByMonthRow = ((_ReportTotalMedicineDeliveryByMonthRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ClinicId,
@@ -807,7 +818,8 @@ namespace Medical.Data.Dataset {
                         Qty31,
                         QtyTC,
                         ClinicName,
-                        STT};
+                        STT,
+                        MedicineUnit};
                 row_ReportTotalMedicineDeliveryByMonthRow.ItemArray = columnValuesArray;
                 this.Rows.Add(row_ReportTotalMedicineDeliveryByMonthRow);
                 return row_ReportTotalMedicineDeliveryByMonthRow;
@@ -877,6 +889,7 @@ namespace Medical.Data.Dataset {
                 this.columnQtyTC = base.Columns["QtyTC"];
                 this.columnClinicName = base.Columns["ClinicName"];
                 this.columnSTT = base.Columns["STT"];
+                this.columnMedicineUnit = base.Columns["MedicineUnit"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -958,6 +971,8 @@ namespace Medical.Data.Dataset {
                 base.Columns.Add(this.columnClinicName);
                 this.columnSTT = new global::System.Data.DataColumn("STT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSTT);
+                this.columnMedicineUnit = new global::System.Data.DataColumn("MedicineUnit", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMedicineUnit);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnClinicId,
                                 this.columnMedicineId,
@@ -1736,6 +1751,23 @@ namespace Medical.Data.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MedicineUnit {
+                get {
+                    try {
+                        return ((string)(this[this.table_ReportTotalMedicineDeliveryByMonth.MedicineUnitColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MedicineUnit\' in table \'_ReportTotalMedicineDeliveryByMonth" +
+                                "\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.table_ReportTotalMedicineDeliveryByMonth.MedicineUnitColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsMedicineNameNull() {
                 return this.IsNull(this.table_ReportTotalMedicineDeliveryByMonth.MedicineNameColumn);
             }
@@ -2152,6 +2184,18 @@ namespace Medical.Data.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetSTTNull() {
                 this[this.table_ReportTotalMedicineDeliveryByMonth.STTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMedicineUnitNull() {
+                return this.IsNull(this.table_ReportTotalMedicineDeliveryByMonth.MedicineUnitColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMedicineUnitNull() {
+                this[this.table_ReportTotalMedicineDeliveryByMonth.MedicineUnitColumn] = global::System.Convert.DBNull;
             }
         }
         

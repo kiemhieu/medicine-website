@@ -180,5 +180,10 @@ namespace Medical.Test
             }
         }
 
+        private void frmFigureEdit_Activated(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
