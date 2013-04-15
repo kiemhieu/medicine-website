@@ -40,6 +40,36 @@ namespace Medical.Forms.UI {
             Environment.Exit(0);
         }
 
+        private void txtPass_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Enter)
+
+                try
+                {
+                    this.err.Clear();
+                    var isValid = userRepo.Login(this.txtUser.Text, this.txtPass.Text, AppContext.CurrentClinic.Id);
+                    if (isValid)
+                    {
+                        AppContext.Authenticated = true;
+                        AppContext.LoggedInUser = userRepo.Get(this.txtUser.Text);
+                        this.Close();
+                    }
+                    else
+                    {
+                        this.err.SetError(txtPass, "Tài khoản không hợp lệ");
+                        this.err.SetError(txtUser, "Tài khoản không hợp lệ");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+        } 
+
+       
+
 
     }
 }

@@ -31,4 +31,12 @@ namespace Medical.Data
                                  });
         }
     }
+
+    public class MedicineRoles
+    {
+        public const int Admin = 0;
+        public const int SupperManager = 1;
+        public const int Doctor = 2;
+        public const int Pharmacists = 3;
+    }
 }
