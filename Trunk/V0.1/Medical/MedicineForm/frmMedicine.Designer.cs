@@ -39,15 +39,15 @@
             this.tsbtnInsert = new System.Windows.Forms.ToolStripButton();
             this.lblID = new System.Windows.Forms.Label();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.bdsDefine = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsMedicines = new System.Windows.Forms.BindingSource(this.components);
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeMedicineDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tradeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contentStringDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.bdsDefine = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsMedicines = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDefine)).BeginInit();
@@ -166,6 +166,14 @@
             this.grd.Size = new System.Drawing.Size(838, 464);
             this.grd.TabIndex = 8;
             // 
+            // bdsDefine
+            // 
+            this.bdsDefine.DataSource = typeof(Medical.Data.Entities.Define);
+            // 
+            // bdsMedicines
+            // 
+            this.bdsMedicines.DataSource = typeof(Medical.Data.Entities.Medicine);
+            // 
             // noDataGridViewTextBoxColumn
             // 
             this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
@@ -193,7 +201,7 @@
             // tradeNameDataGridViewTextBoxColumn
             // 
             this.tradeNameDataGridViewTextBoxColumn.DataPropertyName = "TradeName";
-            this.tradeNameDataGridViewTextBoxColumn.HeaderText = "Tên thương mại";
+            this.tradeNameDataGridViewTextBoxColumn.HeaderText = "Tên biệt dược";
             this.tradeNameDataGridViewTextBoxColumn.Name = "tradeNameDataGridViewTextBoxColumn";
             this.tradeNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.tradeNameDataGridViewTextBoxColumn.Width = 200;
@@ -217,10 +225,6 @@
             this.unitDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.unitDataGridViewTextBoxColumn.ValueMember = "Id";
             // 
-            // bdsDefine
-            // 
-            this.bdsDefine.DataSource = typeof(Medical.Data.Entities.Define);
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -228,10 +232,6 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "Ghi chú";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // bdsMedicines
-            // 
-            this.bdsMedicines.DataSource = typeof(Medical.Data.Entities.Medicine);
             // 
             // FrmMedicine
             // 
