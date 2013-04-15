@@ -56,6 +56,9 @@ namespace Medical.Test
         }
         private void FillToGrid()
         {
+            bdsFigure.Clear();
+            bdsFigureDetail.Clear();
+
             int _ClinicId = AppContext.CurrentClinic.Id;
             bdsFigure.DataSource = figureRepository.GetByClinicId(_ClinicId);
            
@@ -148,6 +151,13 @@ namespace Medical.Test
                 // TODO: Set error and warning icon and good icon follow the quantity remain on stock
                 //gridView.Rows[r.Index].Cells[0].Value = global::Medical.Properties.Resources.accept;
             }
+        }
+
+        private void frmFigure_Activated(object sender, EventArgs e)
+        {
+            FillToGrid();
+            Figure figure = (Figure)bdsFigure.Current;
+            FillToGridDetail(figure.Id);
         }
     }
 }

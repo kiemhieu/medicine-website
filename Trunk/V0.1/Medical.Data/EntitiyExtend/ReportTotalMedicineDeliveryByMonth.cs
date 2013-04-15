@@ -47,5 +47,6 @@ namespace Medical.Data.EntitiyExtend
         public int? QtyTC { get; set; }
         public string ClinicName { get; set; }
         public int? STT { get; set; }
+        public string MedicineUnit { get; set; }
     }
 }
