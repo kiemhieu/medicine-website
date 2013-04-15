@@ -29,25 +29,32 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.DS_ReportMedicineIOByMonthBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.dateTimeInput1 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.btnReport = new DevComponents.DotNetBar.ButtonX();
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.DS_ReportMedicineIOByMonthBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.DS_ReportMedicineIOByMonthBindingSource)).BeginInit();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DS_ReportMedicineIOByMonthBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // DS_ReportMedicineIOByMonthBindingSource
+            // 
+            this.DS_ReportMedicineIOByMonthBindingSource.DataMember = "_ReportMedicineIOByMonth";
+            this.DS_ReportMedicineIOByMonthBindingSource.DataSource = typeof(Medical.Data.Dataset.DS_ReportMedicineIOByMonth);
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource3.Name = "DS_ReportMedicineIO";
-            reportDataSource3.Value = this.DS_ReportMedicineIOByMonthBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource1.Name = "DS_ReportMedicineIO";
+            reportDataSource1.Value = this.DS_ReportMedicineIOByMonthBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Medical.Reports.ReportInventoryByMonth.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 25);
             this.reportViewer1.Name = "reportViewer1";
@@ -172,10 +179,9 @@
             this.labelX2.TabIndex = 3;
             this.labelX2.Text = "Ngày";
             // 
-            // DS_ReportMedicineIOByMonthBindingSource
+            // errorProvider1
             // 
-            this.DS_ReportMedicineIOByMonthBindingSource.DataMember = "_ReportMedicineIOByMonth";
-            this.DS_ReportMedicineIOByMonthBindingSource.DataSource = typeof(Medical.Data.Dataset.DS_ReportMedicineIOByMonth);
+            this.errorProvider1.ContainerControl = this;
             // 
             // ReportWareHouseIOByMonth
             // 
@@ -184,13 +190,15 @@
             this.ClientSize = new System.Drawing.Size(741, 408);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.panelEx1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ReportWareHouseIOByMonth";
             this.Text = "Báo cáo nhập xuất kho";
             this.Load += new System.EventHandler(this.ReportWareHouseIOByMonth_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DS_ReportMedicineIOByMonthBindingSource)).EndInit();
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DS_ReportMedicineIOByMonthBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,5 +213,6 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
         private DevComponents.DotNetBar.LabelX labelX2;
         private System.Windows.Forms.BindingSource DS_ReportMedicineIOByMonthBindingSource;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
