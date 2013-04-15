@@ -291,10 +291,10 @@
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Location = new System.Drawing.Point(12, 68);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(96, 17);
+            this.labelX3.Size = new System.Drawing.Size(84, 17);
             this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.labelX3.TabIndex = 17;
-            this.labelX3.Text = "Tên thương mại";
+            this.labelX3.Text = "Tên biệt dược";
             // 
             // labelX2
             // 
