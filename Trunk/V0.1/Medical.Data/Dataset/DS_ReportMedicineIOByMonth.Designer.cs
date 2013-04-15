@@ -1691,16 +1691,20 @@ SELECT ClinicId, MedicineId, MedicineName, TradeName, MonthYear, MedicineUnit, M
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT ClinicId, MedicineId, MedicineName, TradeName, MonthYear, MedicineUnit, MedicineUnitPriceId, MedicineUnitPrice, MedicineInputVolumn, MedicineInputPrice, SumVolumnInputOpeningStock, OpeningStock, MedicineOutputVolumn, MedicineOutputPrice, SumVolumnOutputOpeningStock, ClosingStock, MedicineVolumn, MedicinePrice FROM _ReportMedicineIOByMonth";
+            this._commandCollection[0].CommandText = @"SELECT ClinicId, MedicineId, MedicineName, TradeName, MonthYear, MedicineUnit, MedicineUnitPriceId, MedicineUnitPrice, MedicineInputVolumn, MedicineInputPrice, SumVolumnInputOpeningStock, OpeningStock, MedicineOutputVolumn, MedicineOutputPrice, SumVolumnOutputOpeningStock, ClosingStock, MedicineVolumn, MedicinePrice FROM _ReportMedicineIOByMonth WHERE (ClinicId = @ClinicId) AND (MonthYear = @YearMonth)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClinicId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ClinicId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@YearMonth", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "MonthYear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DS_ReportMedicineIOByMonth._ReportMedicineIOByMonthDataTable dataTable) {
+        public virtual int Fill(DS_ReportMedicineIOByMonth._ReportMedicineIOByMonthDataTable dataTable, int ClinicId, System.DateTime YearMonth) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ClinicId));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(YearMonth));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -1712,8 +1716,10 @@ SELECT ClinicId, MedicineId, MedicineName, TradeName, MonthYear, MedicineUnit, M
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DS_ReportMedicineIOByMonth._ReportMedicineIOByMonthDataTable GetData() {
+        public virtual DS_ReportMedicineIOByMonth._ReportMedicineIOByMonthDataTable GetData(int ClinicId, System.DateTime YearMonth) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ClinicId));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(YearMonth));
             DS_ReportMedicineIOByMonth._ReportMedicineIOByMonthDataTable dataTable = new DS_ReportMedicineIOByMonth._ReportMedicineIOByMonthDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
