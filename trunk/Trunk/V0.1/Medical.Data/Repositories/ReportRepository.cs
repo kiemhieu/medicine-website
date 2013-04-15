@@ -26,6 +26,18 @@ namespace Medical.Data.Repositories
             return ds.ToList();
         }
 
+        public List<ReportMedicineIOByMonth> GetReportMedicineIOByMonth(int clinicId, DateTime month)
+        {
+            var parameters = new SqlParameter[]
+                                 {
+                                     new SqlParameter("@ClinicId", clinicId),
+                                     new SqlParameter("@Month", month.ToShortDateString())
+                                 };
+            var ds = this.Context.Database.SqlQuery<ReportMedicineIOByMonth>("sp_ReportMedicineIOByMonth @ClinicId, @Month",
+                new SqlParameter("@ClinicId", AppContext.CurrentClinic.Id),
+                new SqlParameter("@Month", month.ToShortDateString()));
+            return ds.ToList();
+        }
         public object GetReportTotalMedicineDeliveryByMonth()
         {
             throw new NotImplementedException();
