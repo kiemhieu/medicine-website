@@ -129,6 +129,7 @@
     <Compile Include="Repositories\ClinicRepository.cs" />
     <Compile Include="IWareHouseRepository.cs" />
     <Compile Include="Repositories\BadMedicineRepository.cs" />
+    <Compile Include="Repositories\Medical2Context.cs" />
     <Compile Include="Repositories\ReportRepository.cs" />
     <Compile Include="Repositories\MedicinePlanDetailRepository.cs" />
     <Compile Include="Repositories\MedicinePlanRepository.cs" />
@@ -160,7 +161,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Dataset\DS_ReportMedicineIOByMonth.xsc">
       <DependentUpon>DS_ReportMedicineIOByMonth.xsd</DependentUpon>
     </None>
