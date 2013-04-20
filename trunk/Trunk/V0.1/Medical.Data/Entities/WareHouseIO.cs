@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using Medical.Common;
 
 namespace Medical.Data.Entities
 {
     [Table("WareHouseIO")]
-    public class WareHouseIO
+    public class WareHouseIO : EntityBase
     {
         [Key]
         public int Id { get; set; }
@@ -24,20 +25,26 @@ namespace Medical.Data.Entities
         public int CreatedUser { get; set; }
         public int Version { get; set; }
         public ICollection<WareHouseIODetail> WareHouseIODetails { get; set; }
-        //private Medicine Medicine { get; set; }
-        //private Clinic Clinic { get; set; }
-        //public string MedicineName { get { return this.Medicine.Name; } }
-        //public string ClinicName { get { return this.Clinic.Name; } }
+
         [NotMapped]
         public string TypeName
         {
-            get
-            {
-                if (this.Type == "0")
-                    return "Nhập kho";
-                else
-                    return "Xuất kho";
-            }
+            get { return this.Type.Equals(WarehouseIO.Input) ? "Nhập kho" : "Xuất kho";}
+        }
+
+        public override void Validate()
+        {
+            base.Validate();
+            if (!Validation.CheckNulOrEmpty(this.No)) this.AddError("No", "Chưa nhập số phiếu");
+            else if (!Validation.CheckAlphaNumeric(this.No)) this.AddError("No", "Số phiếu không chứa kí tự lạ");
+
+            if (!Validation.CheckNulOrEmpty(this.Person)) this.AddError("Person", "Chưa nhập tên người");
+
+            if (!Validation.CheckNulOrEmpty(this.Phone)) this.AddError("Phone", "Chưa nhập số điện thoại");
+            else  if (this.Phone.Length < 9) this.AddError("Phone", "Số điện thoại nhập không đúng");
+
+            if (!Validation.CheckNulOrEmpty(this.AttachmentNo)) this.AddError("AttachmentNo", "Chưa nhập số chứng từ gốc");
+            else if (!Validation.CheckAlphaNumeric(this.AttachmentNo)) this.AddError("AttachmentNo", "Số chứng từ gốc không được chứa kí tự lạ");
         }
     }
 }

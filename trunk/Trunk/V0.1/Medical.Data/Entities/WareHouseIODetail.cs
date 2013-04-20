@@ -7,7 +7,7 @@ using System.Text;
 namespace Medical.Data.Entities
 {
     [Table("WareHouseIODetail")]
-    public class WareHouseIODetail
+    public class WareHouseIODetail : EntityBase
     {
         [Key]
         public int Id { get; set; }
@@ -32,5 +32,16 @@ namespace Medical.Data.Entities
         [NotMapped]
         public string UnitName { get { if (this.Medicine != null) return this.Medicine.Define.Name; else return string.Empty; } }
         //public string WareHousePaperNo { get { return this.WareHousePaper.No; } }
+
+        public override void Validate()
+        {
+            base.Validate();
+            if (MedicineId == 0) this.AddError("MedicineId", "Chưa chọn thuốc");
+
+            if (ExpireDate == null) this.AddError("ExpireDate", "Chưa nhập ngày hết hạn");
+            else if (ExpireDate < DateTime.Now) this.AddError("ExpireDate", "Ngày hết hạn phải lớn hơn ngày hiện tại");
+
+            if (Qty <= 0) this.AddError("Qty", "Số lượng thuốc phải lớn hơn 0");
+        } 
     }
 }
