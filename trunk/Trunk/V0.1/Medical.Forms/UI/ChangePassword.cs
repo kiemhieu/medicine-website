@@ -140,6 +140,7 @@ namespace Medical.Forms.UI
                 {
                     var result = MessageBox.Show(this, "Thay đổi mật khẩu mới, tiếp tục ?", "Xác nhận thay đổi", MessageBoxButtons.YesNo);
                     if (result == DialogResult.No) return;
+                    this.User.Password = txtNewPassword.Text.Trim();
                     this._userRepository.Update(this.User);
                 }
                 DialogResult = DialogResult.Yes;
