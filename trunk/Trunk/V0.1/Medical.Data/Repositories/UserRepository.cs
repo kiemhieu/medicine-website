@@ -7,19 +7,23 @@ using Medical.Data.Entities;
 namespace Medical.Data.Repositories {
     public class UserRepository : RepositoryBase, IUserRepository {
 
+        public UserRepository() : base()
+        {
+        }
+
+        public UserRepository(bool serverContext) : base(serverContext)
+        {
+            
+        }
+
         public User Get(string username)
         {
             var user = this.Context.Users.FirstOrDefault(x => x.UserName.Equals(username));
             return user;
         }
 
-        /// <summary>
-        /// Logins the specified username.
-        /// </summary>
-        /// <param name="username">The username.</param>
-        /// <param name="password">The password.</param>
-        /// <param name="clinic">The clinic.</param>
-        /// <returns></returns>
+
+
         public bool Login(string username, string password, int clinic) {
             var user =
                 this.Context.Users.FirstOrDefault(
