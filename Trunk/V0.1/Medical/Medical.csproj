@@ -578,9 +578,6 @@
     <None Include="Resources\document.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\accept.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\cancel.png" />
   </ItemGroup>
   <ItemGroup>
@@ -624,6 +621,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\close_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\attention.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bonus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accept.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
