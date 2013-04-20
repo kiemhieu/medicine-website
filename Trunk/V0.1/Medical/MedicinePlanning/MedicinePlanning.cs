@@ -15,22 +15,25 @@ using WeifenLuo.WinFormsUI.Docking;
 namespace Medical.MedicinePlanning {
     public partial class MedicinePlanning : DockContent
     {
-
-        private IDefineRepository defineRepo = new DefineRepository();
-        private IClinicRepository clinicRepo = new ClinicRepository();
-        private IUserRepository userRepo = new UserRepository();
-        private IMedicinePlanRepository medicinePlanRepo = new MedicinePlanRepository();
-        private IMedicineDeliveryRepository medicineDeliveryRepo = new MedicineDeliveryRepository();
+        private readonly IClinicRepository _clinicRepo = new ClinicRepository();
+        private readonly IUserRepository _userRepo = new UserRepository();
+        private readonly IMedicinePlanRepository _medicinePlanRepo = new MedicinePlanRepository();
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MedicinePlanning"/> class.
+        /// </summary>
         public MedicinePlanning() {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         private void Initialize()
         {
             // Init Clinic combobox
-            var clinic = this.clinicRepo.GetAll();
+            var clinic = this._clinicRepo.GetAll();
             clinic.Insert(0, new Clinic(){Id = 0, Name = "Tất cả"});
             this.bdsClinic.DataSource = clinic;
             this.cboClinic.SelectedValue = AppContext.CurrentClinic.Id;
@@ -39,27 +42,44 @@ namespace Medical.MedicinePlanning {
             this.txtYear.Value = DateTime.Today.Year;
 
             this.bdsStatus.DataSource = MedicinePlaningStatus.GetPlanningStatus();
-            this.bdsUser.DataSource = this.userRepo.GetAll();
+            this.bdsUser.DataSource = this._userRepo.GetAll();
 
-            var planningList = medicinePlanRepo.Get(this.ClinicId, this.Year, this.Month);
-            this.bdsPlanning.DataSource = planningList;
-
-            // var deliveryTotal = medicineDeliveryRepo.GetMedicineDeliveryTotal(1, new DateTime(2013, 01, 01), new DateTime(2014, 01, 01));
-            // Console.WriteLine(deliveryTotal.Count);
+            InitializeData();
         }
 
-        private void MedicinePlanning_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Initializes the data.
+        /// </summary>
+        private void InitializeData()
+        {
+            var planningList = _medicinePlanRepo.Get(this.ClinicId, this.Year, this.Month);
+            this.bdsPlanning.DataSource = planningList;
+            this.bdsPlanning.ResetBindings(true);
+            this.dataGridViewX1.ResetBindings();
+            this.dataGridViewX1.Refresh();
+        }
+
+        /// <summary>
+        /// Medicines the planning load.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void MedicinePlanningLoad(object sender, EventArgs e)
         {
             Initialize();
         }
 
-        private void btnAddPlanning_Click(object sender, EventArgs e)
+        /// <summary>
+        /// BTNs the add planning click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void BtnAddPlanningClick(object sender, EventArgs e)
         {
             var detail =new MedicinePlanningDetail();
             detail.ShowDialog(this);
         }
 
-        #region Properties
         private int? ClinicId
         {
             get { return this.cboClinic.SelectedValue == null ? (int?)null : Convert.ToInt32(this.cboClinic.SelectedValue); }
@@ -75,9 +95,13 @@ namespace Medical.MedicinePlanning {
             get { return this.txtMonth.ValueObject == null ? (int?)null : this.txtMonth.Value; }
         }
 
-        #endregion
 
-        private void dataGridViewX1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        /// <summary>
+        /// Datas the grid view x1 data binding complete.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="DataGridViewBindingCompleteEventArgs"/> instance containing the event data.</param>
+        private void DataGridViewX1DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             var gridView = (DataGridViewX)sender;
             if (null == gridView) return;
@@ -87,13 +111,48 @@ namespace Medical.MedicinePlanning {
             }
         }
 
-        private void dataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// Datas the grid view x1 cell double click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
+        private void DataGridViewX1CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Data.Entities.MedicinePlan plan = (Data.Entities.MedicinePlan) this.bdsPlanning.Current;
+            var plan = (Data.Entities.MedicinePlan) this.bdsPlanning.Current;
             if (plan == null) return;
 
             var medicinePlanningDetail = new MedicinePlanningDetail(plan.Id);
             medicinePlanningDetail.ShowDialog(this);
+        }
+
+        /// <summary>
+        /// TXTs the month value changed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void TxtMonthValueChanged(object sender, EventArgs e)
+        {
+            InitializeData();
+        }
+
+        /// <summary>
+        /// TXTs the year value changed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void TxtYearValueChanged(object sender, EventArgs e)
+        {
+            InitializeData();
+        }
+
+        /// <summary>
+        /// Cboes the clinic selected index changed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void CboClinicSelectedIndexChanged(object sender, EventArgs e)
+        {
+            InitializeData();
         }
     }
 }

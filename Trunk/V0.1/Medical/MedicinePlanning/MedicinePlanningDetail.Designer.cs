@@ -24,9 +24,14 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MedicinePlanningDetail));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.txtDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.bdsPlanning = new System.Windows.Forms.BindingSource(this.components);
@@ -36,8 +41,8 @@
             this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.bdsClinic = new System.Windows.Forms.BindingSource(this.components);
             this.grdPlanning = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
             this.bdsPlanningDetail = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.txtNote = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -54,23 +59,25 @@
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.cboPerson = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
+            this.btnDelete = new DevComponents.DotNetBar.ButtonX();
+            this.btnUnApproved = new DevComponents.DotNetBar.ButtonX();
+            this.btnApproved = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TradeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastMonthUsageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currentMonthUsageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.requiredDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnApproved = new DevComponents.DotNetBar.ButtonX();
-            this.btnUnApproved = new DevComponents.DotNetBar.ButtonX();
-            this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPlanning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMonth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPlanning)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPlanningDetail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApprovedDate)).BeginInit();
@@ -182,7 +189,7 @@
             this.txtMonth.Size = new System.Drawing.Size(60, 20);
             this.txtMonth.TabIndex = 3;
             this.txtMonth.Value = 1;
-            this.txtMonth.ValueChanged += new System.EventHandler(this.txtMonth_ValueChanged);
+            this.txtMonth.ValueChanged += new System.EventHandler(this.TxtMonthValueChanged);
             // 
             // labelX4
             // 
@@ -210,7 +217,7 @@
             this.cboClinic.ItemHeight = 14;
             this.cboClinic.Location = new System.Drawing.Point(388, 4);
             this.cboClinic.Name = "cboClinic";
-            this.cboClinic.Size = new System.Drawing.Size(206, 20);
+            this.cboClinic.Size = new System.Drawing.Size(331, 20);
             this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cboClinic.TabIndex = 7;
             this.cboClinic.ValueMember = "Id";
@@ -222,63 +229,64 @@
             // grdPlanning
             // 
             this.grdPlanning.AllowUserToAddRows = false;
-            this.grdPlanning.AllowUserToDeleteRows = false;
             this.grdPlanning.AllowUserToResizeColumns = false;
             this.grdPlanning.AllowUserToResizeRows = false;
             this.grdPlanning.AutoGenerateColumns = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdPlanning.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdPlanning.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdPlanning.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdPlanning.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
+            this.TradeName,
+            this.UnitName,
             this.inStockDataGridViewTextBoxColumn,
             this.lastMonthUsageDataGridViewTextBoxColumn,
             this.currentMonthUsageDataGridViewTextBoxColumn,
             this.requiredDataGridViewTextBoxColumn});
             this.grdPlanning.DataSource = this.bdsPlanningDetail;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdPlanning.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdPlanning.DefaultCellStyle = dataGridViewCellStyle6;
             this.grdPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdPlanning.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.grdPlanning.HighlightSelectedColumnHeaders = false;
             this.grdPlanning.Location = new System.Drawing.Point(0, 100);
             this.grdPlanning.MultiSelect = false;
             this.grdPlanning.Name = "grdPlanning";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdPlanning.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.grdPlanning.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.grdPlanning.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdPlanning.Size = new System.Drawing.Size(813, 402);
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdPlanning.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.grdPlanning.RowHeadersWidth = 50;
+            this.grdPlanning.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.grdPlanning.Size = new System.Drawing.Size(1071, 476);
             this.grdPlanning.TabIndex = 8;
-            this.grdPlanning.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.grdPlanning_DataBindingComplete);
-            this.grdPlanning.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.grdPlanning_RowsAdded);
-            // 
-            // bdsMedicine
-            // 
-            this.bdsMedicine.DataSource = typeof(Medical.Data.Entities.Medicine);
+            this.grdPlanning.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.GrdPlanningDataBindingComplete);
+            this.grdPlanning.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.GrdPlanningRowsAdded);
             // 
             // bdsPlanningDetail
             // 
             this.bdsPlanningDetail.AllowNew = false;
             this.bdsPlanningDetail.DataSource = typeof(Medical.Data.Entities.MedicinePlanDetail);
+            // 
+            // bdsMedicine
+            // 
+            this.bdsMedicine.DataSource = typeof(Medical.Data.Entities.Medicine);
             // 
             // styleManager1
             // 
@@ -391,13 +399,13 @@
             this.txtYear.DataBindings.Add(new System.Windows.Forms.Binding("ValueObject", this.bdsPlanning, "Year", true));
             this.txtYear.Location = new System.Drawing.Point(140, 6);
             this.txtYear.MaxValue = 2050;
-            this.txtYear.MinValue = 1900;
+            this.txtYear.MinValue = 1970;
             this.txtYear.Name = "txtYear";
             this.txtYear.ShowUpDown = true;
             this.txtYear.Size = new System.Drawing.Size(93, 20);
             this.txtYear.TabIndex = 5;
-            this.txtYear.Value = 1900;
-            this.txtYear.ValueChanged += new System.EventHandler(this.txtYear_ValueChanged);
+            this.txtYear.Value = 1970;
+            this.txtYear.ValueChanged += new System.EventHandler(this.TxtYearValueChanged);
             // 
             // txtApprovedDate
             // 
@@ -477,7 +485,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(813, 100);
+            this.panelEx1.Size = new System.Drawing.Size(1071, 100);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -548,10 +556,10 @@
             this.panelEx2.Controls.Add(this.btnSave);
             this.panelEx2.Controls.Add(this.btnClose);
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx2.Location = new System.Drawing.Point(0, 502);
+            this.panelEx2.Location = new System.Drawing.Point(0, 576);
             this.panelEx2.Name = "panelEx2";
             this.panelEx2.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.panelEx2.Size = new System.Drawing.Size(813, 50);
+            this.panelEx2.Size = new System.Drawing.Size(1071, 50);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -560,44 +568,106 @@
             this.panelEx2.TabIndex = 18;
             this.panelEx2.ThemeAware = true;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.AutoSize = true;
+            this.btnDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDelete.Image = global::Medical.Properties.Resources.delete;
+            this.btnDelete.Location = new System.Drawing.Point(805, 12);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(85, 23);
+            this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.Text = "Xóa";
+            // 
+            // btnUnApproved
+            // 
+            this.btnUnApproved.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnUnApproved.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUnApproved.AutoSize = true;
+            this.btnUnApproved.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnUnApproved.Image = ((System.Drawing.Image)(resources.GetObject("btnUnApproved.Image")));
+            this.btnUnApproved.Location = new System.Drawing.Point(87, 14);
+            this.btnUnApproved.Name = "btnUnApproved";
+            this.btnUnApproved.Size = new System.Drawing.Size(85, 23);
+            this.btnUnApproved.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnUnApproved.TabIndex = 3;
+            this.btnUnApproved.Text = "Hủy Duyệt";
+            this.btnUnApproved.Click += new System.EventHandler(this.btnUnApproved_Click);
+            // 
+            // btnApproved
+            // 
+            this.btnApproved.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnApproved.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnApproved.AutoSize = true;
+            this.btnApproved.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnApproved.Image = global::Medical.Properties.Resources.check;
+            this.btnApproved.Location = new System.Drawing.Point(6, 14);
+            this.btnApproved.Name = "btnApproved";
+            this.btnApproved.Size = new System.Drawing.Size(75, 23);
+            this.btnApproved.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnApproved.TabIndex = 2;
+            this.btnApproved.Text = "Duyệt";
+            this.btnApproved.Click += new System.EventHandler(this.BtnApprovedClick);
+            // 
             // btnSave
             // 
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Image = global::Medical.Properties.Resources.accept;
-            this.btnSave.Location = new System.Drawing.Point(638, 12);
+            this.btnSave.Image = global::Medical.Properties.Resources.save_16x16;
+            this.btnSave.Location = new System.Drawing.Point(896, 12);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Ghi lại";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
             // 
             // btnClose
             // 
             this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnClose.Image = global::Medical.Properties.Resources.cancel;
-            this.btnClose.Location = new System.Drawing.Point(724, 12);
+            this.btnClose.Image = global::Medical.Properties.Resources.close_16x16;
+            this.btnClose.Location = new System.Drawing.Point(982, 12);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Bỏ qua";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnCloseClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "MedicineName";
             this.dataGridViewTextBoxColumn1.HeaderText = "Thuốc";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // TradeName
+            // 
+            this.TradeName.DataPropertyName = "TradeName";
+            this.TradeName.HeaderText = "Biệt dược";
+            this.TradeName.Name = "TradeName";
+            this.TradeName.Width = 200;
+            // 
+            // UnitName
+            // 
+            this.UnitName.DataPropertyName = "UnitName";
+            this.UnitName.HeaderText = "Đơn vị";
+            this.UnitName.Name = "UnitName";
             // 
             // inStockDataGridViewTextBoxColumn
             // 
             this.inStockDataGridViewTextBoxColumn.DataPropertyName = "InStock";
-            this.inStockDataGridViewTextBoxColumn.HeaderText = "Trong kho";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "###,###,##0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.inStockDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.inStockDataGridViewTextBoxColumn.HeaderText = "Tồn kho";
             this.inStockDataGridViewTextBoxColumn.Name = "inStockDataGridViewTextBoxColumn";
             this.inStockDataGridViewTextBoxColumn.ReadOnly = true;
             this.inStockDataGridViewTextBoxColumn.Width = 120;
@@ -605,6 +675,9 @@
             // lastMonthUsageDataGridViewTextBoxColumn
             // 
             this.lastMonthUsageDataGridViewTextBoxColumn.DataPropertyName = "LastMonthUsage";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "###,###,##0";
+            this.lastMonthUsageDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.lastMonthUsageDataGridViewTextBoxColumn.HeaderText = "Lượng dùng tháng trước";
             this.lastMonthUsageDataGridViewTextBoxColumn.Name = "lastMonthUsageDataGridViewTextBoxColumn";
             this.lastMonthUsageDataGridViewTextBoxColumn.ReadOnly = true;
@@ -613,7 +686,10 @@
             // currentMonthUsageDataGridViewTextBoxColumn
             // 
             this.currentMonthUsageDataGridViewTextBoxColumn.DataPropertyName = "CurrentMonthUsage";
-            this.currentMonthUsageDataGridViewTextBoxColumn.HeaderText = "Lượng dùng tháng này";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "###,###,##0";
+            this.currentMonthUsageDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.currentMonthUsageDataGridViewTextBoxColumn.HeaderText = "Lượng đã dùng trong tháng này";
             this.currentMonthUsageDataGridViewTextBoxColumn.Name = "currentMonthUsageDataGridViewTextBoxColumn";
             this.currentMonthUsageDataGridViewTextBoxColumn.ReadOnly = true;
             this.currentMonthUsageDataGridViewTextBoxColumn.Width = 150;
@@ -622,71 +698,30 @@
             // 
             this.requiredDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.requiredDataGridViewTextBoxColumn.DataPropertyName = "Required";
-            this.requiredDataGridViewTextBoxColumn.HeaderText = "Dự trù";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "###,###,##0";
+            this.requiredDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            this.requiredDataGridViewTextBoxColumn.HeaderText = "Dự trù thêm";
             this.requiredDataGridViewTextBoxColumn.Name = "requiredDataGridViewTextBoxColumn";
-            // 
-            // btnApproved
-            // 
-            this.btnApproved.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnApproved.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApproved.AutoSize = true;
-            this.btnApproved.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnApproved.Image = global::Medical.Properties.Resources.accept;
-            this.btnApproved.Location = new System.Drawing.Point(12, 14);
-            this.btnApproved.Name = "btnApproved";
-            this.btnApproved.Size = new System.Drawing.Size(75, 23);
-            this.btnApproved.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnApproved.TabIndex = 2;
-            this.btnApproved.Text = "Duyệt";
-            this.btnApproved.Click += new System.EventHandler(this.btnApproved_Click);
-            // 
-            // btnUnApproved
-            // 
-            this.btnUnApproved.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnUnApproved.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUnApproved.AutoSize = true;
-            this.btnUnApproved.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnUnApproved.Image = global::Medical.Properties.Resources.accept;
-            this.btnUnApproved.Location = new System.Drawing.Point(93, 14);
-            this.btnUnApproved.Name = "btnUnApproved";
-            this.btnUnApproved.Size = new System.Drawing.Size(85, 23);
-            this.btnUnApproved.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnUnApproved.TabIndex = 3;
-            this.btnUnApproved.Text = "Hủy Duyệt";
-            this.btnUnApproved.Click += new System.EventHandler(this.btnUnApproved_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.AutoSize = true;
-            this.btnDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDelete.Image = global::Medical.Properties.Resources.accept;
-            this.btnDelete.Location = new System.Drawing.Point(547, 12);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(85, 23);
-            this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "Xóa";
             // 
             // MedicinePlanningDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(813, 552);
+            this.ClientSize = new System.Drawing.Size(1071, 626);
             this.Controls.Add(this.grdPlanning);
             this.Controls.Add(this.panelEx2);
             this.Controls.Add(this.panelEx1);
             this.Name = "MedicinePlanningDetail";
             this.Text = "MedicinePlanningDetail";
-            this.Load += new System.EventHandler(this.MedicinePlanningDetail_Load);
+            this.Load += new System.EventHandler(this.MedicinePlanningDetailLoad);
             ((System.ComponentModel.ISupportInitialize)(this.txtDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPlanning)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMonth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPlanning)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPlanningDetail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApprovedDate)).EndInit();
@@ -731,13 +766,15 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
         private DevComponents.DotNetBar.LabelX labelX9;
         private System.Windows.Forms.BindingSource bdsMedicine;
+        private DevComponents.DotNetBar.ButtonX btnUnApproved;
+        private DevComponents.DotNetBar.ButtonX btnApproved;
+        private DevComponents.DotNetBar.ButtonX btnDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TradeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitName;
         private System.Windows.Forms.DataGridViewTextBoxColumn inStockDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastMonthUsageDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn currentMonthUsageDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn requiredDataGridViewTextBoxColumn;
-        private DevComponents.DotNetBar.ButtonX btnUnApproved;
-        private DevComponents.DotNetBar.ButtonX btnApproved;
-        private DevComponents.DotNetBar.ButtonX btnDelete;
     }
 }
