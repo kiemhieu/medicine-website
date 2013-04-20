@@ -61,10 +61,17 @@
     <Button>YesNo</Button>
   </Message>
   <Message>
+    <Code>Q009</Code>
+    <Content>Bạn muốn đồng bộ dữ liệu?</Content>
+    <Type>Question</Type>
+    <Button>YesNo</Button>
+  </Message>
+  <Message>
     <Code>Q010</Code>
     <Content>Bạn có muốn thoát khỏi chương trình không ?</Content>
     <Type>Question</Type>
     <Button>YesNo</Button>
   </Message>
+ 
 </Root>
 
