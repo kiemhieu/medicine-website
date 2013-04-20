@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Transactions;
 using Medical.Data.Entities;
-//using Medical.Forms.Implements;
+using IsolationLevel = System.Transactions.IsolationLevel;
 
 
 namespace Medical.Data.Repositories
@@ -22,7 +23,71 @@ namespace Medical.Data.Repositories
             return whPaper;
         }
 
+        public void Insert(WareHouseIO wareHouseIO, List<WareHouseIODetail> warehouseIODetails)
+        {
+            using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted }))
+            {
+                wareHouseIO.SetInfo(false);
+                this.Context.WareHouseIO.Add(wareHouseIO);
+                this.Context.SaveChanges();
 
+                var medicineDictionary = new Dictionary<int, int>();
+                foreach (var wareHouseIoDetail in warehouseIODetails)
+                {
+                    wareHouseIoDetail.WareHouseIOId = wareHouseIO.Id;
+                    wareHouseIoDetail.SetInfo(false);
+                    this.Context.WareHouseIODetail.Add(wareHouseIoDetail);
+
+                    if (medicineDictionary.ContainsKey(wareHouseIoDetail.MedicineId))
+                    {
+                        medicineDictionary[wareHouseIoDetail.MedicineId] += wareHouseIoDetail.Qty;
+                        continue;
+                    }
+                    medicineDictionary.Add(wareHouseIoDetail.MedicineId, wareHouseIoDetail.Qty);
+                }
+                this.Context.SaveChanges();
+
+                foreach(var item in medicineDictionary.Keys)
+                {
+                    var warehouse = this.Context.WareHouses.FirstOrDefault(x => x.MedicineId == item);
+                    if (warehouse == null) 
+                    {
+                        warehouse = new WareHouse()
+                                        {
+                                            ClinicId = AppContext.CurrentClinic.Id,
+                                            MedicineId = item,
+                                            Volumn = medicineDictionary[item],
+                                            MinAllowed = 0
+                                        };
+                        this.Context.WareHouses.Add(warehouse);
+                    } 
+                    else 
+                    {
+                        warehouse.Volumn += medicineDictionary[item];
+                    }
+                    this.Context.SaveChanges();
+
+                    foreach (var warehouseIoDetail in warehouseIODetails)
+                    {
+                        if (warehouseIoDetail.MedicineId != item) continue;
+                        var warehouseDetail = new WareHouseDetail
+                                                  {
+                                                      WareHouseId = warehouse.Id,
+                                                      MedicineId = warehouseIoDetail.MedicineId,
+                                                      Unit = warehouseIoDetail.Unit,
+                                                      UnitPrice = warehouseIoDetail.UnitPrice ?? 0,
+                                                      LotNo = warehouseIoDetail.LotNo,
+                                                      ExpiredDate = warehouseIoDetail.ExpireDate,
+                                                      WareHouseIODetailId = warehouseIoDetail.Id,
+                                                      OriginalVolumn = warehouseIoDetail.Qty
+                                                  };
+                        warehouseDetail.SetInfo(false);
+                        this.Context.WareHouseDetails.Add(warehouseDetail);
+                    }
+                    this.Context.SaveChanges();
+                }
+            }
+        }
 
         public void Insert(WareHouseIO whIo)
         {

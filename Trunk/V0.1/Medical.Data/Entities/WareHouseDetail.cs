@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Medical.Data.Entities
 {
     [Table("WareHouseDetail")]
-    public class WareHouseDetail
+    public class WareHouseDetail : EntityBase
     {
         public int Id { get; set; }
         public int WareHouseId { get; set; }

@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Text;
+using DevComponents.DotNetBar.Controls;
 using Medical.Forms.Enums;
 using WeifenLuo.WinFormsUI.Docking;
 using Medical.Data.Repositories;
 using System.Windows.Forms;
 using Medical.Data.Entities;
 using Medical.Data;
+using Medical.Forms.UI;
 
 namespace Medical.WareHouseIE
 {
@@ -17,17 +22,46 @@ namespace Medical.WareHouseIE
         private readonly WareHouseRepository _wareHouseRepository = new WareHouseRepository();
         private readonly WareHouseIORepository _wareHouseIoRepository = new WareHouseIORepository();
         private readonly WareHouseIODetailRepository _wareHouseIoDetailRepository = new WareHouseIODetailRepository();
+
+        private WareHouseIO _wareHouseIO;
+        private List<WareHouseIODetail> _warehouseIODetails;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WareHouseImport"/> class.
+        /// </summary>
         public WareHouseImport()
         {
             InitializeComponent();
-            var id = AppContext.CurrentClinic.Id;
-            txtClinic.Text = AppContext.CurrentClinic.Name;
-            FillToGrid();
+            
+            // Create warehouse input
+            this._wareHouseIO = new WareHouseIO();
+            this._wareHouseIO.Type = WarehouseIO.Input;
+            this._wareHouseIO.Date = DateTime.Now;
+            this._wareHouseIO.CreatedUser = AppContext.LoggedInUser.Id;
+            this.txtClinic.Text = AppContext.CurrentClinic.Name;
+            this.txtRecipient.Text = AppContext.LoggedInUser.Name;
+
+            // Create warehouse Output
+            this._warehouseIODetails = new List<WareHouseIODetail>();
+            this.FillToGrid();
+            
         }
 
+        /// <summary>
+        /// Fills to grid.
+        /// </summary>
         private void FillToGrid()
         {
-            this.bdsMeidcine.DataSource = _medicineRepository.GetAll();
+            List<Medicine> medicines = this._medicineRepository.GetAll();
+            medicines.Insert(0, new Medicine(){Id = 0, Name = "..."});
+
+            List<Define> units = this._defineRepository.GetUnit();
+            units.Insert(0, new Define() { Id = 0, Name = "..." });
+
+            this.bdsUnit.DataSource = units;
+            this.bdsMeidcine.DataSource = medicines;
+            this.bdsWareHouse.DataSource = this._wareHouseIO;
+            this.bdsWareHouseIODetail.DataSource = this._warehouseIODetails;
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -37,6 +71,27 @@ namespace Medical.WareHouseIE
 
         private void grd_CellEndEdit(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
+
+            if (e.ColumnIndex ==0)
+            {
+                var medicineId = (int) this.grd[e.ColumnIndex, e.RowIndex].Value;
+                var medicine = _medicineRepository.GetById(medicineId);
+
+                var warehouseIODetail = (WareHouseIODetail) this.bdsWareHouseIODetail.Current;
+                warehouseIODetail.Medicine = medicine;
+                if (medicine == null)
+                {
+                    grd.Rows[e.RowIndex].Cells[1].Value = "";
+                    warehouseIODetail.Unit = 0;
+                }
+                else
+                {
+                    grd.Rows[e.RowIndex].Cells[1].Value = medicine.TradeName;
+                    warehouseIODetail.Unit = medicine.Unit;    
+                }
+                
+            }
+
             int volumn = 0;
             int unitPrice = 0;
 
@@ -67,87 +122,25 @@ namespace Medical.WareHouseIE
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!ValidateItemData()) return;
+
+            var dialogResult = MessageDialog.Instance.ShowMessage(this, "Q005", "Nhập kho lô thuốc mới ?");
+            if (dialogResult == DialogResult.No) return;
+
             try
             {
-                if (ValidateItemData())
-                {
-                    //Insert data to WareHouseIO
-                    WareHouseIO wareHouseIo = new WareHouseIO();
-                    wareHouseIo.ClinicId = AppContext.CurrentClinic.Id;
-                    wareHouseIo.Date = dateImport.Value.Date;
-                    wareHouseIo.Person = txtDeliverer.Text;
-                    //wareHouseIo.Recipient = txtRecipient.Text;
-                    wareHouseIo.Phone = txtPhone.Text;
-                    wareHouseIo.Address = txtAddress.Text;
-                    wareHouseIo.Type = "0";
-                    wareHouseIo.Version = 0;
-                    wareHouseIo.No = txtNo.Text;
-                    wareHouseIo.AttachmentNo = txtOriginalNo.Text;
-                    wareHouseIo.Note = txtNote.Text;
-                    WareHouseIORepository wareHouseIoRepository = new WareHouseIORepository();
-                    wareHouseIoRepository.Insert(wareHouseIo);
-
-                    //Insert data to WareHouseIODetail
-                    foreach (WareHouseIODetail obj in bdsWareHouseIODetail)
-                    {
-                        WareHouseIODetail item = new WareHouseIODetail();
-                        item.WareHouseIOId = wareHouseIo.Id;
-                        item.LotNo = obj.LotNo;
-                        item.Type = "0";
-                        item.MedicineId = obj.MedicineId;
-                        item.Qty = obj.Qty;
-                        item.Unit = obj.Unit;
-                        item.UnitPrice = obj.UnitPrice;
-                        item.Amount = obj.Amount;
-                        item.ExpireDate = obj.ExpireDate;
-                        item.CreatedDate = wareHouseIo.CreatedDate;
-                        _wareHouseIoDetailRepository.Insert(item);
-
-                        //Insert data to WareHouse
-                        var wareHouse = _wareHouseRepository.GetByIdMedicine(item.MedicineId, wareHouseIo.ClinicId);
-                        if (wareHouse != null)
-                        {
-                            wareHouse.Volumn += item.Qty;
-                            _wareHouseRepository.Update(wareHouse);
-                        }
-                        else
-                        {
-                            wareHouse = new WareHouse();
-                            wareHouse.MedicineId = item.MedicineId;
-                            wareHouse.ClinicId = wareHouseIo.ClinicId;
-                            wareHouse.Volumn = item.Qty;
-                            wareHouse.MinAllowed = 0;
-                            _wareHouseRepository.Insert(wareHouse);
-                        }
-
-                        //Insert data to WareHouseDetail
-                        WareHouseDetail wareHouseDetail = new WareHouseDetail();
-                        wareHouseDetail.MedicineId = item.MedicineId;
-                        wareHouseDetail.WareHouseId = wareHouse.Id;
-                        wareHouseDetail.WareHouseIODetailId = item.Id;
-                        wareHouseDetail.LotNo = item.LotNo;
-                        wareHouseDetail.ExpiredDate = item.ExpireDate;
-                        wareHouseDetail.OriginalVolumn = item.Qty;
-                        wareHouseDetail.CurrentVolumn = item.Qty;
-                        wareHouseDetail.BadVolumn = 0;
-                        //wareHouseDetail.Unit = item.Unit;
-                        wareHouseDetail.UnitPrice = item.UnitPrice.Value;
-                        wareHouseDetail.CreatedDate = DateTime.Now;
-                        wareHouseDetail.LastUpdatedDate = DateTime.Now;
-                        _wareHowDetailRepository.Insert(wareHouseDetail);
-                    }
-
-                    MessageBox.Show("Nhập kho thành công!");
-                    ClearData();
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin trước khi nhập kho");
-                }
+                this.Enabled = true;
+                this.Cursor = Cursors.WaitCursor;
+                this._wareHouseIoRepository.Insert(this._wareHouseIO, this._warehouseIODetails);
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                this.Enabled = true;
+                this.Cursor = Cursors.Arrow;
             }
         }
 
@@ -161,20 +154,57 @@ namespace Medical.WareHouseIE
             grd.Rows.Clear();
         }
 
+        /// <summary>
+        /// Validates the item data.
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateItemData()
         {
-            if (bdsWareHouseIODetail.Count == 0) return false;
+            this.errorProvider1.Clear();
+            var result = true;
 
-            foreach (WareHouseIODetail item in bdsWareHouseIODetail)
+            this._wareHouseIO.Validate();
+
+            if (!this._wareHouseIO.IsValid) result = false;
+            if (this._warehouseIODetails.Count == 0) result = false;
+
+            foreach ( var item in this._warehouseIODetails)
             {
-                if (item.LotNo == null || item.MedicineId == null || item.Qty == null
-                    || item.ExpireDate == null || item.Unit == null)
-                {
-                    return false;
-                }
+                item.Validate();
+                if (!item.IsValid) result = false;
             }
 
-            return true;
+            if (!result) MessageDialog.Instance.ShowMessage(this, "MSG0004");
+            this.errorProvider1.UpdateBinding();
+            return result;
+        }
+
+        private void grd_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            var gridView = (DataGridViewX)sender;
+            if (null == gridView) return;
+            foreach (DataGridViewRow r in gridView.Rows)
+            {
+                gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
+            }
+        }
+
+        private void bdsWareHouseIODetail_DataMemberChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bdsWareHouseIODetail_CurrentItemChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bdsWareHouseIODetail_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
+        {
+            if (e.ListChangedType == ListChangedType.ItemAdded)
+            {
+                
+            }
         }
     }
 }
