@@ -32,95 +32,120 @@ namespace Medical.WareHouseIE
         public WareHouseImport()
         {
             InitializeComponent();
-            
-            // Create warehouse input
-            this._wareHouseIO = new WareHouseIO();
-            this._wareHouseIO.Type = WarehouseIO.Input;
-            this._wareHouseIO.Date = DateTime.Now;
-            this._wareHouseIO.CreatedUser = AppContext.LoggedInUser.Id;
-            this.txtClinic.Text = AppContext.CurrentClinic.Name;
-            this.txtRecipient.Text = AppContext.LoggedInUser.Name;
 
-            // Create warehouse Output
-            this._warehouseIODetails = new List<WareHouseIODetail>();
-            this.FillToGrid();
-            
+            Initialize();
+
+            InitializeWareHouseIO();
+
         }
 
-        /// <summary>
-        /// Fills to grid.
-        /// </summary>
-        private void FillToGrid()
+        private void Initialize()
         {
             List<Medicine> medicines = this._medicineRepository.GetAll();
-            medicines.Insert(0, new Medicine(){Id = 0, Name = "..."});
+            medicines.Insert(0, new Medicine() { Id = 0, Name = "..." });
 
             List<Define> units = this._defineRepository.GetUnit();
             units.Insert(0, new Define() { Id = 0, Name = "..." });
 
             this.bdsUnit.DataSource = units;
             this.bdsMeidcine.DataSource = medicines;
-            this.bdsWareHouse.DataSource = this._wareHouseIO;
-            this.bdsWareHouseIODetail.DataSource = this._warehouseIODetails;
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Fills to grid.
+        /// </summary>
+        private void InitializeWareHouseIO()
+        {
+            // Create warehouse input
+            this._wareHouseIO = new WareHouseIO
+            {
+                ClinicId = AppContext.CurrentClinic.Id,
+                Type = WarehouseIO.Input,
+                Date = DateTime.Now,
+                CreatedUser = AppContext.LoggedInUser.Id
+            };
+
+            this.txtClinic.Text = AppContext.CurrentClinic.Name;
+            this.txtRecipient.Text = AppContext.LoggedInUser.Name;
+
+            // Create warehouse Output
+            this._warehouseIODetails = new List<WareHouseIODetail>();
+
+            this.bdsWareHouse.DataSource = this._wareHouseIO;
+            this.bdsWareHouse.ResetBindings(true);
+
+            this.bdsWareHouseIODetail.DataSource = this._warehouseIODetails;
+            this.bdsWareHouseIODetail.ResetBindings(true);
+            this.grd.ResetBindings();
+            
+            
+        }
+
+        private void BtnRemoveClick(object sender, EventArgs e)
         {
             ClearData();
         }      
 
-        private void grd_CellEndEdit(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        private void GrdCellEndEdit(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
-
-            if (e.ColumnIndex ==0)
+            try
             {
-                var medicineId = (int) this.grd[e.ColumnIndex, e.RowIndex].Value;
-                var medicine = _medicineRepository.GetById(medicineId);
+                if (e.ColumnIndex == 0 && this.grd[e.ColumnIndex, e.RowIndex].Value != null)
+                {
+                    var warehouseIODetail = (WareHouseIODetail)this.bdsWareHouseIODetail.Current;
+                    var medicineId = (int)this.grd[e.ColumnIndex, e.RowIndex].Value;
+                    var medicine = _medicineRepository.GetById(medicineId);
 
-                var warehouseIODetail = (WareHouseIODetail) this.bdsWareHouseIODetail.Current;
-                warehouseIODetail.Medicine = medicine;
-                if (medicine == null)
-                {
-                    grd.Rows[e.RowIndex].Cells[1].Value = "";
-                    warehouseIODetail.Unit = 0;
+                    if (medicine == null)
+                    {
+                        grd.Rows[e.RowIndex].Cells[1].Value = "";
+                        warehouseIODetail.Unit = 0;
+                    }
+                    else
+                    {
+                        grd.Rows[e.RowIndex].Cells[1].Value = medicine.TradeName;
+                        warehouseIODetail.Unit = medicine.Unit;
+                    }
+
                 }
-                else
+
+                /*
+                int volumn = 0;
+                int unitPrice = 0;
+
+                if (grd.Columns[e.ColumnIndex].Name == "cboMedicine")
                 {
-                    grd.Rows[e.RowIndex].Cells[1].Value = medicine.TradeName;
-                    warehouseIODetail.Unit = medicine.Unit;    
+                    if (grd.Rows[e.RowIndex].Cells["cboMedicine"].Value != null)
+                    {
+                        var medicine = _medicineRepository.GetById(int.Parse(grd.Rows[e.RowIndex].Cells["cboMedicine"].Value.ToString()));
+                        grd.Rows[e.RowIndex].Cells["MedicineId"].Value = medicine.Id;
+                        grd.Rows[e.RowIndex].Cells["Unit"].Value = medicine.Define.Id;
+                        grd.Rows[e.RowIndex].Cells["UnitName"].Value = medicine.Define.Name;
+                    }
                 }
-                
+                */
+                if (grd.Columns[e.ColumnIndex].Name == "Qty" || grd.Columns[e.ColumnIndex].Name == "UnitPrice")
+                {
+                    var volumn = 0;
+                    var unitPrice = 0;
+                    if (grd.Rows[e.RowIndex].Cells["Qty"].Value != null && int.TryParse(grd.Rows[e.RowIndex].Cells["Qty"].Value.ToString(), out volumn) && grd.Rows[e.RowIndex].Cells["UnitPrice"].Value != null && int.TryParse(grd.Rows[e.RowIndex].Cells["UnitPrice"].Value.ToString(), out unitPrice))
+                    {
+                        grd.Rows[e.RowIndex].Cells["Amount"].Value = unitPrice * volumn;
+                    }
+                }
             }
-
-            int volumn = 0;
-            int unitPrice = 0;
-
-            if (grd.Columns[e.ColumnIndex].Name == "cboMedicine")
+            catch (Exception ex)
             {
-                if (grd.Rows[e.RowIndex].Cells["cboMedicine"].Value != null)
-                {
-                    var medicine = _medicineRepository.GetById(int.Parse(grd.Rows[e.RowIndex].Cells["cboMedicine"].Value.ToString()));
-                    grd.Rows[e.RowIndex].Cells["MedicineId"].Value = medicine.Id;
-                    grd.Rows[e.RowIndex].Cells["Unit"].Value = medicine.Define.Id;
-                    grd.Rows[e.RowIndex].Cells["UnitName"].Value = medicine.Define.Name;
-                }
-            }
-
-            if (grd.Columns[e.ColumnIndex].Name == "Qty" || grd.Columns[e.ColumnIndex].Name == "UnitPrice")
-            {
-                if (grd.Rows[e.RowIndex].Cells["Qty"].Value != null && int.TryParse(grd.Rows[e.RowIndex].Cells["Qty"].Value.ToString(), out volumn) && grd.Rows[e.RowIndex].Cells["UnitPrice"].Value != null && int.TryParse(grd.Rows[e.RowIndex].Cells["UnitPrice"].Value.ToString(), out unitPrice))
-                {
-                    grd.Rows[e.RowIndex].Cells["Amount"].Value = unitPrice * volumn;
-                }
+                MessageBox.Show(this, ex.Message);
             }
         }
 
-        private void grd_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        private void GrdDataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
-        }
+         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSaveClick(object sender, EventArgs e)
         {
             if (!ValidateItemData()) return;
 
@@ -132,26 +157,22 @@ namespace Medical.WareHouseIE
                 this.Enabled = true;
                 this.Cursor = Cursors.WaitCursor;
                 this._wareHouseIoRepository.Insert(this._wareHouseIO, this._warehouseIODetails);
+                MessageDialog.Instance.ShowMessage(this, "MSG0005", "Tạo phiếu nhập kho thành công.");
+                this.ClearData();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(this,ex.Message);
             }
             finally
             {
                 this.Enabled = true;
                 this.Cursor = Cursors.Arrow;
-            }
-        }
+            }}
 
         private void ClearData()
         {
-            dateImport.Value = DateTime.Now;
-            txtDeliverer.Text = string.Empty;
-            txtNo.Text = string.Empty;
-            txtNote.Text = string.Empty;
-            txtRecipient.Text = string.Empty;
-            grd.Rows.Clear();
+            InitializeWareHouseIO();
         }
 
         /// <summary>
@@ -179,7 +200,7 @@ namespace Medical.WareHouseIE
             return result;
         }
 
-        private void grd_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void GrdDataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             var gridView = (DataGridViewX)sender;
             if (null == gridView) return;
@@ -189,17 +210,17 @@ namespace Medical.WareHouseIE
             }
         }
 
-        private void bdsWareHouseIODetail_DataMemberChanged(object sender, EventArgs e)
+        private void BdsWareHouseIODetailDataMemberChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void bdsWareHouseIODetail_CurrentItemChanged(object sender, EventArgs e)
+        private void BdsWareHouseIODetailCurrentItemChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void bdsWareHouseIODetail_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
+        private void BdsWareHouseIODetailListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
         {
             if (e.ListChangedType == ListChangedType.ItemAdded)
             {
