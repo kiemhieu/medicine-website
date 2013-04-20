@@ -24,6 +24,9 @@ namespace Medical.Data.Entities
         public virtual Medicine Medicine { get; set; }
 
         [NotMapped]
+        public string TradeName { get; set; }
+
+        [NotMapped]
         public string UnitName { get; set; }
 
         [NotMapped]

@@ -16,18 +16,18 @@ namespace Medical.MedicinePlanning
 {
     public partial class MedicinePlanningDetail : Form
     {
-        private IClinicRepository clinicRepo = new ClinicRepository();
-        private IUserRepository userRepo = new UserRepository();
-        private IMedicinePlanRepository planingRepo = new MedicinePlanRepository();
-        private IMedicinePlanDetailRepository planingDetailRepo = new MedicinePlanDetailRepository();
-        private IMedicineRepository medicineRepo = new MedicineRepository();
-        private IWareHouseRepository warehouseRepo = new WareHouseRepository();
-        private IMedicineDeliveryRepository deliveryRepo = new MedicineDeliveryRepository();
+        private readonly IClinicRepository _clinicRepo = new ClinicRepository();
+        private readonly IUserRepository _userRepo = new UserRepository();
+        private readonly IMedicinePlanRepository _planingRepo = new MedicinePlanRepository();
+        private readonly IMedicinePlanDetailRepository _planingDetailRepo = new MedicinePlanDetailRepository();
+        private readonly IMedicineRepository _medicineRepo = new MedicineRepository();
+        private readonly IWareHouseRepository _warehouseRepo = new WareHouseRepository();
+        private readonly IMedicineDeliveryRepository _deliveryRepo = new MedicineDeliveryRepository();
         
-        private ViewModes mode;
-        private int planningId;
-        private Medical.Data.Entities.MedicinePlan medicinePlan;
-        private List<Medical.Data.Entities.MedicinePlanDetail> medicinePlanDetails;
+        private readonly ViewModes _mode;
+        private readonly int _planningId;
+        private Medical.Data.Entities.MedicinePlan _medicinePlan;
+        private List<Medical.Data.Entities.MedicinePlanDetail> _medicinePlanDetails;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MedicinePlanningDetail"/> class.
@@ -35,13 +35,13 @@ namespace Medical.MedicinePlanning
         public MedicinePlanningDetail()
         {
             InitializeComponent();
-            this.mode = ViewModes.Add;
+            this._mode = ViewModes.Add;
         }
 
         public MedicinePlanningDetail(int medicinePlanId) : this()
         {
-            this.mode = ViewModes.Update;
-            this.planningId = medicinePlanId;
+            this._mode = ViewModes.Update;
+            this._planningId = medicinePlanId;
         }
 
         /// <summary>
@@ -49,45 +49,74 @@ namespace Medical.MedicinePlanning
         /// </summary>
         public void Initialize()
         {
-            bdsMedicine.DataSource = this.medicineRepo.GetAll();
+            bdsMedicine.DataSource = this._medicineRepo.GetAll();
 
             // Init Clinic combobox
-            var clinic = this.clinicRepo.GetAll();
+            var clinic = this._clinicRepo.GetAll();
             clinic.Insert(0, new Clinic() { Id = 0, Name = "Tất cả" });
             this.bdsClinic.DataSource = clinic;
             this.cboClinic.SelectedValue = AppContext.CurrentClinic.Id;
             
             // Init User
-            var users = userRepo.GetAll();
+            var users = _userRepo.GetAll();
             clinic.Insert(0, new Clinic() { Id = 0, Name = "..." });
             this.bdsEmployee.DataSource = users;
 
             // Get status
             bdsStatus.DataSource = MedicinePlaningStatus.GetPlanningStatus();
 
+            InitializeData();
+
+        }
+
+        private void InitializeData()
+        {
             // Init data
-            if (this.mode == ViewModes.Add)
+            if (this._mode == ViewModes.Add)
             {
                 // Medicine plan
-                this.medicinePlan = new Data.Entities.MedicinePlan();
-                this.medicinePlan.Date = DateTime.Today;
-                this.medicinePlan.ClinicId = AppContext.CurrentClinic.Id;
+                this._medicinePlan = new Data.Entities.MedicinePlan();
+                this._medicinePlan.Date = DateTime.Today;
+                this._medicinePlan.ClinicId = AppContext.CurrentClinic.Id;
 
-                var date = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+                var date = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1, 0, 0, 0);
                 date = date.AddMonths(1);
-                this.medicinePlan.Month = date.Month;
-                this.medicinePlan.Year = date.Year;
-
-                this.medicinePlan.Status = 0;
+                this._medicinePlan.Month = date.Month;
+                this._medicinePlan.Year = date.Year;
+                this._medicinePlan.Status = 0;
 
                 ReloadPlannedInfo();
-            } else {
-                this.medicinePlan = this.planingRepo.Get(this.planningId);
-                if (this.medicinePlan == null) throw new Exception("Dự trù thuốc không tồn tại");
-                bdsPlanning.DataSource = this.medicinePlan;
+            }
+            else
+            {
+                this._medicinePlan = this._planingRepo.Get(this._planningId);
+                if (this._medicinePlan == null) throw new Exception("Dự trù thuốc không tồn tại");
+                bdsPlanning.DataSource = this._medicinePlan;
 
-                this.medicinePlanDetails = this.planingDetailRepo.GetByPlanId(this.planningId);
-                bdsPlanningDetail.DataSource = this.medicinePlanDetails;
+                this._medicinePlanDetails = this._planingDetailRepo.GetByPlanId(this._planningId);
+                var medicines = this._medicineRepo.GetAll();
+
+                foreach (var planDetail in _medicinePlanDetails)
+                {
+                    foreach (var medicine in medicines)
+                    {
+                        if (medicine.Id != planDetail.MedicineId) continue;
+                        planDetail.TradeName = medicine.TradeName;
+                        planDetail.MedicineName = medicine.Define.Name;
+
+                        var medicinePlanDetail = new MedicinePlanDetail
+                                                     {
+                                                         MedicineId = medicine.Id,
+                                                         Version = 0,
+                                                         MedicineName = medicine.Name,
+                                                         UnitName = medicine.Define.Name,
+                                                         TradeName = medicine.TradeName
+                                                     };
+                    }
+
+                }
+
+                bdsPlanningDetail.DataSource = this._medicinePlanDetails;
 
                 this.txtYear.Enabled = false;
                 this.txtMonth.Enabled = false;
@@ -97,28 +126,26 @@ namespace Medical.MedicinePlanning
         private void ReloadPlannedInfo()
         {
             // Medicine plan detail
-            var medicines = this.medicineRepo.GetAll();
-            var stocks = warehouseRepo.GetAll(AppContext.CurrentClinic.Id);
+            var medicines = this._medicineRepo.GetAll();
+            var stocks = _warehouseRepo.GetAll(AppContext.CurrentClinic.Id);
 
-            DateTime startDate1 = new DateTime(this.medicinePlan.Year, this.medicinePlan.Month, 1);
-            DateTime endDate1 = startDate1.AddMonths(1).AddDays(-1);
-            var currentMonthDeliverTotal = deliveryRepo.GetMedicineDeliveryTotal(AppContext.CurrentClinic.Id, startDate1, endDate1);
+            var startDate1 = new DateTime(this._medicinePlan.Year, this._medicinePlan.Month, 1);
+            var endDate1 = startDate1.AddMonths(1).AddDays(-1);
+            var currentMonthDeliverTotal = _deliveryRepo.GetMedicineDeliveryTotal(AppContext.CurrentClinic.Id, startDate1, endDate1);
 
-            DateTime endDate2 = startDate1.AddDays(-1);
-            DateTime startDate2 = startDate1.AddMonths(-1);
-            var lastMonthDeliverTotal = deliveryRepo.GetMedicineDeliveryTotal(AppContext.CurrentClinic.Id, startDate2, endDate2);
+            var endDate2 = startDate1.AddDays(-1);
+            var startDate2 = startDate1.AddMonths(-1);
+            var lastMonthDeliverTotal = _deliveryRepo.GetMedicineDeliveryTotal(AppContext.CurrentClinic.Id, startDate2, endDate2);
 
             // Create Medicine Planning Detail
-            this.medicinePlanDetails = new List<MedicinePlanDetail>();
-            foreach (Medicine medicine in medicines)
+            this._medicinePlanDetails = new List<MedicinePlanDetail>();
+            foreach (var medicine in medicines)
             {
-                MedicinePlanDetail medicinePlanDetail = new MedicinePlanDetail();
-                medicinePlanDetail.MedicineId = medicine.Id;
-                medicinePlanDetail.Version = 0;
+                var medicinePlanDetail = new MedicinePlanDetail {MedicineId = medicine.Id, Version = 0, MedicineName = medicine.Name, UnitName =  medicine.Define.Name, TradeName = medicine.TradeName};
 
-                foreach (var medicineInStock in stocks)
+                var warehouseList = stocks.Where(x => x.MedicineId == medicine.Id).ToList();
+                foreach (var medicineInStock in warehouseList)
                 {
-                    if (medicineInStock.Id != medicine.Id) continue;
                     medicinePlanDetail.InStock = medicineInStock.Volumn;
                     break;
                 }
@@ -139,24 +166,24 @@ namespace Medical.MedicinePlanning
 
                 medicinePlanDetail.Required = medicinePlanDetail.LastMonthUsage - medicinePlanDetail.CurrentMonthUsage - medicinePlanDetail.InStock;
                 if (medicinePlanDetail.Required < 0) medicinePlanDetail.Required = 0;
-                this.medicinePlanDetails.Add(medicinePlanDetail);
+                this._medicinePlanDetails.Add(medicinePlanDetail);
             }
 
-            bdsPlanning.DataSource = this.medicinePlan;
-            bdsPlanningDetail.DataSource = this.medicinePlanDetails;
+            bdsPlanning.DataSource = this._medicinePlan;
+            bdsPlanningDetail.DataSource = this._medicinePlanDetails;
         }
 
-        private void MedicinePlanningDetail_Load(object sender, EventArgs e)
+        private void MedicinePlanningDetailLoad(object sender, EventArgs e)
         {
             Initialize();
         }
 
-        private void grdPlanning_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void GrdPlanningRowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             
         }
 
-        private void grdPlanning_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void GrdPlanningDataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             var gridView = (DataGridViewX) sender;
             if (null == gridView) return;
@@ -166,24 +193,24 @@ namespace Medical.MedicinePlanning
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnCloseClick(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSaveClick(object sender, EventArgs e)
         {
             try
             {
-                if (this.mode == ViewModes.Add) {
-                    planingRepo.Insert(this.medicinePlan, this.medicinePlanDetails);
+                if (this._mode == ViewModes.Add) {
+                    _planingRepo.Insert(this._medicinePlan, this._medicinePlanDetails);
                     MessageBox.Show("Insert successfully");
                     this.Close();
                 } 
                 else
                 {
-                    this.medicinePlan.Status = MedicinePlaningStatus.ReEdited;
-                    planingRepo.Update(this.medicinePlan, this.medicinePlanDetails);
+                    this._medicinePlan.Status = MedicinePlaningStatus.ReEdited;
+                    _planingRepo.Update(this._medicinePlan, this._medicinePlanDetails);
                     MessageBox.Show("Update successfully");
                     this.Close();
                 }
@@ -195,24 +222,25 @@ namespace Medical.MedicinePlanning
             }
         }
 
-        private void txtMonth_ValueChanged(object sender, EventArgs e)
+        private void TxtMonthValueChanged(object sender, EventArgs e)
         {
             ReloadPlannedInfo();
         }
 
-        private void txtYear_ValueChanged(object sender, EventArgs e)
+        private void TxtYearValueChanged(object sender, EventArgs e)
         {
             ReloadPlannedInfo();
         }
 
-        private void btnApproved_Click(object sender, EventArgs e)
+        private void BtnApprovedClick(object sender, EventArgs e)
         {
-            this.planingRepo.UpdateStatus(this.planningId, MedicinePlaningStatus.Approved);
+            this._planingRepo.UpdateStatus(this._planningId, MedicinePlaningStatus.Approved);
         }
 
         private void btnUnApproved_Click(object sender, EventArgs e)
         {
-            this.planingRepo.UpdateStatus(this.planningId, MedicinePlaningStatus.NotApproved);
+            this._planingRepo.UpdateStatus(this._planningId, MedicinePlaningStatus.NotApproved);
         }
     }
 }
+
