@@ -39,4 +39,10 @@ namespace Medical.Data
         public const int Doctor = 2;
         public const int Pharmacists = 3;
     }
+
+    public class WarehouseIO
+    {
+        public const String Input = "I";
+        public const String Output = "O";
+    }
 }
