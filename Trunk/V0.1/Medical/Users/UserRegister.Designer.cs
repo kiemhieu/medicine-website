@@ -1,4 +1,5 @@
-﻿namespace Medical {
+﻿namespace Medical.Users
+{
     partial class UserRegister
     {
         /// <summary>
@@ -29,26 +30,24 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.bdsUser = new System.Windows.Forms.BindingSource(this.components);
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.txtYear = new DevComponents.Editors.IntegerInput();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.txtAddress = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.txtDescription = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtCode = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtPhone = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.rdaMale = new System.Windows.Forms.RadioButton();
-            this.rdaFemale = new System.Windows.Forms.RadioButton();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.errPatient = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.cbRole = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.Doctor = new DevComponents.Editors.ComboItem();
+            this.Pharmacists = new DevComponents.Editors.ComboItem();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errPatient)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -100,47 +99,12 @@
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(196, 20);
+            this.txtName.Size = new System.Drawing.Size(329, 20);
             this.txtName.TabIndex = 1;
             // 
             // bdsUser
             // 
             this.bdsUser.DataSource = typeof(Medical.Data.Entities.User);
-            // 
-            // labelX3
-            // 
-            this.labelX3.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.Class = "";
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(296, 35);
-            this.labelX3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(49, 15);
-            this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.labelX3.TabIndex = 4;
-            this.labelX3.Text = "Năm sinh";
-            // 
-            // txtYear
-            // 
-            // 
-            // 
-            // 
-            this.txtYear.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtYear.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtYear.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtYear.DataBindings.Add(new System.Windows.Forms.Binding("ValueObject", this.bdsUser, "BirthYear", true));
-            this.txtYear.Location = new System.Drawing.Point(364, 33);
-            this.txtYear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtYear.MaxValue = 2500;
-            this.txtYear.MinValue = 0;
-            this.txtYear.Name = "txtYear";
-            this.txtYear.ShowUpDown = true;
-            this.txtYear.Size = new System.Drawing.Size(59, 20);
-            this.txtYear.TabIndex = 2;
-            this.txtYear.Value = 1900;
             // 
             // labelX4
             // 
@@ -166,30 +130,13 @@
             // 
             this.labelX5.BackgroundStyle.Class = "";
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(296, 58);
+            this.labelX5.Location = new System.Drawing.Point(211, 11);
             this.labelX5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(67, 15);
+            this.labelX5.Size = new System.Drawing.Size(48, 15);
             this.labelX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX5.TabIndex = 8;
-            this.labelX5.Text = "Số điện thoại";
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.txtAddress.Border.Class = "TextBoxBorder";
-            this.txtAddress.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsUser, "Address", true));
-            this.txtAddress.ForeColor = System.Drawing.Color.Black;
-            this.txtAddress.Location = new System.Drawing.Point(64, 79);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtAddress.MaxLength = 200;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(403, 20);
-            this.txtAddress.TabIndex = 6;
+            this.labelX5.Text = "Mật khẩu";
             // 
             // labelX6
             // 
@@ -202,43 +149,10 @@
             this.labelX6.Location = new System.Drawing.Point(11, 81);
             this.labelX6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(36, 15);
+            this.labelX6.Size = new System.Drawing.Size(64, 15);
             this.labelX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX6.TabIndex = 10;
-            this.labelX6.Text = "Địa chỉ";
-            // 
-            // labelX7
-            // 
-            this.labelX7.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX7.BackgroundStyle.Class = "";
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(11, 103);
-            this.labelX7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(37, 15);
-            this.labelX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.labelX7.TabIndex = 12;
-            this.labelX7.Text = "Chi tiết";
-            // 
-            // txtDescription
-            // 
-            this.txtDescription.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.txtDescription.Border.Class = "TextBoxBorder";
-            this.txtDescription.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsUser, "Description", true));
-            this.txtDescription.ForeColor = System.Drawing.Color.Black;
-            this.txtDescription.Location = new System.Drawing.Point(64, 103);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(403, 122);
-            this.txtDescription.TabIndex = 7;
+            this.labelX6.Text = "Phòng khám";
             // 
             // txtCode
             // 
@@ -267,34 +181,12 @@
             this.txtPhone.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsUser, "Phone", true));
             this.txtPhone.ForeColor = System.Drawing.Color.Black;
-            this.txtPhone.Location = new System.Drawing.Point(364, 56);
+            this.txtPhone.Location = new System.Drawing.Point(278, 10);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPhone.MaxLength = 20;
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(103, 20);
+            this.txtPhone.Size = new System.Drawing.Size(145, 20);
             this.txtPhone.TabIndex = 5;
-            // 
-            // rdaMale
-            // 
-            this.rdaMale.AutoSize = true;
-            this.rdaMale.Location = new System.Drawing.Point(64, 57);
-            this.rdaMale.Name = "rdaMale";
-            this.rdaMale.Size = new System.Drawing.Size(46, 18);
-            this.rdaMale.TabIndex = 3;
-            this.rdaMale.TabStop = true;
-            this.rdaMale.Text = "Nam";
-            this.rdaMale.UseVisualStyleBackColor = true;
-            // 
-            // rdaFemale
-            // 
-            this.rdaFemale.AutoSize = true;
-            this.rdaFemale.Location = new System.Drawing.Point(122, 57);
-            this.rdaFemale.Name = "rdaFemale";
-            this.rdaFemale.Size = new System.Drawing.Size(39, 18);
-            this.rdaFemale.TabIndex = 4;
-            this.rdaFemale.TabStop = true;
-            this.rdaFemale.Text = "Nữ";
-            this.rdaFemale.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
@@ -335,21 +227,94 @@
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 229);
+            this.panel1.Location = new System.Drawing.Point(0, 128);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(474, 27);
+            this.panel1.Size = new System.Drawing.Size(469, 27);
             this.panel1.TabIndex = 13;
             // 
             // panel2
             // 
             this.panel2.AutoSize = true;
+            this.panel2.Controls.Add(this.labelX3);
+            this.panel2.Controls.Add(this.cbRole);
+            this.panel2.Controls.Add(this.checkBox1);
+            this.panel2.Controls.Add(this.cboClinic);
             this.panel2.Controls.Add(this.txtCode);
             this.panel2.Controls.Add(this.txtName);
+            this.panel2.Controls.Add(this.txtPhone);
+            this.panel2.Controls.Add(this.labelX5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(474, 229);
+            this.panel2.Size = new System.Drawing.Size(469, 128);
             this.panel2.TabIndex = 14;
+            // 
+            // labelX3
+            // 
+            this.labelX3.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.Class = "";
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(211, 62);
+            this.labelX3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(35, 15);
+            this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.labelX3.TabIndex = 12;
+            this.labelX3.Text = "Quyền";
+            // 
+            // cbRole
+            // 
+            this.cbRole.DisplayMember = "Name";
+            this.cbRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbRole.Enabled = false;
+            this.cbRole.FocusCuesEnabled = false;
+            this.cbRole.FormattingEnabled = true;
+            this.cbRole.ItemHeight = 14;
+            this.cbRole.Items.AddRange(new object[] {
+            this.Doctor,
+            this.Pharmacists});
+            this.cbRole.Location = new System.Drawing.Point(278, 59);
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Size = new System.Drawing.Size(145, 20);
+            this.cbRole.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbRole.TabIndex = 11;
+            this.cbRole.ValueMember = "Id";
+            // 
+            // Doctor
+            // 
+            this.Doctor.Text = "2";
+            // 
+            // Pharmacists
+            // 
+            this.Pharmacists.Text = "3";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(94, 61);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(75, 18);
+            this.checkBox1.TabIndex = 10;
+            this.checkBox1.Text = "Hoạt động";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // cboClinic
+            // 
+            this.cboClinic.DisplayMember = "Name";
+            this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboClinic.Enabled = false;
+            this.cboClinic.FocusCuesEnabled = false;
+            this.cboClinic.FormattingEnabled = true;
+            this.cboClinic.ItemHeight = 14;
+            this.cboClinic.Location = new System.Drawing.Point(94, 81);
+            this.cboClinic.Name = "cboClinic";
+            this.cboClinic.Size = new System.Drawing.Size(329, 20);
+            this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboClinic.TabIndex = 9;
+            this.cboClinic.ValueMember = "Id";
             // 
             // styleManager1
             // 
@@ -360,19 +325,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 256);
+            this.ClientSize = new System.Drawing.Size(469, 155);
             this.ControlBox = false;
-            this.Controls.Add(this.rdaFemale);
-            this.Controls.Add(this.rdaMale);
-            this.Controls.Add(this.txtPhone);
-            this.Controls.Add(this.txtDescription);
-            this.Controls.Add(this.labelX7);
-            this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.labelX6);
-            this.Controls.Add(this.labelX5);
             this.Controls.Add(this.labelX4);
-            this.Controls.Add(this.txtYear);
-            this.Controls.Add(this.labelX3);
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.panel2);
@@ -385,10 +341,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Đăng ký bệnh nhân mới";
             ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errPatient)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,24 +355,23 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.Controls.TextBoxX txtName;
-        private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.Editors.IntegerInput txtYear;
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtAddress;
         private DevComponents.DotNetBar.LabelX labelX6;
-        private DevComponents.DotNetBar.LabelX labelX7;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtDescription;
         private DevComponents.DotNetBar.Controls.TextBoxX txtCode;
         private DevComponents.DotNetBar.Controls.TextBoxX txtPhone;
         private DevComponents.DotNetBar.ButtonX btnCancel;
         private DevComponents.DotNetBar.ButtonX btnSave;
         private System.Windows.Forms.BindingSource bdsUser;
-        private System.Windows.Forms.RadioButton rdaMale;
-        private System.Windows.Forms.RadioButton rdaFemale;
         private System.Windows.Forms.ErrorProvider errPatient;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private DevComponents.DotNetBar.StyleManager styleManager1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cboClinic;
+        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbRole;
+        private DevComponents.Editors.ComboItem Doctor;
+        private DevComponents.Editors.ComboItem Pharmacists;
     }
 }
