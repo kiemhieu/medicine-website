@@ -11,10 +11,12 @@ using Medical.Data.Entities;
 using Medical.Data.Repositories;
 using Medical.Forms.Implements;
 
-namespace Medical
+namespace Medical.Users
 {
     public partial class UserRegister : Form
     {
+        private IClinicRepository _clinicRepo = new ClinicRepository();
+
         private bool _isAddNew = false;
         private readonly IUserRepository _userRepository;
 
@@ -25,6 +27,12 @@ namespace Medical
         {
             InitializeComponent();
 
+            if (AppContext.LoggedInUser.Role > MedicineRoles.SupperManager)
+            {
+                cboClinic.DataSource = new List<Medical.Data.Entities.Clinic> { AppContext.CurrentClinic };
+            }
+            else
+                cboClinic.DataSource = _clinicRepo.GetAll();
             this.User = new User();
             this.bdsUser.DataSource = User;
             this._isAddNew = true;
@@ -37,6 +45,7 @@ namespace Medical
         public UserRegister(User patient)
         {
             InitializeComponent();
+          
 
             this.User = patient;
             this.bdsUser.DataSource = User;

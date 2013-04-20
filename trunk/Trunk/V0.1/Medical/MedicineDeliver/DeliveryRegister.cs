@@ -63,14 +63,13 @@ namespace Medical.MedicineDeliver
         /// </summary>
         private void Initialize()
         {
-
             this._vWareHouseDetailList = new List<VWareHouseDetail>();
             this.bdsMedicine.DataSource = _medicineRepo.GetAll();
             this._medDeliveryAllocationList = new List<MedicineDeliveryAllocationEntity>();
             this._prescription = _prescriptionRepo.Get(this._prescriptionId);
             this.bdsPrescription.DataSource = this._prescription;
             this._prescriptionDetailList = _prescriptionDetailRepo.GetByPrescription(this._prescriptionId);
-            if (_prescription == null || this._prescriptionDetailList == null) throw new Exception("Data dosenot existed");
+            if (_prescription == null || this._prescriptionDetailList == null) throw new Exception("Data done not existed");
 
             this._medicineDelivery = this._medicineDeliveryRepo.GetByPrescriptionId(this._prescriptionId);
             this._formMode = this._medicineDelivery == null ? ViewModes.Add : ViewModes.View;

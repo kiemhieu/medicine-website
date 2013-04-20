@@ -60,7 +60,10 @@ namespace Medical
                 this._patient = patient;
 
                 // Initialize combobox
-                var figures = _figureRepo.GetAll();
+                //var figures = _figureRepo.GetAll();
+                // thangnn edit
+                var figures = _figureRepo.GetByClinicId(AppContext.CurrentClinic.Id);
+                // end
                 this.cboFigure.DataSource = figures;
                 // Get Doctor Name
                 this.txtDoctor.Text = AppContext.LoggedInUser.Name;

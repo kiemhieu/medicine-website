@@ -7,7 +7,8 @@ using Medical.Data.EntitiyExtend;
 using Medical.Data.Repositories;
 using Medical.Forms.UI;
 using WeifenLuo.WinFormsUI.Docking;
-namespace Medical {
+namespace Medical.Users
+{
     public partial class UserManageForm : DockContent
     {
 
@@ -110,8 +111,8 @@ namespace Medical {
         {
             var frmedit = new UserRegister();
             frmedit.ShowDialog();
-            this.bdgUser.Clear();
-            this.bdgUser.DataSource = userRepo.GetAll();
+           // this.bdgUser.Clear();
+            //this.bdgUser.DataSource = userRepo.GetAll();
         }
 
     }

@@ -41,7 +41,7 @@ namespace Medical.MedicineDeliver
         /// </summary>
         private void Initialize()
         {
-            cboClinic.DataSource = _clinicRepo.GetAll();
+            cboClinic.DataSource = new List<Medical.Data.Entities.Clinic> { AppContext.CurrentClinic};
             cboDate.Value = DateTime.Today;
             cboStatus.DataSource = new List<Item>(new Item[] { new Item(0, "Tất cả"), new Item(1, "Chưa phát thuốc"), new Item(2, "Đã phát thuốc") });
         }

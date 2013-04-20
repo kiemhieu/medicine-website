@@ -1,4 +1,5 @@
-﻿namespace Medical {
+﻿namespace Medical.Users
+{
     partial class UserManageForm
     {
         /// <summary>
@@ -25,25 +26,27 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdUser = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.bdgUser = new System.Windows.Forms.BindingSource(this.components);
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.txtPatientName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.txtBirthYear = new DevComponents.Editors.IntegerInput();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdgUser = new System.Windows.Forms.BindingSource(this.components);
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.btnEdit = new DevComponents.DotNetBar.ButtonX();
             this.btnRegister = new DevComponents.DotNetBar.ButtonX();
             this.btnSearch = new DevComponents.DotNetBar.ButtonX();
+            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClinicId = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.Active = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
+            this.CrearedUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             ((System.ComponentModel.ISupportInitialize)(this.grdUser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBirthYear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdgUser)).BeginInit();
             this.panel1.SuspendLayout();
             this.panelEx1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdgUser)).BeginInit();
             this.SuspendLayout();
             // 
             // grdUser
@@ -54,16 +57,20 @@
             this.grdUser.AutoGenerateColumns = false;
             this.grdUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameDataGridViewTextBoxColumn});
+            this.nameDataGridViewTextBoxColumn,
+            this.ClinicId,
+            this.Active,
+            this.CrearedUser,
+            this.CreatedDate});
             this.grdUser.DataSource = this.bdgUser;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdUser.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdUser.DefaultCellStyle = dataGridViewCellStyle1;
             this.grdUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdUser.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.grdUser.HighlightSelectedColumnHeaders = false;
@@ -76,6 +83,10 @@
             this.grdUser.Size = new System.Drawing.Size(646, 385);
             this.grdUser.TabIndex = 0;
             this.grdUser.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdPatient_CellDoubleClick);
+            // 
+            // bdgUser
+            // 
+            this.bdgUser.DataSource = typeof(Medical.Data.Entities.User);
             // 
             // labelX1
             // 
@@ -103,81 +114,22 @@
             this.txtPatientName.ForeColor = System.Drawing.Color.Black;
             this.txtPatientName.Location = new System.Drawing.Point(63, 3);
             this.txtPatientName.Name = "txtPatientName";
-            this.txtPatientName.Size = new System.Drawing.Size(171, 20);
+            this.txtPatientName.Size = new System.Drawing.Size(128, 20);
             this.txtPatientName.TabIndex = 2;
-            // 
-            // labelX2
-            // 
-            this.labelX2.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX2.BackgroundStyle.Class = "";
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(249, 5);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(49, 15);
-            this.labelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.labelX2.TabIndex = 3;
-            this.labelX2.Text = "Năm sinh";
-            // 
-            // txtBirthYear
-            // 
-            // 
-            // 
-            // 
-            this.txtBirthYear.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtBirthYear.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtBirthYear.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtBirthYear.Location = new System.Drawing.Point(300, 3);
-            this.txtBirthYear.Name = "txtBirthYear";
-            this.txtBirthYear.Size = new System.Drawing.Size(69, 20);
-            this.txtBirthYear.TabIndex = 4;
             // 
             // panel1
             // 
             this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.cboClinic);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.btnRegister);
             this.panel1.Controls.Add(this.btnSearch);
-            this.panel1.Controls.Add(this.txtBirthYear);
-            this.panel1.Controls.Add(this.labelX2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(656, 27);
             this.panel1.TabIndex = 8;
-            // 
-            // panelEx1
-            // 
-            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.grdUser);
-            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx1.Location = new System.Drawing.Point(0, 27);
-            this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panelEx1.Size = new System.Drawing.Size(656, 390);
-            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx1.Style.GradientAngle = 90;
-            this.panelEx1.TabIndex = 9;
-            this.panelEx1.Text = "panelEx1";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Họ và tên";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // bdgUser
-            // 
-            this.bdgUser.DataSource = typeof(Medical.Data.Entities.User);
             // 
             // btnDelete
             // 
@@ -236,6 +188,84 @@
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // panelEx1
+            // 
+            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.grdUser);
+            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx1.Location = new System.Drawing.Point(0, 27);
+            this.panelEx1.Name = "panelEx1";
+            this.panelEx1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            this.panelEx1.Size = new System.Drawing.Size(656, 390);
+            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx1.Style.GradientAngle = 90;
+            this.panelEx1.TabIndex = 9;
+            this.panelEx1.Text = "panelEx1";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Họ và tên";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // ClinicId
+            // 
+            this.ClinicId.DataPropertyName = "ClinicId";
+            this.ClinicId.DropDownHeight = 106;
+            this.ClinicId.DropDownWidth = 121;
+            this.ClinicId.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClinicId.HeaderText = "ClinicId";
+            this.ClinicId.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.ClinicId.ItemHeight = 15;
+            this.ClinicId.Name = "ClinicId";
+            this.ClinicId.ReadOnly = true;
+            this.ClinicId.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            // 
+            // Active
+            // 
+            this.Active.Checked = true;
+            this.Active.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.Active.CheckValue = "N";
+            this.Active.DataPropertyName = "Active";
+            this.Active.HeaderText = "Active";
+            this.Active.Name = "Active";
+            this.Active.ReadOnly = true;
+            // 
+            // CrearedUser
+            // 
+            this.CrearedUser.DataPropertyName = "CrearedUser";
+            this.CrearedUser.HeaderText = "CrearedUser";
+            this.CrearedUser.Name = "CrearedUser";
+            this.CrearedUser.ReadOnly = true;
+            // 
+            // CreatedDate
+            // 
+            this.CreatedDate.DataPropertyName = "CreatedDate";
+            this.CreatedDate.HeaderText = "CreatedDate";
+            this.CreatedDate.Name = "CreatedDate";
+            this.CreatedDate.ReadOnly = true;
+            // 
+            // cboClinic
+            // 
+            this.cboClinic.DisplayMember = "Name";
+            this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboClinic.Enabled = false;
+            this.cboClinic.FocusCuesEnabled = false;
+            this.cboClinic.FormattingEnabled = true;
+            this.cboClinic.ItemHeight = 14;
+            this.cboClinic.Location = new System.Drawing.Point(197, 3);
+            this.cboClinic.Name = "cboClinic";
+            this.cboClinic.Size = new System.Drawing.Size(193, 20);
+            this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboClinic.TabIndex = 11;
+            this.cboClinic.ValueMember = "Id";
+            // 
             // UserManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -256,11 +286,9 @@
             this.Text = "Danh sách người sử dụng";
             this.Shown += new System.EventHandler(this.PatientBrowseForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.grdUser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBirthYear)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panelEx1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdgUser)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panelEx1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,16 +299,19 @@
         private DevComponents.DotNetBar.Controls.DataGridViewX grdUser;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.Controls.TextBoxX txtPatientName;
-        private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.Editors.IntegerInput txtBirthYear;
         private DevComponents.DotNetBar.ButtonX btnSearch;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn crearedUserDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource bdgUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private DevComponents.DotNetBar.ButtonX btnRegister;
         private DevComponents.DotNetBar.ButtonX btnDelete;
         private DevComponents.DotNetBar.ButtonX btnEdit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn ClinicId;
+        private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn Active;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CrearedUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreatedDate;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cboClinic;
     }
 }
