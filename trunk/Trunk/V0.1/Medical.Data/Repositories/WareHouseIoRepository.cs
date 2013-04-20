@@ -17,6 +17,7 @@ namespace Medical.Data.Repositories
             var whPaper = this.Context.WareHouseIO.FirstOrDefault(x => x.Id.Equals(id));
             return whPaper;
         }
+
         public WareHouseIO GetById(int id)
         {
             var whPaper = this.Context.WareHouseIO.FirstOrDefault(x => x.Id.Equals(id));
@@ -60,12 +61,13 @@ namespace Medical.Data.Repositories
                                             MinAllowed = 0
                                         };
                         this.Context.WareHouses.Add(warehouse);
+                        this.Context.SaveChanges();
                     } 
                     else 
                     {
                         warehouse.Volumn += medicineDictionary[item];
                     }
-                    this.Context.SaveChanges();
+                    
 
                     foreach (var warehouseIoDetail in warehouseIODetails)
                     {
@@ -79,13 +81,16 @@ namespace Medical.Data.Repositories
                                                       LotNo = warehouseIoDetail.LotNo,
                                                       ExpiredDate = warehouseIoDetail.ExpireDate,
                                                       WareHouseIODetailId = warehouseIoDetail.Id,
-                                                      OriginalVolumn = warehouseIoDetail.Qty
+                                                      OriginalVolumn = warehouseIoDetail.Qty,
+                                                      CurrentVolumn = warehouseIoDetail.Qty
                                                   };
                         warehouseDetail.SetInfo(false);
                         this.Context.WareHouseDetails.Add(warehouseDetail);
                     }
-                    this.Context.SaveChanges();
+                    
                 }
+                this.Context.SaveChanges();
+                scope.Complete();
             }
         }
 
@@ -127,7 +132,6 @@ namespace Medical.Data.Repositories
 
         }
 
-
         public void Delete(int id)
         {
             try
@@ -143,7 +147,6 @@ namespace Medical.Data.Repositories
             }
 
         }
-
 
         public List<WareHouseIO> GetAll()
         {

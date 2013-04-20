@@ -30,6 +30,12 @@
     <Type>Information</Type>
     <Button>OK</Button>
   </Message>
+   <Message>
+    <Code>MSG0005</Code>
+    <Content>{0}</Content>
+    <Type>Information</Type>
+    <Button>OK</Button>
+  </Message>
   <Message>
     <Code>Q001</Code>
     <Content>Đăng ký mới {0}. Bạn có muốn tiếp tục ?</Content>
