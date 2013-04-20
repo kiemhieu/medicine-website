@@ -155,9 +155,13 @@ namespace Medical.Test
 
         private void frmFigure_Activated(object sender, EventArgs e)
         {
+
             FillToGrid();
-            Figure figure = (Figure)bdsFigure.Current;
-            FillToGridDetail(figure.Id);
+            if (bdsFigure.Count > 0)
+            {
+                Figure figure = (Figure)bdsFigure.Current;
+                FillToGridDetail(figure.Id);
+            }
         }
     }
 }

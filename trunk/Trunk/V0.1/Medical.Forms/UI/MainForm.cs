@@ -320,5 +320,23 @@ namespace Medical.Forms.UI
                 this.txtLoggedIn.Text = AppContext.LoggedInUser.UserName;
             }
         }
+
+        private void thoátToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            var dialogResult = MessageDialog.Instance.ShowMessage(this, "Q010", "");
+            if (dialogResult == DialogResult.No) return;
+            else Environment.Exit(0);
+        }
+
+        private void openToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            ChangePassword changePass = new ChangePassword(AppContext.LoggedInUser);
+            changePass.ShowDialog(this);
+        }
     }
 }
