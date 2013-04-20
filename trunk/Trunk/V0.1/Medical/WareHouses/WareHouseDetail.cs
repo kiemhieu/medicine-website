@@ -51,7 +51,20 @@ namespace Medical.WareHouses {
             {
                 gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
                 // TODO: Set error and warning icon and good icon follow the quantity remain on stock
-                gridView.Rows[r.Index].Cells[0].Value = global::Medical.Properties.Resources.accept;
+                DateTime time = (DateTime) gridView.Rows[r.Index].Cells[2].Value;
+                if (time == null)
+                {
+                    gridView.Rows[r.Index].Cells[0].Value = global::Medical.Properties.Resources.attention;    
+                }
+                else if (time >  DateTime.Now)
+                {
+                    gridView.Rows[r.Index].Cells[0].Value = global::Medical.Properties.Resources.check;    
+                }
+                else if (time <= DateTime.Now)
+                {
+                    gridView.Rows[r.Index].Cells[0].Value = global::Medical.Properties.Resources.bonus;
+                }
+                
             }
         }
 

@@ -16,39 +16,39 @@ namespace Medical.WareHouses {
     public partial class WareHouse : DockContent
     {
 
-        private IClinicRepository clinicRepo = new ClinicRepository();
-        private IUserRepository userRepo = new UserRepository();
-        private IMedicineRepository medicineRepo = new MedicineRepository();
-        private IWareHouseRepository warehouseRepo = new WareHouseRepository();
+        private readonly IClinicRepository _clinicRepo = new ClinicRepository();
+        private readonly IMedicineRepository _medicineRepo = new MedicineRepository();
+        private readonly IWareHouseRepository _warehouseRepo = new WareHouseRepository();
 
         public WareHouse() {
             InitializeComponent();
-
             Initialize();
         }
 
         private void Initialize()
         {
             // Init Clinic combobox
-            var clinic = this.clinicRepo.GetAll();
+            var clinic = this._clinicRepo.GetAll();
             this.bdsClinic.DataSource = clinic;
             this.cboClinic.SelectedValue = AppContext.CurrentClinic.Id;
 
             // Init AutoCompleteSource
-            var medicinesName = medicineRepo.GetMedicinesName();
+            var medicinesName = _medicineRepo.GetMedicinesName();
             var completeSource = new AutoCompleteStringCollection();
             completeSource.AddRange(medicinesName.ToArray());
             txtMedicine.AutoCompleteCustomSource = completeSource;
         }
 
-        private void WareHouse_Load(object sender, EventArgs e)
+        private void WareHouseLoad(object sender, EventArgs e)
         {
+            if (cboClinic.SelectedValue == null) return;
             var clinicId = (int) cboClinic.SelectedValue;
             LoadData(clinicId, string.Empty);
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void BtnSearchClick(object sender, EventArgs e)
         {
+            if (cboClinic.SelectedValue == null) return;
             var clinicId = (int)cboClinic.SelectedValue;
             var medicine = txtMedicine.Text.Trim();
             LoadData(clinicId, medicine);
@@ -56,25 +56,46 @@ namespace Medical.WareHouses {
 
         private void LoadData(int clinicId, String medicineName)
         {
-            var warehouseList = this.warehouseRepo.Get(clinicId, medicineName);
+            var warehouseList = this._warehouseRepo.Get(clinicId, medicineName);
             this.bdsWareHouse.DataSource = warehouseList;
             this.bdsWareHouse.ResetBindings(false);
             this.dataGridViewX1.ResetBindings();
+
+            /*
+            this.errorProvider1.Clear();
+            foreach (var wareHouse in warehouseList)
+            {
+                wareHouse.ValidateMinimumAllowedQty();
+            }
+            this.errorProvider1.UpdateBinding();
+             */
         }
 
-        private void dataGridViewX1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void DataGridViewX1DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             var gridView = (DataGridViewX)sender;
             if (null == gridView) return;
             foreach (DataGridViewRow r in gridView.Rows)
             {
                 gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
-                // TODO: Set error and warning icon and good icon follow the quantity remain on stock
-                gridView.Rows[r.Index].Cells[0].Value = global::Medical.Properties.Resources.accept;
+                var minimumAllowed = gridView.Rows[r.Index].Cells[4].Value == null ? 0 : (int)gridView.Rows[r.Index].Cells[4].Value;
+                var qty = gridView.Rows[r.Index].Cells[5].Value == null ? 0 : (int)gridView.Rows[r.Index].Cells[5].Value;
+                if (qty == 0)
+                {
+                    gridView.Rows[r.Index].Cells[0].Value = global::Medical.Properties.Resources.bonus;
+                }
+                else if (qty <= minimumAllowed)
+                {
+                    gridView.Rows[r.Index].Cells[0].Value = global::Medical.Properties.Resources.attention;
+                }
+                else
+                {
+                    gridView.Rows[r.Index].Cells[0].Value = global::Medical.Properties.Resources.check;
+                }
             }
         }
 
-        private void dataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewX1CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var warehouse = this.bdsWareHouse.Current as Data.Entities.WareHouse;
             if (warehouse == null) return;
@@ -83,8 +104,9 @@ namespace Medical.WareHouses {
             warehouseDetail.ShowDialog(this);
         }
 
-        private void cboClinic_SelectedIndexChanged(object sender, EventArgs e)
+        private void CboClinicSelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cboClinic.SelectedValue == null) return;
             var clinicId = (int)cboClinic.SelectedValue;
             var medicine = txtMedicine.Text.Trim();
             LoadData(clinicId, medicine);

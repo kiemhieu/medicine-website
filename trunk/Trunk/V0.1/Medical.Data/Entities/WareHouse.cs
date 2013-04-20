@@ -22,9 +22,14 @@ namespace Medical.Data.Entities
         public virtual Clinic Clinic { get; set; }
 
         // public virtual ICollection<WareHouseDetail> WareHouseDetails { get; set; }
+        [NotMapped]
+        public string Unit { get { return this.Medicine.Define.Name; } }
 
         [NotMapped]
         public string MedicineName { get { return this.Medicine.Name; } }
+
+        [NotMapped]
+        public string TradeName { get { return this.Medicine.TradeName; } }
 
         [NotMapped]
         public string ClinicName { get { return this.Clinic.Name; } }
@@ -47,6 +52,12 @@ namespace Medical.Data.Entities
                 this.OnPropertyChanged("RemainQty");
             }
             get { return _remainQty; }
+        }
+
+        public void ValidateMinimumAllowedQty()
+        {
+            base.Validate();
+            if (this.MinAllowed >= this.Volumn) this.AddError("Volumn", "Số lượng tồn kho nhỏ hơn mức cho phép tối thiểu");
         }
     }
 }
