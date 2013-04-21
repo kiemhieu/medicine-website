@@ -7,13 +7,15 @@ using Medical.Data.EntitiyExtend;
 using Medical.Data.Repositories;
 using Medical.Forms.UI;
 using WeifenLuo.WinFormsUI.Docking;
-namespace Medical {
+namespace Medical
+{
     public partial class PatientManageForm : DockContent
     {
 
         private readonly IPatientRepository patientRepo = new PatientRepository();
 
-        public PatientManageForm() {
+        public PatientManageForm()
+        {
             InitializeComponent();
         }
 
@@ -23,33 +25,47 @@ namespace Medical {
             this.txtPatientName.Text = searchCondition;
         }
 
-        private void btnSearch_Click(object sender, EventArgs e) {
-            try {
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 this.Enabled = false;
                 this.Cursor = Cursors.WaitCursor;
                 Searh();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
-            finally {
+            finally
+            {
                 this.Enabled = true;
                 this.Cursor = Cursors.Arrow;
             }
         }
 
-        private void Searh() {
-            this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject);
+        private void Searh()
+        {
+            if (AppContext.LoggedInUser.Role >  MedicineRoles.SupperManager)
+                this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject, AppContext.CurrentClinic.Id);
+            else this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject);
+
         }
 
-        private void PatientBrowseForm_Shown(object sender, EventArgs e) {
-            try {
+        private void PatientBrowseForm_Shown(object sender, EventArgs e)
+        {
+            try
+            {
                 this.Enabled = false;
                 this.Cursor = Cursors.WaitCursor;
                 Searh();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
-            finally {
+            finally
+            {
                 this.Enabled = true;
                 this.Cursor = Cursors.Arrow;
             }
@@ -59,7 +75,7 @@ namespace Medical {
 
         private void grdPatient_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.SelectedPatient = (Patient) this.bdgPatient.List[e.RowIndex];
+            this.SelectedPatient = (Patient)this.bdgPatient.List[e.RowIndex];
             if (this.SelectedPatient == null) return;
             this.DialogResult = DialogResult.Yes;
             this.Close();

@@ -111,7 +111,13 @@ namespace Medical.Warehouse
 
         private void FillToGrid()
         {
-            grd.DataSource = whRepository.GetAll();
+            if (AppContext.LoggedInUser.Role > MedicineRoles.SupperManager)
+            {
+                grd.DataSource = whRepository.GetByClinicId(AppContext.CurrentClinic.Id);
+            }
+            else
+                grd.DataSource = whRepository.GetAll();
+           
         }
 
         /// <summary>

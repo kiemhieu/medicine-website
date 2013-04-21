@@ -14,5 +14,6 @@ namespace Medical.Data
         Patient GetById(int id);
         List<Patient> GetAll();
         List<Patient> GetByNameAndYear(string name, int? year);
+        List<Patient> GetByNameAndYear(string name, int? year, int clinicId);
     }
 }
