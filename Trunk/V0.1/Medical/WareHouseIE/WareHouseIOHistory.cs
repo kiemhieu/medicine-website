@@ -56,7 +56,13 @@ namespace Medical.WareHouseIE
 
         private void BindClinic()
         {
-            bdsClinic.DataSource = repClinic.GetAll();
+            if (AppContext.LoggedInUser.Role > MedicineRoles.SupperManager)
+            {
+                cboClinic.DataSource = new List<Clinic> { repClinic.GetById(AppContext.CurrentClinic.Id) };
+            }
+            else
+                bdsClinic.DataSource = repClinic.GetAll();
+           
         }        
 
         private void grd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

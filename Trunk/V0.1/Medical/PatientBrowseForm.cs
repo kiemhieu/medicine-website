@@ -40,7 +40,7 @@ namespace Medical {
         }
 
         private void Searh() {
-            this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject);
+            this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject, AppContext.CurrentClinic.Id);
         }
 
         private void PatientBrowseForm_Shown(object sender, EventArgs e) {

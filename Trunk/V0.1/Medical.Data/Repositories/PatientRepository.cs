@@ -81,5 +81,9 @@ namespace Medical.Data.Repositories
             return Context.Patients.Where(x => (x.Name.Contains(name) || String.IsNullOrEmpty(name)) && (!year.HasValue || x.BirthYear == year.Value)).ToList();
         }
 
+        public List<Patient> GetByNameAndYear(string name, int? year, int clinicId)
+        {
+            return Context.Patients.Where(x => (x.Name.Contains(name) || String.IsNullOrEmpty(name)) && (!year.HasValue || x.BirthYear == year.Value) && x.ClinicId == clinicId).ToList();
+        }
     }
 }
