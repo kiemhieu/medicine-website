@@ -88,13 +88,6 @@ namespace Medical.Forms.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap logo_hanoiPAC_Mầu {
-            get {
-                object obj = ResourceManager.GetObject("logo_hanoiPAC_Mầu", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap User {
             get {
                 object obj = ResourceManager.GetObject("User", resourceCulture);

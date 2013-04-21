@@ -178,6 +178,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
@@ -232,7 +233,7 @@
     <None Include="Resources\warehouse.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\logo_hanoiPAC_Mầu.jpg" />
+    <Content Include="Resources\logo_hanoiPAC.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
