@@ -5,11 +5,11 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Medical.ClinicForm
 {
-    public partial class frmClinic : DockContent
+    public partial class frmSynchr : DockContent
     {
         public int IdClinic;
         private ClinicRepository clinicRepository = new ClinicRepository();
-        public frmClinic()
+        public frmSynchr()
         {
             InitializeComponent();
             FillToGrid();
