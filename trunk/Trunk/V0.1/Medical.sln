@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical", "Medical\Medical.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.Common", "Medical.Common\Medical.Common.csproj", "{221944A4-3B72-48C7-9328-D58AA0D05FF3}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "QuanLyThuoc", "..\Setup\QuanLyThuoc\QuanLyThuoc.vdproj", "{4BB26A52-D053-4A31-97FC-B4F12BD49115}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Medical.Data.vsmdi
@@ -219,6 +221,21 @@ Global
 		{221944A4-3B72-48C7-9328-D58AA0D05FF3}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{221944A4-3B72-48C7-9328-D58AA0D05FF3}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
 		{221944A4-3B72-48C7-9328-D58AA0D05FF3}.SingleImage|x86.ActiveCfg = Release|Any CPU
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.CD_ROM|Any CPU.ActiveCfg = Release
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.CD_ROM|Mixed Platforms.ActiveCfg = Release
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.CD_ROM|x86.ActiveCfg = Release
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.Debug|Any CPU.ActiveCfg = Debug
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.Debug|x86.ActiveCfg = Debug
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.DVD-5|Any CPU.ActiveCfg = Debug
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.DVD-5|Mixed Platforms.ActiveCfg = Debug
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.DVD-5|x86.ActiveCfg = Debug
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.Release|Any CPU.ActiveCfg = Release
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.Release|Mixed Platforms.ActiveCfg = Release
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.Release|x86.ActiveCfg = Release
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.SingleImage|Any CPU.ActiveCfg = Release
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.SingleImage|Mixed Platforms.ActiveCfg = Release
+		{4BB26A52-D053-4A31-97FC-B4F12BD49115}.SingleImage|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
