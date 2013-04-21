@@ -68,7 +68,7 @@ namespace Medical
                 // Get Doctor Name
                 this.txtDoctor.Text = AppContext.LoggedInUser.Name;
                 var medicines = _medicineRepo.GetAll();
-                medicines.Insert(0, new Medicine() {Id = 0, Name = "..."});
+                medicines.Insert(0, new Medicine() { Id = 0, Name = "..." });
                 this.bdsMedicine.DataSource = medicines;
 
                 // Get existing prescription
@@ -128,7 +128,7 @@ namespace Medical
                 }
 
                 Initialize(this._prescription);
-            } 
+            }
             finally
             {
                 this._isSkipUpdatingFigure = false;
@@ -153,7 +153,7 @@ namespace Medical
         {
             var prescriptionList = (List<PrescriptionDetail>)this.bdsPrescriptionDetail.List;
             if (prescriptionList == null || prescriptionList.Count == 0) return;
-            for (var i= 0; i<prescriptionList.Count; i++)
+            for (var i = 0; i < prescriptionList.Count; i++)
             {
                 prescriptionList[i].No = i + 1;
             }
@@ -196,9 +196,13 @@ namespace Medical
                     result = false;
                     item.AddError("MedicineId", "Mã thuốc bị trùng nhau");
                 }
-                
+
                 if (!item.IsValid) result = false;
-                
+                if (item.InventoryVolumn <= 0)
+                {
+                    result = false;
+                    item.AddError("InventoryVolumn", "Hết thuốc trong kho");
+                }
             }
 
             return result;
@@ -224,7 +228,7 @@ namespace Medical
         /// <param name="e">The <see cref="System.Windows.Forms.DataGridViewCellCancelEventArgs"/> instance containing the event data.</param>
         private void dataGridViewX1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            var prescriptionDetail = (PrescriptionDetail) this.bdsPrescriptionDetail.Current;
+            var prescriptionDetail = (PrescriptionDetail)this.bdsPrescriptionDetail.Current;
             if (prescriptionDetail == null) e.Cancel = true;
             if (prescriptionDetail.FigureDetailId.HasValue && prescriptionDetail.FigureDetailId.Value > 0 && (e.ColumnIndex == 1 || e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4)) e.Cancel = true;
         }
@@ -243,9 +247,9 @@ namespace Medical
             var item = prescriptionList[row.Index];
             if (item.FigureDetailId.HasValue && item.FigureDetailId > 0)
             {
-                MessageBox.Show(this, 
-                                "Thuốc theo phác đồ nên không thể xóa.", 
-                                "Thông báo", 
+                MessageBox.Show(this,
+                                "Thuốc theo phác đồ nên không thể xóa.",
+                                "Thông báo",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
                 return;
@@ -273,9 +277,10 @@ namespace Medical
             if (this._isUpdate)
             {
                 this._precriptionRepo.Update(this._prescription);
-            } else
+            }
+            else
             {
-                
+
                 this._precriptionRepo.Insert(this._prescription);
             }
             this.Close();
@@ -319,7 +324,17 @@ namespace Medical
                     Day = this.Day,
                     Amount = DefaultVolumn * figureDetail.Volumn,
                     Version = 0
+
+
                 };
+                try
+                {
+                    prescriptionDetail.InventoryVolumn = _medicineRepo.GetInventoryVolumeWareHouseByMedicineId(AppContext.CurrentClinic.Id, prescriptionDetail.MedicineId);
+                }
+                catch (Exception ex)
+                {
+                    prescriptionDetail.InventoryVolumn = 0;
+                }
                 _prescriptionDetailList.Insert(0, prescriptionDetail);
             }
 
@@ -355,6 +370,14 @@ namespace Medical
             if (prescriptionDetail == null) return;
             if (e.ColumnIndex == 2 || e.ColumnIndex == 3) prescriptionDetail.Calculate();
             prescriptionDetail.Validate();
+            try
+            {
+                prescriptionDetail.InventoryVolumn = _medicineRepo.GetInventoryVolumeWareHouseByMedicineId(AppContext.CurrentClinic.Id, prescriptionDetail.MedicineId);
+            }
+            catch(Exception ex)
+            {
+                prescriptionDetail.InventoryVolumn = 0;
+            }
             if (CheckDuplicate(prescriptionDetail.MedicineId)) prescriptionDetail.AddError("MedicineId", "Thuốc đã tồn tại");
         }
 
@@ -378,7 +401,7 @@ namespace Medical
 
         private void dataGridViewX1_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            
+
         }
     }
 }
