@@ -15,5 +15,6 @@ namespace Medical.Data
         Medicine GetById(int id);
         List<Medicine> GetAll();
         List<string> GetMedicinesName();
+        int GetInventoryVolumeWareHouseByMedicineId(int clinicId, int medicineId);
     }
 }

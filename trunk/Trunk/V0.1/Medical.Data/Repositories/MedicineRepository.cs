@@ -8,7 +8,16 @@ namespace Medical.Data.Repositories
 {
     public class MedicineRepository : RepositoryBase, IMedicineRepository
     {
+        
+          public MedicineRepository() : base()
+        {
+        }
 
+          public MedicineRepository(bool serverContext)
+              : base(serverContext)
+        {
+            
+        }
         /// <summary>
         /// Gets the by id.
         /// </summary>
@@ -122,6 +131,51 @@ namespace Medical.Data.Repositories
                 
             }
             return null;
+        }
+
+        public Medicine CopyEntity(Medicine entCopy, Medicine entReturn)
+        {
+            entReturn.Content = entCopy.Content;
+            entReturn.ContentUnit = entCopy.ContentUnit;
+            entReturn.CreatedBy = entCopy.CreatedBy;
+            entReturn.CreatedDate = entCopy.CreatedDate;
+            entReturn.Description = entCopy.Description;
+            entReturn.LastUpdatedBy = entCopy.LastUpdatedBy;
+            entReturn.LastUpdatedDate = entCopy.LastUpdatedDate;
+            entReturn.Name = entCopy.Name;
+            entReturn.TradeName = entCopy.TradeName;
+            entReturn.Type = entCopy.Type;
+            entReturn.Unit = entCopy.Unit;
+            entReturn.Version = entCopy.Version;
+            return entReturn;
+        }
+
+        public List<Medicine> GetWithInventoryVolume(int clinicId)
+        {
+            List<WareHouse> lstWH = this.Context.WareHouses.Where(x => x.ClinicId == clinicId).ToList();
+
+
+            List<Medicine> lstMedicine = GetAll();
+            foreach (Medicine medEnt in lstMedicine)
+            {
+                medEnt.InventoryVolumn = 0;
+                foreach(WareHouse whEnt in lstWH)
+                {
+                    if (whEnt.MedicineId == medEnt.Id)
+                    {
+                        medEnt.InventoryVolumn = whEnt.Volumn ;
+                    }
+                }
+            }
+            return lstMedicine;
+        }
+
+        public int GetInventoryVolumeWareHouseByMedicineId(int clinicId,int medicineId)
+        {
+            int inventoryVolume = 0;
+            WareHouse whEnt = this.Context.WareHouses.FirstOrDefault(x => x.ClinicId == clinicId && x.MedicineId == medicineId);
+            if (whEnt != null) inventoryVolume = whEnt.Volumn;
+            return inventoryVolume;
         }
     }
 }

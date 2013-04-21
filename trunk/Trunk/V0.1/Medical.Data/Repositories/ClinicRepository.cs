@@ -8,6 +8,16 @@ using Medical.Data.Entities;
 namespace Medical.Data.Repositories {
     public class ClinicRepository : RepositoryBase, IClinicRepository {
 
+          public ClinicRepository() : base()
+        {
+        }
+
+          public ClinicRepository(bool serverContext)
+              : base(serverContext)
+        {
+            
+        }
+
         /// <summary>
         /// Gets the specified id.
         /// </summary>

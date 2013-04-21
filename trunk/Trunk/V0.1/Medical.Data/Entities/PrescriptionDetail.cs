@@ -47,5 +47,8 @@ namespace Medical.Data.Entities
         {
             this.Amount = this.Day*this.VolumnPerDay;
         }
+
+        [NotMapped]
+        public int InventoryVolumn { get; set; }
     }
 }
