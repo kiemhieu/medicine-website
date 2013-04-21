@@ -108,6 +108,12 @@
     <Compile Include="UI\ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\frmSynchr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmSynchr.Designer.cs">
+      <DependentUpon>frmSynchr.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmSynchr.resx">
+      <DependentUpon>frmSynchr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
