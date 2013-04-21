@@ -322,25 +322,25 @@ namespace Medical.Forms.UI
             }
         }
 
-        private void thoátToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void openToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void doiMatKhauToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            ChangePassword changePass = new ChangePassword(AppContext.LoggedInUser);
+            changePass.ShowDialog(this);
+        }
+
+        private void thoatToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             var dialogResult = MessageDialog.Instance.ShowMessage(this, "Q010", "");
             if (dialogResult == DialogResult.No) return;
             else Environment.Exit(0);
         }
 
-        private void openToolStripMenuItem_Click(object sender, System.EventArgs e)
-        {
-
-        }
-
-        private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, System.EventArgs e)
-        {
-            ChangePassword changePass = new ChangePassword(AppContext.LoggedInUser);
-            changePass.ShowDialog(this);
-        }
-
-        private void đồngBộHóaDữLiệuToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void dongBoHoaDuLieuToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             frmSynchr frmSynchr = new frmSynchr();
             frmSynchr.ShowDialog(this);
