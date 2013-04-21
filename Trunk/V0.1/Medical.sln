@@ -22,6 +22,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical", "Medical\Medical.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.Common", "Medical.Common\Medical.Common.csproj", "{221944A4-3B72-48C7-9328-D58AA0D05FF3}"
 EndProject
+<<<<<<< .mine
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Quan_Ly_Phong_Kham_Setup", "Quan_Ly_Phong_Kham_Setup\Quan_Ly_Phong_Kham_Setup.vdproj", "{84703725-BEBF-4AAF-A4B2-0AB952CE7962}"
+EndProject
+=======
+>>>>>>> .r322
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Medical.Data.vsmdi
@@ -219,6 +224,24 @@ Global
 		{221944A4-3B72-48C7-9328-D58AA0D05FF3}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{221944A4-3B72-48C7-9328-D58AA0D05FF3}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
 		{221944A4-3B72-48C7-9328-D58AA0D05FF3}.SingleImage|x86.ActiveCfg = Release|Any CPU
+<<<<<<< .mine
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.CD_ROM|Any CPU.ActiveCfg = Release
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.CD_ROM|Mixed Platforms.ActiveCfg = Release
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.CD_ROM|x86.ActiveCfg = Release
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.Debug|Any CPU.ActiveCfg = Debug
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.Debug|x86.ActiveCfg = Debug
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.DVD-5|Any CPU.ActiveCfg = Debug
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.DVD-5|Mixed Platforms.ActiveCfg = Debug
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.DVD-5|x86.ActiveCfg = Debug
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.Release|Any CPU.ActiveCfg = Release
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.Release|Mixed Platforms.ActiveCfg = Release
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.Release|x86.ActiveCfg = Release
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.SingleImage|Any CPU.ActiveCfg = Release
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.SingleImage|Mixed Platforms.ActiveCfg = Release
+		{84703725-BEBF-4AAF-A4B2-0AB952CE7962}.SingleImage|x86.ActiveCfg = Release
+=======
+>>>>>>> .r322
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
