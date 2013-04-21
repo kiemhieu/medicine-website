@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppContext.cs" />
+    <Compile Include="ITableChangeRepository.cs" />
+    <Compile Include="Entities\TableChange.cs" />
     <Compile Include="IBadMedicineRepository.cs" />
     <Compile Include="Dataset\DS_ReportMedicineIOByMonth.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -129,6 +131,7 @@
     <Compile Include="Repositories\ClinicRepository.cs" />
     <Compile Include="IWareHouseRepository.cs" />
     <Compile Include="Repositories\BadMedicineRepository.cs" />
+    <Compile Include="Repositories\TableChangeRepository.cs" />
     <Compile Include="Repositories\Medical2Context.cs" />
     <Compile Include="Repositories\ReportRepository.cs" />
     <Compile Include="Repositories\MedicinePlanDetailRepository.cs" />
@@ -161,6 +164,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Dataset\DS_ReportMedicineIOByMonth.xsc">
       <DependentUpon>DS_ReportMedicineIOByMonth.xsd</DependentUpon>
     </None>

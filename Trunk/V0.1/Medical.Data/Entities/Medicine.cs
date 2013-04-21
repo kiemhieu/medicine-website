@@ -45,5 +45,10 @@ namespace Medical.Data.Entities
 
         [NotMapped]
         public int No { get; set; }
+
+        [NotMapped]
+        public int InventoryVolumn { get; set; }
     }
+
+    
 }

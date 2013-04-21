@@ -36,6 +36,7 @@ namespace Medical.Data.Repositories
         public DbSet<MedicineDeliveryDetailAllocate> MedicineDeliveryDetailAllocates { get; set; }
         public DbSet<VWareHouseDetail> VWareHouseDetails { get; set; }
         public DbSet<VPatientLastPrescription> VPatientLastPrescription { get; set; }
+        public DbSet<TableChange> TableChanges { get; set; } 
     }
 }
 
