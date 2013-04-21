@@ -50,7 +50,7 @@ namespace Medical.Data.Repositories
 
                 foreach(var item in medicineDictionary.Keys)
                 {
-                    var warehouse = this.Context.WareHouses.FirstOrDefault(x => x.MedicineId == item);
+                    var warehouse = this.Context.WareHouses.FirstOrDefault(x => x.MedicineId == item && x.ClinicId == AppContext.CurrentClinic.Id);
                     if (warehouse == null) 
                     {
                         warehouse = new WareHouse()
