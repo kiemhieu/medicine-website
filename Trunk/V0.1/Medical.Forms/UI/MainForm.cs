@@ -7,6 +7,7 @@ using Medical.Forms.Implements;
 using Medical.Forms.Interfaces;
 using WeifenLuo.WinFormsUI.Docking;
 
+
 namespace Medical.Forms.UI
 {
     public partial class MainForm : Form
@@ -337,6 +338,12 @@ namespace Medical.Forms.UI
         {
             ChangePassword changePass = new ChangePassword(AppContext.LoggedInUser);
             changePass.ShowDialog(this);
+        }
+
+        private void đồngBộHóaDữLiệuToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            frmSynchr frmSynchr = new frmSynchr();
+            frmSynchr.ShowDialog(this);
         }
     }
 }
