@@ -173,7 +173,7 @@
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(980, 491);
-            this.dataGridViewX1.TabIndex = 1;
+            this.dataGridViewX1.TabIndex = 0;
             // 
             // noDataGridViewTextBoxColumn
             // 
@@ -305,7 +305,7 @@
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(64, 23);
             this.btnRemove.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnRemove.TabIndex = 8;
+            this.btnRemove.TabIndex = 3;
             this.btnRemove.Text = "Hủy";
             this.btnRemove.ThemeAware = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
@@ -319,7 +319,7 @@
             this.btnDeliver.Name = "btnDeliver";
             this.btnDeliver.Size = new System.Drawing.Size(87, 23);
             this.btnDeliver.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDeliver.TabIndex = 7;
+            this.btnDeliver.TabIndex = 4;
             this.btnDeliver.Text = "Phát thuốc";
             this.btnDeliver.Click += new System.EventHandler(this.btnDeliver_Click);
             // 
@@ -349,7 +349,7 @@
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(94, 20);
             this.cboStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboStatus.TabIndex = 5;
+            this.cboStatus.TabIndex = 1;
             this.cboStatus.ValueMember = "Value";
             this.cboStatus.SelectedValueChanged += new System.EventHandler(this.cboStatus_SelectedValueChanged);
             // 
@@ -380,7 +380,7 @@
             this.cboClinic.Name = "cboClinic";
             this.cboClinic.Size = new System.Drawing.Size(300, 20);
             this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboClinic.TabIndex = 1;
+            this.cboClinic.TabIndex = 2;
             this.cboClinic.ValueMember = "Id";
             // 
             // panel2
