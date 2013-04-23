@@ -262,6 +262,12 @@
     <Compile Include="WareHouseIE\ExportAllocateDetail.Designer.cs">
       <DependentUpon>ExportAllocateDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="WareHouseIE\MedicineOutputChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WareHouseIE\MedicineOutputChooser.Designer.cs">
+      <DependentUpon>MedicineOutputChooser.cs</DependentUpon>
+    </Compile>
     <Compile Include="WareHouseIE\WareHouseIEDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -466,6 +472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WareHouseIE\ExportAllocateDetail.resx">
       <DependentUpon>ExportAllocateDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WareHouseIE\MedicineOutputChooser.resx">
+      <DependentUpon>MedicineOutputChooser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WareHouseIE\WareHouseIEDetail.resx">
       <DependentUpon>WareHouseIEDetail.cs</DependentUpon>

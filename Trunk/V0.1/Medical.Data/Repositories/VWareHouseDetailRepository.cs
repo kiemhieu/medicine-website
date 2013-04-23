@@ -31,5 +31,12 @@ namespace Medical.Data.Repositories {
         {
             return this.Context.VWareHouseDetails.Where(x => x.MedicineId == medicineId && x.ClinicId == clinicId && x.Qty > 0).ToList();
         }
+
+        public VWareHouseDetail Get(int medicineId, int clinicId, String lotNo)
+        {
+            return
+                this.Context.VWareHouseDetails.FirstOrDefault(
+                    x => x.MedicineId == medicineId && x.ClinicId == clinicId && x.LotNo.Equals(lotNo));
+        }
     }
 }
