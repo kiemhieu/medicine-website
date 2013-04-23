@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
 using WeifenLuo.WinFormsUI.Docking;
 using Medical.Data.Repositories;
 using Medical.Data;
@@ -23,13 +24,30 @@ namespace Medical.WareHouseIE
         private readonly WareHouseIORepository _repwhIo = new WareHouseIORepository();
         private readonly WareHouseExportAllocateRepository whExport = new WareHouseExportAllocateRepository();
         private readonly WareHouseIODetailRepository _repwhIoDetail = new WareHouseIODetailRepository();
+        private readonly IVWareHouseDetailRespository _vwarehouseDetailRep = new VWareHouseDetailRepository();
+
         private Dictionary<string, List<WareHouseDetail>> dic = new Dictionary<string, List<WareHouseDetail>>();
         public WareHouseExport()
         {
             InitializeComponent();
-            bdsMedicine.DataSource = repwh.GetByClinicId(AppContext.CurrentClinic.Id);
-            txtClinic.Text = AppContext.CurrentClinic.Name;
-            dateExport.Value = DateTime.Now;
+
+            bdsMedicine.DataSource = repMedicine.GetAll();
+            bdsUnit.DataSource = repDefine.GetUnit();
+
+            var column = (DataGridViewTextBoxDropDownColumn ) grd.Columns["LotNo"];
+            if (column != null) column.ButtonCustomClick += column_ButtonCustomClick;
+
+            //bdsMedicine.DataSource = repwh.GetByClinicId(AppContext.CurrentClinic.Id);
+            //txtClinic.Text = AppContext.CurrentClinic.Name;
+            //txtDate.Value = DateTime.Now;
+        }
+
+        private void column_ButtonCustomClick(object sender, EventArgs e)
+        {
+            var warehouseIoDetail = (WareHouseIODetail)this.bdsWarehouseIODetail.Current;
+            if (warehouseIoDetail == null || warehouseIoDetail.MedicineId == 0) return;
+            
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -39,7 +57,7 @@ namespace Medical.WareHouseIE
                 //Insert data to WareHouseIO
                 WareHouseIO wareHouseIo = new WareHouseIO();
                 wareHouseIo.ClinicId = AppContext.CurrentClinic.Id;
-                wareHouseIo.Date = dateExport.Value.Date;
+                wareHouseIo.Date = txtDate.Value.Date;
                 wareHouseIo.Person = txtDeliverer.Text;
                 wareHouseIo.Address = txtAddress.Text;
                 wareHouseIo.AttachmentNo = txtOriginalNo.Text;
@@ -117,7 +135,7 @@ namespace Medical.WareHouseIE
 
         private void ClearData()
         {
-            dateExport.Value = DateTime.Now;
+            txtDate.Value = DateTime.Now;
             txtDeliverer.Text = string.Empty;
             txtOriginalNo.Text = string.Empty;
             txtPhone.Text = string.Empty;
@@ -129,8 +147,41 @@ namespace Medical.WareHouseIE
             grd.Rows.Clear();
         }
 
-        private void grd_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void GrdCellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            var warehouseIoDetail = (WareHouseIODetail)this.bdsWarehouseIODetail.Current;
+
+            switch (e.ColumnIndex)
+            {
+                case 0:
+
+                    // Get medicine
+                    if (warehouseIoDetail != null)
+                    {
+                        var medicine = repMedicine.GetById(warehouseIoDetail.MedicineId);
+                        warehouseIoDetail.Unit = medicine.Unit;
+
+                        var warehouse = repwh.GetByIdMedicine(medicine.Id, AppContext.CurrentClinic.Id);
+                        warehouseIoDetail.TotalQty = (warehouse == null ? 0 : warehouse.Volumn);
+                    }
+                    break;
+                case 4:
+                    if (warehouseIoDetail != null)
+                    {
+                        // lotNo
+                        var vwarehouseDetail = _vwarehouseDetailRep.Get(warehouseIoDetail.MedicineId,
+                                                                        AppContext.CurrentClinic.Id,
+                                                                        warehouseIoDetail.LotNo);
+                        warehouseIoDetail.InStockQty = vwarehouseDetail == null ? 0 : vwarehouseDetail.Qty;
+                        if (vwarehouseDetail != null) warehouseIoDetail.ExpireDate = vwarehouseDetail.ExpiredDate;
+                        
+                    }
+                    break;
+
+            }
+            
+
+            /*
             if (grd.Columns[e.ColumnIndex].Name == "cboMedicine")
             {
                 if (grd.Rows[e.RowIndex].Cells["cboMedicine"].Value != null)
@@ -164,6 +215,7 @@ namespace Medical.WareHouseIE
                     grd.Rows[e.RowIndex].Cells["Export"].Value = grd.Rows[e.RowIndex].Cells["Volumn"].Value;
                 }
             }
+             */
         }
 
         private bool ValidateRowData(string medicineId)
@@ -212,6 +264,26 @@ namespace Medical.WareHouseIE
             {
                 MessageBox.Show("Số lượng xuất kho phải là số và lớn hơn 0");
             }
+        }
+
+        private void bdsWarehouseIODetail_AddingNew(object sender, AddingNewEventArgs e)
+        {
+            
+        }
+
+        private void bdsWarehouseIODetail_CurrentItemChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void bdsWarehouseIODetail_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            /*
+            if (e.ListChangedType == ListChangedType.ItemAdded)
+            {
+                MessageBox.Show("Xin chào");
+            }
+             */
         }
     }
 }
