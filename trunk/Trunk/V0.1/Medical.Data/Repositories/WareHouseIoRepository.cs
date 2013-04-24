@@ -24,7 +24,7 @@ namespace Medical.Data.Repositories
             return whPaper;
         }
 
-        public void Insert(WareHouseIO wareHouseIO, List<WareHouseIODetail> warehouseIODetails)
+        public void WarehouseInputRegister(WareHouseIO wareHouseIO, List<WareHouseIODetail> warehouseIODetails)
         {
             using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted }))
             {
@@ -89,6 +89,67 @@ namespace Medical.Data.Repositories
                     }
                     
                 }
+                this.Context.SaveChanges();
+                scope.Complete();
+            }
+        }
+
+        public void WarehouseOutputRegister(WareHouseIO wareHouseIO, List<WareHouseIODetail> warehouseIODetails)
+        {
+            using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted }))
+            {
+                wareHouseIO.SetInfo(false);
+                this.Context.WareHouseIO.Add(wareHouseIO);
+                this.Context.SaveChanges();
+
+                var medicineDictionary = new Dictionary<int, int>();
+                foreach (var wareHouseIoDetail in warehouseIODetails)
+                {
+                    wareHouseIoDetail.WareHouseIOId = wareHouseIO.Id;
+                    wareHouseIoDetail.SetInfo(false);
+                    this.Context.WareHouseIODetail.Add(wareHouseIoDetail);
+
+                    if (medicineDictionary.ContainsKey(wareHouseIoDetail.MedicineId))
+                    {
+                        medicineDictionary[wareHouseIoDetail.MedicineId] += wareHouseIoDetail.Qty;
+                        continue;
+                    }
+                    medicineDictionary.Add(wareHouseIoDetail.MedicineId, wareHouseIoDetail.Qty);
+                }
+                this.Context.SaveChanges();
+
+                // var allocatedList = new List<WareHouseExportAllocate>();
+                foreach (var item in medicineDictionary.Keys)
+                {
+                    var warehouse = this.Context.WareHouses.FirstOrDefault(x => x.MedicineId == item && x.ClinicId == AppContext.CurrentClinic.Id);
+                    var warehouseDetailList = this.Context.WareHouseDetails.Where(x => x.WareHouseId == warehouse.Id && x.MedicineId == item).ToList();
+                    var warehouseOutputDetail = warehouseIODetails.Where(x => x.MedicineId == item).ToList();
+                    foreach (var outputItem in warehouseOutputDetail)
+                    {
+                        var qty = outputItem.Qty;
+                        foreach(var detail in warehouseDetailList)
+                        {
+                            if (!detail.LotNo.Equals(outputItem.LotNo)) continue;
+                            var allotcateItem = new WareHouseExportAllocate
+                                                    {
+                                                        WareHouseDetailId = detail.Id,
+                                                        WareHouseIODetailId = outputItem.Id,
+                                                        Unit = outputItem.Unit,
+                                                        Volumn = detail.CurrentVolumn > qty ? qty : detail.CurrentVolumn
+                                                    };
+
+                            // allocatedList.Add(allotcateItem);
+                            this.Context.WareHouseExportAllocates.Add(allotcateItem);
+                            qty -= allotcateItem.Volumn;
+                            detail.CurrentVolumn -= allotcateItem.Volumn;
+                            warehouse.Volumn -= allotcateItem.Volumn;
+                            if (qty == 0) break;
+                        }
+
+                        if (qty != 0) throw new Exception("Số lượng thuốc đã bị lệch trong lúc thay đổi, hãy chọn lại số lượng cho khớp.");
+                    }
+                }
+                
                 this.Context.SaveChanges();
                 scope.Complete();
             }
