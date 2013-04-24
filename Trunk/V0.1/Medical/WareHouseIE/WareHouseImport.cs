@@ -156,7 +156,7 @@ namespace Medical.WareHouseIE
             {
                 this.Enabled = true;
                 this.Cursor = Cursors.WaitCursor;
-                this._wareHouseIoRepository.Insert(this._wareHouseIO, this._warehouseIODetails);
+                this._wareHouseIoRepository.WarehouseInputRegister(this._wareHouseIO, this._warehouseIODetails);
                 MessageDialog.Instance.ShowMessage(this, "MSG0005", "Tạo phiếu nhập kho thành công.");
                 this.ClearData();
             }

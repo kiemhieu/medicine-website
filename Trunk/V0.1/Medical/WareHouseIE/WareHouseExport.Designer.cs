@@ -25,7 +25,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WareHouseExport));
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.txtPhone = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
@@ -49,6 +52,17 @@
             this.btnRemove = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.Medicine = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
+            this.TradeName = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.bdsUnit = new System.Windows.Forms.BindingSource(this.components);
+            this.TotalQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LotNo = new DevComponents.DotNetBar.Controls.DataGridViewTextBoxDropDownColumn();
+            this.expireDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InStockQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsWarehouseIODetail = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clinicIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.medicineIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,25 +80,14 @@
             this.isValidDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.dataGridViewButtonXColumn1 = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
-            this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsUnit = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsWarehouseIODetail = new System.Windows.Forms.BindingSource(this.components);
             this.bdsWareHouse = new System.Windows.Forms.BindingSource(this.components);
-            this.Medicine = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.TradeName = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.TotalQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LotNo = new DevComponents.DotNetBar.Controls.DataGridViewTextBoxDropDownColumn();
-            this.expireDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InStockQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
-            this.panelEx2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsUnit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWarehouseIODetail)).BeginInit();
+            this.panelEx2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).BeginInit();
             this.SuspendLayout();
             // 
@@ -426,7 +429,7 @@
             this.btnRemove.TabIndex = 24;
             this.btnRemove.Text = "Hủy";
             this.btnRemove.ThemeAware = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            this.btnRemove.Click += new System.EventHandler(this.BtnRemoveClick);
             // 
             // btnSave
             // 
@@ -440,7 +443,7 @@
             this.btnSave.TabIndex = 23;
             this.btnSave.Text = "Ghi lại";
             this.btnSave.ThemeAware = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
             // 
             // grd
             // 
@@ -457,14 +460,14 @@
             this.InStockQty,
             this.qtyDataGridViewTextBoxColumn});
             this.grd.DataSource = this.bdsWarehouseIODetail;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grd.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grd.DefaultCellStyle = dataGridViewCellStyle4;
             this.grd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.grd.Location = new System.Drawing.Point(0, 116);
@@ -472,8 +475,118 @@
             this.grd.Size = new System.Drawing.Size(915, 427);
             this.grd.TabIndex = 5;
             this.grd.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrdCellEndEdit);
-            this.grd.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grd_CellMouseClick);
-            this.grd.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.grd_DataError);
+            this.grd.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GrdCellMouseClick);
+            this.grd.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.GrdDataBindingComplete);
+            this.grd.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.GrdDataError);
+            // 
+            // Medicine
+            // 
+            this.Medicine.DataPropertyName = "MedicineId";
+            this.Medicine.DataSource = this.bdsMedicine;
+            this.Medicine.DisplayMember = "Name";
+            this.Medicine.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.Medicine.DisplayStyleForCurrentCellOnly = true;
+            this.Medicine.HeaderText = "Thuốc";
+            this.Medicine.Name = "Medicine";
+            this.Medicine.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Medicine.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Medicine.ValueMember = "Id";
+            // 
+            // bdsMedicine
+            // 
+            this.bdsMedicine.DataSource = typeof(Medical.Data.Entities.Medicine);
+            // 
+            // TradeName
+            // 
+            this.TradeName.DataPropertyName = "MedicineId";
+            this.TradeName.DataSource = this.bdsMedicine;
+            this.TradeName.DisplayMember = "TradeName";
+            this.TradeName.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.TradeName.DisplayStyleForCurrentCellOnly = true;
+            this.TradeName.HeaderText = "Biệt dược";
+            this.TradeName.Name = "TradeName";
+            this.TradeName.ReadOnly = true;
+            this.TradeName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TradeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.TradeName.ToolTipText = "Tên biệt dược";
+            this.TradeName.ValueMember = "Id";
+            // 
+            // Unit
+            // 
+            this.Unit.DataPropertyName = "Unit";
+            this.Unit.DataSource = this.bdsUnit;
+            this.Unit.DisplayMember = "Name";
+            this.Unit.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.Unit.DisplayStyleForCurrentCellOnly = true;
+            this.Unit.HeaderText = "Unit";
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            this.Unit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Unit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Unit.ValueMember = "Id";
+            // 
+            // bdsUnit
+            // 
+            this.bdsUnit.DataSource = typeof(Medical.Data.Entities.Define);
+            // 
+            // TotalQty
+            // 
+            this.TotalQty.DataPropertyName = "TotalQty";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.TotalQty.DefaultCellStyle = dataGridViewCellStyle1;
+            this.TotalQty.HeaderText = "Tổng tồn kho";
+            this.TotalQty.Name = "TotalQty";
+            this.TotalQty.ReadOnly = true;
+            // 
+            // LotNo
+            // 
+            this.LotNo.BackColor = System.Drawing.SystemColors.Window;
+            // 
+            // 
+            // 
+            this.LotNo.BackgroundStyle.Class = "DataGridViewIpAddressBorder";
+            this.LotNo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LotNo.ButtonCustom.Visible = true;
+            this.LotNo.DataPropertyName = "LotNo";
+            this.LotNo.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.LotNo.HeaderText = "Lô";
+            this.LotNo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.LotNo.Name = "LotNo";
+            this.LotNo.PasswordChar = '\0';
+            this.LotNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.LotNo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LotNo.Text = "";
+            // 
+            // expireDateDataGridViewTextBoxColumn
+            // 
+            this.expireDateDataGridViewTextBoxColumn.DataPropertyName = "ExpireDate";
+            this.expireDateDataGridViewTextBoxColumn.HeaderText = "Ngày hết hạn";
+            this.expireDateDataGridViewTextBoxColumn.Name = "expireDateDataGridViewTextBoxColumn";
+            this.expireDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // InStockQty
+            // 
+            this.InStockQty.DataPropertyName = "InStockQty";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.InStockQty.DefaultCellStyle = dataGridViewCellStyle2;
+            this.InStockQty.HeaderText = "Được xuất";
+            this.InStockQty.Name = "InStockQty";
+            this.InStockQty.ReadOnly = true;
+            // 
+            // qtyDataGridViewTextBoxColumn
+            // 
+            this.qtyDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.qtyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.qtyDataGridViewTextBoxColumn.HeaderText = "Số lượng xuất";
+            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
+            // 
+            // bdsWarehouseIODetail
+            // 
+            this.bdsWarehouseIODetail.DataSource = typeof(Medical.Data.Entities.WareHouseIODetail);
+            this.bdsWarehouseIODetail.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.BdsWarehouseIODetailAddingNew);
+            this.bdsWarehouseIODetail.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.BdsWarehouseIODetailListChanged);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -598,107 +711,9 @@
             this.dataGridViewButtonXColumn1.Text = null;
             this.dataGridViewButtonXColumn1.Width = 50;
             // 
-            // bdsMedicine
-            // 
-            this.bdsMedicine.DataSource = typeof(Medical.Data.Entities.Medicine);
-            // 
-            // bdsUnit
-            // 
-            this.bdsUnit.DataSource = typeof(Medical.Data.Entities.Define);
-            // 
-            // bdsWarehouseIODetail
-            // 
-            this.bdsWarehouseIODetail.DataSource = typeof(Medical.Data.Entities.WareHouseIODetail);
-            this.bdsWarehouseIODetail.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.bdsWarehouseIODetail_AddingNew);
-            this.bdsWarehouseIODetail.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bdsWarehouseIODetail_ListChanged);
-            // 
             // bdsWareHouse
             // 
-            this.bdsWareHouse.DataSource = typeof(Medical.Data.Entities.WareHouse);
-            // 
-            // Medicine
-            // 
-            this.Medicine.DataPropertyName = "MedicineId";
-            this.Medicine.DataSource = this.bdsMedicine;
-            this.Medicine.DisplayMember = "Name";
-            this.Medicine.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.Medicine.DisplayStyleForCurrentCellOnly = true;
-            this.Medicine.HeaderText = "Thuốc";
-            this.Medicine.Name = "Medicine";
-            this.Medicine.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Medicine.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Medicine.ValueMember = "Id";
-            // 
-            // TradeName
-            // 
-            this.TradeName.DataPropertyName = "MedicineId";
-            this.TradeName.DataSource = this.bdsMedicine;
-            this.TradeName.DisplayMember = "TradeName";
-            this.TradeName.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.TradeName.DisplayStyleForCurrentCellOnly = true;
-            this.TradeName.HeaderText = "Biệt dược";
-            this.TradeName.Name = "TradeName";
-            this.TradeName.ReadOnly = true;
-            this.TradeName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TradeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.TradeName.ToolTipText = "Tên biệt dược";
-            this.TradeName.ValueMember = "Id";
-            // 
-            // Unit
-            // 
-            this.Unit.DataPropertyName = "Unit";
-            this.Unit.DataSource = this.bdsUnit;
-            this.Unit.DisplayMember = "Name";
-            this.Unit.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.Unit.DisplayStyleForCurrentCellOnly = true;
-            this.Unit.HeaderText = "Unit";
-            this.Unit.Name = "Unit";
-            this.Unit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Unit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Unit.ValueMember = "Id";
-            // 
-            // TotalQty
-            // 
-            this.TotalQty.DataPropertyName = "TotalQty";
-            this.TotalQty.HeaderText = "Tổng tồn kho";
-            this.TotalQty.Name = "TotalQty";
-            // 
-            // LotNo
-            // 
-            this.LotNo.BackColor = System.Drawing.SystemColors.Window;
-            // 
-            // 
-            // 
-            this.LotNo.BackgroundStyle.Class = "DataGridViewIpAddressBorder";
-            this.LotNo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.LotNo.ButtonCustom.Visible = true;
-            this.LotNo.DataPropertyName = "LotNo";
-            this.LotNo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.LotNo.HeaderText = "Lô";
-            this.LotNo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.LotNo.Name = "LotNo";
-            this.LotNo.PasswordChar = '\0';
-            this.LotNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.LotNo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.LotNo.Text = "";
-            // 
-            // expireDateDataGridViewTextBoxColumn
-            // 
-            this.expireDateDataGridViewTextBoxColumn.DataPropertyName = "ExpireDate";
-            this.expireDateDataGridViewTextBoxColumn.HeaderText = "Ngày hết hạn";
-            this.expireDateDataGridViewTextBoxColumn.Name = "expireDateDataGridViewTextBoxColumn";
-            // 
-            // InStockQty
-            // 
-            this.InStockQty.DataPropertyName = "InStockQty";
-            this.InStockQty.HeaderText = "Được xuất";
-            this.InStockQty.Name = "InStockQty";
-            // 
-            // qtyDataGridViewTextBoxColumn
-            // 
-            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
-            this.qtyDataGridViewTextBoxColumn.HeaderText = "Số lượng xuất";
-            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
+            this.bdsWareHouse.DataSource = typeof(Medical.Data.Entities.WareHouseIO);
             // 
             // WareHouseExport
             // 
@@ -716,10 +731,10 @@
             this.panelEx1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
-            this.panelEx2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsUnit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWarehouseIODetail)).EndInit();
+            this.panelEx2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).EndInit();
             this.ResumeLayout(false);
 

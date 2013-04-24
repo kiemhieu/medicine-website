@@ -108,17 +108,7 @@ namespace Medical.Data.Repositories
 
         public WareHouse GetByIdMedicine(int idMedicine, int clinicId)
         {
-            try
-            {
-                var item =
-                    this.Context.WareHouses.Where(x => x.MedicineId.Equals(idMedicine) && x.ClinicId.Equals(clinicId)).FirstOrDefault();
-                return item;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
+            return this.Context.WareHouses.FirstOrDefault(x => x.MedicineId.Equals(idMedicine) && x.ClinicId.Equals(clinicId));
         }
 
         public List<WareHouse> GetByMedicineId(List<int> medicineId, int clinicId)

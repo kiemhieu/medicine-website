@@ -26,31 +26,47 @@ namespace Medical.WareHouseIE
         private readonly WareHouseIODetailRepository _repwhIoDetail = new WareHouseIODetailRepository();
         private readonly IVWareHouseDetailRespository _vwarehouseDetailRep = new VWareHouseDetailRepository();
 
-        private Dictionary<string, List<WareHouseDetail>> dic = new Dictionary<string, List<WareHouseDetail>>();
+        private readonly Dictionary<string, List<WareHouseDetail>> dic = new Dictionary<string, List<WareHouseDetail>>();
         public WareHouseExport()
         {
             InitializeComponent();
 
-            bdsMedicine.DataSource = repMedicine.GetAll();
+            var medicineList = repMedicine.GetAll();
+            medicineList.Insert(0, new Medicine(){ Id = 0, Name = ""});
+            bdsMedicine.DataSource = medicineList;
             bdsUnit.DataSource = repDefine.GetUnit();
 
-            var column = (DataGridViewTextBoxDropDownColumn ) grd.Columns["LotNo"];
-            if (column != null) column.ButtonCustomClick += column_ButtonCustomClick;
+            var column = (DataGridViewTextBoxDropDownColumn) grd.Columns["LotNo"];
+            if (column != null) column.ButtonCustomClick += ColumnButtonCustomClick;
 
             //bdsMedicine.DataSource = repwh.GetByClinicId(AppContext.CurrentClinic.Id);
             //txtClinic.Text = AppContext.CurrentClinic.Name;
             //txtDate.Value = DateTime.Now;
         }
 
-        private void column_ButtonCustomClick(object sender, EventArgs e)
+        private void ColumnButtonCustomClick(object sender, EventArgs e)
         {
             var warehouseIoDetail = (WareHouseIODetail)this.bdsWarehouseIODetail.Current;
             if (warehouseIoDetail == null || warehouseIoDetail.MedicineId == 0) return;
-            
+            var chooser = new MedicineOutputChooser(warehouseIoDetail.MedicineId);
+            var result = chooser.ShowDialog(this);
+            if (result == DialogResult.Cancel) return;
 
+            var warehouseDetail = chooser.SelectedVWareHouseDetail;
+            var item = (DataGridViewTextBoxDropDownColumn) sender;
+            item.Text = warehouseDetail.LotNo;
+            warehouseIoDetail.LotNo = warehouseDetail.LotNo;
+            grd.CurrentCell.Value = warehouseDetail.LotNo;
+            //warehouseIoDetail.ExpireDate = warehouseIoDetail.ExpireDate;
+            //warehouseIoDetail.LotNo = warehouseIoDetail.LotNo;
+            //warehouseIoDetail.InStockQty = warehouseIoDetail.Qty;
+
+            this.grd.EndEdit();
+            this.grd.ResetBindings();
+            this.grd.Refresh();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSaveClick(object sender, EventArgs e)
         {
             try
             {
@@ -128,7 +144,7 @@ namespace Medical.WareHouseIE
             }
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
+        private void BtnRemoveClick(object sender, EventArgs e)
         {
             ClearData();
         }
@@ -163,19 +179,24 @@ namespace Medical.WareHouseIE
 
                         var warehouse = repwh.GetByIdMedicine(medicine.Id, AppContext.CurrentClinic.Id);
                         warehouseIoDetail.TotalQty = (warehouse == null ? 0 : warehouse.Volumn);
+                        warehouseIoDetail.LotNo = String.Empty;
+                        warehouseIoDetail.InStockQty = 0;
+                        warehouseIoDetail.Qty = 0;
                     }
                     break;
                 case 4:
                     if (warehouseIoDetail != null)
                     {
                         // lotNo
-                        var vwarehouseDetail = _vwarehouseDetailRep.Get(warehouseIoDetail.MedicineId,
-                                                                        AppContext.CurrentClinic.Id,
-                                                                        warehouseIoDetail.LotNo);
+                        var vwarehouseDetail = _vwarehouseDetailRep.Get(warehouseIoDetail.MedicineId, AppContext.CurrentClinic.Id, warehouseIoDetail.LotNo);
                         warehouseIoDetail.InStockQty = vwarehouseDetail == null ? 0 : vwarehouseDetail.Qty;
                         if (vwarehouseDetail != null) warehouseIoDetail.ExpireDate = vwarehouseDetail.ExpiredDate;
-                        
+                        warehouseIoDetail.Qty = 0;
                     }
+                    break;
+
+                case 7:
+                   
                     break;
 
             }
@@ -216,6 +237,9 @@ namespace Medical.WareHouseIE
                 }
             }
              */
+
+            this.grd.ResetBindings();
+            this.grd.Refresh();
         }
 
         private bool ValidateRowData(string medicineId)
@@ -231,7 +255,7 @@ namespace Medical.WareHouseIE
             return true;
         }
 
-        private void grd_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void GrdCellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (grd.Columns[e.ColumnIndex].Name == "btnExportAllocate")
             {
@@ -258,7 +282,7 @@ namespace Medical.WareHouseIE
             }
         }
 
-        private void grd_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        private void GrdDataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             if (grd.Columns[e.ColumnIndex].Name == "Export")
             {
@@ -266,17 +290,17 @@ namespace Medical.WareHouseIE
             }
         }
 
-        private void bdsWarehouseIODetail_AddingNew(object sender, AddingNewEventArgs e)
+        private void BdsWarehouseIODetailAddingNew(object sender, AddingNewEventArgs e)
         {
             
         }
 
-        private void bdsWarehouseIODetail_CurrentItemChanged(object sender, EventArgs e)
+        private void BdsWarehouseIODetailCurrentItemChanged(object sender, EventArgs e)
         {
             
         }
 
-        private void bdsWarehouseIODetail_ListChanged(object sender, ListChangedEventArgs e)
+        private void BdsWarehouseIODetailListChanged(object sender, ListChangedEventArgs e)
         {
             /*
             if (e.ListChangedType == ListChangedType.ItemAdded)
@@ -284,6 +308,16 @@ namespace Medical.WareHouseIE
                 MessageBox.Show("Xin chào");
             }
              */
+        }
+
+        private void GrdDataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            var gridView = (DataGridViewX)sender;
+            if (null == gridView) return;
+            foreach (DataGridViewRow r in gridView.Rows)
+            {
+                gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
+            }
         }
     }
 }
