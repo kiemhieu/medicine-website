@@ -25,10 +25,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WareHouseExport));
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.txtPhone = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
@@ -62,6 +62,8 @@
             this.expireDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InStockQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bdsWarehouseIODetail = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clinicIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,15 +82,18 @@
             this.isValidDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.dataGridViewButtonXColumn1 = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
-            this.bdsWareHouse = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsWareHouseIO = new System.Windows.Forms.BindingSource(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsUnit)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWarehouseIODetail)).BeginInit();
             this.panelEx2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseIO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -133,6 +138,7 @@
             this.txtPhone.BackgroundStyle.Class = "TextBoxBorder";
             this.txtPhone.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtPhone.ButtonClear.Visible = true;
+            this.txtPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsWareHouseIO, "Phone", true));
             this.txtPhone.Location = new System.Drawing.Point(300, 34);
             this.txtPhone.Mask = "0000-000-0000";
             this.txtPhone.Name = "txtPhone";
@@ -206,6 +212,7 @@
             // 
             this.txtOriginalNo.Border.Class = "TextBoxBorder";
             this.txtOriginalNo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtOriginalNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsWareHouseIO, "AttachmentNo", true));
             this.txtOriginalNo.ForeColor = System.Drawing.Color.Black;
             this.txtOriginalNo.Location = new System.Drawing.Point(92, 84);
             this.txtOriginalNo.Name = "txtOriginalNo";
@@ -234,6 +241,7 @@
             // 
             this.txtNote.Border.Class = "TextBoxBorder";
             this.txtNote.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtNote.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsWareHouseIO, "Note", true));
             this.txtNote.ForeColor = System.Drawing.Color.Black;
             this.txtNote.Location = new System.Drawing.Point(300, 59);
             this.txtNote.Name = "txtNote";
@@ -262,6 +270,7 @@
             // 
             this.txtAddress.Border.Class = "TextBoxBorder";
             this.txtAddress.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsWareHouseIO, "Address", true));
             this.txtAddress.ForeColor = System.Drawing.Color.Black;
             this.txtAddress.Location = new System.Drawing.Point(501, 34);
             this.txtAddress.Name = "txtAddress";
@@ -304,6 +313,7 @@
             // 
             this.txtRecipient.Border.Class = "TextBoxBorder";
             this.txtRecipient.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtRecipient.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsWareHouseIO, "Person", true));
             this.txtRecipient.ForeColor = System.Drawing.Color.Black;
             this.txtRecipient.Location = new System.Drawing.Point(92, 34);
             this.txtRecipient.Name = "txtRecipient";
@@ -332,6 +342,7 @@
             // 
             this.txtNo.Border.Class = "TextBoxBorder";
             this.txtNo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsWareHouseIO, "No", true));
             this.txtNo.ForeColor = System.Drawing.Color.Black;
             this.txtNo.Location = new System.Drawing.Point(300, 9);
             this.txtNo.Name = "txtNo";
@@ -375,6 +386,8 @@
             this.txtDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.txtDate.ButtonDropDown.Visible = true;
+            this.txtDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bdsWareHouseIO, "Date", true));
+            this.txtDate.IsInputReadOnly = true;
             this.txtDate.IsPopupCalendarOpen = false;
             this.txtDate.Location = new System.Drawing.Point(92, 9);
             // 
@@ -420,7 +433,6 @@
             // btnRemove
             // 
             this.btnRemove.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemove.Image = global::Medical.Properties.Resources.close_16x16;
             this.btnRemove.Location = new System.Drawing.Point(132, 8);
             this.btnRemove.Name = "btnRemove";
@@ -434,7 +446,6 @@
             // btnSave
             // 
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Image = global::Medical.Properties.Resources.save_16x16;
             this.btnSave.Location = new System.Drawing.Point(6, 8);
             this.btnSave.Name = "btnSave";
@@ -448,6 +459,8 @@
             // grd
             // 
             this.grd.AllowUserToDeleteRows = false;
+            this.grd.AllowUserToResizeColumns = false;
+            this.grd.AllowUserToResizeRows = false;
             this.grd.AutoGenerateColumns = false;
             this.grd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -459,19 +472,23 @@
             this.expireDateDataGridViewTextBoxColumn,
             this.InStockQty,
             this.qtyDataGridViewTextBoxColumn});
+            this.grd.ContextMenuStrip = this.contextMenuStrip1;
             this.grd.DataSource = this.bdsWarehouseIODetail;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grd.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grd.DefaultCellStyle = dataGridViewCellStyle14;
             this.grd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.grd.HighlightSelectedColumnHeaders = false;
             this.grd.Location = new System.Drawing.Point(0, 116);
             this.grd.Name = "grd";
+            this.grd.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.grd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.grd.Size = new System.Drawing.Size(915, 427);
             this.grd.TabIndex = 5;
             this.grd.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrdCellEndEdit);
@@ -532,8 +549,8 @@
             // TotalQty
             // 
             this.TotalQty.DataPropertyName = "TotalQty";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.TotalQty.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.TotalQty.DefaultCellStyle = dataGridViewCellStyle8;
             this.TotalQty.HeaderText = "Tổng tồn kho";
             this.TotalQty.Name = "TotalQty";
             this.TotalQty.ReadOnly = true;
@@ -567,8 +584,8 @@
             // InStockQty
             // 
             this.InStockQty.DataPropertyName = "InStockQty";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.InStockQty.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.InStockQty.DefaultCellStyle = dataGridViewCellStyle12;
             this.InStockQty.HeaderText = "Được xuất";
             this.InStockQty.Name = "InStockQty";
             this.InStockQty.ReadOnly = true;
@@ -577,10 +594,25 @@
             // 
             this.qtyDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.qtyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.qtyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
             this.qtyDataGridViewTextBoxColumn.HeaderText = "Số lượng xuất";
             this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 26);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip1Opening);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Image = global::Medical.Properties.Resources.delete;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.toolStripMenuItem1.Text = "Delete";
             // 
             // bdsWarehouseIODetail
             // 
@@ -711,9 +743,15 @@
             this.dataGridViewButtonXColumn1.Text = null;
             this.dataGridViewButtonXColumn1.Width = 50;
             // 
-            // bdsWareHouse
+            // bdsWareHouseIO
             // 
-            this.bdsWareHouse.DataSource = typeof(Medical.Data.Entities.WareHouseIO);
+            this.bdsWareHouseIO.DataSource = typeof(Medical.Data.Entities.WareHouseIO);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.DataSource = this.bdsWareHouseIO;
             // 
             // WareHouseExport
             // 
@@ -733,9 +771,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsUnit)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsWarehouseIODetail)).EndInit();
             this.panelEx2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseIO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -763,7 +803,7 @@
         private DevComponents.DotNetBar.Controls.DataGridViewX grd;
         private DevComponents.DotNetBar.ButtonX btnRemove;
         private DevComponents.DotNetBar.ButtonX btnSave;
-        private System.Windows.Forms.BindingSource bdsWareHouse;
+        private System.Windows.Forms.BindingSource bdsWareHouseIO;
         private System.Windows.Forms.BindingSource bdsMedicine;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn dataGridViewButtonXColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
@@ -793,5 +833,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn expireDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn InStockQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

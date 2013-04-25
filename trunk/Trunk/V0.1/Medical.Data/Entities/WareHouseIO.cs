@@ -29,7 +29,7 @@ namespace Medical.Data.Entities
         [NotMapped]
         public string TypeName
         {
-            get { return this.Type.Equals(WarehouseIO.Input) ? "Nhập kho" : "Xuất kho";}
+            get { return this.Type.Equals(WarehouseIOType.Input) ? "Nhập kho" : "Xuất kho";}
         }
 
         public override void Validate()
