@@ -61,7 +61,7 @@ namespace Medical.WareHouseIE
             {
                 ClinicId = AppContext.CurrentClinic.Id,
                 Type = WarehouseIOType.Input,
-                Date = DateTime.Now,
+                Date = DateTime.Today,
                 CreatedUser = AppContext.LoggedInUser.Id
             };
 

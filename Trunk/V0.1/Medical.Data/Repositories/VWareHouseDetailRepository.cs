@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using Medical.Data.Entities.Views;
@@ -37,6 +38,13 @@ namespace Medical.Data.Repositories {
             return
                 this.Context.VWareHouseDetails.FirstOrDefault(
                     x => x.MedicineId == medicineId && x.ClinicId == clinicId && x.LotNo.Equals(lotNo));
+        }
+
+        public List<VWareHouseDetail> GetWarehouseDetailForOutput(DateTime date, int clinicId)
+        {
+            return this.Context.Database.SqlQuery<VWareHouseDetail>("sp_GetWareHouseDetailForWareHouseOutput @date, @clinicID", 
+                                                                new SqlParameter("date", date),
+                                                                new SqlParameter("clinicID", clinicId)).ToList();
         }
     }
 }
