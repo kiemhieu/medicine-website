@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppContext.cs" />
+    <Compile Include="Entities\Views\VWarehouseDetailFull.cs" />
     <Compile Include="ITableChangeRepository.cs" />
     <Compile Include="Entities\TableChange.cs" />
     <Compile Include="IBadMedicineRepository.cs" />

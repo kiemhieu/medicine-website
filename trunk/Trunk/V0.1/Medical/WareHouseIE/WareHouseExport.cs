@@ -17,20 +17,21 @@ namespace Medical.WareHouseIE
 {
     public partial class WareHouseExport : DockContent
     {
-        private readonly ClinicRepository repClinic = new ClinicRepository();
-        private readonly DefineRepository repDefine = new DefineRepository();
-        private readonly MedicineRepository repMedicine = new MedicineRepository();
-        private readonly WareHouseDetailRepository repwhDetail = new WareHouseDetailRepository();
-        private readonly WareHouseRepository repwh = new WareHouseRepository();
+        private readonly ClinicRepository _repClinic = new ClinicRepository();
+        private readonly DefineRepository _repDefine = new DefineRepository();
+        private readonly MedicineRepository _repMedicine = new MedicineRepository();
+        private readonly WareHouseDetailRepository _repwhDetail = new WareHouseDetailRepository();
+        private readonly WareHouseRepository _repwh = new WareHouseRepository();
         private readonly WareHouseIORepository _repwhIo = new WareHouseIORepository();
-        private readonly WareHouseExportAllocateRepository whExport = new WareHouseExportAllocateRepository();
+        private readonly WareHouseExportAllocateRepository _whExport = new WareHouseExportAllocateRepository();
         private readonly WareHouseIODetailRepository _repwhIoDetail = new WareHouseIODetailRepository();
         private readonly IVWareHouseDetailRespository _vwarehouseDetailRep = new VWareHouseDetailRepository();
+        private readonly VWareHouseDetailRepository vwarehouseDetailRepo = new VWareHouseDetailRepository();
 
         private readonly Dictionary<string, List<WareHouseDetail>> dic = new Dictionary<string, List<WareHouseDetail>>();
 
-        private Medical.Data.Entities.WareHouseIO warehouseIO;
-        private List<WareHouseDetail> warehouseIODetail;
+        private WareHouseIO _warehouseIo;
+        private List<WareHouseIODetail> _warehouseIoDetail;
 
         
         public WareHouseExport()
@@ -38,10 +39,10 @@ namespace Medical.WareHouseIE
             InitializeComponent();
 
             // init medicine list
-            var medicineList = repMedicine.GetAll();
+            var medicineList = _repMedicine.GetAll();
             medicineList.Insert(0, new Medicine(){ Id = 0, Name = ""});
             bdsMedicine.DataSource = medicineList;
-            bdsUnit.DataSource = repDefine.GetUnit();
+            bdsUnit.DataSource = _repDefine.GetUnit();
 
             var column = (DataGridViewTextBoxDropDownColumn) grd.Columns["LotNo"];
             if (column != null) column.ButtonCustomClick += ColumnButtonCustomClick;
@@ -51,6 +52,9 @@ namespace Medical.WareHouseIE
             //txtDate.Value = DateTime.Now;
 
             Initialize();
+
+            var items = vwarehouseDetailRepo.GetWarehouseDetailForOutput(DateTime.Today, 12);
+            Console.WriteLine(items.Count + "");
         }
 
         private void Initialize()
@@ -58,15 +62,15 @@ namespace Medical.WareHouseIE
             txtClinic.Text = AppContext.CurrentClinic.Name;
 
             // Init warehouse
-            warehouseIO = new WareHouseIO();
-            warehouseIO.ClinicId = AppContext.CurrentClinic.Id;
-            warehouseIO.Date = DateTime.Today;
-            warehouseIO.Type = WarehouseIOType.Output;
-            bdsWareHouseIO.DataSource = warehouseIO;
+            _warehouseIo = new WareHouseIO();
+            _warehouseIo.ClinicId = AppContext.CurrentClinic.Id;
+            _warehouseIo.Date = DateTime.Today;
+            _warehouseIo.Type = WarehouseIOType.Output;
+            bdsWareHouseIO.DataSource = _warehouseIo;
             
             // Init WarehouseIODetail
-            warehouseIODetail = new List<WareHouseDetail>();
-            bdsWarehouseIODetail.DataSource = warehouseIODetail;
+            _warehouseIoDetail = new List<WareHouseIODetail>();
+            bdsWarehouseIODetail.DataSource = _warehouseIoDetail;
 
             this.grd.EndEdit();
             this.grd.ResetBindings();
@@ -198,10 +202,10 @@ namespace Medical.WareHouseIE
                     // Get medicine
                     if (warehouseIoDetail != null)
                     {
-                        var medicine = repMedicine.GetById(warehouseIoDetail.MedicineId);
+                        var medicine = _repMedicine.GetById(warehouseIoDetail.MedicineId);
                         warehouseIoDetail.Unit = medicine.Unit;
 
-                        var warehouse = repwh.GetByIdMedicine(medicine.Id, AppContext.CurrentClinic.Id);
+                        var warehouse = _repwh.GetByIdMedicine(medicine.Id, AppContext.CurrentClinic.Id);
                         warehouseIoDetail.TotalQty = (warehouse == null ? 0 : warehouse.Volumn);
                         warehouseIoDetail.LotNo = String.Empty;
                         warehouseIoDetail.InStockQty = 0;
@@ -274,12 +278,12 @@ namespace Medical.WareHouseIE
             this.errorProvider1.Clear();
             var result = true;
 
-            this.warehouseIO.Validate();
+            this._warehouseIo.Validate();
 
-            if (!this.warehouseIO.IsValid) result = false;
-            if (this.warehouseIODetail.Count == 0) result = false;
+            if (!this._warehouseIo.IsValid) result = false;
+            if (this._warehouseIoDetail.Count == 0) result = false;
 
-            foreach (var item in this.warehouseIODetail)
+            foreach (var item in this._warehouseIoDetail)
             {
                 item.Validate();
                 if (!item.IsValid) result = false;
