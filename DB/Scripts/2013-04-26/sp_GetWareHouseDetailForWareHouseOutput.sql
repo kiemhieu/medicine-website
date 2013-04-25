@@ -1,0 +1,40 @@
+USE [Medical]
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_GetWareHouseDetailForWareHouseOutput]    Script Date: 04/26/2013 02:39:57 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[sp_GetWareHouseDetailForWareHouseOutput] 
+	-- Add the parameters for the stored procedure here
+	@date DateTime,
+	@clinicID int
+AS
+BEGIN
+	SELECT     
+	TOP (100) PERCENT 
+	MedicineId, 
+	CASE WHEN LotNo IS NULL THEN '' ELSE LotNo END AS LotNo, 
+    ExpiredDate, 
+    SUM(CurrentVolumn) AS Qty, 
+    0 As Id, 
+    0 AS InStockQty, ClinicId
+FROM         
+	VWarehouseDetailFull
+WHERE ClinicId = @clinicID AND ( [Date] Is NULL OR [Date] <= @date)
+GROUP BY MedicineId, LotNo, ExpiredDate, ClinicId
+ORDER BY MedicineId, ClinicId, LotNo, ExpiredDate
+
+END
+
+GO
+
+
