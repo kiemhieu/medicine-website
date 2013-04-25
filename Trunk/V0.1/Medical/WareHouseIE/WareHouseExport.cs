@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar.Controls;
+using Medical.Forms.UI;
 using WeifenLuo.WinFormsUI.Docking;
 using Medical.Data.Repositories;
 using Medical.Data;
@@ -27,10 +28,16 @@ namespace Medical.WareHouseIE
         private readonly IVWareHouseDetailRespository _vwarehouseDetailRep = new VWareHouseDetailRepository();
 
         private readonly Dictionary<string, List<WareHouseDetail>> dic = new Dictionary<string, List<WareHouseDetail>>();
+
+        private Medical.Data.Entities.WareHouseIO warehouseIO;
+        private List<WareHouseDetail> warehouseIODetail;
+
+        
         public WareHouseExport()
         {
             InitializeComponent();
 
+            // init medicine list
             var medicineList = repMedicine.GetAll();
             medicineList.Insert(0, new Medicine(){ Id = 0, Name = ""});
             bdsMedicine.DataSource = medicineList;
@@ -42,6 +49,28 @@ namespace Medical.WareHouseIE
             //bdsMedicine.DataSource = repwh.GetByClinicId(AppContext.CurrentClinic.Id);
             //txtClinic.Text = AppContext.CurrentClinic.Name;
             //txtDate.Value = DateTime.Now;
+
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            txtClinic.Text = AppContext.CurrentClinic.Name;
+
+            // Init warehouse
+            warehouseIO = new WareHouseIO();
+            warehouseIO.ClinicId = AppContext.CurrentClinic.Id;
+            warehouseIO.Date = DateTime.Today;
+            warehouseIO.Type = WarehouseIOType.Output;
+            bdsWareHouseIO.DataSource = warehouseIO;
+            
+            // Init WarehouseIODetail
+            warehouseIODetail = new List<WareHouseDetail>();
+            bdsWarehouseIODetail.DataSource = warehouseIODetail;
+
+            this.grd.EndEdit();
+            this.grd.ResetBindings();
+            this.grd.Refresh();
         }
 
         private void ColumnButtonCustomClick(object sender, EventArgs e)
@@ -68,99 +97,94 @@ namespace Medical.WareHouseIE
 
         private void BtnSaveClick(object sender, EventArgs e)
         {
-            try
-            {
-                //Insert data to WareHouseIO
-                WareHouseIO wareHouseIo = new WareHouseIO();
-                wareHouseIo.ClinicId = AppContext.CurrentClinic.Id;
-                wareHouseIo.Date = txtDate.Value.Date;
-                wareHouseIo.Person = txtDeliverer.Text;
-                wareHouseIo.Address = txtAddress.Text;
-                wareHouseIo.AttachmentNo = txtOriginalNo.Text;
-                //wareHouseIo.Recipient = txtRecipient.Text;
-                wareHouseIo.Phone = txtPhone.Text;
-                wareHouseIo.Type = "1";
-                wareHouseIo.Version = 0;
-                wareHouseIo.No = txtNo.Text;
-                wareHouseIo.Note = txtNote.Text;
-                WareHouseIORepository wareHouseIoRepository = new WareHouseIORepository();
-                wareHouseIoRepository.Insert(wareHouseIo);
+            if (!ValidateRowData()) return;
 
-                foreach (WareHouse wareHouse in bdsWareHouse)
-                {
-                    if (wareHouse.Export > 0)
-                    {
-                        //update data to WareHouse                     
-                        if (wareHouse != null)
-                        {
-                            wareHouse.Volumn -= wareHouse.Export;
-                            repwh.Update(wareHouse);
-                        }
+            
 
-                        List<WareHouseDetail> list = new List<WareHouseDetail>();
-                        if (dic.Keys.Contains(wareHouse.MedicineId.ToString()))
-                            list = dic[wareHouse.MedicineId.ToString()];
-                        else
-                            list = repwhDetail.GetMeicineExport(wareHouse.Id, wareHouse.MedicineId, wareHouse.Export);
+            //try
+            //{
+            //    //Insert data to WareHouseIO
+            //    WareHouseIO wareHouseIo = new WareHouseIO();
+            //    wareHouseIo.ClinicId = AppContext.CurrentClinic.Id;
+            //    wareHouseIo.Date = txtDate.Value.Date;
+            //    wareHouseIo.Person = txtDeliverer.Text;
+            //    wareHouseIo.Address = txtAddress.Text;
+            //    wareHouseIo.AttachmentNo = txtOriginalNo.Text;
+            //    //wareHouseIo.Recipient = txtRecipient.Text;
+            //    wareHouseIo.Phone = txtPhone.Text;
+            //    wareHouseIo.Type = "1";
+            //    wareHouseIo.Version = 0;
+            //    wareHouseIo.No = txtNo.Text;
+            //    wareHouseIo.Note = txtNote.Text;
+            //    WareHouseIORepository wareHouseIoRepository = new WareHouseIORepository();
+            //    wareHouseIoRepository.Insert(wareHouseIo);
 
-                        foreach (var wareHouseDetail in list)
-                        {
-                            if (wareHouseDetail.ExportVolumn > 0)
-                            {
-                                //Update WareHouseDetail
-                                wareHouseDetail.CurrentVolumn -= wareHouseDetail.ExportVolumn;
-                                repwhDetail.Update(wareHouseDetail);
+            //    foreach (WareHouse wareHouse in bdsWareHouseIO)
+            //    {
+            //        if (wareHouse.Export > 0)
+            //        {
+            //            //update data to WareHouse                     
+            //            if (wareHouse != null)
+            //            {
+            //                wareHouse.Volumn -= wareHouse.Export;
+            //                repwh.Update(wareHouse);
+            //            }
 
-                                //Insert data to WareHouseIODetail
-                                WareHouseIODetail item = new WareHouseIODetail();
-                                item.WareHouseIOId = wareHouseIo.Id;
-                                item.LotNo = wareHouseDetail.LotNo;
-                                item.Type = "1";
-                                item.MedicineId = wareHouseDetail.MedicineId;
-                                item.Qty = wareHouseDetail.ExportVolumn;
-                                item.Unit = wareHouseDetail.Unit;
-                                item.UnitPrice = wareHouseDetail.UnitPrice;
-                                item.ExpireDate = wareHouseDetail.ExpiredDate;
-                                _repwhIoDetail.Insert(item);
+            //            List<WareHouseDetail> list = new List<WareHouseDetail>();
+            //            if (dic.Keys.Contains(wareHouse.MedicineId.ToString()))
+            //                list = dic[wareHouse.MedicineId.ToString()];
+            //            else
+            //                list = repwhDetail.GetMeicineExport(wareHouse.Id, wareHouse.MedicineId, wareHouse.Export);
 
-                                //Insert whExportAllocate
-                                WareHouseExportAllocate wareHouseExportAllocate = new WareHouseExportAllocate();
-                                wareHouseExportAllocate.WareHouseDetailId = wareHouseDetail.Id;
-                                wareHouseExportAllocate.WareHouseIODetailId = item.Id;
-                                wareHouseExportAllocate.Volumn = wareHouseDetail.ExportVolumn;
-                                wareHouseExportAllocate.Unit = wareHouseDetail.Unit;
-                                whExport.Insert(wareHouseExportAllocate);
-                            }
-                        }
-                    }
-                }
+            //            foreach (var wareHouseDetail in list)
+            //            {
+            //                if (wareHouseDetail.ExportVolumn > 0)
+            //                {
+            //                    //Update WareHouseDetail
+            //                    wareHouseDetail.CurrentVolumn -= wareHouseDetail.ExportVolumn;
+            //                    repwhDetail.Update(wareHouseDetail);
 
-                MessageBox.Show("Xuất kho thành công!");
-                ClearData();
-            }
-            catch (Exception ex)
-            {
+            //                    //Insert data to WareHouseIODetail
+            //                    WareHouseIODetail item = new WareHouseIODetail();
+            //                    item.WareHouseIOId = wareHouseIo.Id;
+            //                    item.LotNo = wareHouseDetail.LotNo;
+            //                    item.Type = "1";
+            //                    item.MedicineId = wareHouseDetail.MedicineId;
+            //                    item.Qty = wareHouseDetail.ExportVolumn;
+            //                    item.Unit = wareHouseDetail.Unit;
+            //                    item.UnitPrice = wareHouseDetail.UnitPrice;
+            //                    item.ExpireDate = wareHouseDetail.ExpiredDate;
+            //                    _repwhIoDetail.Insert(item);
 
-            }
+            //                    //Insert whExportAllocate
+            //                    WareHouseExportAllocate wareHouseExportAllocate = new WareHouseExportAllocate();
+            //                    wareHouseExportAllocate.WareHouseDetailId = wareHouseDetail.Id;
+            //                    wareHouseExportAllocate.WareHouseIODetailId = item.Id;
+            //                    wareHouseExportAllocate.Volumn = wareHouseDetail.ExportVolumn;
+            //                    wareHouseExportAllocate.Unit = wareHouseDetail.Unit;
+            //                    whExport.Insert(wareHouseExportAllocate);
+            //                }
+            //            }
+            //        }
+            //    }
+
+            //    MessageBox.Show("Xuất kho thành công!");
+            //    ClearData();
+            //}
+            //catch (Exception ex)
+            //{
+
+            //}
         }
 
         private void BtnRemoveClick(object sender, EventArgs e)
         {
-            ClearData();
+            Initialize();
         }
 
         private void ClearData()
         {
-            txtDate.Value = DateTime.Now;
-            txtDeliverer.Text = string.Empty;
-            txtOriginalNo.Text = string.Empty;
-            txtPhone.Text = string.Empty;
-            txtNo.Text = string.Empty;
-            txtNote.Text = string.Empty;
-            txtAddress.Text = string.Empty;
-            txtRecipient.Text = string.Empty;
-            bdsWareHouse.DataSource = new List<WareHouse>();
-            grd.Rows.Clear();
+            Initialize();
         }
 
         private void GrdCellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -184,7 +208,9 @@ namespace Medical.WareHouseIE
                         warehouseIoDetail.Qty = 0;
                     }
                     break;
+
                 case 4:
+
                     if (warehouseIoDetail != null)
                     {
                         // lotNo
@@ -242,60 +268,65 @@ namespace Medical.WareHouseIE
             this.grd.Refresh();
         }
 
-        private bool ValidateRowData(string medicineId)
+        private bool ValidateRowData()
         {
-            foreach (WareHouse item in bdsWareHouse)
+
+            this.errorProvider1.Clear();
+            var result = true;
+
+            this.warehouseIO.Validate();
+
+            if (!this.warehouseIO.IsValid) result = false;
+            if (this.warehouseIODetail.Count == 0) result = false;
+
+            foreach (var item in this.warehouseIODetail)
             {
-                if (item.MedicineId != null && item.MedicineId.ToString() == medicineId)
-                {
-                    return false;
-                }
+                item.Validate();
+                if (!item.IsValid) result = false;
             }
 
+            if (!result) MessageDialog.Instance.ShowMessage(this, "MSG0004");
+            this.errorProvider1.UpdateBinding();
+            return result;
             return true;
         }
 
         private void GrdCellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (grd.Columns[e.ColumnIndex].Name == "btnExportAllocate")
-            {
-                WareHouse item = bdsWareHouse[e.RowIndex] as WareHouse;
-                if (item.Export > 0)
-                {
-                    string key = grd.Rows[e.RowIndex].Cells["MedicineId"].Value.ToString();
-                    List<WareHouseDetail> listWareHouseDetail = new List<WareHouseDetail>();
-                    if (item.Flag)
-                        listWareHouseDetail = dic[key];
-                    ExportAllocateDetail frm = new ExportAllocateDetail(item.Id, item.MedicineId, item.Export, listWareHouseDetail, item.Flag);
-                    frm.Flag = item.Flag;
-                    frm.StartPosition = FormStartPosition.CenterScreen;
-                    frm.ShowDialog();
-                    if (frm.Flag)
-                    {
-                        item.Flag = true;
-                        if (dic.Keys.Contains(key))
-                            dic[key] = frm.ListWareHouseDetail;
-                        else
-                            dic.Add(key, frm.ListWareHouseDetail);
-                    }
-                }
-            }
+            //if (grd.Columns[e.ColumnIndex].Name == "btnExportAllocate")
+            //{
+            //    WareHouse item = bdsWareHouse[e.RowIndex] as WareHouse;
+            //    if (item.Export > 0)
+            //    {
+            //        string key = grd.Rows[e.RowIndex].Cells["MedicineId"].Value.ToString();
+            //        List<WareHouseDetail> listWareHouseDetail = new List<WareHouseDetail>();
+            //        if (item.Flag)
+            //            listWareHouseDetail = dic[key];
+            //        ExportAllocateDetail frm = new ExportAllocateDetail(item.Id, item.MedicineId, item.Export, listWareHouseDetail, item.Flag);
+            //        frm.Flag = item.Flag;
+            //        frm.StartPosition = FormStartPosition.CenterScreen;
+            //        frm.ShowDialog();
+            //        if (frm.Flag)
+            //        {
+            //            item.Flag = true;
+            //            if (dic.Keys.Contains(key))
+            //                dic[key] = frm.ListWareHouseDetail;
+            //            else
+            //                dic.Add(key, frm.ListWareHouseDetail);
+            //        }
+            //    }
+            //}
         }
 
         private void GrdDataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            if (grd.Columns[e.ColumnIndex].Name == "Export")
-            {
-                MessageBox.Show("Số lượng xuất kho phải là số và lớn hơn 0");
-            }
+            //if (grd.Columns[e.ColumnIndex].Name == "Export")
+            //{
+            //    MessageBox.Show("Số lượng xuất kho phải là số và lớn hơn 0");
+            //}
         }
 
         private void BdsWarehouseIODetailAddingNew(object sender, AddingNewEventArgs e)
-        {
-            
-        }
-
-        private void BdsWarehouseIODetailCurrentItemChanged(object sender, EventArgs e)
         {
             
         }
@@ -307,7 +338,7 @@ namespace Medical.WareHouseIE
             {
                 MessageBox.Show("Xin chào");
             }
-             */
+            */
         }
 
         private void GrdDataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -318,6 +349,11 @@ namespace Medical.WareHouseIE
             {
                 gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
             }
+        }
+
+        private void ContextMenuStrip1Opening(object sender, CancelEventArgs e)
+        {
+            if (this.bdsWarehouseIODetail.Current == null) e.Cancel = true;
         }
     }
 }

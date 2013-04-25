@@ -60,7 +60,7 @@ namespace Medical.WareHouseIE
             this._wareHouseIO = new WareHouseIO
             {
                 ClinicId = AppContext.CurrentClinic.Id,
-                Type = WarehouseIO.Input,
+                Type = WarehouseIOType.Input,
                 Date = DateTime.Now,
                 CreatedUser = AppContext.LoggedInUser.Id
             };
@@ -162,13 +162,14 @@ namespace Medical.WareHouseIE
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this,ex.Message);
+                MessageBox.Show(this, ex.Message);
             }
             finally
             {
                 this.Enabled = true;
                 this.Cursor = Cursors.Arrow;
-            }}
+            }
+        }
 
         private void ClearData()
         {

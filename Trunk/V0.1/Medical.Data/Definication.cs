@@ -40,7 +40,7 @@ namespace Medical.Data
         public const int Pharmacists = 3;
     }
 
-    public class WarehouseIO
+    public class WarehouseIOType
     {
         public const String Input = "I";
         public const String Output = "O";
