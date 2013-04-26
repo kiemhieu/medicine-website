@@ -41,10 +41,10 @@ namespace Medical.WareHouseIE
 
         private void Initialize()
         {
-            List<Medicine> medicines = this._medicineRepository.GetAll();
+            var medicines = this._medicineRepository.GetAll();
             medicines.Insert(0, new Medicine() { Id = 0, Name = "..." });
 
-            List<Define> units = this._defineRepository.GetUnit();
+            var units = this._defineRepository.GetUnit();
             units.Insert(0, new Define() { Id = 0, Name = "..." });
 
             this.bdsUnit.DataSource = units;

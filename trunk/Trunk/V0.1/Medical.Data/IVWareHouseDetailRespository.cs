@@ -12,5 +12,6 @@ namespace Medical.Data {
         List<VWareHouseDetail> GetByMedicine(int medicineId);
         List<VWareHouseDetail> GetByMedicine(int medicineId, int clinicId);
         VWareHouseDetail Get(int medicineId, int clinicId, String lotNo);
+        List<VWareHouseDetail> GetWarehouseDetailForOutput(DateTime date, int medicineId, int clinicId);
     }
 }

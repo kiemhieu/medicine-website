@@ -23,10 +23,13 @@ namespace Medical.WareHouseIE
         private Medicine medicine;
         private WareHouse warehouse;
         private VWareHouseDetail selectedWareHouseDetail;
+        private DateTime date;
 
-        public MedicineOutputChooser(int medicineId)
+        public MedicineOutputChooser(int medicineId, DateTime date)
         {
             InitializeComponent();
+
+            this.date = date;
 
             // Get Medicine
             this.medicine = medicineRepo.GetById(medicineId);
@@ -39,7 +42,7 @@ namespace Medical.WareHouseIE
             this.warehouse = warehouseRepo.GetByIdMedicine(medicineId, AppContext.CurrentClinic.Id);
             this.txtInstock.Text = this.warehouse == null ? "0" : this.warehouse.Volumn.ToString();
 
-            var vwarehouseDetail = this.vwarehouseDetailRepo.GetByMedicine(medicineId, AppContext.CurrentClinic.Id);
+            var vwarehouseDetail = this.vwarehouseDetailRepo.GetWarehouseDetailForOutput(this.date, medicineId, AppContext.CurrentClinic.Id);
             this.bdsVWarehouseDetail.DataSource = vwarehouseDetail;
 
         }

@@ -24,7 +24,8 @@ namespace Medical.Data.Entities
         public DateTime CreatedDate { get; set; }
         public int CreatedUser { get; set; }
         public int Version { get; set; }
-        public ICollection<WareHouseIODetail> WareHouseIODetails { get; set; }
+
+        public virtual ICollection<WareHouseIODetail> WareHouseIODetails { get; set; }
 
         [NotMapped]
         public string TypeName

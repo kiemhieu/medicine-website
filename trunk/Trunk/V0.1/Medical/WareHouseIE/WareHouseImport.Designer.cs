@@ -127,7 +127,7 @@
             this.maskedTextBoxAdv1.Name = "maskedTextBoxAdv1";
             this.maskedTextBoxAdv1.Size = new System.Drawing.Size(130, 20);
             this.maskedTextBoxAdv1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.maskedTextBoxAdv1.TabIndex = 4;
+            this.maskedTextBoxAdv1.TabIndex = 3;
             this.maskedTextBoxAdv1.Text = "";
             // 
             // bdsWareHouse
@@ -148,7 +148,7 @@
             this.txtClinic.Name = "txtClinic";
             this.txtClinic.ReadOnly = true;
             this.txtClinic.Size = new System.Drawing.Size(314, 20);
-            this.txtClinic.TabIndex = 2;
+            this.txtClinic.TabIndex = 1;
             // 
             // txtRecipient
             // 
@@ -164,7 +164,7 @@
             this.txtRecipient.Name = "txtRecipient";
             this.txtRecipient.ReadOnly = true;
             this.txtRecipient.Size = new System.Drawing.Size(130, 20);
-            this.txtRecipient.TabIndex = 6;
+            this.txtRecipient.TabIndex = 5;
             // 
             // labelX9
             // 
@@ -212,7 +212,7 @@
             this.txtOriginalNo.MaxLength = 9;
             this.txtOriginalNo.Name = "txtOriginalNo";
             this.txtOriginalNo.Size = new System.Drawing.Size(130, 20);
-            this.txtOriginalNo.TabIndex = 8;
+            this.txtOriginalNo.TabIndex = 7;
             // 
             // labelX7
             // 
@@ -243,7 +243,7 @@
             this.txtNote.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(514, 20);
-            this.txtNote.TabIndex = 7;
+            this.txtNote.TabIndex = 6;
             // 
             // labelX6
             // 
@@ -274,7 +274,7 @@
             this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(314, 20);
-            this.txtAddress.TabIndex = 5;
+            this.txtAddress.TabIndex = 4;
             // 
             // labelX5
             // 
@@ -320,7 +320,7 @@
             this.txtDeliverer.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtDeliverer.Name = "txtDeliverer";
             this.txtDeliverer.Size = new System.Drawing.Size(130, 20);
-            this.txtDeliverer.TabIndex = 3;
+            this.txtDeliverer.TabIndex = 2;
             // 
             // labelX3
             // 
@@ -353,7 +353,7 @@
             this.txtNo.MaxLength = 9;
             this.txtNo.Name = "txtNo";
             this.txtNo.Size = new System.Drawing.Size(130, 20);
-            this.txtNo.TabIndex = 1;
+            this.txtNo.TabIndex = 0;
             // 
             // labelX2
             // 
@@ -396,6 +396,9 @@
             this.dateImport.ButtonDropDown.Visible = true;
             this.dateImport.CustomFormat = "dd/MM/yyyy";
             this.dateImport.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bdsWareHouse, "Date", true));
+            this.dateImport.DisabledBackColor = System.Drawing.Color.Transparent;
+            this.dateImport.DisabledForeColor = System.Drawing.Color.Black;
+            this.dateImport.Enabled = false;
             this.dateImport.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.dateImport.IsPopupCalendarOpen = false;
             this.dateImport.Location = new System.Drawing.Point(94, 9);
@@ -482,7 +485,7 @@
             this.grd.Name = "grd";
             this.grd.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.grd.Size = new System.Drawing.Size(864, 397);
-            this.grd.TabIndex = 9;
+            this.grd.TabIndex = 0;
             this.grd.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrdCellEndEdit);
             this.grd.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.GrdDataBindingComplete);
             this.grd.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.GrdDataError);
@@ -650,7 +653,7 @@
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(74, 25);
             this.btnRemove.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnRemove.TabIndex = 11;
+            this.btnRemove.TabIndex = 1;
             this.btnRemove.Text = "Hủy";
             this.btnRemove.ThemeAware = true;
             this.btnRemove.Click += new System.EventHandler(this.BtnRemoveClick);
@@ -666,7 +669,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(86, 25);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSave.TabIndex = 10;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Ghi lại";
             this.btnSave.ThemeAware = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);

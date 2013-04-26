@@ -122,7 +122,8 @@ namespace Medical.Data.Repositories
                 foreach (var item in medicineDictionary.Keys)
                 {
                     var warehouse = this.Context.WareHouses.FirstOrDefault(x => x.MedicineId == item && x.ClinicId == AppContext.CurrentClinic.Id);
-                    var warehouseDetailList = this.Context.WareHouseDetails.Where(x => x.WareHouseId == warehouse.Id && x.MedicineId == item).ToList();
+                    var validWarehouseIODetail = this.Context.VWarehouseDetailFull.Where(x => x.MedicineId == item && x.ClinicId == AppContext.CurrentClinic.Id && (x.Date == null || x.Date <= wareHouseIO.Date) && x.CurrentVolumn > 0).Select(x => x.Id).ToList<int>();
+                    var warehouseDetailList = this.Context.WareHouseDetails.Where(x => validWarehouseIODetail.Contains(x.Id)).ToList();
                     var warehouseOutputDetail = warehouseIODetails.Where(x => x.MedicineId == item).ToList();
                     foreach (var outputItem in warehouseOutputDetail)
                     {
@@ -135,14 +136,17 @@ namespace Medical.Data.Repositories
                                                         WareHouseDetailId = detail.Id,
                                                         WareHouseIODetailId = outputItem.Id,
                                                         Unit = outputItem.Unit,
-                                                        Volumn = detail.CurrentVolumn > qty ? qty : detail.CurrentVolumn
+                                                        Volumn = detail.CurrentVolumn > qty ? qty : detail.CurrentVolumn,
+                                                        Version = 0
                                                     };
 
                             // allocatedList.Add(allotcateItem);
                             this.Context.WareHouseExportAllocates.Add(allotcateItem);
                             qty -= allotcateItem.Volumn;
                             detail.CurrentVolumn -= allotcateItem.Volumn;
+                            detail.SetInfo(true);
                             warehouse.Volumn -= allotcateItem.Volumn;
+                            warehouse.SetInfo(true);
                             if (qty == 0) break;
                         }
 
