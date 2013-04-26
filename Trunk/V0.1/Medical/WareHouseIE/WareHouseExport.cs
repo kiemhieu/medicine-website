@@ -53,19 +53,21 @@ namespace Medical.WareHouseIE
 
             Initialize();
 
-            var items = vwarehouseDetailRepo.GetWarehouseDetailForOutput(DateTime.Today, 12);
-            Console.WriteLine(items.Count + "");
+            this.txtDate.ForeColor = Color.Black;
         }
 
         private void Initialize()
         {
             txtClinic.Text = AppContext.CurrentClinic.Name;
+            txtDeliverer.Text = AppContext.LoggedInUser.Name;
 
             // Init warehouse
-            _warehouseIo = new WareHouseIO();
-            _warehouseIo.ClinicId = AppContext.CurrentClinic.Id;
-            _warehouseIo.Date = DateTime.Today;
-            _warehouseIo.Type = WarehouseIOType.Output;
+            _warehouseIo = new WareHouseIO
+                               {
+                                   ClinicId = AppContext.CurrentClinic.Id,
+                                   Date = DateTime.Today,
+                                   Type = WarehouseIOType.Output
+                               };
             bdsWareHouseIO.DataSource = _warehouseIo;
             
             // Init WarehouseIODetail
@@ -81,9 +83,9 @@ namespace Medical.WareHouseIE
         {
             var warehouseIoDetail = (WareHouseIODetail)this.bdsWarehouseIODetail.Current;
             if (warehouseIoDetail == null || warehouseIoDetail.MedicineId == 0) return;
-            var chooser = new MedicineOutputChooser(warehouseIoDetail.MedicineId);
+            var chooser = new MedicineOutputChooser(warehouseIoDetail.MedicineId, this._warehouseIo.Date);
             var result = chooser.ShowDialog(this);
-            if (result == DialogResult.Cancel) return;
+            if (result == DialogResult.No) return;
 
             var warehouseDetail = chooser.SelectedVWareHouseDetail;
             var item = (DataGridViewTextBoxDropDownColumn) sender;
@@ -102,83 +104,26 @@ namespace Medical.WareHouseIE
         private void BtnSaveClick(object sender, EventArgs e)
         {
             if (!ValidateRowData()) return;
+            var dialogResult = MessageDialog.Instance.ShowMessage(this, "Q005", "Đồng ý xuất kho lô thuốc này ?");
+            if (dialogResult == DialogResult.No) return;
 
-            
-
-            //try
-            //{
-            //    //Insert data to WareHouseIO
-            //    WareHouseIO wareHouseIo = new WareHouseIO();
-            //    wareHouseIo.ClinicId = AppContext.CurrentClinic.Id;
-            //    wareHouseIo.Date = txtDate.Value.Date;
-            //    wareHouseIo.Person = txtDeliverer.Text;
-            //    wareHouseIo.Address = txtAddress.Text;
-            //    wareHouseIo.AttachmentNo = txtOriginalNo.Text;
-            //    //wareHouseIo.Recipient = txtRecipient.Text;
-            //    wareHouseIo.Phone = txtPhone.Text;
-            //    wareHouseIo.Type = "1";
-            //    wareHouseIo.Version = 0;
-            //    wareHouseIo.No = txtNo.Text;
-            //    wareHouseIo.Note = txtNote.Text;
-            //    WareHouseIORepository wareHouseIoRepository = new WareHouseIORepository();
-            //    wareHouseIoRepository.Insert(wareHouseIo);
-
-            //    foreach (WareHouse wareHouse in bdsWareHouseIO)
-            //    {
-            //        if (wareHouse.Export > 0)
-            //        {
-            //            //update data to WareHouse                     
-            //            if (wareHouse != null)
-            //            {
-            //                wareHouse.Volumn -= wareHouse.Export;
-            //                repwh.Update(wareHouse);
-            //            }
-
-            //            List<WareHouseDetail> list = new List<WareHouseDetail>();
-            //            if (dic.Keys.Contains(wareHouse.MedicineId.ToString()))
-            //                list = dic[wareHouse.MedicineId.ToString()];
-            //            else
-            //                list = repwhDetail.GetMeicineExport(wareHouse.Id, wareHouse.MedicineId, wareHouse.Export);
-
-            //            foreach (var wareHouseDetail in list)
-            //            {
-            //                if (wareHouseDetail.ExportVolumn > 0)
-            //                {
-            //                    //Update WareHouseDetail
-            //                    wareHouseDetail.CurrentVolumn -= wareHouseDetail.ExportVolumn;
-            //                    repwhDetail.Update(wareHouseDetail);
-
-            //                    //Insert data to WareHouseIODetail
-            //                    WareHouseIODetail item = new WareHouseIODetail();
-            //                    item.WareHouseIOId = wareHouseIo.Id;
-            //                    item.LotNo = wareHouseDetail.LotNo;
-            //                    item.Type = "1";
-            //                    item.MedicineId = wareHouseDetail.MedicineId;
-            //                    item.Qty = wareHouseDetail.ExportVolumn;
-            //                    item.Unit = wareHouseDetail.Unit;
-            //                    item.UnitPrice = wareHouseDetail.UnitPrice;
-            //                    item.ExpireDate = wareHouseDetail.ExpiredDate;
-            //                    _repwhIoDetail.Insert(item);
-
-            //                    //Insert whExportAllocate
-            //                    WareHouseExportAllocate wareHouseExportAllocate = new WareHouseExportAllocate();
-            //                    wareHouseExportAllocate.WareHouseDetailId = wareHouseDetail.Id;
-            //                    wareHouseExportAllocate.WareHouseIODetailId = item.Id;
-            //                    wareHouseExportAllocate.Volumn = wareHouseDetail.ExportVolumn;
-            //                    wareHouseExportAllocate.Unit = wareHouseDetail.Unit;
-            //                    whExport.Insert(wareHouseExportAllocate);
-            //                }
-            //            }
-            //        }
-            //    }
-
-            //    MessageBox.Show("Xuất kho thành công!");
-            //    ClearData();
-            //}
-            //catch (Exception ex)
-            //{
-
-            //}
+            try
+            {
+                this.Enabled = true;
+                this.Cursor = Cursors.WaitCursor;
+                this._repwhIo.WarehouseOutputRegister(this._warehouseIo, this._warehouseIoDetail);
+                MessageDialog.Instance.ShowMessage(this, "MSG0005", "Tạo phiếu nhập kho thành công.");
+                this.ClearData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message);
+            }
+            finally
+            {
+                this.Enabled = true;
+                this.Cursor = Cursors.Arrow;
+            }
         }
 
         private void BtnRemoveClick(object sender, EventArgs e)
@@ -285,7 +230,7 @@ namespace Medical.WareHouseIE
 
             foreach (var item in this._warehouseIoDetail)
             {
-                item.Validate();
+                item.ValidateOutput();
                 if (!item.IsValid) result = false;
             }
 

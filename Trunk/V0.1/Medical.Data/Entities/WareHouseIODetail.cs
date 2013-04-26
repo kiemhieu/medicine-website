@@ -50,5 +50,14 @@ namespace Medical.Data.Entities
             if (ExpireDate < DateTime.Now) this.AddError("ExpireDate", "Ngày hết hạn phải lớn hơn ngày hiện tại");
             if (Qty <= 0) this.AddError("Qty", "Số lượng thuốc phải lớn hơn 0");
         } 
+
+        public void ValidateOutput()
+        {
+            base.Validate();
+            if (MedicineId == 0) this.AddError("MedicineId", "Chưa chọn thuốc");
+            if (Qty <= 0) this.AddError("Qty", "Số lượng thuốc phải lớn hơn 0");
+            if (Qty > InStockQty) this.AddError("Qty", "Số lượng thuốc vượt quá số lượng có trong kho");
+
+        }
     }
 }

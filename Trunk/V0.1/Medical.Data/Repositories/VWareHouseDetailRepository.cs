@@ -40,11 +40,12 @@ namespace Medical.Data.Repositories {
                     x => x.MedicineId == medicineId && x.ClinicId == clinicId && x.LotNo.Equals(lotNo));
         }
 
-        public List<VWareHouseDetail> GetWarehouseDetailForOutput(DateTime date, int clinicId)
+        public List<VWareHouseDetail> GetWarehouseDetailForOutput(DateTime date, int medicineId, int clinicId)
         {
-            return this.Context.Database.SqlQuery<VWareHouseDetail>("sp_GetWareHouseDetailForWareHouseOutput @date, @clinicID", 
+            return this.Context.Database.SqlQuery<VWareHouseDetail>("sp_GetWareHouseDetailForWareHouseOutput @date, @clinicID, @medicineId", 
                                                                 new SqlParameter("date", date),
-                                                                new SqlParameter("clinicID", clinicId)).ToList();
+                                                                new SqlParameter("clinicID", clinicId),
+                                                                new SqlParameter("medicineId", medicineId)).ToList();
         }
     }
 }
