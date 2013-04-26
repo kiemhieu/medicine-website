@@ -1,12 +1,13 @@
 USE [Medical]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_GetWareHouseDetailForWareHouseOutput]    Script Date: 04/26/2013 02:39:57 ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetWareHouseDetailForWareHouseOutput]    Script Date: 04/27/2013 00:59:08 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -16,7 +17,9 @@ GO
 CREATE PROCEDURE [dbo].[sp_GetWareHouseDetailForWareHouseOutput] 
 	-- Add the parameters for the stored procedure here
 	@date DateTime,
-	@clinicID int
+	@clinicID int,
+	@medicineID int
+	
 AS
 BEGIN
 	SELECT     
@@ -29,11 +32,12 @@ BEGIN
     0 AS InStockQty, ClinicId
 FROM         
 	VWarehouseDetailFull
-WHERE ClinicId = @clinicID AND ( [Date] Is NULL OR [Date] <= @date)
+WHERE ClinicId = @clinicID AND ( [Date] Is NULL OR [Date] <= @date) AND MedicineId = @medicineID
 GROUP BY MedicineId, LotNo, ExpiredDate, ClinicId
 ORDER BY MedicineId, ClinicId, LotNo, ExpiredDate
 
 END
+
 
 GO
 
