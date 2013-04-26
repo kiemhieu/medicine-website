@@ -64,7 +64,6 @@
             // 
             // panelEx1
             // 
-            this.panelEx1.AutoSize = true;
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx1.Controls.Add(this.labelX4);
@@ -79,7 +78,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(878, 28);
+            this.panelEx1.Size = new System.Drawing.Size(977, 58);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -137,7 +136,7 @@
             this.btnImport.Image = global::Medical.Properties.Resources.import;
             this.btnImport.Location = new System.Drawing.Point(782, 2);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(84, 23);
+            this.btnImport.Size = new System.Drawing.Size(120, 25);
             this.btnImport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnImport.TabIndex = 5;
             this.btnImport.Text = "Nhập kho";
@@ -150,7 +149,7 @@
             this.btnExport.Image = global::Medical.Properties.Resources.export;
             this.btnExport.Location = new System.Drawing.Point(698, 2);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(78, 23);
+            this.btnExport.Size = new System.Drawing.Size(78, 25);
             this.btnExport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnExport.TabIndex = 4;
             this.btnExport.Text = "Xuất kho";
@@ -163,7 +162,7 @@
             this.btnSearch.Image = global::Medical.Properties.Resources.grey_search;
             this.btnSearch.Location = new System.Drawing.Point(636, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(56, 23);
+            this.btnSearch.Size = new System.Drawing.Size(56, 25);
             this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Tìm";
@@ -321,10 +320,10 @@
             this.grd.DefaultCellStyle = dataGridViewCellStyle1;
             this.grd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.grd.Location = new System.Drawing.Point(0, 28);
+            this.grd.Location = new System.Drawing.Point(0, 58);
             this.grd.Name = "grd";
             this.grd.ReadOnly = true;
-            this.grd.Size = new System.Drawing.Size(878, 481);
+            this.grd.Size = new System.Drawing.Size(977, 451);
             this.grd.TabIndex = 1;
             this.grd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
             // 
@@ -447,7 +446,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(878, 509);
+            this.ClientSize = new System.Drawing.Size(977, 509);
             this.Controls.Add(this.grd);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -461,7 +460,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouseIO)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
