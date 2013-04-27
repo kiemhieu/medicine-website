@@ -118,7 +118,10 @@ namespace Medical
                 MessageBox.Show(ex.Message);
             }
             this.bdgPatient.Clear();
-            this.bdgPatient.DataSource = patientRepo.GetAll();
+            if (AppContext.LoggedInUser.Role > MedicineRoles.SupperManager)
+                this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject, AppContext.CurrentClinic.Id);
+            else this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject);
+
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -126,7 +129,10 @@ namespace Medical
             var frmedit = new PatientRegister();
             frmedit.ShowDialog();
             this.bdgPatient.Clear();
-            this.bdgPatient.DataSource = patientRepo.GetAll();
+            if (AppContext.LoggedInUser.Role > MedicineRoles.SupperManager)
+                this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject, AppContext.CurrentClinic.Id);
+            else this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject);
+
         }
 
     }
