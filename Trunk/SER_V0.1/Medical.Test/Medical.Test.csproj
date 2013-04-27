@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4BE62B2C-8E0B-4085-80A2-CB589F68B73D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Medical.Test</RootNamespace>
+    <AssemblyName>Medical.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\Lib\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\Lib\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2">
+      <HintPath>..\Lib\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="Medical.Forms">
+      <HintPath>..\Medical.Forms\bin\Debug\Medical.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\Lib\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add.Designer.cs">
+      <DependentUpon>Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form5.Designer.cs">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClinic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClinic.Designer.cs">
+      <DependentUpon>frmClinic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClinicEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClinicEdit.Designer.cs">
+      <DependentUpon>frmClinicEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFigure.Designer.cs">
+      <DependentUpon>frmFigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFigureEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFigureEdit.Designer.cs">
+      <DependentUpon>frmFigureEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMedicine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMedicine.Designer.cs">
+      <DependentUpon>frmMedicine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form4.Designer.cs">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMedicinEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMedicinEdit.Designer.cs">
+      <DependentUpon>frmMedicinEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMedicineSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMedicineSearch.Designer.cs">
+      <DependentUpon>frmMedicineSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWareHouseDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWareHouseDetail.Designer.cs">
+      <DependentUpon>frmWareHouseDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWareHouseDetailEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWareHouseDetailEdit.Designer.cs">
+      <DependentUpon>frmWareHouseDetailEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWHPageHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWHPageHistory.Designer.cs">
+      <DependentUpon>frmWHPageHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDITabbed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDITabbed.Designer.cs">
+      <DependentUpon>MDITabbed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ribbon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ribbon.Designer.cs">
+      <DependentUpon>Ribbon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RibbonForm1.Designer.cs">
+      <DependentUpon>RibbonForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windsor\ITest.cs" />
+    <Compile Include="Windsor\Test.cs" />
+    <EmbeddedResource Include="Add.resx">
+      <DependentUpon>Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form5.resx">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClinic.resx">
+      <DependentUpon>frmClinic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClinicEdit.resx">
+      <DependentUpon>frmClinicEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFigure.resx">
+      <DependentUpon>frmFigure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFigureEdit.resx">
+      <DependentUpon>frmFigureEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMedicine.resx">
+      <DependentUpon>frmMedicine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form4.resx">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMedicinEdit.resx">
+      <DependentUpon>frmMedicinEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMedicineSearch.resx">
+      <DependentUpon>frmMedicineSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWareHouseDetail.resx">
+      <DependentUpon>frmWareHouseDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWareHouseDetailEdit.resx">
+      <DependentUpon>frmWareHouseDetailEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWHPageHistory.resx">
+      <DependentUpon>frmWHPageHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDITabbed.resx">
+      <DependentUpon>MDITabbed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Ribbon.resx">
+      <DependentUpon>Ribbon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RibbonForm1.resx">
+      <DependentUpon>RibbonForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\Medical.Data.Entities.Clinic.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.Figure.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.FigureDetail.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.Medicine.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.WareHouseDetail.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.WareHousePaper.datasource" />
+    <None Include="Properties\DataSources\Medical.Data.Entities.WareHousePaperDetail.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Medical.Data\Medical.Data.csproj">
+      <Project>{169CF0C0-C72D-424A-9CC4-55D95E275755}</Project>
+      <Name>Medical.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calculator.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
