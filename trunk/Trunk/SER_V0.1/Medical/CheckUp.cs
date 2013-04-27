@@ -10,6 +10,8 @@ namespace Medical {
 
         private IPrescriptionRepository prescriptionRepo = new PrescriptionRepository();
         private IPrescriptionDetailRepository prescriptionDetailRepo = new PrescriptionDetailRepository();
+        private readonly ClinicRepository repClinic = new ClinicRepository();
+        private int ClinicId;
         private Prescription lastPrescription;
         private Patient selectedPatient;
 
@@ -18,6 +20,8 @@ namespace Medical {
         /// </summary>
         public CheckUp() {
             InitializeComponent();
+            this.ClinicId = AppContext.CurrentClinic.Id;
+            BindClinic();
         }
 
         /// <summary>
@@ -67,7 +71,7 @@ namespace Medical {
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void textBoxX1_ButtonCustomClick(object sender, EventArgs e) {
-            var patientBrowse = new PatientBrowseForm();
+            var patientBrowse = new PatientBrowseForm(txtSeachName.Text.Trim(),this.ClinicId);
             var result = patientBrowse.ShowDialog(this);
             if (result != System.Windows.Forms.DialogResult.Yes) return;
 
@@ -107,5 +111,25 @@ namespace Medical {
                 this.bdsPrescriptionDetail.DataSource = detailList;
             }
         }
+
+        private void BindClinic()
+        {
+            if (AppContext.LoggedInUser.Role > MedicineRoles.SupperManager)
+            {
+                cboClinic.DataSource = new List<Clinic> { repClinic.GetById(AppContext.CurrentClinic.Id) };
+            }
+            else
+                bdsClinic.DataSource = repClinic.GetAll();
+            if (bdsClinic.Count > 0) this.ClinicId = ((Clinic)bdsClinic.Current).Id;
+            else this.ClinicId = AppContext.CurrentClinic.Id;
+
+        }
+        public Clinic SelectedClinic { get; private set; }
+        private void cboClinic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.SelectedClinic = (Clinic)this.bdsClinic.List[cboClinic.SelectedIndex];
+            if (this.SelectedClinic == null) return;
+            this.ClinicId = SelectedClinic.Id;
+        }        
     }
 }
