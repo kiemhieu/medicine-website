@@ -103,6 +103,16 @@ namespace Medical.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap calendar {
+            get {
+                object obj = ResourceManager.GetObject("calendar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap calendar_blue_01 {
             get {
                 object obj = ResourceManager.GetObject("calendar_blue_01", resourceCulture);
@@ -276,6 +286,16 @@ namespace Medical.Properties {
         internal static System.Drawing.Bitmap Search {
             get {
                 object obj = ResourceManager.GetObject("Search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap users {
+            get {
+                object obj = ResourceManager.GetObject("users", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

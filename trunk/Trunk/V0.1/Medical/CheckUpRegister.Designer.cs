@@ -33,41 +33,42 @@
             this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.txtStatus = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.bdsPrescription = new System.Windows.Forms.BindingSource(this.components);
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.txtDoctor = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.cboFigure = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsPrescriptionDetail = new System.Windows.Forms.BindingSource(this.components);
+            this.InventoryVolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtCheckDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.txtReCheckDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.btnDeleteMedicine = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
-            this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.errPro = new System.Windows.Forms.ErrorProvider(this.components);
+            this.integerInput1 = new DevComponents.Editors.IntegerInput();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.bdsPrescription = new System.Windows.Forms.BindingSource(this.components);
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.medicineIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
             this.volumnPerDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InventoryVolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPrescription)).BeginInit();
+            this.bdsPrescriptionDetail = new System.Windows.Forms.BindingSource(this.components);
+            this.txtDoctor = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPrescriptionDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCheckDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReCheckDate)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errPro)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPrescription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPrescriptionDetail)).BeginInit();
             this.SuspendLayout();
             // 
             // labelX13
@@ -78,7 +79,7 @@
             // 
             this.labelX13.BackgroundStyle.Class = "";
             this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX13.Location = new System.Drawing.Point(231, 7);
+            this.labelX13.Location = new System.Drawing.Point(539, 168);
             this.labelX13.Name = "labelX13";
             this.labelX13.Size = new System.Drawing.Size(67, 16);
             this.labelX13.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -93,7 +94,7 @@
             // 
             this.labelX12.BackgroundStyle.Class = "";
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX12.Location = new System.Drawing.Point(7, 166);
+            this.labelX12.Location = new System.Drawing.Point(7, 168);
             this.labelX12.Name = "labelX12";
             this.labelX12.Size = new System.Drawing.Size(79, 16);
             this.labelX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -113,13 +114,9 @@
             this.txtStatus.Location = new System.Drawing.Point(91, 31);
             this.txtStatus.Multiline = true;
             this.txtStatus.Name = "txtStatus";
-            this.txtStatus.Size = new System.Drawing.Size(615, 130);
+            this.txtStatus.Size = new System.Drawing.Size(618, 130);
             this.txtStatus.TabIndex = 0;
             this.txtStatus.Text = "-xin chao\r\n-benh ngay cang kho";
-            // 
-            // bdsPrescription
-            // 
-            this.bdsPrescription.DataSource = typeof(Medical.Data.Entities.Prescription);
             // 
             // labelX11
             // 
@@ -144,7 +141,7 @@
             // 
             this.labelX14.BackgroundStyle.Class = "";
             this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX14.Location = new System.Drawing.Point(7, 186);
+            this.labelX14.Location = new System.Drawing.Point(7, 193);
             this.labelX14.Name = "labelX14";
             this.labelX14.Size = new System.Drawing.Size(53, 16);
             this.labelX14.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -159,29 +156,12 @@
             // 
             this.labelX10.BackgroundStyle.Class = "";
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Location = new System.Drawing.Point(461, 7);
+            this.labelX10.Location = new System.Drawing.Point(458, 7);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(31, 16);
             this.labelX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX10.TabIndex = 34;
             this.labelX10.Text = "Bác sĩ";
-            // 
-            // txtDoctor
-            // 
-            this.txtDoctor.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.txtDoctor.Border.Class = "TextBoxBorder";
-            this.txtDoctor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtDoctor.ButtonCustom.Image = global::Medical.Properties.Resources.doctor;
-            this.txtDoctor.ForeColor = System.Drawing.Color.Black;
-            this.txtDoctor.Location = new System.Drawing.Point(499, 5);
-            this.txtDoctor.Name = "txtDoctor";
-            this.txtDoctor.ReadOnly = true;
-            this.txtDoctor.Size = new System.Drawing.Size(207, 21);
-            this.txtDoctor.TabIndex = 2;
-            this.txtDoctor.WatermarkImage = global::Medical.Properties.Resources.doctor;
             // 
             // cboFigure
             // 
@@ -191,9 +171,9 @@
             this.cboFigure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFigure.FormattingEnabled = true;
             this.cboFigure.ItemHeight = 15;
-            this.cboFigure.Location = new System.Drawing.Point(91, 163);
+            this.cboFigure.Location = new System.Drawing.Point(91, 166);
             this.cboFigure.Name = "cboFigure";
-            this.cboFigure.Size = new System.Drawing.Size(172, 21);
+            this.cboFigure.Size = new System.Drawing.Size(94, 21);
             this.cboFigure.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cboFigure.TabIndex = 1;
             this.cboFigure.ValueMember = "Id";
@@ -216,18 +196,19 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.labelX2);
+            this.panel1.Controls.Add(this.integerInput1);
             this.panel1.Controls.Add(this.dataGridViewX1);
             this.panel1.Controls.Add(this.txtCheckDate);
+            this.panel1.Controls.Add(this.labelX14);
             this.panel1.Controls.Add(this.txtReCheckDate);
-            this.panel1.Controls.Add(this.btnDeleteMedicine);
             this.panel1.Controls.Add(this.labelX10);
             this.panel1.Controls.Add(this.labelX13);
-            this.panel1.Controls.Add(this.buttonX3);
             this.panel1.Controls.Add(this.txtDoctor);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(709, 377);
+            this.panel1.Size = new System.Drawing.Size(722, 468);
             this.panel1.TabIndex = 41;
             // 
             // dataGridViewX1
@@ -265,25 +246,23 @@
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.errPro.SetIconAlignment(this.dataGridViewX1, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
             this.errPro.SetIconPadding(this.dataGridViewX1, 20);
-            this.dataGridViewX1.Location = new System.Drawing.Point(91, 186);
+            this.dataGridViewX1.Location = new System.Drawing.Point(91, 193);
             this.dataGridViewX1.MultiSelect = false;
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(618, 188);
+            this.dataGridViewX1.Size = new System.Drawing.Size(618, 269);
             this.dataGridViewX1.TabIndex = 3;
             this.dataGridViewX1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewX1_CellBeginEdit);
             this.dataGridViewX1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellEndEdit);
             this.dataGridViewX1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridViewX1_DataError);
             // 
-            // bdsMedicine
+            // InventoryVolumn
             // 
-            this.bdsMedicine.DataSource = typeof(Medical.Data.Entities.Medicine);
-            // 
-            // bdsPrescriptionDetail
-            // 
-            this.bdsPrescriptionDetail.DataSource = typeof(Medical.Data.Entities.PrescriptionDetail);
-            this.bdsPrescriptionDetail.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bdsPrescriptionDetail_ListChanged);
+            this.InventoryVolumn.DataPropertyName = "InventoryVolumn";
+            this.InventoryVolumn.HeaderText = "Tồn kho";
+            this.InventoryVolumn.Name = "InventoryVolumn";
+            this.InventoryVolumn.Width = 70;
             // 
             // txtCheckDate
             // 
@@ -292,11 +271,13 @@
             // 
             this.txtCheckDate.BackgroundStyle.Class = "DateTimeInputBackground";
             this.txtCheckDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCheckDate.ButtonDropDown.Image = global::Medical.Properties.Resources.calendar_blue_01;
+            this.txtCheckDate.ButtonDropDown.Image = global::Medical.Properties.Resources.calendar;
             this.txtCheckDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.txtCheckDate.ButtonDropDown.Visible = true;
             this.txtCheckDate.CustomFormat = "dd/MM/yyyy";
             this.txtCheckDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bdsPrescription, "Date", true));
+            this.txtCheckDate.DisabledBackColor = System.Drawing.Color.White;
+            this.txtCheckDate.DisabledForeColor = System.Drawing.Color.Black;
             this.txtCheckDate.Enabled = false;
             this.txtCheckDate.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.txtCheckDate.IsInputReadOnly = true;
@@ -349,14 +330,14 @@
             // 
             this.txtReCheckDate.BackgroundStyle.Class = "DateTimeInputBackground";
             this.txtReCheckDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtReCheckDate.ButtonDropDown.Image = global::Medical.Properties.Resources.calendar_blue_01;
+            this.txtReCheckDate.ButtonDropDown.Image = global::Medical.Properties.Resources.calendar;
             this.txtReCheckDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.txtReCheckDate.ButtonDropDown.Visible = true;
             this.txtReCheckDate.CustomFormat = "dd/MM/yyyy";
             this.txtReCheckDate.DataBindings.Add(new System.Windows.Forms.Binding("ValueObject", this.bdsPrescription, "RecheckDate", true));
             this.txtReCheckDate.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.txtReCheckDate.IsPopupCalendarOpen = false;
-            this.txtReCheckDate.Location = new System.Drawing.Point(304, 4);
+            this.txtReCheckDate.Location = new System.Drawing.Point(615, 166);
             // 
             // 
             // 
@@ -398,70 +379,53 @@
             this.txtReCheckDate.TabIndex = 1;
             this.txtReCheckDate.ValueObjectChanged += new System.EventHandler(this.txtReCheckDate_ValueObjectChanged);
             // 
-            // btnDeleteMedicine
-            // 
-            this.btnDeleteMedicine.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDeleteMedicine.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDeleteMedicine.Image = global::Medical.Properties.Resources.remove;
-            this.btnDeleteMedicine.Location = new System.Drawing.Point(664, 166);
-            this.btnDeleteMedicine.Name = "btnDeleteMedicine";
-            this.btnDeleteMedicine.Size = new System.Drawing.Size(17, 17);
-            this.btnDeleteMedicine.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDeleteMedicine.TabIndex = 40;
-            this.btnDeleteMedicine.Click += new System.EventHandler(this.btnDeleteMedicine_Click);
-            // 
-            // buttonX3
-            // 
-            this.buttonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX3.Image = global::Medical.Properties.Resources.add;
-            this.buttonX3.Location = new System.Drawing.Point(686, 166);
-            this.buttonX3.Name = "buttonX3";
-            this.buttonX3.Size = new System.Drawing.Size(17, 17);
-            this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX3.TabIndex = 39;
-            // 
             // panel2
             // 
-            this.panel2.AutoSize = true;
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 377);
+            this.panel2.Location = new System.Drawing.Point(0, 468);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(709, 29);
+            this.panel2.Size = new System.Drawing.Size(722, 45);
             this.panel2.TabIndex = 42;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCancel.Image = global::Medical.Properties.Resources.cancel;
-            this.btnCancel.Location = new System.Drawing.Point(628, 3);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Bỏ qua";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Image = global::Medical.Properties.Resources.accept;
-            this.btnSave.Location = new System.Drawing.Point(548, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "Ghi lại";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // errPro
             // 
             this.errPro.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errPro.ContainerControl = this;
+            // 
+            // integerInput1
+            // 
+            // 
+            // 
+            // 
+            this.integerInput1.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.integerInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.integerInput1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.integerInput1.Location = new System.Drawing.Point(379, 166);
+            this.integerInput1.Name = "integerInput1";
+            this.integerInput1.ShowUpDown = true;
+            this.integerInput1.Size = new System.Drawing.Size(80, 21);
+            this.integerInput1.TabIndex = 35;
+            // 
+            // labelX2
+            // 
+            this.labelX2.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.Class = "";
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(301, 168);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(72, 16);
+            this.labelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.labelX2.TabIndex = 36;
+            this.labelX2.Text = "Số ngày thuốc";
+            // 
+            // bdsPrescription
+            // 
+            this.bdsPrescription.DataSource = typeof(Medical.Data.Entities.Prescription);
             // 
             // noDataGridViewTextBoxColumn
             // 
@@ -485,6 +449,10 @@
             this.medicineIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.medicineIdDataGridViewTextBoxColumn.ValueMember = "Id";
             this.medicineIdDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // bdsMedicine
+            // 
+            this.bdsMedicine.DataSource = typeof(Medical.Data.Entities.Medicine);
             // 
             // volumnPerDayDataGridViewTextBoxColumn
             // 
@@ -514,13 +482,6 @@
             this.amountDataGridViewTextBoxColumn.ReadOnly = true;
             this.amountDataGridViewTextBoxColumn.Width = 80;
             // 
-            // InventoryVolumn
-            // 
-            this.InventoryVolumn.DataPropertyName = "InventoryVolumn";
-            this.InventoryVolumn.HeaderText = "Tồn kho";
-            this.InventoryVolumn.Name = "InventoryVolumn";
-            this.InventoryVolumn.Width = 70;
-            // 
             // descriptionDataGridViewTextBoxColumn
             // 
             this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -528,15 +489,64 @@
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "Ghi chú";
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             // 
+            // bdsPrescriptionDetail
+            // 
+            this.bdsPrescriptionDetail.DataSource = typeof(Medical.Data.Entities.PrescriptionDetail);
+            this.bdsPrescriptionDetail.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bdsPrescriptionDetail_ListChanged);
+            // 
+            // txtDoctor
+            // 
+            this.txtDoctor.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.txtDoctor.Border.Class = "TextBoxBorder";
+            this.txtDoctor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDoctor.ButtonCustom.Image = global::Medical.Properties.Resources.doctor;
+            this.txtDoctor.ForeColor = System.Drawing.Color.Black;
+            this.txtDoctor.Location = new System.Drawing.Point(502, 5);
+            this.txtDoctor.Name = "txtDoctor";
+            this.txtDoctor.ReadOnly = true;
+            this.txtDoctor.Size = new System.Drawing.Size(207, 21);
+            this.txtDoctor.TabIndex = 2;
+            this.txtDoctor.WatermarkImage = global::Medical.Properties.Resources.users;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancel.Image = global::Medical.Properties.Resources.close_16x16;
+            this.btnCancel.Location = new System.Drawing.Point(589, 10);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(120, 25);
+            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "Bỏ qua";
+            this.btnCancel.ThemeAware = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSave.Image = global::Medical.Properties.Resources.accept;
+            this.btnSave.Location = new System.Drawing.Point(463, 10);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(120, 25);
+            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "Ghi lại";
+            this.btnSave.ThemeAware = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // CheckUpRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 406);
+            this.ClientSize = new System.Drawing.Size(722, 513);
             this.ControlBox = false;
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.cboFigure);
-            this.Controls.Add(this.labelX14);
             this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.labelX11);
             this.Controls.Add(this.labelX12);
@@ -547,16 +557,17 @@
             this.Name = "CheckUpRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Lập đơn thuốc";
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPrescription)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPrescriptionDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCheckDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReCheckDate)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errPro)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPrescription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPrescriptionDetail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -579,8 +590,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.BindingSource bdsPrescription;
         private System.Windows.Forms.BindingSource bdsPrescriptionDetail;
-        private DevComponents.DotNetBar.ButtonX btnDeleteMedicine;
-        private DevComponents.DotNetBar.ButtonX buttonX3;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput txtCheckDate;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput txtReCheckDate;
         private System.Windows.Forms.BindingSource bdsMedicine;
@@ -593,5 +602,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn InventoryVolumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.Editors.IntegerInput integerInput1;
     }
 }
