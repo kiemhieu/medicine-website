@@ -6,6 +6,9 @@ using Medical.Data.EntitiyExtend;
 
 namespace Medical.Data
 {
+    /// <summary>
+    /// Definication
+    /// </summary>
     public class Definication
     {
         public const int ContentUnit = 1;
@@ -14,6 +17,9 @@ namespace Medical.Data
         
     }
 
+    /// <summary>
+    /// MedicinePlaningStatus
+    /// </summary>
     public class MedicinePlaningStatus
     {
         public const int New = 0;
@@ -32,6 +38,9 @@ namespace Medical.Data
         }
     }
 
+    /// <summary>
+    /// MedicineRoles
+    /// </summary>
     public class MedicineRoles
     {
         public const int Admin = 0;
@@ -40,9 +49,24 @@ namespace Medical.Data
         public const int Pharmacists = 3;
     }
 
+    /// <summary>
+    /// WarehouseIOType
+    /// </summary>
     public class WarehouseIOType
     {
         public const String Input = "I";
         public const String Output = "O";
+    }
+
+    /// <summary>
+    /// Role
+    /// </summary>
+    public class Role
+    {
+        public const int Administrator = 0;
+        public const int Doctor = 1;
+        public const int Pharmacist = 2;
+        public const int Manager = 3;
+
     }
 }
