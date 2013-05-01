@@ -51,7 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>RunTest.Program</StartupObject>
+    <StartupObject>Run.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>D75123718919F412AB1BF01C23BE5A6AFEA4A206</ManifestCertificateThumbprint>
