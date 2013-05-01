@@ -1,6 +1,6 @@
 ﻿namespace Medical.Forms.UI
 {
-    partial class TreeMenu
+    partial class TreeMenuGUI
     {
         /// <summary> 
         /// Required designer variable.
@@ -40,7 +40,7 @@
             this.treeView1.Size = new System.Drawing.Size(234, 427);
             this.treeView1.TabIndex = 0;
             // 
-            // TreeMenu
+            // TreeMenuGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -49,7 +49,7 @@
             this.Controls.Add(this.treeView1);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.Name = "TreeMenu";
+            this.Name = "TreeMenuGUI";
             this.TabText = "Danh mục";
             this.ResumeLayout(false);
 
