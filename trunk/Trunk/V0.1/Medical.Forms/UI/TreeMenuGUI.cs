@@ -10,9 +10,9 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Medical.Forms.UI
 {
-    public partial class TreeMenu : DockContent
+    public partial class TreeMenuGUI : DockContent
     {
-        public TreeMenu()
+        public TreeMenuGUI()
         {
             InitializeComponent();
         }

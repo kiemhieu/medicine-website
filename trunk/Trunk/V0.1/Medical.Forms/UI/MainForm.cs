@@ -15,7 +15,7 @@ namespace Medical.Forms.UI
         private readonly string _iconPath = Application.StartupPath + "\\Icons";
         private delegate void Method(ProgressiveUpdateArgs arg);
 
-        private TreeMenu treeMenu;
+        private TreeMenuGUI _treeMenuGui;
 
         public IContainerProvider ViewContainer { get; set; }
         public IMessageManager MessageContainer { get; set; }
@@ -34,7 +34,7 @@ namespace Medical.Forms.UI
 
 
             // Init Tree view
-            treeMenu = new TreeMenu
+            _treeMenuGui = new TreeMenuGUI
                            {
                                ShowHint = DockState.DockLeft,
                                AllowEndUserDocking = false,
@@ -42,12 +42,12 @@ namespace Medical.Forms.UI
                                IsFloat = false,
                                CloseButtonVisible = false
                            };
-            treeMenu.Show(dockingPanel);
+            _treeMenuGui.Show(dockingPanel);
         }
 
         public void CommonInitilize() {
             ProgressiveDialogWraper.Instance.Parent = this;
-            this.TopMenu.CreateMenuItem(this.treeMenu.TreeViewMenu);
+            this.TopMenu.CreateMenuItem(this._treeMenuGui.TreeViewMenu);
             this.TopMenu.MenuItemClicked += TrivMenuMenuItemClicked;
             this.TopMenu.CreateToolBar(this.MainToolBar);
 
