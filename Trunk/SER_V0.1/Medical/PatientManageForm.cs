@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Medical.Data;
 using Medical.Data.Entities;
-using Medical.Data.EntitiyExtend;
+
 using Medical.Data.Repositories;
 using Medical.Forms.UI;
 using WeifenLuo.WinFormsUI.Docking;
@@ -13,10 +13,11 @@ namespace Medical
     {
 
         private readonly IPatientRepository patientRepo = new PatientRepository();
-
+        private readonly ClinicRepository repClinic = new ClinicRepository();
         public PatientManageForm()
         {
             InitializeComponent();
+            BindClinic();
         }
 
         public PatientManageForm(string searchCondition)
@@ -48,7 +49,7 @@ namespace Medical
         {
             if (AppContext.LoggedInUser.Role >  MedicineRoles.SupperManager)
                 this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject, AppContext.CurrentClinic.Id);
-            else this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject);
+            else this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject, SelectedClinic.Id);
 
         }
 
@@ -77,8 +78,13 @@ namespace Medical
         {
             this.SelectedPatient = (Patient)this.bdgPatient.List[e.RowIndex];
             if (this.SelectedPatient == null) return;
-            this.DialogResult = DialogResult.Yes;
-            this.Close();
+            var historyForm = new CheckUpHistory(SelectedPatient.Id);
+            historyForm.ShowDialog(this);
+            this.bdgPatient.Clear();
+            if (AppContext.LoggedInUser.Role > MedicineRoles.SupperManager)
+                this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject, AppContext.CurrentClinic.Id);
+            else this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject);
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -133,6 +139,33 @@ namespace Medical
                 this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject, AppContext.CurrentClinic.Id);
             else this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject);
 
+        }
+        public Medical.Data.Entities.Clinic SelectedClinic { get; private set; }
+
+        private void cboClinic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.SelectedClinic = (Clinic)this.bdsClinic.List[cboClinic.SelectedIndex];
+            if (this.SelectedClinic == null) return;
+        }
+        private void BindClinic()
+        {
+            if (AppContext.LoggedInUser.Role > MedicineRoles.SupperManager)
+            {
+                cboClinic.DataSource = new List<Clinic> { repClinic.GetById(AppContext.CurrentClinic.Id) };
+            }
+            else
+                bdsClinic.DataSource = repClinic.GetAll();
+            if (bdsClinic.Count > 0) this.SelectedClinic = ((Clinic)bdsClinic.Current);
+            else this.SelectedClinic = AppContext.CurrentClinic;
+
+        }
+
+        private void btnCheckingHistory_Click(object sender, EventArgs e)
+        {
+            var selected = (Patient)this.bdgPatient.DataSource;
+            if (selected == null) return;
+            var historyForm = new CheckUpHistory(selected.Id);
+            historyForm.ShowDialog(this);
         }
 
     }

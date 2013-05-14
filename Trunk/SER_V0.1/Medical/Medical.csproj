@@ -528,7 +528,6 @@
     <EmbeddedResource Include="Warehouse\frmWHPageHistory.resx">
       <DependentUpon>frmWHPageHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
     <None Include="Properties\DataSources\Medical.Data.Dataset.DS_ReportMedicineIOByMonth.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Dataset.DS_ReportTotalMedicineDeliveryByMonth.datasource" />
     <None Include="Properties\DataSources\Medical.Data.Entities.Clinic.datasource" />
