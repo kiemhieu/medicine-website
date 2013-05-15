@@ -99,6 +99,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Medical.Common\Medical.Common.csproj">
+      <Project>{221944a4-3b72-48c7-9328-d58aa0d05ff3}</Project>
+      <Name>Medical.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Medical.Data\Medical.Data.csproj">
       <Project>{169CF0C0-C72D-424A-9CC4-55D95E275755}</Project>
       <Name>Medical.Data</Name>
@@ -206,7 +210,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="target.ico" />
-    <Content Include="TreeMenu.xml" />
+    <Content Include="TreeMenu.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TreeMenuImage.xml" />
   </ItemGroup>
   <ItemGroup>
