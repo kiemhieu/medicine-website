@@ -10,7 +10,7 @@ namespace Medical.Common
 {
     public class Xml
     {
-        public T Load<T>(String path)
+        public static T Load<T>(String path)
         {
             var serializer = new XmlSerializer(typeof(T));
             using (var fs = new FileStream(path, FileMode.Open))
