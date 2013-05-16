@@ -47,9 +47,9 @@ namespace Medical.Forms.UI
 
         public void CommonInitilize() {
             ProgressiveDialogWraper.Instance.Parent = this;
-            this.TopMenu.CreateMenuItem(this._treeMenuGui.TreeViewMenu);
+            this.TopMenu.CreateMenuItem( AppContext.LoggedInUser.Role, this._treeMenuGui.TreeViewMenu);
             this.TopMenu.MenuItemClicked += TrivMenuMenuItemClicked;
-            this.TopMenu.CreateToolBar(this.MainToolBar);
+            this.TopMenu.CreateToolBar(this.MainToolBar, AppContext.LoggedInUser.Role);
 
             this.ViewManager = new ViewManager(this.ModuleContainer, this.dockingPanel);
             // ViewManager.OnRequestDialogEventArgs += ViewManagerOnRequestDialogEventArgs;
@@ -314,12 +314,13 @@ namespace Medical.Forms.UI
 
         private void MainForm_Shown(object sender, System.EventArgs e) {
             this.txtClinic.Text = AppContext.CurrentClinic.Name;
-            Login login = new Login();
+            var login = new Login();
             login.ShowDialog(this);
             if (AppContext.Authenticated)
             {
                 this.txtLoggedIn.Text = AppContext.LoggedInUser.UserName;
             }
+            this.CommonInitilize();
         }
 
         private void openToolStripMenuItem_Click(object sender, System.EventArgs e)

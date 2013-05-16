@@ -51,7 +51,7 @@ namespace Run.Implementation
 
             this._mainForm.Text = ConfigurationSettings.AppSettings.Get("Title");
             this._mainForm.Icon = System.Drawing.Icon.ExtractAssociatedIcon(ConfigurationSettings.AppSettings.Get("IconPath"));
-            this._mainForm.CommonInitilize();
+            // this._mainForm.CommonInitilize();
         }
 
         /// <summary>

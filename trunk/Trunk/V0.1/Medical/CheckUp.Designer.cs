@@ -104,7 +104,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(12, 5);
+            this.labelX1.Location = new System.Drawing.Point(18, 9);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(50, 16);
             this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -125,10 +125,10 @@
             this.txtSeachName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Name", true));
             this.txtSeachName.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSeachName.ForeColor = System.Drawing.Color.Black;
-            this.txtSeachName.Location = new System.Drawing.Point(68, 2);
+            this.txtSeachName.Location = new System.Drawing.Point(82, 7);
             this.txtSeachName.Name = "txtSeachName";
             this.txtSeachName.ReadOnly = true;
-            this.txtSeachName.Size = new System.Drawing.Size(300, 21);
+            this.txtSeachName.Size = new System.Drawing.Size(353, 21);
             this.txtSeachName.TabIndex = 0;
             this.txtSeachName.ButtonCustomClick += new System.EventHandler(this.textBoxX1_ButtonCustomClick);
             // 
@@ -147,7 +147,7 @@
             this.textBoxX2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Code", true));
             this.textBoxX2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX2.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX2.Location = new System.Drawing.Point(65, 16);
+            this.textBoxX2.Location = new System.Drawing.Point(73, 16);
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.ReadOnly = true;
             this.textBoxX2.Size = new System.Drawing.Size(86, 20);
@@ -180,7 +180,7 @@
             this.textBoxX3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "BirthYear", true));
             this.textBoxX3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX3.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX3.Location = new System.Drawing.Point(65, 38);
+            this.textBoxX3.Location = new System.Drawing.Point(73, 40);
             this.textBoxX3.Name = "textBoxX3";
             this.textBoxX3.ReadOnly = true;
             this.textBoxX3.Size = new System.Drawing.Size(86, 20);
@@ -195,7 +195,7 @@
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX3.Location = new System.Drawing.Point(11, 41);
+            this.labelX3.Location = new System.Drawing.Point(11, 43);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(49, 15);
             this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -211,7 +211,7 @@
             this.labelX4.BackgroundStyle.Class = "";
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX4.Location = new System.Drawing.Point(229, 63);
+            this.labelX4.Location = new System.Drawing.Point(229, 67);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(36, 15);
             this.labelX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -229,7 +229,7 @@
             this.textBoxX5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Phone", true));
             this.textBoxX5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX5.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX5.Location = new System.Drawing.Point(65, 60);
+            this.textBoxX5.Location = new System.Drawing.Point(73, 64);
             this.textBoxX5.Name = "textBoxX5";
             this.textBoxX5.ReadOnly = true;
             this.textBoxX5.Size = new System.Drawing.Size(129, 20);
@@ -244,7 +244,7 @@
             this.labelX5.BackgroundStyle.Class = "";
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX5.Location = new System.Drawing.Point(11, 63);
+            this.labelX5.Location = new System.Drawing.Point(11, 67);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(52, 15);
             this.labelX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -262,7 +262,7 @@
             this.textBoxX6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "StartDate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "dd/MM/yyyy"));
             this.textBoxX6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX6.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX6.Location = new System.Drawing.Point(639, 38);
+            this.textBoxX6.Location = new System.Drawing.Point(639, 40);
             this.textBoxX6.Name = "textBoxX6";
             this.textBoxX6.ReadOnly = true;
             this.textBoxX6.Size = new System.Drawing.Size(86, 20);
@@ -277,7 +277,7 @@
             this.labelX6.BackgroundStyle.Class = "";
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX6.Location = new System.Drawing.Point(569, 41);
+            this.labelX6.Location = new System.Drawing.Point(569, 43);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(70, 15);
             this.labelX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -307,7 +307,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(9, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(855, 99);
+            this.groupBox1.Size = new System.Drawing.Size(855, 103);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin bệnh nhân";
@@ -357,7 +357,7 @@
             this.textBoxX14.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "ClinicName", true));
             this.textBoxX14.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX14.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX14.Location = new System.Drawing.Point(297, 38);
+            this.textBoxX14.Location = new System.Drawing.Point(297, 40);
             this.textBoxX14.Name = "textBoxX14";
             this.textBoxX14.ReadOnly = true;
             this.textBoxX14.Size = new System.Drawing.Size(215, 20);
@@ -372,7 +372,7 @@
             this.labelX15.BackgroundStyle.Class = "";
             this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX15.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX15.Location = new System.Drawing.Point(229, 41);
+            this.labelX15.Location = new System.Drawing.Point(229, 43);
             this.labelX15.Name = "labelX15";
             this.labelX15.Size = new System.Drawing.Size(64, 15);
             this.labelX15.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -390,10 +390,10 @@
             this.textBoxX4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Address", true));
             this.textBoxX4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX4.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX4.Location = new System.Drawing.Point(297, 60);
+            this.textBoxX4.Location = new System.Drawing.Point(297, 64);
             this.textBoxX4.Name = "textBoxX4";
             this.textBoxX4.ReadOnly = true;
-            this.textBoxX4.Size = new System.Drawing.Size(429, 20);
+            this.textBoxX4.Size = new System.Drawing.Size(428, 20);
             this.textBoxX4.TabIndex = 14;
             // 
             // labelX7
@@ -438,7 +438,7 @@
             this.labelX9.BackgroundStyle.Class = "";
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX9.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX9.Location = new System.Drawing.Point(9, 18);
+            this.labelX9.Location = new System.Drawing.Point(9, 20);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(58, 15);
             this.labelX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -456,7 +456,7 @@
             this.textBoxX9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPrescription, "Date", true));
             this.textBoxX9.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX9.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX9.Location = new System.Drawing.Point(73, 15);
+            this.textBoxX9.Location = new System.Drawing.Point(73, 17);
             this.textBoxX9.Name = "textBoxX9";
             this.textBoxX9.ReadOnly = true;
             this.textBoxX9.Size = new System.Drawing.Size(86, 20);
@@ -475,7 +475,7 @@
             this.labelX10.BackgroundStyle.Class = "";
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX10.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX10.Location = new System.Drawing.Point(561, 17);
+            this.labelX10.Location = new System.Drawing.Point(561, 19);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(33, 15);
             this.labelX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -493,7 +493,7 @@
             this.textBoxX10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPrescription, "DoctorName", true));
             this.textBoxX10.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX10.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX10.Location = new System.Drawing.Point(597, 15);
+            this.textBoxX10.Location = new System.Drawing.Point(597, 17);
             this.textBoxX10.Name = "textBoxX10";
             this.textBoxX10.ReadOnly = true;
             this.textBoxX10.Size = new System.Drawing.Size(129, 20);
@@ -508,7 +508,7 @@
             this.labelX11.BackgroundStyle.Class = "";
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX11.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX11.Location = new System.Drawing.Point(9, 37);
+            this.labelX11.Location = new System.Drawing.Point(9, 41);
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(53, 15);
             this.labelX11.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -524,7 +524,7 @@
             this.labelX12.BackgroundStyle.Class = "";
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX12.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX12.Location = new System.Drawing.Point(9, 167);
+            this.labelX12.Location = new System.Drawing.Point(9, 174);
             this.labelX12.Name = "labelX12";
             this.labelX12.Size = new System.Drawing.Size(43, 15);
             this.labelX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -542,7 +542,7 @@
             this.textBoxX11.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPrescription, "FigureName", true));
             this.textBoxX11.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX11.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX11.Location = new System.Drawing.Point(73, 164);
+            this.textBoxX11.Location = new System.Drawing.Point(73, 171);
             this.textBoxX11.Name = "textBoxX11";
             this.textBoxX11.ReadOnly = true;
             this.textBoxX11.Size = new System.Drawing.Size(103, 20);
@@ -559,7 +559,7 @@
             this.textBoxX12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPrescription, "Note", true));
             this.textBoxX12.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX12.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX12.Location = new System.Drawing.Point(73, 37);
+            this.textBoxX12.Location = new System.Drawing.Point(73, 41);
             this.textBoxX12.Multiline = true;
             this.textBoxX12.Name = "textBoxX12";
             this.textBoxX12.ReadOnly = true;
@@ -575,7 +575,7 @@
             this.labelX13.BackgroundStyle.Class = "";
             this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX13.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX13.Location = new System.Drawing.Point(229, 17);
+            this.labelX13.Location = new System.Drawing.Point(229, 19);
             this.labelX13.Name = "labelX13";
             this.labelX13.Size = new System.Drawing.Size(67, 15);
             this.labelX13.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -587,15 +587,14 @@
             this.panel1.AutoSize = true;
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 26);
+            this.panel1.Location = new System.Drawing.Point(0, 36);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(9, 0, 9, 5);
-            this.panel1.Size = new System.Drawing.Size(873, 104);
+            this.panel1.Size = new System.Drawing.Size(873, 108);
             this.panel1.TabIndex = 24;
             // 
             // panel2
             // 
-            this.panel2.AutoSize = true;
             this.panel2.Controls.Add(this.btnCheck);
             this.panel2.Controls.Add(this.btnCheckingHistory);
             this.panel2.Controls.Add(this.btnRegister);
@@ -604,60 +603,57 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(873, 26);
+            this.panel2.Size = new System.Drawing.Size(873, 36);
             this.panel2.TabIndex = 25;
             // 
             // btnCheck
             // 
             this.btnCheck.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheck.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCheck.Image = global::Medical.Properties.Resources.doctor;
-            this.btnCheck.Location = new System.Drawing.Point(781, 1);
+            this.btnCheck.Location = new System.Drawing.Point(633, 7);
             this.btnCheck.Name = "btnCheck";
-            this.btnCheck.Size = new System.Drawing.Size(89, 21);
+            this.btnCheck.Size = new System.Drawing.Size(90, 21);
             this.btnCheck.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCheck.TabIndex = 3;
             this.btnCheck.Text = "Khám bệnh";
+            this.btnCheck.ThemeAware = true;
             this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
             // btnCheckingHistory
             // 
             this.btnCheckingHistory.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCheckingHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheckingHistory.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCheckingHistory.Image = global::Medical.Properties.Resources.document;
-            this.btnCheckingHistory.Location = new System.Drawing.Point(720, 1);
+            this.btnCheckingHistory.Location = new System.Drawing.Point(537, 7);
             this.btnCheckingHistory.Name = "btnCheckingHistory";
-            this.btnCheckingHistory.Size = new System.Drawing.Size(60, 21);
+            this.btnCheckingHistory.Size = new System.Drawing.Size(90, 21);
             this.btnCheckingHistory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCheckingHistory.TabIndex = 2;
             this.btnCheckingHistory.Text = "Y bạ";
+            this.btnCheckingHistory.ThemeAware = true;
             this.btnCheckingHistory.Click += new System.EventHandler(this.btnCheckingHistory_Click);
             // 
             // btnRegister
             // 
             this.btnRegister.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnRegister.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRegister.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnRegister.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnRegister.Image = global::Medical.Properties.Resources.add;
-            this.btnRegister.Location = new System.Drawing.Point(620, 1);
+            this.btnRegister.Location = new System.Drawing.Point(441, 7);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(99, 21);
+            this.btnRegister.Size = new System.Drawing.Size(90, 21);
             this.btnRegister.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRegister.TabIndex = 1;
             this.btnRegister.Text = "Đăng ký mới";
+            this.btnRegister.ThemeAware = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 130);
+            this.panel3.Location = new System.Drawing.Point(0, 144);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(9, 5, 9, 9);
-            this.panel3.Size = new System.Drawing.Size(873, 360);
+            this.panel3.Size = new System.Drawing.Size(873, 397);
             this.panel3.TabIndex = 26;
             // 
             // groupBox2
@@ -679,7 +675,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(9, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(855, 346);
+            this.groupBox2.Size = new System.Drawing.Size(855, 383);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tình trạng bệnh";
@@ -690,8 +686,8 @@
             this.dataGridViewX1.AllowUserToDeleteRows = false;
             this.dataGridViewX1.AllowUserToResizeColumns = false;
             this.dataGridViewX1.AllowUserToResizeRows = false;
-            this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridViewX1.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -719,13 +715,13 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(73, 187);
+            this.dataGridViewX1.Location = new System.Drawing.Point(73, 196);
             this.dataGridViewX1.MultiSelect = false;
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(652, 152);
+            this.dataGridViewX1.Size = new System.Drawing.Size(652, 185);
             this.dataGridViewX1.TabIndex = 26;
             // 
             // noDataGridViewTextBoxColumn
@@ -801,7 +797,7 @@
             this.textBoxX15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPrescription, "RecheckDate", true));
             this.textBoxX15.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX15.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX15.Location = new System.Drawing.Point(297, 15);
+            this.textBoxX15.Location = new System.Drawing.Point(297, 17);
             this.textBoxX15.Name = "textBoxX15";
             this.textBoxX15.ReadOnly = true;
             this.textBoxX15.Size = new System.Drawing.Size(86, 20);
@@ -816,7 +812,7 @@
             this.labelX14.BackgroundStyle.Class = "";
             this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX14.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX14.Location = new System.Drawing.Point(9, 187);
+            this.labelX14.Location = new System.Drawing.Point(9, 196);
             this.labelX14.Name = "labelX14";
             this.labelX14.Size = new System.Drawing.Size(54, 15);
             this.labelX14.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -831,11 +827,12 @@
             // CheckUp
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(873, 490);
+            this.ClientSize = new System.Drawing.Size(873, 541);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(773, 37);

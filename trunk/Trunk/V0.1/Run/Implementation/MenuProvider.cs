@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Xml;
 using Medical.Common;
@@ -21,6 +22,7 @@ namespace Run.Implementation
 
         private readonly TreeMenu _treeMenu;
         private ImageList _images;
+        private int role;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MenuProvider"/> class.
@@ -38,12 +40,11 @@ namespace Run.Implementation
             _treeMenu = Xml.Load<TreeMenu>(configFile);
             _images = new ImageList();
          
-            var images = (TreeMenuImages)Xml.Load<TreeMenuImages>("TreeMenuImage.xml");
+            var images = Xml.Load<TreeMenuImages>("TreeMenuImage.xml");
             if (images == null) return;
-            for (int i = 0; i < images.Files.Count; i++)
+            foreach (string t in images.Files)
             {
-                // _images.
-                images.Files.AddRange(images.Files.);
+                _images.Images.Add(Image.FromFile(images.Folder + "\\" + t));
             }
         }
 
@@ -59,12 +60,15 @@ namespace Run.Implementation
         /// <summary>
         /// Creates the menu item.
         /// </summary>
-        public void CreateMenuItem(params Control[] menuCntrl)
+        public void CreateMenuItem(int role, params Control[] menuCntrl)
         {
+            this.role = role;
             if (menuCntrl == null) return;
             if (menuCntrl.Length == 0) return;
             var trip = menuCntrl[0] as TreeView;
             LoadMenuItem(trip);
+            trip.ImageList = _images;
+            
         }
 
 
@@ -73,7 +77,7 @@ namespace Run.Implementation
         /// Note: Call after create menu strip to  fully loading of item
         /// </summary>
         /// <param name="toolbar">The toolbar.</param>
-        public void CreateToolBar(ToolStrip toolbar)
+        public void CreateToolBar(ToolStrip toolbar, int role)
         {
         }
 
@@ -87,7 +91,8 @@ namespace Run.Implementation
 
             foreach (var item in this._treeMenu.MenuItems)
             {
-                var childNode = new TreeNode(item.Title) { Name = item.Key, ImageIndex = item.ImageIndex, ToolTipText = item.Description };
+                if (item.Role != null && item.Role.IndexOf(this.role.ToString()) < 0) continue;
+                var childNode = new TreeNode(item.Title) { Name = item.Key, ImageIndex = item.ImageIndex, SelectedImageIndex = item.ImageIndex, ToolTipText = item.Description };
                 GetNote(childNode, item);
                 tree.Nodes.Add(childNode);
             }
@@ -106,7 +111,9 @@ namespace Run.Implementation
             if (item.Childs.Count == 0) return;
             foreach (var child in item.Childs)
             {
-                var childNode = new TreeNode(child.Title) { Name = child.Key, ImageIndex = item.ImageIndex, ToolTipText = item.Description };
+                Console.WriteLine("Item" + child.Role + " " + this.role);
+                if (child.Role != null && child.Role.IndexOf(this.role.ToString()) < 0) continue;
+                var childNode = new TreeNode(child.Title) { Name = child.Key, ImageIndex = child.ImageIndex, SelectedImageIndex = child.ImageIndex, ToolTipText = child.Description };
                 GetNote(childNode, child);
                 node.Nodes.Add(childNode);
             }
