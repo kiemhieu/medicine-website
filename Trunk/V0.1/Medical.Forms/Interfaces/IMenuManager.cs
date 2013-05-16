@@ -17,7 +17,7 @@ namespace Medical.Forms.Interfaces
         /// <summary>
         /// Creates the menu item.
         /// </summary>
-        void CreateMenuItem(params Control [] menuCntrl);
+        void CreateMenuItem(int role, params Control [] menuCntrl);
 
         /// <summary>
         /// Gets the menu item by key.
@@ -26,7 +26,7 @@ namespace Medical.Forms.Interfaces
         /// <returns></returns>
         TopMenuItem GetMenuItemByKey(string key);
 
-        void CreateToolBar(ToolStrip toolbar);
+        void CreateToolBar(ToolStrip toolbar, int role);
 
         /// <summary>
         /// Occurs when [menu item clicked].

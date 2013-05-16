@@ -38,7 +38,7 @@ namespace Medical {
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void btnCheckingHistory_Click(object sender, EventArgs e) {
-            var selected = (Patient)this.bdsPatient.DataSource;
+            var selected = (Patient)this.bdsPatient.Current;
             if (selected == null) return;
             var historyForm = new CheckUpHistory(selected.Id);
             historyForm.ShowDialog(this);
