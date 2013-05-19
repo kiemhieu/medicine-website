@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
 using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
@@ -10,8 +12,8 @@ namespace Medical {
 
         private IPrescriptionRepository prescriptionRepo = new PrescriptionRepository();
         private IPrescriptionDetailRepository prescriptionDetailRepo = new PrescriptionDetailRepository();
-        private Prescription lastPrescription;
-        private Patient selectedPatient;
+        private Prescription _lastPrescription;
+        private Patient _selectedPatient;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CheckUp"/> class.
@@ -25,7 +27,7 @@ namespace Medical {
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnRegister_Click(object sender, EventArgs e) {
+        private void BtnRegisterClick(object sender, EventArgs e) {
             var registerform = new PatientRegister();
             var result = registerform.ShowDialog();
             if (result != System.Windows.Forms.DialogResult.Yes) return;
@@ -37,7 +39,7 @@ namespace Medical {
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnCheckingHistory_Click(object sender, EventArgs e) {
+        private void BtnCheckingHistoryClick(object sender, EventArgs e) {
             var selected = (Patient)this.bdsPatient.Current;
             if (selected == null) return;
             var historyForm = new CheckUpHistory(selected.Id);
@@ -49,7 +51,7 @@ namespace Medical {
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnCheck_Click(object sender, EventArgs e)
+        private void BtnCheckClick(object sender, EventArgs e)
         {
             if (this.bdsPatient.DataSource is Patient)
             {
@@ -66,7 +68,7 @@ namespace Medical {
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void textBoxX1_ButtonCustomClick(object sender, EventArgs e) {
+        private void TextBoxX1ButtonCustomClick(object sender, EventArgs e) {
             var patientBrowse = new PatientBrowseForm();
             var result = patientBrowse.ShowDialog(this);
             if (result != System.Windows.Forms.DialogResult.Yes) return;
@@ -83,7 +85,7 @@ namespace Medical {
             this.bdsPrescription.Clear();
             this.bdsPrescriptionDetail.Clear();
             this.bdsPatient.DataSource = patient;
-            this.selectedPatient = patient;
+            this._selectedPatient = patient;
 
             if (patient == null)
             {
@@ -92,19 +94,29 @@ namespace Medical {
             }
 
             this.btnCheck.Enabled = true;
-            lastPrescription = prescriptionRepo.GetLastByPatient(patient.Id);
+            _lastPrescription = prescriptionRepo.GetLastByPatient(patient.Id);
 
-            if (lastPrescription == null) return;
-            this.bdsPrescription.DataSource = lastPrescription;
+            if (_lastPrescription == null) return;
+            this.bdsPrescription.DataSource = _lastPrescription;
 
-            List<PrescriptionDetail> detailList = prescriptionDetailRepo.GetByPrescription(lastPrescription.Id);
-            if (detailList != null)
-            {
-                for (int i = 0; i < detailList.Count; i++)
-                {
-                    detailList[i].No = i + 1;
-                }
+            List<PrescriptionDetail> detailList = prescriptionDetailRepo.GetByPrescription(_lastPrescription.Id);
+            //if (detailList != null)
+            //{
+            //    for (int i = 0; i < detailList.Count; i++)
+            //    {
+            //        detailList[i].No = i + 1;
+            //    }
                 this.bdsPrescriptionDetail.DataSource = detailList;
+            //}
+        }
+
+        private void DataGridViewX1DataBindingComplete(object sender, System.Windows.Forms.DataGridViewBindingCompleteEventArgs e)
+        {
+            var gridView = (DataGridViewX)sender;
+            if (null == gridView) return;
+            foreach (DataGridViewRow r in gridView.Rows)
+            {
+                gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
             }
         }
     }

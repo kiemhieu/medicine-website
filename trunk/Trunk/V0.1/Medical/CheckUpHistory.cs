@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
 using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
@@ -36,12 +37,12 @@ namespace Medical {
             this.cboFigure.DataSource = figureRepo.GetAll();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnCloseClick(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void lsbDate_SelectedIndexChanged(object sender, EventArgs e)
+        private void LsbDateSelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.lsbDate.SelectedValue == null) return;
             var value = Convert.ToInt32(this.lsbDate.SelectedValue);
@@ -51,6 +52,16 @@ namespace Medical {
             var prescriptionDetails = prescription.PrescriptionDetails;
             for (var i = 0; i < prescriptionDetails.Count; i++) prescriptionDetails[i].No = i + 1;
             this.bdsPrescriptionDetail.DataSource = prescriptionDetails;
+        }
+
+        private void DataGridViewX1DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            var gridView = (DataGridViewX)sender;
+            if (null == gridView) return;
+            foreach (DataGridViewRow r in gridView.Rows)
+            {
+                gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
+            }
         }
 
     }
