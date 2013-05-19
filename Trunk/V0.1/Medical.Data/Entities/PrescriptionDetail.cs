@@ -35,6 +35,12 @@ namespace Medical.Data.Entities
             get { return this.Medicine == null ? string.Empty : this.Medicine.Name; }
         }
 
+        [NotMapped]
+        public String TradeName
+        {
+            get { return this.Medicine == null ? string.Empty : this.Medicine.TradeName; }
+        }
+
         public override void Validate()
         {
             base.Validate();

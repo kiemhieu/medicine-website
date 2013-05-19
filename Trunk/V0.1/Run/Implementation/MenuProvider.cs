@@ -111,10 +111,11 @@ namespace Run.Implementation
             if (item.Childs.Count == 0) return;
             foreach (var child in item.Childs)
             {
-                Console.WriteLine("Item" + child.Role + " " + this.role);
+                // Console.WriteLine("Item" + child.Role + " " + this.role);
                 if (child.Role != null && child.Role.IndexOf(this.role.ToString()) < 0) continue;
                 var childNode = new TreeNode(child.Title) { Name = child.Key, ImageIndex = child.ImageIndex, SelectedImageIndex = child.ImageIndex, ToolTipText = child.Description };
                 GetNote(childNode, child);
+                // childNode.IsVisible
                 node.Nodes.Add(childNode);
             }
         }
