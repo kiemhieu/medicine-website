@@ -4,8 +4,8 @@
     <TreeMenuItem No="1" Title="Khám bệnh" ImageIndex="0">
       <Childs>
         <TreeMenuItem No="1" Title="Khám bệnh" Key="CheckUp" Role="0,1,2" ImageIndex="1" Description="" />
-        <TreeMenuItem No="2" Title="Nhật ký khám bệnh" Key="CheckUpHistory" Role="2" ImageIndex="2" Description="" />
-        <TreeMenuItem No="2" Title="Bệnh nhân chậm tái khám" Key="CheckUpOnDate" Role="3" ImageIndex="3" Description="" />
+        <TreeMenuItem No="2" Title="Nhật ký khám bệnh" Key="CheckUpHistory" Role="0,1,2" ImageIndex="2" Description="" />
+        <TreeMenuItem No="2" Title="Bệnh nhân chậm tái khám" Key="CheckUpOnDate" Role="0,1,2" ImageIndex="3" Description="" />
       </Childs>
     </TreeMenuItem>
     <TreeMenuItem No="2" Title="Cấp thuốc" ImageIndex="4">
