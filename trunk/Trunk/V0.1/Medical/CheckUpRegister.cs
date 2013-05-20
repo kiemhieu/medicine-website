@@ -174,6 +174,8 @@ namespace Medical
         /// <returns></returns>
         private bool ValidateData()
         {
+            this.errPro.Clear();
+
             bool result = true;
             if (this.Day <= 0)
             {
@@ -188,6 +190,12 @@ namespace Medical
             }
 
             var prescriptionList = (List<PrescriptionDetail>)this.bdsPrescriptionDetail.List;
+            if (prescriptionList.Count == 0)
+            {
+                this.errPro.SetError(dataGridViewX1, "Chưa nhập đơn thuốc");
+                result = false;
+            }
+
             foreach (var item in prescriptionList)
             {
                 item.Validate();
@@ -226,11 +234,11 @@ namespace Medical
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.Windows.Forms.DataGridViewCellCancelEventArgs"/> instance containing the event data.</param>
-        private void dataGridViewX1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        private void DataGridViewX1CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             var prescriptionDetail = (PrescriptionDetail)this.bdsPrescriptionDetail.Current;
             if (prescriptionDetail == null) e.Cancel = true;
-            if (prescriptionDetail.FigureDetailId.HasValue && prescriptionDetail.FigureDetailId.Value > 0 && (e.ColumnIndex == 1 || e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4)) e.Cancel = true;
+            // if (prescriptionDetail.FigureDetailId.HasValue && prescriptionDetail.FigureDetailId.Value > 0 && (e.ColumnIndex == 1 || e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4)) e.Cancel = true;
         }
 
         /// <summary>
@@ -238,7 +246,7 @@ namespace Medical
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnDeleteMedicine_Click(object sender, EventArgs e)
+        private void BtnDeleteMedicineClick(object sender, EventArgs e)
         {
             // Delete selected row
             if (this.dataGridViewX1.SelectedRows.Count == 0) return;
@@ -262,7 +270,7 @@ namespace Medical
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSaveClick(object sender, EventArgs e)
         {
             this.dataGridViewX1.EndEdit();
             if (!this.ValidateData()) return;
@@ -291,7 +299,7 @@ namespace Medical
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancelClick(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
@@ -302,7 +310,7 @@ namespace Medical
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void cboFigure_SelectedIndexChanged(object sender, EventArgs e)
+        private void CboFigureSelectedIndexChanged(object sender, EventArgs e)
         {
             if (_isSkipUpdatingFigure) return;
 
@@ -348,15 +356,15 @@ namespace Medical
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.ComponentModel.ListChangedEventArgs"/> instance containing the event data.</param>
-        private void bdsPrescriptionDetail_ListChanged(object sender, ListChangedEventArgs e)
+        private void BdsPrescriptionDetailListChanged(object sender, ListChangedEventArgs e)
         {
-            if (e.ListChangedType == ListChangedType.ItemAdded)
-            {
-                var source = (BindingSource)sender;
-                var item = source.List[e.NewIndex] as PrescriptionDetail;
-                item.No = source.List.Count;
-                item.Day = this.Day;
-            }
+            //if (e.ListChangedType == ListChangedType.ItemAdded)
+            //{
+            //    var source = (BindingSource)sender;
+            //    var item = source.List[e.NewIndex] as PrescriptionDetail;
+            //    item.No = source.List.Count;
+            //    item.Day = this.Day;
+            //}
         }
 
         /// <summary>
@@ -364,7 +372,7 @@ namespace Medical
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.Windows.Forms.DataGridViewCellEventArgs"/> instance containing the event data.</param>
-        private void dataGridViewX1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewX1CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             var prescriptionDetail = (PrescriptionDetail)this.bdsPrescriptionDetail.Current;
             if (prescriptionDetail == null) return;
@@ -378,7 +386,7 @@ namespace Medical
             {
                 prescriptionDetail.InventoryVolumn = 0;
             }
-            if (CheckDuplicate(prescriptionDetail.MedicineId)) prescriptionDetail.AddError("MedicineId", "Thuốc đã tồn tại");
+            if (!CheckDuplicate(prescriptionDetail.MedicineId)) prescriptionDetail.AddError("MedicineId", "Thuốc đã tồn tại");
         }
 
         /// <summary>
@@ -386,7 +394,7 @@ namespace Medical
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void txtReCheckDate_ValueObjectChanged(object sender, EventArgs e)
+        private void TxtReCheckDateValueObjectChanged(object sender, EventArgs e)
         {
             var prescriptionList = (List<PrescriptionDetail>)this.bdsPrescriptionDetail.List;
             if (prescriptionList == null) return;
@@ -399,9 +407,19 @@ namespace Medical
             this.bdsPrescriptionDetail.ResetBindings(true);
         }
 
-        private void dataGridViewX1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        private void DataGridViewX1DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
+        }
+
+        private void DataGridViewX1DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            var gridView = (DataGridViewX)sender;
+            if (null == gridView) return;
+            foreach (DataGridViewRow r in gridView.Rows)
+            {
+                gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
+            }
         }
     }
 }
