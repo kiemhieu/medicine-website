@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
 using Medical.Common.Exceptions;
 using Medical.Data;
 using Medical.Data.Entities;
@@ -42,6 +43,12 @@ namespace Medical.History {
         {
             this._prescription = this._prescriptionRepo.Get(this._prescriptionId);
             this.bdsPrescription.DataSource = this._prescription;
+            foreach (var item in this._prescription.PrescriptionDetails)
+            {
+                item.TradeName = item.Medicine.TradeName;
+                item.MedicineName = item.Medicine.Name;
+                item.UnitName= item.Medicine.Define.Name;
+            }
             this.bdsPrescriptionDetail.DataSource = this._prescription.PrescriptionDetails;
         }
 
@@ -74,6 +81,16 @@ namespace Medical.History {
                 this.Close();
             } catch (ProgramLogicalException ex) {
                 MessageDialog.Instance.ShowMessage(this, "ERR0001", ex.Message);
+            }
+        }
+
+        private void dataGridViewX1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            var gridView = (DataGridViewX)sender;
+            if (null == gridView) return;
+            foreach (DataGridViewRow r in gridView.Rows)
+            {
+                gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
             }
         }
     }

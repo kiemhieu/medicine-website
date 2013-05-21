@@ -10,6 +10,7 @@ using DevComponents.DotNetBar.Controls;
 using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
+using Medical.Forms.UI;
 
 
 namespace Medical
@@ -28,6 +29,7 @@ namespace Medical
         private List<Figure> _figureList;
         private Prescription _prescription;
         private List<PrescriptionDetail> _prescriptionDetailList;
+        private Boolean _isWarning;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CheckUpRegister"/> class.
@@ -45,6 +47,7 @@ namespace Medical
         public CheckUpRegister()
         {
             InitializeComponent();
+            InitError();
         }
 
         /// <summary>
@@ -60,11 +63,11 @@ namespace Medical
                 this._patient = patient;
 
                 // Initialize combobox
-                //var figures = _figureRepo.GetAll();
                 // thangnn edit
                 var figures = _figureRepo.GetByClinicId(AppContext.CurrentClinic.Id);
-                // end
+                
                 this.cboFigure.DataSource = figures;
+                
                 // Get Doctor Name
                 this.txtDoctor.Text = AppContext.LoggedInUser.Name;
                 var medicines = _medicineRepo.GetAll();
@@ -84,7 +87,6 @@ namespace Medical
                                                  Date = DateTime.Today,
                                                  RecheckDate = DateTime.Today.AddDays(DefaultVolumn),
                                                  DoctorId = AppContext.LoggedInUser.Id,
-                                                 //Doctor = AppContext.LoggedInUser,
                                                  PatientId = patient.Id,
                                                  CreatedUser = AppContext.LoggedInUser.Id,
                                                  LastUpdatedUser = AppContext.LoggedInUser.Id,
@@ -92,39 +94,19 @@ namespace Medical
                                              };
 
                     this._prescriptionDetailList = new List<PrescriptionDetail>();
-
-                    if (lastPrescription != null)
-                    {
-                        // this._prescription.Note = lastPrescription.Note;
-                        // this._prescription.FigureId = lastPrescription.FigureId;
-
-                        // Create FigureId
-                        //var figureDetails = this._figureDetailRepo.GetByFigure(lastPrescription.FigureId);
-                        //foreach (var figureDetail in figureDetails)
-                        //{
-                        //    var prescriptionDetail = new PrescriptionDetail
-                        //                                 {
-                        //                                     No = this._prescriptionDetailList.Count + 1,
-                        //                                     FigureDetailId = figureDetail.Id,
-                        //                                     MedicineId = figureDetail.MedicineId,
-                        //                                     Medicine = figureDetail.Medicine,
-                        //                                     VolumnPerDay = figureDetail.Volumn,
-                        //                                     Day = DefaultVolumn,
-                        //                                     Amount = DefaultVolumn*figureDetail.Volumn,
-                        //                                     Version = 0
-                        //                                 };
-                        //    this._prescriptionDetailList.Add(prescriptionDetail);
-                        //}
-                    }
-
                     this._prescription.PrescriptionDetails = this._prescriptionDetailList;
                 }
                 else
                 {
                     this._isUpdate = true;
                     this._prescription.DoctorId = AppContext.LoggedInUser.Id;
-                    //this._prescription.Doctor = AppContext.LoggedInUser;
                     this._prescription.LastUpdatedUser = AppContext.LoggedInUser.Id;
+                    foreach (var detailItem in this._prescription.PrescriptionDetails)
+                    {
+                        detailItem.MedicineName = detailItem.Medicine.Name;
+                        detailItem.TradeName= detailItem.Medicine.TradeName;
+                        detailItem.UnitName= detailItem.Medicine.Define.Name;
+                    }
                 }
 
                 Initialize(this._prescription);
@@ -143,22 +125,8 @@ namespace Medical
         {
             this.bdsPrescription.DataSource = prescription;
             this.bdsPrescriptionDetail.DataSource = prescription.PrescriptionDetails;
-            ReupdateNo();
         }
 
-        /// <summary>
-        /// Reupdates the no.
-        /// </summary>
-        private void ReupdateNo()
-        {
-            var prescriptionList = (List<PrescriptionDetail>)this.bdsPrescriptionDetail.List;
-            if (prescriptionList == null || prescriptionList.Count == 0) return;
-            for (var i = 0; i < prescriptionList.Count; i++)
-            {
-                prescriptionList[i].No = i + 1;
-            }
-            this.bdsPrescriptionDetail.ResetBindings(true);
-        }
 
         /// <summary>
         /// Gets the day.
@@ -175,6 +143,8 @@ namespace Medical
         private bool ValidateData()
         {
             this.errPro.Clear();
+            InitError();
+            _isWarning = false;
 
             bool result = true;
             if (this.Day <= 0)
@@ -208,12 +178,29 @@ namespace Medical
                 if (!item.IsValid) result = false;
                 if (item.InventoryVolumn <= 0)
                 {
-                    result = false;
+                    // result = false;
+                    _isWarning = true;
                     item.AddError("InventoryVolumn", "Hết thuốc trong kho");
                 }
             }
 
+            this.dataGridViewX1.Refresh();
             return result;
+        }
+
+        /// <summary>
+        /// Inits the error.
+        /// </summary>
+        private void InitError()
+        {
+            this.errPro.SetIconPadding(this.dataGridViewX1, -8);
+            this.errPro.SetIconAlignment(this.dataGridViewX1, ErrorIconAlignment.TopRight);
+
+            this.errPro.SetIconPadding(txtReCheckDate, -8);
+            this.errPro.SetIconAlignment(txtReCheckDate, ErrorIconAlignment.TopRight);
+
+            this.errPro.SetIconPadding(txtStatus, -8);
+            this.errPro.SetIconAlignment(txtStatus, ErrorIconAlignment.TopRight);
         }
 
         /// <summary>
@@ -274,24 +261,28 @@ namespace Medical
         {
             this.dataGridViewX1.EndEdit();
             if (!this.ValidateData()) return;
-            //this._prescription.CreatedUser = AppContext.LoggedInUser.Id;
-            //this._prescription.LastUpdatedUser = AppContext.LoggedInUser.Id;
-            // this._prescription.PrescriptionDetails = this._prescriptionDetailList;
+            if (_isWarning)
+            {
+                var warningConfirm = MessageDialog.Instance.ShowMessage(this, "Q005", "Có loại thuốc không còn trong kho. Đồng ý tiếp tục ghi lại dữ liệu ?");
+                if (warningConfirm == DialogResult.No) return;
+            }
 
-            var message = !this._isUpdate ? "Ghi lại dữ liệu vừa tạo ?" : "Cập nhập dữ liệu vừa thay đổi ?";
-            var result = MessageBox.Show(this, message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var result = MessageDialog.Instance.ShowMessage(this, "Q011");
             if (result == DialogResult.No) return;
 
-            if (this._isUpdate)
+            try
             {
-                this._precriptionRepo.Update(this._prescription);
+                if (this._isUpdate)
+                    this._precriptionRepo.Update(this._prescription);
+                else
+                    this._precriptionRepo.Insert(this._prescription);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            else
+            catch (Exception ex)
             {
-
-                this._precriptionRepo.Insert(this._prescription);
+                MessageDialog.Instance.ShowMessage(this, "ERR0002", ex.Message);
             }
-            this.Close();
         }
 
         /// <summary>
@@ -327,44 +318,22 @@ namespace Medical
                 {
                     FigureDetailId = figureDetail.Id,
                     MedicineId = figureDetail.MedicineId,
-                    //Medicine = figureDetail.Medicine,
                     VolumnPerDay = figureDetail.Volumn,
+                    TradeName = figureDetail.Medicine.TradeName,
+                    MedicineName = figureDetail.Medicine.Name,
+                    UnitName = figureDetail.Medicine.Define.Name,
                     Day = this.Day,
                     Amount = DefaultVolumn * figureDetail.Volumn,
                     Version = 0
-
-
                 };
-                try
-                {
-                    prescriptionDetail.InventoryVolumn = _medicineRepo.GetInventoryVolumeWareHouseByMedicineId(AppContext.CurrentClinic.Id, prescriptionDetail.MedicineId);
-                }
-                catch (Exception ex)
-                {
-                    prescriptionDetail.InventoryVolumn = 0;
-                }
+                prescriptionDetail.InventoryVolumn = _medicineRepo.GetInventoryVolumeWareHouseByMedicineId(AppContext.CurrentClinic.Id, prescriptionDetail.MedicineId);
                 _prescriptionDetailList.Insert(0, prescriptionDetail);
             }
 
             this.bdsPrescriptionDetail.DataSource = _prescriptionDetailList;
-            // this.bdsPrescriptionDetail.EndEdit();
-            ReupdateNo();
-        }
+            this.bdsPrescriptionDetail.ResetBindings(false);
+            this.dataGridViewX1.Update();
 
-        /// <summary>
-        /// Handles the ListChanged event of the bdsPrescriptionDetail control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.ComponentModel.ListChangedEventArgs"/> instance containing the event data.</param>
-        private void BdsPrescriptionDetailListChanged(object sender, ListChangedEventArgs e)
-        {
-            //if (e.ListChangedType == ListChangedType.ItemAdded)
-            //{
-            //    var source = (BindingSource)sender;
-            //    var item = source.List[e.NewIndex] as PrescriptionDetail;
-            //    item.No = source.List.Count;
-            //    item.Day = this.Day;
-            //}
         }
 
         /// <summary>
@@ -376,16 +345,37 @@ namespace Medical
         {
             var prescriptionDetail = (PrescriptionDetail)this.bdsPrescriptionDetail.Current;
             if (prescriptionDetail == null) return;
-            if (e.ColumnIndex == 2 || e.ColumnIndex == 3) prescriptionDetail.Calculate();
-            prescriptionDetail.Validate();
-            try
+
+            switch (e.ColumnIndex)
             {
-                prescriptionDetail.InventoryVolumn = _medicineRepo.GetInventoryVolumeWareHouseByMedicineId(AppContext.CurrentClinic.Id, prescriptionDetail.MedicineId);
+                case 0:
+                    var medicine = _medicineRepo.GetById(prescriptionDetail.MedicineId);
+                    if (medicine == null)
+                    {
+                        prescriptionDetail.MedicineName = String.Empty;
+                        prescriptionDetail.TradeName = String.Empty;
+                        prescriptionDetail.UnitName = String.Empty;
+                        prescriptionDetail.InventoryVolumn = 0;
+                        break;
+                    }
+                    prescriptionDetail.MedicineName = medicine.Name;
+                    prescriptionDetail.TradeName = medicine.TradeName;
+                    prescriptionDetail.UnitName = medicine.Define.Name;
+                    prescriptionDetail.InventoryVolumn = _medicineRepo.GetInventoryVolumeWareHouseByMedicineId(AppContext.CurrentClinic.Id, prescriptionDetail.MedicineId);
+                    break;
+                case 3:
+                    prescriptionDetail.Calculate();
+                    break;
+                case 4 :
+                    prescriptionDetail.Calculate();
+                    break;
+                default:
+                    break;
             }
-            catch(Exception ex)
-            {
-                prescriptionDetail.InventoryVolumn = 0;
-            }
+
+            // if (e.ColumnIndex == 2 || e.ColumnIndex == 3) prescriptionDetail.Calculate();
+            // prescriptionDetail.Validate();
+            // prescriptionDetail.InventoryVolumn = _medicineRepo.GetInventoryVolumeWareHouseByMedicineId(AppContext.CurrentClinic.Id, prescriptionDetail.MedicineId);
             if (!CheckDuplicate(prescriptionDetail.MedicineId)) prescriptionDetail.AddError("MedicineId", "Thuốc đã tồn tại");
         }
 
@@ -405,11 +395,6 @@ namespace Medical
             }
 
             this.bdsPrescriptionDetail.ResetBindings(true);
-        }
-
-        private void DataGridViewX1DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-
         }
 
         private void DataGridViewX1DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)

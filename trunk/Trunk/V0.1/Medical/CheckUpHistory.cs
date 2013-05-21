@@ -50,7 +50,13 @@ namespace Medical {
             this.bdsPrescription.DataSource = prescription;
 
             var prescriptionDetails = prescription.PrescriptionDetails;
-            for (var i = 0; i < prescriptionDetails.Count; i++) prescriptionDetails[i].No = i + 1;
+            foreach (var item in prescriptionDetails)
+            {
+                item.MedicineName = item.Medicine.Name;
+                item.TradeName= item.Medicine.TradeName;
+                item.UnitName= item.Medicine.Define.Name;
+            }
+                
             this.bdsPrescriptionDetail.DataSource = prescriptionDetails;
         }
 

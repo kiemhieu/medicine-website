@@ -387,6 +387,7 @@ namespace Medical.MedicineDeliver
                 item.Validate();
                 if (item.IsValid == false) result = false;
             }
+            this.dataGridViewX1.Refresh();
 
             return result;
         }

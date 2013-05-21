@@ -17,25 +17,17 @@ namespace Medical.Data.Repositories
         /// <param name="prescription">The prescription.</param>
         public void Insert(Prescription prescription)
         {
-            try
+            prescription.SetInfo(false);
+            this.Context.Prescription.Add(prescription);
+            this.Context.SaveChanges();
+            
+            foreach (var item in prescription.PrescriptionDetails)
             {
-                prescription.SetInfo(false);
-                // prescription.Version = 0;
-                // prescription.LastUpdatedDate = DateTime.Now;
-                // prescription.CreatedDate = DateTime.Now;
-
-                foreach (var item in prescription.PrescriptionDetails)
-                {
-                    item.SetInfo(false); // Version = 0);
-                }
-                this.Context.Prescription.Add(prescription);
-                this.Context.SaveChanges();
-
+                item.PrescriptionId = prescription.Id;
+                item.SetInfo(false); // Version = 0);
+                this.Context.PrescriptionDetails.Add(item);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            this.Context.SaveChanges();
 
         }
 
