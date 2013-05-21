@@ -30,16 +30,16 @@ namespace Medical.Data.Entities
         public int No { get; set; }
 
         [NotMapped]
-        public String MedicineName
-        {
-            get { return this.Medicine == null ? string.Empty : this.Medicine.Name; }
-        }
+        public String MedicineName  { get; set; }
 
         [NotMapped]
-        public String TradeName
-        {
-            get { return this.Medicine == null ? string.Empty : this.Medicine.TradeName; }
-        }
+        public String TradeName { get; set; }
+
+        [NotMapped]
+        public int InventoryVolumn { get; set; }
+        
+        [NotMapped]
+        public String UnitName { get; set; }
 
         public override void Validate()
         {
@@ -54,7 +54,6 @@ namespace Medical.Data.Entities
             this.Amount = this.Day*this.VolumnPerDay;
         }
 
-        [NotMapped]
-        public int InventoryVolumn { get; set; }
+       
     }
 }

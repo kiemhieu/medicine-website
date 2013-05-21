@@ -21,7 +21,7 @@ namespace Medical.Data.EntitiyExtend
                                     ? String.Empty
                                     : this.MedicineDeliveryDetail.Medicine.Name;
             this.Qty= this.MedicineDeliveryDetail == null ? (int?)null : this.MedicineDeliveryDetail.Volumn;
-            this.InStockQty = warehouse.Volumn;
+            this.InStockQty = warehouse == null ? 0 : warehouse.Volumn;
             this.AllocatedQty = this.MedicineDeliveryDetail.AllocatedWareHouseDetail == null ? this.MedicineDeliveryDetail.Volumn : this.MedicineDeliveryDetail.AllocatedWareHouseDetail.Sum(x => x.AllocatedQty);
         }
 

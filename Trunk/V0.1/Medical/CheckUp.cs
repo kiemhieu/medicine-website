@@ -31,6 +31,7 @@ namespace Medical {
             var registerform = new PatientRegister();
             var result = registerform.ShowDialog();
             if (result != System.Windows.Forms.DialogResult.Yes) return;
+            this._selectedPatient = registerform.Patient;
             UpdateForm(registerform.Patient);
         }
 
@@ -53,14 +54,17 @@ namespace Medical {
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void BtnCheckClick(object sender, EventArgs e)
         {
-            if (this.bdsPatient.DataSource is Patient)
-            {
-                var selected = (Patient) this.bdsPatient.DataSource;
-                if (selected == null) return;
-                var checkUpRegister = new CheckUpRegister(selected);
-                checkUpRegister.ShowDialog(this);
-                UpdateForm((Patient)this.bdsPatient.DataSource);
-            }
+            // Patient patient = (Patient)this.bdsPatient.Current;
+            // if (patient == null) return;
+            // if (this.bdsPatient.DataSource is Patient)
+            // {
+            // var selected = (Patient) this.bdsPatient.DataSource;
+            //  if (selected == null) return;
+            var checkUpRegister = new CheckUpRegister(this._selectedPatient);
+            var result = checkUpRegister.ShowDialog(this);
+            if (result == DialogResult.Cancel) return;
+            UpdateForm(this._selectedPatient);
+            // }
         }
 
         /// <summary>
@@ -72,7 +76,7 @@ namespace Medical {
             var patientBrowse = new PatientBrowseForm();
             var result = patientBrowse.ShowDialog(this);
             if (result != System.Windows.Forms.DialogResult.Yes) return;
-
+            this._selectedPatient = patientBrowse.SelectedPatient;
             UpdateForm(patientBrowse.SelectedPatient);
         }
 
@@ -82,32 +86,54 @@ namespace Medical {
         /// <param name="patient">The patient.</param>
         private void UpdateForm(Patient patient)
         {
-            this.bdsPrescription.Clear();
-            this.bdsPrescriptionDetail.Clear();
+            // this.bdsPrescription.Clear();
+            // this.bdsPrescriptionDetail.Clear();
+            // this.bdsPatient.Clear();
+            // this._selectedPatient = patient;
+
+            //if (patient == null)
+            //{
+            //    this.btnCheck.Enabled = false;
+            //    return;
+            //}
+
+            // this.btnCheck.Enabled = true;
+
             this.bdsPatient.DataSource = patient;
-            this._selectedPatient = patient;
-
-            if (patient == null)
-            {
-                this.btnCheck.Enabled = false;
-                return;
-            }
-
-            this.btnCheck.Enabled = true;
             _lastPrescription = prescriptionRepo.GetLastByPatient(patient.Id);
 
-            if (_lastPrescription == null) return;
-            this.bdsPrescription.DataSource = _lastPrescription;
-
-            List<PrescriptionDetail> detailList = prescriptionDetailRepo.GetByPrescription(_lastPrescription.Id);
-            //if (detailList != null)
+            //if (_lastPrescription == null)
             //{
-            //    for (int i = 0; i < detailList.Count; i++)
-            //    {
-            //        detailList[i].No = i + 1;
-            //    }
-                this.bdsPrescriptionDetail.DataSource = detailList;
+            //    this.bdsPrescription.DataSource = null;
+            //    this.bdsPrescription.ResetBindings(false);
+
+            //    this.bdsPrescriptionDetail.DataSource = null;
+            //    this.bdsPrescriptionDetail.ResetBindings(false);
+            //    return;
             //}
+            if (_lastPrescription != null)
+            {
+                this.bdsPrescription.DataSource = _lastPrescription;
+                var detailList = prescriptionDetailRepo.GetByPrescription(_lastPrescription.Id);
+                foreach (var detailItem in detailList)
+                {
+                    detailItem.MedicineName = detailItem.Medicine.Name;
+                    detailItem.TradeName = detailItem.Medicine.TradeName;
+                    detailItem.UnitName = detailItem.Medicine.Define.Name;
+                }
+
+                //this.bdsPrescription.DataSource = this.bdsPrescription;
+                this.bdsPrescriptionDetail.DataSource = detailList;
+                this.bdsPrescriptionDetail.ResetBindings(false);
+                this.dataGridViewX1.Refresh();
+            } else
+            {
+                 this.bdsPrescription.Clear();
+                this.bdsPrescriptionDetail.Clear();
+            }
+
+            
+            
         }
 
         private void DataGridViewX1DataBindingComplete(object sender, System.Windows.Forms.DataGridViewBindingCompleteEventArgs e)

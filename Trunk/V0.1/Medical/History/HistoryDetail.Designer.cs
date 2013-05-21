@@ -32,14 +32,7 @@
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VolumnPerDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsPrescriptionDetail = new System.Windows.Forms.BindingSource(this.components);
-            this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -51,6 +44,12 @@
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TradeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VolumnPerDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPrescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPrescriptionDetail)).BeginInit();
@@ -66,11 +65,11 @@
             this.cboFigure.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboFigure.FormattingEnabled = true;
             this.cboFigure.ItemHeight = 15;
-            this.cboFigure.Location = new System.Drawing.Point(60, 111);
+            this.cboFigure.Location = new System.Drawing.Point(393, 43);
             this.cboFigure.Name = "cboFigure";
-            this.cboFigure.Size = new System.Drawing.Size(91, 21);
+            this.cboFigure.Size = new System.Drawing.Size(200, 21);
             this.cboFigure.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboFigure.TabIndex = 46;
+            this.cboFigure.TabIndex = 3;
             this.cboFigure.ValueMember = "Id";
             // 
             // textBoxX3
@@ -84,12 +83,12 @@
             this.textBoxX3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPrescription, "RecheckDate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "dd/MM/yyyy"));
             this.textBoxX3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX3.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX3.Location = new System.Drawing.Point(509, 4);
+            this.textBoxX3.Location = new System.Drawing.Point(393, 14);
             this.textBoxX3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.textBoxX3.Name = "textBoxX3";
             this.textBoxX3.ReadOnly = true;
-            this.textBoxX3.Size = new System.Drawing.Size(80, 21);
-            this.textBoxX3.TabIndex = 45;
+            this.textBoxX3.Size = new System.Drawing.Size(200, 21);
+            this.textBoxX3.TabIndex = 1;
             // 
             // bdsPrescription
             // 
@@ -104,7 +103,7 @@
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX3.Location = new System.Drawing.Point(3, 113);
+            this.labelX3.Location = new System.Drawing.Point(319, 45);
             this.labelX3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(48, 16);
@@ -121,7 +120,7 @@
             this.labelX4.BackgroundStyle.Class = "";
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX4.Location = new System.Drawing.Point(435, 6);
+            this.labelX4.Location = new System.Drawing.Point(319, 16);
             this.labelX4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(67, 16);
@@ -135,9 +134,8 @@
             this.dataGridViewX1.AllowUserToDeleteRows = false;
             this.dataGridViewX1.AllowUserToResizeColumns = false;
             this.dataGridViewX1.AllowUserToResizeRows = false;
-            this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridViewX1.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -149,12 +147,12 @@
             this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.noDataGridViewTextBoxColumn,
             this.medicineNameDataGridViewTextBoxColumn,
+            this.TradeName,
+            this.UnitName,
             this.VolumnPerDay,
             this.dayDataGridViewTextBoxColumn,
-            this.Amount,
-            this.descriptionDataGridViewTextBoxColumn});
+            this.Amount});
             this.dataGridViewX1.DataSource = this.bdsPrescriptionDetail;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -165,81 +163,18 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(60, 136);
+            this.dataGridViewX1.Location = new System.Drawing.Point(6, 236);
+            this.dataGridViewX1.MultiSelect = false;
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
-            this.dataGridViewX1.RowHeadersVisible = false;
-            this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(530, 150);
-            this.dataGridViewX1.TabIndex = 43;
-            // 
-            // noDataGridViewTextBoxColumn
-            // 
-            this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
-            this.noDataGridViewTextBoxColumn.HeaderText = "STT";
-            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
-            this.noDataGridViewTextBoxColumn.ReadOnly = true;
-            this.noDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // medicineNameDataGridViewTextBoxColumn
-            // 
-            this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
-            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "Thuốc";
-            this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
-            this.medicineNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.medicineNameDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // VolumnPerDay
-            // 
-            this.VolumnPerDay.DataPropertyName = "VolumnPerDay";
-            this.VolumnPerDay.HeaderText = "Hệ số";
-            this.VolumnPerDay.Name = "VolumnPerDay";
-            this.VolumnPerDay.ReadOnly = true;
-            this.VolumnPerDay.Width = 80;
-            // 
-            // dayDataGridViewTextBoxColumn
-            // 
-            this.dayDataGridViewTextBoxColumn.DataPropertyName = "Day";
-            this.dayDataGridViewTextBoxColumn.HeaderText = "Số ngày";
-            this.dayDataGridViewTextBoxColumn.Name = "dayDataGridViewTextBoxColumn";
-            this.dayDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dayDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // Amount
-            // 
-            this.Amount.DataPropertyName = "Amount";
-            this.Amount.HeaderText = "Số lượng";
-            this.Amount.Name = "Amount";
-            this.Amount.ReadOnly = true;
-            this.Amount.Width = 80;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Ghi chú";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewX1.Size = new System.Drawing.Size(635, 229);
+            this.dataGridViewX1.TabIndex = 5;
+            this.dataGridViewX1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewX1_DataBindingComplete);
             // 
             // bdsPrescriptionDetail
             // 
             this.bdsPrescriptionDetail.DataSource = typeof(Medical.Data.Entities.PrescriptionDetail);
-            // 
-            // labelX14
-            // 
-            this.labelX14.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX14.BackgroundStyle.Class = "";
-            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX14.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX14.Location = new System.Drawing.Point(3, 136);
-            this.labelX14.Name = "labelX14";
-            this.labelX14.Size = new System.Drawing.Size(53, 16);
-            this.labelX14.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.labelX14.TabIndex = 42;
-            this.labelX14.Text = "Đơn thuốc";
             // 
             // textBoxX12
             // 
@@ -252,12 +187,12 @@
             this.textBoxX12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPrescription, "Note", true));
             this.textBoxX12.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX12.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX12.Location = new System.Drawing.Point(60, 28);
+            this.textBoxX12.Location = new System.Drawing.Point(6, 94);
             this.textBoxX12.Multiline = true;
             this.textBoxX12.Name = "textBoxX12";
             this.textBoxX12.ReadOnly = true;
-            this.textBoxX12.Size = new System.Drawing.Size(530, 80);
-            this.textBoxX12.TabIndex = 41;
+            this.textBoxX12.Size = new System.Drawing.Size(635, 136);
+            this.textBoxX12.TabIndex = 4;
             this.textBoxX12.Text = "-xin chao\r\n-benh ngay cang kho";
             // 
             // labelX11
@@ -269,7 +204,7 @@
             this.labelX11.BackgroundStyle.Class = "";
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX11.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX11.Location = new System.Drawing.Point(3, 28);
+            this.labelX11.Location = new System.Drawing.Point(6, 72);
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(60, 16);
             this.labelX11.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -287,12 +222,12 @@
             this.textBoxX1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPrescription, "Date", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "dd/MM/yyyy"));
             this.textBoxX1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX1.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX1.Location = new System.Drawing.Point(300, 4);
+            this.textBoxX1.Location = new System.Drawing.Point(70, 14);
             this.textBoxX1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.ReadOnly = true;
-            this.textBoxX1.Size = new System.Drawing.Size(80, 21);
-            this.textBoxX1.TabIndex = 38;
+            this.textBoxX1.Size = new System.Drawing.Size(200, 21);
+            this.textBoxX1.TabIndex = 0;
             // 
             // labelX2
             // 
@@ -303,7 +238,7 @@
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX2.Location = new System.Drawing.Point(236, 6);
+            this.labelX2.Location = new System.Drawing.Point(6, 16);
             this.labelX2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(57, 16);
@@ -322,12 +257,12 @@
             this.textBoxX4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPrescription, "DoctorName", true));
             this.textBoxX4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxX4.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX4.Location = new System.Drawing.Point(60, 4);
+            this.textBoxX4.Location = new System.Drawing.Point(70, 43);
             this.textBoxX4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.textBoxX4.Name = "textBoxX4";
             this.textBoxX4.ReadOnly = true;
-            this.textBoxX4.Size = new System.Drawing.Size(120, 21);
-            this.textBoxX4.TabIndex = 36;
+            this.textBoxX4.Size = new System.Drawing.Size(200, 21);
+            this.textBoxX4.TabIndex = 2;
             // 
             // labelX1
             // 
@@ -338,7 +273,7 @@
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX1.Location = new System.Drawing.Point(3, 6);
+            this.labelX1.Location = new System.Drawing.Point(6, 45);
             this.labelX1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(31, 16);
@@ -348,15 +283,14 @@
             // 
             // panelEx1
             // 
-            this.panelEx1.AutoSize = true;
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx1.Controls.Add(this.btnDelete);
             this.panelEx1.Controls.Add(this.btnClose);
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx1.Location = new System.Drawing.Point(0, 291);
+            this.panelEx1.Location = new System.Drawing.Point(0, 471);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(592, 27);
+            this.panelEx1.Size = new System.Drawing.Size(648, 43);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -371,11 +305,11 @@
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnDelete.Image = global::Medical.Properties.Resources.delete;
-            this.btnDelete.Location = new System.Drawing.Point(439, 1);
+            this.btnDelete.Location = new System.Drawing.Point(395, 8);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(120, 23);
             this.btnDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDelete.TabIndex = 1;
+            this.btnDelete.TabIndex = 0;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.ThemeAware = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -386,11 +320,11 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnClose.Image = global::Medical.Properties.Resources.accept;
-            this.btnClose.Location = new System.Drawing.Point(515, 1);
+            this.btnClose.Location = new System.Drawing.Point(521, 8);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.Size = new System.Drawing.Size(120, 23);
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnClose.TabIndex = 0;
+            this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Đóng lại";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -410,11 +344,10 @@
             this.panelEx2.Controls.Add(this.textBoxX1);
             this.panelEx2.Controls.Add(this.dataGridViewX1);
             this.panelEx2.Controls.Add(this.labelX11);
-            this.panelEx2.Controls.Add(this.labelX14);
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(592, 291);
+            this.panelEx2.Size = new System.Drawing.Size(648, 471);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -428,11 +361,57 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
             // 
+            // medicineNameDataGridViewTextBoxColumn
+            // 
+            this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
+            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "Thuốc";
+            this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
+            this.medicineNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.medicineNameDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // TradeName
+            // 
+            this.TradeName.DataPropertyName = "TradeName";
+            this.TradeName.HeaderText = "Biệt dược";
+            this.TradeName.Name = "TradeName";
+            this.TradeName.ReadOnly = true;
+            // 
+            // UnitName
+            // 
+            this.UnitName.DataPropertyName = "UnitName";
+            this.UnitName.HeaderText = "Đơn vị";
+            this.UnitName.Name = "UnitName";
+            this.UnitName.ReadOnly = true;
+            // 
+            // VolumnPerDay
+            // 
+            this.VolumnPerDay.DataPropertyName = "VolumnPerDay";
+            this.VolumnPerDay.HeaderText = "Liều lượng";
+            this.VolumnPerDay.Name = "VolumnPerDay";
+            this.VolumnPerDay.ReadOnly = true;
+            this.VolumnPerDay.Width = 80;
+            // 
+            // dayDataGridViewTextBoxColumn
+            // 
+            this.dayDataGridViewTextBoxColumn.DataPropertyName = "Day";
+            this.dayDataGridViewTextBoxColumn.HeaderText = "Số ngày";
+            this.dayDataGridViewTextBoxColumn.Name = "dayDataGridViewTextBoxColumn";
+            this.dayDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dayDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // Amount
+            // 
+            this.Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Amount.DataPropertyName = "Amount";
+            this.Amount.HeaderText = "Số lượng";
+            this.Amount.Name = "Amount";
+            this.Amount.ReadOnly = true;
+            // 
             // HistoryDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 318);
+            this.ClientSize = new System.Drawing.Size(648, 514);
             this.Controls.Add(this.panelEx2);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -458,7 +437,6 @@
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
-        private DevComponents.DotNetBar.LabelX labelX14;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX12;
         private DevComponents.DotNetBar.LabelX labelX11;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
@@ -472,11 +450,11 @@
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private System.Windows.Forms.BindingSource bdsPrescription;
         private System.Windows.Forms.BindingSource bdsPrescriptionDetail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn medicineNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TradeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitName;
         private System.Windows.Forms.DataGridViewTextBoxColumn VolumnPerDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
     }
 }

@@ -92,6 +92,12 @@ namespace Medical.MedicineDeliver
             }
             this.bdsDeliver.EndEdit();
             var selectedItem = (VMedicineDeliverList)this.bdsDeliver.Current;
+            if (selectedItem == null)
+            {
+                MessageBox.Show(this, "Chưa chọn bệnh nhân phát thuốc.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             var deliveryRegister = new DeliveryRegister(selectedItem.Id);
             deliveryRegister.ShowDialog();
             UpdateGrid();

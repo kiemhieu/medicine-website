@@ -81,7 +81,7 @@
             this.cboDate.CustomFormat = "dd/MM/yyyy";
             this.cboDate.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.cboDate.IsPopupCalendarOpen = false;
-            this.cboDate.Location = new System.Drawing.Point(36, 0);
+            this.cboDate.Location = new System.Drawing.Point(36, 7);
             this.cboDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             // 
             // 
@@ -165,14 +165,14 @@
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.dataGridViewX1.HighlightSelectedColumnHeaders = false;
-            this.dataGridViewX1.Location = new System.Drawing.Point(4, 29);
+            this.dataGridViewX1.Location = new System.Drawing.Point(4, 38);
             this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridViewX1.MultiSelect = false;
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(980, 491);
+            this.dataGridViewX1.Size = new System.Drawing.Size(980, 482);
             this.dataGridViewX1.TabIndex = 0;
             // 
             // noDataGridViewTextBoxColumn
@@ -301,9 +301,9 @@
             this.btnRemove.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemove.Image = global::Medical.Properties.Resources.cancel;
-            this.btnRemove.Location = new System.Drawing.Point(827, -1);
+            this.btnRemove.Location = new System.Drawing.Point(727, 6);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(64, 23);
+            this.btnRemove.Size = new System.Drawing.Size(120, 23);
             this.btnRemove.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRemove.TabIndex = 3;
             this.btnRemove.Text = "Hủy";
@@ -315,9 +315,9 @@
             this.btnDeliver.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnDeliver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDeliver.Image = global::Medical.Properties.Resources.add;
-            this.btnDeliver.Location = new System.Drawing.Point(893, -1);
+            this.btnDeliver.Location = new System.Drawing.Point(852, 6);
             this.btnDeliver.Name = "btnDeliver";
-            this.btnDeliver.Size = new System.Drawing.Size(87, 23);
+            this.btnDeliver.Size = new System.Drawing.Size(120, 23);
             this.btnDeliver.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDeliver.TabIndex = 4;
             this.btnDeliver.Text = "Phát thuốc";
@@ -331,7 +331,7 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(133, 3);
+            this.labelX3.Location = new System.Drawing.Point(133, 10);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(52, 15);
             this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -345,7 +345,7 @@
             this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStatus.FormattingEnabled = true;
             this.cboStatus.ItemHeight = 14;
-            this.cboStatus.Location = new System.Drawing.Point(189, 0);
+            this.cboStatus.Location = new System.Drawing.Point(189, 7);
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(94, 20);
             this.cboStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -361,7 +361,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(4, 3);
+            this.labelX1.Location = new System.Drawing.Point(4, 10);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(28, 15);
             this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -376,7 +376,7 @@
             this.cboClinic.FocusCuesEnabled = false;
             this.cboClinic.FormattingEnabled = true;
             this.cboClinic.ItemHeight = 14;
-            this.cboClinic.Location = new System.Drawing.Point(314, 0);
+            this.cboClinic.Location = new System.Drawing.Point(314, 7);
             this.cboClinic.Name = "cboClinic";
             this.cboClinic.Size = new System.Drawing.Size(300, 20);
             this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -396,7 +396,6 @@
             // 
             // panelEx1
             // 
-            this.panelEx1.AutoSize = true;
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx1.Controls.Add(this.btnRemove);
@@ -409,7 +408,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(4, 4);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(980, 25);
+            this.panelEx1.Size = new System.Drawing.Size(980, 34);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -439,7 +438,6 @@
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsDeliver)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
             this.ResumeLayout(false);

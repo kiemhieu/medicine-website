@@ -65,22 +65,22 @@
             this.textBoxX11 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX13 = new DevComponents.DotNetBar.LabelX();
-            this.btnCheck = new DevComponents.DotNetBar.ButtonX();
-            this.btnCheckingHistory = new DevComponents.DotNetBar.ButtonX();
-            this.btnRegister = new DevComponents.DotNetBar.ButtonX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TradeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.volumnPerDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsPrescriptionDetail = new System.Windows.Forms.BindingSource(this.components);
             this.textBoxX15 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnCheck = new DevComponents.DotNetBar.ButtonX();
+            this.btnCheckingHistory = new DevComponents.DotNetBar.ButtonX();
+            this.btnRegister = new DevComponents.DotNetBar.ButtonX();
+            this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TradeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.volumnPerDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPatient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPrescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
@@ -95,7 +95,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(18, 18);
+            this.labelX1.Location = new System.Drawing.Point(18, 21);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(50, 16);
             this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -116,10 +116,10 @@
             this.txtSeachName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Name", true));
             this.txtSeachName.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSeachName.ForeColor = System.Drawing.Color.Black;
-            this.txtSeachName.Location = new System.Drawing.Point(82, 16);
+            this.txtSeachName.Location = new System.Drawing.Point(97, 18);
             this.txtSeachName.Name = "txtSeachName";
             this.txtSeachName.ReadOnly = true;
-            this.txtSeachName.Size = new System.Drawing.Size(353, 22);
+            this.txtSeachName.Size = new System.Drawing.Size(200, 22);
             this.txtSeachName.TabIndex = 0;
             this.txtSeachName.ButtonCustomClick += new System.EventHandler(this.TextBoxX1ButtonCustomClick);
             // 
@@ -356,7 +356,7 @@
             this.textBoxX4.Location = new System.Drawing.Point(486, 150);
             this.textBoxX4.Name = "textBoxX4";
             this.textBoxX4.ReadOnly = true;
-            this.textBoxX4.Size = new System.Drawing.Size(375, 20);
+            this.textBoxX4.Size = new System.Drawing.Size(200, 20);
             this.textBoxX4.TabIndex = 11;
             // 
             // labelX7
@@ -526,7 +526,7 @@
             this.textBoxX12.Multiline = true;
             this.textBoxX12.Name = "textBoxX12";
             this.textBoxX12.ReadOnly = true;
-            this.textBoxX12.Size = new System.Drawing.Size(764, 132);
+            this.textBoxX12.Size = new System.Drawing.Size(652, 132);
             this.textBoxX12.TabIndex = 16;
             // 
             // labelX13
@@ -544,43 +544,6 @@
             this.labelX13.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX13.TabIndex = 22;
             this.labelX13.Text = "Hẹn tái khám";
-            // 
-            // btnCheck
-            // 
-            this.btnCheck.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCheck.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCheck.Location = new System.Drawing.Point(633, 16);
-            this.btnCheck.Name = "btnCheck";
-            this.btnCheck.Size = new System.Drawing.Size(90, 21);
-            this.btnCheck.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCheck.TabIndex = 3;
-            this.btnCheck.Text = "Khám bệnh";
-            this.btnCheck.Click += new System.EventHandler(this.BtnCheckClick);
-            // 
-            // btnCheckingHistory
-            // 
-            this.btnCheckingHistory.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCheckingHistory.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCheckingHistory.Location = new System.Drawing.Point(537, 16);
-            this.btnCheckingHistory.Name = "btnCheckingHistory";
-            this.btnCheckingHistory.Size = new System.Drawing.Size(90, 21);
-            this.btnCheckingHistory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCheckingHistory.TabIndex = 2;
-            this.btnCheckingHistory.Text = "Y bạ";
-            this.btnCheckingHistory.Click += new System.EventHandler(this.BtnCheckingHistoryClick);
-            // 
-            // btnRegister
-            // 
-            this.btnRegister.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnRegister.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnRegister.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnRegister.Location = new System.Drawing.Point(441, 16);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(90, 21);
-            this.btnRegister.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnRegister.TabIndex = 1;
-            this.btnRegister.Text = "Đăng ký mới";
-            this.btnRegister.Click += new System.EventHandler(this.BtnRegisterClick);
             // 
             // dataGridViewX1
             // 
@@ -603,10 +566,10 @@
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.medicineNameDataGridViewTextBoxColumn,
             this.TradeName,
-            this.dayDataGridViewTextBoxColumn,
+            this.UnitName,
             this.volumnPerDayDataGridViewTextBoxColumn,
-            this.amountDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn});
+            this.dayDataGridViewTextBoxColumn,
+            this.amountDataGridViewTextBoxColumn});
             this.dataGridViewX1.DataSource = this.bdsPrescriptionDetail;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
@@ -622,64 +585,9 @@
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewX1.Size = new System.Drawing.Size(764, 243);
+            this.dataGridViewX1.Size = new System.Drawing.Size(652, 243);
             this.dataGridViewX1.TabIndex = 17;
             this.dataGridViewX1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DataGridViewX1DataBindingComplete);
-            // 
-            // medicineNameDataGridViewTextBoxColumn
-            // 
-            this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomLeft;
-            this.medicineNameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "Thuốc";
-            this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
-            this.medicineNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.medicineNameDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // TradeName
-            // 
-            this.TradeName.DataPropertyName = "TradeName";
-            this.TradeName.HeaderText = "Tên biệt dược";
-            this.TradeName.Name = "TradeName";
-            this.TradeName.ReadOnly = true;
-            // 
-            // dayDataGridViewTextBoxColumn
-            // 
-            this.dayDataGridViewTextBoxColumn.DataPropertyName = "Day";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dayDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dayDataGridViewTextBoxColumn.HeaderText = "Ngày";
-            this.dayDataGridViewTextBoxColumn.Name = "dayDataGridViewTextBoxColumn";
-            this.dayDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dayDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // volumnPerDayDataGridViewTextBoxColumn
-            // 
-            this.volumnPerDayDataGridViewTextBoxColumn.DataPropertyName = "VolumnPerDay";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.volumnPerDayDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.volumnPerDayDataGridViewTextBoxColumn.HeaderText = "Hệ số";
-            this.volumnPerDayDataGridViewTextBoxColumn.Name = "volumnPerDayDataGridViewTextBoxColumn";
-            this.volumnPerDayDataGridViewTextBoxColumn.ReadOnly = true;
-            this.volumnPerDayDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // amountDataGridViewTextBoxColumn
-            // 
-            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.amountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.amountDataGridViewTextBoxColumn.HeaderText = "Tổng số";
-            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.amountDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Ghi chú";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // bdsPrescriptionDetail
             // 
@@ -742,6 +650,101 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(852, 2);
             this.label2.TabIndex = 28;
+            // 
+            // btnCheck
+            // 
+            this.btnCheck.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCheck.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCheck.Image = global::Medical.Properties.Resources.kham;
+            this.btnCheck.Location = new System.Drawing.Point(515, 19);
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.Size = new System.Drawing.Size(100, 21);
+            this.btnCheck.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCheck.TabIndex = 3;
+            this.btnCheck.Text = "Khám bệnh";
+            this.btnCheck.Click += new System.EventHandler(this.BtnCheckClick);
+            // 
+            // btnCheckingHistory
+            // 
+            this.btnCheckingHistory.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCheckingHistory.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCheckingHistory.Image = global::Medical.Properties.Resources.doctor_suitecase_26;
+            this.btnCheckingHistory.Location = new System.Drawing.Point(409, 19);
+            this.btnCheckingHistory.Name = "btnCheckingHistory";
+            this.btnCheckingHistory.Size = new System.Drawing.Size(100, 21);
+            this.btnCheckingHistory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCheckingHistory.TabIndex = 2;
+            this.btnCheckingHistory.Text = "Y bạ";
+            this.btnCheckingHistory.Click += new System.EventHandler(this.BtnCheckingHistoryClick);
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnRegister.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnRegister.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnRegister.Image = global::Medical.Properties.Resources.add_user;
+            this.btnRegister.Location = new System.Drawing.Point(303, 19);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(100, 21);
+            this.btnRegister.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnRegister.TabIndex = 1;
+            this.btnRegister.Text = "Đăng kí";
+            this.btnRegister.Click += new System.EventHandler(this.BtnRegisterClick);
+            // 
+            // medicineNameDataGridViewTextBoxColumn
+            // 
+            this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomLeft;
+            this.medicineNameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "Thuốc";
+            this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
+            this.medicineNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.medicineNameDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // TradeName
+            // 
+            this.TradeName.DataPropertyName = "TradeName";
+            this.TradeName.HeaderText = "Biệt dược";
+            this.TradeName.Name = "TradeName";
+            this.TradeName.ReadOnly = true;
+            // 
+            // UnitName
+            // 
+            this.UnitName.DataPropertyName = "UnitName";
+            this.UnitName.HeaderText = "Đơn vị";
+            this.UnitName.Name = "UnitName";
+            this.UnitName.ReadOnly = true;
+            this.UnitName.Width = 80;
+            // 
+            // volumnPerDayDataGridViewTextBoxColumn
+            // 
+            this.volumnPerDayDataGridViewTextBoxColumn.DataPropertyName = "VolumnPerDay";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.volumnPerDayDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.volumnPerDayDataGridViewTextBoxColumn.HeaderText = "Liều lượng";
+            this.volumnPerDayDataGridViewTextBoxColumn.Name = "volumnPerDayDataGridViewTextBoxColumn";
+            this.volumnPerDayDataGridViewTextBoxColumn.ReadOnly = true;
+            this.volumnPerDayDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // dayDataGridViewTextBoxColumn
+            // 
+            this.dayDataGridViewTextBoxColumn.DataPropertyName = "Day";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dayDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dayDataGridViewTextBoxColumn.HeaderText = "Ngày thuốc";
+            this.dayDataGridViewTextBoxColumn.Name = "dayDataGridViewTextBoxColumn";
+            this.dayDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dayDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // amountDataGridViewTextBoxColumn
+            // 
+            this.amountDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.amountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            this.amountDataGridViewTextBoxColumn.HeaderText = "Tổng số";
+            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // CheckUp
             // 
@@ -839,13 +842,13 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private DevComponents.DotNetBar.LabelX labelX8;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn medicineNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TradeName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn volumnPerDayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn medicineNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TradeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn volumnPerDayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
 	}
 }

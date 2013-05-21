@@ -24,6 +24,7 @@ namespace Medical.History
 
         private void History_Load(object sender, EventArgs e)
         {
+            this.txtDate.Value = DateTime.Today;
             loadData();
         }
 
@@ -77,5 +78,7 @@ namespace Medical.History
 
             loadData();
         }
+
+        
     }
 }

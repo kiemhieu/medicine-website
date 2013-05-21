@@ -7,6 +7,12 @@
     <Button>OK</Button>
   </Message>
   <Message>
+    <Code>ERR0002</Code>
+    <Content>Đã có lỗi xảy ra trong quá trình ghi dữ liệu. \n{0}</Content>
+    <Type>Error</Type> 
+    <Button>OK</Button>
+  </Message>
+  <Message>
     <Code>M001</Code>
     <Content>Hãy chọn {0} cần xóa.</Content>
     <Type>Information</Type>
@@ -26,13 +32,19 @@
   </Message>
   <Message>
     <Code>MSG0004</Code>
-    <Content>Dữ liệu không hợp lệ !</Content>
+    <Content>Dữ liệu nhập chưa đúng !</Content>
     <Type>Information</Type>
     <Button>OK</Button>
   </Message>
    <Message>
     <Code>MSG0005</Code>
     <Content>{0}</Content>
+    <Type>Information</Type>
+    <Button>OK</Button>
+  </Message>
+  <Message>
+    <Code>MSG0006</Code>
+    <Content>Ghi dữ liệu thành công !</Content>
     <Type>Information</Type>
     <Button>OK</Button>
   </Message>
@@ -78,6 +90,11 @@
     <Type>Question</Type>
     <Button>YesNo</Button>
   </Message>
- 
+  <Message>
+    <Code>Q011</Code>
+    <Content>Đồng ý ghi lại dữ liệu ?</Content>
+    <Type>Question</Type>
+    <Button>YesNo</Button>
+  </Message>
 </Root>
 

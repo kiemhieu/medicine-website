@@ -49,7 +49,7 @@ namespace Medical.MedicineDeliver
             this.bdsMedicine.DataSource = this._medicineRepo.GetAll();
             
             this._warehouse = this._warehouseRepo.GetByIdMedicine(this._medicineDeliverDetail.MedicineId, AppContext.CurrentClinic.Id);
-            this.bdsWareHouse.DataSource = this._warehouse;
+            if (this._warehouse !=null) this.bdsWareHouse.DataSource = this._warehouse;
 
             this._vWarehouseDetail = this._vWareHouseDetailRepo.GetByMedicine(this._medicineDeliverDetail.MedicineId);
             foreach (var item in _vWarehouseDetail) {
@@ -65,11 +65,14 @@ namespace Medical.MedicineDeliver
                 }
             }
             this.bdsVWareHouseDetail.DataSource = this._vWarehouseDetail;
-            this._warehouse.RemainQty = this._warehouse.Volumn - this._medicineDeliverDetail.AllocatedQty;
+            if (this._warehouse == null) return;
+            this._warehouse.RemainQty = (this._warehouse == null ? 0 : this._warehouse.Volumn) - this._medicineDeliverDetail.AllocatedQty;
+            this._warehouse.RemainQty = this._warehouse.RemainQty < 0 ? 0 : this._warehouse.RemainQty;
 
         }
 
         void _medicineDeliverDetail_PropertyChanged(object sender, PropertyChangedEventArgs e) {
+            if (this._warehouse == null) return;
             if (!e.PropertyName.Equals("AllocatedQty")) return;
             this._warehouse.RemainQty = this._warehouse.Volumn - this._medicineDeliverDetail.AllocatedQty;
         }
@@ -92,7 +95,8 @@ namespace Medical.MedicineDeliver
                 validateResult = false;
             }
 
-            if (this._warehouse.RemainQty < 0) {
+            if (this._warehouse == null || this._warehouse.RemainQty < 0)
+            {
                 this.errorProvider1.SetError(txtWareHouseRemainQty, "Chọn quá số lượng có trong kho.");
                 validateResult = false;
             }
@@ -206,6 +210,7 @@ namespace Medical.MedicineDeliver
 
         private void textBoxX4_TextChanged(object sender, EventArgs e)
         {
+            if (this._warehouse == null) return;
             this._warehouse.RemainQty = this._warehouse.Volumn - this._medicineDeliverDetail.AllocatedQty;
         }
    }
