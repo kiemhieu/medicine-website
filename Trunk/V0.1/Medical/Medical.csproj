@@ -214,6 +214,12 @@
     <Compile Include="PatientBrowseForm.Designer.cs">
       <DependentUpon>PatientBrowseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PatientProfile\Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientProfile\Profile.Designer.cs">
+      <DependentUpon>Profile.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatientRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -444,6 +450,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PatientBrowseForm.resx">
       <DependentUpon>PatientBrowseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientProfile\Profile.resx">
+      <DependentUpon>Profile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientRegister.resx">
       <DependentUpon>PatientRegister.cs</DependentUpon>
