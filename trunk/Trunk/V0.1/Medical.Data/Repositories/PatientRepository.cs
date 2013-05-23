@@ -85,5 +85,10 @@ namespace Medical.Data.Repositories
         {
             return Context.Patients.Where(x => (x.Name.Contains(name) || String.IsNullOrEmpty(name)) && (!year.HasValue || x.BirthYear == year.Value) && x.ClinicId == clinicId).ToList();
         }
+
+        public bool IsDuplicateCode(string code)
+        {
+            return Context.Patients.Count(x => x.Code.Equals(code, StringComparison.OrdinalIgnoreCase)) > 0;
+        }
     }
 }

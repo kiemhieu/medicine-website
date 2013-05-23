@@ -27,7 +27,6 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.bdsPatient = new System.Windows.Forms.BindingSource(this.components);
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.txtYear = new DevComponents.Editors.IntegerInput();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
@@ -36,8 +35,6 @@
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.txtDescription = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtCode = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtPhone = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.rdaMale = new System.Windows.Forms.RadioButton();
             this.rdaFemale = new System.Windows.Forms.RadioButton();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
@@ -46,10 +43,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPatient)).BeginInit();
+            this.txtCode = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
+            this.txtPhone = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
+            this.bdsPatient = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errPatient)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPatient)).BeginInit();
             this.SuspendLayout();
             // 
             // labelX1
@@ -101,10 +101,6 @@
             this.txtName.Size = new System.Drawing.Size(200, 20);
             this.txtName.TabIndex = 1;
             // 
-            // bdsPatient
-            // 
-            this.bdsPatient.DataSource = typeof(Medical.Data.Entities.Patient);
-            // 
             // labelX3
             // 
             this.labelX3.AutoSize = true;
@@ -132,13 +128,13 @@
             this.txtYear.DataBindings.Add(new System.Windows.Forms.Binding("ValueObject", this.bdsPatient, "BirthYear", true));
             this.txtYear.Location = new System.Drawing.Point(399, 50);
             this.txtYear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtYear.MaxValue = 2500;
-            this.txtYear.MinValue = 0;
+            this.txtYear.MaxValue = 2020;
+            this.txtYear.MinValue = 1930;
             this.txtYear.Name = "txtYear";
             this.txtYear.ShowUpDown = true;
             this.txtYear.Size = new System.Drawing.Size(120, 20);
             this.txtYear.TabIndex = 2;
-            this.txtYear.Value = 1900;
+            this.txtYear.Value = 1930;
             // 
             // labelX4
             // 
@@ -216,10 +212,10 @@
             this.labelX7.Location = new System.Drawing.Point(18, 134);
             this.labelX7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(37, 15);
-            this.labelX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.labelX7.Size = new System.Drawing.Size(40, 15);
+            this.labelX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.labelX7.TabIndex = 12;
-            this.labelX7.Text = "Chi tiết";
+            this.labelX7.Text = "Ghi chú";
             // 
             // txtDescription
             // 
@@ -237,40 +233,6 @@
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(429, 104);
             this.txtDescription.TabIndex = 7;
-            // 
-            // txtCode
-            // 
-            this.txtCode.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.txtCode.Border.Class = "TextBoxBorder";
-            this.txtCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Code", true));
-            this.txtCode.ForeColor = System.Drawing.Color.Black;
-            this.txtCode.Location = new System.Drawing.Point(90, 22);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtCode.MaxLength = 5;
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(200, 20);
-            this.txtCode.TabIndex = 0;
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.txtPhone.Border.Class = "TextBoxBorder";
-            this.txtPhone.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Phone", true));
-            this.txtPhone.ForeColor = System.Drawing.Color.Black;
-            this.txtPhone.Location = new System.Drawing.Point(90, 78);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPhone.MaxLength = 20;
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(200, 20);
-            this.txtPhone.TabIndex = 3;
             // 
             // rdaMale
             // 
@@ -306,7 +268,7 @@
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Ghi lại";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
             // 
             // btnCancel
             // 
@@ -320,7 +282,7 @@
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Bỏ qua";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
             // errPatient
             // 
@@ -339,11 +301,11 @@
             // panel2
             // 
             this.panel2.AutoSize = true;
+            this.panel2.Controls.Add(this.txtPhone);
+            this.panel2.Controls.Add(this.txtCode);
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.btnCancel);
-            this.panel2.Controls.Add(this.txtCode);
             this.panel2.Controls.Add(this.labelX1);
-            this.panel2.Controls.Add(this.txtPhone);
             this.panel2.Controls.Add(this.txtYear);
             this.panel2.Controls.Add(this.labelX3);
             this.panel2.Controls.Add(this.rdaFemale);
@@ -367,6 +329,42 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
             // 
+            // txtCode
+            // 
+            // 
+            // 
+            // 
+            this.txtCode.BackgroundStyle.Class = "TextBoxBorder";
+            this.txtCode.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Code", true));
+            this.txtCode.Location = new System.Drawing.Point(90, 21);
+            this.txtCode.Mask = "0000000000";
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(200, 20);
+            this.txtCode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtCode.TabIndex = 0;
+            this.txtCode.Text = "";
+            // 
+            // txtPhone
+            // 
+            // 
+            // 
+            // 
+            this.txtPhone.BackgroundStyle.Class = "TextBoxBorder";
+            this.txtPhone.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Phone", true));
+            this.txtPhone.Location = new System.Drawing.Point(90, 78);
+            this.txtPhone.Mask = "00000000000";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(200, 20);
+            this.txtPhone.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtPhone.TabIndex = 3;
+            this.txtPhone.Text = "";
+            // 
+            // bdsPatient
+            // 
+            this.bdsPatient.DataSource = typeof(Medical.Data.Entities.Patient);
+            // 
             // PatientRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -382,11 +380,11 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Đăng ký bệnh nhân mới";
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPatient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errPatient)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPatient)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,8 +403,6 @@
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.Controls.TextBoxX txtDescription;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtCode;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtPhone;
         private DevComponents.DotNetBar.ButtonX btnCancel;
         private DevComponents.DotNetBar.ButtonX btnSave;
         private System.Windows.Forms.BindingSource bdsPatient;
@@ -416,5 +412,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private DevComponents.DotNetBar.StyleManager styleManager1;
+        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtCode;
+        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtPhone;
     }
 }

@@ -10,6 +10,7 @@ using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
 using Medical.Forms.Implements;
+using Medical.Forms.UI;
 
 namespace Medical
 {
@@ -49,7 +50,7 @@ namespace Medical
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancelClick(object sender, EventArgs e)
         {
             this.Close();
             DialogResult = DialogResult.No;
@@ -61,31 +62,62 @@ namespace Medical
         /// <returns></returns>
         private bool ValidateForm()
         {
-            if (string.IsNullOrEmpty(txtCode.Text))
+            this.errPatient.Clear();
+            bool result = true;
+
+            if (string.IsNullOrEmpty(this.Patient.Code))
             {
-                this.errPatient.SetError(txtCode, "Chưa nhập mã quản lý bệnh nhân");
-                return false;
+                SetError(txtCode, "Chưa nhập mã quản lý bệnh nhân");
+                result = false;
+            } else if (this._patientRepository.IsDuplicateCode(Patient.Code)) 
+            {
+                SetError(txtCode, "Mã bệnh nhân đã tồn tại");
+                result = false;
             }
 
-            if (!ValidationUtil.IsAlphanumeric(txtCode.Text))
+            if (string.IsNullOrEmpty(this.Patient.Name))
             {
-                this.errPatient.SetError(txtCode, "Mã bệnh nhân chỉ chấp nhận số hoặc chữ");
-                return false;
+                SetError(txtName, "Chưa nhập tên bệnh nhân");
+                result = false;
+            }
+            else if (this.Patient.Name.Length < 3)
+            {
+                SetError(txtName, "Tên phải ít nhất 3 kí tự trở lên");
+                result = false;
             }
 
-            if (string.IsNullOrEmpty(txtName.Text))
+            if (this.Patient.BirthYear == null || this.Patient.BirthYear == 0)
             {
-                this.errPatient.SetError(txtName, "Chưa nhập tên bệnh nhân");
-                return false;
+                SetError(txtYear, "Chưa nhập năm sinh");
+                result = false;
             }
 
-            if (txtName.Text.Length < 3)
+            if (string.IsNullOrEmpty(this.Patient.Phone))
             {
-                this.errPatient.SetError(txtName, "Tên phải ít nhất 3 kí tự trở lên");
-                return false;
+                SetError(txtPhone, "Chưa nhập số điện thoại");
+                result = false;
+            }
+            else if (this.Patient.Phone.Length < 8)
+            {
+                SetError(txtPhone, "Số điện thoại không hợp lệ");
+                result = false;
             }
 
-            return true;
+            
+            if (string.IsNullOrEmpty(this.Patient.Address))
+            {
+                SetError(txtAddress, "Chưa nhập địa chỉ");
+                result = false;
+            }
+
+            return result;
+        }
+
+        public void SetError(Control control, String messsage)
+        {
+            this.errPatient.SetIconAlignment(control, ErrorIconAlignment.TopRight);
+            this.errPatient.SetIconPadding(control, -8);
+            this.errPatient.SetError(control, messsage);
         }
 
         /// <summary>
@@ -93,7 +125,7 @@ namespace Medical
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSaveClick(object sender, EventArgs e)
         {
             try
             {
@@ -101,23 +133,24 @@ namespace Medical
                 this.Patient.Sexual = rdaMale.Checked ? "M" : "F";
 
                 if (!this.ValidateForm()) return;
+
+                var result = MessageDialog.Instance.ShowMessage(this, "Q011");
+                if (result == DialogResult.No) return;
+
                 if (_isAddNew)
                 {
-                    var result = MessageBox.Show(this, "Đăng kí bệnh nhân mới, tiếp tục ?", "Xác nhận đăng ký", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.No) return;
                     this._patientRepository.Insert(this.Patient);
                 }
                 else
                 {
-                    var result = MessageBox.Show(this, "Thay đổi thông tin bệnh nhân mới, tiếp tục ?", "Xác nhận thay đổi", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.No) return;
                     this._patientRepository.Update(this.Patient);
                 }
                 DialogResult = DialogResult.Yes;
             }
             catch (Exception ex)
             {
-                DialogResult = DialogResult.No;
+                // DialogResult = DialogResult.No;
+                MessageDialog.Instance.ShowMessage(this, "ERR0002", ex.Message + "\n" + ex.Source + "\n" + ex.StackTrace);
             }
         }
 
