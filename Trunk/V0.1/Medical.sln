@@ -24,6 +24,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Quan_Ly_Phong_Kham_Setup", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Run", "Run\Run.csproj", "{97EDD8FF-EE86-48FD-9146-3A391C7906DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.Synchronize", "Medical.Synchronize\Medical.Synchronize.csproj", "{9F526D34-5736-4BA5-889B-9E371A45FA27}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Medical.Data.vsmdi
@@ -240,6 +242,31 @@ Global
 		{97EDD8FF-EE86-48FD-9146-3A391C7906DB}.SingleImage|Mixed Platforms.Build.0 = Release|x86
 		{97EDD8FF-EE86-48FD-9146-3A391C7906DB}.SingleImage|x86.ActiveCfg = Release|x86
 		{97EDD8FF-EE86-48FD-9146-3A391C7906DB}.SingleImage|x86.Build.0 = Release|x86
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.CD_ROM|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.CD_ROM|Mixed Platforms.Build.0 = Release|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.CD_ROM|x86.ActiveCfg = Release|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.DVD-5|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.DVD-5|x86.ActiveCfg = Debug|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.Release|x86.ActiveCfg = Release|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
+		{9F526D34-5736-4BA5-889B-9E371A45FA27}.SingleImage|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
