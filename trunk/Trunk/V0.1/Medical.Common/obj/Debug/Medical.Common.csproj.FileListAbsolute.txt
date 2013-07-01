@@ -1,0 +1,5 @@
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Common\bin\Debug\Medical.Common.dll
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Common\bin\Debug\Medical.Common.pdb
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Common\obj\Debug\ResolveAssemblyReference.cache
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Common\obj\Debug\Medical.Common.dll
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Common\obj\Debug\Medical.Common.pdb

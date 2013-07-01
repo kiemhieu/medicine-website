@@ -1,0 +1,8 @@
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Data\bin\Debug\Medical.Data.dll
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Data\bin\Debug\Medical.Data.pdb
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Data\bin\Debug\EntityFramework.dll
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Data\bin\Debug\Medical.Common.dll
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Data\bin\Debug\Medical.Common.pdb
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Data\obj\Debug\ResolveAssemblyReference.cache
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Data\obj\Debug\Medical.Data.dll
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Data\obj\Debug\Medical.Data.pdb
