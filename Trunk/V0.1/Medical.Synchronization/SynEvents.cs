@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Medical.Synchronize
+namespace Medical.Synchronization
 {
     /// <summary>
     /// Creator: HieuNK
@@ -9,6 +9,6 @@ namespace Medical.Synchronize
     /// </summary>
     public class SynEvents:EventArgs
     {
-
+        public string Message { get; set; }
     }
 }
