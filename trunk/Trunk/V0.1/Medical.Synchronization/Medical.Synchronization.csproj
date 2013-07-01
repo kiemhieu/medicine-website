@@ -8,8 +8,8 @@
     <ProjectGuid>{9F526D34-5736-4BA5-889B-9E371A45FA27}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Medical.Synchronize</RootNamespace>
-    <AssemblyName>Medical.Synchronize</AssemblyName>
+    <RootNamespace>Medical.Synchronization</RootNamespace>
+    <AssemblyName>Medical.Synchronization</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
