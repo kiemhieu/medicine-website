@@ -1,0 +1,6 @@
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Data.Test\bin\Debug\Medical.Data.Test.dll.config
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Data.Test\bin\Debug\Medical.Data.Test.dll
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Data.Test\bin\Debug\Medical.Data.Test.pdb
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Data.Test\obj\Debug\ResolveAssemblyReference.cache
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Data.Test\obj\Debug\Medical.Data.Test.dll
+D:\Working\Project\QL_Duoc\trunk\Trunk\V0.1\Medical.Data.Test\obj\Debug\Medical.Data.Test.pdb
