@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
 using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
@@ -25,15 +26,15 @@ namespace Medical.History
         private void History_Load(object sender, EventArgs e)
         {
             this.txtDate.Value = DateTime.Today;
-            loadData();
+            LoadData();
         }
 
-        private void txtDate_TextChanged(object sender, EventArgs e)
+        private void TxtDateTextChanged(object sender, EventArgs e)
         {
             // this.Enabled = false;
             try
             {
-                loadData();
+                LoadData();
             }
             catch (Exception)
             {
@@ -46,7 +47,7 @@ namespace Medical.History
             
         }
 
-        private void loadData()
+        private void LoadData()
         {
             List<Prescription> prescriptions = _prescriptionRepo.GetAll(this.txtDate.Value);
             prescriptions = prescriptions.OrderBy(x => x.LastUpdatedDate).ToList();
@@ -57,28 +58,37 @@ namespace Medical.History
             this.bdsPrescriptionHistory.DataSource = prescriptions;
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void BtnDeleteClick(object sender, EventArgs e)
         {
             var item = (Prescription) this.bdsPrescriptionHistory.Current;
             if (item == null) return;
             
         }
 
-        private void btnDetail_Click(object sender, EventArgs e) {
+        private void BtnDetailClick(object sender, EventArgs e) {
 
         }
 
-        private void dataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewX1CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Prescription prescription = (Prescription)this.bdsPrescriptionHistory.Current;
+            var prescription = (Prescription)this.bdsPrescriptionHistory.Current;
             if (prescription == null) return;
 
-            HistoryDetail historyDetail = new HistoryDetail(prescription.Id);
+            var historyDetail = new HistoryDetail(prescription.Id);
             historyDetail.ShowDialog(this);
 
-            loadData();
+            LoadData();
         }
 
+        private void DataGridViewX1DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            var gridView = (DataGridViewX)sender;
+            if (null == gridView) return;
+            foreach (DataGridViewRow r in gridView.Rows)
+            {
+                gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
+            }
+        }
         
     }
 }

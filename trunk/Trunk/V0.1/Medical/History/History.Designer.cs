@@ -33,19 +33,19 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.txtDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDetail = new System.Windows.Forms.ToolStripMenuItem();
+            this.bdsPrescriptionHistory = new System.Windows.Forms.BindingSource(this.components);
             this.patientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastUpdatedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recheckDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.figureNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDetail = new System.Windows.Forms.ToolStripMenuItem();
-            this.bdsPrescriptionHistory = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
@@ -55,14 +55,14 @@
             // 
             // panelEx1
             // 
-            this.panelEx1.AutoSize = true;
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.labelX1);
             this.panelEx1.Controls.Add(this.txtDate);
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(3, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(822, 27);
+            this.panelEx1.Size = new System.Drawing.Size(822, 40);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -71,6 +71,20 @@
             this.panelEx1.TabIndex = 2;
             this.panelEx1.ThemeAware = true;
             // 
+            // labelX1
+            // 
+            this.labelX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.Class = "";
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(4, 10);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(27, 16);
+            this.labelX1.TabIndex = 1;
+            this.labelX1.Text = "Ngày";
+            // 
             // txtDate
             // 
             // 
@@ -78,14 +92,14 @@
             // 
             this.txtDate.BackgroundStyle.Class = "DateTimeInputBackground";
             this.txtDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtDate.ButtonCustom.Image = global::Medical.Properties.Resources.calendar_blue_01;
-            this.txtDate.ButtonDropDown.Image = global::Medical.Properties.Resources.calendar_blue_01;
+            this.txtDate.ButtonCustom.Image = global::Medical.Properties.Resources.calendar;
+            this.txtDate.ButtonDropDown.Image = global::Medical.Properties.Resources.calendar;
             this.txtDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.txtDate.ButtonDropDown.Visible = true;
             this.txtDate.CustomFormat = "dd/MM/yyyy";
             this.txtDate.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.txtDate.IsPopupCalendarOpen = false;
-            this.txtDate.Location = new System.Drawing.Point(1, 3);
+            this.txtDate.Location = new System.Drawing.Point(36, 8);
             // 
             // 
             // 
@@ -125,7 +139,7 @@
             this.txtDate.Size = new System.Drawing.Size(110, 21);
             this.txtDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtDate.TabIndex = 0;
-            this.txtDate.TextChanged += new System.EventHandler(this.txtDate_TextChanged);
+            this.txtDate.TextChanged += new System.EventHandler(this.TxtDateTextChanged);
             // 
             // dataGridViewX1
             // 
@@ -143,7 +157,6 @@
             this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.No,
             this.patientNameDataGridViewTextBoxColumn,
             this.lastUpdatedDateDataGridViewTextBoxColumn,
             this.doctorNameDataGridViewTextBoxColumn,
@@ -163,23 +176,45 @@
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.dataGridViewX1.HighlightSelectedColumnHeaders = false;
-            this.dataGridViewX1.Location = new System.Drawing.Point(3, 27);
+            this.dataGridViewX1.Location = new System.Drawing.Point(3, 40);
             this.dataGridViewX1.MultiSelect = false;
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
-            this.dataGridViewX1.RowHeadersVisible = false;
+            this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(822, 465);
+            this.dataGridViewX1.Size = new System.Drawing.Size(822, 452);
             this.dataGridViewX1.TabIndex = 3;
-            this.dataGridViewX1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_CellDoubleClick);
+            this.dataGridViewX1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewX1CellDoubleClick);
+            this.dataGridViewX1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DataGridViewX1DataBindingComplete);
             // 
-            // No
+            // contextMenuStrip1
             // 
-            this.No.DataPropertyName = "No";
-            this.No.HeaderText = "STT";
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            this.No.Width = 40;
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnDelete,
+            this.btnDetail});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(138, 48);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Image = global::Medical.Properties.Resources.delete;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.btnDelete.Size = new System.Drawing.Size(137, 22);
+            this.btnDelete.Text = "Xóa";
+            this.btnDelete.Click += new System.EventHandler(this.BtnDeleteClick);
+            // 
+            // btnDetail
+            // 
+            this.btnDetail.Image = global::Medical.Properties.Resources.document;
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Size = new System.Drawing.Size(137, 22);
+            this.btnDetail.Text = "Xem chi tiết";
+            this.btnDetail.Click += new System.EventHandler(this.BtnDetailClick);
+            // 
+            // bdsPrescriptionHistory
+            // 
+            this.bdsPrescriptionHistory.DataSource = typeof(Medical.Data.Entities.Prescription);
             // 
             // patientNameDataGridViewTextBoxColumn
             // 
@@ -229,35 +264,6 @@
             this.Note.Name = "Note";
             this.Note.ReadOnly = true;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnDelete,
-            this.btnDetail});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(130, 48);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Image = global::Medical.Properties.Resources.delete;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.btnDelete.Size = new System.Drawing.Size(129, 22);
-            this.btnDelete.Text = "Xóa";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnDetail
-            // 
-            this.btnDetail.Image = global::Medical.Properties.Resources.document;
-            this.btnDetail.Name = "btnDetail";
-            this.btnDetail.Size = new System.Drawing.Size(129, 22);
-            this.btnDetail.Text = "Xem chi tiết";
-            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
-            // 
-            // bdsPrescriptionHistory
-            // 
-            this.bdsPrescriptionHistory.DataSource = typeof(Medical.Data.Entities.Prescription);
-            // 
             // History
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,12 +277,12 @@
             this.Text = "Nhật ký khám bệnh";
             this.Load += new System.EventHandler(this.History_Load);
             this.panelEx1.ResumeLayout(false);
+            this.panelEx1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsPrescriptionHistory)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -288,13 +294,13 @@
         private DevComponents.Editors.DateTimeAdv.DateTimeInput txtDate;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem btnDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn No;
+        private System.Windows.Forms.ToolStripMenuItem btnDetail;
+        private DevComponents.DotNetBar.LabelX labelX1;
         private System.Windows.Forms.DataGridViewTextBoxColumn patientNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdatedDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctorNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn recheckDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn figureNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Note;
-        private System.Windows.Forms.ToolStripMenuItem btnDetail;
     }
 }
