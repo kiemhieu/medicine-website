@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdPatient = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,6 +39,7 @@
             this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grdPatient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdgPatient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthYear)).BeginInit();
@@ -60,16 +61,16 @@
             this.sexualDataGridViewTextBoxColumn,
             this.addressDataGridViewTextBoxColumn});
             this.grdPatient.DataSource = this.bdgPatient;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdPatient.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdPatient.DefaultCellStyle = dataGridViewCellStyle3;
             this.grdPatient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdPatient.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.grdPatient.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.grdPatient.HighlightSelectedColumnHeaders = false;
             this.grdPatient.Location = new System.Drawing.Point(5, 0);
             this.grdPatient.MultiSelect = false;
@@ -77,7 +78,7 @@
             this.grdPatient.ReadOnly = true;
             this.grdPatient.RowHeadersVisible = false;
             this.grdPatient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdPatient.Size = new System.Drawing.Size(646, 385);
+            this.grdPatient.Size = new System.Drawing.Size(646, 376);
             this.grdPatient.TabIndex = 0;
             this.grdPatient.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdPatient_CellDoubleClick);
             // 
@@ -131,7 +132,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(10, 5);
+            this.labelX1.Location = new System.Drawing.Point(10, 12);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(50, 15);
             this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -147,7 +148,7 @@
             this.txtPatientName.Border.Class = "TextBoxBorder";
             this.txtPatientName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtPatientName.ForeColor = System.Drawing.Color.Black;
-            this.txtPatientName.Location = new System.Drawing.Point(63, 3);
+            this.txtPatientName.Location = new System.Drawing.Point(63, 9);
             this.txtPatientName.Name = "txtPatientName";
             this.txtPatientName.Size = new System.Drawing.Size(171, 20);
             this.txtPatientName.TabIndex = 2;
@@ -160,7 +161,7 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(249, 5);
+            this.labelX2.Location = new System.Drawing.Point(249, 12);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(49, 15);
             this.labelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
@@ -175,7 +176,7 @@
             this.txtBirthYear.BackgroundStyle.Class = "DateTimeInputBackground";
             this.txtBirthYear.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtBirthYear.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtBirthYear.Location = new System.Drawing.Point(300, 3);
+            this.txtBirthYear.Location = new System.Drawing.Point(300, 9);
             this.txtBirthYear.Name = "txtBirthYear";
             this.txtBirthYear.Size = new System.Drawing.Size(69, 20);
             this.txtBirthYear.TabIndex = 4;
@@ -184,8 +185,8 @@
             // 
             this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSearch.Image = global::Medical.Properties.Resources.Search;
-            this.btnSearch.Location = new System.Drawing.Point(628, 1);
+            this.btnSearch.Image = global::Medical.Properties.Resources.search_16;
+            this.btnSearch.Location = new System.Drawing.Point(379, 8);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(23, 23);
             this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -194,14 +195,13 @@
             // 
             // panel1
             // 
-            this.panel1.AutoSize = true;
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.txtBirthYear);
             this.panel1.Controls.Add(this.labelX2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(656, 27);
+            this.panel1.Size = new System.Drawing.Size(656, 36);
             this.panel1.TabIndex = 8;
             // 
             // panelEx1
@@ -210,10 +210,10 @@
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx1.Controls.Add(this.grdPatient);
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx1.Location = new System.Drawing.Point(0, 27);
+            this.panelEx1.Location = new System.Drawing.Point(0, 36);
             this.panelEx1.Name = "panelEx1";
             this.panelEx1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panelEx1.Size = new System.Drawing.Size(656, 390);
+            this.panelEx1.Size = new System.Drawing.Size(656, 381);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -221,6 +221,12 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 9;
             this.panelEx1.Text = "panelEx1";
+            this.panelEx1.ThemeAware = true;
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
             // 
             // PatientBrowseForm
             // 
@@ -269,5 +275,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sexualDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
         private DevComponents.DotNetBar.PanelEx panelEx1;
+        private DevComponents.DotNetBar.StyleManager styleManager1;
     }
 }

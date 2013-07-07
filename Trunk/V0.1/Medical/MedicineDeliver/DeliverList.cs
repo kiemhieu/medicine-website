@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
 using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Entities.Views;
@@ -43,7 +44,7 @@ namespace Medical.MedicineDeliver
         {
             cboClinic.DataSource = new List<Medical.Data.Entities.Clinic> { AppContext.CurrentClinic};
             cboDate.Value = DateTime.Today;
-            cboStatus.DataSource = new List<Item>(new Item[] { new Item(0, "Tất cả"), new Item(1, "Chưa phát thuốc"), new Item(2, "Đã phát thuốc") });
+            //cboStatus.DataSource = new List<Item>(new Item[] { new Item(0, "Tất cả"), new Item(1, "Chưa phát thuốc"), new Item(2, "Đã phát thuốc") });
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace Medical.MedicineDeliver
         /// </summary>
         private void UpdateGrid()
         {
-            this.UpdateGrid(this.cboDate.Value.Date, Convert.ToInt32(this.cboStatus.SelectedValue));
+            this.UpdateGrid(this.cboDate.Value.Date, 1);
         }
 
         /// <summary>
@@ -62,28 +63,28 @@ namespace Medical.MedicineDeliver
         private void UpdateGrid(DateTime date, int type)
         {
             var list = vMedicineRepo.Get(date, type);
-            for (var i = 0; i < list.Count; i++)
-            {
-                list[i].No = i + 1;
-            }
+            //for (var i = 0; i < list.Count; i++)
+            //{
+            //    list[i].No = i + 1;
+            //}
             this.bdsDeliver.DataSource = list;
             this.bdsDeliver.ResetBindings(true);
             this.dataGridViewX1.Refresh();
             this.dataGridViewX1.ResetBindings();
         }
 
-        private void cboDate_ValueChanged(object sender, EventArgs e)
+        private void CboDateValueChanged(object sender, EventArgs e)
         {
             UpdateGrid();
         }
 
-        private void cboStatus_SelectedValueChanged(object sender, EventArgs e)
+        private void CboStatusSelectedValueChanged(object sender, EventArgs e)
         {
             UpdateGrid();
 
         }
 
-        private void btnDeliver_Click(object sender, EventArgs e)
+        private void BtnDeliverClick(object sender, EventArgs e)
         {
             if (bdsDeliver.Current == null)
             {
@@ -103,12 +104,12 @@ namespace Medical.MedicineDeliver
             UpdateGrid();
         }
 
-        private void DeliverList_Activated_1(object sender, EventArgs e)
+        private void DeliverListActivated1(object sender, EventArgs e)
         {
             UpdateGrid();
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
+        private void BtnRemoveClick(object sender, EventArgs e)
         {
             if (bdsDeliver.Current == null)
             {
@@ -124,6 +125,36 @@ namespace Medical.MedicineDeliver
             bdsDeliver.Clear();
             UpdateGrid();
             
+        }
+
+        private void DataGridViewX1DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            var gridView = (DataGridViewX)sender;
+            if (null == gridView) return;
+            foreach (DataGridViewRow r in gridView.Rows)
+            {
+                gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
+            }
+        }
+
+        private void DataGridViewX1CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (bdsDeliver.Current == null)
+            {
+                var dr = MessageBox.Show("Bạn phải chọn đơn thuốc cần phát?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                return;
+            }
+            this.bdsDeliver.EndEdit();
+            var selectedItem = (VMedicineDeliverList)this.bdsDeliver.Current;
+            if (selectedItem == null)
+            {
+                MessageBox.Show(this, "Chưa chọn bệnh nhân phát thuốc.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var deliveryRegister = new DeliveryRegister(selectedItem.Id);
+            deliveryRegister.ShowDialog();
+            UpdateGrid();
         }
     }
 }
