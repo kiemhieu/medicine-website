@@ -102,3 +102,5 @@ F:\WORK\Works\Medical\trunk\Trunk\V0.1\Medical.Test\obj\x86\Debug\Medical.Test.R
 F:\WORK\Works\Medical\trunk\Trunk\V0.1\Medical.Test\obj\x86\Debug\Medical.Test.csproj.GenerateResource.Cache
 F:\WORK\Works\Medical\trunk\Trunk\V0.1\Medical.Test\obj\x86\Debug\Medical.Test.dll
 F:\WORK\Works\Medical\trunk\Trunk\V0.1\Medical.Test\obj\x86\Debug\Medical.Test.pdb
+F:\WORK\Works\Medical\trunk\Trunk\V0.1\Medical.Test\bin\Debug\Medical.Forms.dll
+F:\WORK\Works\Medical\trunk\Trunk\V0.1\Medical.Test\bin\Debug\Medical.Forms.pdb
