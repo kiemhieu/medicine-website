@@ -33,6 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.hủyPhátThuốcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,10 +47,6 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.cboDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -69,7 +69,7 @@
             this.cboDate.Enabled = false;
             this.cboDate.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.cboDate.IsPopupCalendarOpen = false;
-            this.cboDate.Location = new System.Drawing.Point(39, 10);
+            this.cboDate.Location = new System.Drawing.Point(420, 10);
             this.cboDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             // 
             // 
@@ -153,115 +153,11 @@
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(980, 476);
+            this.dataGridViewX1.Size = new System.Drawing.Size(815, 476);
             this.dataGridViewX1.TabIndex = 0;
             this.dataGridViewX1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewX1CellDoubleClick);
             this.dataGridViewX1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DataGridViewX1DataBindingComplete);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.hủyPhátThuốcToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(158, 48);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
-            this.toolStripMenuItem1.Text = "Phát thuốc";
-            // 
-            // hủyPhátThuốcToolStripMenuItem
-            // 
-            this.hủyPhátThuốcToolStripMenuItem.Name = "hủyPhátThuốcToolStripMenuItem";
-            this.hủyPhátThuốcToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.hủyPhátThuốcToolStripMenuItem.Text = "Hủy phát thuốc";
-            // 
-            // bdsDeliver
-            // 
-            this.bdsDeliver.DataSource = typeof(Medical.Data.Entities.Views.VMedicineDeliverList);
-            // 
-            // labelX1
-            // 
-            this.labelX1.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.Class = "";
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(7, 13);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(28, 15);
-            this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.labelX1.TabIndex = 3;
-            this.labelX1.Text = "Ngày";
-            // 
-            // cboClinic
-            // 
-            this.cboClinic.DisplayMember = "Name";
-            this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboClinic.Enabled = false;
-            this.cboClinic.FocusCuesEnabled = false;
-            this.cboClinic.FormattingEnabled = true;
-            this.cboClinic.ItemHeight = 14;
-            this.cboClinic.Location = new System.Drawing.Point(235, 10);
-            this.cboClinic.Name = "cboClinic";
-            this.cboClinic.Size = new System.Drawing.Size(300, 20);
-            this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboClinic.TabIndex = 2;
-            this.cboClinic.ValueMember = "Id";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dataGridViewX1);
-            this.panel2.Controls.Add(this.panelEx1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(4);
-            this.panel2.Size = new System.Drawing.Size(988, 524);
-            this.panel2.TabIndex = 3;
-            // 
-            // panelEx1
-            // 
-            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.labelX2);
-            this.panelEx1.Controls.Add(this.cboDate);
-            this.panelEx1.Controls.Add(this.cboClinic);
-            this.panelEx1.Controls.Add(this.labelX1);
-            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelEx1.Location = new System.Drawing.Point(4, 4);
-            this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(980, 40);
-            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx1.Style.GradientAngle = 90;
-            this.panelEx1.TabIndex = 2;
-            this.panelEx1.ThemeAware = true;
-            // 
-            // labelX2
-            // 
-            this.labelX2.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX2.BackgroundStyle.Class = "";
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(165, 13);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(64, 15);
-            this.labelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.labelX2.TabIndex = 4;
-            this.labelX2.Text = "Phòng khám";
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
+            this.dataGridViewX1.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridViewX1_DefaultValuesNeeded);
             // 
             // codeDataGridViewTextBoxColumn
             // 
@@ -295,11 +191,116 @@
             this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
             this.addressDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.hủyPhátThuốcToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(158, 48);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.toolStripMenuItem1.Text = "Phát thuốc";
+            // 
+            // hủyPhátThuốcToolStripMenuItem
+            // 
+            this.hủyPhátThuốcToolStripMenuItem.Name = "hủyPhátThuốcToolStripMenuItem";
+            this.hủyPhátThuốcToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.hủyPhátThuốcToolStripMenuItem.Text = "Hủy phát thuốc";
+            // 
+            // bdsDeliver
+            // 
+            this.bdsDeliver.DataSource = typeof(Medical.Data.Entities.Views.VMedicineDeliverList);
+            // 
+            // labelX1
+            // 
+            this.labelX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.Class = "";
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(388, 13);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(28, 15);
+            this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.labelX1.TabIndex = 3;
+            this.labelX1.Text = "Ngày";
+            // 
+            // cboClinic
+            // 
+            this.cboClinic.DisplayMember = "Name";
+            this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboClinic.Enabled = false;
+            this.cboClinic.FocusCuesEnabled = false;
+            this.cboClinic.FormattingEnabled = true;
+            this.cboClinic.ItemHeight = 14;
+            this.cboClinic.Location = new System.Drawing.Point(76, 10);
+            this.cboClinic.Name = "cboClinic";
+            this.cboClinic.Size = new System.Drawing.Size(300, 20);
+            this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboClinic.TabIndex = 2;
+            this.cboClinic.ValueMember = "Id";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dataGridViewX1);
+            this.panel2.Controls.Add(this.panelEx1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(4);
+            this.panel2.Size = new System.Drawing.Size(823, 524);
+            this.panel2.TabIndex = 3;
+            // 
+            // panelEx1
+            // 
+            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.labelX2);
+            this.panelEx1.Controls.Add(this.cboDate);
+            this.panelEx1.Controls.Add(this.cboClinic);
+            this.panelEx1.Controls.Add(this.labelX1);
+            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelEx1.Location = new System.Drawing.Point(4, 4);
+            this.panelEx1.Name = "panelEx1";
+            this.panelEx1.Size = new System.Drawing.Size(815, 40);
+            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx1.Style.GradientAngle = 90;
+            this.panelEx1.TabIndex = 2;
+            this.panelEx1.ThemeAware = true;
+            // 
+            // labelX2
+            // 
+            this.labelX2.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.Class = "";
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(6, 13);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(64, 15);
+            this.labelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.labelX2.TabIndex = 4;
+            this.labelX2.Text = "Phòng khám";
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
+            // 
             // DeliverList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(988, 524);
+            this.ClientSize = new System.Drawing.Size(823, 524);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

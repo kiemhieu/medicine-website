@@ -37,15 +37,15 @@
             this.txtDescription = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.rdaMale = new System.Windows.Forms.RadioButton();
             this.rdaFemale = new System.Windows.Forms.RadioButton();
-            this.btnSave = new DevComponents.DotNetBar.ButtonX();
-            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.errPatient = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.txtCode = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.txtPhone = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
+            this.txtCode = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.bdsPatient = new System.Windows.Forms.BindingSource(this.components);
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errPatient)).BeginInit();
             this.panel2.SuspendLayout();
@@ -231,7 +231,7 @@
             this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(429, 104);
+            this.txtDescription.Size = new System.Drawing.Size(429, 60);
             this.txtDescription.TabIndex = 7;
             // 
             // rdaMale
@@ -256,34 +256,6 @@
             this.rdaFemale.Text = "Nữ";
             this.rdaFemale.UseVisualStyleBackColor = true;
             // 
-            // btnSave
-            // 
-            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Image = global::Medical.Properties.Resources.accept;
-            this.btnSave.Location = new System.Drawing.Point(271, 251);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(120, 23);
-            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSave.TabIndex = 8;
-            this.btnSave.Text = "Ghi lại";
-            this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCancel.Image = global::Medical.Properties.Resources.cancel;
-            this.btnCancel.Location = new System.Drawing.Point(397, 251);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(120, 23);
-            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancel.TabIndex = 9;
-            this.btnCancel.Text = "Bỏ qua";
-            this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
-            // 
             // errPatient
             // 
             this.errPatient.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
@@ -293,7 +265,7 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 287);
+            this.panel1.Location = new System.Drawing.Point(0, 241);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(540, 0);
             this.panel1.TabIndex = 13;
@@ -321,29 +293,8 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(540, 287);
+            this.panel2.Size = new System.Drawing.Size(540, 241);
             this.panel2.TabIndex = 14;
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
-            // 
-            // txtCode
-            // 
-            // 
-            // 
-            // 
-            this.txtCode.BackgroundStyle.Class = "TextBoxBorder";
-            this.txtCode.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Code", true));
-            this.txtCode.Location = new System.Drawing.Point(90, 21);
-            this.txtCode.Mask = "0000000000";
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(200, 20);
-            this.txtCode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.txtCode.TabIndex = 0;
-            this.txtCode.Text = "";
             // 
             // txtPhone
             // 
@@ -361,15 +312,64 @@
             this.txtPhone.TabIndex = 3;
             this.txtPhone.Text = "";
             // 
+            // txtCode
+            // 
+            // 
+            // 
+            // 
+            this.txtCode.BackgroundStyle.Class = "TextBoxBorder";
+            this.txtCode.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsPatient, "Code", true));
+            this.txtCode.Location = new System.Drawing.Point(90, 21);
+            this.txtCode.Mask = "0000000000";
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(200, 20);
+            this.txtCode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtCode.TabIndex = 0;
+            this.txtCode.Text = "";
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
+            // 
             // bdsPatient
             // 
             this.bdsPatient.DataSource = typeof(Medical.Data.Entities.Patient);
+            // 
+            // btnSave
+            // 
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSave.Image = global::Medical.Properties.Resources.accept;
+            this.btnSave.Location = new System.Drawing.Point(273, 206);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(120, 23);
+            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSave.TabIndex = 8;
+            this.btnSave.Text = "Ghi lại";
+            this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancel.Image = global::Medical.Properties.Resources.cancel;
+            this.btnCancel.Location = new System.Drawing.Point(399, 206);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(120, 23);
+            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "Bỏ qua";
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
             // PatientRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 287);
+            this.ClientSize = new System.Drawing.Size(540, 241);
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

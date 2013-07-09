@@ -20,8 +20,9 @@ namespace Medical.MedicineDeliver
     public partial class DeliverList : DockContent
     {
         private IClinicRepository _clinicRepo = new ClinicRepository();
-        private IVMedicineDeliverRepository vMedicineRepo = new VMedicineDeliverRepository();
-        private IMedicineDeliveryRepository _medicineDeliveryRepo = new MedicineDeliveryRepository();
+        private readonly IVMedicineDeliverRepository _vMedicineRepo = new VMedicineDeliverRepository();
+        private readonly IMedicineDeliveryRepository _medicineDeliveryRepo = new MedicineDeliveryRepository();
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="DeliverList"/> class.
         /// </summary>
@@ -29,10 +30,10 @@ namespace Medical.MedicineDeliver
         {
             InitializeComponent();
             Initialize();
-            this.Activated += new EventHandler(DeliverList_Activated);
+            this.Activated += new EventHandler(DeliverListActivated);
         }
 
-        private void DeliverList_Activated(object sender, EventArgs e)
+        private void DeliverListActivated(object sender, EventArgs e)
         {
             UpdateGrid();
         }
@@ -44,7 +45,7 @@ namespace Medical.MedicineDeliver
         {
             cboClinic.DataSource = new List<Medical.Data.Entities.Clinic> { AppContext.CurrentClinic};
             cboDate.Value = DateTime.Today;
-            //cboStatus.DataSource = new List<Item>(new Item[] { new Item(0, "Tất cả"), new Item(1, "Chưa phát thuốc"), new Item(2, "Đã phát thuốc") });
+            // cboStatus.DataSource = new List<Item>(new Item[] { new Item(0, "Tất cả"), new Item(1, "Chưa phát thuốc"), new Item(2, "Đã phát thuốc") });
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace Medical.MedicineDeliver
         /// <param name="type">The type.</param>
         private void UpdateGrid(DateTime date, int type)
         {
-            var list = vMedicineRepo.Get(date, type);
+            var list = _vMedicineRepo.Get(date, type);
             //for (var i = 0; i < list.Count; i++)
             //{
             //    list[i].No = i + 1;
@@ -155,6 +156,11 @@ namespace Medical.MedicineDeliver
             var deliveryRegister = new DeliveryRegister(selectedItem.Id);
             deliveryRegister.ShowDialog();
             UpdateGrid();
+        }
+
+        private void dataGridViewX1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+
         }
     }
 }
