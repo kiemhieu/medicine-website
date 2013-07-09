@@ -41,7 +41,7 @@ namespace Medical.MedicineDeliverHistory
         {
             cboClinic.DataSource = _clinicRepo.GetAll();
             cboDate.Value = DateTime.Today;
-            cboStatus.DataSource = new List<Item>(new Item[] {new Item(2, "Đã phát thuốc")});
+            // cboStatus.DataSource = new List<Item>(new Item[] {new Item(2, "Đã phát thuốc")});
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Medical.MedicineDeliverHistory
         /// </summary>
         private void UpdateGrid()
         {
-            this.UpdateGrid(this.cboDate.Value.Date, Convert.ToInt32(this.cboStatus.SelectedValue));
+            // this.UpdateGrid(this.cboDate.Value.Date, Convert.ToInt32(this.cboStatus.SelectedValue));
         }
 
         /// <summary>

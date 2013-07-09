@@ -10,8 +10,8 @@ using WeifenLuo.WinFormsUI.Docking;
 namespace Medical {
     public partial class CheckUp : DockContent {
 
-        private IPrescriptionRepository prescriptionRepo = new PrescriptionRepository();
-        private IPrescriptionDetailRepository prescriptionDetailRepo = new PrescriptionDetailRepository();
+        private readonly IPrescriptionRepository _prescriptionRepo = new PrescriptionRepository();
+        private readonly IPrescriptionDetailRepository _prescriptionDetailRepo = new PrescriptionDetailRepository();
         private Prescription _lastPrescription;
         private Patient _selectedPatient;
 
@@ -33,6 +33,7 @@ namespace Medical {
             if (result != System.Windows.Forms.DialogResult.Yes) return;
             this._selectedPatient = registerform.Patient;
             UpdateForm(registerform.Patient);
+            UpdateButtonStatus();
         }
 
         /// <summary>
@@ -41,6 +42,7 @@ namespace Medical {
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void BtnCheckingHistoryClick(object sender, EventArgs e) {
+            if (this._selectedPatient == null) return;
             var selected = (Patient)this.bdsPatient.Current;
             if (selected == null) return;
             var historyForm = new CheckUpHistory(selected.Id);
@@ -54,17 +56,12 @@ namespace Medical {
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void BtnCheckClick(object sender, EventArgs e)
         {
-            // Patient patient = (Patient)this.bdsPatient.Current;
-            // if (patient == null) return;
-            // if (this.bdsPatient.DataSource is Patient)
-            // {
-            // var selected = (Patient) this.bdsPatient.DataSource;
-            //  if (selected == null) return;
+            if (this._selectedPatient == null) return;
             var checkUpRegister = new CheckUpRegister(this._selectedPatient);
             var result = checkUpRegister.ShowDialog(this);
             if (result == DialogResult.Cancel) return;
             UpdateForm(this._selectedPatient);
-            // }
+            
         }
 
         /// <summary>
@@ -75,9 +72,10 @@ namespace Medical {
         private void TextBoxX1ButtonCustomClick(object sender, EventArgs e) {
             var patientBrowse = new PatientBrowseForm();
             var result = patientBrowse.ShowDialog(this);
-            if (result != System.Windows.Forms.DialogResult.Yes) return;
+            if (result != DialogResult.Yes) return;
             this._selectedPatient = patientBrowse.SelectedPatient;
             UpdateForm(patientBrowse.SelectedPatient);
+            UpdateButtonStatus();
         }
 
         /// <summary>
@@ -86,35 +84,13 @@ namespace Medical {
         /// <param name="patient">The patient.</param>
         private void UpdateForm(Patient patient)
         {
-            // this.bdsPrescription.Clear();
-            // this.bdsPrescriptionDetail.Clear();
-            // this.bdsPatient.Clear();
-            // this._selectedPatient = patient;
-
-            //if (patient == null)
-            //{
-            //    this.btnCheck.Enabled = false;
-            //    return;
-            //}
-
-            // this.btnCheck.Enabled = true;
-
             this.bdsPatient.DataSource = patient;
-            _lastPrescription = prescriptionRepo.GetLastByPatient(patient.Id);
+            _lastPrescription = _prescriptionRepo.GetLastByPatient(patient.Id);
 
-            //if (_lastPrescription == null)
-            //{
-            //    this.bdsPrescription.DataSource = null;
-            //    this.bdsPrescription.ResetBindings(false);
-
-            //    this.bdsPrescriptionDetail.DataSource = null;
-            //    this.bdsPrescriptionDetail.ResetBindings(false);
-            //    return;
-            //}
             if (_lastPrescription != null)
             {
                 this.bdsPrescription.DataSource = _lastPrescription;
-                var detailList = prescriptionDetailRepo.GetByPrescription(_lastPrescription.Id);
+                var detailList = _prescriptionDetailRepo.GetByPrescription(_lastPrescription.Id);
                 foreach (var detailItem in detailList)
                 {
                     detailItem.MedicineName = detailItem.Medicine.Name;
@@ -143,6 +119,25 @@ namespace Medical {
             foreach (DataGridViewRow r in gridView.Rows)
             {
                 gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
+            }
+        }
+
+        private void CheckUpLoad(object sender, EventArgs e)
+        {
+            UpdateButtonStatus();
+        }
+
+        private void UpdateButtonStatus()
+        {
+            if (this._selectedPatient != null)
+            {
+                this.btnCheck.Enabled = true;
+                this.btnCheckingHistory.Enabled = true;
+            }
+            else
+            {
+                this.btnCheck.Enabled = false;
+                this.btnCheckingHistory.Enabled = false;
             }
         }
     }
