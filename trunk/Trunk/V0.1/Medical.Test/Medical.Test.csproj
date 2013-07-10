@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{4BE62B2C-8E0B-4085-80A2-CB589F68B73D}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Medical.Test</RootNamespace>
     <AssemblyName>Medical.Test</AssemblyName>
@@ -142,6 +142,12 @@
     <Compile Include="frmMedicineSearch.Designer.cs">
       <DependentUpon>frmMedicineSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTestSyn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestSyn.Designer.cs">
+      <DependentUpon>frmTestSyn.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmWareHouseDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,9 @@
     <EmbeddedResource Include="frmMedicineSearch.resx">
       <DependentUpon>frmMedicineSearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTestSyn.resx">
+      <DependentUpon>frmTestSyn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmWareHouseDetail.resx">
       <DependentUpon>frmWareHouseDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -270,6 +279,10 @@
     <ProjectReference Include="..\Medical.Data\Medical.Data.csproj">
       <Project>{169CF0C0-C72D-424A-9CC4-55D95E275755}</Project>
       <Name>Medical.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Medical.Synchronization\Medical.Synchronization.csproj">
+      <Project>{9f526d34-5736-4ba5-889b-9e371a45fa27}</Project>
+      <Name>Medical.Synchronization</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
