@@ -40,10 +40,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basic\Figure.cs" />
+    <Compile Include="Basic\FigureDetail.cs" />
+    <Compile Include="Basic\MedicineDelivery.cs" />
+    <Compile Include="Basic\MedicineDeliveryDetail.cs" />
+    <Compile Include="Basic\MedicineDeliveryDetailAllocate.cs" />
+    <Compile Include="Basic\MedicinePlan.cs" />
+    <Compile Include="Basic\MedicinePlanDetail.cs" />
+    <Compile Include="Basic\MedicineUnitPrice.cs" />
+    <Compile Include="Basic\Patient.cs" />
+    <Compile Include="Basic\PatientFigure.cs" />
+    <Compile Include="Basic\Prescription.cs" />
+    <Compile Include="Basic\PrescriptionDetail.cs" />
+    <Compile Include="Basic\WareHouse.cs" />
+    <Compile Include="Basic\WareHouseDetail.cs" />
+    <Compile Include="Basic\WareHouseExportAllocate.cs" />
+    <Compile Include="Basic\WareHouseIO.cs" />
+    <Compile Include="Basic\WareHouseIODetail.cs" />
+    <Compile Include="Basic\WareHouseMinimumAllow.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="IniFile.cs" />
     <Compile Include="Synchronize.cs" />
     <Compile Include="SynEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TripleDes.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
