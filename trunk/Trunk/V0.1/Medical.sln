@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.Data", "Medical.Data\Medical.Data.csproj", "{169CF0C0-C72D-424A-9CC4-55D95E275755}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.Test", "Medical.Test\Medical.Test.csproj", "{4BE62B2C-8E0B-4085-80A2-CB589F68B73D}"
@@ -26,27 +26,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Run", "Run\Run.csproj", "{9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.Synchronization", "Medical.Synchronization\Medical.Synchronization.csproj", "{9F526D34-5736-4BA5-889B-9E371A45FA27}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Medical.Web", "http://localhost:3384", "{DF86621A-2FCF-4487-B01D-026A052F4A42}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Medical.Web", "Medical.Web\", "{1A4333E2-7A67-4A25-9048-FE4438E98709}"
 	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		ProjectReferences = "{9f526d34-5736-4ba5-889b-9e371a45fa27}|Medical.Synchronization.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_3384"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/Medical.Web"
 		Debug.AspNetCompiler.PhysicalPath = "Medical.Web\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3384\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Medical.Web\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_3384"
+		Release.AspNetCompiler.VirtualPath = "/Medical.Web"
 		Release.AspNetCompiler.PhysicalPath = "Medical.Web\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3384\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Medical.Web\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "Medical.Web\"
-		DefaultWebSiteLanguage = "Visual C#"
+		VWDPort = "5384"
 	EndProjectSection
 EndProject
 Global
@@ -290,31 +287,31 @@ Global
 		{9F526D34-5736-4BA5-889B-9E371A45FA27}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9F526D34-5736-4BA5-889B-9E371A45FA27}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
 		{9F526D34-5736-4BA5-889B-9E371A45FA27}.SingleImage|x86.ActiveCfg = Release|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.CD_ROM|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.CD_ROM|Any CPU.Build.0 = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.CD_ROM|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.CD_ROM|Mixed Platforms.Build.0 = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.CD_ROM|x86.ActiveCfg = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.DVD-5|Mixed Platforms.Build.0 = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.DVD-5|x86.ActiveCfg = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.Release|x86.ActiveCfg = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.SingleImage|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.SingleImage|Any CPU.Build.0 = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.SingleImage|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.SingleImage|Mixed Platforms.Build.0 = Debug|Any CPU
-		{DF86621A-2FCF-4487-B01D-026A052F4A42}.SingleImage|x86.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.CD_ROM|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.CD_ROM|Any CPU.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.CD_ROM|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.CD_ROM|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.CD_ROM|x86.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.DVD-5|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.DVD-5|x86.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Release|x86.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.SingleImage|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.SingleImage|Any CPU.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.SingleImage|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.SingleImage|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.SingleImage|x86.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
