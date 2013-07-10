@@ -53,7 +53,8 @@ namespace Medical.MedicineDeliver
         /// </summary>
         private void UpdateGrid()
         {
-            this.UpdateGrid(this.cboDate.Value.Date, 1);
+            var type = cboType.Checked ? 2 : 1;
+            this.UpdateGrid(this.cboDate.Value.Date, type);
         }
 
         /// <summary>
@@ -158,9 +159,42 @@ namespace Medical.MedicineDeliver
             UpdateGrid();
         }
 
-        private void dataGridViewX1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        private void DataGridViewX1DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
 
+        }
+
+        private void CboTypeCheckValueChanged(object sender, EventArgs e)
+        {
+            UpdateGrid();
+        }
+
+        private void DataGridViewX1RowContextMenuStripNeeded(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
+        {
+            var gridView = (DataGridViewX)sender;
+            gridView.Rows[e.RowIndex].Selected = true;
+
+            // e.RowIndex
+            e.ContextMenuStrip = ctxMenu;
+            // ctxMenu.Show();
+        }
+
+        private void MnuDeleteDeliverClick(object sender, EventArgs e)
+        {
+            
+            if (bdsDeliver.Current == null)
+            {
+                DialogResult dr = MessageBox.Show("Bạn phải chọn đơn thuốc cần phát?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                return;
+            }
+            VMedicineDeliverList _medicineDelivery = (VMedicineDeliverList)bdsDeliver.Current;
+            var dialogResult = MessageDialog.Instance.ShowMessage(this, "Q003", "bản ghi cấp thuốc này");
+            if (dialogResult == DialogResult.No) return;
+            this._medicineDeliveryRepo.Delete(_medicineDelivery.DeliverId.Value);
+            this.DialogResult = DialogResult.OK;
+
+            bdsDeliver.Clear();
+            UpdateGrid();
         }
     }
 }
