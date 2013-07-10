@@ -1,0 +1,1 @@
+D:\CSharp.HieuNK\QL_Duoc\trunk\Trunk\SER_V0.1\RunTest\bin\Release\QuanLyPhongKham.exe.config

@@ -18,8 +18,13 @@ namespace Medical.Test
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MDITabbed());
 
+              //HieuNK - Test
+            Application.Run(new frmTestSyn());
+            return;
+            //HieuNK- End test
+            
+            Application.Run(new MDITabbed());
             var container = new WindsorContainer();
             container.Register(Component.For(typeof(ITest)).ImplementedBy(typeof(Windsor.Test)));
             Type t = typeof(ITest);
