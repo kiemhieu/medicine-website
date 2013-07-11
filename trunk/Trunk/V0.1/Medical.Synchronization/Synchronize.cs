@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Medical.Synchronization.Basic;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace Medical.Synchronization
 {
@@ -39,7 +41,7 @@ namespace Medical.Synchronization
         SynService.SynServiceSoapClient synSrv = new SynService.SynServiceSoapClient();
         private bool SendAllFigure(List<Figure> figures)
         {
-            //synSrv.SendFigure(
+            synSrv.SendFigure(figures);
             return false;
         }
         #endregion
