@@ -38,11 +38,20 @@
             this.elementStyle4 = new DevComponents.DotNetBar.ElementStyle();
             this.elementStyle3 = new DevComponents.DotNetBar.ElementStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MedicineName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lotNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expiredDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inStockQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.allocatedQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RemainQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.textBoxX4 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.bdsPrescription = new System.Windows.Forms.BindingSource(this.components);
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
@@ -52,25 +61,16 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
-            this.dataGridViewDisableButtonColumn1 = new Medical.Forms.Common.DataGridViewDisableButtonColumn();
-            this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lotNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expiredDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.inStockQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.allocatedQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
-            this.bdsPrescription = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewDisableButtonColumn1 = new Medical.Forms.Common.DataGridViewDisableButtonColumn();
             this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
-            this.panelEx1.SuspendLayout();
-            this.panelEx2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPrescription)).BeginInit();
+            this.panelEx2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).BeginInit();
             this.SuspendLayout();
             // 
@@ -237,12 +237,68 @@
             this.dataGridViewX1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewX1_CellFormatting);
             this.dataGridViewX1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridViewX1_RowsAdded);
             // 
+            // noDataGridViewTextBoxColumn
+            // 
+            this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
+            this.noDataGridViewTextBoxColumn.HeaderText = "STT";
+            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
+            this.noDataGridViewTextBoxColumn.ReadOnly = true;
+            this.noDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // subNoDataGridViewTextBoxColumn
+            // 
+            this.subNoDataGridViewTextBoxColumn.DataPropertyName = "SubNo";
+            this.subNoDataGridViewTextBoxColumn.HeaderText = "";
+            this.subNoDataGridViewTextBoxColumn.Name = "subNoDataGridViewTextBoxColumn";
+            this.subNoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.subNoDataGridViewTextBoxColumn.Width = 30;
+            // 
             // MedicineName
             // 
             this.MedicineName.DataPropertyName = "MedicineName";
             this.MedicineName.HeaderText = "Thuốc";
             this.MedicineName.Name = "MedicineName";
             this.MedicineName.ReadOnly = true;
+            // 
+            // lotNoDataGridViewTextBoxColumn
+            // 
+            this.lotNoDataGridViewTextBoxColumn.DataPropertyName = "LotNo";
+            this.lotNoDataGridViewTextBoxColumn.HeaderText = "Lô";
+            this.lotNoDataGridViewTextBoxColumn.Name = "lotNoDataGridViewTextBoxColumn";
+            this.lotNoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lotNoDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // expiredDateDataGridViewTextBoxColumn
+            // 
+            this.expiredDateDataGridViewTextBoxColumn.DataPropertyName = "ExpiredDate";
+            this.expiredDateDataGridViewTextBoxColumn.HeaderText = "HSD";
+            this.expiredDateDataGridViewTextBoxColumn.Name = "expiredDateDataGridViewTextBoxColumn";
+            this.expiredDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.expiredDateDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // qtyDataGridViewTextBoxColumn
+            // 
+            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
+            this.qtyDataGridViewTextBoxColumn.HeaderText = "Số lượng";
+            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
+            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
+            this.qtyDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // inStockQtyDataGridViewTextBoxColumn
+            // 
+            this.inStockQtyDataGridViewTextBoxColumn.DataPropertyName = "InStockQty";
+            this.inStockQtyDataGridViewTextBoxColumn.HeaderText = "Trong kho";
+            this.inStockQtyDataGridViewTextBoxColumn.Name = "inStockQtyDataGridViewTextBoxColumn";
+            this.inStockQtyDataGridViewTextBoxColumn.ReadOnly = true;
+            this.inStockQtyDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // allocatedQtyDataGridViewTextBoxColumn
+            // 
+            this.allocatedQtyDataGridViewTextBoxColumn.DataPropertyName = "AllocatedQty";
+            this.allocatedQtyDataGridViewTextBoxColumn.HeaderText = "Xuất";
+            this.allocatedQtyDataGridViewTextBoxColumn.Name = "allocatedQtyDataGridViewTextBoxColumn";
+            this.allocatedQtyDataGridViewTextBoxColumn.ReadOnly = true;
+            this.allocatedQtyDataGridViewTextBoxColumn.Width = 80;
             // 
             // RemainQty
             // 
@@ -260,6 +316,10 @@
             this.UnitName.Name = "UnitName";
             this.UnitName.ReadOnly = true;
             this.UnitName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(Medical.Data.EntitiyExtend.MedicineDeliveryAllocationEntity);
             // 
             // panelEx1
             // 
@@ -304,6 +364,10 @@
             this.textBoxX4.ReadOnly = true;
             this.textBoxX4.Size = new System.Drawing.Size(178, 21);
             this.textBoxX4.TabIndex = 20;
+            // 
+            // bdsPrescription
+            // 
+            this.bdsPrescription.DataSource = typeof(Medical.Data.Entities.Prescription);
             // 
             // labelX4
             // 
@@ -438,72 +502,6 @@
             this.panelEx2.TabIndex = 4;
             this.panelEx2.ThemeAware = true;
             // 
-            // dataGridViewDisableButtonColumn1
-            // 
-            this.dataGridViewDisableButtonColumn1.HeaderText = "Column2";
-            this.dataGridViewDisableButtonColumn1.Name = "dataGridViewDisableButtonColumn1";
-            this.dataGridViewDisableButtonColumn1.Text = "...";
-            // 
-            // noDataGridViewTextBoxColumn
-            // 
-            this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
-            this.noDataGridViewTextBoxColumn.HeaderText = "STT";
-            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
-            this.noDataGridViewTextBoxColumn.ReadOnly = true;
-            this.noDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // subNoDataGridViewTextBoxColumn
-            // 
-            this.subNoDataGridViewTextBoxColumn.DataPropertyName = "SubNo";
-            this.subNoDataGridViewTextBoxColumn.HeaderText = "";
-            this.subNoDataGridViewTextBoxColumn.Name = "subNoDataGridViewTextBoxColumn";
-            this.subNoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.subNoDataGridViewTextBoxColumn.Width = 30;
-            // 
-            // lotNoDataGridViewTextBoxColumn
-            // 
-            this.lotNoDataGridViewTextBoxColumn.DataPropertyName = "LotNo";
-            this.lotNoDataGridViewTextBoxColumn.HeaderText = "Lô";
-            this.lotNoDataGridViewTextBoxColumn.Name = "lotNoDataGridViewTextBoxColumn";
-            this.lotNoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lotNoDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // expiredDateDataGridViewTextBoxColumn
-            // 
-            this.expiredDateDataGridViewTextBoxColumn.DataPropertyName = "ExpiredDate";
-            this.expiredDateDataGridViewTextBoxColumn.HeaderText = "HSD";
-            this.expiredDateDataGridViewTextBoxColumn.Name = "expiredDateDataGridViewTextBoxColumn";
-            this.expiredDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.expiredDateDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // qtyDataGridViewTextBoxColumn
-            // 
-            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
-            this.qtyDataGridViewTextBoxColumn.HeaderText = "Số lượng";
-            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
-            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
-            this.qtyDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // inStockQtyDataGridViewTextBoxColumn
-            // 
-            this.inStockQtyDataGridViewTextBoxColumn.DataPropertyName = "InStockQty";
-            this.inStockQtyDataGridViewTextBoxColumn.HeaderText = "Trong kho";
-            this.inStockQtyDataGridViewTextBoxColumn.Name = "inStockQtyDataGridViewTextBoxColumn";
-            this.inStockQtyDataGridViewTextBoxColumn.ReadOnly = true;
-            this.inStockQtyDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // allocatedQtyDataGridViewTextBoxColumn
-            // 
-            this.allocatedQtyDataGridViewTextBoxColumn.DataPropertyName = "AllocatedQty";
-            this.allocatedQtyDataGridViewTextBoxColumn.HeaderText = "Xuất";
-            this.allocatedQtyDataGridViewTextBoxColumn.Name = "allocatedQtyDataGridViewTextBoxColumn";
-            this.allocatedQtyDataGridViewTextBoxColumn.ReadOnly = true;
-            this.allocatedQtyDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(Medical.Data.EntitiyExtend.MedicineDeliveryAllocationEntity);
-            // 
             // btnDelete
             // 
             this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -546,9 +544,11 @@
             this.btnCancel.Text = "Đóng lại";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // bdsPrescription
+            // dataGridViewDisableButtonColumn1
             // 
-            this.bdsPrescription.DataSource = typeof(Medical.Data.Entities.Prescription);
+            this.dataGridViewDisableButtonColumn1.HeaderText = "Column2";
+            this.dataGridViewDisableButtonColumn1.Name = "dataGridViewDisableButtonColumn1";
+            this.dataGridViewDisableButtonColumn1.Text = "...";
             // 
             // bdsMedicine
             // 
@@ -569,14 +569,15 @@
             this.Name = "DeliveryRegister";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Phát thuốc";
             this.Load += new System.EventHandler(this.DeliveryRegister_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
-            this.panelEx2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPrescription)).EndInit();
+            this.panelEx2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).EndInit();
             this.ResumeLayout(false);
 
