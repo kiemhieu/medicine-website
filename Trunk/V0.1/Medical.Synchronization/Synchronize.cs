@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Medical.Synchronization.Basic;
 
 namespace Medical.Synchronization
 {
@@ -14,8 +15,10 @@ namespace Medical.Synchronization
 
         public void SendAll()
         {
+            bool bSendAll = true;
+            if (!SendAllFigure(null)) bSendAll = false;
 
-            if (SendingCompleted != null) SendingCompleted(null, null);
+            if (bSendAll && SendingCompleted != null) SendingCompleted(null, null);
         }
 
 
@@ -23,5 +26,12 @@ namespace Medical.Synchronization
         {
             if (ReceivingCompleted != null) ReceivingCompleted(null, null);
         }
+
+        #region Private functions
+        private bool SendAllFigure(Figure figures)
+        {
+            return false;
+        }
+        #endregion
     }
 }

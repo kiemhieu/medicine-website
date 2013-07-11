@@ -1,14 +1,9 @@
-﻿<%@ Application Language="C#" %>
-<%@ Import Namespace="Medical.Web" %>
-<%@ Import Namespace="System.Web.Optimization" %>
+﻿<%@ Application Language="C#" %> 
 
 <script runat="server">
 
     void Application_Start(object sender, EventArgs e)
     {
-        // Code that runs on application startup
-        BundleConfig.RegisterBundles(BundleTable.Bundles);
-        AuthConfig.RegisterOpenAuth();
     }
     
     void Application_End(object sender, EventArgs e)

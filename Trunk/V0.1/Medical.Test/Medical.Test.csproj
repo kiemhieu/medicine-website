@@ -281,7 +281,7 @@
       <Name>Medical.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Medical.Synchronization\Medical.Synchronization.csproj">
-      <Project>{9f526d34-5736-4ba5-889b-9e371a45fa27}</Project>
+      <Project>{9F526D34-5736-4BA5-889B-9E371A45FA27}</Project>
       <Name>Medical.Synchronization</Name>
     </ProjectReference>
   </ItemGroup>
