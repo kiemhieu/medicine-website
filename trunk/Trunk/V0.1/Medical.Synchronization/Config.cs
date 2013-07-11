@@ -58,11 +58,11 @@ namespace Medical.Synchronization
                 {
                     IniFile iniFile = new IniFile(IniPath);
                     UserName = iniFile.IniReadValue(Constant.INI_SECTION, Constant.INI_SQL_USER);
-                    UserName = TripleDes.Decode(Constant.INI_SQL_USER, UserName);
+                    //UserName = TripleDes.Decode(Constant.INI_SQL_USER, UserName);
                     Password = iniFile.IniReadValue(Constant.INI_SECTION, Constant.INI_SQL_PASS);
-                    Password = TripleDes.Decode(Constant.INI_SQL_PASS, Password);
+                    //Password = TripleDes.Decode(Constant.INI_SQL_PASS, Password);
                     ServerName = iniFile.IniReadValue(Constant.INI_SECTION, Constant.INI_SQL_SERVER);
-                    ServerName = TripleDes.Decode(Constant.INI_SQL_SERVER, ServerName);
+                    //ServerName = TripleDes.Decode(Constant.INI_SQL_SERVER, ServerName);
                     DBName = iniFile.IniReadValue(Constant.INI_SECTION, Constant.INI_SQL_DB_NAME);
                     DBName = TripleDes.Decode(Constant.INI_SQL_DB_NAME, DBName);
                     sConnectionString = "Data Source=" + ServerName + ";Initial Catalog=" + DBName + ";User ID=" + UserName + ";Password=" + Password + ";";

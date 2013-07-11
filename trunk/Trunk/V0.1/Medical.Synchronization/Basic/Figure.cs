@@ -2,6 +2,7 @@
 // Description: Mapping class for the table 'Figure'
 ///////////////////////////////////////////////////////////////////////////
 using System;
+using System.Collections.Generic;
 
 namespace Medical.Synchronization.Basic
 {
@@ -32,6 +33,8 @@ namespace Medical.Synchronization.Basic
         public int LastUpdatedUser { get; set; }
 
         public int Version { get; set; }
+
+        public List<FigureDetail> Details { get; set; }
         #endregion
     }
 }
