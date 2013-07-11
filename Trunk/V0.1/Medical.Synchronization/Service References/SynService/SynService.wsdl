@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SendFigure">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="figures" type="tns:ArrayOfFigure" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFigure">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Figure" nillable="true" type="tns:Figure" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Figure">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClinicId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Details" type="tns:ArrayOfFigureDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFigureDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FigureDetail" nillable="true" type="tns:FigureDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FigureDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FigureId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MedicineId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volumn" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendFigureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendFigureResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendFigureSoapIn">
+    <wsdl:part name="parameters" element="tns:SendFigure" />
+  </wsdl:message>
+  <wsdl:message name="SendFigureSoapOut">
+    <wsdl:part name="parameters" element="tns:SendFigureResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SynServiceSoap">
+    <wsdl:operation name="SendFigure">
+      <wsdl:input message="tns:SendFigureSoapIn" />
+      <wsdl:output message="tns:SendFigureSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SynServiceSoap" type="tns:SynServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendFigure">
+      <soap:operation soapAction="http://tempuri.org/SendFigure" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SynServiceSoap12" type="tns:SynServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendFigure">
+      <soap12:operation soapAction="http://tempuri.org/SendFigure" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SynService">
+    <wsdl:port name="SynServiceSoap" binding="tns:SynServiceSoap">
+      <soap:address location="http://localhost:5384/Medical.Web/Services/SynService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SynServiceSoap12" binding="tns:SynServiceSoap12">
+      <soap12:address location="http://localhost:5384/Medical.Web/Services/SynService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
