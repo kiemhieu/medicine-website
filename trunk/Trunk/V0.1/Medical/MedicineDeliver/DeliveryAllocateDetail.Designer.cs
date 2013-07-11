@@ -47,14 +47,14 @@
             this.bdsDelivery = new System.Windows.Forms.BindingSource(this.components);
             this.bdsDefine = new System.Windows.Forms.BindingSource(this.components);
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsWareHouse = new System.Windows.Forms.BindingSource(this.components);
             this.txtNotAllocatedQty = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.txtQty = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.bdsWareHouse = new System.Windows.Forms.BindingSource(this.components);
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -250,30 +250,6 @@
             this.labelX7.TabIndex = 13;
             this.labelX7.Text = "Đơn vị";
             // 
-            // comboBoxEx1
-            // 
-            this.comboBoxEx1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsDelivery, "MedicineId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.comboBoxEx1.DataSource = this.bdsMedicine;
-            this.comboBoxEx1.DisplayMember = "Name";
-            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEx1.FormattingEnabled = true;
-            this.comboBoxEx1.ItemHeight = 14;
-            this.comboBoxEx1.Location = new System.Drawing.Point(45, 10);
-            this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(178, 20);
-            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx1.TabIndex = 12;
-            this.comboBoxEx1.ValueMember = "Id";
-            // 
-            // bdsMedicine
-            // 
-            this.bdsMedicine.DataSource = typeof(Medical.Data.Entities.Medicine);
-            // 
-            // bdsWareHouse
-            // 
-            this.bdsWareHouse.DataSource = typeof(Medical.Data.Entities.WareHouse);
-            // 
             // txtNotAllocatedQty
             // 
             this.txtNotAllocatedQty.BackColor = System.Drawing.Color.White;
@@ -286,8 +262,10 @@
             this.txtNotAllocatedQty.ForeColor = System.Drawing.Color.Black;
             this.txtNotAllocatedQty.Location = new System.Drawing.Point(570, 10);
             this.txtNotAllocatedQty.Name = "txtNotAllocatedQty";
+            this.txtNotAllocatedQty.ReadOnly = true;
             this.txtNotAllocatedQty.Size = new System.Drawing.Size(105, 20);
             this.txtNotAllocatedQty.TabIndex = 9;
+            this.txtNotAllocatedQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelX5
             // 
@@ -316,8 +294,45 @@
             this.txtQty.ForeColor = System.Drawing.Color.Black;
             this.txtQty.Location = new System.Drawing.Point(434, 10);
             this.txtQty.Name = "txtQty";
+            this.txtQty.ReadOnly = true;
             this.txtQty.Size = new System.Drawing.Size(80, 20);
             this.txtQty.TabIndex = 5;
+            this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // comboBoxEx1
+            // 
+            this.comboBoxEx1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsDelivery, "MedicineId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.comboBoxEx1.DataSource = this.bdsMedicine;
+            this.comboBoxEx1.DisplayMember = "Name";
+            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx1.FormattingEnabled = true;
+            this.comboBoxEx1.ItemHeight = 14;
+            this.comboBoxEx1.Location = new System.Drawing.Point(45, 10);
+            this.comboBoxEx1.Name = "comboBoxEx1";
+            this.comboBoxEx1.Size = new System.Drawing.Size(178, 20);
+            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx1.TabIndex = 12;
+            this.comboBoxEx1.ValueMember = "Id";
+            // 
+            // bdsMedicine
+            // 
+            this.bdsMedicine.DataSource = typeof(Medical.Data.Entities.Medicine);
+            // 
+            // labelX1
+            // 
+            this.labelX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.Class = "";
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(8, 13);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(33, 15);
+            this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.labelX1.TabIndex = 0;
+            this.labelX1.Text = "Thuốc";
             // 
             // labelX3
             // 
@@ -334,20 +349,9 @@
             this.labelX3.TabIndex = 4;
             this.labelX3.Text = "Cần xuất";
             // 
-            // labelX1
+            // bdsWareHouse
             // 
-            this.labelX1.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.Class = "";
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(8, 13);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(33, 15);
-            this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.labelX1.TabIndex = 0;
-            this.labelX1.Text = "Thuốc";
+            this.bdsWareHouse.DataSource = typeof(Medical.Data.Entities.WareHouse);
             // 
             // styleManager1
             // 
@@ -392,9 +396,11 @@
             this.txtWareHouseQty.ForeColor = System.Drawing.Color.Black;
             this.txtWareHouseQty.Location = new System.Drawing.Point(71, 10);
             this.txtWareHouseQty.Name = "txtWareHouseQty";
+            this.txtWareHouseQty.ReadOnly = true;
             this.txtWareHouseQty.Size = new System.Drawing.Size(120, 20);
             this.txtWareHouseQty.TabIndex = 3;
             this.txtWareHouseQty.Text = "999,999,999";
+            this.txtWareHouseQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelX4
             // 
@@ -423,8 +429,10 @@
             this.txtAllocatedQty.ForeColor = System.Drawing.Color.Black;
             this.txtAllocatedQty.Location = new System.Drawing.Point(269, 10);
             this.txtAllocatedQty.Name = "txtAllocatedQty";
+            this.txtAllocatedQty.ReadOnly = true;
             this.txtAllocatedQty.Size = new System.Drawing.Size(120, 20);
             this.txtAllocatedQty.TabIndex = 7;
+            this.txtAllocatedQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtAllocatedQty.TextChanged += new System.EventHandler(this.textBoxX4_TextChanged);
             // 
             // labelX6
@@ -454,8 +462,10 @@
             this.txtWareHouseRemainQty.ForeColor = System.Drawing.Color.Black;
             this.txtWareHouseRemainQty.Location = new System.Drawing.Point(458, 10);
             this.txtWareHouseRemainQty.Name = "txtWareHouseRemainQty";
+            this.txtWareHouseRemainQty.ReadOnly = true;
             this.txtWareHouseRemainQty.Size = new System.Drawing.Size(120, 20);
             this.txtWareHouseRemainQty.TabIndex = 11;
+            this.txtWareHouseRemainQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnCancel
             // 
@@ -469,7 +479,6 @@
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Đóng lại";
-            this.btnCancel.ThemeAware = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
@@ -484,7 +493,6 @@
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Ghi lại";
-            this.btnSave.ThemeAware = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label2

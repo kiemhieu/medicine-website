@@ -374,7 +374,7 @@
             // medicineNameDataGridViewTextBoxColumn
             // 
             this.medicineNameDataGridViewTextBoxColumn.DataPropertyName = "MedicineName";
-            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "Thuốc";
+            this.medicineNameDataGridViewTextBoxColumn.HeaderText = "Tên biệt dược";
             this.medicineNameDataGridViewTextBoxColumn.Name = "medicineNameDataGridViewTextBoxColumn";
             this.medicineNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.medicineNameDataGridViewTextBoxColumn.Width = 150;
@@ -382,7 +382,7 @@
             // TradeName
             // 
             this.TradeName.DataPropertyName = "TradeName";
-            this.TradeName.HeaderText = "Tên biệt dược";
+            this.TradeName.HeaderText = "Hoạt chất";
             this.TradeName.Name = "TradeName";
             this.TradeName.ReadOnly = true;
             // 

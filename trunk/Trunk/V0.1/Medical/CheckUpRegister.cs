@@ -21,15 +21,17 @@ namespace Medical
         private readonly IMedicineRepository _medicineRepo = new MedicineRepository();
         private readonly IFigureDetailRepository _figureDetailRepo = new FigureDetailRepository();
         private readonly IPrescriptionRepository _precriptionRepo = new PrescriptionRepository();
+        private readonly IMedicineDeliveryRepository _medicineDeliveryRepo = new MedicineDeliveryRepository();
 
         private bool _isSkipUpdatingFigure = false;
         private const int DefaultVolumn = 7;
         private bool _isUpdate = false;
-        private Patient _patient;
-        private List<Figure> _figureList;
+        // private Patient _patient;
+        // private List<Figure> _figureList;
         private Prescription _prescription;
         private List<PrescriptionDetail> _prescriptionDetailList;
         private Boolean _isWarning;
+        private Boolean _isEditable;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CheckUpRegister"/> class.
@@ -60,7 +62,7 @@ namespace Medical
 
             try
             {
-                this._patient = patient;
+                // this._patient = patient;
 
                 // Initialize combobox
                 // thangnn edit
@@ -81,6 +83,7 @@ namespace Medical
                 // Binding data
                 if (this._prescription == null)
                 {
+                    this._isEditable = true;
                     this._isUpdate = false;
                     this._prescription = new Prescription
                                              {
@@ -98,6 +101,8 @@ namespace Medical
                 }
                 else
                 {
+                    var delivered = _medicineDeliveryRepo.GetByPrescriptionId(this._prescription.Id);
+                    this._isEditable = delivered == null;
                     this._isUpdate = true;
                     this._prescription.DoctorId = AppContext.LoggedInUser.Id;
                     this._prescription.LastUpdatedUser = AppContext.LoggedInUser.Id;
@@ -114,6 +119,7 @@ namespace Medical
             finally
             {
                 this._isSkipUpdatingFigure = false;
+                
             }
         }
 
@@ -125,6 +131,22 @@ namespace Medical
         {
             this.bdsPrescription.DataSource = prescription;
             this.bdsPrescriptionDetail.DataSource = prescription.PrescriptionDetails;
+            if (this._isEditable)
+            {
+                txtReCheckDate.Enabled = true;
+                cboFigure.Enabled = true;
+                txtStatus.ReadOnly = false;
+                dataGridViewX1.ReadOnly = false;
+                mnuDelete.Enabled = true;
+            }
+            else
+            {
+                txtReCheckDate.Enabled = false;
+                cboFigure.Enabled = false;
+                txtStatus.ReadOnly = true;
+                dataGridViewX1.ReadOnly = true;
+                mnuDelete.Enabled = false;
+            }
         }
 
 
@@ -405,6 +427,29 @@ namespace Medical
             {
                 gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
             }
+        }
+
+        private void DataGridViewX1RowContextMenuStripNeeded(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
+        {
+            dataGridViewX1.Rows[e.RowIndex].Selected = true;
+            mnuDelete.Enabled = !dataGridViewX1.Rows[e.RowIndex].IsNewRow;
+        }
+
+        private void MnuDeleteClick(object sender, EventArgs e)
+        {
+            // Delete selected row
+            if (this.dataGridViewX1.SelectedRows.Count == 0) return;
+            if (this.dataGridViewX1.SelectedRows[0].IsNewRow) return;
+            // var prescriptionList = (PrescriptionDetail)this.bdsPrescriptionDetail.Current;
+            // if (prescriptionList == null) return;
+            // var row = this.dataGridViewX1.SelectedRows[0];
+            this.dataGridViewX1.Rows.Remove(this.dataGridViewX1.SelectedRows[0]);
+        }
+
+        private void DataGridViewX1RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            var grid = sender as DataGridViewX;
+            if (grid != null) grid.Rows[e.RowIndex].ContextMenuStrip  = ctxGrid;
         }
     }
 }
