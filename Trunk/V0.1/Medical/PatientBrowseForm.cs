@@ -25,7 +25,7 @@ namespace Medical {
             this.txtPatientName.Text = searchCondition;
         }
 
-        private void btnSearch_Click(object sender, EventArgs e) {
+        private void BtnSearchClick(object sender, EventArgs e) {
             try {
                 this.Enabled = false;
                 this.Cursor = Cursors.WaitCursor;
@@ -43,7 +43,7 @@ namespace Medical {
             this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject, AppContext.CurrentClinic.Id);
         }
 
-        private void PatientBrowseForm_Shown(object sender, EventArgs e) {
+        private void PatientBrowseFormShown(object sender, EventArgs e) {
             try {
                 this.Enabled = false;
                 this.Cursor = Cursors.WaitCursor;
