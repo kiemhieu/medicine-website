@@ -41,7 +41,7 @@ namespace Medical.Synchronization
         SynService.SynServiceSoapClient synSrv = new SynService.SynServiceSoapClient();
         private bool SendAllFigure(List<Figure> figures)
         {
-            synSrv.SendFigure(figures);
+            // synSrv.SendFigure(figures.ToArray());
             return false;
         }
         #endregion
