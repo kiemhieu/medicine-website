@@ -25,7 +25,7 @@ namespace Medical.Data.Repositories
             {
                 item.PrescriptionId = prescription.Id;
                 item.SetInfo(false); // Version = 0);
-                this.Context.PrescriptionDetails.Add(item);
+                //this.Context.PrescriptionDetails.Add(item);
             }
             this.Context.SaveChanges();
 

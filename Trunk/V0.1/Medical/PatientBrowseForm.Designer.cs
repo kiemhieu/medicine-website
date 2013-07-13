@@ -38,16 +38,15 @@
             this.txtBirthYear = new DevComponents.Editors.IntegerInput();
             this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtID = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.txtCode = new DevComponents.Editors.IntegerInput();
             ((System.ComponentModel.ISupportInitialize)(this.grdPatient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdgPatient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthYear)).BeginInit();
             this.panel1.SuspendLayout();
             this.panelEx1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
             this.SuspendLayout();
             // 
             // grdPatient
@@ -83,7 +82,7 @@
             this.grdPatient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdPatient.Size = new System.Drawing.Size(646, 372);
             this.grdPatient.TabIndex = 0;
-            this.grdPatient.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdPatient_CellDoubleClick);
+            this.grdPatient.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrdPatientCellDoubleClick);
             // 
             // codeDataGridViewTextBoxColumn
             // 
@@ -127,6 +126,7 @@
             // 
             // bdgPatient
             // 
+            this.bdgPatient.AllowNew = false;
             this.bdgPatient.DataSource = typeof(Medical.Data.Entities.Patient);
             // 
             // labelX1
@@ -157,6 +157,7 @@
             this.txtPatientName.Name = "txtPatientName";
             this.txtPatientName.Size = new System.Drawing.Size(171, 20);
             this.txtPatientName.TabIndex = 2;
+            this.txtPatientName.TextChanged += new System.EventHandler(this.TxtPatientNameTextChanged);
             // 
             // labelX2
             // 
@@ -200,7 +201,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txtCode);
+            this.panel1.Controls.Add(this.txtID);
             this.panel1.Controls.Add(this.labelX3);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.txtPatientName);
@@ -212,6 +213,37 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(656, 40);
             this.panel1.TabIndex = 8;
+            // 
+            // txtID
+            // 
+            // 
+            // 
+            // 
+            this.txtID.BackgroundStyle.Class = "TextBoxBorder";
+            this.txtID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtID.ButtonClear.Visible = true;
+            this.txtID.Location = new System.Drawing.Point(36, 8);
+            this.txtID.Mask = "000000000";
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(125, 20);
+            this.txtID.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.txtID.TabIndex = 7;
+            this.txtID.Text = "";
+            // 
+            // labelX3
+            // 
+            this.labelX3.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.Class = "";
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(12, 11);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(18, 15);
+            this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.labelX3.TabIndex = 6;
+            this.labelX3.Text = "Mã";
             // 
             // panelEx1
             // 
@@ -237,35 +269,6 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
             // 
-            // labelX3
-            // 
-            this.labelX3.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.Class = "";
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(12, 11);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(18, 15);
-            this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.labelX3.TabIndex = 6;
-            this.labelX3.Text = "Mã";
-            // 
-            // txtCode
-            // 
-            // 
-            // 
-            // 
-            this.txtCode.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtCode.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCode.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtCode.Location = new System.Drawing.Point(37, 8);
-            this.txtCode.MinValue = 0;
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(124, 20);
-            this.txtCode.TabIndex = 7;
-            // 
             // PatientBrowseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -289,7 +292,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelEx1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -312,7 +314,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn birthYearDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sexualDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
-        private DevComponents.Editors.IntegerInput txtCode;
         private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtID;
     }
 }

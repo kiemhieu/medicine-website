@@ -11,20 +11,33 @@ using Medical.Data.Entities;
 using Medical.Data.Repositories;
 
 namespace Medical {
+
     public partial class PatientBrowseForm : Form {
 
-        private readonly IPatientRepository patientRepo = new PatientRepository();
+        private readonly IPatientRepository _patientRepo = new PatientRepository();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PatientBrowseForm"/> class.
+        /// </summary>
         public PatientBrowseForm() {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PatientBrowseForm"/> class.
+        /// </summary>
+        /// <param name="searchCondition">The search condition.</param>
         public PatientBrowseForm(string searchCondition)
             : this()
         {
             this.txtPatientName.Text = searchCondition;
         }
 
+        /// <summary>
+        /// BTNs the search click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BtnSearchClick(object sender, EventArgs e) {
             try {
                 this.Enabled = false;
@@ -39,8 +52,14 @@ namespace Medical {
             }
         }
 
+        /// <summary>
+        /// Searhes this instance.
+        /// </summary>
         private void Searh() {
-            this.bdgPatient.DataSource = patientRepo.GetByNameAndYear(this.txtPatientName.Text, (int?)this.txtBirthYear.ValueObject, AppContext.CurrentClinic.Id);
+            this.bdgPatient.DataSource = _patientRepo.Search(this.txtID.Text, 
+                this.txtPatientName.Text, 
+                (int?)this.txtBirthYear.ValueObject, 
+                AppContext.CurrentClinic.Id);
         }
 
         private void PatientBrowseFormShown(object sender, EventArgs e) {
@@ -59,12 +78,18 @@ namespace Medical {
 
         public Patient SelectedPatient { get; private set; }
 
-        private void grdPatient_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void GrdPatientCellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             this.SelectedPatient = (Patient) this.bdgPatient.List[e.RowIndex];
             if (this.SelectedPatient == null) return;
             this.DialogResult = DialogResult.Yes;
             this.Close();
+        }
+
+        private void TxtPatientNameTextChanged(object sender, EventArgs e)
+        {
+            this.bdgPatient.Filter = "Name='" + this.txtPatientName.Text + "'";
+            this.grdPatient.DataSource = this.bdgPatient;
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Medical.Data.Repositories
         /// <summary>
         /// Updates the specified user.
         /// </summary>
-        /// <param name="user">The user.</param>
+        /// <param name="patient">The patient.</param>
         public void Update(Patient patient)
         {
             var origin = this.Context.Patients.FirstOrDefault(x => x.Id == patient.Id);
@@ -45,6 +45,10 @@ namespace Medical.Data.Repositories
             this.Context.Entry(origin).Reload();
         }
 
+        /// <summary>
+        /// Deletes the specified id.
+        /// </summary>
+        /// <param name="id">The id.</param>
         public void Delete(int id)
         {
             try
@@ -55,16 +59,24 @@ namespace Medical.Data.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
+        /// <summary>
+        /// Gets the by id.
+        /// </summary>
+        /// <param name="id">The id.</param>
+        /// <returns></returns>
         public Patient GetById(int id)
         {
             return this.Context.Patients.FirstOrDefault(x => x.Id == id);
         }
 
+        /// <summary>
+        /// Gets all.
+        /// </summary>
+        /// <returns></returns>
         public List<Patient> GetAll()
         {
             return this.Context.Patients.ToList();
@@ -81,11 +93,38 @@ namespace Medical.Data.Repositories
             return Context.Patients.Where(x => (x.Name.Contains(name) || String.IsNullOrEmpty(name)) && (!year.HasValue || x.BirthYear == year.Value)).ToList();
         }
 
+        /// <summary>
+        /// Gets the by name and year.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="year">The year.</param>
+        /// <param name="clinicId">The clinic id.</param>
+        /// <returns></returns>
         public List<Patient> GetByNameAndYear(string name, int? year, int clinicId)
         {
             return Context.Patients.Where(x => (x.Name.Contains(name) || String.IsNullOrEmpty(name)) && (!year.HasValue || x.BirthYear == year.Value) && x.ClinicId == clinicId).ToList();
         }
 
+        /// <summary>
+        /// Searches the specified id.
+        /// </summary>
+        /// <param name="id">The id.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="year">The year.</param>
+        /// <param name="clinicId">The clinic id.</param>
+        /// <returns></returns>
+        public List<Patient> Search(string id, string name, int? year, int clinicId)
+        {
+            return Context.Patients.Where(x => (x.Code.StartsWith(id) || String.IsNullOrEmpty(id)) && (x.Name.Contains(name) || String.IsNullOrEmpty(name)) && (!year.HasValue || x.BirthYear == year.Value)).ToList();
+        }
+
+        /// <summary>
+        /// Determines whether [is duplicate code] [the specified code].
+        /// </summary>
+        /// <param name="code">The code.</param>
+        /// <returns>
+        ///   <c>true</c> if [is duplicate code] [the specified code]; otherwise, <c>false</c>.
+        /// </returns>
         public bool IsDuplicateCode(string code)
         {
             return Context.Patients.Count(x => x.Code.Equals(code, StringComparison.OrdinalIgnoreCase)) > 0;

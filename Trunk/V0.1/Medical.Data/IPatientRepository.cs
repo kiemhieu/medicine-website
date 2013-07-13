@@ -15,6 +15,7 @@ namespace Medical.Data
         List<Patient> GetAll();
         List<Patient> GetByNameAndYear(string name, int? year);
         List<Patient> GetByNameAndYear(string name, int? year, int clinicId);
+        List<Patient> Search(String id, string name, int? year, int clinicId);
         Boolean IsDuplicateCode(String code);
     }
 }

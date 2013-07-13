@@ -486,7 +486,7 @@
             this.btnCancel.Image = global::Medical.Properties.Resources.cancel;
             this.btnCancel.Location = new System.Drawing.Point(589, 13);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(120, 25);
+            this.btnCancel.Size = new System.Drawing.Size(120, 24);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Bỏ qua";
@@ -497,9 +497,9 @@
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSave.Image = global::Medical.Properties.Resources.accept;
-            this.btnSave.Location = new System.Drawing.Point(461, 13);
+            this.btnSave.Location = new System.Drawing.Point(463, 13);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(120, 25);
+            this.btnSave.Size = new System.Drawing.Size(120, 24);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Ghi lại";
