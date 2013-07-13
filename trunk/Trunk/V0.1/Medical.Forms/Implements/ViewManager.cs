@@ -21,7 +21,7 @@ namespace Medical.Forms.Implements {
             this._documentList = new Dictionary<String, DockContent>();
         }
 
-        public void showDocument(String documentId) {
+        public void ShowDocument(String documentId) {
             DockContent content;
             if (this._documentList.TryGetValue(documentId, out content)) {
                 content.Activate();
@@ -30,14 +30,14 @@ namespace Medical.Forms.Implements {
 
             content = this._container.GetComponentByKey(documentId) as DockContent; 
             if (content == null) throw new Exception("Khong có class " + documentId);
-            content.Closed += new EventHandler(content_Closed);
+            content.Closed += new EventHandler(ContentClosed);
             content.Tag = documentId;
             content.Show(this._dockPane);
             this._documentList.Add(documentId, content);
             content.Activate();
         }
 
-        private void content_Closed(object sender, System.EventArgs e)
+        private void ContentClosed(object sender, System.EventArgs e)
         {
             var content = sender as DockContent;
             if (content != null) this._documentList.Remove(content.Tag.ToString());

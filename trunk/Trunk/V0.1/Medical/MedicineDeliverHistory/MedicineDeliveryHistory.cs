@@ -20,16 +20,21 @@ namespace Medical.MedicineDeliverHistory
         private IVMedicineDeliverRepository vMedicineRepo = new VMedicineDeliverRepository();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeliverList"/> class.
+        /// Initializes a new instance of the <see cref="MedicineDeliveryHistory"/> class.
         /// </summary>
         public MedicineDeliveryHistory()
         {
             InitializeComponent();
             Initialize();
-            this.Activated += new EventHandler(DeliverList_Activated);
+            this.Activated += new EventHandler(DeliverListActivated);
         }
 
-        private void DeliverList_Activated(object sender, EventArgs e)
+        /// <summary>
+        /// Delivers the list activated.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void DeliverListActivated(object sender, EventArgs e)
         {
             UpdateGrid();
         }
@@ -49,7 +54,7 @@ namespace Medical.MedicineDeliverHistory
         /// </summary>
         private void UpdateGrid()
         {
-            // this.UpdateGrid(this.cboDate.Value.Date, Convert.ToInt32(this.cboStatus.SelectedValue));
+            this.UpdateGrid(this.cboDate.Value.Date, 1);
         }
 
         /// <summary>

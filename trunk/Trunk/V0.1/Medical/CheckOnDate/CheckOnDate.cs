@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar.Controls;
 using Medical.Data;
+using Medical.Data.Entities.Views;
 using Medical.Data.Repositories;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -15,6 +16,7 @@ namespace Medical.CheckOnDate {
     public partial class CheckOnDate : DockContent {
 
         private readonly IPrescriptionRepository _prescriptionRepo = new PrescriptionRepository();
+        private readonly IPatientRepository _patientRepo = new PatientRepository();
 
         public CheckOnDate() {
             InitializeComponent();
@@ -22,10 +24,10 @@ namespace Medical.CheckOnDate {
 
         private void CheckOnDateLoad(object sender, EventArgs e)
         {
-            load();
+            Initialize();
         }
 
-        private void load()
+        private void Initialize()
         {
             var patientList = _prescriptionRepo.GetAllOnLate(this.txtPatientName.Text);
             var index = 1;
@@ -46,6 +48,19 @@ namespace Medical.CheckOnDate {
             {
                 gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
             }
+        }
+
+        private void DataGridViewX1CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var selected = (VPatientLastPrescription) this.bdsCheckOnDate.Current;
+            if (selected == null) return;
+
+            var patient = this._patientRepo.GetById(selected.Id);
+            var checkUpRegister = new CheckUpRegister(patient);
+            var result = checkUpRegister.ShowDialog(this);
+            if (result == DialogResult.Cancel) return;
+            Initialize();
+            
         }
     }
 }

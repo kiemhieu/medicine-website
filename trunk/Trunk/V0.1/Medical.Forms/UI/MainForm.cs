@@ -194,7 +194,7 @@ namespace Medical.Forms.UI
             //if (menuItem == null) return;
 
             if (!string.IsNullOrEmpty(e.Key)) {
-                this.ViewManager.showDocument(e.Key);
+                this.ViewManager.ShowDocument(e.Key);
                 return; ;
             }
 

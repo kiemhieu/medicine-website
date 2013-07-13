@@ -29,8 +29,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.yearDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monthDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreatedUser = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bdsUser = new System.Windows.Forms.BindingSource(this.components);
+            this.LastUpdatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bdsStatus = new System.Windows.Forms.BindingSource(this.components);
+            this.noteDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsPlanning = new System.Windows.Forms.BindingSource(this.components);
             this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.bdsClinic = new System.Windows.Forms.BindingSource(this.components);
@@ -42,13 +49,6 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.btnAddPlanning = new DevComponents.DotNetBar.ButtonX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.yearDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monthDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreatedUser = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.LastUpdatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.noteDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).BeginInit();
@@ -66,9 +66,9 @@
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx2.Controls.Add(this.dataGridViewX1);
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx2.Location = new System.Drawing.Point(0, 26);
+            this.panelEx2.Location = new System.Drawing.Point(0, 40);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(838, 488);
+            this.panelEx2.Size = new System.Drawing.Size(838, 474);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -129,165 +129,10 @@
             this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(838, 488);
+            this.dataGridViewX1.Size = new System.Drawing.Size(838, 474);
             this.dataGridViewX1.TabIndex = 2;
             this.dataGridViewX1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewX1CellDoubleClick);
             this.dataGridViewX1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DataGridViewX1DataBindingComplete);
-            // 
-            // bdsUser
-            // 
-            this.bdsUser.DataSource = typeof(Medical.Data.Entities.User);
-            // 
-            // bdsStatus
-            // 
-            this.bdsStatus.DataSource = typeof(Medical.Data.EntitiyExtend.Item);
-            // 
-            // bdsPlanning
-            // 
-            this.bdsPlanning.DataSource = typeof(Medical.Data.Entities.MedicinePlan);
-            // 
-            // cboClinic
-            // 
-            this.cboClinic.DataSource = this.bdsClinic;
-            this.cboClinic.DisplayMember = "Name";
-            this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboClinic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboClinic.FormattingEnabled = true;
-            this.cboClinic.ItemHeight = 14;
-            this.cboClinic.Location = new System.Drawing.Point(61, 3);
-            this.cboClinic.Name = "cboClinic";
-            this.cboClinic.Size = new System.Drawing.Size(250, 20);
-            this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboClinic.TabIndex = 1;
-            this.cboClinic.ValueMember = "Id";
-            this.cboClinic.SelectedIndexChanged += new System.EventHandler(this.CboClinicSelectedIndexChanged);
-            // 
-            // bdsClinic
-            // 
-            this.bdsClinic.DataSource = typeof(Medical.Data.Entities.Clinic);
-            // 
-            // labelX1
-            // 
-            this.labelX1.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.Class = "";
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(3, 6);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(52, 15);
-            this.labelX1.TabIndex = 0;
-            this.labelX1.Text = "Trung tâm";
-            // 
-            // panelEx3
-            // 
-            this.panelEx3.AutoSize = true;
-            this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx3.Controls.Add(this.txtMonth);
-            this.panelEx3.Controls.Add(this.txtYear);
-            this.panelEx3.Controls.Add(this.labelX3);
-            this.panelEx3.Controls.Add(this.labelX2);
-            this.panelEx3.Controls.Add(this.btnAddPlanning);
-            this.panelEx3.Controls.Add(this.cboClinic);
-            this.panelEx3.Controls.Add(this.labelX1);
-            this.panelEx3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelEx3.Location = new System.Drawing.Point(0, 0);
-            this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(838, 26);
-            this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx3.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx3.Style.GradientAngle = 90;
-            this.panelEx3.TabIndex = 2;
-            this.panelEx3.ThemeAware = true;
-            // 
-            // txtMonth
-            // 
-            // 
-            // 
-            // 
-            this.txtMonth.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtMonth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtMonth.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtMonth.Location = new System.Drawing.Point(472, 3);
-            this.txtMonth.MaxValue = 12;
-            this.txtMonth.MinValue = 1;
-            this.txtMonth.Name = "txtMonth";
-            this.txtMonth.ShowUpDown = true;
-            this.txtMonth.Size = new System.Drawing.Size(45, 20);
-            this.txtMonth.TabIndex = 8;
-            this.txtMonth.Value = 1;
-            this.txtMonth.ValueChanged += new System.EventHandler(this.TxtMonthValueChanged);
-            // 
-            // txtYear
-            // 
-            // 
-            // 
-            // 
-            this.txtYear.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtYear.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtYear.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtYear.Location = new System.Drawing.Point(346, 3);
-            this.txtYear.MaxValue = 2200;
-            this.txtYear.MinValue = 1973;
-            this.txtYear.Name = "txtYear";
-            this.txtYear.ShowUpDown = true;
-            this.txtYear.Size = new System.Drawing.Size(77, 20);
-            this.txtYear.TabIndex = 7;
-            this.txtYear.Value = 1973;
-            this.txtYear.ValueChanged += new System.EventHandler(this.TxtYearValueChanged);
-            // 
-            // labelX3
-            // 
-            this.labelX3.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.Class = "";
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(432, 6);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(34, 15);
-            this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.labelX3.TabIndex = 5;
-            this.labelX3.Text = "Tháng";
-            // 
-            // labelX2
-            // 
-            this.labelX2.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX2.BackgroundStyle.Class = "";
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(317, 6);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(26, 15);
-            this.labelX2.TabIndex = 3;
-            this.labelX2.Text = "Năm";
-            // 
-            // btnAddPlanning
-            // 
-            this.btnAddPlanning.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAddPlanning.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddPlanning.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAddPlanning.Image = global::Medical.Properties.Resources.add;
-            this.btnAddPlanning.Location = new System.Drawing.Point(757, 3);
-            this.btnAddPlanning.Name = "btnAddPlanning";
-            this.btnAddPlanning.Size = new System.Drawing.Size(78, 20);
-            this.btnAddPlanning.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAddPlanning.TabIndex = 2;
-            this.btnAddPlanning.Text = "Lập dự trù";
-            this.btnAddPlanning.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Left;
-            this.btnAddPlanning.Click += new System.EventHandler(this.BtnAddPlanningClick);
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
             // 
             // yearDataGridViewTextBoxColumn1
             // 
@@ -320,6 +165,10 @@
             this.CreatedUser.ValueMember = "Id";
             this.CreatedUser.Width = 150;
             // 
+            // bdsUser
+            // 
+            this.bdsUser.DataSource = typeof(Medical.Data.Entities.User);
+            // 
             // LastUpdatedDate
             // 
             this.LastUpdatedDate.DataPropertyName = "LastUpdatedDate";
@@ -348,6 +197,10 @@
             this.statusDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.statusDataGridViewTextBoxColumn1.ValueMember = "Value";
             // 
+            // bdsStatus
+            // 
+            this.bdsStatus.DataSource = typeof(Medical.Data.EntitiyExtend.Item);
+            // 
             // noteDataGridViewTextBoxColumn1
             // 
             this.noteDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -355,6 +208,151 @@
             this.noteDataGridViewTextBoxColumn1.HeaderText = "Ghi chú";
             this.noteDataGridViewTextBoxColumn1.Name = "noteDataGridViewTextBoxColumn1";
             this.noteDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // bdsPlanning
+            // 
+            this.bdsPlanning.DataSource = typeof(Medical.Data.Entities.MedicinePlan);
+            // 
+            // cboClinic
+            // 
+            this.cboClinic.DataSource = this.bdsClinic;
+            this.cboClinic.DisplayMember = "Name";
+            this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboClinic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboClinic.FormattingEnabled = true;
+            this.cboClinic.ItemHeight = 14;
+            this.cboClinic.Location = new System.Drawing.Point(64, 10);
+            this.cboClinic.Name = "cboClinic";
+            this.cboClinic.Size = new System.Drawing.Size(250, 20);
+            this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboClinic.TabIndex = 1;
+            this.cboClinic.ValueMember = "Id";
+            this.cboClinic.SelectedIndexChanged += new System.EventHandler(this.CboClinicSelectedIndexChanged);
+            // 
+            // bdsClinic
+            // 
+            this.bdsClinic.DataSource = typeof(Medical.Data.Entities.Clinic);
+            // 
+            // labelX1
+            // 
+            this.labelX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.Class = "";
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(6, 13);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(52, 15);
+            this.labelX1.TabIndex = 0;
+            this.labelX1.Text = "Trung tâm";
+            // 
+            // panelEx3
+            // 
+            this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx3.Controls.Add(this.txtMonth);
+            this.panelEx3.Controls.Add(this.txtYear);
+            this.panelEx3.Controls.Add(this.labelX3);
+            this.panelEx3.Controls.Add(this.labelX2);
+            this.panelEx3.Controls.Add(this.btnAddPlanning);
+            this.panelEx3.Controls.Add(this.cboClinic);
+            this.panelEx3.Controls.Add(this.labelX1);
+            this.panelEx3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelEx3.Location = new System.Drawing.Point(0, 0);
+            this.panelEx3.Name = "panelEx3";
+            this.panelEx3.Size = new System.Drawing.Size(838, 40);
+            this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx3.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx3.Style.GradientAngle = 90;
+            this.panelEx3.TabIndex = 2;
+            this.panelEx3.ThemeAware = true;
+            // 
+            // txtMonth
+            // 
+            // 
+            // 
+            // 
+            this.txtMonth.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtMonth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtMonth.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtMonth.Location = new System.Drawing.Point(475, 10);
+            this.txtMonth.MaxValue = 12;
+            this.txtMonth.MinValue = 1;
+            this.txtMonth.Name = "txtMonth";
+            this.txtMonth.ShowUpDown = true;
+            this.txtMonth.Size = new System.Drawing.Size(45, 20);
+            this.txtMonth.TabIndex = 8;
+            this.txtMonth.Value = 1;
+            this.txtMonth.ValueChanged += new System.EventHandler(this.TxtMonthValueChanged);
+            // 
+            // txtYear
+            // 
+            // 
+            // 
+            // 
+            this.txtYear.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtYear.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtYear.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtYear.Location = new System.Drawing.Point(349, 10);
+            this.txtYear.MaxValue = 2200;
+            this.txtYear.MinValue = 1973;
+            this.txtYear.Name = "txtYear";
+            this.txtYear.ShowUpDown = true;
+            this.txtYear.Size = new System.Drawing.Size(77, 20);
+            this.txtYear.TabIndex = 7;
+            this.txtYear.Value = 1973;
+            this.txtYear.ValueChanged += new System.EventHandler(this.TxtYearValueChanged);
+            // 
+            // labelX3
+            // 
+            this.labelX3.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.Class = "";
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(435, 13);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(34, 15);
+            this.labelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.labelX3.TabIndex = 5;
+            this.labelX3.Text = "Tháng";
+            // 
+            // labelX2
+            // 
+            this.labelX2.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.Class = "";
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(320, 13);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(26, 15);
+            this.labelX2.TabIndex = 3;
+            this.labelX2.Text = "Năm";
+            // 
+            // btnAddPlanning
+            // 
+            this.btnAddPlanning.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddPlanning.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddPlanning.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAddPlanning.Image = global::Medical.Properties.Resources.add;
+            this.btnAddPlanning.Location = new System.Drawing.Point(712, 8);
+            this.btnAddPlanning.Name = "btnAddPlanning";
+            this.btnAddPlanning.Size = new System.Drawing.Size(120, 24);
+            this.btnAddPlanning.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddPlanning.TabIndex = 2;
+            this.btnAddPlanning.Text = "Lập dự trù";
+            this.btnAddPlanning.Click += new System.EventHandler(this.BtnAddPlanningClick);
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
             // 
             // MedicinePlanning
             // 
@@ -378,7 +376,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMonth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

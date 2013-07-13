@@ -11,19 +11,24 @@ using Medical.Forms.UI;
 namespace Medical.History {
     public partial class HistoryDetail : Form {
 
-        private long _prescriptionId;
+        private readonly long _prescriptionId;
         private Prescription _prescription;
         private List<PrescriptionDetail> _prescriptionDetails;
+        private readonly IMedicineDeliveryRepository _medicineDeliveryRepo = new MedicineDeliveryRepository();
+        private readonly Boolean _isEditable;
+        private readonly IFigureRepository _figureRepo = new FigureRepository();
 
         private readonly IPrescriptionRepository _prescriptionRepo = new PrescriptionRepository();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HistoryDetail"/> class.
         /// </summary>
-        /// <param name="_prescriptionId">The _prescription id.</param>
-        public HistoryDetail(long _prescriptionId) {
+        /// <param name="prescriptionId">The _prescription id.</param>
+        public HistoryDetail(long prescriptionId) {
             this.InitializeComponent();
-            this._prescriptionId = _prescriptionId;
+            this._prescriptionId = prescriptionId;
+            var delivered = _medicineDeliveryRepo.GetByPrescriptionId(_prescriptionId);
+            this._isEditable = delivered == null;
         }
 
         /// <summary>
@@ -31,17 +36,22 @@ namespace Medical.History {
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void HistoryDetail_Load(object sender, EventArgs e)
+        private void HistoryDetailLoad(object sender, EventArgs e)
         {
-            initialize();
+            Initialize();
         }
 
         /// <summary>
         /// Initializes this instance.
         /// </summary>
-        private void initialize()
+        private void Initialize()
         {
+            this.btnDelete.Enabled = (this._isEditable);
             this._prescription = this._prescriptionRepo.Get(this._prescriptionId);
+
+            var figures = _figureRepo.GetByClinicId(AppContext.CurrentClinic.Id);
+            this.cboFigure.DataSource = figures;
+
             this.bdsPrescription.DataSource = this._prescription;
             foreach (var item in this._prescription.PrescriptionDetails)
             {
@@ -57,7 +67,7 @@ namespace Medical.History {
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnCloseClick(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.None;
             this.Close();
@@ -68,7 +78,7 @@ namespace Medical.History {
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void BtnDeleteClick(object sender, EventArgs e)
         {
             var parameter = String.Format("đơn thuốc ngày {0} của bệnh nhân {1}",
                                                 this._prescription.Date.ToString("dd/MM/yyyy"),
@@ -84,7 +94,12 @@ namespace Medical.History {
             }
         }
 
-        private void dataGridViewX1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        /// <summary>
+        /// Datas the grid view x1 data binding complete.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="DataGridViewBindingCompleteEventArgs"/> instance containing the event data.</param>
+        private void DataGridViewX1DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             var gridView = (DataGridViewX)sender;
             if (null == gridView) return;

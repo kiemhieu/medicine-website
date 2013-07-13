@@ -78,7 +78,7 @@ namespace Medical
 
                 // Get existing prescription
                 this._prescription = _precriptionRepo.GetCurrent(patient.Id);
-                var lastPrescription = _precriptionRepo.GetLastByPatient(patient.Id);
+                // var lastPrescription = _precriptionRepo.GetLastByPatient(patient.Id);
 
                 // Binding data
                 if (this._prescription == null)
@@ -102,6 +102,7 @@ namespace Medical
                 else
                 {
                     var delivered = _medicineDeliveryRepo.GetByPrescriptionId(this._prescription.Id);
+                    this._prescriptionDetailList = this._prescription.PrescriptionDetails;
                     this._isEditable = delivered == null;
                     this._isUpdate = true;
                     this._prescription.DoctorId = AppContext.LoggedInUser.Id;
@@ -148,7 +149,6 @@ namespace Medical
                 mnuDelete.Enabled = false;
             }
         }
-
 
         /// <summary>
         /// Gets the day.
@@ -326,10 +326,9 @@ namespace Medical
         private void CboFigureSelectedIndexChanged(object sender, EventArgs e)
         {
             if (_isSkipUpdatingFigure) return;
-
+            
             var removeList = _prescriptionDetailList.Where(x => x.FigureDetailId != null).ToList();
             foreach (var item in removeList) _prescriptionDetailList.Remove(item);
-
 
             var comboboxEx = (ComboBoxEx)sender;
             var figureId = (int)comboboxEx.SelectedValue;
