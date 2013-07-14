@@ -32,19 +32,9 @@ namespace Medical.MedicinePlanning {
         /// </summary>
         private void Initialize()
         {
-            // Init Clinic combobox
-            //var clinic = this._clinicRepo.GetAll();
-            //clinic.Insert(0, new Clinic(){Id = 0, Name = "Tất cả"});
-            //this.bdsClinic.DataSource = clinic;
-            //this.cboClinic.SelectedValue = AppContext.CurrentClinic.Id;
-
-            // Set current year for first time initialize
-            //this.txtYear.Value = DateTime.Today.Year;
-
             this.bdsStatus.DataSource = MedicinePlaningStatus.GetPlanningStatus();
             this.bdsUser.DataSource = this._userRepo.GetAll();
-
-            InitializeData();
+            this.InitializeData();
         }
 
         /// <summary>
