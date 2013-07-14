@@ -25,6 +25,16 @@ namespace Medical.Data.Repositories
         }
 
         /// <summary>
+        /// Gets the by clinic.
+        /// </summary>
+        /// <param name="clinicId">The clinic id.</param>
+        /// <returns></returns>
+        public List<MedicinePlan> GetByClinic(int clinicId)
+        {
+            return Context.MedicinePlans.Where(x => x.ClinicId== clinicId).ToList();
+        }
+
+        /// <summary>
         /// Gets the specified clinic id.
         /// </summary>
         /// <param name="clinicId">The clinic id.</param>
@@ -47,27 +57,46 @@ namespace Medical.Data.Repositories
             return medicinePlans.ToList();
         }
 
+        /// <summary>
+        /// Gets the uncompleted plan.
+        /// </summary>
+        /// <param name="clinicId">The clinic id.</param>
+        /// <returns></returns>
         public List<MedicinePlan> GetUncompletedPlan(int? clinicId)
         {
             return !clinicId.HasValue || clinicId.Value == 0 ? this.Context.MedicinePlans.Where(x => x.Status != MedicinePlaningStatus.Approved).ToList() : this.Context.MedicinePlans.Where(x => x.Status != MedicinePlaningStatus.Approved && x.ClinicId == clinicId.Value).ToList();
         }
 
+        /// <summary>
+        /// Gets the by id.
+        /// </summary>
+        /// <param name="id">The id.</param>
+        /// <returns></returns>
         public MedicinePlan GetById(int id)
         {
             return this.Context.MedicinePlans.FirstOrDefault(x => x.Id.Equals(id));
         }
 
-        public void Insert(MedicinePlan MedicinePlan)
+        /// <summary>
+        /// Inserts the specified medicine plan.
+        /// </summary>
+        /// <param name="medicinePlan">The medicine plan.</param>
+        public void Insert(MedicinePlan medicinePlan)
         {
-            MedicinePlan.CreatedDate = DateTime.Now;
-            MedicinePlan.CreatedUser = AppContext.LoggedInUser.Id;
-            MedicinePlan.LastUpdatedDate = DateTime.Now;
-            MedicinePlan.LastUpdatedUser = AppContext.LoggedInUser.Id;
-            MedicinePlan.Version = 0;
-            this.Context.MedicinePlans.Add(MedicinePlan);
+            medicinePlan.CreatedDate = DateTime.Now;
+            medicinePlan.CreatedUser = AppContext.LoggedInUser.Id;
+            medicinePlan.LastUpdatedDate = DateTime.Now;
+            medicinePlan.LastUpdatedUser = AppContext.LoggedInUser.Id;
+            medicinePlan.Version = 0;
+            this.Context.MedicinePlans.Add(medicinePlan);
             this.Context.SaveChanges();
         }
 
+        /// <summary>
+        /// Inserts the specified medicine plan.
+        /// </summary>
+        /// <param name="medicinePlan">The medicine plan.</param>
+        /// <param name="medicinePlanDetails">The medicine plan details.</param>
         public void Insert(MedicinePlan medicinePlan, List<MedicinePlanDetail> medicinePlanDetails)
         {
             using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted }))
@@ -87,6 +116,12 @@ namespace Medical.Data.Repositories
             }
         }
 
+        /// <summary>
+        /// Updates the specified medicine plan.
+        /// </summary>
+        /// <param name="medicinePlan">The medicine plan.</param>
+        /// <param name="medicinePlanDetails">The medicine plan details.</param>
+        /// <exception cref="System.Exception">Dự trù không tồn tại</exception>
         public void Update(MedicinePlan medicinePlan, List<MedicinePlanDetail> medicinePlanDetails)
         {
             using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted }))
@@ -113,6 +148,12 @@ namespace Medical.Data.Repositories
             }
         }
 
+        /// <summary>
+        /// Updates the status.
+        /// </summary>
+        /// <param name="medicineDetailPlanningId">The medicine detail planning id.</param>
+        /// <param name="status">The status.</param>
+        /// <exception cref="System.Exception">Dự trù không tồn tại</exception>
         public void UpdateStatus(int medicineDetailPlanningId, int status)
         {
             var medicinePlanning = this.Context.MedicinePlans.FirstOrDefault(x => x.Id == medicineDetailPlanningId);
@@ -122,53 +163,55 @@ namespace Medical.Data.Repositories
             this.Context.SaveChanges();
         }
 
+        /// <summary>
+        /// Updates the specified medicine plan.
+        /// </summary>
+        /// <param name="medicinePlan">The medicine plan.</param>
         public void Update(MedicinePlan medicinePlan)
         {
-            try
-            {
-                var oldMedicinePlan = this.Context.MedicinePlans.FirstOrDefault(x => x.Id == medicinePlan.Id);
-                if (oldMedicinePlan == null) return;
-                oldMedicinePlan.Year = medicinePlan.Year;
-                oldMedicinePlan.Month = medicinePlan.Month;
-                oldMedicinePlan.Date = medicinePlan.Date;
-                oldMedicinePlan.ClinicId = medicinePlan.ClinicId;
-                oldMedicinePlan.ApproveId = medicinePlan.ApproveId;
-                oldMedicinePlan.Status = medicinePlan.Status;
-                oldMedicinePlan.Note = medicinePlan.Note;
-                oldMedicinePlan.LastUpdatedUser = AppContext.LoggedInUser.Id;
-                oldMedicinePlan.LastUpdatedDate = DateTime.Now;
-                oldMedicinePlan.Version++;
-                this.Context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-
+            var oldMedicinePlan = this.Context.MedicinePlans.FirstOrDefault(x => x.Id == medicinePlan.Id);
+            if (oldMedicinePlan == null) return;
+            oldMedicinePlan.Year = medicinePlan.Year;
+            oldMedicinePlan.Month = medicinePlan.Month;
+            oldMedicinePlan.Date = medicinePlan.Date;
+            oldMedicinePlan.ClinicId = medicinePlan.ClinicId;
+            oldMedicinePlan.ApproveId = medicinePlan.ApproveId;
+            oldMedicinePlan.Status = medicinePlan.Status;
+            oldMedicinePlan.Note = medicinePlan.Note;
+            oldMedicinePlan.LastUpdatedUser = AppContext.LoggedInUser.Id;
+            oldMedicinePlan.LastUpdatedDate = DateTime.Now;
+            oldMedicinePlan.Version++;
+            this.Context.SaveChanges();
         }
 
+        /// <summary>
+        /// Deletes the specified id.
+        /// </summary>
+        /// <param name="id">The id.</param>
         public void Delete(int id)
         {
-            try
-            {
-                var oldMedicinePlan = this.Context.MedicinePlans.FirstOrDefault(x => x.Id == id);
-                this.Context.MedicinePlans.Remove(oldMedicinePlan);
-                this.Context.SaveChanges();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
+            var oldMedicinePlan = this.Context.MedicinePlans.FirstOrDefault(x => x.Id == id);
+            this.Context.MedicinePlans.Remove(oldMedicinePlan);
+            this.Context.SaveChanges();
         }
 
+        /// <summary>
+        /// Gets all.
+        /// </summary>
+        /// <returns></returns>
         public List<MedicinePlan> GetAll()
         {
             return this.Context.MedicinePlans.ToList();
         }
 
+        /// <summary>
+        /// Filters the plan.
+        /// </summary>
+        /// <param name="year">The year.</param>
+        /// <param name="month">The month.</param>
+        /// <param name="clinicId">The clinic id.</param>
+        /// <param name="status">The status.</param>
+        /// <returns></returns>
         public List<MedicinePlan> FilterPlan(int year, int month, int clinicId, string status)
         {
             /*
