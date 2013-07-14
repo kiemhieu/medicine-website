@@ -25,7 +25,7 @@ namespace Medical.MedicinePlanning
         private readonly IWareHouseRepository _warehouseRepo = new WareHouseRepository();
         private readonly IMedicineDeliveryRepository _deliveryRepo = new MedicineDeliveryRepository();
         
-        private readonly ViewModes _mode;
+        private ViewModes _mode;
         private readonly int _planningId;
         private Data.Entities.MedicinePlan _medicinePlan;
         private List<MedicinePlanDetail> _medicinePlanDetails;
@@ -97,6 +97,7 @@ namespace Medical.MedicinePlanning
                 if (this._medicinePlan == null) throw new Exception("Dự trù thuốc không tồn tại");
                 bdsPlanning.DataSource = this._medicinePlan;
 
+                if (this._medicinePlanDetails != null) this._medicinePlanDetails.Clear();
                 this._medicinePlanDetails = this._planingDetailRepo.GetByPlanId(this._planningId);
                 var medicines = this._medicineRepo.GetAll();
 
@@ -105,36 +106,58 @@ namespace Medical.MedicinePlanning
                     foreach (var medicine in medicines)
                     {
                         if (medicine.Id != planDetail.MedicineId) continue;
+                        planDetail.MedicineName= medicine.Name;
                         planDetail.TradeName = medicine.TradeName;
-                        planDetail.MedicineName = medicine.Define.Name;
+                        planDetail.UnitName = medicine.Define.Name;
 
-                        var medicinePlanDetail = new MedicinePlanDetail
-                                                     {
-                                                         MedicineId = medicine.Id,
-                                                         Version = 0,
-                                                         MedicineName = medicine.Name,
-                                                         UnitName = medicine.Define.Name,
-                                                         TradeName = medicine.TradeName
-                                                     };
+                        //var medicinePlanDetail = new MedicinePlanDetail
+                        //                             {
+                        //                                 MedicineId = medicine.Id,
+                        //                                 Version = 0,
+                        //                                 MedicineName = medicine.Name,
+                        //                                 UnitName = medicine.Define.Name,
+                        //                                 TradeName = medicine.TradeName
+                        //                             };
                     }
 
                 }
 
-                bdsPlanningDetail.DataSource = this._mode == ViewModes.View ? this._medicinePlanDetails.Where(x=>x.Required > 0) : this._medicinePlanDetails;
+                var items = this._mode == ViewModes.View ? this._medicinePlanDetails.Where(x => x.Required > 0).ToList() : this._medicinePlanDetails;
+                this.bdsPlanningDetail.DataSource = items;
+                this.bdsPlanningDetail.ResetBindings(true);
+                this.grdPlanning.ResetBindings();
+                this.grdPlanning.Refresh();
 
                 this.txtYear.Enabled = false;
                 this.txtMonth.Enabled = false;
                 if (this._mode == ViewModes.View)
                 {
-                    this.grdPlanning.ReadOnly = true;
                     btnSave.Enabled = false;
+
+                    this.grdPlanning.Columns[6].ReadOnly = true;
                     if (this._medicinePlan.Status == MedicinePlaningStatus.Approved)
                     {
                         btnEdit.Enabled = false;
                         btnDelete.Enabled = false;
+                    } else
+                    {
+                        this.btnDelete.Enabled = true;
+                        this.btnEdit.Enabled = true;
                     }
-                } else
+                } 
+                else
                 {
+                    if (this._medicinePlan.Status == MedicinePlaningStatus.Approved)
+                    {
+                        btnSave.Enabled = false;
+                        this.grdPlanning.Columns[6].ReadOnly = true;
+                    }
+                    else
+                    {
+                        this.grdPlanning.Columns[6].ReadOnly = false;
+                        btnSave.Enabled = true;
+                    }
+                    
                     btnEdit.Enabled = false;
                     btnSave.Enabled = true;
                     btnDelete.Enabled = false;
@@ -263,6 +286,34 @@ namespace Medical.MedicinePlanning
         private void btnUnApproved_Click(object sender, EventArgs e)
         {
             this._planingRepo.UpdateStatus(this._planningId, MedicinePlaningStatus.NotApproved);
+        }
+
+        /// <summary>
+        /// BTNs the delete click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void BtnDeleteClick(object sender, EventArgs e)
+        {
+            var result = MessageDialog.Instance.ShowMessage(this, "Q003", "dự trù thuốc ");
+            if (result == DialogResult.No) return;
+
+            try
+            {
+                _planingRepo.Delete(this._medicinePlan.Id);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageDialog.Instance.ShowMessage(this, "ERR0002", ex.Message);
+            }
+
+        }
+
+        private void BtnEditClick(object sender, EventArgs e)
+        {
+            this._mode = ViewModes.Update;
+            Initialize();
         }
     }
 }
