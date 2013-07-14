@@ -11,6 +11,7 @@ using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
 using Medical.Forms.Enums;
+using Medical.Forms.UI;
 
 namespace Medical.MedicinePlanning
 {
@@ -26,8 +27,8 @@ namespace Medical.MedicinePlanning
         
         private readonly ViewModes _mode;
         private readonly int _planningId;
-        private Medical.Data.Entities.MedicinePlan _medicinePlan;
-        private List<Medical.Data.Entities.MedicinePlanDetail> _medicinePlanDetails;
+        private Data.Entities.MedicinePlan _medicinePlan;
+        private List<MedicinePlanDetail> _medicinePlanDetails;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MedicinePlanningDetail"/> class.
@@ -40,8 +41,9 @@ namespace Medical.MedicinePlanning
 
         public MedicinePlanningDetail(int medicinePlanId) : this()
         {
-            this._mode = ViewModes.Update;
+            this._mode = ViewModes.View;
             this._planningId = medicinePlanId;
+            
         }
 
         /// <summary>
@@ -75,9 +77,8 @@ namespace Medical.MedicinePlanning
             if (this._mode == ViewModes.Add)
             {
                 // Medicine plan
-                this._medicinePlan = new Data.Entities.MedicinePlan();
-                this._medicinePlan.Date = DateTime.Today;
-                this._medicinePlan.ClinicId = AppContext.CurrentClinic.Id;
+                this._medicinePlan = new Data.Entities.MedicinePlan
+                                         {Date = DateTime.Today, ClinicId = AppContext.CurrentClinic.Id, CreatedUser = AppContext.LoggedInUser.Id};
 
                 var date = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1, 0, 0, 0);
                 date = date.AddMonths(1);
@@ -86,6 +87,9 @@ namespace Medical.MedicinePlanning
                 this._medicinePlan.Status = 0;
 
                 ReloadPlannedInfo();
+
+                this.btnDelete.Enabled = false;
+                this.btnEdit.Enabled = false;
             }
             else
             {
@@ -116,10 +120,25 @@ namespace Medical.MedicinePlanning
 
                 }
 
-                bdsPlanningDetail.DataSource = this._medicinePlanDetails;
+                bdsPlanningDetail.DataSource = this._mode == ViewModes.View ? this._medicinePlanDetails.Where(x=>x.Required > 0) : this._medicinePlanDetails;
 
                 this.txtYear.Enabled = false;
                 this.txtMonth.Enabled = false;
+                if (this._mode == ViewModes.View)
+                {
+                    this.grdPlanning.ReadOnly = true;
+                    btnSave.Enabled = false;
+                    if (this._medicinePlan.Status == MedicinePlaningStatus.Approved)
+                    {
+                        btnEdit.Enabled = false;
+                        btnDelete.Enabled = false;
+                    }
+                } else
+                {
+                    btnEdit.Enabled = false;
+                    btnSave.Enabled = true;
+                    btnDelete.Enabled = false;
+                }
             }
         }
       
@@ -202,23 +221,27 @@ namespace Medical.MedicinePlanning
         {
             try
             {
-                if (this._mode == ViewModes.Add) {
+
+                var result = MessageDialog.Instance.ShowMessage(this, "Q011");
+                if (result == DialogResult.No) return;
+
+                if (this._mode == ViewModes.Add)
+                {
                     _planingRepo.Insert(this._medicinePlan, this._medicinePlanDetails);
-                    MessageBox.Show("Insert successfully");
-                    this.Close();
-                } 
+                   
+                }
                 else
                 {
                     this._medicinePlan.Status = MedicinePlaningStatus.ReEdited;
                     _planingRepo.Update(this._medicinePlan, this._medicinePlanDetails);
-                    MessageBox.Show("Update successfully");
-                    this.Close();
                 }
+
+                this.Close();
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageDialog.Instance.ShowMessage(this, "ERR0002", ex.Message);
             }
         }
 

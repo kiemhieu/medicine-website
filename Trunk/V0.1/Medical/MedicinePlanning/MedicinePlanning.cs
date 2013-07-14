@@ -33,13 +33,13 @@ namespace Medical.MedicinePlanning {
         private void Initialize()
         {
             // Init Clinic combobox
-            var clinic = this._clinicRepo.GetAll();
-            clinic.Insert(0, new Clinic(){Id = 0, Name = "Tất cả"});
-            this.bdsClinic.DataSource = clinic;
-            this.cboClinic.SelectedValue = AppContext.CurrentClinic.Id;
+            //var clinic = this._clinicRepo.GetAll();
+            //clinic.Insert(0, new Clinic(){Id = 0, Name = "Tất cả"});
+            //this.bdsClinic.DataSource = clinic;
+            //this.cboClinic.SelectedValue = AppContext.CurrentClinic.Id;
 
             // Set current year for first time initialize
-            this.txtYear.Value = DateTime.Today.Year;
+            //this.txtYear.Value = DateTime.Today.Year;
 
             this.bdsStatus.DataSource = MedicinePlaningStatus.GetPlanningStatus();
             this.bdsUser.DataSource = this._userRepo.GetAll();
@@ -52,7 +52,7 @@ namespace Medical.MedicinePlanning {
         /// </summary>
         private void InitializeData()
         {
-            var planningList = _medicinePlanRepo.Get(this.ClinicId, this.Year, this.Month);
+            var planningList = _medicinePlanRepo.GetByClinic(AppContext.CurrentClinic.Id); // Get(this.ClinicId, this.Year, this.Month);
             this.bdsPlanning.DataSource = planningList;
             this.bdsPlanning.ResetBindings(true);
             this.dataGridViewX1.ResetBindings();
@@ -79,22 +79,6 @@ namespace Medical.MedicinePlanning {
             var detail =new MedicinePlanningDetail();
             detail.ShowDialog(this);
         }
-
-        private int? ClinicId
-        {
-            get { return this.cboClinic.SelectedValue == null ? (int?)null : Convert.ToInt32(this.cboClinic.SelectedValue); }
-        }
-
-        private int? Year
-        {
-            get { return this.txtYear.ValueObject == null ? (int?)null : this.txtYear.Value; }
-        }
-
-        private int? Month
-        {
-            get { return this.txtMonth.ValueObject == null ? (int?)null : this.txtMonth.Value; }
-        }
-
 
         /// <summary>
         /// Datas the grid view x1 data binding complete.
@@ -125,34 +109,6 @@ namespace Medical.MedicinePlanning {
             medicinePlanningDetail.ShowDialog(this);
         }
 
-        /// <summary>
-        /// TXTs the month value changed.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void TxtMonthValueChanged(object sender, EventArgs e)
-        {
-            InitializeData();
-        }
-
-        /// <summary>
-        /// TXTs the year value changed.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void TxtYearValueChanged(object sender, EventArgs e)
-        {
-            InitializeData();
-        }
-
-        /// <summary>
-        /// Cboes the clinic selected index changed.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void CboClinicSelectedIndexChanged(object sender, EventArgs e)
-        {
-            InitializeData();
-        }
+       
     }
 }
