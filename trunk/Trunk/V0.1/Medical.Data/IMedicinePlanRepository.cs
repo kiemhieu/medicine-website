@@ -10,11 +10,12 @@ namespace Medical.Data
     {
         void Delete(int id);
         MedicinePlan Get(int id);
+        List<MedicinePlan> GetByClinic(int clinicId);
         List<MedicinePlan> Get(int? clinicId, int? year, int? month);
         List<MedicinePlan> GetAll();
         List<MedicinePlan> GetUncompletedPlan(int? clinicId);
         MedicinePlan GetById(int id);
-        void Insert(MedicinePlan MedicinePlan);
+        void Insert(MedicinePlan medicinePlan);
         void Insert(MedicinePlan medicinePlan, List<MedicinePlanDetail> medicinePlanDetails);
         void Update(MedicinePlan medicinePlan, List<MedicinePlanDetail> medicinePlanDetails);
         void Update(MedicinePlan medicinePlan);

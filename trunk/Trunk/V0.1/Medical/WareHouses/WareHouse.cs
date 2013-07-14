@@ -78,20 +78,6 @@ namespace Medical.WareHouses {
             foreach (DataGridViewRow r in gridView.Rows)
             {
                 gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
-                var minimumAllowed = gridView.Rows[r.Index].Cells[4].Value == null ? 0 : (int)gridView.Rows[r.Index].Cells[4].Value;
-                var qty = gridView.Rows[r.Index].Cells[5].Value == null ? 0 : (int)gridView.Rows[r.Index].Cells[5].Value;
-                if (qty == 0)
-                {
-                    gridView.Rows[r.Index].Cells[0].Value = global::Medical.Properties.Resources.bonus;
-                }
-                else if (qty <= minimumAllowed)
-                {
-                    gridView.Rows[r.Index].Cells[0].Value = global::Medical.Properties.Resources.attention;
-                }
-                else
-                {
-                    gridView.Rows[r.Index].Cells[0].Value = global::Medical.Properties.Resources.check;
-                }
             }
         }
 
@@ -110,6 +96,26 @@ namespace Medical.WareHouses {
             var clinicId = (int)cboClinic.SelectedValue;
             var medicine = txtMedicine.Text.Trim();
             LoadData(clinicId, medicine);
+        }
+
+        private void DataGridViewX1CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var grid = sender as DataGridViewX;
+            if (grid == null) return;
+
+            var row = grid.Rows[e.RowIndex];
+
+            var quantity = (int) row.Cells[4].Value;
+            var minimum = (int) row .Cells[3].Value;
+            if (quantity == 0 || quantity < minimum)
+            {
+                row.DefaultCellStyle.ForeColor = Color.Red;
+                row.DefaultCellStyle.SelectionForeColor = Color.Red;
+            } else
+            {
+                row.DefaultCellStyle.ForeColor = Color.Green;
+                row.DefaultCellStyle.SelectionForeColor = Color.Green;
+            }
         }
     }
 }

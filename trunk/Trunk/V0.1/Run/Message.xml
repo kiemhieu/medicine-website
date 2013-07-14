@@ -62,7 +62,7 @@
   </Message>
   <Message>
     <Code>Q003</Code>
-    <Content>Bạn có chắc muốn xóa {0} ?</Content>
+    <Content>Đồng ý xóa {0} ?</Content>
     <Type>Question</Type>
     <Button>YesNo</Button>
   </Message>
