@@ -45,8 +45,6 @@ namespace Medical.Data.Repositories
 
         public void Update(WareHouse whItem)
         {
-            try
-            {
                 var oldWh = this.Context.WareHouses.FirstOrDefault(x => x.Id == whItem.Id);
                 if (oldWh == null) return;
                 oldWh.ClinicId = whItem.ClinicId;
@@ -57,13 +55,6 @@ namespace Medical.Data.Repositories
                 oldWh.LastUpdatedDate = DateTime.Now;
                 oldWh.Version++;
                 this.Context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-
         }
 
         public void Delete(int id)
