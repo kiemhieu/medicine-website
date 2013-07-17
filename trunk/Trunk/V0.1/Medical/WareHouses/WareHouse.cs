@@ -117,5 +117,21 @@ namespace Medical.WareHouses {
                 row.DefaultCellStyle.SelectionForeColor = Color.Green;
             }
         }
+
+        private void MnuSetupClick(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void DataGridViewX1RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            dataGridViewX1.Rows[e.RowIndex].ContextMenuStrip = ctmMenu;
+        }
+
+        private void DataGridViewX1RowContextMenuStripNeeded(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
+        {
+            dataGridViewX1.Rows[e.RowIndex].Selected = true;
+            e.ContextMenuStrip = ctmMenu;
+        }
     }
 }

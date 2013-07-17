@@ -36,19 +36,22 @@
             this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.bdsClinic = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.bdsWareHouse = new System.Windows.Forms.BindingSource(this.components);
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.medicineNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TradeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.minAllowedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.volumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnBound = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsWareHouse = new System.Windows.Forms.BindingSource(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ctmMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuSetup = new System.Windows.Forms.ToolStripMenuItem();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsClinic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.ctmMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -198,15 +201,8 @@
             this.dataGridViewX1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewX1CellDoubleClick);
             this.dataGridViewX1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewX1CellFormatting);
             this.dataGridViewX1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DataGridViewX1DataBindingComplete);
-            // 
-            // bdsWareHouse
-            // 
-            this.bdsWareHouse.DataSource = typeof(Medical.Data.Entities.WareHouse);
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            this.errorProvider1.DataSource = this.bdsWareHouse;
+            this.dataGridViewX1.RowContextMenuStripNeeded += new System.Windows.Forms.DataGridViewRowContextMenuStripNeededEventHandler(this.DataGridViewX1RowContextMenuStripNeeded);
+            this.dataGridViewX1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.DataGridViewX1RowsAdded);
             // 
             // medicineNameDataGridViewTextBoxColumn
             // 
@@ -260,6 +256,29 @@
             this.UnBound.Name = "UnBound";
             this.UnBound.ReadOnly = true;
             // 
+            // bdsWareHouse
+            // 
+            this.bdsWareHouse.DataSource = typeof(Medical.Data.Entities.WareHouse);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.DataSource = this.bdsWareHouse;
+            // 
+            // ctmMenu
+            // 
+            this.ctmMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuSetup});
+            this.ctmMenu.Name = "contextMenuStrip1";
+            this.ctmMenu.Size = new System.Drawing.Size(197, 26);
+            // 
+            // mnuSetup
+            // 
+            this.mnuSetup.Name = "mnuSetup";
+            this.mnuSetup.Size = new System.Drawing.Size(196, 22);
+            this.mnuSetup.Text = "Thiết lập tồn kho tối thiểu";
+            this.mnuSetup.Click += new System.EventHandler(this.MnuSetupClick);
+            // 
             // WareHouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,6 +296,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsWareHouse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.ctmMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -299,5 +319,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn minAllowedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn volumnDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnBound;
+        private System.Windows.Forms.ContextMenuStrip ctmMenu;
+        private System.Windows.Forms.ToolStripMenuItem mnuSetup;
     }
 }
