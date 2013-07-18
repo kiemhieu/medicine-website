@@ -346,5 +346,15 @@ namespace Medical.Forms.UI
             frmSynchr frmSynchr = new frmSynchr();
             frmSynchr.ShowDialog(this);
         }
+
+        private void toolStripMenuItem3_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void mnuServer_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

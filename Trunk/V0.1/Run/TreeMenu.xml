@@ -22,7 +22,7 @@
     <TreeMenuItem No="4" Title="Kho" ImageIndex="9">
       <Childs>
         <TreeMenuItem No="1" Title="Tồn kho" Key="WareHouseSummary" Role="0,1,2" ImageIndex="10" Description="" />
-        <TreeMenuItem No="1" Title="Quản lý kho" Key="WareHouseDetailEdit" Role="0,1,2" ImageIndex="11" Description="" />
+        <!--TreeMenuItem No="1" Title="Quản lý kho" Key="WareHouseDetailEdit" Role="0,1,2" ImageIndex="11" Description="" /-->
         <TreeMenuItem No="1" Title="Nhập kho" Key="WareHouseDetailPageImport" Role="0,1,2" ImageIndex="12" Description="" />
         <TreeMenuItem No="1" Title="Xuất kho" Key="WareHouseDetailPageExport" Role="0,1,2" ImageIndex="13" Description="" />
         <TreeMenuItem No="1" Title="Lịch sử xuất nhập kho" Key="WareHouseIOHistory" Role="0,1,2" ImageIndex="14" Description="" />
