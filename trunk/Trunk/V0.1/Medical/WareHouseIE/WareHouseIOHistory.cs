@@ -56,12 +56,16 @@ namespace Medical.WareHouseIE
 
         private void BindClinic()
         {
+            cboClinic.DataSource = new List<Clinic> { repClinic.GetById(AppContext.CurrentClinic.Id) };
+
+            /*
             if (AppContext.LoggedInUser.Role > MedicineRoles.SupperManager)
             {
                 cboClinic.DataSource = new List<Clinic> { repClinic.GetById(AppContext.CurrentClinic.Id) };
             }
             else
                 bdsClinic.DataSource = repClinic.GetAll();
+             */
            
         }        
 

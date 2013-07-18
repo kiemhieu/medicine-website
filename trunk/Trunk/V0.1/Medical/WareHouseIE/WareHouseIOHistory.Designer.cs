@@ -78,7 +78,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(977, 58);
+            this.panelEx1.Size = new System.Drawing.Size(977, 40);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -95,7 +95,7 @@
             // 
             this.labelX4.BackgroundStyle.Class = "";
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(2, 6);
+            this.labelX4.Location = new System.Drawing.Point(2, 13);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(52, 15);
             this.labelX4.TabIndex = 10;
@@ -109,7 +109,7 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(519, 6);
+            this.labelX2.Location = new System.Drawing.Point(519, 13);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(21, 15);
             this.labelX2.TabIndex = 7;
@@ -123,7 +123,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(382, 6);
+            this.labelX1.Location = new System.Drawing.Point(382, 13);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(42, 15);
             this.labelX1.TabIndex = 6;
@@ -134,7 +134,7 @@
             this.btnImport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnImport.Image = global::Medical.Properties.Resources.import;
-            this.btnImport.Location = new System.Drawing.Point(782, 2);
+            this.btnImport.Location = new System.Drawing.Point(782, 8);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(120, 25);
             this.btnImport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -147,7 +147,7 @@
             this.btnExport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnExport.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnExport.Image = global::Medical.Properties.Resources.export;
-            this.btnExport.Location = new System.Drawing.Point(698, 2);
+            this.btnExport.Location = new System.Drawing.Point(698, 8);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(78, 25);
             this.btnExport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -160,7 +160,7 @@
             this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSearch.Image = global::Medical.Properties.Resources.grey_search;
-            this.btnSearch.Location = new System.Drawing.Point(636, 2);
+            this.btnSearch.Location = new System.Drawing.Point(636, 8);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(56, 25);
             this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -178,7 +178,7 @@
             this.txtTo.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.txtTo.ButtonDropDown.Visible = true;
             this.txtTo.IsPopupCalendarOpen = false;
-            this.txtTo.Location = new System.Drawing.Point(542, 3);
+            this.txtTo.Location = new System.Drawing.Point(542, 10);
             // 
             // 
             // 
@@ -229,7 +229,7 @@
             this.txtFrom.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.txtFrom.ButtonDropDown.Visible = true;
             this.txtFrom.IsPopupCalendarOpen = false;
-            this.txtFrom.Location = new System.Drawing.Point(428, 3);
+            this.txtFrom.Location = new System.Drawing.Point(428, 10);
             // 
             // 
             // 
@@ -273,11 +273,15 @@
             // cboClinic
             // 
             this.cboClinic.DataSource = this.bdsClinic;
+            this.cboClinic.DisabledBackColor = System.Drawing.Color.White;
+            this.cboClinic.DisabledForeColor = System.Drawing.Color.Black;
             this.cboClinic.DisplayMember = "Name";
             this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboClinic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboClinic.Enabled = false;
             this.cboClinic.FormattingEnabled = true;
             this.cboClinic.ItemHeight = 14;
-            this.cboClinic.Location = new System.Drawing.Point(60, 3);
+            this.cboClinic.Location = new System.Drawing.Point(60, 10);
             this.cboClinic.Name = "cboClinic";
             this.cboClinic.Size = new System.Drawing.Size(311, 20);
             this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -320,10 +324,10 @@
             this.grd.DefaultCellStyle = dataGridViewCellStyle1;
             this.grd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.grd.Location = new System.Drawing.Point(0, 58);
+            this.grd.Location = new System.Drawing.Point(0, 40);
             this.grd.Name = "grd";
             this.grd.ReadOnly = true;
-            this.grd.Size = new System.Drawing.Size(977, 451);
+            this.grd.Size = new System.Drawing.Size(977, 469);
             this.grd.TabIndex = 1;
             this.grd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
             // 

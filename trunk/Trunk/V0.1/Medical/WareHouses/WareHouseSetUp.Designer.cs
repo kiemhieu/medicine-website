@@ -81,6 +81,7 @@
             this.textBoxX3.ForeColor = System.Drawing.Color.Black;
             this.textBoxX3.Location = new System.Drawing.Point(96, 64);
             this.textBoxX3.Name = "textBoxX3";
+            this.textBoxX3.ReadOnly = true;
             this.textBoxX3.Size = new System.Drawing.Size(100, 20);
             this.textBoxX3.TabIndex = 10;
             // 
@@ -100,6 +101,7 @@
             this.textBoxX1.ForeColor = System.Drawing.Color.Black;
             this.textBoxX1.Location = new System.Drawing.Point(96, 38);
             this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.ReadOnly = true;
             this.textBoxX1.Size = new System.Drawing.Size(233, 20);
             this.textBoxX1.TabIndex = 9;
             // 
@@ -144,6 +146,7 @@
             this.textBoxX2.ForeColor = System.Drawing.Color.Black;
             this.textBoxX2.Location = new System.Drawing.Point(96, 12);
             this.textBoxX2.Name = "textBoxX2";
+            this.textBoxX2.ReadOnly = true;
             this.textBoxX2.Size = new System.Drawing.Size(233, 20);
             this.textBoxX2.TabIndex = 5;
             // 

@@ -19,6 +19,10 @@ namespace Medical.WareHouses
         private Medical.Data.Entities.WareHouse warehouse;
         private IWareHouseRepository _warehouseRepo = new WareHouseRepository();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WareHouseSetUp"/> class.
+        /// </summary>
+        /// <param name="warehouseId">The warehouse id.</param>
         public WareHouseSetUp(int warehouseId)
         {
             InitializeComponent();
@@ -27,11 +31,21 @@ namespace Medical.WareHouses
             bdsWarehouse.DataSource = warehouse;
         }
 
+        /// <summary>
+        /// BTNs the close click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BtnCloseClick(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// BTNs the save click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BtnSaveClick(object sender, EventArgs e)
         {
             try
@@ -39,13 +53,12 @@ namespace Medical.WareHouses
                 var result = MessageDialog.Instance.ShowMessage(this, "Q011");
                 if (result == DialogResult.No) return;
                 _warehouseRepo.Update(this.warehouse);
+                this.Close();
             }
             catch (Exception ex)
             {
                 MessageDialog.Instance.ShowMessage(this, "ERR0002", ex.Message);
             }
-
         }
-
     }
 }

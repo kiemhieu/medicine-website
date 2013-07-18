@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
+using System.Data.Objects;
 using System.Linq;
 using System.Text;
 using Medical.Data.Entities;
@@ -24,7 +26,11 @@ namespace Medical.Data.Repositories
 
         public List<WareHouse> Get(int clinicId, String medicines)
         {
-            var list = this.Context.WareHouses.Where(x=>x.ClinicId == clinicId || clinicId == 0);
+            ObjectContext objectContext = ((IObjectContextAdapter)this.Context).ObjectContext;
+            ObjectSet<WareHouse> set = objectContext.CreateObjectSet<WareHouse>();
+            set.MergeOption = MergeOption.OverwriteChanges;
+
+            var list = set.Where(x=>x.ClinicId == clinicId || clinicId == 0);
             return String.IsNullOrEmpty(medicines)
                        ? list.ToList()
                        : list.Where(x => x.Medicine.Name.StartsWith(medicines)).ToList();
@@ -55,6 +61,7 @@ namespace Medical.Data.Repositories
                 oldWh.LastUpdatedDate = DateTime.Now;
                 oldWh.Version++;
                 this.Context.SaveChanges();
+                this.Context.Entry(oldWh).Reload();
         }
 
         public void Delete(int id)
