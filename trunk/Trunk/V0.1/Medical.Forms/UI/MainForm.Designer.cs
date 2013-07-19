@@ -364,7 +364,7 @@
             this.mnuServer.Name = "mnuServer";
             this.mnuServer.Size = new System.Drawing.Size(182, 22);
             this.mnuServer.Text = "Máy chủ";
-            this.mnuServer.Click += new System.EventHandler(this.mnuServer_Click);
+            this.mnuServer.Click += new System.EventHandler(this.MnuServerClick);
             // 
             // toolStripSeparator2
             // 

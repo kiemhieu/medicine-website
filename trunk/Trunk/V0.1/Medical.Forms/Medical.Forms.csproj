@@ -177,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\Medical.Data.Entities.User.datasource" />
+    <None Include="Properties\DataSources\Medical.Forms.Entities.DbConnectionObject.datasource" />
     <None Include="Resources\info.png" />
   </ItemGroup>
   <ItemGroup>

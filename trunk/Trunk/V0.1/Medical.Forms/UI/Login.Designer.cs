@@ -32,6 +32,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCancal = new System.Windows.Forms.Button();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnChangeServer = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
@@ -108,12 +109,24 @@
             this.err.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.err.ContainerControl = this;
             // 
+            // btnChangeServer
+            // 
+            this.btnChangeServer.AutoSize = true;
+            this.btnChangeServer.Location = new System.Drawing.Point(28, 110);
+            this.btnChangeServer.Name = "btnChangeServer";
+            this.btnChangeServer.Size = new System.Drawing.Size(92, 14);
+            this.btnChangeServer.TabIndex = 8;
+            this.btnChangeServer.TabStop = true;
+            this.btnChangeServer.Text = "Thay đổi máy chủ";
+            this.btnChangeServer.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.BtnChangeServerLinkClicked);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(309, 140);
             this.ControlBox = false;
+            this.Controls.Add(this.btnChangeServer);
             this.Controls.Add(this.btnCancal);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLogin);
@@ -144,5 +157,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnCancal;
         private System.Windows.Forms.ErrorProvider err;
+        private System.Windows.Forms.LinkLabel btnChangeServer;
     }
 }
