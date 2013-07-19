@@ -66,10 +66,12 @@ namespace Medical.Forms.UI {
                     MessageBox.Show(ex.Message);
                 }
 
+        }
+
+        private void BtnChangeServerLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var serverForm = new Database();
+            serverForm.ShowDialog();
         } 
-
-       
-
-
     }
 }

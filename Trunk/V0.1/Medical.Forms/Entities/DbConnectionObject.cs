@@ -27,25 +27,25 @@ namespace Medical.Forms.Entities
             foreach (String  str in strs )
             {
                 String [] items = str.Split(new string[] {"="}, StringSplitOptions.RemoveEmptyEntries);
-                switch (items[0].ToLower())
+                switch (items[0].ToLower().Trim())
                 {
                     case "data source":
-                        this.Server = items[1];
+                        this.Server = items[1].Trim();
                         break;
                     case "initial catalog":
-                        this.Db = items[1];
+                        this.Db = items[1].Trim();
                         break;
                     case "pwd":
-                        this.Pass = items[1];
+                        this.Pass = items[1].Trim();
                         break;
                     case "user id":
-                        this.User = items[1];
+                        this.User = items[1].Trim();
                         break;
                     case "persist security info":
-                        this.IsPersistSecurity = Boolean.Parse(items[1]);
+                        this.IsPersistSecurity = Boolean.Parse(items[1].Trim());
                         break;
                     case "integrated security":
-                        this.Intergrated = items[1];
+                        this.Intergrated = items[1].Trim();
                         break;
                     default:
                         break;

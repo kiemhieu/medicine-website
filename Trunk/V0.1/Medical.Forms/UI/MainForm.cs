@@ -352,9 +352,10 @@ namespace Medical.Forms.UI
 
         }
 
-        private void mnuServer_Click(object sender, System.EventArgs e)
+        private void MnuServerClick(object sender, System.EventArgs e)
         {
-
+            var serverForm = new Database();
+            serverForm.ShowDialog();
         }
     }
 }
