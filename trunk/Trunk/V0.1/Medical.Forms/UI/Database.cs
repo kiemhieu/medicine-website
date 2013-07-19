@@ -43,6 +43,7 @@ namespace Medical.Forms.UI
         {
             _config.ConnectionStrings.ConnectionStrings["MedicalContext"].ConnectionString = connectionObject.ToString();
             _config.Save();
+            ConfigurationManager.RefreshSection("connectionStrings");
             this.Close();
         }
 

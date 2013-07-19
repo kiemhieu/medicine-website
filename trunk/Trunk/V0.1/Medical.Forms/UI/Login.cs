@@ -19,53 +19,52 @@ namespace Medical.Forms.UI {
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, System.EventArgs e) {
+        private void BtnLoginClick(object sender, System.EventArgs e) {
             try {
-                this.err.Clear();
-                var isValid = userRepo.Login(this.txtUser.Text, this.txtPass.Text, AppContext.CurrentClinic.Id);
-                if (isValid) {
-                    AppContext.Authenticated = true;
-                    AppContext.LoggedInUser = userRepo.Get(this.txtUser.Text);
-                    this.Close();
-                } else {
-                    this.err.SetError(txtPass, "Tài khoản không hợp lệ");
-                    this.err.SetError(txtUser, "Tài khoản không hợp lệ");
-                }
+                DoLoggingIn();
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
         }
 
-        private void btnCancal_Click(object sender, System.EventArgs e) {
+        private void BtnCancalClick(object sender, System.EventArgs e) {
             Environment.Exit(0);
         }
 
-        private void txtPass_KeyDown(object sender, KeyEventArgs e)
+        private void TxtPassKeyDown(object sender, KeyEventArgs e)
         {
 
             if (e.KeyCode == Keys.Enter)
 
                 try
                 {
-                    this.err.Clear();
-                    var isValid = userRepo.Login(this.txtUser.Text, this.txtPass.Text, AppContext.CurrentClinic.Id);
-                    if (isValid)
-                    {
-                        AppContext.Authenticated = true;
-                        AppContext.LoggedInUser = userRepo.Get(this.txtUser.Text);
-                        this.Close();
-                    }
-                    else
-                    {
-                        this.err.SetError(txtPass, "Tài khoản không hợp lệ");
-                        this.err.SetError(txtUser, "Tài khoản không hợp lệ");
-                    }
+                    DoLoggingIn();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
 
+        }
+
+        private void DoLoggingIn()
+        {
+            this.err.Clear();
+            userRepo = new UserRepository();
+            var isValid = userRepo.Login(this.txtUser.Text, this.txtPass.Text, AppContext.CurrentClinicId);
+            if (isValid)
+            {
+                AppContext.Authenticated = true;
+                AppContext.LoggedInUser = userRepo.Get(this.txtUser.Text);
+                IClinicRepository clinicRepository = new ClinicRepository();
+                AppContext.CurrentClinic = clinicRepository.Get(AppContext.CurrentClinicId);
+                this.Close();
+            }
+            else
+            {
+                this.err.SetError(txtPass, "Tài khoản không hợp lệ");
+                this.err.SetError(txtUser, "Tài khoản không hợp lệ");
+            }
         }
 
         private void BtnChangeServerLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

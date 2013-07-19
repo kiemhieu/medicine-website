@@ -69,7 +69,7 @@
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(143, 20);
             this.txtPass.TabIndex = 3;
-            this.txtPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPass_KeyDown);
+            this.txtPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtPassKeyDown);
             // 
             // btnLogin
             // 
@@ -80,7 +80,7 @@
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.Click += new System.EventHandler(this.BtnLoginClick);
             // 
             // pictureBox1
             // 
@@ -102,7 +102,7 @@
             this.btnCancal.TabIndex = 7;
             this.btnCancal.Text = "Cancel";
             this.btnCancal.UseVisualStyleBackColor = true;
-            this.btnCancal.Click += new System.EventHandler(this.btnCancal_Click);
+            this.btnCancal.Click += new System.EventHandler(this.BtnCancalClick);
             // 
             // err
             // 

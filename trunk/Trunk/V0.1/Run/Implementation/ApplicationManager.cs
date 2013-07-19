@@ -46,8 +46,9 @@ namespace Run.Implementation
             //var viewManager = new ViewManager();
             //this._mainForm.ViewManager = viewManager;
             int clinicId = Int32.Parse(ConfigurationSettings.AppSettings.Get("ID"));
-            IClinicRepository clinicRepository = new ClinicRepository();
-            AppContext.CurrentClinic = clinicRepository.Get(clinicId);
+            // IClinicRepository clinicRepository = new ClinicRepository();
+            // AppContext.CurrentClinic = clinicRepository.Get(clinicId);
+            AppContext.CurrentClinicId = clinicId;
 
             this._mainForm.Text = ConfigurationSettings.AppSettings.Get("Title");
             this._mainForm.Icon = System.Drawing.Icon.ExtractAssociatedIcon(ConfigurationSettings.AppSettings.Get("IconPath"));

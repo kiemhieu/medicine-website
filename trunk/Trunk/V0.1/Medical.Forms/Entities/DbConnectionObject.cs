@@ -27,6 +27,7 @@ namespace Medical.Forms.Entities
             foreach (String  str in strs )
             {
                 String [] items = str.Split(new string[] {"="}, StringSplitOptions.RemoveEmptyEntries);
+                if (items.Length < 2) continue;
                 switch (items[0].ToLower().Trim())
                 {
                     case "data source":
