@@ -388,7 +388,7 @@
             this.Text = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.Shown += new System.EventHandler(this.MainForm_Shown);
+            this.Shown += new System.EventHandler(this.MainFormShown);
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
             this.statusBar.ResumeLayout(false);

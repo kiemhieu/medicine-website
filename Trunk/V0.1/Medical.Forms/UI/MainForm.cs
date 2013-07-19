@@ -312,13 +312,14 @@ namespace Medical.Forms.UI
             }
         }
 
-        private void MainForm_Shown(object sender, System.EventArgs e) {
-            this.txtClinic.Text = AppContext.CurrentClinic.Name;
+        private void MainFormShown(object sender, System.EventArgs e) {
             var login = new Login();
             login.ShowDialog(this);
+
             if (AppContext.Authenticated)
             {
                 this.txtLoggedIn.Text = AppContext.LoggedInUser.UserName;
+                this.txtClinic.Text = AppContext.CurrentClinic.Name;
             }
             this.CommonInitilize();
         }
