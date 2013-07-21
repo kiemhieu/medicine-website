@@ -130,6 +130,16 @@ namespace Medical.MedicineForm
             FillToGrid();
             Initialize();
         }
+
+        /// <summary>
+        /// Handles the Click event of the btnUpdate control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

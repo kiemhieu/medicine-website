@@ -34,20 +34,21 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.cboType = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbtnDelete = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnInsert = new System.Windows.Forms.ToolStripButton();
             this.lblID = new System.Windows.Forms.Label();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.bdsDefine = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsMedicines = new System.Windows.Forms.BindingSource(this.components);
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeMedicineDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tradeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contentStringDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.bdsDefine = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsMedicines = new System.Windows.Forms.BindingSource(this.components);
+            this.tsbtnDelete = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnEdit = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnInsert = new System.Windows.Forms.ToolStripButton();
+            this.btnUpdate = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDefine)).BeginInit();
@@ -62,7 +63,8 @@
             this.toolStripSeparator1,
             this.tsbtnDelete,
             this.tsbtnEdit,
-            this.tsbtnInsert});
+            this.tsbtnInsert,
+            this.btnUpdate});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(838, 25);
@@ -81,36 +83,6 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbtnDelete
-            // 
-            this.tsbtnDelete.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbtnDelete.Image = global::Medical.Properties.Resources.delete;
-            this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnDelete.Name = "tsbtnDelete";
-            this.tsbtnDelete.Size = new System.Drawing.Size(49, 22);
-            this.tsbtnDelete.Text = "Xóa";
-            this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // tsbtnEdit
-            // 
-            this.tsbtnEdit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbtnEdit.Image = global::Medical.Properties.Resources.edit;
-            this.tsbtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnEdit.Name = "tsbtnEdit";
-            this.tsbtnEdit.Size = new System.Drawing.Size(53, 22);
-            this.tsbtnEdit.Text = "Sửa";
-            this.tsbtnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // tsbtnInsert
-            // 
-            this.tsbtnInsert.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbtnInsert.Image = global::Medical.Properties.Resources.add;
-            this.tsbtnInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnInsert.Name = "tsbtnInsert";
-            this.tsbtnInsert.Size = new System.Drawing.Size(87, 22);
-            this.tsbtnInsert.Text = "Thêm mới";
-            this.tsbtnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // lblID
             // 
@@ -155,7 +127,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.grd.DefaultCellStyle = dataGridViewCellStyle2;
             this.grd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.grd.HighlightSelectedColumnHeaders = false;
             this.grd.Location = new System.Drawing.Point(0, 25);
             this.grd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -165,14 +137,6 @@
             this.grd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grd.Size = new System.Drawing.Size(838, 464);
             this.grd.TabIndex = 8;
-            // 
-            // bdsDefine
-            // 
-            this.bdsDefine.DataSource = typeof(Medical.Data.Entities.Define);
-            // 
-            // bdsMedicines
-            // 
-            this.bdsMedicines.DataSource = typeof(Medical.Data.Entities.Medicine);
             // 
             // noDataGridViewTextBoxColumn
             // 
@@ -193,7 +157,7 @@
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Thuốc";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Tên biệt dược";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             this.nameDataGridViewTextBoxColumn.Width = 200;
@@ -201,7 +165,7 @@
             // tradeNameDataGridViewTextBoxColumn
             // 
             this.tradeNameDataGridViewTextBoxColumn.DataPropertyName = "TradeName";
-            this.tradeNameDataGridViewTextBoxColumn.HeaderText = "Tên biệt dược";
+            this.tradeNameDataGridViewTextBoxColumn.HeaderText = "Hoạt chất";
             this.tradeNameDataGridViewTextBoxColumn.Name = "tradeNameDataGridViewTextBoxColumn";
             this.tradeNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.tradeNameDataGridViewTextBoxColumn.Width = 200;
@@ -218,12 +182,18 @@
             this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
             this.unitDataGridViewTextBoxColumn.DataSource = this.bdsDefine;
             this.unitDataGridViewTextBoxColumn.DisplayMember = "Name";
+            this.unitDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.unitDataGridViewTextBoxColumn.DisplayStyleForCurrentCellOnly = true;
             this.unitDataGridViewTextBoxColumn.HeaderText = "Đơn vị";
             this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
             this.unitDataGridViewTextBoxColumn.ReadOnly = true;
             this.unitDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.unitDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.unitDataGridViewTextBoxColumn.ValueMember = "Id";
+            // 
+            // bdsDefine
+            // 
+            this.bdsDefine.DataSource = typeof(Medical.Data.Entities.Define);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -232,6 +202,58 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "Ghi chú";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // bdsMedicines
+            // 
+            this.bdsMedicines.DataSource = typeof(Medical.Data.Entities.Medicine);
+            // 
+            // tsbtnDelete
+            // 
+            this.tsbtnDelete.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbtnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnDelete.Enabled = false;
+            this.tsbtnDelete.Image = global::Medical.Properties.Resources.delete;
+            this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnDelete.Name = "tsbtnDelete";
+            this.tsbtnDelete.Size = new System.Drawing.Size(23, 22);
+            this.tsbtnDelete.Text = "Xóa";
+            this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // tsbtnEdit
+            // 
+            this.tsbtnEdit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbtnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnEdit.Enabled = false;
+            this.tsbtnEdit.Image = global::Medical.Properties.Resources.edit;
+            this.tsbtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnEdit.Name = "tsbtnEdit";
+            this.tsbtnEdit.Size = new System.Drawing.Size(23, 22);
+            this.tsbtnEdit.Text = "Sửa";
+            this.tsbtnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // tsbtnInsert
+            // 
+            this.tsbtnInsert.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbtnInsert.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnInsert.Enabled = false;
+            this.tsbtnInsert.Image = global::Medical.Properties.Resources.add;
+            this.tsbtnInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnInsert.Name = "tsbtnInsert";
+            this.tsbtnInsert.Size = new System.Drawing.Size(23, 22);
+            this.tsbtnInsert.Text = "Thêm mới";
+            this.tsbtnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnUpdate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnUpdate.Image = global::Medical.Properties.Resources.refresh;
+            this.btnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(23, 22);
+            this.btnUpdate.Text = "Refresh";
+            this.btnUpdate.ToolTipText = "Cập nhập danh sách thuốc";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // FrmMedicine
             // 
@@ -283,6 +305,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn contentStringDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn unitDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.ToolStripButton btnUpdate;
 
     }
 }

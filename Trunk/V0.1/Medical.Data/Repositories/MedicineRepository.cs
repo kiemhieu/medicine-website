@@ -177,5 +177,10 @@ namespace Medical.Data.Repositories
             if (whEnt != null) inventoryVolume = whEnt.Volumn;
             return inventoryVolume;
         }
+
+        public void Sync()
+        {
+            
+        }
     }
 }

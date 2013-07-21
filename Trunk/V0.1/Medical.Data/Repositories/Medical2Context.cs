@@ -7,9 +7,6 @@ namespace Medical.Data.Repositories
 {
     public class Medical2Context : MedicalContext
     {
-        public Medical2Context()
-        {
-
-        }
+        
     }
 }

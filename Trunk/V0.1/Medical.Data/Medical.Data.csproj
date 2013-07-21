@@ -157,6 +157,7 @@
     <Compile Include="Repositories\PatientRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Sync\SyncMedicine.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Medical.Common\Medical.Common.csproj">

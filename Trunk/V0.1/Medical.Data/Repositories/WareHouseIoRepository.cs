@@ -258,16 +258,16 @@ namespace Medical.Data.Repositories
                 if (type != string.Empty)
                 {
                     if (clinicId > 0)
-                        return this.Context.WareHouseIO.Where(x => x.ClinicId == clinicId && x.Type == type && x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                        return this.Context.WareHouseIO.Where(x => x.ClinicId == clinicId && x.Type == type && x.Date >= fromDate.Date && x.Date <= toDate).OrderByDescending(x=>x.Date).ToList();
                     else
-                        return this.Context.WareHouseIO.Where(x => x.Type == type && x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                        return this.Context.WareHouseIO.Where(x => x.Type == type && x.Date >= fromDate.Date && x.Date <= toDate).OrderByDescending(x => x.Date).ToList();
                 }
                 else
                 {
                     if (clinicId > 0)
-                        return this.Context.WareHouseIO.Where(x => x.ClinicId == clinicId && x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                        return this.Context.WareHouseIO.Where(x => x.ClinicId == clinicId && x.Date >= fromDate.Date && x.Date <= toDate).OrderByDescending(x => x.Date).ToList();
                     else
-                        return this.Context.WareHouseIO.Where(x => x.Date >= fromDate.Date && x.Date <= toDate).ToList();
+                        return this.Context.WareHouseIO.Where(x => x.Date >= fromDate.Date && x.Date <= toDate).OrderByDescending(x => x.Date).ToList();
                 }
             }
             catch (Exception ex)
