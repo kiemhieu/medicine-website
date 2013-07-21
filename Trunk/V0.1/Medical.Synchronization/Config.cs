@@ -77,7 +77,7 @@ namespace Medical.Synchronization
         #region Server Connection string
         private static bool bReadSVConn = false;
         private static string sSVConnectionString = string.Empty, SVUserName = string.Empty, SVPassword = string.Empty, SVServerName = string.Empty, SVDBName = string.Empty;
-        public static string ConnectionString
+        public static string SVConnectionString
         {
             get
             {

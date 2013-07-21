@@ -19,7 +19,7 @@ namespace Medical.Synchronization
         private static string TableName = string.Empty;
         #endregion
 
-        public static bool SaveToDB(string ClientID, T obj)
+        public static bool SaveToSV(string ClientID, T obj)
         {
             //Parameter root - ClientID
             List<SqlParameter> parames = new List<SqlParameter>();
@@ -38,9 +38,14 @@ namespace Medical.Synchronization
                 parames.Add(param);
             }
             SQL += ")";
+            int i = SqlHelper.ExecuteNonQuery(Config.SVConnectionString, CommandType.Text, SQL, parames.ToArray());
 
-            int i = SqlHelper.ExecuteNonQuery(Config.ConnectionString, CommandType.Text, SQL, parames.ToArray());
-            if (i == -1) return false;
+            //Add to log table
+             string SQL2 = "INSERT INTO Syn" + tableName + " VALUES (@" + infos[0].Name + ")" ;
+             SqlParameter[] parames2 = new SqlParameter[]{new SqlParameter("@" + infos[0].Name, infos[0].GetValue(obj, null))};
+             int j = SqlHelper.ExecuteNonQuery(Config.ConnectionString, CommandType.Text, SQL2, parames2);
+
+            if (i == -1 || j ==-1) return false;
             return true;
         }
 
