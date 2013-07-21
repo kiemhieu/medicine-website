@@ -22,7 +22,7 @@ namespace Medical.Test
         {
             string connectiongstring = Config.ConnectionString;
 
-            //List<Figure> figures = SynDBCore<Figure>.GetAll();
+            List<Figure> figures = SynDBCore<Figure>.GetAll();
             MessageBox.Show(connectiongstring + ":" + figures.Count.ToString());
 
             //SynDBCore<Figure>.SaveToDB("1", 
