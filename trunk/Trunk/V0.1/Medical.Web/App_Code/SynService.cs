@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Data.SqlClient;
+using Medical.Synchronization;
 
 /// <summary>
 /// Summary description for SynService
@@ -21,11 +23,18 @@ public class SynService : System.Web.Services.WebService {
     }
 
     [WebMethod]
-    public bool SendFigure(List<Figure> figures)
+    public bool SendFigure(List<Figure> figures, string ClientID)
     {
         try
         {
-
+            //SqlParameter[] param = new SqlParameter[6];
+            //param[0] = new SqlParameter("@TenBaoCao", _TenBaoCao);
+            //param[1] = new SqlParameter("@FileDinhKem", _FileDinhKem);
+            //param[2] = new SqlParameter("@Username", _Username);
+            //param[3] = new SqlParameter("@NgayGui", _NgayGui);
+            //param[4] = new SqlParameter("@LyDo", _LyDo);
+            //param[5] = new SqlParameter("@TrangThai", _TrangThai);
+            // SqlHelper.ExecuteNonQuery(WebConfig.ConnectString, CommandType.StoredProcedure, "dbo.InsertBaoCao", param);
             return true;
         }
         catch
