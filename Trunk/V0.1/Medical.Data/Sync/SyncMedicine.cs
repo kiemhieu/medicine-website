@@ -8,7 +8,7 @@ namespace Medical.Data.Sync
 {
     public class SyncMedicine
     {
-        public Sync()
+        public void Sync()
         {
             IMedicineRepository clientRepo = new MedicineRepository();
             IMedicineRepository serverRepo = new MedicineRepository(true);
