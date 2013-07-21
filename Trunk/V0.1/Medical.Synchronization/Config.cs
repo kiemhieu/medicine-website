@@ -64,7 +64,7 @@ namespace Medical.Synchronization
                     ServerName = iniFile.IniReadValue(Constant.INI_SECTION, Constant.INI_SQL_SERVER);
                     //ServerName = TripleDes.Decode(Constant.INI_SQL_SERVER, ServerName);
                     DBName = iniFile.IniReadValue(Constant.INI_SECTION, Constant.INI_SQL_DB_NAME);
-                    DBName = TripleDes.Decode(Constant.INI_SQL_DB_NAME, DBName);
+                    //DBName = TripleDes.Decode(Constant.INI_SQL_DB_NAME, DBName);
                     sConnectionString = "Data Source=" + ServerName + ";Initial Catalog=" + DBName + ";User ID=" + UserName + ";Password=" + Password + ";";
                     bReadConn = true;
                 }

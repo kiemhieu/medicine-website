@@ -70,6 +70,7 @@
     </Compile>
     <Compile Include="SqlHelper.cs" />
     <Compile Include="Synchronize.cs" />
+    <Compile Include="SynDBCore.cs" />
     <Compile Include="SynEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TripleDes.cs" />
