@@ -9,6 +9,7 @@ namespace Medical.Data.Entities
     [Table("Medicine")]
     public class Medicine : EntityBase
     {
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         //public string MedicineCode { get; set; }
         public string Name { get; set; }
