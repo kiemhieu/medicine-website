@@ -70,10 +70,12 @@ namespace Medical.Synchronization
                 int n = 0;
                 foreach (PropertyInfo info in infos)
                 {
-                    if (n < infos.Length - 1)
+                    if (n < infos.Length)
                     {
                         SQL += ", @" + info.Name;
-                        SqlParameter param = new SqlParameter("@" + info.Name, info.GetValue(obj, null) ?? DBNull.Value);
+                        object valueP = info.GetValue(obj, null);
+                        if (valueP is DateTime && (DateTime)valueP == DateTime.MinValue) valueP = DBNull.Value;
+                        SqlParameter param = new SqlParameter("@" + info.Name, valueP ?? DBNull.Value);
                         parames.Add(param);
                     }
                     n++;
@@ -81,7 +83,7 @@ namespace Medical.Synchronization
                 SQL += ")";
                 int i = SqlHelper.ExecuteNonQuery(Config.SVConnectionString, CommandType.Text, SQL, parames.ToArray());
             }
-            catch
+            catch(Exception ex)
             {
             }
 
