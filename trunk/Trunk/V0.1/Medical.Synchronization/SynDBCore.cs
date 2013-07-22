@@ -13,7 +13,7 @@ namespace Medical.Synchronization
     /// Summary description for SynDBCore
     /// </summary>
     public class SynDBCore<T> where T : class
-    {  
+    {
         #region Values member
         private static bool bReadTableName = false;
         private static string TableName = string.Empty;
@@ -36,6 +36,14 @@ namespace Medical.Synchronization
             return true;
         }
 
+        public static bool SendToSV(string ClientID, List<T> list)
+        {
+            if (list == null) return false;
+            foreach (T obj in list)
+                SendToSV(ClientID, obj);
+            return true;
+        }
+
         /// <summary>
         /// Send an object to server
         /// </summary>
@@ -44,36 +52,55 @@ namespace Medical.Synchronization
         /// <returns></returns>
         public static bool SendToSV(string ClientID, T obj)
         {
-            //Parameter root - ClientID
-            List<SqlParameter> parames = new List<SqlParameter>();
-            SqlParameter param0 = new SqlParameter("@ClientID", ClientID);
-            parames.Add(param0);
 
             //Another parameter in table which is referenced
             string tableName = GetTableName();
-            string SQL = "INSERT INTO " + tableName + " VALUES (@ClientID";
             PropertyInfo[] infos = (typeof(T)).GetProperties();
-            int n = 0;
-            foreach (PropertyInfo info in infos)
+
+            //-----------------------------------------------------------------------------------------------------
+            //--------------------------------SAVE TO SERVER TABLE------------------------------------------------
+            try
             {
-                if (n < infos.Length - 1)
+                //Parameter root - ClientID
+                List<SqlParameter> parames = new List<SqlParameter>();
+                SqlParameter param0 = new SqlParameter("@ClientID", ClientID);
+                parames.Add(param0);
+
+                string SQL = "INSERT INTO " + tableName + " VALUES (@ClientID"; 
+                int n = 0;
+                foreach (PropertyInfo info in infos)
                 {
-                    SQL += ", @" + info.Name;
-                    SqlParameter param = new SqlParameter("@" + info.Name, info.GetValue(obj, null));
-                    parames.Add(param);
+                    if (n < infos.Length - 1)
+                    {
+                        SQL += ", @" + info.Name;
+                        SqlParameter param = new SqlParameter("@" + info.Name, info.GetValue(obj, null) ?? DBNull.Value);
+                        parames.Add(param);
+                    }
+                    n++;
                 }
-                n++;
+                SQL += ")";
+                int i = SqlHelper.ExecuteNonQuery(Config.SVConnectionString, CommandType.Text, SQL, parames.ToArray());
             }
-            SQL += ")";
-            int i = SqlHelper.ExecuteNonQuery(Config.SVConnectionString, CommandType.Text, SQL, parames.ToArray());
+            catch
+            {
+            }
 
-            //Add to log table
-             string SQL2 = "INSERT INTO Syn" + tableName + " VALUES (@" + infos[0].Name + ")" ;
-             SqlParameter[] parames2 = new SqlParameter[]{new SqlParameter("@" + infos[0].Name, infos[0].GetValue(obj, null))};
-             int j = SqlHelper.ExecuteNonQuery(Config.ConnectionString, CommandType.Text, SQL2, parames2);
+            //-----------------------------------------------------------------------------------------------------
+            //--------------------------------SAVE TO MAPPING TABLE------------------------------------------------
+            try
+            {
+                //Add to log table
+                string SQL2 = "INSERT INTO Syn" + tableName + " VALUES (@" + infos[0].Name + ")";
+                SqlParameter[] parames2 = new SqlParameter[] { new SqlParameter("@" + infos[0].Name, infos[0].GetValue(obj, null)) };
+                int j = SqlHelper.ExecuteNonQuery(Config.ConnectionString, CommandType.Text, SQL2, parames2);
 
-            if (i == -1 || j ==-1) return false;
-            return true;
+                if (j == -1) return false;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -137,11 +164,12 @@ namespace Medical.Synchronization
             T obj = Activator.CreateInstance<T>();
             PropertyInfo[] infos = (typeof(T)).GetProperties();
 
-            if (infos.Length != row.ItemArray.Length + 1) return null;
             int i = 0;
             foreach (PropertyInfo info in infos)
             {
-                if ( i < row.ItemArray.Length && row[i] != DBNull.Value) info.SetValue(obj, row[i], null);
+                string name = info.Name;
+                if (i < row.ItemArray.Length && row[i] != DBNull.Value) info.SetValue(obj, row[i], null);
+                name = name + ":";
                 i++;
             }
             return obj;
