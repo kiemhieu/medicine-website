@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.Data", "Medical.Data\Medical.Data.csproj", "{169CF0C0-C72D-424A-9CC4-55D95E275755}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.Test", "Medical.Test\Medical.Test.csproj", "{4BE62B2C-8E0B-4085-80A2-CB589F68B73D}"
@@ -45,6 +45,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Medical.Web", "Medical.Web\
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "5384"
+		VWDVirtualPath = "/"
 	EndProjectSection
 EndProject
 Global

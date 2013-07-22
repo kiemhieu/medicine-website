@@ -6,12 +6,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head id="Head1" runat="server">
     <title>Chương trình Quản Lý Phòng Khám </title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" language="javascript" src="../../../Scripts/jquery-1.4.1.min.js"></script>
-    <script type="text/javascript" language="javascript" src="../../../Scripts/jquery.dataTables.js"></script>
-    <script type="text/javascript" language="javascript" src="../../../Scripts/FixedColumns.js"></script>
-    <script type="text/javascript" language="javascript" src="../../../Scripts/GridviewFix.js"></script>
-    <script type="text/javascript" language="javascript" src="../../../Scripts/boxover.js"></script>
+    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" language="javascript" src="../../Scripts/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript" language="javascript" src="../../Scripts/jquery.dataTables.js"></script>
+    <script type="text/javascript" language="javascript" src="../../Scripts/FixedColumns.js"></script>
+    <script type="text/javascript" language="javascript" src="../../Scripts/GridviewFix.js"></script>
+    <script type="text/javascript" language="javascript" src="../../Scripts/boxover.js"></script>
 </head>
 <body>
     <form id="Form1" runat="server">
