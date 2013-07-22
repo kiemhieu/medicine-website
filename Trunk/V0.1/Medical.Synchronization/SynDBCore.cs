@@ -85,26 +85,37 @@ namespace Medical.Synchronization
                 if (i == -1) return false;
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
         }
 
-        public static bool SaveLog(T obj)
+        public static bool SaveLog(List<T> list)
         {
             string tableName = GetTableName();
             PropertyInfo[] infos = (typeof(T)).GetProperties();
+            string KeyColumn = string.Empty;
+            int KeyIndex = -1;
+            foreach (PropertyInfo info in infos)
+            {
+                KeyIndex++;
+                if (info.PropertyType.Name == "ExtensionDataObject") continue;
+                KeyColumn = info.Name;
+                break;
+            }
             //-----------------------------------------------------------------------------------------------------
             //--------------------------------SAVE TO MAPPING TABLE------------------------------------------------
             try
             {
-                //Add to log table
-                string SQL2 = "INSERT INTO Syn" + tableName + " VALUES (@" + infos[0].Name + ")";
-                SqlParameter[] parames2 = new SqlParameter[] { new SqlParameter("@" + infos[0].Name, infos[0].GetValue(obj, null)) };
-                int j = SqlHelper.ExecuteNonQuery(Config.ConnectionString, CommandType.Text, SQL2, parames2);
-
-                if (j == -1) return false;
+                foreach (T obj in list)
+                {
+                    //Add to log table
+                    string SQL2 = "INSERT INTO Syn" + tableName + " VALUES (@" + KeyColumn + ")";
+                    SqlParameter[] parames2 = new SqlParameter[] { new SqlParameter("@" + KeyColumn, infos[KeyIndex].GetValue(obj, null)) };
+                    int j = SqlHelper.ExecuteNonQuery(Config.ConnectionString, CommandType.Text, SQL2, parames2);
+                }
+                //if (j == -1) return false;
                 return true;
             }
             catch
