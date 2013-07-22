@@ -57,82 +57,97 @@ namespace Medical.Synchronization
         {
             //Start value
             SynEvents e = new SynEvents();
-            bool bSendAll = true;
-
             //================================Figure===============================
             List<SynService.Figure> figures = SynDBCore<SynService.Figure>.GetAllToSend("Id");
-            if (!synSrv.SendFigure(figures.ToArray(), ClientID)) bSendAll = false;
-            e.Message = "Can not send all figures to server";
+            synSrv.SendFigure(figures.ToArray(), ClientID);
+            SynDBCore<SynService.Figure>.SaveLog(figures);
 
             //================================Figure Detail===============================
             List<SynService.FigureDetail> figuresDetail = SynDBCore<SynService.FigureDetail>.GetAllToSend("Id");
-            if (!synSrv.SendFigureDetail(figuresDetail.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendFigureDetail(figuresDetail.ToArray(), ClientID);
+            SynDBCore<SynService.FigureDetail>.SaveLog(figuresDetail);
 
             //================================Figure Detail===============================
             List<SynService.MedicineDelivery> medicineDeliveries = SynDBCore<SynService.MedicineDelivery>.GetAllToSend("Id");
-            if (!synSrv.SendMedicineDelivery(medicineDeliveries.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendMedicineDelivery(medicineDeliveries.ToArray(), ClientID);
+            SynDBCore<SynService.MedicineDelivery>.SaveLog(medicineDeliveries);
 
             //================================Medicine Delivery Detail===============================
             List<SynService.MedicineDeliveryDetail> medicineDeliveryDetail = SynDBCore<SynService.MedicineDeliveryDetail>.GetAllToSend("Id");
-            if (!synSrv.SendMedicineDeliveryDetail(medicineDeliveryDetail.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendMedicineDeliveryDetail(medicineDeliveryDetail.ToArray(), ClientID);
+            SynDBCore<SynService.MedicineDeliveryDetail>.SaveLog(medicineDeliveryDetail);
 
             //================================Medicine Delivery Detail Allocatel===============================
             List<SynService.MedicineDeliveryDetailAllocate> medicineDeliveryDetailAllocate = SynDBCore<SynService.MedicineDeliveryDetailAllocate>.GetAllToSend("Id");
-            if (!synSrv.SendMedicineDeliveryDetailAllocate(medicineDeliveryDetailAllocate.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendMedicineDeliveryDetailAllocate(medicineDeliveryDetailAllocate.ToArray(), ClientID);
+            SynDBCore<SynService.MedicineDeliveryDetailAllocate>.SaveLog(medicineDeliveryDetailAllocate);
 
             //================================MedicinePlan===============================
             List<SynService.MedicinePlan> medicinePlan = SynDBCore<SynService.MedicinePlan>.GetAllToSend("Id");
-            if (!synSrv.SendMedicinePlan(medicinePlan.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendMedicinePlan(medicinePlan.ToArray(), ClientID);
+            SynDBCore<SynService.MedicinePlan>.SaveLog(medicinePlan);
 
             //================================MedicinePlan===============================
             List<SynService.MedicinePlanDetail> medicinePlanDetail = SynDBCore<SynService.MedicinePlanDetail>.GetAllToSend("Id");
-            if (!synSrv.SendMedicinePlanDetail(medicinePlanDetail.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendMedicinePlanDetail(medicinePlanDetail.ToArray(), ClientID);
+            SynDBCore<SynService.MedicinePlanDetail>.SaveLog(medicinePlanDetail);
 
             //================================MedicineUnitPrice===============================
             List<SynService.MedicineUnitPrice> medicineUnitPrice = SynDBCore<SynService.MedicineUnitPrice>.GetAllToSend("Id");
-            if (!synSrv.SendMedicineUnitPrice(medicineUnitPrice.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendMedicineUnitPrice(medicineUnitPrice.ToArray(), ClientID);
+            SynDBCore<SynService.MedicineUnitPrice>.SaveLog(medicineUnitPrice);
 
             //================================Patient===============================
             List<SynService.Patient> patient = SynDBCore<SynService.Patient>.GetAllToSend("Id");
-            if (!synSrv.SendPatient(patient.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendPatient(patient.ToArray(), ClientID);
+            SynDBCore<SynService.Patient>.SaveLog(patient);
 
             //================================PatientFigure===============================
             List<SynService.PatientFigure> patientFigure = SynDBCore<SynService.PatientFigure>.GetAllToSend("Id");
-            if (!synSrv.SendPatientFigure(patientFigure.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendPatientFigure(patientFigure.ToArray(), ClientID);
+            SynDBCore<SynService.PatientFigure>.SaveLog(patientFigure);
 
             //================================Prescription===============================
             List<SynService.Prescription> prescription = SynDBCore<SynService.Prescription>.GetAllToSend("Id");
-            if (!synSrv.SendPrescription(prescription.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendPrescription(prescription.ToArray(), ClientID);
+            SynDBCore<SynService.Prescription>.SaveLog(prescription);
 
             //================================PrescriptionDetail===============================
             List<SynService.PrescriptionDetail> prescriptionDetail = SynDBCore<SynService.PrescriptionDetail>.GetAllToSend("Id");
-            if (!synSrv.SendPrescriptionDetail(prescriptionDetail.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendPrescriptionDetail(prescriptionDetail.ToArray(), ClientID);
+            SynDBCore<SynService.PrescriptionDetail>.SaveLog(prescriptionDetail);
 
             //================================WareHouse===============================
             List<SynService.WareHouse> WareHouse = SynDBCore<SynService.WareHouse>.GetAllToSend("Id");
-            if (!synSrv.SendMedicineDelivery(medicineDeliveries.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendMedicineDelivery(medicineDeliveries.ToArray(), ClientID);
+            SynDBCore<SynService.WareHouse>.SaveLog(WareHouse);
 
             //================================WareHouseDetail===============================
             List<SynService.WareHouseDetail> wareHouseDetail = SynDBCore<SynService.WareHouseDetail>.GetAllToSend("Id");
-            if (!synSrv.SendWareHouseDetail(wareHouseDetail.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendWareHouseDetail(wareHouseDetail.ToArray(), ClientID);
+            SynDBCore<SynService.WareHouseDetail>.SaveLog(wareHouseDetail);
 
             //================================WareHouseExportAllocate===============================
             List<SynService.WareHouseExportAllocate> wareHouseExportAllocate = SynDBCore<SynService.WareHouseExportAllocate>.GetAllToSend("Id");
-            if (!synSrv.SendWareHouseExportAllocate(wareHouseExportAllocate.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendWareHouseExportAllocate(wareHouseExportAllocate.ToArray(), ClientID);
+            SynDBCore<SynService.WareHouseExportAllocate>.SaveLog(wareHouseExportAllocate);
 
             //================================WareHouseIO===============================
             List<SynService.WareHouseIO> wareHouseIO = SynDBCore<SynService.WareHouseIO>.GetAllToSend("Id");
-            if (!synSrv.SendWareHouseIO(wareHouseIO.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendWareHouseIO(wareHouseIO.ToArray(), ClientID);
+            SynDBCore<SynService.WareHouseIO>.SaveLog(wareHouseIO);
 
             //================================WareHouse IO Detail===============================
             List<SynService.WareHouseIODetail> wareHouseIODetail = SynDBCore<SynService.WareHouseIODetail>.GetAllToSend("Id");
-            if (!synSrv.SendWareHouseIODetail(wareHouseIODetail.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendWareHouseIODetail(wareHouseIODetail.ToArray(), ClientID);
+            SynDBCore<SynService.WareHouseIODetail>.SaveLog(wareHouseIODetail);
 
             //================================WareHouse Minimum Allow===============================
             List<SynService.WareHouseMinimumAllow> wareHouseMinimumAllow = SynDBCore<SynService.WareHouseMinimumAllow>.GetAllToSend("Id");
-            if (!synSrv.SendWareHouseMinimumAllow(wareHouseMinimumAllow.ToArray(), ClientID)) bSendAll = false;
+            synSrv.SendWareHouseMinimumAllow(wareHouseMinimumAllow.ToArray(), ClientID);
+            SynDBCore<SynService.WareHouseMinimumAllow>.SaveLog(wareHouseMinimumAllow);
 
-            if (bSendAll && SendingCompleted != null) SendingCompleted(figures, e);
+            if (SendingCompleted != null) SendingCompleted(figures, e);
         }
         #endregion
     }
