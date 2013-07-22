@@ -81,6 +81,60 @@
     <None Include="Medical.syn">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.Figure.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.FigureDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.MedicineDelivery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.MedicineDeliveryDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.MedicineDeliveryDetailAllocate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.MedicinePlan.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.MedicinePlanDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.MedicineUnitPrice.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.Patient.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.PatientFigure.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.Prescription.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.PrescriptionDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.WareHouse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.WareHouseDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.WareHouseExportAllocate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.WareHouseIO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.WareHouseIODetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.WareHouseMinimumAllow.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\SynService\SynService.wsdl" />
   </ItemGroup>
   <ItemGroup>
