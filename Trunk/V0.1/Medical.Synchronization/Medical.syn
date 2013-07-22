@@ -2,9 +2,9 @@
 SqlDbname=Medical
 SqlUser=sa
 SqlPass=sa@123
-SqlServer=HieuNK-PC
+SqlServer=HieuNK-XP
 [Medical.Synchronization.SVConnectionInfo]
 SqlDbname=Medical.Web
 SqlUser=sa
 SqlPass=sa@123
-SqlServer=HieuNK-PC
+SqlServer=HieuNK-XP
