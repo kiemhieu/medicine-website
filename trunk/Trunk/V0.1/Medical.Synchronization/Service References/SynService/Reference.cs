@@ -2261,6 +2261,8 @@ namespace Medical.Synchronization.SynService {
         
         private int WareHouseIdField;
         
+        private int WareHouseIODetailIdField;
+        
         private int MedicineIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2325,6 +2327,19 @@ namespace Medical.Synchronization.SynService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public int WareHouseIODetailId {
+            get {
+                return this.WareHouseIODetailIdField;
+            }
+            set {
+                if ((this.WareHouseIODetailIdField.Equals(value) != true)) {
+                    this.WareHouseIODetailIdField = value;
+                    this.RaisePropertyChanged("WareHouseIODetailId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
         public int MedicineId {
             get {
                 return this.MedicineIdField;
@@ -2337,7 +2352,7 @@ namespace Medical.Synchronization.SynService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
         public string LotNo {
             get {
                 return this.LotNoField;
@@ -2350,7 +2365,7 @@ namespace Medical.Synchronization.SynService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
         public System.DateTime ExpiredDate {
             get {
                 return this.ExpiredDateField;
@@ -2363,7 +2378,7 @@ namespace Medical.Synchronization.SynService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
         public int OriginalVolumn {
             get {
                 return this.OriginalVolumnField;
@@ -2376,7 +2391,7 @@ namespace Medical.Synchronization.SynService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
         public int CurrentVolumn {
             get {
                 return this.CurrentVolumnField;
@@ -2389,7 +2404,7 @@ namespace Medical.Synchronization.SynService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
         public int BadVolumn {
             get {
                 return this.BadVolumnField;
@@ -2402,7 +2417,7 @@ namespace Medical.Synchronization.SynService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
         public int Unit {
             get {
                 return this.UnitField;
@@ -2415,7 +2430,7 @@ namespace Medical.Synchronization.SynService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=10)]
         public int UnitPrice {
             get {
                 return this.UnitPriceField;
@@ -2428,7 +2443,7 @@ namespace Medical.Synchronization.SynService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=10)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=11)]
         public System.DateTime CreatedDate {
             get {
                 return this.CreatedDateField;
@@ -2441,7 +2456,7 @@ namespace Medical.Synchronization.SynService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=11)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=12)]
         public int CreatedUser {
             get {
                 return this.CreatedUserField;
@@ -2454,7 +2469,7 @@ namespace Medical.Synchronization.SynService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=12)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=13)]
         public System.DateTime LastUpdatedDate {
             get {
                 return this.LastUpdatedDateField;
@@ -2467,7 +2482,7 @@ namespace Medical.Synchronization.SynService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=13)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=14)]
         public int LastUpdatedUser {
             get {
                 return this.LastUpdatedUserField;
@@ -2480,7 +2495,7 @@ namespace Medical.Synchronization.SynService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=14)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=15)]
         public int Version {
             get {
                 return this.VersionField;
