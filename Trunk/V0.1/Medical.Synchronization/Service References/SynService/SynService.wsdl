@@ -6,6 +6,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="figures" type="tns:ArrayOfFigure" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -47,6 +48,571 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="SendFigureDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="figures" type="tns:ArrayOfFigureDetail" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendFigureDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendFigureDetailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMedicineDelivery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="figures" type="tns:ArrayOfMedicineDelivery" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMedicineDelivery">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MedicineDelivery" nillable="true" type="tns:MedicineDelivery" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MedicineDelivery">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClinicId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PatientId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PrescriptionId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendMedicineDeliveryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMedicineDeliveryResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMedicineDeliveryDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="figures" type="tns:ArrayOfMedicineDeliveryDetail" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMedicineDeliveryDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MedicineDeliveryDetail" nillable="true" type="tns:MedicineDeliveryDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MedicineDeliveryDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MedicineDeliveryId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="PrescriptionDetailId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MedicineId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volumn" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Unit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendMedicineDeliveryDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMedicineDeliveryDetailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMedicineDeliveryDetailAllocate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="figures" type="tns:ArrayOfMedicineDeliveryDetailAllocate" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMedicineDeliveryDetailAllocate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MedicineDeliveryDetailAllocate" nillable="true" type="tns:MedicineDeliveryDetailAllocate" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MedicineDeliveryDetailAllocate">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MedicineDeliveryDetailId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="WareHouseDetailId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volumn" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Unit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendMedicineDeliveryDetailAllocateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMedicineDeliveryDetailAllocateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMedicinePlan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="figures" type="tns:ArrayOfMedicinePlan" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMedicinePlan">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MedicinePlan" nillable="true" type="tns:MedicinePlan" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MedicinePlan">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClinicId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Month" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApproveId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApproveDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendMedicinePlanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMedicinePlanResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMedicinePlanDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="figures" type="tns:ArrayOfMedicinePlanDetail" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMedicinePlanDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MedicinePlanDetail" nillable="true" type="tns:MedicinePlanDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MedicinePlanDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlanId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MedicineId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InStock" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastMonthUsage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentMonthUsage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Required" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnitPrice" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendMedicinePlanDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMedicinePlanDetailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMedicineUnitPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="figures" type="tns:ArrayOfMedicineUnitPrice" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMedicineUnitPrice">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MedicineUnitPrice" nillable="true" type="tns:MedicineUnitPrice" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MedicineUnitPrice">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MedicineId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnitPrice" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendMedicineUnitPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMedicineUnitPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendPatient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="patients" type="tns:ArrayOfPatient" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPatient">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Patient" nillable="true" type="tns:Patient" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Patient">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClinicId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BirthYear" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sexual" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendPatientResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendPatientResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendPatientFigure">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="patientfigures" type="tns:ArrayOfPatientFigure" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPatientFigure">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PatientFigure" nillable="true" type="tns:PatientFigure" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PatientFigure">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="PatientId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FigureId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FromDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendPatientFigureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendPatientFigureResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendPrescription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prescriptions" type="tns:ArrayOfPrescription" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPrescription">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Prescription" nillable="true" type="tns:Prescription" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Prescription">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClinicId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PatientId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DoctorId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FigureId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecheckDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendPrescriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendPrescriptionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendPrescriptionDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prescriptiondetail" type="tns:ArrayOfPrescriptionDetail" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPrescriptionDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PrescriptionDetail" nillable="true" type="tns:PrescriptionDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PrescriptionDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="PrescriptionId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="FigureDetailId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MedicineId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Day" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="VolumnPerDay" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendPrescriptionDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendPrescriptionDetailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWareHouse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="warehouse" type="tns:ArrayOfWareHouse" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWareHouse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WareHouse" nillable="true" type="tns:WareHouse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WareHouse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClinicId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MedicineId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volumn" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MinAllowed" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendWareHouseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendWareHouseResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWareHouseDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="warehousedetail" type="tns:ArrayOfWareHouseDetail" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWareHouseDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WareHouseDetail" nillable="true" type="tns:WareHouseDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WareHouseDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WareHouseId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MedicineId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LotNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiredDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="OriginalVolumn" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentVolumn" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BadVolumn" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Unit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnitPrice" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendWareHouseDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendWareHouseDetailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWareHouseExportAllocate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="warehouseexportallocate" type="tns:ArrayOfWareHouseExportAllocate" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWareHouseExportAllocate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WareHouseExportAllocate" nillable="true" type="tns:WareHouseExportAllocate" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WareHouseExportAllocate">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="WareHoudeIODetailId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WareHouseDetailId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volumn" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Unit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendWareHouseExportAllocateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendWareHouseExportAllocateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWareHouseIO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="figures" type="tns:ArrayOfWareHouseIO" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWareHouseIO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WareHouseIO" nillable="true" type="tns:WareHouseIO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WareHouseIO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClinicId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="No" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Person" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AttachmentNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendWareHouseIOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendWareHouseIOResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWareHouseIODetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="figures" type="tns:ArrayOfWareHouseIODetail" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWareHouseIODetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WareHouseIODetail" nillable="true" type="tns:WareHouseIODetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WareHouseIODetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WareHouseIOId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MedicineId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LotNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpireDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Qty" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnitPrice" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Unit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendWareHouseIODetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendWareHouseIODetailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWareHouseMinimumAllow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="warehouseminimumallow" type="tns:ArrayOfWareHouseMinimumAllow" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWareHouseMinimumAllow">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WareHouseMinimumAllow" nillable="true" type="tns:WareHouseMinimumAllow" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WareHouseMinimumAllow">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClinicId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MedicineId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendWareHouseMinimumAllowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendWareHouseMinimumAllowResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="SendFigureSoapIn">
@@ -55,10 +621,180 @@
   <wsdl:message name="SendFigureSoapOut">
     <wsdl:part name="parameters" element="tns:SendFigureResponse" />
   </wsdl:message>
+  <wsdl:message name="SendFigureDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendFigureDetail" />
+  </wsdl:message>
+  <wsdl:message name="SendFigureDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendFigureDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMedicineDeliverySoapIn">
+    <wsdl:part name="parameters" element="tns:SendMedicineDelivery" />
+  </wsdl:message>
+  <wsdl:message name="SendMedicineDeliverySoapOut">
+    <wsdl:part name="parameters" element="tns:SendMedicineDeliveryResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMedicineDeliveryDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMedicineDeliveryDetail" />
+  </wsdl:message>
+  <wsdl:message name="SendMedicineDeliveryDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMedicineDeliveryDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMedicineDeliveryDetailAllocateSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMedicineDeliveryDetailAllocate" />
+  </wsdl:message>
+  <wsdl:message name="SendMedicineDeliveryDetailAllocateSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMedicineDeliveryDetailAllocateResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMedicinePlanSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMedicinePlan" />
+  </wsdl:message>
+  <wsdl:message name="SendMedicinePlanSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMedicinePlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMedicinePlanDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMedicinePlanDetail" />
+  </wsdl:message>
+  <wsdl:message name="SendMedicinePlanDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMedicinePlanDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMedicineUnitPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMedicineUnitPrice" />
+  </wsdl:message>
+  <wsdl:message name="SendMedicineUnitPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMedicineUnitPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendPatientSoapIn">
+    <wsdl:part name="parameters" element="tns:SendPatient" />
+  </wsdl:message>
+  <wsdl:message name="SendPatientSoapOut">
+    <wsdl:part name="parameters" element="tns:SendPatientResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendPatientFigureSoapIn">
+    <wsdl:part name="parameters" element="tns:SendPatientFigure" />
+  </wsdl:message>
+  <wsdl:message name="SendPatientFigureSoapOut">
+    <wsdl:part name="parameters" element="tns:SendPatientFigureResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendPrescriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:SendPrescription" />
+  </wsdl:message>
+  <wsdl:message name="SendPrescriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:SendPrescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendPrescriptionDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendPrescriptionDetail" />
+  </wsdl:message>
+  <wsdl:message name="SendPrescriptionDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendPrescriptionDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendWareHouseSoapIn">
+    <wsdl:part name="parameters" element="tns:SendWareHouse" />
+  </wsdl:message>
+  <wsdl:message name="SendWareHouseSoapOut">
+    <wsdl:part name="parameters" element="tns:SendWareHouseResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendWareHouseDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendWareHouseDetail" />
+  </wsdl:message>
+  <wsdl:message name="SendWareHouseDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendWareHouseDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendWareHouseExportAllocateSoapIn">
+    <wsdl:part name="parameters" element="tns:SendWareHouseExportAllocate" />
+  </wsdl:message>
+  <wsdl:message name="SendWareHouseExportAllocateSoapOut">
+    <wsdl:part name="parameters" element="tns:SendWareHouseExportAllocateResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendWareHouseIOSoapIn">
+    <wsdl:part name="parameters" element="tns:SendWareHouseIO" />
+  </wsdl:message>
+  <wsdl:message name="SendWareHouseIOSoapOut">
+    <wsdl:part name="parameters" element="tns:SendWareHouseIOResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendWareHouseIODetailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendWareHouseIODetail" />
+  </wsdl:message>
+  <wsdl:message name="SendWareHouseIODetailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendWareHouseIODetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendWareHouseMinimumAllowSoapIn">
+    <wsdl:part name="parameters" element="tns:SendWareHouseMinimumAllow" />
+  </wsdl:message>
+  <wsdl:message name="SendWareHouseMinimumAllowSoapOut">
+    <wsdl:part name="parameters" element="tns:SendWareHouseMinimumAllowResponse" />
+  </wsdl:message>
   <wsdl:portType name="SynServiceSoap">
     <wsdl:operation name="SendFigure">
       <wsdl:input message="tns:SendFigureSoapIn" />
       <wsdl:output message="tns:SendFigureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFigureDetail">
+      <wsdl:input message="tns:SendFigureDetailSoapIn" />
+      <wsdl:output message="tns:SendFigureDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicineDelivery">
+      <wsdl:input message="tns:SendMedicineDeliverySoapIn" />
+      <wsdl:output message="tns:SendMedicineDeliverySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicineDeliveryDetail">
+      <wsdl:input message="tns:SendMedicineDeliveryDetailSoapIn" />
+      <wsdl:output message="tns:SendMedicineDeliveryDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicineDeliveryDetailAllocate">
+      <wsdl:input message="tns:SendMedicineDeliveryDetailAllocateSoapIn" />
+      <wsdl:output message="tns:SendMedicineDeliveryDetailAllocateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicinePlan">
+      <wsdl:input message="tns:SendMedicinePlanSoapIn" />
+      <wsdl:output message="tns:SendMedicinePlanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicinePlanDetail">
+      <wsdl:input message="tns:SendMedicinePlanDetailSoapIn" />
+      <wsdl:output message="tns:SendMedicinePlanDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicineUnitPrice">
+      <wsdl:input message="tns:SendMedicineUnitPriceSoapIn" />
+      <wsdl:output message="tns:SendMedicineUnitPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendPatient">
+      <wsdl:input message="tns:SendPatientSoapIn" />
+      <wsdl:output message="tns:SendPatientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendPatientFigure">
+      <wsdl:input message="tns:SendPatientFigureSoapIn" />
+      <wsdl:output message="tns:SendPatientFigureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendPrescription">
+      <wsdl:input message="tns:SendPrescriptionSoapIn" />
+      <wsdl:output message="tns:SendPrescriptionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendPrescriptionDetail">
+      <wsdl:input message="tns:SendPrescriptionDetailSoapIn" />
+      <wsdl:output message="tns:SendPrescriptionDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouse">
+      <wsdl:input message="tns:SendWareHouseSoapIn" />
+      <wsdl:output message="tns:SendWareHouseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseDetail">
+      <wsdl:input message="tns:SendWareHouseDetailSoapIn" />
+      <wsdl:output message="tns:SendWareHouseDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseExportAllocate">
+      <wsdl:input message="tns:SendWareHouseExportAllocateSoapIn" />
+      <wsdl:output message="tns:SendWareHouseExportAllocateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseIO">
+      <wsdl:input message="tns:SendWareHouseIOSoapIn" />
+      <wsdl:output message="tns:SendWareHouseIOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseIODetail">
+      <wsdl:input message="tns:SendWareHouseIODetailSoapIn" />
+      <wsdl:output message="tns:SendWareHouseIODetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseMinimumAllow">
+      <wsdl:input message="tns:SendWareHouseMinimumAllowSoapIn" />
+      <wsdl:output message="tns:SendWareHouseMinimumAllowSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SynServiceSoap" type="tns:SynServiceSoap">
@@ -72,11 +808,317 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendFigureDetail">
+      <soap:operation soapAction="http://tempuri.org/SendFigureDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicineDelivery">
+      <soap:operation soapAction="http://tempuri.org/SendMedicineDelivery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicineDeliveryDetail">
+      <soap:operation soapAction="http://tempuri.org/SendMedicineDeliveryDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicineDeliveryDetailAllocate">
+      <soap:operation soapAction="http://tempuri.org/SendMedicineDeliveryDetailAllocate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicinePlan">
+      <soap:operation soapAction="http://tempuri.org/SendMedicinePlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicinePlanDetail">
+      <soap:operation soapAction="http://tempuri.org/SendMedicinePlanDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicineUnitPrice">
+      <soap:operation soapAction="http://tempuri.org/SendMedicineUnitPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPatient">
+      <soap:operation soapAction="http://tempuri.org/SendPatient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPatientFigure">
+      <soap:operation soapAction="http://tempuri.org/SendPatientFigure" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPrescription">
+      <soap:operation soapAction="http://tempuri.org/SendPrescription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPrescriptionDetail">
+      <soap:operation soapAction="http://tempuri.org/SendPrescriptionDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouse">
+      <soap:operation soapAction="http://tempuri.org/SendWareHouse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseDetail">
+      <soap:operation soapAction="http://tempuri.org/SendWareHouseDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseExportAllocate">
+      <soap:operation soapAction="http://tempuri.org/SendWareHouseExportAllocate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseIO">
+      <soap:operation soapAction="http://tempuri.org/SendWareHouseIO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseIODetail">
+      <soap:operation soapAction="http://tempuri.org/SendWareHouseIODetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseMinimumAllow">
+      <soap:operation soapAction="http://tempuri.org/SendWareHouseMinimumAllow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="SynServiceSoap12" type="tns:SynServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="SendFigure">
       <soap12:operation soapAction="http://tempuri.org/SendFigure" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFigureDetail">
+      <soap12:operation soapAction="http://tempuri.org/SendFigureDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicineDelivery">
+      <soap12:operation soapAction="http://tempuri.org/SendMedicineDelivery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicineDeliveryDetail">
+      <soap12:operation soapAction="http://tempuri.org/SendMedicineDeliveryDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicineDeliveryDetailAllocate">
+      <soap12:operation soapAction="http://tempuri.org/SendMedicineDeliveryDetailAllocate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicinePlan">
+      <soap12:operation soapAction="http://tempuri.org/SendMedicinePlan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicinePlanDetail">
+      <soap12:operation soapAction="http://tempuri.org/SendMedicinePlanDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMedicineUnitPrice">
+      <soap12:operation soapAction="http://tempuri.org/SendMedicineUnitPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPatient">
+      <soap12:operation soapAction="http://tempuri.org/SendPatient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPatientFigure">
+      <soap12:operation soapAction="http://tempuri.org/SendPatientFigure" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPrescription">
+      <soap12:operation soapAction="http://tempuri.org/SendPrescription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPrescriptionDetail">
+      <soap12:operation soapAction="http://tempuri.org/SendPrescriptionDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouse">
+      <soap12:operation soapAction="http://tempuri.org/SendWareHouse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseDetail">
+      <soap12:operation soapAction="http://tempuri.org/SendWareHouseDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseExportAllocate">
+      <soap12:operation soapAction="http://tempuri.org/SendWareHouseExportAllocate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseIO">
+      <soap12:operation soapAction="http://tempuri.org/SendWareHouseIO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseIODetail">
+      <soap12:operation soapAction="http://tempuri.org/SendWareHouseIODetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWareHouseMinimumAllow">
+      <soap12:operation soapAction="http://tempuri.org/SendWareHouseMinimumAllow" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
