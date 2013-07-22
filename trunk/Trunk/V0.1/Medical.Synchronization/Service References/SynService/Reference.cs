@@ -377,10 +377,8 @@ namespace Medical.Synchronization.SynService {
         Medical.Synchronization.SynService.SendFigureResponse Medical.Synchronization.SynService.SynServiceSoap.SendFigure(Medical.Synchronization.SynService.SendFigureRequest request) {
             return base.Channel.SendFigure(request);
         }
-
-        public bool SendFigure(Medical.Synchronization.SynService.Figure[] figures)
-        {
-
+        
+        public bool SendFigure(Medical.Synchronization.SynService.Figure[] figures) {
             Medical.Synchronization.SynService.SendFigureRequest inValue = new Medical.Synchronization.SynService.SendFigureRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendFigureRequestBody();
             inValue.Body.figures = figures;

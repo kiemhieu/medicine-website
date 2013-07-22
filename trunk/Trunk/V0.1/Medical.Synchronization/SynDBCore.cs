@@ -183,42 +183,42 @@ namespace Medical.Synchronization
         {
             if (bReadTableName) return TableName;
             TableName = string.Empty;
-
-            if (typeof(T) == typeof(Figure))
+            
+            if (typeof(T).Name == typeof(Figure).Name)
                 TableName = Constant_Table.FIGURE;
-            else if (typeof(T) == typeof(FigureDetail))
+            else if (typeof(T).Name == typeof(FigureDetail).Name)
                 TableName = Constant_Table.FIGUREDE_TAIL;
-            else if (typeof(T) == typeof(MedicineDelivery))
+            else if (typeof(T).Name == typeof(MedicineDelivery).Name)
                 TableName = Constant_Table.MEDICINE_DELIVERY;
-            else if (typeof(T) == typeof(MedicineDeliveryDetail))
+            else if (typeof(T).Name == typeof(MedicineDeliveryDetail).Name)
                 TableName = Constant_Table.MEDICIN_EDELIVERY_DETAIL;
-            else if (typeof(T) == typeof(MedicineDeliveryDetailAllocate))
+            else if (typeof(T).Name == typeof(MedicineDeliveryDetailAllocate).Name)
                 TableName = Constant_Table.MEDICIN_EDELIVERY_DETAIL_ALLOCATE;
-            else if (typeof(T) == typeof(MedicinePlan))
+            else if (typeof(T).Name == typeof(MedicinePlan).Name)
                 TableName = Constant_Table.MEDICINE_PLAN;
-            else if (typeof(T) == typeof(MedicinePlanDetail))
+            else if (typeof(T).Name == typeof(MedicinePlanDetail).Name)
                 TableName = Constant_Table.MEDICINE_PLAN_DETAIL;
-            else if (typeof(T) == typeof(MedicineUnitPrice))
+            else if (typeof(T).Name == typeof(MedicineUnitPrice).Name)
                 TableName = Constant_Table.MEDICINE_UNIT_PRICE;
-            else if (typeof(T) == typeof(Patient))
+            else if (typeof(T).Name == typeof(Patient).Name)
                 TableName = Constant_Table.PATIENT;
-            else if (typeof(T) == typeof(PatientFigure))
+            else if (typeof(T).Name == typeof(PatientFigure).Name)
                 TableName = Constant_Table.PATIENT_FIGURE;
-            else if (typeof(T) == typeof(Prescription))
+            else if (typeof(T).Name == typeof(Prescription).Name)
                 TableName = Constant_Table.PRESCRIPTION;
-            else if (typeof(T) == typeof(PrescriptionDetail))
+            else if (typeof(T).Name == typeof(PrescriptionDetail).Name)
                 TableName = Constant_Table.PRESCRIPTION_DETAIL;
-            else if (typeof(T) == typeof(WareHouse))
+            else if (typeof(T).Name == typeof(WareHouse).Name)
                 TableName = Constant_Table.WAREHOUSE;
-            else if (typeof(T) == typeof(WareHouseDetail))
+            else if (typeof(T).Name == typeof(WareHouseDetail).Name)
                 TableName = Constant_Table.WAREHOUSE_DETAIL;
-            else if (typeof(T) == typeof(WareHouseExportAllocate))
+            else if (typeof(T).Name == typeof(WareHouseExportAllocate).Name)
                 TableName = Constant_Table.WAREHOUSE_EXPORT_ALLOCATE;
-            else if (typeof(T) == typeof(WareHouseIO))
+            else if (typeof(T).Name == typeof(WareHouseIO).Name)
                 TableName = Constant_Table.WAREHOUSE_IO;
-            else if (typeof(T) == typeof(WareHouseIODetail))
+            else if (typeof(T).Name == typeof(WareHouseIODetail).Name)
                 TableName = Constant_Table.WAREHOUSE_IO_DETAIL;
-            else if (typeof(T) == typeof(WareHouseMinimumAllow))
+            else if (typeof(T).Name == typeof(WareHouseMinimumAllow).Name)
                 TableName = Constant_Table.WAREHOUSE_MINIMUM_ALLOW;
             return TableName;
         }
