@@ -44,7 +44,7 @@
       <s:element name="SendFigureResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendFigureResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendFigureResult" type="tns:ArrayOfFigure" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -59,7 +59,7 @@
       <s:element name="SendFigureDetailResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendFigureDetailResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendFigureDetailResult" type="tns:ArrayOfFigureDetail" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -93,7 +93,7 @@
       <s:element name="SendMedicineDeliveryResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendMedicineDeliveryResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendMedicineDeliveryResult" type="tns:ArrayOfMedicineDelivery" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -125,7 +125,7 @@
       <s:element name="SendMedicineDeliveryDetailResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendMedicineDeliveryDetailResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendMedicineDeliveryDetailResult" type="tns:ArrayOfMedicineDeliveryDetail" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -156,7 +156,7 @@
       <s:element name="SendMedicineDeliveryDetailAllocateResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendMedicineDeliveryDetailAllocateResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendMedicineDeliveryDetailAllocateResult" type="tns:ArrayOfMedicineDeliveryDetailAllocate" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -194,7 +194,7 @@
       <s:element name="SendMedicinePlanResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendMedicinePlanResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendMedicinePlanResult" type="tns:ArrayOfMedicinePlan" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -229,7 +229,7 @@
       <s:element name="SendMedicinePlanDetailResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendMedicinePlanDetailResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendMedicinePlanDetailResult" type="tns:ArrayOfMedicinePlanDetail" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -261,7 +261,7 @@
       <s:element name="SendMedicineUnitPriceResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendMedicineUnitPriceResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendMedicineUnitPriceResult" type="tns:ArrayOfMedicineUnitPrice" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -300,7 +300,7 @@
       <s:element name="SendPatientResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendPatientResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendPatientResult" type="tns:ArrayOfPatient" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -331,7 +331,7 @@
       <s:element name="SendPatientFigureResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendPatientFigureResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendPatientFigureResult" type="tns:ArrayOfPatientFigure" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -368,7 +368,7 @@
       <s:element name="SendPrescriptionResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendPrescriptionResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendPrescriptionResult" type="tns:ArrayOfPrescription" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -401,7 +401,7 @@
       <s:element name="SendPrescriptionDetailResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendPrescriptionDetailResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendPrescriptionDetailResult" type="tns:ArrayOfPrescriptionDetail" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -433,7 +433,7 @@
       <s:element name="SendWareHouseResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendWareHouseResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendWareHouseResult" type="tns:ArrayOfWareHouse" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -473,7 +473,7 @@
       <s:element name="SendWareHouseDetailResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendWareHouseDetailResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendWareHouseDetailResult" type="tns:ArrayOfWareHouseDetail" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -503,7 +503,7 @@
       <s:element name="SendWareHouseExportAllocateResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendWareHouseExportAllocateResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendWareHouseExportAllocateResult" type="tns:ArrayOfWareHouseExportAllocate" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -540,7 +540,7 @@
       <s:element name="SendWareHouseIOResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendWareHouseIOResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendWareHouseIOResult" type="tns:ArrayOfWareHouseIO" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -576,7 +576,7 @@
       <s:element name="SendWareHouseIODetailResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendWareHouseIODetailResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendWareHouseIODetailResult" type="tns:ArrayOfWareHouseIODetail" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -610,7 +610,7 @@
       <s:element name="SendWareHouseMinimumAllowResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SendWareHouseMinimumAllowResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendWareHouseMinimumAllowResult" type="tns:ArrayOfWareHouseMinimumAllow" />
           </s:sequence>
         </s:complexType>
       </s:element>

@@ -3397,13 +3397,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendFigureResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendFigureResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.Figure[] SendFigureResult;
         
         public SendFigureResponseBody() {
         }
         
-        public SendFigureResponseBody(bool SendFigureResult) {
+        public SendFigureResponseBody(Medical.Synchronization.SynService.Figure[] SendFigureResult) {
             this.SendFigureResult = SendFigureResult;
         }
     }
@@ -3469,13 +3469,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendFigureDetailResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendFigureDetailResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.FigureDetail[] SendFigureDetailResult;
         
         public SendFigureDetailResponseBody() {
         }
         
-        public SendFigureDetailResponseBody(bool SendFigureDetailResult) {
+        public SendFigureDetailResponseBody(Medical.Synchronization.SynService.FigureDetail[] SendFigureDetailResult) {
             this.SendFigureDetailResult = SendFigureDetailResult;
         }
     }
@@ -3541,13 +3541,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendMedicineDeliveryResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendMedicineDeliveryResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.MedicineDelivery[] SendMedicineDeliveryResult;
         
         public SendMedicineDeliveryResponseBody() {
         }
         
-        public SendMedicineDeliveryResponseBody(bool SendMedicineDeliveryResult) {
+        public SendMedicineDeliveryResponseBody(Medical.Synchronization.SynService.MedicineDelivery[] SendMedicineDeliveryResult) {
             this.SendMedicineDeliveryResult = SendMedicineDeliveryResult;
         }
     }
@@ -3613,13 +3613,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendMedicineDeliveryDetailResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendMedicineDeliveryDetailResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.MedicineDeliveryDetail[] SendMedicineDeliveryDetailResult;
         
         public SendMedicineDeliveryDetailResponseBody() {
         }
         
-        public SendMedicineDeliveryDetailResponseBody(bool SendMedicineDeliveryDetailResult) {
+        public SendMedicineDeliveryDetailResponseBody(Medical.Synchronization.SynService.MedicineDeliveryDetail[] SendMedicineDeliveryDetailResult) {
             this.SendMedicineDeliveryDetailResult = SendMedicineDeliveryDetailResult;
         }
     }
@@ -3685,13 +3685,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendMedicineDeliveryDetailAllocateResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendMedicineDeliveryDetailAllocateResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.MedicineDeliveryDetailAllocate[] SendMedicineDeliveryDetailAllocateResult;
         
         public SendMedicineDeliveryDetailAllocateResponseBody() {
         }
         
-        public SendMedicineDeliveryDetailAllocateResponseBody(bool SendMedicineDeliveryDetailAllocateResult) {
+        public SendMedicineDeliveryDetailAllocateResponseBody(Medical.Synchronization.SynService.MedicineDeliveryDetailAllocate[] SendMedicineDeliveryDetailAllocateResult) {
             this.SendMedicineDeliveryDetailAllocateResult = SendMedicineDeliveryDetailAllocateResult;
         }
     }
@@ -3757,13 +3757,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendMedicinePlanResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendMedicinePlanResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.MedicinePlan[] SendMedicinePlanResult;
         
         public SendMedicinePlanResponseBody() {
         }
         
-        public SendMedicinePlanResponseBody(bool SendMedicinePlanResult) {
+        public SendMedicinePlanResponseBody(Medical.Synchronization.SynService.MedicinePlan[] SendMedicinePlanResult) {
             this.SendMedicinePlanResult = SendMedicinePlanResult;
         }
     }
@@ -3829,13 +3829,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendMedicinePlanDetailResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendMedicinePlanDetailResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.MedicinePlanDetail[] SendMedicinePlanDetailResult;
         
         public SendMedicinePlanDetailResponseBody() {
         }
         
-        public SendMedicinePlanDetailResponseBody(bool SendMedicinePlanDetailResult) {
+        public SendMedicinePlanDetailResponseBody(Medical.Synchronization.SynService.MedicinePlanDetail[] SendMedicinePlanDetailResult) {
             this.SendMedicinePlanDetailResult = SendMedicinePlanDetailResult;
         }
     }
@@ -3901,13 +3901,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendMedicineUnitPriceResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendMedicineUnitPriceResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.MedicineUnitPrice[] SendMedicineUnitPriceResult;
         
         public SendMedicineUnitPriceResponseBody() {
         }
         
-        public SendMedicineUnitPriceResponseBody(bool SendMedicineUnitPriceResult) {
+        public SendMedicineUnitPriceResponseBody(Medical.Synchronization.SynService.MedicineUnitPrice[] SendMedicineUnitPriceResult) {
             this.SendMedicineUnitPriceResult = SendMedicineUnitPriceResult;
         }
     }
@@ -3973,13 +3973,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendPatientResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendPatientResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.Patient[] SendPatientResult;
         
         public SendPatientResponseBody() {
         }
         
-        public SendPatientResponseBody(bool SendPatientResult) {
+        public SendPatientResponseBody(Medical.Synchronization.SynService.Patient[] SendPatientResult) {
             this.SendPatientResult = SendPatientResult;
         }
     }
@@ -4045,13 +4045,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendPatientFigureResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendPatientFigureResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.PatientFigure[] SendPatientFigureResult;
         
         public SendPatientFigureResponseBody() {
         }
         
-        public SendPatientFigureResponseBody(bool SendPatientFigureResult) {
+        public SendPatientFigureResponseBody(Medical.Synchronization.SynService.PatientFigure[] SendPatientFigureResult) {
             this.SendPatientFigureResult = SendPatientFigureResult;
         }
     }
@@ -4117,13 +4117,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendPrescriptionResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendPrescriptionResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.Prescription[] SendPrescriptionResult;
         
         public SendPrescriptionResponseBody() {
         }
         
-        public SendPrescriptionResponseBody(bool SendPrescriptionResult) {
+        public SendPrescriptionResponseBody(Medical.Synchronization.SynService.Prescription[] SendPrescriptionResult) {
             this.SendPrescriptionResult = SendPrescriptionResult;
         }
     }
@@ -4189,13 +4189,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendPrescriptionDetailResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendPrescriptionDetailResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.PrescriptionDetail[] SendPrescriptionDetailResult;
         
         public SendPrescriptionDetailResponseBody() {
         }
         
-        public SendPrescriptionDetailResponseBody(bool SendPrescriptionDetailResult) {
+        public SendPrescriptionDetailResponseBody(Medical.Synchronization.SynService.PrescriptionDetail[] SendPrescriptionDetailResult) {
             this.SendPrescriptionDetailResult = SendPrescriptionDetailResult;
         }
     }
@@ -4261,13 +4261,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendWareHouseResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendWareHouseResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.WareHouse[] SendWareHouseResult;
         
         public SendWareHouseResponseBody() {
         }
         
-        public SendWareHouseResponseBody(bool SendWareHouseResult) {
+        public SendWareHouseResponseBody(Medical.Synchronization.SynService.WareHouse[] SendWareHouseResult) {
             this.SendWareHouseResult = SendWareHouseResult;
         }
     }
@@ -4333,13 +4333,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendWareHouseDetailResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendWareHouseDetailResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.WareHouseDetail[] SendWareHouseDetailResult;
         
         public SendWareHouseDetailResponseBody() {
         }
         
-        public SendWareHouseDetailResponseBody(bool SendWareHouseDetailResult) {
+        public SendWareHouseDetailResponseBody(Medical.Synchronization.SynService.WareHouseDetail[] SendWareHouseDetailResult) {
             this.SendWareHouseDetailResult = SendWareHouseDetailResult;
         }
     }
@@ -4405,13 +4405,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendWareHouseExportAllocateResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendWareHouseExportAllocateResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.WareHouseExportAllocate[] SendWareHouseExportAllocateResult;
         
         public SendWareHouseExportAllocateResponseBody() {
         }
         
-        public SendWareHouseExportAllocateResponseBody(bool SendWareHouseExportAllocateResult) {
+        public SendWareHouseExportAllocateResponseBody(Medical.Synchronization.SynService.WareHouseExportAllocate[] SendWareHouseExportAllocateResult) {
             this.SendWareHouseExportAllocateResult = SendWareHouseExportAllocateResult;
         }
     }
@@ -4477,13 +4477,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendWareHouseIOResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendWareHouseIOResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.WareHouseIO[] SendWareHouseIOResult;
         
         public SendWareHouseIOResponseBody() {
         }
         
-        public SendWareHouseIOResponseBody(bool SendWareHouseIOResult) {
+        public SendWareHouseIOResponseBody(Medical.Synchronization.SynService.WareHouseIO[] SendWareHouseIOResult) {
             this.SendWareHouseIOResult = SendWareHouseIOResult;
         }
     }
@@ -4549,13 +4549,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendWareHouseIODetailResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendWareHouseIODetailResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.WareHouseIODetail[] SendWareHouseIODetailResult;
         
         public SendWareHouseIODetailResponseBody() {
         }
         
-        public SendWareHouseIODetailResponseBody(bool SendWareHouseIODetailResult) {
+        public SendWareHouseIODetailResponseBody(Medical.Synchronization.SynService.WareHouseIODetail[] SendWareHouseIODetailResult) {
             this.SendWareHouseIODetailResult = SendWareHouseIODetailResult;
         }
     }
@@ -4621,13 +4621,13 @@ namespace Medical.Synchronization.SynService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class SendWareHouseMinimumAllowResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool SendWareHouseMinimumAllowResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.WareHouseMinimumAllow[] SendWareHouseMinimumAllowResult;
         
         public SendWareHouseMinimumAllowResponseBody() {
         }
         
-        public SendWareHouseMinimumAllowResponseBody(bool SendWareHouseMinimumAllowResult) {
+        public SendWareHouseMinimumAllowResponseBody(Medical.Synchronization.SynService.WareHouseMinimumAllow[] SendWareHouseMinimumAllowResult) {
             this.SendWareHouseMinimumAllowResult = SendWareHouseMinimumAllowResult;
         }
     }
@@ -4664,7 +4664,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendFigure(request);
         }
         
-        public bool SendFigure(Medical.Synchronization.SynService.Figure[] figures, string ClientID) {
+        public Medical.Synchronization.SynService.Figure[] SendFigure(Medical.Synchronization.SynService.Figure[] figures, string ClientID) {
             Medical.Synchronization.SynService.SendFigureRequest inValue = new Medical.Synchronization.SynService.SendFigureRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendFigureRequestBody();
             inValue.Body.figures = figures;
@@ -4678,7 +4678,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendFigureDetail(request);
         }
         
-        public bool SendFigureDetail(Medical.Synchronization.SynService.FigureDetail[] figures, string ClientID) {
+        public Medical.Synchronization.SynService.FigureDetail[] SendFigureDetail(Medical.Synchronization.SynService.FigureDetail[] figures, string ClientID) {
             Medical.Synchronization.SynService.SendFigureDetailRequest inValue = new Medical.Synchronization.SynService.SendFigureDetailRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendFigureDetailRequestBody();
             inValue.Body.figures = figures;
@@ -4692,7 +4692,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendMedicineDelivery(request);
         }
         
-        public bool SendMedicineDelivery(Medical.Synchronization.SynService.MedicineDelivery[] figures, string ClientID) {
+        public Medical.Synchronization.SynService.MedicineDelivery[] SendMedicineDelivery(Medical.Synchronization.SynService.MedicineDelivery[] figures, string ClientID) {
             Medical.Synchronization.SynService.SendMedicineDeliveryRequest inValue = new Medical.Synchronization.SynService.SendMedicineDeliveryRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendMedicineDeliveryRequestBody();
             inValue.Body.figures = figures;
@@ -4706,7 +4706,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendMedicineDeliveryDetail(request);
         }
         
-        public bool SendMedicineDeliveryDetail(Medical.Synchronization.SynService.MedicineDeliveryDetail[] figures, string ClientID) {
+        public Medical.Synchronization.SynService.MedicineDeliveryDetail[] SendMedicineDeliveryDetail(Medical.Synchronization.SynService.MedicineDeliveryDetail[] figures, string ClientID) {
             Medical.Synchronization.SynService.SendMedicineDeliveryDetailRequest inValue = new Medical.Synchronization.SynService.SendMedicineDeliveryDetailRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendMedicineDeliveryDetailRequestBody();
             inValue.Body.figures = figures;
@@ -4720,7 +4720,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendMedicineDeliveryDetailAllocate(request);
         }
         
-        public bool SendMedicineDeliveryDetailAllocate(Medical.Synchronization.SynService.MedicineDeliveryDetailAllocate[] figures, string ClientID) {
+        public Medical.Synchronization.SynService.MedicineDeliveryDetailAllocate[] SendMedicineDeliveryDetailAllocate(Medical.Synchronization.SynService.MedicineDeliveryDetailAllocate[] figures, string ClientID) {
             Medical.Synchronization.SynService.SendMedicineDeliveryDetailAllocateRequest inValue = new Medical.Synchronization.SynService.SendMedicineDeliveryDetailAllocateRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendMedicineDeliveryDetailAllocateRequestBody();
             inValue.Body.figures = figures;
@@ -4734,7 +4734,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendMedicinePlan(request);
         }
         
-        public bool SendMedicinePlan(Medical.Synchronization.SynService.MedicinePlan[] figures, string ClientID) {
+        public Medical.Synchronization.SynService.MedicinePlan[] SendMedicinePlan(Medical.Synchronization.SynService.MedicinePlan[] figures, string ClientID) {
             Medical.Synchronization.SynService.SendMedicinePlanRequest inValue = new Medical.Synchronization.SynService.SendMedicinePlanRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendMedicinePlanRequestBody();
             inValue.Body.figures = figures;
@@ -4748,7 +4748,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendMedicinePlanDetail(request);
         }
         
-        public bool SendMedicinePlanDetail(Medical.Synchronization.SynService.MedicinePlanDetail[] figures, string ClientID) {
+        public Medical.Synchronization.SynService.MedicinePlanDetail[] SendMedicinePlanDetail(Medical.Synchronization.SynService.MedicinePlanDetail[] figures, string ClientID) {
             Medical.Synchronization.SynService.SendMedicinePlanDetailRequest inValue = new Medical.Synchronization.SynService.SendMedicinePlanDetailRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendMedicinePlanDetailRequestBody();
             inValue.Body.figures = figures;
@@ -4762,7 +4762,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendMedicineUnitPrice(request);
         }
         
-        public bool SendMedicineUnitPrice(Medical.Synchronization.SynService.MedicineUnitPrice[] figures, string ClientID) {
+        public Medical.Synchronization.SynService.MedicineUnitPrice[] SendMedicineUnitPrice(Medical.Synchronization.SynService.MedicineUnitPrice[] figures, string ClientID) {
             Medical.Synchronization.SynService.SendMedicineUnitPriceRequest inValue = new Medical.Synchronization.SynService.SendMedicineUnitPriceRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendMedicineUnitPriceRequestBody();
             inValue.Body.figures = figures;
@@ -4776,7 +4776,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendPatient(request);
         }
         
-        public bool SendPatient(Medical.Synchronization.SynService.Patient[] patients, string ClientID) {
+        public Medical.Synchronization.SynService.Patient[] SendPatient(Medical.Synchronization.SynService.Patient[] patients, string ClientID) {
             Medical.Synchronization.SynService.SendPatientRequest inValue = new Medical.Synchronization.SynService.SendPatientRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendPatientRequestBody();
             inValue.Body.patients = patients;
@@ -4790,7 +4790,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendPatientFigure(request);
         }
         
-        public bool SendPatientFigure(Medical.Synchronization.SynService.PatientFigure[] patientfigures, string ClientID) {
+        public Medical.Synchronization.SynService.PatientFigure[] SendPatientFigure(Medical.Synchronization.SynService.PatientFigure[] patientfigures, string ClientID) {
             Medical.Synchronization.SynService.SendPatientFigureRequest inValue = new Medical.Synchronization.SynService.SendPatientFigureRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendPatientFigureRequestBody();
             inValue.Body.patientfigures = patientfigures;
@@ -4804,7 +4804,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendPrescription(request);
         }
         
-        public bool SendPrescription(Medical.Synchronization.SynService.Prescription[] prescriptions, string ClientID) {
+        public Medical.Synchronization.SynService.Prescription[] SendPrescription(Medical.Synchronization.SynService.Prescription[] prescriptions, string ClientID) {
             Medical.Synchronization.SynService.SendPrescriptionRequest inValue = new Medical.Synchronization.SynService.SendPrescriptionRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendPrescriptionRequestBody();
             inValue.Body.prescriptions = prescriptions;
@@ -4818,7 +4818,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendPrescriptionDetail(request);
         }
         
-        public bool SendPrescriptionDetail(Medical.Synchronization.SynService.PrescriptionDetail[] prescriptiondetail, string ClientID) {
+        public Medical.Synchronization.SynService.PrescriptionDetail[] SendPrescriptionDetail(Medical.Synchronization.SynService.PrescriptionDetail[] prescriptiondetail, string ClientID) {
             Medical.Synchronization.SynService.SendPrescriptionDetailRequest inValue = new Medical.Synchronization.SynService.SendPrescriptionDetailRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendPrescriptionDetailRequestBody();
             inValue.Body.prescriptiondetail = prescriptiondetail;
@@ -4832,7 +4832,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendWareHouse(request);
         }
         
-        public bool SendWareHouse(Medical.Synchronization.SynService.WareHouse[] warehouse, string ClientID) {
+        public Medical.Synchronization.SynService.WareHouse[] SendWareHouse(Medical.Synchronization.SynService.WareHouse[] warehouse, string ClientID) {
             Medical.Synchronization.SynService.SendWareHouseRequest inValue = new Medical.Synchronization.SynService.SendWareHouseRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendWareHouseRequestBody();
             inValue.Body.warehouse = warehouse;
@@ -4846,7 +4846,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendWareHouseDetail(request);
         }
         
-        public bool SendWareHouseDetail(Medical.Synchronization.SynService.WareHouseDetail[] warehousedetail, string ClientID) {
+        public Medical.Synchronization.SynService.WareHouseDetail[] SendWareHouseDetail(Medical.Synchronization.SynService.WareHouseDetail[] warehousedetail, string ClientID) {
             Medical.Synchronization.SynService.SendWareHouseDetailRequest inValue = new Medical.Synchronization.SynService.SendWareHouseDetailRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendWareHouseDetailRequestBody();
             inValue.Body.warehousedetail = warehousedetail;
@@ -4860,7 +4860,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendWareHouseExportAllocate(request);
         }
         
-        public bool SendWareHouseExportAllocate(Medical.Synchronization.SynService.WareHouseExportAllocate[] warehouseexportallocate, string ClientID) {
+        public Medical.Synchronization.SynService.WareHouseExportAllocate[] SendWareHouseExportAllocate(Medical.Synchronization.SynService.WareHouseExportAllocate[] warehouseexportallocate, string ClientID) {
             Medical.Synchronization.SynService.SendWareHouseExportAllocateRequest inValue = new Medical.Synchronization.SynService.SendWareHouseExportAllocateRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendWareHouseExportAllocateRequestBody();
             inValue.Body.warehouseexportallocate = warehouseexportallocate;
@@ -4874,7 +4874,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendWareHouseIO(request);
         }
         
-        public bool SendWareHouseIO(Medical.Synchronization.SynService.WareHouseIO[] figures, string ClientID) {
+        public Medical.Synchronization.SynService.WareHouseIO[] SendWareHouseIO(Medical.Synchronization.SynService.WareHouseIO[] figures, string ClientID) {
             Medical.Synchronization.SynService.SendWareHouseIORequest inValue = new Medical.Synchronization.SynService.SendWareHouseIORequest();
             inValue.Body = new Medical.Synchronization.SynService.SendWareHouseIORequestBody();
             inValue.Body.figures = figures;
@@ -4888,7 +4888,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendWareHouseIODetail(request);
         }
         
-        public bool SendWareHouseIODetail(Medical.Synchronization.SynService.WareHouseIODetail[] figures, string ClientID) {
+        public Medical.Synchronization.SynService.WareHouseIODetail[] SendWareHouseIODetail(Medical.Synchronization.SynService.WareHouseIODetail[] figures, string ClientID) {
             Medical.Synchronization.SynService.SendWareHouseIODetailRequest inValue = new Medical.Synchronization.SynService.SendWareHouseIODetailRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendWareHouseIODetailRequestBody();
             inValue.Body.figures = figures;
@@ -4902,7 +4902,7 @@ namespace Medical.Synchronization.SynService {
             return base.Channel.SendWareHouseMinimumAllow(request);
         }
         
-        public bool SendWareHouseMinimumAllow(Medical.Synchronization.SynService.WareHouseMinimumAllow[] warehouseminimumallow, string ClientID) {
+        public Medical.Synchronization.SynService.WareHouseMinimumAllow[] SendWareHouseMinimumAllow(Medical.Synchronization.SynService.WareHouseMinimumAllow[] warehouseminimumallow, string ClientID) {
             Medical.Synchronization.SynService.SendWareHouseMinimumAllowRequest inValue = new Medical.Synchronization.SynService.SendWareHouseMinimumAllowRequest();
             inValue.Body = new Medical.Synchronization.SynService.SendWareHouseMinimumAllowRequestBody();
             inValue.Body.warehouseminimumallow = warehouseminimumallow;

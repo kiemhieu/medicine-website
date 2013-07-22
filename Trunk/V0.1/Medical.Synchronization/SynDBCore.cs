@@ -25,15 +25,10 @@ namespace Medical.Synchronization
         /// <param name="ClientID"></param>
         /// <param name="KeyColumn"></param>
         /// <returns></returns>
-        public static bool SendAllToSV(string ClientID, string KeyColumn)
+        public static List<T> SendAllToSV(string ClientID, string KeyColumn)
         {
             List<T> list = GetAllToSend(KeyColumn);
-            if (list != null)
-            {
-                foreach (T obj in list)
-                    if (!SendToSV(ClientID, obj)) return false;
-            }
-            return true;
+            return SendToSV(ClientID, list);
         }
 
         /// <summary>
@@ -74,9 +69,9 @@ namespace Medical.Synchronization
             }
 
             //Add to log table
-            string SQL2 = "SELECT * FROM " + tableName + " WHERE ClientID ='" + ClientID + "'" + KeyColumn + "=@" + KeyColumn;
+            string SQL2 = "SELECT * FROM " + tableName + " WHERE ClientID ='" + ClientID + "' AND " + KeyColumn + "=@" + KeyColumn;
             SqlParameter[] parames2 = new SqlParameter[] { new SqlParameter("@" + KeyColumn, infos[KeyIndex].GetValue(obj, null)) };
-            DataSet dataset = SqlHelper.ExecuteDataset(Config.ConnectionString, CommandType.Text, SQL2, parames2);
+            DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, SQL2, parames2);
 
             bool result = false;
             if (dataset != null && dataset.Tables.Count > 0)
