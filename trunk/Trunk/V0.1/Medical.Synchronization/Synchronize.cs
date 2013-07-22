@@ -6,6 +6,8 @@ using Medical.Synchronization.Basic;
 using System.IO;
 using System.Xml.Serialization;
 using System.Threading;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
 
 namespace Medical.Synchronization
 {
@@ -17,8 +19,19 @@ namespace Medical.Synchronization
         #endregion
 
         #region Varial members
-        SynService.SynServiceSoapClient synSrv = new SynService.SynServiceSoapClient();
+        SynService.SynServiceSoapClient synSrv;
         #endregion
+
+        public Synchronize()
+        {
+            Uri serviceUri = new Uri("http://localhost:5384/Medical.Web/Services/SynService.asmx");
+            EndpointAddress endpointAddress = new EndpointAddress(serviceUri);
+            BasicHttpBinding binding = new BasicHttpBinding();
+            binding.Security.Mode = BasicHttpSecurityMode.TransportCredentialOnly;
+            binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
+            binding.UseDefaultWebProxy = true;
+            synSrv = new SynService.SynServiceSoapClient(binding, endpointAddress);
+        }
 
         /// <summary>
         /// Send all object to services
@@ -27,6 +40,7 @@ namespace Medical.Synchronization
         public void SendAll(string ClientID)
         {
             Thread thread = new Thread(() => DoSending(ClientID));
+            thread.Start();
         }
 
         public void ReiceiveAll()
