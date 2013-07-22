@@ -82,11 +82,19 @@ namespace Medical.Synchronization
                 }
                 SQL += ")";
                 int i = SqlHelper.ExecuteNonQuery(Config.SVConnectionString, CommandType.Text, SQL, parames.ToArray());
+                if (i == -1) return false;
+                return true;
             }
             catch(Exception ex)
             {
+                return false;
             }
+        }
 
+        public static bool SaveLog(T obj)
+        {
+            string tableName = GetTableName();
+            PropertyInfo[] infos = (typeof(T)).GetProperties();
             //-----------------------------------------------------------------------------------------------------
             //--------------------------------SAVE TO MAPPING TABLE------------------------------------------------
             try
