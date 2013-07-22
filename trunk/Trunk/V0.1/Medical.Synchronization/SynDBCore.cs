@@ -169,7 +169,7 @@ namespace Medical.Synchronization
             int i = 0;
             foreach (PropertyInfo info in infos)
             {
-                if (info.GetType().Name == "RuntimePropertyInfo") continue;
+                if (info.PropertyType.Name == "ExtensionDataObject") continue;
                 string name = info.Name;
                 if (i < row.ItemArray.Length && row[i] != DBNull.Value) info.SetValue(obj, row[i], null);
                 name = name + ":";
