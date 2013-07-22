@@ -14,7 +14,8 @@ namespace Medical.Synchronization
                 get
                 {
                     if (bReadCurrent) return sCurrentPath;
-                    sCurrentPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\";
+                    sCurrentPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase) + "\\";
+                    sCurrentPath = sCurrentPath.Replace("file:\\", "");
                     bReadCurrent = true;
                     return sCurrentPath;
                 }

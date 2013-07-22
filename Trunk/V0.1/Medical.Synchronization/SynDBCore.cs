@@ -66,7 +66,7 @@ namespace Medical.Synchronization
                 SqlParameter param0 = new SqlParameter("@ClientID", ClientID);
                 parames.Add(param0);
 
-                string SQL = "INSERT INTO " + tableName + " VALUES (@ClientID"; 
+                string SQL = "INSERT INTO " + tableName + " VALUES (@ClientID";
                 int n = 0;
                 foreach (PropertyInfo info in infos)
                 {
@@ -167,6 +167,7 @@ namespace Medical.Synchronization
             int i = 0;
             foreach (PropertyInfo info in infos)
             {
+                if (info.GetType().Name == "RuntimePropertyInfo") continue;
                 string name = info.Name;
                 if (i < row.ItemArray.Length && row[i] != DBNull.Value) info.SetValue(obj, row[i], null);
                 name = name + ":";
@@ -183,7 +184,7 @@ namespace Medical.Synchronization
         {
             if (bReadTableName) return TableName;
             TableName = string.Empty;
-            
+
             if (typeof(T).Name == typeof(Figure).Name)
                 TableName = Constant_Table.FIGURE;
             else if (typeof(T).Name == typeof(FigureDetail).Name)
