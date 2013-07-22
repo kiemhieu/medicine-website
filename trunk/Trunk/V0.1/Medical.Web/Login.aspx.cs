@@ -12,12 +12,17 @@ public partial class user_Login : System.Web.UI.Page
         if (Session["Logined"]  != null && (bool)Session["Logined"] == true) Response.Redirect("Default.aspx");
     }
 
-    protected void LoginButton_Click(object sender, EventArgs e)
+
+    protected void LoginUser_Authenticate(object sender, AuthenticateEventArgs e)
     {
         if (LoginUser.UserName.ToUpper() == "ADMIN" && LoginUser.Password.ToUpper() == "ADMIN")
         {
+            e.Authenticated = true;
             Session["Logined"] = true;
-            Response.Redirect("Default.aspx");
+        }
+        else
+        {
+            e.Authenticated = false;
         }
     }
 }

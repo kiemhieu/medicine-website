@@ -17,7 +17,7 @@
                         <div class="login-head">
                         </div>
                         <div class="login-body">
-                            <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="false">
+                            <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="false" OnAuthenticate="LoginUser_Authenticate">
                                 <LayoutTemplate>
                                     <span class="failureNotification">
                                         <asp:Literal ID="FailureText" runat="server"></asp:Literal>
@@ -61,7 +61,7 @@
                                         <tr>
                                             <td>
                                                 <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Đăng nhập"
-                                                    CssClass="btnLogin" ValidationGroup="LoginUserValidationGroup" OnClick="LoginButton_Click" />
+                                                    CssClass="btnLogin" ValidationGroup="LoginUserValidationGroup" />
                                             </td>
                                         </tr>
                                     </table>
