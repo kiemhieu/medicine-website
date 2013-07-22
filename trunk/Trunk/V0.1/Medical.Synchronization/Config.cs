@@ -95,7 +95,7 @@ namespace Medical.Synchronization
                     //ServerName = TripleDes.Decode(Constant.INI_SQL_SERVER, ServerName);
                     SVDBName = iniFile.IniReadValue(Constant.INI_SVSECTION, Constant.INI_SQL_DB_NAME);
                     //DBName = TripleDes.Decode(Constant.INI_SQL_DB_NAME, DBName);
-                    sConnectionString = "Data Source=" + SVServerName + ";Initial Catalog=" + SVDBName + ";User ID=" + SVUserName + ";Password=" + SVPassword + ";";
+                    sSVConnectionString = "Data Source=" + SVServerName + ";Initial Catalog=" + SVDBName + ";User ID=" + SVUserName + ";Password=" + SVPassword + ";";
                     bReadConn = true;
                 }
                 return sSVConnectionString;
