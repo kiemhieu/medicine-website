@@ -13,13 +13,36 @@ namespace Medical.Synchronization
     /// Summary description for SynDBCore
     /// </summary>
     public class SynDBCore<T> where T : class
-    {
+    {  
         #region Values member
         private static bool bReadTableName = false;
         private static string TableName = string.Empty;
         #endregion
 
-        public static bool SaveToSV(string ClientID, T obj)
+        /// <summary>
+        /// Send all data to server
+        /// </summary>
+        /// <param name="ClientID"></param>
+        /// <param name="KeyColumn"></param>
+        /// <returns></returns>
+        public static bool SendAllToSV(string ClientID, string KeyColumn)
+        {
+            List<T> list = GetAllToSend(KeyColumn);
+            if (list != null)
+            {
+                foreach (T obj in list)
+                    if (!SendToSV(ClientID, obj)) return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Send an object to server
+        /// </summary>
+        /// <param name="ClientID"></param>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static bool SendToSV(string ClientID, T obj)
         {
             //Parameter root - ClientID
             List<SqlParameter> parames = new List<SqlParameter>();
@@ -30,12 +53,16 @@ namespace Medical.Synchronization
             string tableName = GetTableName();
             string SQL = "INSERT INTO " + tableName + " VALUES (@ClientID";
             PropertyInfo[] infos = (typeof(T)).GetProperties();
+            int n = 0;
             foreach (PropertyInfo info in infos)
             {
-                SQL += ", @" + info.Name;
-
-                SqlParameter param = new SqlParameter("@" + info.Name, info.GetValue(obj, null));
-                parames.Add(param);
+                if (n < infos.Length - 1)
+                {
+                    SQL += ", @" + info.Name;
+                    SqlParameter param = new SqlParameter("@" + info.Name, info.GetValue(obj, null));
+                    parames.Add(param);
+                }
+                n++;
             }
             SQL += ")";
             int i = SqlHelper.ExecuteNonQuery(Config.SVConnectionString, CommandType.Text, SQL, parames.ToArray());
@@ -49,6 +76,10 @@ namespace Medical.Synchronization
             return true;
         }
 
+        /// <summary>
+        /// Get akk data
+        /// </summary>
+        /// <returns></returns>
         public static List<T> GetAll()
         {
             string tableName = GetTableName();
@@ -70,6 +101,37 @@ namespace Medical.Synchronization
             return result;
         }
 
+        /// <summary>
+        /// Get all object prepare to send to server
+        /// </summary>
+        /// <param name="KeyColumn"></param>
+        /// <returns></returns>
+        public static List<T> GetAllToSend(string KeyColumn)
+        {
+            string tableName = GetTableName();
+            string SQL = "SELECT * FROM " + tableName + " WHERE " + KeyColumn + " NOT IN (SELECT " + KeyColumn + " FROM Syn" + tableName + ")";
+            List<T> result = null;
+            DataSet dataset = SqlHelper.ExecuteDataset(Config.ConnectionString, CommandType.Text, SQL);
+            if (dataset != null && dataset.Tables.Count > 0)
+            {
+                DataTable table = dataset.Tables[0];
+                result = new List<T>();
+                foreach (DataRow row in table.Rows)
+                {
+                    T obj = GetObject(row);
+                    result.Add(obj);
+                }
+                table.Dispose();
+            }
+            dataset.Dispose();
+            return result;
+        }
+
+        /// <summary>
+        /// Convert datarow to an object
+        /// </summary>
+        /// <param name="row"></param>
+        /// <returns></returns>
         public static T GetObject(DataRow row)
         {
             T obj = Activator.CreateInstance<T>();

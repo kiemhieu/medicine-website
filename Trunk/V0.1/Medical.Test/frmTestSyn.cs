@@ -21,9 +21,9 @@ namespace Medical.Test
         private void btnSendAll_Click(object sender, EventArgs e)
         {
             string connectiongstring = Config.ConnectionString;
-
-            List<Figure> figures = SynDBCore<Figure>.GetAll();
-            MessageBox.Show(connectiongstring + ":" + figures.Count.ToString());
+            bool b= SynDBCore<Figure>.SendAllToSV("1", "Id");
+            //List<Figure> figures = SynDBCore<Figure>.GetAll();
+            MessageBox.Show(connectiongstring + ":" + b.ToString());
 
             //SynDBCore<Figure>.SaveToDB("1", 
         }
