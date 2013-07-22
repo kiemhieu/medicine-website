@@ -25,7 +25,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<Figure> figures, string ClientID)
+    public List<Figure> SendFigure(List<Figure> figures, string ClientID)
     {
         try
         {
@@ -33,12 +33,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendFigureDetail(List<FigureDetail> figures, string ClientID)
+    public List<FigureDetail> SendFigureDetail(List<FigureDetail> figures, string ClientID)
     {
         try
         {
@@ -46,12 +46,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendMedicineDelivery(List<MedicineDelivery> figures, string ClientID)
+    public List<MedicineDelivery> SendMedicineDelivery(List<MedicineDelivery> figures, string ClientID)
     {
         try
         {
@@ -59,12 +59,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendMedicineDeliveryDetail(List<MedicineDeliveryDetail> figures, string ClientID)
+    public List<MedicineDeliveryDetail> SendMedicineDeliveryDetail(List<MedicineDeliveryDetail> figures, string ClientID)
     {
         try
         {
@@ -72,12 +72,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendMedicineDeliveryDetailAllocate(List<MedicineDeliveryDetailAllocate> figures, string ClientID)
+    public List<MedicineDeliveryDetailAllocate> SendMedicineDeliveryDetailAllocate(List<MedicineDeliveryDetailAllocate> figures, string ClientID)
     {
         try
         {
@@ -85,12 +85,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendMedicinePlan(List<MedicinePlan> figures, string ClientID)
+    public List<MedicinePlan> SendMedicinePlan(List<MedicinePlan> figures, string ClientID)
     {
         try
         {
@@ -98,12 +98,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendMedicinePlanDetail(List<MedicinePlanDetail> figures, string ClientID)
+    public List<MedicinePlanDetail> SendMedicinePlanDetail(List<MedicinePlanDetail> figures, string ClientID)
     {
         try
         {
@@ -111,13 +111,13 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
 
     [WebMethod]
-    public bool SendMedicineUnitPrice(List<MedicineUnitPrice> figures, string ClientID)
+    public List<MedicineUnitPrice> SendMedicineUnitPrice(List<MedicineUnitPrice> figures, string ClientID)
     {
         try
         {
@@ -125,12 +125,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendPatient(List<Patient> patients, string ClientID)
+    public List<Patient> SendPatient(List<Patient> patients, string ClientID)
     {
         try
         {
@@ -138,12 +138,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendPatientFigure(List<PatientFigure> patientfigures, string ClientID)
+    public List<PatientFigure> SendPatientFigure(List<PatientFigure> patientfigures, string ClientID)
     {
         try
         {
@@ -151,12 +151,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendPrescription(List<Prescription> prescriptions, string ClientID)
+    public List<Prescription> SendPrescription(List<Prescription> prescriptions, string ClientID)
     {
         try
         {
@@ -164,12 +164,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendPrescriptionDetail(List<PrescriptionDetail> prescriptiondetail, string ClientID)
+    public List<PrescriptionDetail> SendPrescriptionDetail(List<PrescriptionDetail> prescriptiondetail, string ClientID)
     {
         try
         {
@@ -177,12 +177,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendWareHouse(List<WareHouse> warehouse, string ClientID)
+    public List<WareHouse> SendWareHouse(List<WareHouse> warehouse, string ClientID)
     {
         try
         {
@@ -190,12 +190,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendWareHouseDetail(List<WareHouseDetail> warehousedetail, string ClientID)
+    public List<WareHouseDetail> SendWareHouseDetail(List<WareHouseDetail> warehousedetail, string ClientID)
     {
         try
         {
@@ -203,12 +203,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendWareHouseExportAllocate(List<WareHouseExportAllocate> warehouseexportallocate, string ClientID)
+    public List<WareHouseExportAllocate> SendWareHouseExportAllocate(List<WareHouseExportAllocate> warehouseexportallocate, string ClientID)
     {
         try
         {
@@ -216,12 +216,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendWareHouseIO(List<WareHouseIO> figures, string ClientID)
+    public List<WareHouseIO> SendWareHouseIO(List<WareHouseIO> figures, string ClientID)
     {
         try
         {
@@ -229,12 +229,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendWareHouseIODetail(List<WareHouseIODetail> figures, string ClientID)
+    public List<WareHouseIODetail> SendWareHouseIODetail(List<WareHouseIODetail> figures, string ClientID)
     {
         try
         {
@@ -242,12 +242,12 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 
     [WebMethod]
-    public bool SendWareHouseMinimumAllow(List<WareHouseMinimumAllow> warehouseminimumallow, string ClientID)
+    public List<WareHouseMinimumAllow> SendWareHouseMinimumAllow(List<WareHouseMinimumAllow> warehouseminimumallow, string ClientID)
     {
         try
         {
@@ -255,7 +255,7 @@ public class SynService : System.Web.Services.WebService
         }
         catch
         {
-            return false;
+            return null;
         }
     }
 }

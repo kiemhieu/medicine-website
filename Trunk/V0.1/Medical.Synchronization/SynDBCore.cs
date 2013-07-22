@@ -36,12 +36,55 @@ namespace Medical.Synchronization
             return true;
         }
 
-        public static bool SendToSV(string ClientID, List<T> list)
+        /// <summary>
+        /// Send a list object (of T) to Server
+        /// </summary>
+        /// <param name="ClientID"></param>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static List<T> SendToSV(string ClientID, List<T> list)
         {
-            if (list == null) return false;
+            List<T> result = new List<T>();
+            if (list == null) return null;
             foreach (T obj in list)
+            {
                 SendToSV(ClientID, obj);
-            return true;
+                if (Exist(obj, ClientID)) result.Add(obj);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Check if exist in server
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        private static bool Exist(T obj, string ClientID)
+        {
+            string tableName = GetTableName();
+            PropertyInfo[] infos = (typeof(T)).GetProperties();
+            string KeyColumn = string.Empty;
+            int KeyIndex = -1;
+            foreach (PropertyInfo info in infos)
+            {
+                KeyIndex++;
+                if (info.PropertyType.Name == "ExtensionDataObject" || info.Name.ToUpper() == "CLIENTID") continue;
+                KeyColumn = info.Name;
+                break;
+            }
+
+            //Add to log table
+            string SQL2 = "SELECT * FROM " + tableName + " WHERE ClientID ='" + ClientID + "'" + KeyColumn + "=@" + KeyColumn;
+            SqlParameter[] parames2 = new SqlParameter[] { new SqlParameter("@" + KeyColumn, infos[KeyIndex].GetValue(obj, null)) };
+            DataSet dataset = SqlHelper.ExecuteDataset(Config.ConnectionString, CommandType.Text, SQL2, parames2);
+
+            bool result = false;
+            if (dataset != null && dataset.Tables.Count > 0)
+            {
+                result = true;
+                dataset.Dispose();
+            }
+            return result;
         }
 
         /// <summary>
