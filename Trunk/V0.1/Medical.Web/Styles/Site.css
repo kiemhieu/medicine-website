@@ -1,0 +1,1067 @@
+﻿body
+{
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 12px;
+    background: #e5e5e5 none repeat scroll left top;
+    margin: 0;
+    padding: 0;
+}
+
+/*.main-wrap {margin:0 auto;background:url(/Images/wrap_login_bg.jpg) no-repeat scroll left top;width:832px;height:768px;} */
+.banner
+{
+    /*background: url(/Images/banner_bg.png) repeat-x scroll left top;     height: 157px;     min-width: 900px;*/
+    background: url(/Images/banner_bg.jpg) repeat-x scroll left top;
+    height: 100px;
+    min-width: 900px;
+}
+
+.banner-top
+{
+    height: 14px;
+    color: #e3e3e3;
+    font-size: 11px; /*padding-left: 30px;*/
+    position: absolute;
+    right: 10px;
+    top: 0px;
+}
+
+.banner-body
+{
+    height: 100px;
+}
+
+.logo
+{
+    /*background: url("/Images/logo_banner_bg.jpg") no-repeat scroll 0 top transparent;     height: 139px;*/
+    position: relative;
+    float: left;
+    boder: none;
+}
+
+.logo a
+{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.main-wrap
+{
+    min-width: 900px;
+}
+/*-------------------------------BEGIN of MENU---------------------------------*/
+.menu
+{
+    height: 28px;
+    padding-top: 72px;
+    padding-left: 314px;
+}
+
+.menu li
+{
+    background: url(/Images/menu_default.jpg) repeat-x scroll left top;
+    height: 28px;
+    margin-right: 1px;
+    border-radius: 4px 4px 0 0;
+}
+
+.RadMenu_Telerik .rmRootGroup
+{
+    border: none medium !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+.RadMenu_Telerik .rmLink, .RadMenu_Telerik .rmText
+{
+    background-image: none !important;
+    cursor: pointer;
+}
+
+.RadMenu .rmHorizontal .rmText
+{
+    color: #012b50 !important;
+    text-transform: uppercase;
+}
+
+.RadMenu .rmHorizontal .rmText
+{
+    padding-top: 4px !important;
+}
+
+.RadMenu_Telerik .rmExpanded, .RadMenu_Telerik .rmExpanded:hover, .RadMenu_Telerik .rmLink:hover, .RadMenu_Telerik .rmFocused
+{
+    background: url(/Images/menu_selected.jpg) repeat-x scroll left top !important;
+}
+
+.RadMenu_Telerik .rmExpanded .rmText, .RadMenu_Telerik .rmLink:hover .rmText
+{
+    color: #fff !important;
+}
+
+.RadMenu_Telerik .rmGroup
+{
+    background: #285b9d url(/Images/sub_menu_bg.png) repeat-y scroll left top !important;
+    padding-left: 32px !important;
+    border: none medium !important;
+}
+/*.RadMenu_Telerik .rmGroup {background-color:#285b9d !important;}*/
+.RadMenu .rmVertical .rmLink
+{
+    border-bottom: 1px solid #5989c9 !important;
+}
+
+.RadMenu_Telerik .rmSlide
+{
+    margin-top: 3px !important;
+}
+
+.RadMenu .rmVertical .rmLast .rmLink
+{
+    border-bottom: none medium !important;
+}
+
+.RadMenu_Telerik .rmVertical .rmFirst, .RadMenu_Telerik .rmVertical .rmLast, .RadMenu_Telerik .rmVertical .rmItem
+{
+    background: none repeat scroll 0 0 transparent;
+}
+
+.RadMenu .rmHorizontal .rmVertical .rmText
+{
+    color: #fff !important;
+    text-transform: none !important;
+}
+
+.RadMenu .rmGroup .rmText
+{
+    padding-left: 10px !important;
+}
+/*-------------------------------END of MENU---------------------------------*/
+
+.page
+{
+    width: 100%;
+    background-color: #fff;
+    margin: 0px auto 0px auto;
+}
+
+.bannerbg
+{
+    background-image: url('../Images/bannerbg.jpg');
+    height: 96px;
+    background-position: top left;
+    background-repeat: repeat-x;
+    vertical-align: top;
+}
+
+.login
+{
+    background-image: url('../Images/login.jpg' );
+    background-position: top center;
+    background-repeat: no-repeat;
+    border-right: solid 1px #828282;
+    padding-left: 700px;
+}
+/*
+.banner
+{
+	background-image: url('../Images/banner.jpg');
+	height: 96px;
+	background-position: top left;
+	background-repeat: no-repeat;
+	vertical-align: top;
+	padding-left: 700px;
+	font-size: 14px !important;
+	margin: 1px 1px 0px 1px;
+}
+*/
+.loginName
+{
+    color: #e3e3e3;
+}
+
+.logout a
+{
+    color: #e3e3e3;
+    text-decoration: none;
+}
+
+.logout a:hover
+{
+    color: Red;
+    text-decoration: underline;
+}
+/*
+.menu
+{
+	background-image: url('../Images/menutop.png' );
+	background-position: top left;
+	background-repeat: repeat-x;
+	border-right: solid 1px #828282;
+} */
+.content
+{
+    margin: 10px 5px 0px 5px;
+    overflow: hidden;
+    clear: both;
+}
+
+.gridLink:hover
+{
+    color: red !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+
+select
+{
+    border: solid 1px #cccccc;
+    background-color: White;
+}
+
+select:focus
+{
+    background-color: #FFDEAD;
+}
+
+input[type=text]
+{
+    border: solid 1px #cccccc;
+    background-color: White;
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 12px;
+}
+
+input[type=text]:focus
+{
+    background-color: #FFDEAD;
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 12px;
+}
+
+textarea
+{
+    border: solid 1px #cccccc;
+    background-color: White;
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 12px;
+}
+
+textarea:focus
+{
+    background-color: #FFDEAD; /*font-family: Tahoma, Verdana, Arial;	font-size: 12px;*/
+}
+
+input[type=password]
+{
+    border: solid 1px #cccccc;
+}
+
+input[type=password]:focus
+{
+    background-color: #FFDEAD;
+}
+
+input[type=submit]
+{
+    height: 20px;
+    font-size: 12px !important;
+    font-family: Tahoma, Arial, Verdana;
+    padding-bottom: 3px;
+    cursor: pointer;
+}
+
+input[type=button]
+{
+    height: 20px;
+    font-size: 12px !important;
+    font-family: Tahoma, Arial, Verdana;
+    padding-bottom: 3px;
+    cursor: pointer;
+}
+
+fieldset
+{
+    border: solid 1px #cccccc;
+    background-color: #fff;
+}
+
+select
+{
+    border: solid 1px #cccccc;
+}
+
+.logoVDC
+{
+    background-image: url('../Images/logovdc.png' );
+    background-position: top right;
+    background-repeat: no-repeat;
+    padding-left: 120px;
+    float: left;
+    width: 200px;
+    height: 90px;
+    text-align: right;
+}
+
+.thongtinVDC
+{
+    float: left;
+    width: 700px;
+    text-align: left;
+    padding-top: 5px;
+    color: #163A7D;
+    line-height: 22px;
+}
+
+.failureNotification
+{
+    color: Red;
+}
+/* Paging admmin */
+.PagerContainerTable
+{
+    border-right: #333333 1px solid;
+    border-top: #333333 1px solid;
+    border-left: #333333 1px solid;
+    color: #d1d1e1;
+    border-bottom: #333333 1px solid;
+    background-color: #FFFFFF;
+}
+
+.PagerInfoCell
+{
+    padding-right: 6px;
+    padding-left: 6px;
+    padding-bottom: 3px;
+    font: bold 11px arial, verdana, geneva, lucida, 'lucida grande' , arial, helvetica, sans-serif;
+    color: #f0f1f2;
+    padding-top: 3px;
+    white-space: nowrap;
+    background-color: #990000;
+    font-weight: normal;
+}
+
+.PagerInfoCell:link
+{
+    color: #ffcc66;
+    text-decoration: none;
+}
+
+.PagerInfoCell:visited
+{
+    color: #ffcc66;
+    text-decoration: none;
+}
+
+.PagerCurrentPageCell
+{
+    color: #990000;
+    background-color: #FFFF99;
+    cursor: default;
+}
+
+.PagerOtherPageCells
+{
+    background-color: #f0f1f2;
+}
+
+.PagerSSCCells
+{
+    background-color: #cccccc;
+}
+
+.PagerHyperlinkStyle
+{
+    font: 11px arial, verdana, geneva, lucida, 'lucida grande' , arial, helvetica, sans-serif;
+}
+
+.PagerHyperlinkStyle:hover
+{
+    color: #000000;
+    text-decoration: none;
+    font: 11px arial, verdana, geneva, lucida, 'lucida grande' , arial, helvetica, sans-serif;
+}
+
+.PagerHyperlinkStyle:link
+{
+    color: #000000;
+    text-decoration: none;
+    font: 11px arial, verdana, geneva, lucida, 'lucida grande' , arial, helvetica, sans-serif;
+}
+
+.PagerHyperlinkStyle:visited
+{
+    color: #000000;
+    text-decoration: none;
+    font: 11px arial, verdana, geneva, lucida, 'lucida grande' , arial, helvetica, sans-serif;
+}
+
+.PagerHyperlinkStyle:active
+{
+    color: #000000;
+    text-decoration: none;
+    font: 11px arial, verdana, geneva, lucida, 'lucida grande' , arial, helvetica, sans-serif;
+}
+
+.GoToLabel
+{
+    font: 11px arial, verdana, geneva, lucida, 'lucida grande' , arial, helvetica, sans-serif;
+    color: #333333;
+    cursor: pointer;
+    font-size: 65%;
+    vertical-align: middle;
+    display: inline;
+}
+
+.GoToSelect
+{
+    font-size: 55%;
+}
+
+.GoToSelectedOption
+{
+    color: #f9f9f9;
+    background-color: #666666;
+}
+
+.GoToArrow
+{
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.mGrid
+{
+    /*width: 100%;*/
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    font-size: 12px;
+    text-shadow: 1px 1px 0px #fff;
+    background: #eaebec; /*margin: 4px;*/
+    border: #ccc 1px solid;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 0 1px 2px #d1d1d1;
+    -webkit-box-shadow: 0 1px 2px #d1d1d1;
+    box-shadow: 0 1px 2px #d1d1d1;
+}
+
+.mGrid th
+{
+    border-top: 1px solid #fafafa;
+    border-bottom: 1px solid #e0e0e0;
+    background: #ededed;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+    background: -moz-linear-gradient(top, #ededed, #ebebeb);
+    text-transform: uppercase;
+    padding: 10px 5px 10px 5px; /* old => padding: 21px 25px 22px;*/
+    border-top: solid 1px #e0e0e0;
+}
+
+.mGrid th:first-child
+{
+    /*padding-left: 20px;     text-align: center;*/
+    text-transform: uppercase;
+    border-top: solid 1px #e0e0e0;
+}
+
+.mGrid tr:first-child th:first-child
+{
+    -moz-border-radius-topleft: 3px;
+    -webkit-border-top-left-radius: 3px;
+    border-top-left-radius: 3px;
+    text-transform: uppercase;
+    border-top: solid 1px #e0e0e0;
+}
+
+.mGrid tr:first-child th:last-child
+{
+    -moz-border-radius-topright: 3px;
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+    text-transform: uppercase;
+    border-top: solid 2px #e0e0e0;
+}
+.mGrid tr td
+{
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+    background: #fafafa;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+    background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
+    padding: 5px;
+}
+
+.mGrid tr td:first-child
+{
+    border-left: 0 none; /*padding-left: 20px;text-align: left;*/
+}
+
+.mGrid tr.even td
+{
+    background: #f6f6f6;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+    background: -moz-linear-gradient(top, #f8f8f8, #f6f6f6);
+}
+
+.mGrid tr:last-child td:first-child
+{
+    -moz-border-radius-bottomleft: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.mGrid tr:last-child td:last-child
+{
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.rowborder
+{
+    border-top: solid 1px #F5F5F5;
+    border-top: solid 1px #E0E0E0;
+    background: #F5F5F5;
+    height: 20px;
+}
+/*.row_alt {border-top: solid 1px #FAFAFA;border-top: solid 1px #E0E0E0;background: #FAFAFA;}*/
+
+.mGrid tr:hover td
+{
+    background: #f2f2f2;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+    background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
+}
+
+.mGrid a
+{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.mGrid a:hover
+{
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.TextBoxNoBorder
+{
+    border: 0px !important;
+    font-size: 12px;
+    font-family: Tahoma, Helvetica, Verdana, sans-serif;
+    background-color: White !important;
+}
+
+.NoBorderCenter
+{
+    border: solid 0px !important;
+    width: 99%;
+}
+
+.NoBorderCenter:focus
+{
+    background-color: #FFDEAD;
+}
+
+.gridviewItemCenter
+{
+    text-align: center !important;
+}
+
+.gridviewItemRight
+{
+    text-align: right !important;
+}
+.treeview a
+{
+    color: Black;
+    cursor: pointer;
+}
+
+.treeview a:hover
+{
+    color: #ff0000;
+    cursor: pointer;
+}
+
+.fileUpload
+{
+    height: 20px;
+}
+
+.NoBorder
+{
+    border: solid 0px !important;
+    width: 99%;
+}
+
+.NoBorder:focus
+{
+    background-color: #FFDEAD;
+}
+
+.boxoverHeader
+{
+    background: #6699FF;
+    border: 1px solid #6699FF;
+    padding: 10px;
+    color: White;
+    font-weight: bold;
+    width: 450px;
+}
+
+.boxoverBody
+{
+    width: 450px;
+    background-color: White;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    padding: 10px;
+}
+
+.boxoverStyle
+{
+    color: Blue !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+
+.boxoverStyle:Hover
+{
+    color: Red !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+
+.box h1 span.text
+{
+    color: #2371b6;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.box2 h1
+{
+    background: url("/Images/quanlydanhmuc_ico.png") no-repeat scroll right top transparent;
+    margin: 0px 0px 10px 0px;
+}
+
+.box3 h1
+{
+    background: url("/Images/quanlykho_ico.png") no-repeat scroll right top transparent;
+    margin: 0px 0px 10px 0px;
+}
+
+.box4 h1
+{
+    background: url("/Images/quanlysudung.png") no-repeat scroll right top transparent;
+    margin: 0px 0px 10px 0px;
+}
+
+.box .number
+{
+    font-size: 47px;
+    font-family: Century Gothic;
+}
+
+.box_w_70
+{
+    width: 70%;
+    border: 4px solid #f5f5f5;
+    background-color: #fff;
+    float: left;
+    box-shadow: 1px 2px 2px #D5D5D5;
+    margin-right: 8px;
+    min-width: 630px;
+}
+
+.box_w_29
+{
+    width: 27%;
+    border: 4px solid #f5f5f5;
+    float: left;
+    box-shadow: 1px 2px 2px #D5D5D5;
+    padding: 5px;
+    background-color: #F0F0F0;
+    min-width: 180px;
+}
+
+.btnDelete
+{
+    background: url(/Images/delete_ico.png) no-repeat scroll left top;
+    width: 21px;
+    height: 25px;
+    display: block;
+    text-indent: -9999px;
+}
+
+.btnEdit
+{
+    background: url(/Images/edit_ico.png) no-repeat scroll left top;
+    width: 30px;
+    height: 30px;
+    display: block;
+    text-indent: -9999px;
+}
+
+.btnView
+{
+    background: url(/Images/view_ico.png) no-repeat scroll left top;
+    width: 23px;
+    height: 15px;
+    display: block;
+    text-indent: -9999px;
+}
+
+.title
+{
+    color: #285b9d;
+    font-size: 15px;
+    padding-left: 2px;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.title_lite
+{
+    color: #285b9d;
+    font-size: 15px;
+    padding-left: 2px;
+    padding-top: 15px;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    text-decoration: underline;
+}
+
+.button
+{
+    background: url("/Images/button.png") repeat-x scroll left top transparent;
+    border: medium none;
+    display: inline-block;
+    height: 27px !important;
+    color: #08438f;
+    font-size: 12px;
+    padding: 0 10px 0 10px;
+}
+
+.btnAdd
+{
+    background: url("/Images/btnAdd.png") no-repeat scroll left top transparent;
+    border: medium none;
+    display: inline-block;
+    height: 27px !important;
+    width: 76px;
+    color: #08438f;
+    font-size: 12px;
+    padding-left: 15px;
+    color: #000000;
+}
+
+.btnCance
+{
+    background: url("/Images/btnCancel.png") no-repeat scroll left top transparent;
+    border: medium none;
+    display: inline-block;
+    height: 27px !important;
+    width: 76px;
+    color: #08438f;
+    font-size: 12px;
+    padding-left: 15px;
+}
+.btnHuy
+{
+    background: url("/Images/btnDelete.png") no-repeat scroll left top transparent;
+    border: medium none;
+    display: inline-block;
+    height: 27px !important;
+    width: 76px;
+    color: #08438f;
+    font-size: 12px;
+    padding-left: 15px;
+    color: #000000;
+}
+.btnDefault
+{
+    background: url("/Images/btnDefault.png") no-repeat scroll left top transparent;
+    border: medium none;
+    display: inline-block;
+    height: 27px !important;
+    width: 76px;
+    color: #08438f;
+    font-size: 12px;
+    padding-left: 15px;
+}
+
+.btnFind
+{
+    background: url("/Images/btnFind.png") no-repeat scroll left top transparent;
+    border: medium none;
+    display: inline-block;
+    height: 27px !important;
+    width: 76px;
+    color: #08438f;
+    font-size: 12px;
+    padding-left: 15px;
+}
+
+.mr0
+{
+    margin-right: 0px;
+}
+
+.mr10
+{
+    margin-right: 10px;
+}
+
+.box_w_100
+{
+    width: 100%;
+    background-color: #FFFFFF;
+    border: 4px solid #F5F5F5; /* box-shadow: 1px 2px 2px #D5D5D5;*/
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 0 1px 2px #d1d1d1;
+    -webkit-box-shadow: 0 1px 2px #d1d1d1;
+    box-shadow: 0 1px 2px #d1d1d1;
+}
+
+legend
+{
+    font-weight: bold;
+    color: #012B50;
+}
+
+.btnSearch, .btn
+{
+    background: url(/Images/btnSearch.png) no-repeat scroll left top;
+    height: 27px !important;
+    width: 76px;
+    display: inline-block;
+    border: none medium;
+}
+
+.box_w_100
+{
+    width: 100%;
+    background-color: #FFFFFF;
+    border: 4px solid #F5F5F5;
+    box-shadow: 1px 2px 2px #D5D5D5;
+}
+
+legend
+{
+    font-weight: bold;
+    color: #012B50;
+}
+
+.btnSearch, .btn
+{
+    background: url(/Images/btnSearch.png) no-repeat scroll left top;
+    height: 27px !important;
+    width: 76px;
+    display: inline-block;
+    border: none medium;
+}
+
+/* CSS Default.aspx*/
+.boxleft
+{
+    /*border:4px solid #f5f5f5;background-color:#fff;*/
+    float: left;
+    width: 20%;
+    margin-top: 10px; /*margin-right:4px;box-shadow: 1px 2px 2px #D5D5D5;margin-left:5px;*/
+}
+
+.rightbox
+{
+    /*border:4px solid #f5f5f5;background-color:#fff;*/
+    float: left;
+    width: 77%;
+    padding: 10xp; /*box-shadow: 1px 2px 2px #D5D5D5;*/
+}
+
+.box
+{
+    width: 100%; /*position: relative;*/
+    padding: 5px;
+    background-color: #fff;
+}
+
+.box h1
+{
+    font-weight: normal;
+}
+
+.box1 h1
+{
+    background: url("/Images/quanlyhethong_ico.png") no-repeat scroll right top transparent;
+    margin: 0px 0px 10px 0px; /* height: 37px;     position: absolute;     right: 0;     width: 67px;*/
+}
+
+.borderleft
+{
+    background: url(/../Images/border_top_left.png) no-repeat top left;
+    width: 10px;
+    height: 40px;
+}
+
+.bordertop
+{
+    background-color: #cad0d0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.borderright
+{
+    background-image: url(/../Images/border_top_right.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    width: 10px;
+    height: 40px;
+}
+
+.bdleft
+{
+    border-left: 2px solid #cad0d0;
+    border-bottom: 2px solid #cad0d0;
+    background-color: #fff;
+    width: 8px;
+}
+
+.bdbottom
+{
+    border-bottom: 2px solid #cad0d0;
+    padding-left: 7px;
+    background-color: #fff;
+}
+
+.bdright
+{
+    border-right: 2px solid #cad0d0;
+    border-bottom: 2px solid #cad0d0;
+    background-color: #fff;
+}
+
+.divthongbao
+{
+    height: 400px;
+    overflow: auto;
+    padding-top: 10px;
+    background-color: #fff;
+    font-family: Tahoma;
+    font-size: 13px;
+    color: #103271;
+}
+
+.divvanban
+{
+    height: 500px; /*overflow :auto;*/
+    padding-top: 10px;
+    background-color: #fff;
+}
+
+.backwhite
+{
+    background-color: #fff;
+    padding-top: 15px;
+}
+
+.ngaytao
+{
+    font-size: 12px;
+    font-family: Tahoma;
+}
+
+.tieude
+{
+    font-family: Tahoma;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.tomtat
+{
+    font-family: Tahoma;
+    font-size: 13px;
+    color: #103271;
+    padding-left: 20px;
+}
+
+.lienquan
+{
+    font-family: Tahoma;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.lienquan:hover
+{
+    font-family: Tahoma;
+    font-size: 13px;
+    color: Red;
+    font-weight: bold;
+}
+
+a:visited
+{
+    -moz-outline: none;
+    color: blue;
+}
+
+.boxoverHeader
+{
+    background: #4b6c9e;
+    border: 1px solid #4b6c9e;
+    padding: 10px;
+    color: White;
+    font-weight: bold;
+    width: 300px;
+}
+
+.boxoverBody
+{
+    width: 300px;
+    background: #ffffff;
+    border-left: 1px solid #4b6c9e;
+    border-right: 1px solid #4b6c9e;
+    border-bottom: 1px solid #4b6c9e;
+    padding: 10px;
+}
+
+.popup .popup-header
+{
+    background: url("/Images/popup_header_bg.jpg") repeat-x scroll left top;
+    height: 36px;
+}
+
+.popup .popup-title
+{
+    background: url("/Images/logo_mini_scale.png") no-repeat scroll right 5px transparent;
+    height: 36px;
+}
+
+.popup .popup-title h3
+{
+    background: url("/Images/title_ico.png") no-repeat scroll 5px 5px transparent;
+    line-height: 36px;
+    margin: 0;
+    padding-left: 20px;
+}
+.tblXemPhieu
+{
+    font-family: Arial, Verdana, Tahoma, Verdana;
+    font-size: 13px;
+    background-color: White !important;
+}
