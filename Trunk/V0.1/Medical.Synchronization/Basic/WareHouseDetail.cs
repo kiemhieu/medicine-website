@@ -23,6 +23,8 @@ namespace Medical.Synchronization.Basic
 
         public int WareHouseId { get; set; }
 
+        public int WareHouseIODetailId { get; set; }
+
         public int MedicineId { get; set; }
 
         public string LotNo { get; set; }
