@@ -38,7 +38,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<FigureDetail> figures, string ClientID)
+    public bool SendFigureDetail(List<FigureDetail> figures, string ClientID)
     {
         try
         {
@@ -51,7 +51,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<MedicineDelivery> figures, string ClientID)
+    public bool SendMedicineDelivery(List<MedicineDelivery> figures, string ClientID)
     {
         try
         {
@@ -64,7 +64,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<MedicineDeliveryDetail> figures, string ClientID)
+    public bool SendMedicineDeliveryDetail(List<MedicineDeliveryDetail> figures, string ClientID)
     {
         try
         {
@@ -77,7 +77,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<MedicineDeliveryDetailAllocate> figures, string ClientID)
+    public bool SendMedicineDeliveryDetailAllocate(List<MedicineDeliveryDetailAllocate> figures, string ClientID)
     {
         try
         {
@@ -90,7 +90,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<MedicinePlan> figures, string ClientID)
+    public bool SendMedicinePlan(List<MedicinePlan> figures, string ClientID)
     {
         try
         {
@@ -103,7 +103,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<MedicinePlanDetail> figures, string ClientID)
+    public bool SendMedicinePlanDetail(List<MedicinePlanDetail> figures, string ClientID)
     {
         try
         {
@@ -117,7 +117,7 @@ public class SynService : System.Web.Services.WebService
 
 
     [WebMethod]
-    public bool SendFigure(List<MedicineUnitPrice> figures, string ClientID)
+    public bool SendMedicineUnitPrice(List<MedicineUnitPrice> figures, string ClientID)
     {
         try
         {
@@ -130,7 +130,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<Patient> patients, string ClientID)
+    public bool SendPatient(List<Patient> patients, string ClientID)
     {
         try
         {
@@ -143,7 +143,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<PatientFigure> patientfigures, string ClientID)
+    public bool SendPatientFigure(List<PatientFigure> patientfigures, string ClientID)
     {
         try
         {
@@ -156,7 +156,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<Prescription> prescriptions, string ClientID)
+    public bool SendPrescription(List<Prescription> prescriptions, string ClientID)
     {
         try
         {
@@ -169,7 +169,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<PrescriptionDetail> prescriptiondetail, string ClientID)
+    public bool SendPrescriptionDetail(List<PrescriptionDetail> prescriptiondetail, string ClientID)
     {
         try
         {
@@ -182,7 +182,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<WareHouse> warehouse, string ClientID)
+    public bool SendWareHouse(List<WareHouse> warehouse, string ClientID)
     {
         try
         {
@@ -195,7 +195,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<WareHouseDetail> warehousedetail, string ClientID)
+    public bool SendWareHouseDetail(List<WareHouseDetail> warehousedetail, string ClientID)
     {
         try
         {
@@ -208,7 +208,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<WareHouseExportAllocate> warehouseexportallocate, string ClientID)
+    public bool SendWareHouseExportAllocate(List<WareHouseExportAllocate> warehouseexportallocate, string ClientID)
     {
         try
         {
@@ -221,7 +221,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<WareHouseIO> figures, string ClientID)
+    public bool SendWareHouseIO(List<WareHouseIO> figures, string ClientID)
     {
         try
         {
@@ -234,7 +234,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<WareHouseIODetail> figures, string ClientID)
+    public bool SendWareHouseIODetail(List<WareHouseIODetail> figures, string ClientID)
     {
         try
         {
@@ -247,7 +247,7 @@ public class SynService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool SendFigure(List<WareHouseMinimumAllow> warehouseminimumallow, string ClientID)
+    public bool SendWareHouseMinimumAllow(List<WareHouseMinimumAllow> warehouseminimumallow, string ClientID)
     {
         try
         {

@@ -22,12 +22,20 @@ namespace Medical.Synchronization
             SynEvents e = new SynEvents();
             bool bSendAll = true;
 
-            List<Figure> figures = new List<Figure>();
-            if (!SendAllFigure(figures)) bSendAll = false;
+            //================================Figure===============================
+            List<SynService.Figure> figures = SynDBCore<SynService.Figure>.GetAllToSend("Id");
+            if (!synSrv.SendFigure(figures.ToArray())) bSendAll = false;
             e.Message = "Can not send all figures to server";
+
+            //================================Figure Detail===============================
+            List<SynService.FigureDetail> figuresDetail = SynDBCore<SynService.FigureDetail>.GetAllToSend("Id");
+            //if (!synSrv.SendFigureDe(figuresDetail.ToArray())) bSendAll = false;
+            //e.Message = "Can not send all figures to server";
+
+
+
+
             if (bSendAll && SendingCompleted != null) SendingCompleted(figures, e);
-
-
         }
 
 
@@ -41,7 +49,7 @@ namespace Medical.Synchronization
         SynService.SynServiceSoapClient synSrv = new SynService.SynServiceSoapClient();
         private bool SendAllFigure(List<Figure> figures)
         {
-            // synSrv.SendFigure(figures.ToArray());
+           
             return false;
         }
         #endregion
