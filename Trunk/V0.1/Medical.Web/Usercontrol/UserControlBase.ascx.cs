@@ -31,17 +31,31 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
     {
         if (!IsPostBack)
         {
-            //Initial columns
-            foreach (SearchExpander seardcondition in searchConditions)
-            {
-                BoundField boundField = new BoundField();
-                boundField.DataField = seardcondition.ColumnName;
-                boundField.HeaderText = seardcondition.Display;
-                gvListData.Columns.Add(boundField);
-            }
+            //Initial columns of grid
+            BoundField tempField = new BoundField();
+            tempField.HeaderText = "Phòng khám";
+            tempField.DataField = "ClinicName";
+            gvListData.Columns.Add(tempField);
 
-            //Initial data
-            LoadList();
+            if (searchConditions != null && !string.IsNullOrEmpty(TableName) && TableName.Length > 0)
+            {
+                foreach (SearchExpander seardcondition in searchConditions)
+                {
+                    BoundField boundField = new BoundField();
+                    boundField.DataField = seardcondition.ColumnName;
+                    boundField.HeaderText = seardcondition.Display;
+                    gvListData.Columns.Add(boundField);
+                }
+
+                //List Clinic in server
+                string sSQL = "SELECT Id, Name from Clinic";
+                DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, sSQL);
+
+                ddlClinic.DataSource = dataset;
+                ddlClinic.DataBind();
+                //Initial data
+                LoadList();
+            }
         }
     }
 
@@ -52,44 +66,47 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
 
     private void LoadList()
     {
+
+        //SELECT    Clinic.Name AS ClinicName, Figure.ClientID, dbo.Figure.Id, dbo.Figure.Name, dbo.Figure.ClinicId, dbo.Figure.Description, dbo.Figure.LastUpdatedDate, 
+        //          dbo.Figure.LastUpdatedUser, dbo.Figure.Version
+        //FROM      dbo.Figure INNER JOIN
+        //          dbo.Clinic ON dbo.Figure.ClientID = dbo.Clinic.Id
+
         //Add to log table
-        string sSQL = "SELECT * FROM " + TableName + " WHERE ";
+        string sSQL = "SELECT Clinic.Name AS ClinicName," + TableName + ".* FROM " + TableName + " INNER JOIN Clinic ON " + TableName + ".ClientID = Clinic.Id WHERE ";
         string sListFields = string.Empty;
         List<SqlParameter> parames = new List<SqlParameter>();
         int i = -1;
-        foreach (SearchExpander seardcondition in searchConditions)
-        {
-            i++;
-            object requesCondition = Request[seardcondition.ColumnName];
-            //if (i == 0)
-            //    sListFields += "[" + seardcondition.ColumnName + "]";
-            //else sListFields = ", " + sListFields;
-            SqlParameter param = null;
-            if (seardcondition.Type == typeof(string))
-            {
-                sSQL += seardcondition.ColumnName + " LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
-                param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? string.Empty);
-            }
-            else
-            {
-                sSQL += seardcondition.ColumnName + " = @" + seardcondition.ColumnName + " ";
-                param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? DBNull.Value);
-            }
-            parames.Add(param);
-        }
 
-        //Just show field
-        //sSQL = sSQL.Replace("*", sListFields);
-        DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, sSQL, parames.ToArray());
-        gvListData.AutoGenerateColumns = false;
-        gvListData.DataSource = dataset;
-        gvListData.DataBind();
-
-        i = -1;
-        foreach (SearchExpander seardcondition in searchConditions)
+        if (searchConditions != null && !string.IsNullOrEmpty(TableName) && TableName.Length > 0)
         {
-            i++;
-            gvListData.Columns[i].HeaderText = seardcondition.Display;
+            foreach (SearchExpander seardcondition in searchConditions)
+            {
+                i++;
+                object requesCondition = Request[seardcondition.ColumnName];
+                //if (i == 0)
+                //    sListFields += "[" + seardcondition.ColumnName + "]";
+                //else sListFields = ", " + sListFields;
+                SqlParameter param = null;
+                if (seardcondition.Type == typeof(string))
+                {
+                    sSQL += TableName + "." + seardcondition.ColumnName + " LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
+                    param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? string.Empty);
+                }
+                else
+                {
+                    sSQL += TableName + "." + seardcondition.ColumnName + " = @" + seardcondition.ColumnName + " ";
+                    param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? DBNull.Value);
+                }
+                parames.Add(param);
+            }
+
+            //Just show field
+            //sSQL = sSQL.Replace("*", sListFields);
+            DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, sSQL, parames.ToArray());
+            gvListData.AutoGenerateColumns = false;
+            gvListData.DataSource = dataset;
+            gvListData.DataBind();
         }
     }
 

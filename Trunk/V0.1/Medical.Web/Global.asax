@@ -4,6 +4,7 @@
 
     void Application_Start(object sender, EventArgs e)
     {
+        RouteConfig.RegisterRoutes(System.Web.Routing.RouteTable.Routes);
     }
     
     void Application_End(object sender, EventArgs e)

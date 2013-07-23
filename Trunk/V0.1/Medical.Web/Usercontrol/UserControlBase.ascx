@@ -5,6 +5,14 @@
         <td style="width: 200px; vertical-align: top;">
             <fieldset>
                 <table width="100%" class="tbl">
+                    <tr>
+                        <td align="left">Phòng Khám</td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            <asp:DropDownList ID="ddlClinic" runat="server" Width="100%" DataTextField="Name" DataValueField="Id"></asp:DropDownList>
+                        </td>
+                    </tr>
                     <asp:Repeater ID="rptConditions" runat="server">
                         <ItemTemplate>
                             <tr>
@@ -12,7 +20,7 @@
                             </tr>
                             <tr>
                                 <td align="left">
-                                    <Input type="text" id="<%# Eval("ColumnName") %>" name="<%# Eval("ColumnName") %>" style="width:100%;"></Input>
+                                    <input type="text" id="<%# Eval("ColumnName") %>" name="<%# Eval("ColumnName") %>" style="width: 100%;"></input>
                                 </td>
                             </tr>
                         </ItemTemplate>
