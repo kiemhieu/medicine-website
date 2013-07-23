@@ -91,13 +91,12 @@ namespace Medical.Synchronization
         /// <returns></returns>
         public static bool SendToSV(string ClientID, T obj)
         {
+            string KeyColumn = string.Empty;
+            object KeyValue = null;
 
             //Another parameter in table which is referenced
             string tableName = GetTableName();
             PropertyInfo[] infos = (typeof(T)).GetProperties();
-
-            //-----------------------------------------------------------------------------------------------------
-            //--------------------------------SAVE TO SERVER TABLE------------------------------------------------
             try
             {
                 //Parameter root - ClientID
@@ -106,23 +105,35 @@ namespace Medical.Synchronization
                 parames.Add(param0);
 
                 string SQL = "INSERT INTO " + tableName + " VALUES (@ClientID";
-                int n = 0;
+                int KeyIndex = -1;
                 foreach (PropertyInfo info in infos)
                 {
-                    if (n < infos.Length)
-                    {
-                        if (info.PropertyType != typeof(string)
-                            && info.PropertyType.GetInterface(typeof(IEnumerable).Name) != null
-                            && info.PropertyType.GetInterface(typeof(IEnumerable<>).Name) != null) continue;
-                        SQL += ", @" + info.Name;
-                        object valueP = info.GetValue(obj, null);
-                        if (valueP is DateTime && (DateTime)valueP == DateTime.MinValue) valueP = DBNull.Value;
-                        SqlParameter param = new SqlParameter("@" + info.Name, valueP ?? DBNull.Value);
-                        parames.Add(param);
-                    }
-                    n++;
+                    KeyIndex++;
+                    //remove uneccessary column
+                    if (info.PropertyType.Name == "ExtensionDataObject") continue;
+                    if (info.PropertyType != typeof(string)
+                        && info.PropertyType.GetInterface(typeof(IEnumerable).Name) != null
+                        && info.PropertyType.GetInterface(typeof(IEnumerable<>).Name) != null) continue;
+
+                    
+                    object valueP = info.GetValue(obj, null);
+                    if (KeyColumn == string.Empty) KeyColumn = info.Name;
+                    if (KeyValue == null) KeyValue = valueP;
+                    if (valueP is DateTime && (DateTime)valueP == DateTime.MinValue) valueP = DBNull.Value;
+                    SqlParameter param = new SqlParameter("@" + info.Name, valueP ?? DBNull.Value);
+                    parames.Add(param);
+
+                    SQL += ", @" + info.Name;
                 }
                 SQL += ")";
+
+                //--------------------------------DELETE IF EXIST FROM SERVER TABLE-----------------------------------
+                string sqlDelete = "DELETE FROM " + tableName + " WHERE ClientID=@ClientID AND " + KeyColumn + "=@" + KeyColumn;
+                SqlParameter paramClientID = new SqlParameter("@ClientID", ClientID );
+                SqlParameter paramKeyColumn = new SqlParameter("@" + KeyColumn, KeyValue ?? DBNull.Value);
+                SqlHelper.ExecuteNonQuery(Config.SVConnectionString, CommandType.Text, SQL, parames.ToArray());
+
+                //--------------------------------SAVE TO SERVER TABLE------------------------------------------------
                 int i = SqlHelper.ExecuteNonQuery(Config.SVConnectionString, CommandType.Text, SQL, parames.ToArray());
                 if (i == -1) return false;
                 return true;
