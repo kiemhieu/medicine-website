@@ -12,9 +12,9 @@ public partial class List : System.Web.UI.Page
         uctListBase.TableName = "Figure";
 
         List<SearchExpander> searchConditions = new List<SearchExpander>();
-        searchConditions.Add(new SearchExpander("Name", "Tên gọi"));
+        searchConditions.Add(new SearchExpander("Name", "Tên gọi", typeof(string)));
         uctListBase.SearchConditions = searchConditions;
 
-        
+
     }
 }

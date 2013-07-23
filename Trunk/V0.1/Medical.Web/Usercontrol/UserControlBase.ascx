@@ -31,7 +31,7 @@
                     <asp:Label runat="server" ID="lblThongBaoSoLuongBanGhi"></asp:Label>
                 </div>
                 <asp:GridView GridLines="None" CssClass="mGrid" runat="server" Width="100%" AllowPaging="true"
-                    PageSize="30" AutoGenerateColumns="false" ID="ss" PagerSettings-Visible="false"
+                    PageSize="30" AutoGenerateColumns="false" ID="gvListData" PagerSettings-Visible="false"
                     OnPageIndexChanging="gvListData_PageIndexChanging" EmptyDataText="Không có dữ liệu trong danh sách">
                     <EmptyDataRowStyle BorderColor="#eeeeee" BorderStyle="Solid" BorderWidth="1px" />
                     <EmptyDataTemplate>
