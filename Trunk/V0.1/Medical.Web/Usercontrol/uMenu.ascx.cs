@@ -27,9 +27,9 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
         chucNangCha.Items.Add(chucNangCon1);
 
         RadMenuItem chucNangCon2 = new RadMenuItem();
-        chucNangCon2.Value = Constant_Table.FIGUREDE_TAIL;
-        chucNangCon2.Text = "Danh sách " + Constant_Table.FIGUREDE_TAIL;
-        chucNangCon2.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.FIGUREDE_TAIL);
+        chucNangCon2.Value = Constant_Table.FIGUREDE_DETAIL;
+        chucNangCon2.Text = "Danh sách " + Constant_Table.FIGUREDE_DETAIL;
+        chucNangCon2.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.FIGUREDE_DETAIL);
         chucNangCha.Items.Add(chucNangCon2);
 
         RadMenuItem chucNangCon3 = new RadMenuItem();
