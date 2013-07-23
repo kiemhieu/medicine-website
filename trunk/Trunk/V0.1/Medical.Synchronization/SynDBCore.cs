@@ -111,7 +111,8 @@ namespace Medical.Synchronization
                 {
                     if (n < infos.Length)
                     {
-                        if (info.PropertyType.GetInterface(typeof(IEnumerable).Name) != null
+                        if (info.PropertyType != typeof(string)
+                            && info.PropertyType.GetInterface(typeof(IEnumerable).Name) != null
                             && info.PropertyType.GetInterface(typeof(IEnumerable<>).Name) != null) continue;
                         SQL += ", @" + info.Name;
                         object valueP = info.GetValue(obj, null);
