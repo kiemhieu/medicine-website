@@ -27,7 +27,7 @@ public partial class List : System.Web.UI.Page
             {
                 uctListBase.TableName = Constant_Table.FIGUREDE_TAIL;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
-                searchConditions.Add(new SearchExpander("Id", "Id", typeof(string)));
+                searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
                 searchConditions.Add(new SearchExpander("FigureId", "FigureId", typeof(int)));
                 searchConditions.Add(new SearchExpander("MedicineId", "MedicineId", typeof(int)));
                 searchConditions.Add(new SearchExpander("Volumn", "Volumn", typeof(int)));
