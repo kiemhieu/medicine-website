@@ -38,7 +38,8 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                 tempField.HeaderText = "Phòng khám";
                 tempField.DataField = "ClinicName";
                 gvListData.Columns.Add(tempField);
-
+                gvListData.PageSize = 25;
+                gvListData.AllowPaging = true;
                 foreach (SearchExpander seardcondition in searchConditions)
                 {
                     BoundField boundField = new BoundField();
@@ -106,6 +107,8 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
             gvListData.AutoGenerateColumns = false;
             gvListData.DataSource = dataset;
             gvListData.DataBind();
+
+            if (dataset != null && dataset.Tables.Count > 0) pager.ItemCount = dataset.Tables[0].Rows.Count;
         }
     }
 
