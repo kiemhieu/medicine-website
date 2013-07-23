@@ -44,6 +44,7 @@ namespace Medical.Synchronization
             public const string INI_SQL_DB_NAME = "SqlDbname";
             public const string INI_SQL_USER = "SqlUser";
             public const string INI_SQL_PASS = "SqlPass";
+            public const string INI_SOAP_ADDRESS = "SoapAddress";
         }
 
         #region Connection string
@@ -102,6 +103,29 @@ namespace Medical.Synchronization
                 return sSVConnectionString;
             }
         }
+        #endregion
+
+
+
+        #region Soap address to save db
+        private static bool bReadSoapAddress = false;
+        private static string sSoapAddress = string.Empty;
+        public static string SoapAddress
+        {
+            get
+            {
+                if (bReadSoapAddress) return sSoapAddress;
+                string TempPath = StatupPath.CurrentPath;
+                string IniPath = TempPath + Constant.INI_FILE_NAME;
+                if (System.IO.File.Exists(IniPath))
+                {
+                    IniFile iniFile = new IniFile(IniPath);
+                    sSoapAddress = iniFile.IniReadValue(Constant.INI_SVSECTION, Constant.INI_SOAP_ADDRESS);
+                    bReadSoapAddress = true;
+                }
+                return sConnectionString;
+            }
+        } 
         #endregion
     }
 }
