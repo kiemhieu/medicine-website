@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using Medical.Synchronization.Basic;
+using System.Collections;
 
 namespace Medical.Synchronization
 {
@@ -110,6 +111,8 @@ namespace Medical.Synchronization
                 {
                     if (n < infos.Length)
                     {
+                        if (info.PropertyType.GetInterface(typeof(IEnumerable).Name) != null
+                            && info.PropertyType.GetInterface(typeof(IEnumerable<>).Name) != null) continue;
                         SQL += ", @" + info.Name;
                         object valueP = info.GetValue(obj, null);
                         if (valueP is DateTime && (DateTime)valueP == DateTime.MinValue) valueP = DBNull.Value;
