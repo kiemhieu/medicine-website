@@ -40,13 +40,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.cbRole = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.bdsRole = new System.Windows.Forms.BindingSource(this.components);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.Doctor = new DevComponents.Editors.ComboItem();
             this.Pharmacists = new DevComponents.Editors.ComboItem();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errPatient)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsRole)).BeginInit();
             this.SuspendLayout();
             // 
             // labelX1
@@ -96,7 +98,7 @@
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(329, 20);
-            this.txtName.TabIndex = 1;
+            this.txtName.TabIndex = 0;
             // 
             // bdsUser
             // 
@@ -133,7 +135,7 @@
             this.txtCode.MaxLength = 5;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(145, 20);
-            this.txtCode.TabIndex = 0;
+            this.txtCode.TabIndex = 1;
             // 
             // txtPhone
             // 
@@ -151,7 +153,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.PasswordChar = '*';
             this.txtPhone.Size = new System.Drawing.Size(145, 20);
-            this.txtPhone.TabIndex = 5;
+            this.txtPhone.TabIndex = 2;
             // 
             // btnSave
             // 
@@ -163,7 +165,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSave.TabIndex = 8;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Ghi lại";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -177,9 +179,9 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancel.TabIndex = 9;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Bỏ qua";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
             // errPatient
             // 
@@ -233,23 +235,35 @@
             // 
             // cbRole
             // 
-            this.cbRole.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsUser, "Role", true));
+            this.cbRole.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsUser, "Role", true));
+            this.cbRole.DataSource = this.bdsRole;
             this.cbRole.DisplayMember = "Name";
             this.cbRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRole.Enabled = false;
             this.cbRole.FocusCuesEnabled = false;
             this.cbRole.FormattingEnabled = true;
             this.cbRole.ItemHeight = 14;
-            this.cbRole.Items.AddRange(new object[] {
-            this.Doctor,
-            this.Pharmacists});
             this.cbRole.Location = new System.Drawing.Point(98, 94);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(145, 20);
             this.cbRole.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbRole.TabIndex = 11;
-            this.cbRole.ValueMember = "Id";
+            this.cbRole.TabIndex = 3;
+            this.cbRole.ValueMember = "Value";
+            // 
+            // bdsRole
+            // 
+            this.bdsRole.DataSource = typeof(Medical.Data.EntitiyExtend.Item);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.bdsUser, "Active", true));
+            this.checkBox1.Location = new System.Drawing.Point(98, 120);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(75, 18);
+            this.checkBox1.TabIndex = 4;
+            this.checkBox1.Text = "Hoạt động";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Doctor
             // 
@@ -258,17 +272,6 @@
             // Pharmacists
             // 
             this.Pharmacists.Text = "3";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsUser, "Active", true));
-            this.checkBox1.Location = new System.Drawing.Point(98, 120);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(75, 18);
-            this.checkBox1.TabIndex = 10;
-            this.checkBox1.Text = "Hoạt động";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // styleManager1
             // 
@@ -294,6 +297,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errPatient)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsRole)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,5 +323,6 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbRole;
         private DevComponents.Editors.ComboItem Doctor;
         private DevComponents.Editors.ComboItem Pharmacists;
+        private System.Windows.Forms.BindingSource bdsRole;
     }
 }

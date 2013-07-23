@@ -17,6 +17,15 @@ namespace Medical.Users
         public UserManageForm()
         {
             InitializeComponent();
+
+            var roles = new List<Item>()
+                            {
+                                new Item(Data.Role.Administrator, "System admin"),
+                                new Item(Data.Role.Doctor, "Doctor"),
+                                new Item(Data.Role.Manager, "Supervisor"),
+                                new Item(Data.Role.Pharmacist, "Pharmacist")
+                            };
+            bdsRole.DataSource = roles;
         }
 
         public UserManageForm(string searchCondition)
@@ -31,6 +40,9 @@ namespace Medical.Users
         /// </summary>
         private void Searh() {
             this.bdgUser.DataSource = userRepo.Get(AppContext.CurrentClinicId);
+            this.bdgUser.ResetBindings(true);
+            this.grdUser.ResetBindings();
+            this.grdUser.Refresh();
         }
 
         /// <summary>
@@ -56,10 +68,13 @@ namespace Medical.Users
 
         private void GrdPatientCellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.SelectedUser = (User) this.bdgUser.List[e.RowIndex];
-            if (this.SelectedUser == null) return;
-            this.DialogResult = DialogResult.Yes;
-            this.Close();
+            User user = (User)this.bdgUser.Current;
+            if (user == null) return;
+            var frmedit = new UserRegister(user);
+            frmedit.ShowDialog();
+            if (frmedit.DialogResult != DialogResult.Yes) return;
+            Searh();
+            // this.Close();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -73,6 +88,7 @@ namespace Medical.Users
             }
             var frmedit = new UserRegister(_user);
             frmedit.ShowDialog();
+            Searh();
             this.bdgUser.Clear();
             this.bdgUser.DataSource = userRepo.GetAll();
         }
@@ -106,7 +122,9 @@ namespace Medical.Users
         {
             var frmedit = new UserRegister();
             frmedit.ShowDialog();
-           // this.bdgUser.Clear();
+            if (frmedit.DialogResult != DialogResult.Yes) return;
+            Searh();
+            // this.bdgUser.Clear();
             //this.bdgUser.DataSource = userRepo.GetAll();
         }
 

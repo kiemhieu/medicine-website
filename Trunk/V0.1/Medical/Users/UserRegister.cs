@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Medical.Data;
 using Medical.Data.Entities;
+using Medical.Data.EntitiyExtend;
 using Medical.Data.Repositories;
 using Medical.Forms.Implements;
 
@@ -33,10 +34,23 @@ namespace Medical.Users
             //}
             //else
             //    cboClinic.DataSource = _clinicRepo.GetAll();
+
+            var roles = new List<Item>()
+                            {
+                                new Item(Role.Administrator, "System admin"),
+                                new Item(Role.Doctor, "Doctor"),
+                                new Item(Role.Manager, "Supervisor"),
+                                new Item(Role.Pharmacist, "Pharmacist")
+                            };
+            bdsRole.DataSource = roles;
+
             this.User = new User();
+            this.User.ClinicId = AppContext.CurrentClinicId;
             this.bdsUser.DataSource = User;
             this._isAddNew = true;
             this._userRepository = new UserRepository();
+            this.txtCode.ReadOnly = false;
+            this.txtPhone.ReadOnly = false;
         }
 
         /// <summary>
@@ -45,12 +59,22 @@ namespace Medical.Users
         public UserRegister(User patient)
         {
             InitializeComponent();
-          
+            var roles = new List<Item>()
+                            {
+                                new Item(Role.Administrator, "System admin"),
+                                new Item(Role.Doctor, "Doctor"),
+                                new Item(Role.Manager, "Supervisor"),
+                                new Item(Role.Pharmacist, "Pharmacist")
+                            };
+            bdsRole.DataSource = roles;
 
             this.User = patient;
             this.bdsUser.DataSource = User;
             this._isAddNew = false;
             this._userRepository = new UserRepository();
+
+            this.txtCode.ReadOnly = true;
+            this.txtPhone.ReadOnly = true;
         }
 
         /// <summary>
@@ -58,7 +82,7 @@ namespace Medical.Users
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancelClick(object sender, EventArgs e)
         {
             this.Close();
             DialogResult = DialogResult.No;
@@ -76,7 +100,7 @@ namespace Medical.Users
                 return false;
             }
 
-            if (!ValidationUtil.IsAlphanumeric(txtCode.Text))
+            if (this._isAddNew && !ValidationUtil.IsAlphanumeric(txtCode.Text))
             {
                 this.errPatient.SetError(txtCode, "Mã bệnh nhân chỉ chấp nhận số hoặc chữ");
                 return false;
