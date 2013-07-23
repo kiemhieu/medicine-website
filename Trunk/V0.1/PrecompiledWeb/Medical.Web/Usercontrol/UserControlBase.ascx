@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" autoeventwireup="true" inherits="Usercontrol_UserControlBase, App_Web_qcs05qa2" %>
+﻿<%@ control language="C#" autoeventwireup="true" inherits="Usercontrol_UserControlBase, App_Web_usercontrolbase.ascx.6be62623" %>
 <%@ Register Namespace="ASPnetControls" Assembly="ASPnetPagerV2_8" TagPrefix="cc" %>
 <table width="100%">
     <tr>

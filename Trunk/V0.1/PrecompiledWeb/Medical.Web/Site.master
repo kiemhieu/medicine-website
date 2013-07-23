@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="SiteMaster, App_Web_k4vwhjc2" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="SiteMaster, App_Web_site.master.cdcab7d2" %>
 
 <%@ Register Src="~/Usercontrol/uMenu.ascx" TagName="Menu" TagPrefix="uc" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
