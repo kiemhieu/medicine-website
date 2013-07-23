@@ -31,14 +31,14 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
     {
         if (!IsPostBack)
         {
-            //Initial columns of grid
-            BoundField tempField = new BoundField();
-            tempField.HeaderText = "Phòng khám";
-            tempField.DataField = "ClinicName";
-            gvListData.Columns.Add(tempField);
-
             if (searchConditions != null && !string.IsNullOrEmpty(TableName) && TableName.Length > 0)
             {
+                //Initial columns of grid
+                BoundField tempField = new BoundField();
+                tempField.HeaderText = "Phòng khám";
+                tempField.DataField = "ClinicName";
+                gvListData.Columns.Add(tempField);
+
                 foreach (SearchExpander seardcondition in searchConditions)
                 {
                     BoundField boundField = new BoundField();
@@ -54,8 +54,9 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                 ddlClinic.DataSource = dataset;
                 ddlClinic.DataBind();
                 //Initial data
-                LoadList();
             }
+
+            LoadList();
         }
     }
 
@@ -88,14 +89,15 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                 //    sListFields += "[" + seardcondition.ColumnName + "]";
                 //else sListFields = ", " + sListFields;
                 SqlParameter param = null;
+                if (i > 0) sSQL += " AND ";
                 if (seardcondition.Type == typeof(string))
                 {
-                    sSQL += TableName + "." + seardcondition.ColumnName + " LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
+                    sSQL += TableName + ".[" + seardcondition.ColumnName + "] LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
                     param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? string.Empty);
                 }
                 else
                 {
-                    sSQL += TableName + "." + seardcondition.ColumnName + " = @" + seardcondition.ColumnName + " ";
+                    sSQL += TableName + ".[" + seardcondition.ColumnName + "] = @" + seardcondition.ColumnName + " ";
                     param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? DBNull.Value);
                 }
                 parames.Add(param);
