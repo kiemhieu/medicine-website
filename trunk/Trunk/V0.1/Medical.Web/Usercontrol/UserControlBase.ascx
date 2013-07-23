@@ -20,7 +20,7 @@
                             </tr>
                             <tr>
                                 <td align="left">
-                                    <input type="text" id="<%# Eval("ColumnName") %>" name="<%# Eval("ColumnName") %>" style="width: 100%;"></input>
+                                    <input type="text" id="<%# Eval("ColumnName") %>" name="<%# Eval("ColumnName") %>" style="width: 100%;" value="<%#Request[(string)Eval("ColumnName")] %>"></input>
                                 </td>
                             </tr>
                         </ItemTemplate>
