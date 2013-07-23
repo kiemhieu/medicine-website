@@ -74,7 +74,7 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
         //          dbo.Clinic ON dbo.Figure.ClientID = dbo.Clinic.Id
 
         //Add to log table
-        string sSQL = "SELECT Clinic.Name AS ClinicName," + TableName + ".* FROM " + TableName + " INNER JOIN Clinic ON " + TableName + ".ClientID = Clinic.Id WHERE ";
+        string sSQL = "SELECT Clinic.Name AS ClinicName," + TableName + ".* FROM " + TableName + " INNER JOIN Clinic ON " + TableName + ".ClientID = Clinic.Id WHERE 1=1 ";
         string sListFields = string.Empty;
         List<SqlParameter> parames = new List<SqlParameter>();
         int i = -1;
@@ -85,26 +85,23 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
             {
                 i++;
                 object requesCondition = Request[seardcondition.ColumnName];
-                //if (i == 0)
-                //    sListFields += "[" + seardcondition.ColumnName + "]";
-                //else sListFields = ", " + sListFields;
                 SqlParameter param = null;
-                if (i > 0) sSQL += " AND ";
-                if (seardcondition.Type == typeof(string))
+                if (requesCondition != null && requesCondition != string.Empty)
                 {
-                    sSQL += TableName + ".[" + seardcondition.ColumnName + "] LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
-                    param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? string.Empty);
+                    if (seardcondition.Type == typeof(string))
+                    {
+                        sSQL += " AND " + TableName + ".[" + seardcondition.ColumnName + "] LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
+                        param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? string.Empty);
+                    }
+                    else
+                    {
+                        sSQL += " AND " + TableName + ".[" + seardcondition.ColumnName + "] = @" + seardcondition.ColumnName + " ";
+                        param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? DBNull.Value);
+                    }
+                    parames.Add(param);
                 }
-                else
-                {
-                    sSQL += TableName + ".[" + seardcondition.ColumnName + "] = @" + seardcondition.ColumnName + " ";
-                    param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? DBNull.Value);
-                }
-                parames.Add(param);
             }
 
-            //Just show field
-            //sSQL = sSQL.Replace("*", sListFields);
             DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, sSQL, parames.ToArray());
             gvListData.AutoGenerateColumns = false;
             gvListData.DataSource = dataset;
