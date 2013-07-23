@@ -47,11 +47,11 @@ namespace Medical.Synchronization
         }
 
         /// <summary>
-        /// Check if exist in server
+        /// Clear log when data changed
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        private static bool Exist(T obj, string ClientID)
+        public static bool SaveChange(object KeyValue)
         {
             string tableName = GetTableName();
             PropertyInfo[] infos = (typeof(T)).GetProperties();
@@ -66,18 +66,15 @@ namespace Medical.Synchronization
             }
 
             //Add to log table
-            string SQL2 = "SELECT * FROM " + tableName + " WHERE ClientID ='" + ClientID + "' AND " + KeyColumn + "=@" + KeyColumn;
-            SqlParameter[] parames2 = new SqlParameter[] { new SqlParameter("@" + KeyColumn, infos[KeyIndex].GetValue(obj, null)) };
-            DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, SQL2, parames2);
-
-            bool result = false;
-            if (dataset != null && dataset.Tables.Count > 0)
-            {
-                result = true;
-                dataset.Dispose();
-            }
-            return result;
+            string SQL2 = "DELETE FROM Syn" + tableName + " WHERE " + KeyColumn + "=@" + KeyColumn;
+            SqlParameter[] parames2 = new SqlParameter[] { new SqlParameter("@" + KeyColumn, KeyValue) };
+            int i = SqlHelper.ExecuteNonQuery(Config.SVConnectionString, CommandType.Text, SQL2, parames2);
+             
+            if (i != -1) return false;
+            return true;
         }
+
+
 
         /// <summary>
         /// Send an object to server
