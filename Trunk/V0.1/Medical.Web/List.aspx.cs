@@ -25,9 +25,13 @@ public partial class List : System.Web.UI.Page
             }
             else if (segment.ToUpper() == Constant_Table.FIGUREDE_TAIL.ToUpper())
             {
-                uctListBase.TableName = Constant_Table.FIGURE;
+                uctListBase.TableName = Constant_Table.FIGUREDE_TAIL;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
-                searchConditions.Add(new SearchExpander("Name", "Tên gọi", typeof(string)));
+                searchConditions.Add(new SearchExpander("Id", "Id", typeof(string)));
+                searchConditions.Add(new SearchExpander("FigureId", "FigureId", typeof(int)));
+                searchConditions.Add(new SearchExpander("MedicineId", "MedicineId", typeof(int)));
+                searchConditions.Add(new SearchExpander("Volumn", "Volumn", typeof(int)));
+                searchConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
                 uctListBase.SearchConditions = searchConditions;
             }
             else if (segment.ToUpper() == Constant_Table.MEDICIN_EDELIVERY_DETAIL.ToUpper())
@@ -91,6 +95,6 @@ public partial class List : System.Web.UI.Page
             }
         }
 
-       
+
     }
 }
