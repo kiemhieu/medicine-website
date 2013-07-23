@@ -30,9 +30,7 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.bdsUser = new System.Windows.Forms.BindingSource(this.components);
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.txtCode = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtPhone = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
@@ -45,11 +43,9 @@
             this.Doctor = new DevComponents.Editors.ComboItem();
             this.Pharmacists = new DevComponents.Editors.ComboItem();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.cboClinic = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errPatient)).BeginInit();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +57,7 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(11, 11);
+            this.labelX1.Location = new System.Drawing.Point(16, 42);
             this.labelX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(77, 15);
@@ -77,7 +73,7 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(11, 35);
+            this.labelX2.Location = new System.Drawing.Point(16, 16);
             this.labelX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(50, 15);
@@ -95,7 +91,7 @@
             this.txtName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsUser, "Name", true));
             this.txtName.ForeColor = System.Drawing.Color.Black;
-            this.txtName.Location = new System.Drawing.Point(94, 34);
+            this.txtName.Location = new System.Drawing.Point(98, 13);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
@@ -106,22 +102,6 @@
             // 
             this.bdsUser.DataSource = typeof(Medical.Data.Entities.User);
             // 
-            // labelX4
-            // 
-            this.labelX4.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX4.BackgroundStyle.Class = "";
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(11, 58);
-            this.labelX4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(49, 15);
-            this.labelX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.labelX4.TabIndex = 6;
-            this.labelX4.Text = "Kích hoạt";
-            // 
             // labelX5
             // 
             this.labelX5.AutoSize = true;
@@ -130,29 +110,13 @@
             // 
             this.labelX5.BackgroundStyle.Class = "";
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(211, 11);
+            this.labelX5.Location = new System.Drawing.Point(16, 70);
             this.labelX5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(48, 15);
             this.labelX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.labelX5.TabIndex = 8;
             this.labelX5.Text = "Mật khẩu";
-            // 
-            // labelX6
-            // 
-            this.labelX6.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX6.BackgroundStyle.Class = "";
-            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(11, 81);
-            this.labelX6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(64, 15);
-            this.labelX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.labelX6.TabIndex = 10;
-            this.labelX6.Text = "Phòng khám";
             // 
             // txtCode
             // 
@@ -162,13 +126,13 @@
             // 
             this.txtCode.Border.Class = "TextBoxBorder";
             this.txtCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsUser, "Code", true));
+            this.txtCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsUser, "UserName", true));
             this.txtCode.ForeColor = System.Drawing.Color.Black;
-            this.txtCode.Location = new System.Drawing.Point(94, 10);
+            this.txtCode.Location = new System.Drawing.Point(98, 39);
             this.txtCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCode.MaxLength = 5;
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(86, 20);
+            this.txtCode.Size = new System.Drawing.Size(145, 20);
             this.txtCode.TabIndex = 0;
             // 
             // txtPhone
@@ -179,12 +143,13 @@
             // 
             this.txtPhone.Border.Class = "TextBoxBorder";
             this.txtPhone.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsUser, "Phone", true));
+            this.txtPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsUser, "Password", true));
             this.txtPhone.ForeColor = System.Drawing.Color.Black;
-            this.txtPhone.Location = new System.Drawing.Point(278, 10);
+            this.txtPhone.Location = new System.Drawing.Point(98, 67);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPhone.MaxLength = 20;
             this.txtPhone.Name = "txtPhone";
+            this.txtPhone.PasswordChar = '*';
             this.txtPhone.Size = new System.Drawing.Size(145, 20);
             this.txtPhone.TabIndex = 5;
             // 
@@ -193,7 +158,7 @@
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSave.Image = global::Medical.Properties.Resources.accept;
-            this.btnSave.Location = new System.Drawing.Point(313, 0);
+            this.btnSave.Location = new System.Drawing.Point(270, 150);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
@@ -207,7 +172,7 @@
             this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCancel.Image = global::Medical.Properties.Resources.cancel;
-            this.btnCancel.Location = new System.Drawing.Point(392, 0);
+            this.btnCancel.Location = new System.Drawing.Point(349, 150);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
@@ -224,21 +189,22 @@
             // panel1
             // 
             this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.btnCancel);
-            this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 128);
+            this.panel1.Location = new System.Drawing.Point(0, 199);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(469, 27);
+            this.panel1.Size = new System.Drawing.Size(456, 0);
             this.panel1.TabIndex = 13;
             // 
             // panel2
             // 
             this.panel2.AutoSize = true;
+            this.panel2.Controls.Add(this.labelX1);
+            this.panel2.Controls.Add(this.labelX2);
+            this.panel2.Controls.Add(this.btnCancel);
+            this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.labelX3);
             this.panel2.Controls.Add(this.cbRole);
             this.panel2.Controls.Add(this.checkBox1);
-            this.panel2.Controls.Add(this.cboClinic);
             this.panel2.Controls.Add(this.txtCode);
             this.panel2.Controls.Add(this.txtName);
             this.panel2.Controls.Add(this.txtPhone);
@@ -246,7 +212,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(469, 128);
+            this.panel2.Size = new System.Drawing.Size(456, 199);
             this.panel2.TabIndex = 14;
             // 
             // labelX3
@@ -257,7 +223,7 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(211, 62);
+            this.labelX3.Location = new System.Drawing.Point(16, 97);
             this.labelX3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(35, 15);
@@ -267,8 +233,10 @@
             // 
             // cbRole
             // 
+            this.cbRole.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsUser, "Role", true));
             this.cbRole.DisplayMember = "Name";
             this.cbRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRole.Enabled = false;
             this.cbRole.FocusCuesEnabled = false;
             this.cbRole.FormattingEnabled = true;
@@ -276,7 +244,7 @@
             this.cbRole.Items.AddRange(new object[] {
             this.Doctor,
             this.Pharmacists});
-            this.cbRole.Location = new System.Drawing.Point(278, 59);
+            this.cbRole.Location = new System.Drawing.Point(98, 94);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(145, 20);
             this.cbRole.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -294,27 +262,13 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(94, 61);
+            this.checkBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsUser, "Active", true));
+            this.checkBox1.Location = new System.Drawing.Point(98, 120);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(75, 18);
             this.checkBox1.TabIndex = 10;
             this.checkBox1.Text = "Hoạt động";
             this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // cboClinic
-            // 
-            this.cboClinic.DisplayMember = "Name";
-            this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboClinic.Enabled = false;
-            this.cboClinic.FocusCuesEnabled = false;
-            this.cboClinic.FormattingEnabled = true;
-            this.cboClinic.ItemHeight = 14;
-            this.cboClinic.Location = new System.Drawing.Point(94, 81);
-            this.cboClinic.Name = "cboClinic";
-            this.cboClinic.Size = new System.Drawing.Size(329, 20);
-            this.cboClinic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboClinic.TabIndex = 9;
-            this.cboClinic.ValueMember = "Id";
             // 
             // styleManager1
             // 
@@ -325,12 +279,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(469, 155);
+            this.ClientSize = new System.Drawing.Size(456, 199);
             this.ControlBox = false;
-            this.Controls.Add(this.labelX6);
-            this.Controls.Add(this.labelX4);
-            this.Controls.Add(this.labelX2);
-            this.Controls.Add(this.labelX1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -342,7 +292,6 @@
             this.Text = "Đăng ký bệnh nhân mới";
             ((System.ComponentModel.ISupportInitialize)(this.bdsUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errPatient)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -355,9 +304,7 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.Controls.TextBoxX txtName;
-        private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.Controls.TextBoxX txtCode;
         private DevComponents.DotNetBar.Controls.TextBoxX txtPhone;
         private DevComponents.DotNetBar.ButtonX btnCancel;
@@ -368,7 +315,6 @@
         private System.Windows.Forms.Panel panel1;
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private System.Windows.Forms.CheckBox checkBox1;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cboClinic;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbRole;
         private DevComponents.Editors.ComboItem Doctor;

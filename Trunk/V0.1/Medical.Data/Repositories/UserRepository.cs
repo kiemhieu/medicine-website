@@ -22,6 +22,11 @@ namespace Medical.Data.Repositories {
             return user;
         }
 
+        public List<User> Get(int clinic)
+        {
+            var user = this.Context.Users.Where(x => x.ClinicId == clinic).OrderBy(x=>x.CreatedDate).ToList();
+            return user;
+        }
 
 
         public bool Login(string username, string password, int clinic) {

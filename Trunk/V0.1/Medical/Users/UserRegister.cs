@@ -27,12 +27,12 @@ namespace Medical.Users
         {
             InitializeComponent();
 
-            if (AppContext.LoggedInUser.Role > MedicineRoles.SupperManager)
-            {
-                cboClinic.DataSource = new List<Medical.Data.Entities.Clinic> { AppContext.CurrentClinic };
-            }
-            else
-                cboClinic.DataSource = _clinicRepo.GetAll();
+            //if (AppContext.LoggedInUser.Role > MedicineRoles.SupperManager)
+            //{
+            //    cboClinic.DataSource = new List<Medical.Data.Entities.Clinic> { AppContext.CurrentClinic };
+            //}
+            //else
+            //    cboClinic.DataSource = _clinicRepo.GetAll();
             this.User = new User();
             this.bdsUser.DataSource = User;
             this._isAddNew = true;
