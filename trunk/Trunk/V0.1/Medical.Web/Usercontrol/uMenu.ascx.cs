@@ -20,24 +20,6 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
 
     public void InsertChildItem(RadMenuItem chucNangCha)
     {
-        //if (dtChucNang != null)
-        //{
-        //foreach (DataRow dr in dtChucNang.Rows)
-        //{
-        //    if (htCheckMenu.Contains(dr["ChucNangId"])) continue;
-        //    else htCheckMenu.Add(dr["ChucNangId"], dr["ChucNangId"]);
-
-        //    if (dr["ChucNangChaId"].ToString() == chucNangCha.Value)
-        //    {
-        //        RadMenuItem chucNangCon = new RadMenuItem();
-        //        chucNangCon.Value = dr["ChucNangId"].ToString();
-        //        chucNangCon.Text = dr["TenChucNang"].ToString();
-        //        chucNangCon.NavigateUrl = dr["LienKet"].ToString();
-        //        chucNangCha.Items.Add(chucNangCon);
-        //        InsertChildItem(chucNangCon, dtChucNang);
-        //    }
-        //}
-
         RadMenuItem chucNangCon1 = new RadMenuItem();
         chucNangCon1.Value = Constant_Table.FIGURE;
         chucNangCon1.Text = "Danh sách " + Constant_Table.FIGURE;
