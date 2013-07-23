@@ -2,10 +2,10 @@
 SqlDbname=Medical
 SqlUser=sa
 SqlPass=sa@123
-SqlServer=HieuNK-PC
+SqlServer=HieuNK-XP
 [Medical.Synchronization.SVConnectionInfo]
 SoapAddress=http://opchanoipac.org.vn/services/synservice.asmx
 SqlDbname=Medical.Web
 SqlUser=sa
 SqlPass=sa@123
-SqlServer=HieuNK-PC
+SqlServer=HieuNK-XP
