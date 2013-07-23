@@ -39,7 +39,7 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
         RadMenuItem chucNangCon = new RadMenuItem();
         chucNangCon.Value = "1.1";
         chucNangCon.Text = "Danh mục 1";
-        chucNangCon.NavigateUrl = "";
+        chucNangCon.NavigateUrl = "~/list.aspx?id=1";
         chucNangCha.Items.Add(chucNangCon);
         //}
         htCheckMenu.Clear();
