@@ -24,7 +24,7 @@ namespace Medical.Synchronization
 
         public Synchronize()
         {
-            Uri serviceUri = new Uri("http://localhost:5384/Medical.Web/Services/SynService.asmx");
+            Uri serviceUri = new Uri(Config.SoapAddress);
             EndpointAddress endpointAddress = new EndpointAddress(serviceUri);
             BasicHttpBinding binding = new BasicHttpBinding();
             binding.Security.Mode = BasicHttpSecurityMode.TransportCredentialOnly;
