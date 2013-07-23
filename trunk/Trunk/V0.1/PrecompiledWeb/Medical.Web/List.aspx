@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="List, App_Web_ujmqjq5y" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Site.master" autoeventwireup="true" inherits="List, App_Web_list.aspx.cdcab7d2" %>
 
 <%@ Register src="Usercontrol/UserControlBase.ascx" tagname="UserControlBase" tagprefix="uc1" %>
 
