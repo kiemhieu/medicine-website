@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="ILrQ4RZdK/etiqXqvg5x1jC6bLM=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="Or4VdAKrQ9yEJd/x+zC+EYlOeTo=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="SynServiceSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="SynServiceSoap" contract="SynService.SynServiceSoap" bindingType="basicHttpBinding" address="http://localhost:5384/Medical.Web/Services/SynService.asmx" bindingConfiguration="SynServiceSoap">
+    <endpoint name="SynServiceSoap" contract="SynService.SynServiceSoap" bindingType="basicHttpBinding" address="http://localhost:5384/Services/SynService.asmx" bindingConfiguration="SynServiceSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:5384/Medical.Web/Services/SynService.asmx</serializedValue>
+          <serializedValue>http://localhost:5384/Services/SynService.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -1130,10 +1130,10 @@
   </wsdl:binding>
   <wsdl:service name="SynService">
     <wsdl:port name="SynServiceSoap" binding="tns:SynServiceSoap">
-      <soap:address location="http://localhost:5384/Medical.Web/Services/SynService.asmx" />
+      <soap:address location="http://localhost:5384/Services/SynService.asmx" />
     </wsdl:port>
     <wsdl:port name="SynServiceSoap12" binding="tns:SynServiceSoap12">
-      <soap12:address location="http://localhost:5384/Medical.Web/Services/SynService.asmx" />
+      <soap12:address location="http://localhost:5384/Services/SynService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
