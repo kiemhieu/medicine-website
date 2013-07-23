@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.FriendlyUrls;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +40,7 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
         RadMenuItem chucNangCon = new RadMenuItem();
         chucNangCon.Value = "1.1";
         chucNangCon.Text = "Danh mục 1";
-        chucNangCon.NavigateUrl = "~/list.aspx?id=1";
+        chucNangCon.NavigateUrl = FriendlyUrl.Href("~/list", 1);//"~/list.aspx?id=1";
         chucNangCha.Items.Add(chucNangCon);
         //}
         htCheckMenu.Clear();
