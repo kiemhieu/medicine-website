@@ -66,6 +66,7 @@ namespace Run.Implementation
             if (menuCntrl == null) return;
             if (menuCntrl.Length == 0) return;
             var trip = menuCntrl[0] as TreeView;
+            trip.Nodes.Clear();
             LoadMenuItem(trip);
             trip.ImageList = _images;
             
