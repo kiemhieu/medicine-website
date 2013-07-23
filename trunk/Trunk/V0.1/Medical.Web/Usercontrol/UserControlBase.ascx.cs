@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Medical.Synchronization;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,9 +13,9 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
     public string TableName { get; set; }
 
     private List<SearchExpander> searchConditions;
-    public List<SearchExpander> SearchConditions 
-    { 
-         get {return searchConditions; }
+    public List<SearchExpander> SearchConditions
+    {
+        get { return searchConditions; }
         set
         {
             searchConditions = value;
@@ -26,24 +29,63 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            //--------------------------------
+           
+            //--------------------------------
+            LoadList();
 
+
+        }
     }
 
     protected void btnSearch_Click(object sender, EventArgs e)
     {
-
+        LoadList();
     }
 
     private void LoadList()
     {
-         
+        //Add to log table
+        string sSQL = "SELECT * FROM " + TableName + " WHERE ";
+        string sListFields = string.Empty;
+        List<SqlParameter> parames = new List<SqlParameter>();
+        int i=-1;
+        foreach (SearchExpander seardcondition in searchConditions)
+        {
+            i++;
+            object requesCondition = Request[seardcondition.ColumnName];
+
+            sListFields += "[" + seardcondition.ColumnName + "]";
+            if (i > 0) sListFields += ", ";
+
+            if (seardcondition.Type == typeof(string)) sSQL += seardcondition.ColumnName + " LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
+            else sSQL += seardcondition.ColumnName + " = @" + seardcondition.ColumnName + " ";
+            SqlParameter param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? DBNull.Value);
+            parames.Add(param);
+        }
+
+        //Just show field
+        sSQL = sSQL.Replace("*", sListFields);
+        DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, sSQL, parames.ToArray());
+        gvListData.AutoGenerateColumns = true;
+        gvListData.DataSource = dataset;
+        gvListData.DataBind();
+
+        i=-1;
+        foreach (SearchExpander seardcondition in searchConditions)
+        {
+            i++;
+            gvListData.Columns[i].HeaderText = seardcondition.Display;
+        }
     }
 
     public void pager_Command(object sender, CommandEventArgs e)
     {
         int currnetPageIndx = Convert.ToInt32(e.CommandArgument);
         pager.CurrentIndex = currnetPageIndx;
-        this.ss.PageIndex = currnetPageIndx - 1;
+        this.gvListData.PageIndex = currnetPageIndx - 1;
         LoadList();
     }
 
