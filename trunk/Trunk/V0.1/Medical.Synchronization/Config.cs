@@ -123,7 +123,7 @@ namespace Medical.Synchronization
                     sSoapAddress = iniFile.IniReadValue(Constant.INI_SVSECTION, Constant.INI_SOAP_ADDRESS);
                     bReadSoapAddress = true;
                 }
-                return sConnectionString;
+                return sSoapAddress;
             }
         } 
         #endregion
