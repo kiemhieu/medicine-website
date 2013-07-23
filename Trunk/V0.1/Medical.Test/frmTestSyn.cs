@@ -29,7 +29,7 @@ namespace Medical.Test
 
             Synchronize synservice = new Synchronize();
             synservice.SendingCompleted += synservice_SendingCompleted;
-            synservice.SendAll("1");
+            synservice.SendAll("12");
 
         }
 
