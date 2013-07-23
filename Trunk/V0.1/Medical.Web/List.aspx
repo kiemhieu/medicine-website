@@ -3,6 +3,6 @@
 <%@ Register src="Usercontrol/UserControlBase.ascx" tagname="UserControlBase" tagprefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-    <uc1:UserControlBase ID="UserControlBase1" runat="server" />
+    <uc1:UserControlBase ID="uctListBase" runat="server" />
 </asp:Content>
 

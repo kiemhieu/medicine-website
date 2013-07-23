@@ -9,6 +9,12 @@ public partial class List : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        uctListBase.TableName = "Figure";
 
+        List<SearchExpander> searchConditions = new List<SearchExpander>();
+        searchConditions.Add(new SearchExpander("Name", "Tên gọi"));
+        uctListBase.SearchConditions = searchConditions;
+
+        
     }
 }
