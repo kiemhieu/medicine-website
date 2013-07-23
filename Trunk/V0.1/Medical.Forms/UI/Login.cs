@@ -55,7 +55,7 @@ namespace Medical.Forms.UI {
             if (isValid)
             {
                 AppContext.Authenticated = true;
-                AppContext.LoggedInUser = userRepo.Get(this.txtUser.Text);
+                AppContext.LoggedInUser = userRepo.Get(this.txtUser.Text, AppContext.CurrentClinicId);
                 IClinicRepository clinicRepository = new ClinicRepository();
                 AppContext.CurrentClinic = clinicRepository.Get(AppContext.CurrentClinicId);
                 this.Close();

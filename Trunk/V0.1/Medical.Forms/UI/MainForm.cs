@@ -326,13 +326,23 @@ namespace Medical.Forms.UI
 
         private void openToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
+            var login = new Login();
+            login.ShowDialog(this);
 
+            if (AppContext.Authenticated)
+            {
+                this.txtLoggedIn.Text = AppContext.LoggedInUser.UserName;
+                this.txtClinic.Text = AppContext.CurrentClinic.Name;
+            }
+            this.CommonInitilize();
         }
 
         private void doiMatKhauToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             ChangePassword changePass = new ChangePassword(AppContext.LoggedInUser);
             changePass.ShowDialog(this);
+
+            
         }
 
         private void thoatToolStripMenuItem_Click(object sender, System.EventArgs e)

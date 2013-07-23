@@ -9,6 +9,7 @@ namespace Medical.Data
     public interface IUserRepository
     {
         User Get(string username);
+        User Get(string username, int clinicId);
         List<User> Get(int clinic);
         bool Login(string username, string password, int clinic);
         void Insert(User user);
