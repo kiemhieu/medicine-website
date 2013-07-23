@@ -68,9 +68,9 @@ namespace Medical.Synchronization
             //Add to log table
             string SQL2 = "DELETE FROM Syn" + tableName + " WHERE " + KeyColumn + "=@" + KeyColumn;
             SqlParameter[] parames2 = new SqlParameter[] { new SqlParameter("@" + KeyColumn, KeyValue) };
-            int i = SqlHelper.ExecuteNonQuery(Config.SVConnectionString, CommandType.Text, SQL2, parames2);
+            int i = SqlHelper.ExecuteNonQuery(Config.ConnectionString, CommandType.Text, SQL2, parames2);
              
-            if (i != -1) return false;
+            if (i == -1) return false;
             return true;
         }
 
