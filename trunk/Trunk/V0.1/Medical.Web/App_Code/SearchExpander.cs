@@ -7,6 +7,12 @@ using Medical.Synchronization;
 
 public class SearchExpander
 {
+    public SearchExpander(string columnname, string display)
+    {
+        this.ColumnName = columnname;
+        this.Display = display;
+    }
+
     public string ColumnName { get; set; }
 
     public string Display { get; set; }
