@@ -22,28 +22,23 @@ namespace Medical.Users
         public UserManageForm(string searchCondition)
             : this()
         {
-            this.txtPatientName.Text = searchCondition;
+            
         }
 
-        private void btnSearch_Click(object sender, EventArgs e) {
-            try {
-                this.Enabled = false;
-                this.Cursor = Cursors.WaitCursor;
-                Searh();
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
-            }
-            finally {
-                this.Enabled = true;
-                this.Cursor = Cursors.Arrow;
-            }
-        }
 
+        /// <summary>
+        /// Searhes this instance.
+        /// </summary>
         private void Searh() {
-            this.bdgUser.DataSource = userRepo.Get(this.txtPatientName.Text);
+            this.bdgUser.DataSource = userRepo.Get(AppContext.CurrentClinicId);
         }
 
-        private void PatientBrowseForm_Shown(object sender, EventArgs e) {
+        /// <summary>
+        /// Patients the browse form shown.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void PatientBrowseFormShown(object sender, EventArgs e) {
             try {
                 this.Enabled = false;
                 this.Cursor = Cursors.WaitCursor;
@@ -59,7 +54,7 @@ namespace Medical.Users
 
         public User SelectedUser { get; private set; }
 
-        private void grdPatient_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void GrdPatientCellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             this.SelectedUser = (User) this.bdgUser.List[e.RowIndex];
             if (this.SelectedUser == null) return;
@@ -113,6 +108,11 @@ namespace Medical.Users
             frmedit.ShowDialog();
            // this.bdgUser.Clear();
             //this.bdgUser.DataSource = userRepo.GetAll();
+        }
+
+        private void grdUser_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+
         }
 
     }
