@@ -42,11 +42,7 @@ namespace Medical.Synchronization
         {
             List<T> result = new List<T>();
             if (list == null) return null;
-            foreach (T obj in list)
-            {
-                SendToSV(ClientID, obj);
-                if (Exist(obj, ClientID)) result.Add(obj);
-            }
+            foreach (T obj in list) { if (SendToSV(ClientID, obj)) result.Add(obj); }
             return result;
         }
 
@@ -115,7 +111,7 @@ namespace Medical.Synchronization
                         && info.PropertyType.GetInterface(typeof(IEnumerable).Name) != null
                         && info.PropertyType.GetInterface(typeof(IEnumerable<>).Name) != null) continue;
 
-                    
+
                     object valueP = info.GetValue(obj, null);
                     if (KeyColumn == string.Empty) KeyColumn = info.Name;
                     if (KeyValue == null) KeyValue = valueP;
@@ -129,9 +125,9 @@ namespace Medical.Synchronization
 
                 //--------------------------------DELETE IF EXIST FROM SERVER TABLE-----------------------------------
                 string sqlDelete = "DELETE FROM " + tableName + " WHERE ClientID=@ClientID AND " + KeyColumn + "=@" + KeyColumn;
-                SqlParameter paramClientID = new SqlParameter("@ClientID", ClientID );
+                SqlParameter paramClientID = new SqlParameter("@ClientID", ClientID);
                 SqlParameter paramKeyColumn = new SqlParameter("@" + KeyColumn, KeyValue ?? DBNull.Value);
-                SqlHelper.ExecuteNonQuery(Config.SVConnectionString, CommandType.Text, SQL, parames.ToArray());
+                SqlHelper.ExecuteNonQuery(Config.SVConnectionString, CommandType.Text, sqlDelete, new SqlParameter[] { paramClientID, paramKeyColumn });
 
                 //--------------------------------SAVE TO SERVER TABLE------------------------------------------------
                 int i = SqlHelper.ExecuteNonQuery(Config.SVConnectionString, CommandType.Text, SQL, parames.ToArray());

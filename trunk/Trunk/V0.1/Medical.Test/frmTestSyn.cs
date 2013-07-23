@@ -20,16 +20,17 @@ namespace Medical.Test
 
         private void btnSendAll_Click(object sender, EventArgs e)
         {
-        //    string connectiongstring = Config.ConnectionString;
-        //    bool b1= SynDBCore<Figure>.SendAllToSV("1", "Id");
-        //     bool b2= SynDBCore<FigureDetail>.SendAllToSV("1", "Id");
-        //    //List<Figure> figures = SynDBCore<Figure>.GetAll();
-        //    MessageBox.Show(connectiongstring + ":" + (b1 && b2).ToString());
-        //    //SynDBCore<Figure>.SaveToDB("1", 
 
-            Synchronize synservice = new Synchronize();
-            synservice.SendingCompleted += synservice_SendingCompleted;
-            synservice.SendAll("12");
+            List<Figure> figures = SynDBCore<Figure>.GetAllToSend("Id");
+            List<Figure> figures2 = SynDBCore<Figure>.SendToSV("12", figures);
+            SynDBCore<Figure>.SaveLog(new List<Figure>(figures2));
+
+            //////////////////////////////////////////////////////////////////////
+            ////////////////////// DUNG DE GOI WEBSERVICE ////////////////////////
+            //////////////////////////////////////////////////////////////////////
+            //Synchronize synservice = new Synchronize();
+            //synservice.SendingCompleted += synservice_SendingCompleted;
+            //synservice.SendAll("12");
 
         }
 
