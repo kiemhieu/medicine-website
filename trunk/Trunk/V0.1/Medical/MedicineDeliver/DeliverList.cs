@@ -22,6 +22,7 @@ namespace Medical.MedicineDeliver
         private IClinicRepository _clinicRepo = new ClinicRepository();
         private readonly IVMedicineDeliverRepository _vMedicineRepo = new VMedicineDeliverRepository();
         private readonly IMedicineDeliveryRepository _medicineDeliveryRepo = new MedicineDeliveryRepository();
+        private Timer time;
         
         /// <summary>
         /// Initializes a new instance of the <see cref="DeliverList"/> class.
@@ -30,11 +31,36 @@ namespace Medical.MedicineDeliver
         {
             InitializeComponent();
             Initialize();
-            this.Activated += new EventHandler(DeliverListActivated);
+            time = new Timer();
+            time.Tick += TimerTick;
+            time.Interval = 10000;
+            this.Activated += DeliverListActivated;
+            this.Deactivate += DeliverListDeactivate;
+        }
+
+        /// <summary>
+        /// Delivers the list deactivate.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void DeliverListDeactivate(object sender, EventArgs e)
+        {
+            time.Stop();
+        }
+
+        /// <summary>
+        /// Timers the tick.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void TimerTick(object sender, EventArgs e)
+        {
+            UpdateGrid();
         }
 
         private void DeliverListActivated(object sender, EventArgs e)
         {
+            time.Start();
             UpdateGrid();
         }
 
@@ -75,17 +101,32 @@ namespace Medical.MedicineDeliver
             this.dataGridViewX1.ResetBindings();
         }
 
+        /// <summary>
+        /// Cboes the date value changed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void CboDateValueChanged(object sender, EventArgs e)
         {
             UpdateGrid();
         }
 
+        /// <summary>
+        /// Cboes the status selected value changed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void CboStatusSelectedValueChanged(object sender, EventArgs e)
         {
             UpdateGrid();
 
         }
 
+        /// <summary>
+        /// BTNs the deliver click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void BtnDeliverClick(object sender, EventArgs e)
         {
             if (bdsDeliver.Current == null)
@@ -106,6 +147,11 @@ namespace Medical.MedicineDeliver
             UpdateGrid();
         }
 
+        /// <summary>
+        /// Delivers the list activated1.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void DeliverListActivated1(object sender, EventArgs e)
         {
             UpdateGrid();
@@ -118,7 +164,7 @@ namespace Medical.MedicineDeliver
                 DialogResult dr = MessageBox.Show("Bạn phải chọn đơn thuốc cần phát?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 return;
             }
-            VMedicineDeliverList _medicineDelivery = (VMedicineDeliverList)bdsDeliver.Current;
+            var _medicineDelivery = (VMedicineDeliverList)bdsDeliver.Current;
             var dialogResult = MessageDialog.Instance.ShowMessage(this, "Q003", "bản ghi cấp thuốc này");
             if (dialogResult == DialogResult.No) return;
             this._medicineDeliveryRepo.Delete(_medicineDelivery.DeliverId.Value);
@@ -129,6 +175,11 @@ namespace Medical.MedicineDeliver
             
         }
 
+        /// <summary>
+        /// Datas the grid view x1 data binding complete.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="DataGridViewBindingCompleteEventArgs"/> instance containing the event data.</param>
         private void DataGridViewX1DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             var gridView = (DataGridViewX)sender;
@@ -139,6 +190,11 @@ namespace Medical.MedicineDeliver
             }
         }
 
+        /// <summary>
+        /// Datas the grid view x1 cell double click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void DataGridViewX1CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (bdsDeliver.Current == null)
@@ -159,16 +215,31 @@ namespace Medical.MedicineDeliver
             UpdateGrid();
         }
 
+        /// <summary>
+        /// Datas the grid view x1 default values needed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="DataGridViewRowEventArgs"/> instance containing the event data.</param>
         private void DataGridViewX1DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Cboes the type check value changed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void CboTypeCheckValueChanged(object sender, EventArgs e)
         {
             UpdateGrid();
         }
 
+        /// <summary>
+        /// Datas the grid view x1 row context menu strip needed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="DataGridViewRowContextMenuStripNeededEventArgs"/> instance containing the event data.</param>
         private void DataGridViewX1RowContextMenuStripNeeded(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
         {
             var gridView = (DataGridViewX)sender;
@@ -179,6 +250,11 @@ namespace Medical.MedicineDeliver
             // ctxMenu.Show();
         }
 
+        /// <summary>
+        /// Mnus the delete deliver click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void MnuDeleteDeliverClick(object sender, EventArgs e)
         {
             
