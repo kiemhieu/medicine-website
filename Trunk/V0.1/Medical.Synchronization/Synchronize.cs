@@ -132,12 +132,12 @@ namespace Medical.Synchronization
             SynService.WareHouseExportAllocate[] wareHouseExportAllocate2 = synSrv.SendWareHouseExportAllocate(wareHouseExportAllocate.ToArray(), ClientID);
             SynDBCore<SynService.WareHouseExportAllocate>.SaveLog(new List<SynService.WareHouseExportAllocate>(wareHouseExportAllocate2));
 
-            //================================WareHouseIO===============================
+            //================================ WareHouseIO ========================================
             List<SynService.WareHouseIO> wareHouseIO = SynDBCore<SynService.WareHouseIO>.GetAllToSend("Id");
             SynService.WareHouseIO[] wareHouseIO2 = synSrv.SendWareHouseIO(wareHouseIO.ToArray(), ClientID);
             SynDBCore<SynService.WareHouseIO>.SaveLog(new List<SynService.WareHouseIO>(wareHouseIO2));
 
-            //================================WareHouse IO Detail===============================
+            //================================ WareHouse IO Detail ===============================
             List<SynService.WareHouseIODetail> wareHouseIODetail = SynDBCore<SynService.WareHouseIODetail>.GetAllToSend("Id");
             SynService.WareHouseIODetail[] wareHouseIODetail2 = synSrv.SendWareHouseIODetail(wareHouseIODetail.ToArray(), ClientID);
             SynDBCore<SynService.WareHouseIODetail>.SaveLog(new List<SynService.WareHouseIODetail>(wareHouseIODetail2));
@@ -146,6 +146,16 @@ namespace Medical.Synchronization
             List<SynService.WareHouseMinimumAllow> wareHouseMinimumAllow = SynDBCore<SynService.WareHouseMinimumAllow>.GetAllToSend("Id");
             SynService.WareHouseMinimumAllow[] wareHouseMinimumAllow2 = synSrv.SendWareHouseMinimumAllow(wareHouseMinimumAllow.ToArray(), ClientID);
             SynDBCore<SynService.WareHouseMinimumAllow>.SaveLog(new List<SynService.WareHouseMinimumAllow>(wareHouseMinimumAllow2));
+
+            //===================================== User ===========================================
+            //List<SynService.User> wareHouseMinimumAllow = SynDBCore<SynService.WareHouseMinimumAllow>.GetAllToSend("Id");
+            //SynService.User[] wareHouseMinimumAllow2 = synSrv.SendWareHouseMinimumAllow(wareHouseMinimumAllow.ToArray(), ClientID);
+            //SynDBCore<SynService.User>.SaveLog(new List<SynService.WareHouseMinimumAllow>(wareHouseMinimumAllow2));
+
+            ////==================================== Medicine ===============================
+            //List<SynService.WareHouseMinimumAllow> wareHouseMinimumAllow = SynDBCore<SynService.WareHouseMinimumAllow>.GetAllToSend("Id");
+            //SynService.WareHouseMinimumAllow[] wareHouseMinimumAllow2 = synSrv.SendWareHouseMinimumAllow(wareHouseMinimumAllow.ToArray(), ClientID);
+            //SynDBCore<SynService.WareHouseMinimumAllow>.SaveLog(new List<SynService.WareHouseMinimumAllow>(wareHouseMinimumAllow2));
 
             if (SendingCompleted != null) SendingCompleted(figures, e);
         }
