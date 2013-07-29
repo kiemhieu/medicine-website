@@ -3259,6 +3259,448 @@ namespace Medical.Synchronization.SynService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Medicine", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Medicine : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdField;
+        
+        private int TypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContentUnitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UnitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TradeNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        private System.DateTime CreatedDateField;
+        
+        private int CreatedByField;
+        
+        private System.DateTime LastUpdatedDateField;
+        
+        private int LastUpdatedByField;
+        
+        private int VersionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((this.TypeField.Equals(value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Content {
+            get {
+                return this.ContentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContentField, value) != true)) {
+                    this.ContentField = value;
+                    this.RaisePropertyChanged("Content");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string ContentUnit {
+            get {
+                return this.ContentUnitField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContentUnitField, value) != true)) {
+                    this.ContentUnitField = value;
+                    this.RaisePropertyChanged("ContentUnit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string Unit {
+            get {
+                return this.UnitField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UnitField, value) != true)) {
+                    this.UnitField = value;
+                    this.RaisePropertyChanged("Unit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public string TradeName {
+            get {
+                return this.TradeNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TradeNameField, value) != true)) {
+                    this.TradeNameField = value;
+                    this.RaisePropertyChanged("TradeName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
+        public System.DateTime CreatedDate {
+            get {
+                return this.CreatedDateField;
+            }
+            set {
+                if ((this.CreatedDateField.Equals(value) != true)) {
+                    this.CreatedDateField = value;
+                    this.RaisePropertyChanged("CreatedDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
+        public int CreatedBy {
+            get {
+                return this.CreatedByField;
+            }
+            set {
+                if ((this.CreatedByField.Equals(value) != true)) {
+                    this.CreatedByField = value;
+                    this.RaisePropertyChanged("CreatedBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=10)]
+        public System.DateTime LastUpdatedDate {
+            get {
+                return this.LastUpdatedDateField;
+            }
+            set {
+                if ((this.LastUpdatedDateField.Equals(value) != true)) {
+                    this.LastUpdatedDateField = value;
+                    this.RaisePropertyChanged("LastUpdatedDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=11)]
+        public int LastUpdatedBy {
+            get {
+                return this.LastUpdatedByField;
+            }
+            set {
+                if ((this.LastUpdatedByField.Equals(value) != true)) {
+                    this.LastUpdatedByField = value;
+                    this.RaisePropertyChanged("LastUpdatedBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=12)]
+        public int Version {
+            get {
+                return this.VersionField;
+            }
+            set {
+                if ((this.VersionField.Equals(value) != true)) {
+                    this.VersionField = value;
+                    this.RaisePropertyChanged("Version");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdField;
+        
+        private int ClinicIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        private int RoleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        private bool ActiveField;
+        
+        private System.DateTime CreatedDateField;
+        
+        private int CrearedUserField;
+        
+        private System.DateTime LastUpdatedDateField;
+        
+        private int LastUpdatedUserField;
+        
+        private int VersionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
+        public int ClinicId {
+            get {
+                return this.ClinicIdField;
+            }
+            set {
+                if ((this.ClinicIdField.Equals(value) != true)) {
+                    this.ClinicIdField = value;
+                    this.RaisePropertyChanged("ClinicId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public int Role {
+            get {
+                return this.RoleField;
+            }
+            set {
+                if ((this.RoleField.Equals(value) != true)) {
+                    this.RoleField = value;
+                    this.RaisePropertyChanged("Role");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public bool Active {
+            get {
+                return this.ActiveField;
+            }
+            set {
+                if ((this.ActiveField.Equals(value) != true)) {
+                    this.ActiveField = value;
+                    this.RaisePropertyChanged("Active");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        public System.DateTime CreatedDate {
+            get {
+                return this.CreatedDateField;
+            }
+            set {
+                if ((this.CreatedDateField.Equals(value) != true)) {
+                    this.CreatedDateField = value;
+                    this.RaisePropertyChanged("CreatedDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
+        public int CrearedUser {
+            get {
+                return this.CrearedUserField;
+            }
+            set {
+                if ((this.CrearedUserField.Equals(value) != true)) {
+                    this.CrearedUserField = value;
+                    this.RaisePropertyChanged("CrearedUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
+        public System.DateTime LastUpdatedDate {
+            get {
+                return this.LastUpdatedDateField;
+            }
+            set {
+                if ((this.LastUpdatedDateField.Equals(value) != true)) {
+                    this.LastUpdatedDateField = value;
+                    this.RaisePropertyChanged("LastUpdatedDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=10)]
+        public int LastUpdatedUser {
+            get {
+                return this.LastUpdatedUserField;
+            }
+            set {
+                if ((this.LastUpdatedUserField.Equals(value) != true)) {
+                    this.LastUpdatedUserField = value;
+                    this.RaisePropertyChanged("LastUpdatedUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=11)]
+        public int Version {
+            get {
+                return this.VersionField;
+            }
+            set {
+                if ((this.VersionField.Equals(value) != true)) {
+                    this.VersionField = value;
+                    this.RaisePropertyChanged("Version");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SynService.SynServiceSoap")]
     public interface SynServiceSoap {
@@ -3334,6 +3776,14 @@ namespace Medical.Synchronization.SynService {
         // CODEGEN: Generating message contract since element name warehouseminimumallow from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SendWareHouseMinimumAllow", ReplyAction="*")]
         Medical.Synchronization.SynService.SendWareHouseMinimumAllowResponse SendWareHouseMinimumAllow(Medical.Synchronization.SynService.SendWareHouseMinimumAllowRequest request);
+        
+        // CODEGEN: Generating message contract since element name medicines from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SendMedicines", ReplyAction="*")]
+        Medical.Synchronization.SynService.SendMedicinesResponse SendMedicines(Medical.Synchronization.SynService.SendMedicinesRequest request);
+        
+        // CODEGEN: Generating message contract since element name users from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SendUser", ReplyAction="*")]
+        Medical.Synchronization.SynService.SendUserResponse SendUser(Medical.Synchronization.SynService.SendUserRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -4632,6 +5082,150 @@ namespace Medical.Synchronization.SynService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SendMedicinesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SendMedicines", Namespace="http://tempuri.org/", Order=0)]
+        public Medical.Synchronization.SynService.SendMedicinesRequestBody Body;
+        
+        public SendMedicinesRequest() {
+        }
+        
+        public SendMedicinesRequest(Medical.Synchronization.SynService.SendMedicinesRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SendMedicinesRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.Medicine[] medicines;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string ClientID;
+        
+        public SendMedicinesRequestBody() {
+        }
+        
+        public SendMedicinesRequestBody(Medical.Synchronization.SynService.Medicine[] medicines, string ClientID) {
+            this.medicines = medicines;
+            this.ClientID = ClientID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SendMedicinesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SendMedicinesResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Medical.Synchronization.SynService.SendMedicinesResponseBody Body;
+        
+        public SendMedicinesResponse() {
+        }
+        
+        public SendMedicinesResponse(Medical.Synchronization.SynService.SendMedicinesResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SendMedicinesResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.Medicine[] SendMedicinesResult;
+        
+        public SendMedicinesResponseBody() {
+        }
+        
+        public SendMedicinesResponseBody(Medical.Synchronization.SynService.Medicine[] SendMedicinesResult) {
+            this.SendMedicinesResult = SendMedicinesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SendUserRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SendUser", Namespace="http://tempuri.org/", Order=0)]
+        public Medical.Synchronization.SynService.SendUserRequestBody Body;
+        
+        public SendUserRequest() {
+        }
+        
+        public SendUserRequest(Medical.Synchronization.SynService.SendUserRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SendUserRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.User[] users;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string ClientID;
+        
+        public SendUserRequestBody() {
+        }
+        
+        public SendUserRequestBody(Medical.Synchronization.SynService.User[] users, string ClientID) {
+            this.users = users;
+            this.ClientID = ClientID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SendUserResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SendUserResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Medical.Synchronization.SynService.SendUserResponseBody Body;
+        
+        public SendUserResponse() {
+        }
+        
+        public SendUserResponse(Medical.Synchronization.SynService.SendUserResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SendUserResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Medical.Synchronization.SynService.User[] SendUserResult;
+        
+        public SendUserResponseBody() {
+        }
+        
+        public SendUserResponseBody(Medical.Synchronization.SynService.User[] SendUserResult) {
+            this.SendUserResult = SendUserResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface SynServiceSoapChannel : Medical.Synchronization.SynService.SynServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -4909,6 +5503,34 @@ namespace Medical.Synchronization.SynService {
             inValue.Body.ClientID = ClientID;
             Medical.Synchronization.SynService.SendWareHouseMinimumAllowResponse retVal = ((Medical.Synchronization.SynService.SynServiceSoap)(this)).SendWareHouseMinimumAllow(inValue);
             return retVal.Body.SendWareHouseMinimumAllowResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Medical.Synchronization.SynService.SendMedicinesResponse Medical.Synchronization.SynService.SynServiceSoap.SendMedicines(Medical.Synchronization.SynService.SendMedicinesRequest request) {
+            return base.Channel.SendMedicines(request);
+        }
+        
+        public Medical.Synchronization.SynService.Medicine[] SendMedicines(Medical.Synchronization.SynService.Medicine[] medicines, string ClientID) {
+            Medical.Synchronization.SynService.SendMedicinesRequest inValue = new Medical.Synchronization.SynService.SendMedicinesRequest();
+            inValue.Body = new Medical.Synchronization.SynService.SendMedicinesRequestBody();
+            inValue.Body.medicines = medicines;
+            inValue.Body.ClientID = ClientID;
+            Medical.Synchronization.SynService.SendMedicinesResponse retVal = ((Medical.Synchronization.SynService.SynServiceSoap)(this)).SendMedicines(inValue);
+            return retVal.Body.SendMedicinesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Medical.Synchronization.SynService.SendUserResponse Medical.Synchronization.SynService.SynServiceSoap.SendUser(Medical.Synchronization.SynService.SendUserRequest request) {
+            return base.Channel.SendUser(request);
+        }
+        
+        public Medical.Synchronization.SynService.User[] SendUser(Medical.Synchronization.SynService.User[] users, string ClientID) {
+            Medical.Synchronization.SynService.SendUserRequest inValue = new Medical.Synchronization.SynService.SendUserRequest();
+            inValue.Body = new Medical.Synchronization.SynService.SendUserRequestBody();
+            inValue.Body.users = users;
+            inValue.Body.ClientID = ClientID;
+            Medical.Synchronization.SynService.SendUserResponse retVal = ((Medical.Synchronization.SynService.SynServiceSoap)(this)).SendUser(inValue);
+            return retVal.Body.SendUserResult;
         }
     }
 }
