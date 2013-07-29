@@ -3270,19 +3270,16 @@ namespace Medical.Synchronization.SynService {
         
         private int IdField;
         
-        private int TypeField;
+        private bool TypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ContentField;
+        private int ContentField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ContentUnitField;
+        private int ContentUnitField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UnitField;
+        private int UnitField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TradeNameField;
@@ -3324,7 +3321,7 @@ namespace Medical.Synchronization.SynService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int Type {
+        public bool Type {
             get {
                 return this.TypeField;
             }
@@ -3349,39 +3346,39 @@ namespace Medical.Synchronization.SynService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string Content {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public int Content {
             get {
                 return this.ContentField;
             }
             set {
-                if ((object.ReferenceEquals(this.ContentField, value) != true)) {
+                if ((this.ContentField.Equals(value) != true)) {
                     this.ContentField = value;
                     this.RaisePropertyChanged("Content");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string ContentUnit {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public int ContentUnit {
             get {
                 return this.ContentUnitField;
             }
             set {
-                if ((object.ReferenceEquals(this.ContentUnitField, value) != true)) {
+                if ((this.ContentUnitField.Equals(value) != true)) {
                     this.ContentUnitField = value;
                     this.RaisePropertyChanged("ContentUnit");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public string Unit {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public int Unit {
             get {
                 return this.UnitField;
             }
             set {
-                if ((object.ReferenceEquals(this.UnitField, value) != true)) {
+                if ((this.UnitField.Equals(value) != true)) {
                     this.UnitField = value;
                     this.RaisePropertyChanged("Unit");
                 }

@@ -97,7 +97,7 @@ namespace Medical.Synchronization
                 SqlParameter param0 = new SqlParameter("@ClientID", ClientID);
                 parames.Add(param0);
 
-                string SQL = "INSERT INTO " + tableName + " VALUES (@ClientID";
+                string SQL = "INSERT INTO [" + tableName + "] VALUES (@ClientID";
                 int KeyIndex = -1;
                 foreach (PropertyInfo info in infos)
                 {
@@ -121,7 +121,7 @@ namespace Medical.Synchronization
                 SQL += ")";
 
                 //--------------------------------DELETE IF EXIST FROM SERVER TABLE-----------------------------------
-                string sqlDelete = "DELETE FROM " + tableName + " WHERE ClientID=@ClientID AND " + KeyColumn + "=@" + KeyColumn;
+                string sqlDelete = "DELETE FROM [" + tableName + "] WHERE ClientID=@ClientID AND " + KeyColumn + "=@" + KeyColumn;
                 SqlParameter paramClientID = new SqlParameter("@ClientID", ClientID);
                 SqlParameter paramKeyColumn = new SqlParameter("@" + KeyColumn, KeyValue ?? DBNull.Value);
                 SqlHelper.ExecuteNonQuery(Config.SVConnectionString, CommandType.Text, sqlDelete, new SqlParameter[] { paramClientID, paramKeyColumn });
@@ -157,7 +157,7 @@ namespace Medical.Synchronization
                 foreach (T obj in list)
                 {
                     //Add to log table
-                    string SQL2 = "INSERT INTO Syn" + tableName + " VALUES (@" + KeyColumn + ")";
+                    string SQL2 = "INSERT INTO [Syn" + tableName + "] VALUES (@" + KeyColumn + ")";
                     SqlParameter[] parames2 = new SqlParameter[] { new SqlParameter("@" + KeyColumn, infos[KeyIndex].GetValue(obj, null)) };
                     int j = SqlHelper.ExecuteNonQuery(Config.ConnectionString, CommandType.Text, SQL2, parames2);
                 }
@@ -177,7 +177,7 @@ namespace Medical.Synchronization
         public static List<T> GetAll()
         {
             string tableName = GetTableName();
-            string SQL = "SELECT * FROM " + tableName;
+            string SQL = "SELECT * FROM [" + tableName + "]";
             List<T> result = null;
             DataSet dataset = SqlHelper.ExecuteDataset(Config.ConnectionString, CommandType.Text, SQL);
             if (dataset != null && dataset.Tables.Count > 0)
@@ -203,7 +203,7 @@ namespace Medical.Synchronization
         public static List<T> GetAllToSend(string KeyColumn)
         {
             string tableName = GetTableName();
-            string SQL = "SELECT * FROM " + tableName + " WHERE " + KeyColumn + " NOT IN (SELECT " + KeyColumn + " FROM Syn" + tableName + ")";
+            string SQL = "SELECT * FROM [" + tableName + "] WHERE " + KeyColumn + " NOT IN (SELECT " + KeyColumn + " FROM [Syn" + tableName + "])";
             List<T> result = null;
             DataSet dataset = SqlHelper.ExecuteDataset(Config.ConnectionString, CommandType.Text, SQL);
             if (dataset != null && dataset.Tables.Count > 0)
