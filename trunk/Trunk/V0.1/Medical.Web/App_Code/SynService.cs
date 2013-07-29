@@ -258,4 +258,30 @@ public class SynService : System.Web.Services.WebService
             return null;
         }
     }
+
+    [WebMethod]
+    public List<Medicine> SendMedicines(List<Medicine> medicines, string ClientID)
+    {
+        try
+        {
+            return SynDBCore<Medicine>.SendToSV(ClientID, medicines);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    [WebMethod]
+    public List<User> SendUser(List<User> users, string ClientID)
+    {
+        try
+        {
+            return SynDBCore<User>.SendToSV(ClientID, users);
+        }
+        catch
+        {
+            return null;
+        }
+    }
 }
