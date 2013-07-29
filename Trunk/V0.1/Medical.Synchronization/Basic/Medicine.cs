@@ -20,11 +20,11 @@ namespace Medical.Synchronization.Basic
 
         #region Class Property Declarations
         public int Id { get; set; }
-        public int Type { get; set; }
+        public bool Type { get; set; }
         public string Name { get; set; }
-        public string Content { get; set; }
-        public string ContentUnit { get; set; }
-        public string Unit { get; set; }
+        public int Content { get; set; }
+        public int ContentUnit { get; set; }
+        public int Unit { get; set; }
         public string TradeName { get; set; }
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; }
