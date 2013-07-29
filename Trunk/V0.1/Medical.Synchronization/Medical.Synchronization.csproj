@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Basic\Figure.cs" />
     <Compile Include="Basic\FigureDetail.cs" />
+    <Compile Include="Basic\Medicine.cs" />
     <Compile Include="Basic\MedicineDelivery.cs" />
     <Compile Include="Basic\MedicineDeliveryDetail.cs" />
     <Compile Include="Basic\MedicineDeliveryDetailAllocate.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Basic\PatientFigure.cs" />
     <Compile Include="Basic\Prescription.cs" />
     <Compile Include="Basic\PrescriptionDetail.cs" />
+    <Compile Include="Basic\User.cs" />
     <Compile Include="Basic\WareHouse.cs" />
     <Compile Include="Basic\WareHouseDetail.cs" />
     <Compile Include="Basic\WareHouseExportAllocate.cs" />
