@@ -256,6 +256,8 @@ namespace Medical.Synchronization
                 TableName = Constant_Table.FIGURE;
             else if (typeof(T).Name == typeof(FigureDetail).Name)
                 TableName = Constant_Table.FIGUREDE_DETAIL;
+            else if (typeof(T).Name == typeof(Medicine).Name)
+                TableName = Constant_Table.MEDICINE;
             else if (typeof(T).Name == typeof(MedicineDelivery).Name)
                 TableName = Constant_Table.MEDICINE_DELIVERY;
             else if (typeof(T).Name == typeof(MedicineDeliveryDetail).Name)
@@ -288,6 +290,8 @@ namespace Medical.Synchronization
                 TableName = Constant_Table.WAREHOUSE_IO_DETAIL;
             else if (typeof(T).Name == typeof(WareHouseMinimumAllow).Name)
                 TableName = Constant_Table.WAREHOUSE_MINIMUM_ALLOW;
+            else if (typeof(T).Name == typeof(User).Name)
+                TableName = Constant_Table.USER;
             return TableName;
         }
     }
@@ -300,6 +304,8 @@ namespace Medical.Synchronization
     {
         public const string FIGURE = "Figure";
         public const string FIGUREDE_DETAIL = "FigureDetail";
+        public const string MEDICINE = "Medicine";
+        public const string USER = "User";
         public const string MEDICINE_DELIVERY = "MedicineDelivery";
         public const string MEDICIN_EDELIVERY_DETAIL = "MedicineDeliveryDetail";
         public const string MEDICIN_EDELIVERY_DETAIL_ALLOCATE = "MedicineDeliveryDetailAllocate";

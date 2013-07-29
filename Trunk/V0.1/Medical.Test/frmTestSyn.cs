@@ -21,19 +21,19 @@ namespace Medical.Test
         private void btnSendAll_Click(object sender, EventArgs e)
         {
 
-            ////////////////////////////////////////////////////////////////////
-            //////////////////// DUNG DE GOI TrUC TIEP K THONG QUA WEBSERVICE///
-            ////////////////////////////////////////////////////////////////////
-            List<Figure> figures = SynDBCore<Figure>.GetAllToSend("Id");
-            List<Figure> figures2 = SynDBCore<Figure>.SendToSV("12", figures);
-            SynDBCore<Figure>.SaveLog(new List<Figure>(figures2));
-            //return
+            //////////////////////////////////////////////////////////////////////
+            ////////////////////// DUNG DE GOI TrUC TIEP K THONG QUA WEBSERVICE///
+            //////////////////////////////////////////////////////////////////////
+            //List<Figure> figures = SynDBCore<Figure>.GetAllToSend("Id");
+            //List<Figure> figures2 = SynDBCore<Figure>.SendToSV("12", figures);
+            //SynDBCore<Figure>.SaveLog(new List<Figure>(figures2));
+            ////return
 
-            ////////////////////////////////////////////////////////////////////
-            ////// DUNG DE KHAI BAO FIGURE CO ID=6 VUA MOI THAY DOI(SUA, XOA)///
-            ////////////////////////////////////////////////////////////////////
-            if (SynDBCore<Figure>.SaveChange(6)) MessageBox.Show("Change data completed");
-            return;
+            //////////////////////////////////////////////////////////////////////
+            //////// DUNG DE KHAI BAO FIGURE CO ID=6 VUA MOI THAY DOI(SUA, XOA)///
+            //////////////////////////////////////////////////////////////////////
+            //if (SynDBCore<Figure>.SaveChange(6)) MessageBox.Show("Change data completed");
+            //return;
 
             ////////////////////////////////////////////////////////////////////
             //////////////////// DUNG DE GOI WEBSERVICE ////////////////////////
@@ -41,7 +41,7 @@ namespace Medical.Test
             Synchronize synservice = new Synchronize();
             synservice.SendingCompleted += synservice_SendingCompleted;
             synservice.SendAll("12");
-
+            MessageBox.Show("Change data completed");
         }
 
         void synservice_SendingCompleted(object sender, EventArgs e)
