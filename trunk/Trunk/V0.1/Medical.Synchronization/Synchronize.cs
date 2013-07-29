@@ -148,14 +148,14 @@ namespace Medical.Synchronization
             SynDBCore<SynService.WareHouseMinimumAllow>.SaveLog(new List<SynService.WareHouseMinimumAllow>(wareHouseMinimumAllow2));
 
             //===================================== User ===========================================
-            //List<SynService.User> wareHouseMinimumAllow = SynDBCore<SynService.WareHouseMinimumAllow>.GetAllToSend("Id");
-            //SynService.User[] wareHouseMinimumAllow2 = synSrv.SendWareHouseMinimumAllow(wareHouseMinimumAllow.ToArray(), ClientID);
-            //SynDBCore<SynService.User>.SaveLog(new List<SynService.WareHouseMinimumAllow>(wareHouseMinimumAllow2));
+            List<SynService.User> users = SynDBCore<SynService.User>.GetAllToSend("Id");
+            SynService.User[] users2 = synSrv.SendUser(users.ToArray(), ClientID);
+            SynDBCore<SynService.User>.SaveLog(new List<SynService.User>(users2));
 
-            ////==================================== Medicine ===============================
-            //List<SynService.WareHouseMinimumAllow> wareHouseMinimumAllow = SynDBCore<SynService.WareHouseMinimumAllow>.GetAllToSend("Id");
-            //SynService.WareHouseMinimumAllow[] wareHouseMinimumAllow2 = synSrv.SendWareHouseMinimumAllow(wareHouseMinimumAllow.ToArray(), ClientID);
-            //SynDBCore<SynService.WareHouseMinimumAllow>.SaveLog(new List<SynService.WareHouseMinimumAllow>(wareHouseMinimumAllow2));
+            //==================================== Medicine ===============================
+            List<SynService.Medicine> medicines = SynDBCore<SynService.Medicine>.GetAllToSend("Id");
+            SynService.Medicine[] medicines2 = synSrv.SendMedicines(medicines.ToArray(), ClientID);
+            SynDBCore<SynService.Medicine>.SaveLog(new List<SynService.Medicine>(medicines2));
 
             if (SendingCompleted != null) SendingCompleted(figures, e);
         }

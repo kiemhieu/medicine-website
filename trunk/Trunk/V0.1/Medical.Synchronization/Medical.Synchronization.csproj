@@ -89,6 +89,9 @@
     <None Include="Service References\SynService\Medical.Synchronization.SynService.FigureDetail.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.Medicine.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\SynService\Medical.Synchronization.SynService.MedicineDelivery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -117,6 +120,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\SynService\Medical.Synchronization.SynService.PrescriptionDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SynService\Medical.Synchronization.SynService.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\SynService\Medical.Synchronization.SynService.WareHouse.datasource">
