@@ -12,11 +12,16 @@ public class SearchExpander
         this.ColumnName = columnname;
         this.Display = display;
         this.Type = type;
+        this.Refference = null;
     }
 
     public string ColumnName { get; set; }
 
     public string Display { get; set; }
+
+    public Type Refference { get; set; }
+
+    public string RefferenceColumn { get; set; }
 
     public Type Type { get; set; }
 }
