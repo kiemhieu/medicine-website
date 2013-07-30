@@ -261,9 +261,9 @@ namespace Medical.Synchronization
             else if (typeof(T).Name == typeof(MedicineDelivery).Name)
                 TableName = Constant_Table.MEDICINE_DELIVERY;
             else if (typeof(T).Name == typeof(MedicineDeliveryDetail).Name)
-                TableName = Constant_Table.MEDICIN_EDELIVERY_DETAIL;
+                TableName = Constant_Table.MEDICIN_DELIVERY_DETAIL;
             else if (typeof(T).Name == typeof(MedicineDeliveryDetailAllocate).Name)
-                TableName = Constant_Table.MEDICIN_EDELIVERY_DETAIL_ALLOCATE;
+                TableName = Constant_Table.MEDICIN_DELIVERY_DETAIL_ALLOCATE;
             else if (typeof(T).Name == typeof(MedicinePlan).Name)
                 TableName = Constant_Table.MEDICINE_PLAN;
             else if (typeof(T).Name == typeof(MedicinePlanDetail).Name)
@@ -307,8 +307,8 @@ namespace Medical.Synchronization
         public const string MEDICINE = "Medicine";
         public const string USER = "User";
         public const string MEDICINE_DELIVERY = "MedicineDelivery";
-        public const string MEDICIN_EDELIVERY_DETAIL = "MedicineDeliveryDetail";
-        public const string MEDICIN_EDELIVERY_DETAIL_ALLOCATE = "MedicineDeliveryDetailAllocate";
+        public const string MEDICIN_DELIVERY_DETAIL = "MedicineDeliveryDetail";
+        public const string MEDICIN_DELIVERY_DETAIL_ALLOCATE = "MedicineDeliveryDetailAllocate";
         public const string MEDICINE_PLAN = "MedicinePlan";
         public const string MEDICINE_PLAN_DETAIL = "MedicinePlanDetail";
         public const string MEDICINE_UNIT_PRICE = "MedicineUnitPrice";

@@ -3,5 +3,5 @@
 <%@ Register src="Usercontrol/uDetail.ascx" tagname="uDetail" tagprefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-    <uc1:uDetail ID="uDetail1" runat="server" />
+    <uc1:uDetail ID="uctDetail" runat="server" />
 </asp:Content>

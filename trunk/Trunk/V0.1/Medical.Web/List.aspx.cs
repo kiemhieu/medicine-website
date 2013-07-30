@@ -58,9 +58,9 @@ public partial class List : System.Web.UI.Page
                 searchConditions.Add(new SearchExpander("LastUpdatedUser", "LastUpdatedUser", typeof(string)));
                 uctListBase.SearchConditions = searchConditions;
             }
-            else if (segment.ToUpper() == Constant_Table.MEDICIN_EDELIVERY_DETAIL.ToUpper())
+            else if (segment.ToUpper() == Constant_Table.MEDICIN_DELIVERY_DETAIL.ToUpper())
             {
-                uctListBase.TableName = Constant_Table.MEDICIN_EDELIVERY_DETAIL;
+                uctListBase.TableName = Constant_Table.MEDICIN_DELIVERY_DETAIL;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
                 searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
                 searchConditions.Add(new SearchExpander("MedicineDeliveryId", "MedicineDeliveryId", typeof(int)));
@@ -72,9 +72,9 @@ public partial class List : System.Web.UI.Page
                 searchConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
                 uctListBase.SearchConditions = searchConditions;
             }
-            else if (segment.ToUpper() == Constant_Table.MEDICIN_EDELIVERY_DETAIL_ALLOCATE.ToUpper())
+            else if (segment.ToUpper() == Constant_Table.MEDICIN_DELIVERY_DETAIL_ALLOCATE.ToUpper())
             {
-                uctListBase.TableName = Constant_Table.MEDICIN_EDELIVERY_DETAIL_ALLOCATE;
+                uctListBase.TableName = Constant_Table.MEDICIN_DELIVERY_DETAIL_ALLOCATE;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
                 searchConditions.Add(new SearchExpander("Id", "Id", typeof(string)));
                 searchConditions.Add(new SearchExpander("MedicineDeliveryDetailId", "MedicineDeliveryDetailId", typeof(int)));

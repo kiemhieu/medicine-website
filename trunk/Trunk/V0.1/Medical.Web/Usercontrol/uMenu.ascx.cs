@@ -39,15 +39,15 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
         chucNangCha.Items.Add(chucNangCon2_1);
 
         RadMenuItem chucNangCon3 = new RadMenuItem();
-        chucNangCon3.Value = Constant_Table.MEDICIN_EDELIVERY_DETAIL;
-        chucNangCon3.Text = "Danh sách " + Constant_Table.MEDICIN_EDELIVERY_DETAIL;
-        chucNangCon3.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.MEDICIN_EDELIVERY_DETAIL).ToLower();
+        chucNangCon3.Value = Constant_Table.MEDICIN_DELIVERY_DETAIL;
+        chucNangCon3.Text = "Danh sách " + Constant_Table.MEDICIN_DELIVERY_DETAIL;
+        chucNangCon3.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.MEDICIN_DELIVERY_DETAIL).ToLower();
         chucNangCha.Items.Add(chucNangCon3);
 
         RadMenuItem chucNangCon4 = new RadMenuItem();
-        chucNangCon4.Value = Constant_Table.MEDICIN_EDELIVERY_DETAIL_ALLOCATE;
-        chucNangCon4.Text = "Danh sách " + Constant_Table.MEDICIN_EDELIVERY_DETAIL_ALLOCATE;
-        chucNangCon4.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.MEDICIN_EDELIVERY_DETAIL_ALLOCATE).ToLower();
+        chucNangCon4.Value = Constant_Table.MEDICIN_DELIVERY_DETAIL_ALLOCATE;
+        chucNangCon4.Text = "Danh sách " + Constant_Table.MEDICIN_DELIVERY_DETAIL_ALLOCATE;
+        chucNangCon4.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.MEDICIN_DELIVERY_DETAIL_ALLOCATE).ToLower();
         chucNangCha.Items.Add(chucNangCon4);
 
         RadMenuItem chucNangCon5 = new RadMenuItem();
