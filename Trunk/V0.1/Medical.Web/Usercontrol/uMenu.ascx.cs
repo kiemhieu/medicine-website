@@ -22,7 +22,7 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
     {
         RadMenuItem chucNangCon1 = new RadMenuItem();
         chucNangCon1.Value = Constant_Table.FIGURE;
-        chucNangCon1.Text = "Danh sách phác đồ";// +Constant_Table.FIGURE;
+        chucNangCon1.Text = "Phác đồ thuốc (" + Constant_Table.FIGURE + ")";
         chucNangCon1.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.FIGURE).ToLower();
         chucNangCha.Items.Add(chucNangCon1);
 
@@ -88,7 +88,7 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
 
         RadMenuItem chucNangCon11 = new RadMenuItem();
         chucNangCon11.Value = Constant_Table.PRESCRIPTION;
-        chucNangCon11.Text = "Danh sách " + Constant_Table.PRESCRIPTION;
+        chucNangCon11.Text = "Danh sách đơn thuốc";// +Constant_Table.PRESCRIPTION;
         chucNangCon11.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.PRESCRIPTION).ToLower();
         chucNangCha.Items.Add(chucNangCon11);
 

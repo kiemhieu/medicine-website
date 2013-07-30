@@ -10,5 +10,6 @@ public partial class SiteMaster : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
         //if (Session["Logined"] == null || (bool)Session["Logined"] != true) Response.Redirect("~/login.aspx");
+        if(string.IsNullOrEmpty(Page.User.Identity.Name)) Response.Redirect("~/login.aspx");
     }
 }

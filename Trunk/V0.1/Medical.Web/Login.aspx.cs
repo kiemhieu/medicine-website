@@ -9,7 +9,7 @@ public partial class user_Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["Logined"]  != null && (bool)Session["Logined"] == true) Response.Redirect("Default.aspx");
+        if (!string.IsNullOrEmpty(Page.User.Identity.Name)) Response.Redirect("Default.aspx");
     }
 
 
