@@ -1,4 +1,5 @@
 ﻿using Medical.Synchronization;
+using Microsoft.AspNet.FriendlyUrls;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -42,10 +43,22 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                 gvListData.AllowPaging = true;
                 foreach (SearchExpander seardcondition in searchConditions)
                 {
-                    BoundField boundField = new BoundField();
-                    boundField.DataField = seardcondition.ColumnName;
-                    boundField.HeaderText = seardcondition.Display;
-                    gvListData.Columns.Add(boundField);
+                    if (!seardcondition.HasDetail)
+                    {
+                        BoundField boundField = new BoundField();
+                        boundField.DataField = seardcondition.ColumnName;
+                        boundField.HeaderText = seardcondition.Display;
+                        gvListData.Columns.Add(boundField);
+                    }
+                    else
+                    {
+                        HyperLinkField linkField = new HyperLinkField();
+                        linkField.DataNavigateUrlFields = new string[] { "ClientId", "Id" };
+                        linkField.DataNavigateUrlFormatString = FriendlyUrl.Href("~/detail").ToLower() + "/" + TableName.ToLower() + "/{0}/{1}";
+                        linkField.HeaderText = seardcondition.Display;
+                        linkField.DataTextField = seardcondition.ColumnName;
+                        gvListData.Columns.Add(linkField);
+                    }
                 }
 
                 //List Clinic in server

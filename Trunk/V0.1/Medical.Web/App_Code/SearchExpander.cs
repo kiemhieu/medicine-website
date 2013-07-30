@@ -7,12 +7,51 @@ using Medical.Synchronization;
 
 public class SearchExpander
 {
+    /// <summary>
+    /// Constructor 1 - default
+    /// </summary>
+    /// <param name="columnname"></param>
+    /// <param name="display"></param>
+    /// <param name="type"></param>
     public SearchExpander(string columnname, string display, Type type)
     {
         this.ColumnName = columnname;
         this.Display = display;
         this.Type = type;
         this.Refference = null;
+        this.HasDetail = false;
+    }
+
+    /// <summary>
+    /// Constructor 1 - has detail items
+    /// </summary>
+    /// <param name="columnname"></param>
+    /// <param name="display"></param>
+    /// <param name="type"></param>
+    public SearchExpander(string columnname, string display, Type type, bool hasdetail)
+    {
+        this.ColumnName = columnname;
+        this.Display = display;
+        this.Type = type;
+        this.Refference = null;
+        this.HasDetail = hasdetail;
+    }
+
+    /// <summary>
+    /// Constructor 1 - has refference column
+    /// </summary>
+    /// <param name="columnname"></param>
+    /// <param name="display"></param>
+    /// <param name="type"></param>
+    public SearchExpander(string columnname, string display, Type type, string refferencecolumn, Type refference)
+    {
+        this.ColumnName = columnname;
+        this.Display = display;
+        this.Type = type;
+        this.RefferenceColumn = refferencecolumn;
+        this.Refference = refference;
+        this.HasDetail = false;
+
     }
 
     public string ColumnName { get; set; }
@@ -24,4 +63,6 @@ public class SearchExpander
     public string RefferenceColumn { get; set; }
 
     public Type Type { get; set; }
+
+    public bool HasDetail { get; set; }
 }

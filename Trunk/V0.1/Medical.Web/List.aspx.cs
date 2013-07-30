@@ -19,7 +19,7 @@ public partial class List : System.Web.UI.Page
                 uctListBase.TableName = Constant_Table.FIGURE;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
                 searchConditions.Add(new SearchExpander("Id", "Mã", typeof(string)));
-                searchConditions.Add(new SearchExpander("Name", "Tên gọi", typeof(string)));
+                searchConditions.Add(new SearchExpander("Name", "Tên gọi", typeof(string), true));
                 searchConditions.Add(new SearchExpander("Description", "Ghi chú", typeof(string)));
                 uctListBase.SearchConditions = searchConditions;
             }
