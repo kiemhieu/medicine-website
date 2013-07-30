@@ -161,7 +161,7 @@ public partial class List : System.Web.UI.Page
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
                 searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
                 searchConditions.Add(new SearchExpander("PatientId", "PatientId", typeof(int)));
-                searchConditions.Add(new SearchExpander("DoctorId", "DoctorId", typeof(int)));
+                searchConditions.Add(new SearchExpander("DoctorId", "DoctorId", typeof(int), "Name", typeof(Medical.Synchronization.Basic.User)));
                 searchConditions.Add(new SearchExpander("Date", "Date", typeof(int)));
                 searchConditions.Add(new SearchExpander("FigureId", "FigureId", typeof(int)));
                 searchConditions.Add(new SearchExpander("Note", "Note", typeof(object)));
