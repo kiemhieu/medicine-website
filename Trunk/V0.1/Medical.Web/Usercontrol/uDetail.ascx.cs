@@ -10,9 +10,17 @@ using System.Web.UI.WebControls;
 
 public partial class Usercontrol_uDetail : System.Web.UI.UserControl
 {
+    public string TableName { get; set; }
+    public string ClientId { get; set; }
+    public string Id { get; set; }
+    public List<SearchExpander> SearchConditionsId { get; set; }
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+        {
+            LoadList();
+        }
     }
 
     public void pager_Command(object sender, CommandEventArgs e)
@@ -38,8 +46,8 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
         //          dbo.Clinic ON dbo.Figure.ClientID = dbo.Clinic.Id
 
         //Add to log table
-        //string sSQL = "SELECT Clinic.Name AS ClinicName," + TableName + ".* FROM " + TableName + " INNER JOIN Clinic ON " + TableName + ".ClientID = Clinic.Id WHERE 1=1 ";
-        //string sListFields = string.Empty;
+        string sSQL = "SELECT Clinic.Name AS ClinicName,[" + TableName + "].* FROM [" + TableName + "] INNER JOIN Clinic ON [" + TableName + "].ClientID =[Clinic].Id WHERE [" + TableName + "].ClientID=" + ClientId + " And [" + TableName + "].Id=" + Id;
+        string sListFields = string.Empty;
         //List<SqlParameter> parames = new List<SqlParameter>();
         //int i = -1;
 
@@ -66,12 +74,12 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
         //        }
         //    }
 
-        //    DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, sSQL, parames.ToArray());
-        //    gvListData.AutoGenerateColumns = false;
-        //    gvListData.DataSource = dataset;
-        //    gvListData.DataBind();
+        DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, sSQL, new SqlParameter[]{});
+        gvListData.AutoGenerateColumns = true;
+        gvListData.DataSource = dataset;
+        gvListData.DataBind();
 
-        //    if (dataset != null && dataset.Tables.Count > 0) pager.ItemCount = dataset.Tables[0].Rows.Count;
+        if (dataset != null && dataset.Tables.Count > 0) pager.ItemCount = dataset.Tables[0].Rows.Count;
         //}
     }
 }
