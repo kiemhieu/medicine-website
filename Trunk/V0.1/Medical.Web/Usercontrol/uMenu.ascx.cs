@@ -26,17 +26,23 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
         chucNangCon1.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.FIGURE).ToLower();
         chucNangCha.Items.Add(chucNangCon1);
 
-        RadMenuItem chucNangCon2 = new RadMenuItem();
-        chucNangCon2.Value = Constant_Table.FIGUREDE_DETAIL;
-        chucNangCon2.Text = "Phác đồ chi tiết";//"Danh sách " + Constant_Table.FIGUREDE_DETAIL;
-        chucNangCon2.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.FIGUREDE_DETAIL).ToLower();
-        chucNangCha.Items.Add(chucNangCon2);
+        //RadMenuItem chucNangCon2 = new RadMenuItem();
+        //chucNangCon2.Value = Constant_Table.FIGUREDE_DETAIL;
+        //chucNangCon2.Text = "Phác đồ chi tiết";//"Danh sách " + Constant_Table.FIGUREDE_DETAIL;
+        //chucNangCon2.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.FIGUREDE_DETAIL).ToLower();
+        //chucNangCha.Items.Add(chucNangCon2);
 
         RadMenuItem chucNangCon2_1 = new RadMenuItem();
         chucNangCon2_1.Value = Constant_Table.MEDICINE;
         chucNangCon2_1.Text = "Danh sách thuốc sử dụng";// +Constant_Table.MEDICINE;
         chucNangCon2_1.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.MEDICINE).ToLower();
         chucNangCha.Items.Add(chucNangCon2_1);
+
+        RadMenuItem chucNangCon9 = new RadMenuItem();
+        chucNangCon9.Value = Constant_Table.PATIENT;
+        chucNangCon9.Text = "Danh sách bệnh nhân";// + Constant_Table.PATIENT;
+        chucNangCon9.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.PATIENT).ToLower();
+        chucNangCha.Items.Add(chucNangCon9);
 
         RadMenuItem chucNangCon3 = new RadMenuItem();
         chucNangCon3.Value = Constant_Table.MEDICIN_DELIVERY_DETAIL;
@@ -73,12 +79,6 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
         chucNangCon8.Text = "Danh sách " + Constant_Table.MEDICINE_UNIT_PRICE;
         chucNangCon8.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.MEDICINE_UNIT_PRICE).ToLower();
         chucNangCha.Items.Add(chucNangCon8);
-
-        RadMenuItem chucNangCon9 = new RadMenuItem();
-        chucNangCon9.Value = Constant_Table.PATIENT;
-        chucNangCon9.Text = "Danh sách " + Constant_Table.PATIENT;
-        chucNangCon9.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.PATIENT).ToLower();
-        chucNangCha.Items.Add(chucNangCon9);
 
         RadMenuItem chucNangCon10 = new RadMenuItem();
         chucNangCon10.Value = Constant_Table.PATIENT_FIGURE;
