@@ -39,14 +39,14 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
 
     private void LoadList()
     {
-
+        if (string.IsNullOrEmpty(TableName)) return;
         //SELECT    Clinic.Name AS ClinicName, Figure.ClientID, dbo.Figure.Id, dbo.Figure.Name, dbo.Figure.ClinicId, dbo.Figure.Description, dbo.Figure.LastUpdatedDate, 
         //          dbo.Figure.LastUpdatedUser, dbo.Figure.Version
         //FROM      dbo.Figure INNER JOIN
         //          dbo.Clinic ON dbo.Figure.ClientID = dbo.Clinic.Id
 
         //Add to log table
-        string sSQL = "SELECT Clinic.Name AS ClinicName,[" + TableName + "].* FROM [" + TableName + "] INNER JOIN Clinic ON [" + TableName + "].ClientID =[Clinic].Id WHERE [" + TableName + "].ClientID=" + ClientId + " And [" + TableName + "].Id=" + Id;
+        string sSQL = "SELECT Clinic.Name AS ClinicName,[" + TableName + "Detail].* FROM [" + TableName + "Detail] INNER JOIN Clinic ON [" + TableName + "Detail].ClientID =[Clinic].Id WHERE [" + TableName + "Detail].ClientID=" + ClientId + " And [" + TableName + "Detail]." + TableName + "Id=" + Id;
         string sListFields = string.Empty;
         //List<SqlParameter> parames = new List<SqlParameter>();
         //int i = -1;
@@ -74,7 +74,7 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
         //        }
         //    }
 
-        DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, sSQL, new SqlParameter[]{});
+        DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, sSQL, new SqlParameter[] { });
         gvListData.AutoGenerateColumns = true;
         gvListData.DataSource = dataset;
         gvListData.DataBind();
