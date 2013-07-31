@@ -47,10 +47,21 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                 {
                     if (!seardcondition.HasDetail)
                     {
-                        BoundField boundField = new BoundField();
-                        boundField.DataField = seardcondition.ColumnName;
-                        boundField.HeaderText = seardcondition.Display;
-                        gvListData.Columns.Add(boundField);
+                        if (seardcondition.Refference == null)
+                        {
+                            BoundField boundField = new BoundField();
+                            boundField.DataField = seardcondition.ColumnName;
+                            boundField.HeaderText = seardcondition.Display;
+                            gvListData.Columns.Add(boundField);
+                        }
+                        else
+                        {
+                            string RefTableName = GetTableName(seardcondition.Refference);
+                            BoundField boundField = new BoundField();
+                            boundField.DataField = RefTableName + seardcondition.DisplayRefferenceColumn; ;
+                            boundField.HeaderText = seardcondition.Display;
+                            gvListData.Columns.Add(boundField);
+                        }
                     }
                     else
                     {
@@ -91,7 +102,8 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
 
         //Add to log table
         string sSelect = "SELECT Clinic.Name AS ClinicName";
-        string sInnerjoin = "INNER JOIN Clinic ON " + TableName + ".ClientID = Clinic.Id";
+        string sInnerjoin = "\n INNER JOIN Clinic ON " + TableName + ".ClientID = Clinic.Id";
+        string sWhere = "\n WHERE 1=1 ";
         string sSQL = "SELECT Clinic.Name AS ClinicName," + TableName + ".* FROM " + TableName + " INNER JOIN Clinic ON " + TableName + ".ClientID = Clinic.Id WHERE 1=1 ";
         string sListFields = string.Empty;
         List<SqlParameter> parames = new List<SqlParameter>();
@@ -106,33 +118,47 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                 i++;
                 object requesCondition = Request[seardcondition.ColumnName];
                 SqlParameter param = null;
-                if (requesCondition != null && requesCondition != string.Empty)
+                sSelect += ", [" + TableName + "]." + seardcondition.ColumnName;
+                if (seardcondition.Refference != null)
                 {
-                    sSelect += ", [" + TableName + "]." + seardcondition.ColumnName;
-                    if (seardcondition.Type == typeof(string) && seardcondition.Refference ==null)
+                    string RefTableName = GetTableName(seardcondition.Refference);
+                    //Add column to sellect
+                    sSelect += ", [" + RefTableName + "]." + seardcondition.DisplayRefferenceColumn + " as " + RefTableName + seardcondition.DisplayRefferenceColumn;
+                    //Join table has column refference
+                    if (!conditionTables.ContainsKey(RefTableName))
                     {
+                        sInnerjoin += "\n INNER JOIN [" + RefTableName + "] ON [" + RefTableName + "]." + seardcondition.RefferenceColumn + " = [" + TableName + "]." + seardcondition.ColumnName;
+                        conditionTables.Add(RefTableName, RefTableName);
+                    }
+                    if (requesCondition != null && requesCondition.ToString() != string.Empty)
+                    {
+                        //Where condition
+                        sWhere += " AND  [" + RefTableName + "]." + seardcondition.DisplayRefferenceColumn + " LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
+                        //Param
+                        param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? string.Empty);
+                        parames.Add(param);
+                    }
+                }
+                else if (requesCondition != null && requesCondition.ToString() != string.Empty)
+                {
+                    if (seardcondition.Type == typeof(string))
+                    {
+                        sWhere += " AND " + TableName + ".[" + seardcondition.ColumnName + "] LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
                         sSQL += " AND " + TableName + ".[" + seardcondition.ColumnName + "] LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
                         param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? string.Empty);
                     }
-                    else if (seardcondition.Refference == null)
-                    {
-                        sSQL += " AND " + TableName + ".[" + seardcondition.ColumnName + "] = @" + seardcondition.ColumnName + " ";
-                        param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? DBNull.Value);
-                    }
                     else
                     {
-                        string RefTableName = GetTableName(seardcondition.Refference);
-                        if (!conditionTables.ContainsKey(RefTableName))
-                        {
-
-                            //Code here
-                            conditionTables.Add(RefTableName, RefTableName);
-                        }
+                        sWhere += " AND " + TableName + ".[" + seardcondition.ColumnName + "] = @" + seardcondition.ColumnName + " ";
+                        sSQL += " AND " + TableName + ".[" + seardcondition.ColumnName + "] = @" + seardcondition.ColumnName + " ";
+                        param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? DBNull.Value);
                     }
                     parames.Add(param);
                 }
             }
 
+            sSelect += " FROM [" + TableName + "]";
+            sSQL = sSelect + sInnerjoin + sWhere;
             DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, sSQL, parames.ToArray());
             gvListData.AutoGenerateColumns = false;
             gvListData.DataSource = dataset;

@@ -20,6 +20,7 @@ public class SearchExpander
         this.Type = type;
         this.Refference = null;
         this.HasDetail = false;
+        this.DisplayRefferenceColumn = "Name"; 
     }
 
     /// <summary>
@@ -35,6 +36,7 @@ public class SearchExpander
         this.Type = type;
         this.Refference = null;
         this.HasDetail = hasdetail;
+        this.DisplayRefferenceColumn = "Name";
     }
 
     /// <summary>
@@ -51,7 +53,24 @@ public class SearchExpander
         this.RefferenceColumn = refferencecolumn;
         this.Refference = refference;
         this.HasDetail = false;
+        this.DisplayRefferenceColumn = "Name";
+    }
 
+    /// <summary>
+    /// Constructor 1 - has refference column
+    /// </summary>
+    /// <param name="columnname"></param>
+    /// <param name="display"></param>
+    /// <param name="type"></param>
+    public SearchExpander(string columnname, string display, Type type, string refferencecolumn, string displayrefferencecolumn, Type refference)
+    {
+        this.ColumnName = columnname;
+        this.Display = display;
+        this.Type = type;
+        this.RefferenceColumn = refferencecolumn;
+        this.Refference = refference;
+        this.HasDetail = false;
+        this.DisplayRefferenceColumn = displayrefferencecolumn;
     }
 
     public string ColumnName { get; set; }
@@ -61,6 +80,8 @@ public class SearchExpander
     public Type Refference { get; set; }
 
     public string RefferenceColumn { get; set; }
+
+    public string DisplayRefferenceColumn { get; set; }
 
     public Type Type { get; set; }
 
