@@ -101,7 +101,7 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
         //          dbo.Clinic ON dbo.Figure.ClientID = dbo.Clinic.Id
 
         //Add to log table
-        string sSelect = "SELECT Clinic.Name AS ClinicName";
+        string sSelect = "SELECT Clinic.Name AS ClinicName, [" + TableName + "].ClientID";
         string sInnerjoin = "\n INNER JOIN Clinic ON " + TableName + ".ClientID = Clinic.Id";
         string sWhere = "\n WHERE 1=1 ";
         string sSQL = "SELECT Clinic.Name AS ClinicName," + TableName + ".* FROM " + TableName + " INNER JOIN Clinic ON " + TableName + ".ClientID = Clinic.Id WHERE 1=1 ";
