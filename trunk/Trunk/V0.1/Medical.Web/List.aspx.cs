@@ -43,7 +43,7 @@ public partial class List : System.Web.UI.Page
                 searchConditions.Add(new SearchExpander("TradeName", "Tên thương mại", typeof(string)));
                 searchConditions.Add(new SearchExpander("Unit", "Đơn vị", typeof(int)));
                 searchConditions.Add(new SearchExpander("LastUpdatedDate", "Cập nhật ngày", typeof(DateTime)));
-                searchConditions.Add(new SearchExpander("LastUpdatedBy", "Bởi", typeof(string)));
+                searchConditions.Add(new SearchExpander("LastUpdatedBy", "Bởi", typeof(string), "Id", typeof(Medical.Synchronization.Basic.User)));
                 uctListBase.SearchConditions = searchConditions;
             }
             else if (segment.ToUpper() == Constant_Table.MEDICINE_DELIVERY.ToUpper())
