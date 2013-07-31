@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.FriendlyUrls;
 using Medical.Synchronization;
+using Medical.Synchronization.Basic;
 
 public partial class List : System.Web.UI.Page
 {
@@ -43,7 +44,7 @@ public partial class List : System.Web.UI.Page
                 searchConditions.Add(new SearchExpander("TradeName", "Tên thương mại", typeof(string)));
                 searchConditions.Add(new SearchExpander("Unit", "Đơn vị", typeof(int)));
                 searchConditions.Add(new SearchExpander("LastUpdatedDate", "Cập nhật ngày", typeof(DateTime)));
-                searchConditions.Add(new SearchExpander("LastUpdatedBy", "Bởi", typeof(string), "Id", typeof(Medical.Synchronization.Basic.User)));
+                searchConditions.Add(new SearchExpander("LastUpdatedBy", "Bởi", typeof(string), "Id", typeof(User)));
                 uctListBase.SearchConditions = searchConditions;
             }
             else if (segment.ToUpper() == Constant_Table.MEDICINE_DELIVERY.ToUpper())
@@ -51,11 +52,11 @@ public partial class List : System.Web.UI.Page
                 uctListBase.TableName = Constant_Table.MEDICINE_DELIVERY;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
                 searchConditions.Add(new SearchExpander("ID", "ID", typeof(int)));
-                searchConditions.Add(new SearchExpander("PatientId", "PatientId", typeof(int)));
+                searchConditions.Add(new SearchExpander("PatientId", "Bệnh nhân", typeof(int), "Id", typeof(Patient)));
                 searchConditions.Add(new SearchExpander("PrescriptionId", "PrescriptionId", typeof(int)));
-                searchConditions.Add(new SearchExpander("Date", "Date", typeof(DateTime)));
-                searchConditions.Add(new SearchExpander("LastUpdatedDate", "LastUpdatedDate", typeof(DateTime)));
-                searchConditions.Add(new SearchExpander("LastUpdatedUser", "LastUpdatedUser", typeof(string)));
+                //searchConditions.Add(new SearchExpander("Date", "Date", typeof(DateTime)));
+                searchConditions.Add(new SearchExpander("LastUpdatedDate", "Ngày cập nhật", typeof(DateTime)));
+                searchConditions.Add(new SearchExpander("LastUpdatedUser", "Người cập nhật", typeof(string), "Id", typeof(User)));
                 uctListBase.SearchConditions = searchConditions;
             }
             else if (segment.ToUpper() == Constant_Table.MEDICIN_DELIVERY_DETAIL.ToUpper())
