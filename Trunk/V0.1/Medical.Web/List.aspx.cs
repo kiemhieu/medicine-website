@@ -29,10 +29,10 @@ public partial class List : System.Web.UI.Page
                 uctListBase.TableName = Constant_Table.FIGUREDE_DETAIL;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
                 searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
-                searchConditions.Add(new SearchExpander("FigureId", "FigureId", typeof(int), "Id", typeof(Figure)));
-                searchConditions.Add(new SearchExpander("MedicineId", "MedicineId", typeof(int), "Id", typeof(Medicine)));
+                searchConditions.Add(new SearchExpander("FigureId", "Phác đồ", typeof(int), "Id", typeof(Figure)));
+                searchConditions.Add(new SearchExpander("MedicineId", "Thuốc", typeof(int), "Id", typeof(Medicine)));
                 searchConditions.Add(new SearchExpander("Volumn", "Volumn", typeof(int)));
-                searchConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
+                //searchConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
                 uctListBase.SearchConditions = searchConditions;
             }
             else if (segment.ToUpper() == Constant_Table.MEDICINE.ToUpper())
@@ -53,7 +53,7 @@ public partial class List : System.Web.UI.Page
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
                 searchConditions.Add(new SearchExpander("ID", "ID", typeof(int)));
                 searchConditions.Add(new SearchExpander("PatientId", "Bệnh nhân", typeof(int), "Id", typeof(Patient)));
-                searchConditions.Add(new SearchExpander("PrescriptionId", "PrescriptionId", typeof(int)));
+                searchConditions.Add(new SearchExpander("PrescriptionId", "PrescriptionId", typeof(int), "Id", "Date", typeof(Prescription)));
                 //searchConditions.Add(new SearchExpander("Date", "Date", typeof(DateTime)));
                 searchConditions.Add(new SearchExpander("LastUpdatedDate", "Ngày cập nhật", typeof(DateTime)));
                 searchConditions.Add(new SearchExpander("LastUpdatedUser", "Người cập nhật", typeof(string), "Id", typeof(User)));
