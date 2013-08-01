@@ -37,7 +37,7 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
         {
             if (searchConditions != null && !string.IsNullOrEmpty(TableName) && TableName.Length > 0)
             {
-                var segments = Request.GetFriendlyUrlSegments(); 
+                var segments = Request.GetFriendlyUrlSegments();
 
                 //Initial columns of grid
                 if (segments.Count != 3)
@@ -96,8 +96,8 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                     else
                     {
                         HyperLinkField linkField = new HyperLinkField();
-                        linkField.DataNavigateUrlFields = new string[] { "ClientId", "Id" };
-                        linkField.DataNavigateUrlFormatString = FriendlyUrl.Href("~/detail").ToLower() + "/" + TableName.ToLower() + "/{0}/{1}";
+                        linkField.DataNavigateUrlFields = new string[] { "ClientId", seardcondition.ColumnName };
+                        linkField.DataNavigateUrlFormatString = FriendlyUrl.Href("~/detail").ToLower() + "/" + TableName.ToLower().Replace("detail", "") + "/{0}/{1}";
                         linkField.HeaderText = seardcondition.Display;
                         linkField.DataTextField = seardcondition.ColumnName;
                         gvListData.Columns.Add(linkField);
