@@ -14,7 +14,8 @@ using System.Web.UI.WebControls;
 public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
 {
     public string TableName { get; set; }
-
+    private string ClientID { get; set; }
+    private string Id { get; set; }
     private List<SearchExpander> searchConditions;
     public List<SearchExpander> SearchConditions
     {
@@ -36,11 +37,25 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
         {
             if (searchConditions != null && !string.IsNullOrEmpty(TableName) && TableName.Length > 0)
             {
+                var segments = Request.GetFriendlyUrlSegments(); 
+
                 //Initial columns of grid
-                BoundField tempField = new BoundField();
-                tempField.HeaderText = "Phòng khám";
-                tempField.DataField = "ClinicName";
-                gvListData.Columns.Add(tempField);
+                if (segments.Count != 3)
+                {
+                    BoundField tempField = new BoundField();
+                    tempField.HeaderText = "Phòng khám";
+                    tempField.DataField = "ClinicName";
+                    gvListData.Columns.Add(tempField);
+                }
+                else
+                {
+                    tdSearch.Visible = false;
+
+                    TableName = segments[0];
+                    ClientID = segments[1];
+                    Id = segments[2];
+                }
+
                 gvListData.PageSize = 25;
                 gvListData.AllowPaging = true;
                 foreach (SearchExpander seardcondition in searchConditions)
@@ -57,10 +72,12 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                         else
                         {
                             string RefTableName = GetTableName(seardcondition.Refference);
-                            BoundField boundField = new BoundField();
-                            boundField.DataField = RefTableName + seardcondition.DisplayRefferenceColumn; ;
-                            boundField.HeaderText = seardcondition.Display;
-                            gvListData.Columns.Add(boundField);
+                            HyperLinkField linkField = new HyperLinkField();
+                            linkField.DataNavigateUrlFields = new string[] { "ClientId", seardcondition.ColumnName };
+                            linkField.DataNavigateUrlFormatString = FriendlyUrl.Href("~/list").ToLower() + "/" + RefTableName.ToLower() + "/{0}/{1}";
+                            linkField.HeaderText = seardcondition.Display;
+                            linkField.DataTextField = RefTableName + seardcondition.DisplayRefferenceColumn;
+                            gvListData.Columns.Add(linkField);
                         }
                     }
                     else
@@ -156,6 +173,8 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                     parames.Add(param);
                 }
             }
+            if (!string.IsNullOrEmpty(ClientID)) sWhere += " AND [" + TableName + "].ClientId=" + ClientID;
+            if (!string.IsNullOrEmpty(Id)) sWhere += " AND [" + TableName + "].Id=" + Id;
 
             sSelect += " FROM [" + TableName + "]";
             sSQL = sSelect + sInnerjoin + sWhere;
@@ -168,6 +187,11 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
         }
     }
 
+    /// <summary>
+    /// Page command
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     public void pager_Command(object sender, CommandEventArgs e)
     {
         int currnetPageIndx = Convert.ToInt32(e.CommandArgument);
@@ -176,11 +200,21 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
         LoadList();
     }
 
+    /// <summary>
+    /// Change paging
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     protected void gvListData_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         LoadList();
     }
 
+    /// <summary>
+    /// Get table when know refference type that base on
+    /// </summary>
+    /// <param name="type">Type mapping</param>
+    /// <returns>Table name</returns>
     private string GetTableName(Type type)
     {
         string TableName = string.Empty;

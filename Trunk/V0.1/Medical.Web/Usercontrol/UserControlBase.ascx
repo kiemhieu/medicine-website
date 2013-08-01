@@ -2,7 +2,7 @@
 <%@ Register Namespace="ASPnetControls" Assembly="ASPnetPagerV2_8" TagPrefix="cc" %>
 <table width="100%">
     <tr>
-        <td style="width: 200px; vertical-align: top;">
+        <td id="tdSearch" runat="server" style="width: 200px; vertical-align: top;">
             <fieldset>
                 <table width="100%" class="tbl">
                     <tr>
