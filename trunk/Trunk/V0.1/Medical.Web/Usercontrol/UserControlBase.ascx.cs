@@ -67,6 +67,12 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                             BoundField boundField = new BoundField();
                             boundField.DataField = seardcondition.ColumnName;
                             boundField.HeaderText = seardcondition.Display;
+
+                            if (seardcondition.Type == typeof(DateTime))
+                            {
+                                boundField.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
+                                boundField.DataFormatString = "{0:dd/MM/yyyy}";
+                            }
                             gvListData.Columns.Add(boundField);
                         }
                         else
@@ -77,6 +83,13 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                             linkField.DataNavigateUrlFormatString = FriendlyUrl.Href("~/list").ToLower() + "/" + RefTableName.ToLower() + "/{0}/{1}";
                             linkField.HeaderText = seardcondition.Display;
                             linkField.DataTextField = RefTableName + seardcondition.DisplayRefferenceColumn;
+
+
+                            if (seardcondition.DisplayRefferenceColumn.ToLower().Contains("date"))
+                            {
+                                linkField.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
+                                linkField.DataTextFormatString = "{0:dd/MM/yyyy}";
+                            }
                             gvListData.Columns.Add(linkField);
                         }
                     }
