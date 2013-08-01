@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.AspNet.FriendlyUrls;
 
 public partial class Usercontrol_uDetail : System.Web.UI.UserControl
 {
@@ -19,6 +20,13 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
     {
         if (!IsPostBack)
         {
+            var segments = Request.GetFriendlyUrlSegments();
+            if (segments.Count == 3)
+            {
+                TableName = segments[0];
+                ClientId = segments[1];
+                Id = segments[2];
+            }
             LoadList();
         }
     }
