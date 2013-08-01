@@ -96,7 +96,7 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                     else
                     {
                         HyperLinkField linkField = new HyperLinkField();
-                        linkField.DataNavigateUrlFields = new string[] { "ClientId", seardcondition.ColumnName };
+                        linkField.DataNavigateUrlFields = new string[] { "ClientId", "Id" };
                         linkField.DataNavigateUrlFormatString = FriendlyUrl.Href("~/detail").ToLower() + "/" + TableName.ToLower().Replace("detail", "") + "/{0}/{1}";
                         linkField.HeaderText = seardcondition.Display;
                         linkField.DataTextField = seardcondition.ColumnName;
@@ -132,9 +132,9 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
 
         //Add to log table
         string sSelect = "SELECT Clinic.Name AS ClinicName, [" + TableName + "].ClientID";
-        string sInnerjoin = "\n INNER JOIN Clinic ON " + TableName + ".ClientID = Clinic.Id";
+        string sInnerjoin = "\n INNER JOIN Clinic ON [" + TableName + "].ClientID = Clinic.Id";
         string sWhere = "\n WHERE 1=1 ";
-        string sSQL = "SELECT Clinic.Name AS ClinicName," + TableName + ".* FROM " + TableName + " INNER JOIN Clinic ON " + TableName + ".ClientID = Clinic.Id WHERE 1=1 ";
+        string sSQL = "SELECT Clinic.Name AS ClinicName," + TableName + ".* FROM [" + TableName + "] INNER JOIN Clinic ON [" + TableName + "].ClientID = Clinic.Id WHERE 1=1 ";
         string sListFields = string.Empty;
         List<SqlParameter> parames = new List<SqlParameter>();
         int i = -1;
@@ -157,7 +157,7 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                     //Join table has column refference
                     if (!conditionTables.ContainsKey(RefTableName))
                     {
-                        sInnerjoin += "\n INNER JOIN [" + RefTableName + "] ON [" + RefTableName + "]." + seardcondition.RefferenceColumn + " = [" + TableName + "]." + seardcondition.ColumnName;
+                        sInnerjoin += "\n LEFT OUTER JOIN [" + RefTableName + "] ON [" + RefTableName + "]." + seardcondition.RefferenceColumn + " = [" + TableName + "]." + seardcondition.ColumnName;
                         conditionTables.Add(RefTableName, RefTableName);
                     }
                     if (requesCondition != null && requesCondition.ToString() != string.Empty)

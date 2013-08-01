@@ -137,7 +137,7 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
         RadMenuItem chucNangCon19 = new RadMenuItem();
         chucNangCon19.Value = Constant_Table.USER;
         chucNangCon19.Text = "Danh sách " + Constant_Table.USER;
-        chucNangCon19.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.USER);
+        chucNangCon19.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.USER).ToLower();
         chucNangCha.Items.Add(chucNangCon19);
 
         //RadMenuItem chucNangCon = new RadMenuItem();
