@@ -23,7 +23,7 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
             var segments = Request.GetFriendlyUrlSegments();
             if (segments.Count == 3)
             {
-                TableName = segments[0];
+                TableName = segments[0].ToLower().Replace("detail", "");
                 ClientId = segments[1];
                 Id = segments[2];
             }

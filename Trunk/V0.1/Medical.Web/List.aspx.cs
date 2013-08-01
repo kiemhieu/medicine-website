@@ -53,7 +53,7 @@ public partial class List : System.Web.UI.Page
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
                 searchConditions.Add(new SearchExpander("ID", "ID", typeof(int)));
                 searchConditions.Add(new SearchExpander("PatientId", "Bệnh nhân", typeof(int), "Id", typeof(Patient)));
-                searchConditions.Add(new SearchExpander("PrescriptionId", "PrescriptionId", typeof(int), "Id", "Date", typeof(Prescription)));
+                searchConditions.Add(new SearchExpander("PrescriptionId", "Đơn thuốc", typeof(int), "Id", "Id", typeof(Prescription)));
                 //searchConditions.Add(new SearchExpander("Date", "Date", typeof(DateTime)));
                 searchConditions.Add(new SearchExpander("LastUpdatedDate", "Ngày cập nhật", typeof(DateTime)));
                 searchConditions.Add(new SearchExpander("LastUpdatedUser", "Người cập nhật", typeof(string), "Id", typeof(User)));
@@ -64,7 +64,7 @@ public partial class List : System.Web.UI.Page
                 uctListBase.TableName = Constant_Table.MEDICIN_DELIVERY_DETAIL;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
                 searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
-                searchConditions.Add(new SearchExpander("MedicineDeliveryId", "MedicineDeliveryId", typeof(int)));
+                searchConditions.Add(new SearchExpander("MedicineDeliveryId", "MedicineDeliveryId", typeof(int), true));
                 searchConditions.Add(new SearchExpander("PrescriptionDetailId", "PrescriptionDetailId", typeof(int)));
                 searchConditions.Add(new SearchExpander("MedicineId", "MedicineId", typeof(int)));
                 searchConditions.Add(new SearchExpander("Volumn", "Volumn", typeof(int)));
