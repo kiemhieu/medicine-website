@@ -53,7 +53,7 @@ namespace Medical.Synchronization
         /// <returns></returns>
         public static bool SaveChange(object KeyValue)
         {
-            string tableName = GetTableName();
+            string tableName = WebCore.GetTableName(typeof(T));
             PropertyInfo[] infos = (typeof(T)).GetProperties();
             string KeyColumn = string.Empty;
             int KeyIndex = -1;
@@ -88,7 +88,7 @@ namespace Medical.Synchronization
             object KeyValue = null;
 
             //Another parameter in table which is referenced
-            string tableName = GetTableName();
+            string tableName = WebCore.GetTableName(typeof(T));
             PropertyInfo[] infos = (typeof(T)).GetProperties();
             try
             {
@@ -139,7 +139,7 @@ namespace Medical.Synchronization
 
         public static bool SaveLog(List<T> list)
         {
-            string tableName = GetTableName();
+            string tableName = WebCore.GetTableName(typeof(T));
             PropertyInfo[] infos = (typeof(T)).GetProperties();
             string KeyColumn = string.Empty;
             int KeyIndex = -1;
@@ -176,7 +176,7 @@ namespace Medical.Synchronization
         /// <returns></returns>
         public static List<T> GetAll()
         {
-            string tableName = GetTableName();
+            string tableName = WebCore.GetTableName(typeof(T));
             string SQL = "SELECT * FROM [" + tableName + "]";
             List<T> result = null;
             DataSet dataset = SqlHelper.ExecuteDataset(Config.ConnectionString, CommandType.Text, SQL);
@@ -202,7 +202,7 @@ namespace Medical.Synchronization
         /// <returns></returns>
         public static List<T> GetAllToSend(string KeyColumn)
         {
-            string tableName = GetTableName();
+            string tableName = WebCore.GetTableName(typeof(T));
             string SQL = "SELECT * FROM [" + tableName + "] WHERE " + KeyColumn + " NOT IN (SELECT " + KeyColumn + " FROM [Syn" + tableName + "])";
             List<T> result = null;
             DataSet dataset = SqlHelper.ExecuteDataset(Config.ConnectionString, CommandType.Text, SQL);
@@ -241,58 +241,6 @@ namespace Medical.Synchronization
                 i++;
             }
             return obj;
-        }
-
-        /// <summary>
-        /// Get table name with
-        /// </summary>
-        /// <returns></returns>
-        private static string GetTableName()
-        {
-            if (bReadTableName) return TableName;
-            TableName = string.Empty;
-
-            if (typeof(T).Name == typeof(Figure).Name)
-                TableName = Constant_Table.FIGURE;
-            else if (typeof(T).Name == typeof(FigureDetail).Name)
-                TableName = Constant_Table.FIGUREDE_DETAIL;
-            else if (typeof(T).Name == typeof(Medicine).Name)
-                TableName = Constant_Table.MEDICINE;
-            else if (typeof(T).Name == typeof(MedicineDelivery).Name)
-                TableName = Constant_Table.MEDICINE_DELIVERY;
-            else if (typeof(T).Name == typeof(MedicineDeliveryDetail).Name)
-                TableName = Constant_Table.MEDICIN_DELIVERY_DETAIL;
-            else if (typeof(T).Name == typeof(MedicineDeliveryDetailAllocate).Name)
-                TableName = Constant_Table.MEDICIN_DELIVERY_DETAIL_ALLOCATE;
-            else if (typeof(T).Name == typeof(MedicinePlan).Name)
-                TableName = Constant_Table.MEDICINE_PLAN;
-            else if (typeof(T).Name == typeof(MedicinePlanDetail).Name)
-                TableName = Constant_Table.MEDICINE_PLAN_DETAIL;
-            else if (typeof(T).Name == typeof(MedicineUnitPrice).Name)
-                TableName = Constant_Table.MEDICINE_UNIT_PRICE;
-            else if (typeof(T).Name == typeof(Patient).Name)
-                TableName = Constant_Table.PATIENT;
-            else if (typeof(T).Name == typeof(PatientFigure).Name)
-                TableName = Constant_Table.PATIENT_FIGURE;
-            else if (typeof(T).Name == typeof(Prescription).Name)
-                TableName = Constant_Table.PRESCRIPTION;
-            else if (typeof(T).Name == typeof(PrescriptionDetail).Name)
-                TableName = Constant_Table.PRESCRIPTION_DETAIL;
-            else if (typeof(T).Name == typeof(WareHouse).Name)
-                TableName = Constant_Table.WAREHOUSE;
-            else if (typeof(T).Name == typeof(WareHouseDetail).Name)
-                TableName = Constant_Table.WAREHOUSE_DETAIL;
-            else if (typeof(T).Name == typeof(WareHouseExportAllocate).Name)
-                TableName = Constant_Table.WAREHOUSE_EXPORT_ALLOCATE;
-            else if (typeof(T).Name == typeof(WareHouseIO).Name)
-                TableName = Constant_Table.WAREHOUSE_IO;
-            else if (typeof(T).Name == typeof(WareHouseIODetail).Name)
-                TableName = Constant_Table.WAREHOUSE_IO_DETAIL;
-            else if (typeof(T).Name == typeof(WareHouseMinimumAllow).Name)
-                TableName = Constant_Table.WAREHOUSE_MINIMUM_ALLOW;
-            else if (typeof(T).Name == typeof(User).Name)
-                TableName = Constant_Table.USER;
-            return TableName;
         }
     }
 
