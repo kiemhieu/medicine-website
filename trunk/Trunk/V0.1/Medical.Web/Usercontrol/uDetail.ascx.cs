@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.FriendlyUrls;
 using Medical.Synchronization.Basic;
+using System.Collections;
 
 public partial class Usercontrol_uDetail : System.Web.UI.UserControl
 {
@@ -25,10 +26,13 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
             var segments = Request.GetFriendlyUrlSegments();
             if (segments.Count == 3)
             {
-                TableName = segments[0].ToLower().Replace("detail", "");
+                TableName = segments[0].ToLower().Replace("detail", "") + "detail";
                 ClientId = segments[1];
                 Id = segments[2];
             }
+
+            //Init column with name
+            Initializate();
 
             // Initial columns with earch table name
             if (SearchConditions != null && !string.IsNullOrEmpty(TableName) && TableName.Length > 0)
@@ -108,56 +112,124 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
     {
         if (string.IsNullOrEmpty(TableName)) return;
 
-        Initializate();
-
-        //Add to log table
-        string sSQL = "SELECT Clinic.Name AS ClinicName,[" + TableName + "Detail].* FROM [" + TableName + "Detail] INNER JOIN Clinic ON [" + TableName + "Detail].ClientID =[Clinic].Id WHERE [" + TableName + "Detail].ClientID=" + ClientId + " And [" + TableName + "Detail]." + TableName + "Id=" + Id;
+        string sSelect = "SELECT Clinic.Name AS ClinicName, [" + TableName + "].ClientID";
+        string sInnerjoin = "\n INNER JOIN Clinic ON [" + TableName + "].ClientID = Clinic.Id";
+        string sWhere = "\n WHERE 1=1 ";
+        string sSQL = string.Empty;
         string sListFields = string.Empty;
-        //List<SqlParameter> parames = new List<SqlParameter>();
-        //int i = -1;
+        List<SqlParameter> parames = new List<SqlParameter>();
+        int i = -1;
 
-        //if (searchConditions != null && !string.IsNullOrEmpty(TableName) && TableName.Length > 0)
-        //{
-        //    foreach (SearchExpander seardcondition in searchConditions)
-        //    {
-        //        i++;
-        //        object requesCondition = Request[seardcondition.ColumnName];
-        //        SqlParameter param = null;
-        //        if (requesCondition != null && requesCondition != string.Empty)
-        //        {
-        //            if (seardcondition.Type == typeof(string))
-        //            {
-        //                sSQL += " AND " + TableName + ".[" + seardcondition.ColumnName + "] LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
-        //                param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? string.Empty);
-        //            }
-        //            else
-        //            {
-        //                sSQL += " AND " + TableName + ".[" + seardcondition.ColumnName + "] = @" + seardcondition.ColumnName + " ";
-        //                param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? DBNull.Value);
-        //            }
-        //            parames.Add(param);
-        //        }
-        //    }
+        if (SearchConditions != null && !string.IsNullOrEmpty(TableName) && TableName.Length > 0)
+        {
+            var conditionTables = new Hashtable();
+            conditionTables.Add("Clinic", "Clinic");
+            foreach (SearchExpander seardcondition in SearchConditions)
+            {
+                i++;
+                SqlParameter param = null;
+                sSelect += ", [" + TableName + "]." + seardcondition.ColumnName;
+                if (seardcondition.Refference != null)
+                {
+                    string RefTableName = WebCore.GetTableName(seardcondition.Refference);
+                    //Add column to sellect
+                    sSelect += ", [" + RefTableName + "]." + seardcondition.DisplayRefferenceColumn + " as " + RefTableName + seardcondition.DisplayRefferenceColumn;
 
-        DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, sSQL, new SqlParameter[] { });
-        gvListData.AutoGenerateColumns = false;
-        gvListData.DataSource = dataset;
-        gvListData.DataBind();
+                    //===========================================================================
+                    //Join table has column refference
+                    if (!conditionTables.ContainsKey(RefTableName))
+                    {
+                        sInnerjoin += "\n LEFT OUTER JOIN [" + RefTableName + "] ON [" + RefTableName + "]." + seardcondition.RefferenceColumn + " = [" + TableName + "]." + seardcondition.ColumnName;
+                        conditionTables.Add(RefTableName, RefTableName);
+                    }
+                }
+                //Check condition
+                else
+                {
 
-        if (dataset != null && dataset.Tables.Count > 0) pager.ItemCount = dataset.Tables[0].Rows.Count;
-        //}
+                }
+            }
+            // Check with client ID
+            if (!string.IsNullOrEmpty(ClientID)) sWhere += " AND [" + TableName + "].ClientId=" + ClientId;
+            if (!string.IsNullOrEmpty(Id)) sWhere += " AND [" + TableName + "]." + TableName.Replace("detail", "") + "Id=" + Id;
+
+            if (TableName == "medicineplandetail") sWhere = sWhere.Replace("medicineplanId", "PlanId");
+            // Group all querry 
+            sSelect += " FROM [" + TableName + "]";
+            sSQL = sSelect + sInnerjoin + sWhere;
+            DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, sSQL, parames.ToArray());
+            gvListData.AutoGenerateColumns = false;
+            gvListData.DataSource = dataset;
+            gvListData.DataBind();
+
+            if (dataset != null && dataset.Tables.Count > 0) pager.ItemCount = dataset.Tables[0].Rows.Count;
+        }
     }
 
     private void Initializate()
     {
+        List<SearchExpander> searchConditions = new List<SearchExpander>();
         switch (TableName)
         {
-            case "figure":
-                List<SearchExpander> searchConditions = new List<SearchExpander>();
+            case "figuredetail":
                 searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
                 searchConditions.Add(new SearchExpander("FigureId", "Phác đồ", typeof(int), "Id", typeof(Figure)));
                 searchConditions.Add(new SearchExpander("MedicineId", "Thuốc", typeof(int), "Id", typeof(Medicine)));
                 searchConditions.Add(new SearchExpander("Volumn", "Volumn", typeof(int)));
+                SearchConditions = searchConditions;
+                break;
+            case "medicinedeliverydetail":
+                searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
+                searchConditions.Add(new SearchExpander("PrescriptionDetailId", "PrescriptionDetailId", typeof(int), "Id", "Id", typeof(PrescriptionDetail)));
+                searchConditions.Add(new SearchExpander("MedicineId", "Tên thuốc", typeof(int), "Id", typeof(Medicine)));
+                searchConditions.Add(new SearchExpander("Volumn", "Volumn", typeof(int)));
+                searchConditions.Add(new SearchExpander("Unit", "Unit", typeof(int)));
+                searchConditions.Add(new SearchExpander("LastUpdatedDate", "Ngày cập nhật", typeof(DateTime)));
+                SearchConditions = searchConditions;
+                break;
+            case "medicineplandetail":
+                searchConditions.Add(new SearchExpander("Id", "Id", typeof(string)));
+                searchConditions.Add(new SearchExpander("MedicineId", "Tên thuốc", typeof(int), "Id", typeof(Medicine)));
+                searchConditions.Add(new SearchExpander("InStock", "InStock", typeof(int)));
+                searchConditions.Add(new SearchExpander("LastMonthUsage", "LastMonthUsage", typeof(int)));
+                searchConditions.Add(new SearchExpander("CurrentMonthUsage", "CurrentMonthUsage", typeof(int)));
+                searchConditions.Add(new SearchExpander("UnitPrice", "Đơn giá", typeof(int)));
+                searchConditions.Add(new SearchExpander("Amount", "Số lượng", typeof(int)));
+                SearchConditions = searchConditions;
+                break;
+            case "prescriptiondetail":
+                searchConditions.Add(new SearchExpander("PrescriptionId", "PrescriptionId", typeof(int)));
+                searchConditions.Add(new SearchExpander("FigureDetailId", "FigureDetailId", typeof(int), "Id", "Id", typeof(FigureDetail)));
+                searchConditions.Add(new SearchExpander("MedicineId", "Thuốc", typeof(int), "Id", typeof(Medicine)));
+                searchConditions.Add(new SearchExpander("Day", "Số ngày", typeof(int)));
+                searchConditions.Add(new SearchExpander("VolumnPerDay", "Số lần trong ngày", typeof(int)));
+                searchConditions.Add(new SearchExpander("Amount", "Số lượng", typeof(int)));
+                searchConditions.Add(new SearchExpander("Description", "Diễn giải", typeof(string)));
+                SearchConditions = searchConditions;
+                break;
+            case "warehousedetail":
+                searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
+                //searchConditions.Add(new SearchExpander("WareHouseId", "WareHouseId", typeof(int), "Id", "Id", typeof(WareHouse)));
+                searchConditions.Add(new SearchExpander("WareHouseIODetailId", "WareHouseIODetailId", typeof(int), "Id", "Id", typeof(WareHouseIODetail)));
+                searchConditions.Add(new SearchExpander("MedicineId", "MedicineId", typeof(int), "Id", typeof(Medicine)));
+                searchConditions.Add(new SearchExpander("LotNo", "LotNo", typeof(string)));
+                searchConditions.Add(new SearchExpander("ExpiredDate", "Ngày hết hạn", typeof(DateTime)));
+                searchConditions.Add(new SearchExpander("Unit", "Đơn vị", typeof(int)));
+                searchConditions.Add(new SearchExpander("UnitPrice", "Đơn giá", typeof(string)));
+                searchConditions.Add(new SearchExpander("LastUpdatedDate", "Ngày cập nhật", typeof(int)));
+                SearchConditions = searchConditions;
+                break;
+            case "warehouseiodetail":
+                searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
+                searchConditions.Add(new SearchExpander("WareHouseIOId", "Thủ kho", typeof(int), "Id", "Person", typeof(WareHouseIO)));
+                searchConditions.Add(new SearchExpander("MedicineId", "Tên thuốc", typeof(int), "Id", typeof(Medicine)));
+                searchConditions.Add(new SearchExpander("LotNo", "LotNo", typeof(string)));
+                searchConditions.Add(new SearchExpander("ExpireDate", "Ngày hết hạn", typeof(DateTime)));
+                searchConditions.Add(new SearchExpander("Qty", "Số lượng", typeof(int)));
+                searchConditions.Add(new SearchExpander("UnitPrice", "Đơn giá", typeof(int)));
+                searchConditions.Add(new SearchExpander("Unit", "Đơn vị", typeof(int)));
+                searchConditions.Add(new SearchExpander("Amount", "Số lượng", typeof(int)));
+                SearchConditions = searchConditions;
                 break;
         }
     }

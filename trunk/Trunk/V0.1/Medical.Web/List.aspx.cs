@@ -191,7 +191,7 @@ public partial class List : System.Web.UI.Page
             {
                 uctListBase.TableName = Constant_Table.WAREHOUSE;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
-                searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
+                searchConditions.Add(new SearchExpander("Id", "Id", typeof(int), true));
                 searchConditions.Add(new SearchExpander("MedicineId", "Tên thuốc", typeof(int), "Id", typeof(Medicine)));
                 searchConditions.Add(new SearchExpander("Volumn", "Volumn", typeof(int)));
                 searchConditions.Add(new SearchExpander("MinAllowed", "Lượng tối thiểu", typeof(int)));
@@ -231,7 +231,7 @@ public partial class List : System.Web.UI.Page
             {
                 uctListBase.TableName = Constant_Table.WAREHOUSE_IO;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
-                searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
+                searchConditions.Add(new SearchExpander("Id", "Id", typeof(int), true));
                 searchConditions.Add(new SearchExpander("Type", "Type", typeof(int)));
                 searchConditions.Add(new SearchExpander("Date", "Date", typeof(DateTime)));
                 searchConditions.Add(new SearchExpander("No", "No", typeof(string)));
