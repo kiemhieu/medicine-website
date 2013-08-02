@@ -179,12 +179,12 @@ public partial class List : System.Web.UI.Page
                 searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
                 searchConditions.Add(new SearchExpander("PrescriptionId", "PrescriptionId", typeof(int)));
                 searchConditions.Add(new SearchExpander("FigureDetailId", "FigureDetailId", typeof(int)));
-                searchConditions.Add(new SearchExpander("MedicineId", "MedicineId", typeof(int)));
-                searchConditions.Add(new SearchExpander("Day", "Day", typeof(int)));
-                searchConditions.Add(new SearchExpander("VolumnPerDay", "VolumnPerDay", typeof(int)));
-                searchConditions.Add(new SearchExpander("Amount", "Amount", typeof(int)));
-                searchConditions.Add(new SearchExpander("Description", "Description", typeof(string)));
-                searchConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
+                searchConditions.Add(new SearchExpander("MedicineId", "Thuốc", typeof(int), "Id", typeof(Medicine)));
+                searchConditions.Add(new SearchExpander("Day", "Số ngày", typeof(int)));
+                searchConditions.Add(new SearchExpander("VolumnPerDay", "Số lần trong ngày", typeof(int)));
+                searchConditions.Add(new SearchExpander("Amount", "Số lượng", typeof(int)));
+                searchConditions.Add(new SearchExpander("Description", "Diễn giải", typeof(string)));
+                //searchConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
                 uctListBase.SearchConditions = searchConditions;
             }
             else if (segment.ToUpper() == Constant_Table.WAREHOUSE.ToUpper())
