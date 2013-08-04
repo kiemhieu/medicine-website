@@ -8,10 +8,12 @@ using Medical.Data.Repositories;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace Medical {
-    public partial class CheckUp : DockContent {
 
-        private readonly IPrescriptionRepository _prescriptionRepo = new PrescriptionRepository();
-        private readonly IPrescriptionDetailRepository _prescriptionDetailRepo = new PrescriptionDetailRepository();
+    public partial class CheckUp : DockContent
+    {
+        private readonly IPrescriptionRepository _prescriptionRepo;
+        private readonly IPrescriptionDetailRepository _prescriptionDetailRepo;
+        private IPatientRepository _patientRepo;
         private Prescription _lastPrescription;
         private Patient _selectedPatient;
 
@@ -20,6 +22,9 @@ namespace Medical {
         /// </summary>
         public CheckUp() {
             InitializeComponent();
+            _prescriptionRepo = new PrescriptionRepository();
+            _prescriptionDetailRepo = new PrescriptionDetailRepository();
+            _patientRepo = new PatientRepository();
         }
 
         /// <summary>
@@ -30,7 +35,7 @@ namespace Medical {
         private void BtnRegisterClick(object sender, EventArgs e) {
             var registerform = new PatientRegister();
             var result = registerform.ShowDialog();
-            if (result != System.Windows.Forms.DialogResult.Yes) return;
+            if (result != DialogResult.Yes) return;
             this._selectedPatient = registerform.Patient;
             UpdateForm(registerform.Patient);
             UpdateButtonStatus();
@@ -79,13 +84,56 @@ namespace Medical {
         }
 
         /// <summary>
+        /// Datas the grid view x1 data binding complete.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.Windows.Forms.DataGridViewBindingCompleteEventArgs"/> instance containing the event data.</param>
+        private void DataGridViewX1DataBindingComplete(object sender, System.Windows.Forms.DataGridViewBindingCompleteEventArgs e)
+        {
+            var gridView = (DataGridViewX)sender;
+            if (null == gridView) return;
+            foreach (DataGridViewRow r in gridView.Rows)
+            {
+                gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
+            }
+        }
+
+        /// <summary>
+        /// Checks up load.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void CheckUpLoad(object sender, EventArgs e)
+        {
+            UpdateButtonStatus();
+        }
+
+        /// <summary>
+        /// Updates the button status.
+        /// </summary>
+        private void UpdateButtonStatus()
+        {
+            if (this._selectedPatient != null)
+            {
+                this.btnCheck.Enabled = true;
+                this.btnCheckingHistory.Enabled = true;
+            }
+            else
+            {
+                this.btnCheck.Enabled = false;
+                this.btnCheckingHistory.Enabled = false;
+            }
+        }
+
+        /// <summary>
         /// Updates the form.
         /// </summary>
         /// <param name="patient">The patient.</param>
         private void UpdateForm(Patient patient)
         {
-            this.bdsPatient.DataSource = patient;
-            _lastPrescription = _prescriptionRepo.GetLastByPatient(patient.Id);
+            Patient ptn = _patientRepo.GetById(patient.Id);
+            this.bdsPatient.DataSource = ptn;
+            _lastPrescription = _prescriptionRepo.GetLastByPatient(ptn.Id);
 
             if (_lastPrescription != null)
             {
@@ -102,43 +150,15 @@ namespace Medical {
                 this.bdsPrescriptionDetail.DataSource = detailList;
                 this.bdsPrescriptionDetail.ResetBindings(false);
                 this.dataGridViewX1.Refresh();
-            } else
-            {
-                 this.bdsPrescription.Clear();
-                this.bdsPrescriptionDetail.Clear();
-            }
-
-            
-            
-        }
-
-        private void DataGridViewX1DataBindingComplete(object sender, System.Windows.Forms.DataGridViewBindingCompleteEventArgs e)
-        {
-            var gridView = (DataGridViewX)sender;
-            if (null == gridView) return;
-            foreach (DataGridViewRow r in gridView.Rows)
-            {
-                gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
-            }
-        }
-
-        private void CheckUpLoad(object sender, EventArgs e)
-        {
-            UpdateButtonStatus();
-        }
-
-        private void UpdateButtonStatus()
-        {
-            if (this._selectedPatient != null)
-            {
-                this.btnCheck.Enabled = true;
-                this.btnCheckingHistory.Enabled = true;
             }
             else
             {
-                this.btnCheck.Enabled = false;
-                this.btnCheckingHistory.Enabled = false;
+                this.bdsPrescription.Clear();
+                this.bdsPrescriptionDetail.Clear();
             }
+
+
+
         }
     }
 }

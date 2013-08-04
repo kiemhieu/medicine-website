@@ -11,17 +11,17 @@
     <TreeMenuItem No="2" Title="Cấp thuốc" ImageIndex="4">
       <Childs>
         <TreeMenuItem No="1" Title="Cấp thuốc" Key="MedicineDelivery" Role="0,2,3" ImageIndex="5" Description="" />
-        <TreeMenuItem No="2" Title="Nhật ký cấp thuốc" Key="MedicineDeliveryHistory" Role="0,1,2,3" ImageIndex="6" Description="" />
+        <TreeMenuItem No="2" Title="Nhật ký cấp thuốc" Key="MedicineDeliveryHistory" Role="0,1,2,3" ImageIndex="2" Description="" />
       </Childs>
     </TreeMenuItem>
-    <TreeMenuItem No="3" Title="Lập Dự trù thuốc" ImageIndex="7">
+    <TreeMenuItem No="3" Title="Lập Dự trù thuốc" ImageIndex="6">
       <Childs>
-        <TreeMenuItem No="1" Title="Lập dự trù" Key="MedicinePlanning" Role="0,2,3" ImageIndex="8" Description="" />
+        <TreeMenuItem No="1" Title="Lập dự trù" Key="MedicinePlanning" Role="0,2,3" ImageIndex="6" Description="" />
       </Childs>
     </TreeMenuItem>
-    <TreeMenuItem No="4" Title="Kho" ImageIndex="9">
+    <TreeMenuItem No="4" Title="Kho" ImageIndex="7">
       <Childs>
-        <TreeMenuItem No="1" Title="Tồn kho" Key="WareHouseSummary" Role="0,2,3" ImageIndex="10" Description="" />
+        <TreeMenuItem No="1" Title="Tồn kho" Key="WareHouseSummary" Role="0,2,3" ImageIndex="7" Description="" />
         <!--TreeMenuItem No="1" Title="Quản lý kho" Key="WareHouseDetailEdit" Role="0,1,2" ImageIndex="11" Description="" /-->
         <TreeMenuItem No="1" Title="Nhập kho" Key="WareHouseDetailPageImport" Role="0,2,3" ImageIndex="12" Description="" />
         <TreeMenuItem No="1" Title="Xuất kho" Key="WareHouseDetailPageExport" Role="0,2,3" ImageIndex="13" Description="" />
