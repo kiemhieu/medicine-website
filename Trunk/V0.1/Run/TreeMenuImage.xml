@@ -9,26 +9,11 @@
     <Name>phat_thuoc.png</Name>
     <Name>lap_du_tru.png</Name>
     <Name>kho_main.png</Name>
-    <Name>acoustic_guitar.png</Name>
-    <Name>action_log.png</Name>
-    <Name>active_sessions.png</Name>
-    <Name>add.png</Name>
-    <Name>administrator.png</Name>
-    <Name>advanced_data_grid.png</Name>
-    <Name>advertising.png</Name>
-    <Name>agp.png</Name>
-    <Name>aim_messenger.png</Name>
-    <Name>alarm_bell.png</Name>
-    <Name>align_above.png</Name>
-    <Name>align_bellow.png</Name>
-    <Name>align_center.png</Name>
-    <Name>align_compact.png</Name>
-    <Name>align_left.png</Name>
-    <Name>align_middle.png</Name>
-    <Name>align_none.png</Name>
-    <Name>align_right.png</Name>
-    <Name>alitalk.png</Name>
-    <Name>all_right_reserved.png</Name>
-    <Name>american_express.png</Name>
+    <Name>warehouse_in.png</Name>
+    <Name>warehouse_out.png</Name>
+    <Name>report.png</Name>
+    <Name>report_page.png</Name>
+    <Name>settings.png</Name>
+    <Name>edit_property.png</Name>
   </Files>
 </TreeMenuImages>
