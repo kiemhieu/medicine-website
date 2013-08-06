@@ -23,23 +23,23 @@
       <Childs>
         <TreeMenuItem No="1" Title="Tồn kho" Key="WareHouseSummary" Role="0,2,3" ImageIndex="7" Description="" />
         <!--TreeMenuItem No="1" Title="Quản lý kho" Key="WareHouseDetailEdit" Role="0,1,2" ImageIndex="11" Description="" /-->
-        <TreeMenuItem No="1" Title="Nhập kho" Key="WareHouseDetailPageImport" Role="0,2,3" ImageIndex="12" Description="" />
-        <TreeMenuItem No="1" Title="Xuất kho" Key="WareHouseDetailPageExport" Role="0,2,3" ImageIndex="13" Description="" />
-        <TreeMenuItem No="1" Title="Lịch sử xuất nhập kho" Key="WareHouseIOHistory" Role="0,2,3" ImageIndex="14" Description="" />
+        <TreeMenuItem No="1" Title="Nhập kho" Key="WareHouseDetailPageImport" Role="0,2,3" ImageIndex="8" Description="" />
+        <TreeMenuItem No="1" Title="Xuất kho" Key="WareHouseDetailPageExport" Role="0,2,3" ImageIndex="9" Description="" />
+        <TreeMenuItem No="1" Title="Lịch sử xuất nhập kho" Key="WareHouseIOHistory" Role="0,2,3" ImageIndex="2" Description="" />
       </Childs>
     </TreeMenuItem>
-    <TreeMenuItem No="5" Title="Báo cáo" ImageIndex="15">
+    <TreeMenuItem No="5" Title="Báo cáo" ImageIndex="10">
       <Childs>
-        <TreeMenuItem No="1" Title="Báo cáo tồn kho theo tháng" Key="ReportMedicineIOByMonth" Role="0,2,3" ImageIndex="16" Description="" />
-        <TreeMenuItem No="1" Title="Báo cáo thuốc sử dụng trong tháng" Key="ReportTotalMedicineDeliveryByMonth" Role="0,2,3" ImageIndex="17" Description="" />
+        <TreeMenuItem No="1" Title="Báo cáo tồn kho theo tháng" Key="ReportMedicineIOByMonth" Role="0,2,3" ImageIndex="11" Description="" />
+        <TreeMenuItem No="1" Title="Báo cáo thuốc sử dụng trong tháng" Key="ReportTotalMedicineDeliveryByMonth" Role="0,2,3" ImageIndex="11" Description="" />
       </Childs>
     </TreeMenuItem>
-    <TreeMenuItem No="6" Title="Quản lý" ImageIndex="0">
+    <TreeMenuItem No="6" Title="Quản lý" ImageIndex="12">
       <Childs>
-        <TreeMenuItem No="1" Title="Quản lý thuốc" Key="MedicineEdit" Role="0,1,2,3" ImageIndex="18" Description="" />
-        <TreeMenuItem No="1" Title="Quản lý phác đồ" Key="FigureEdit" Role="0,1,3" ImageIndex="19" Description="" />
-        <TreeMenuItem No="1" Title="Quản lý bệnh nhân" Key="PatientEdit" Role="0,1,3" ImageIndex="20" Description="" />
-        <TreeMenuItem No="1" Title="Quản lý người sử dụng" Key="UserManageForm" Role="0,1,2,3" ImageIndex="20" Description="" />
+        <TreeMenuItem No="1" Title="Quản lý thuốc" Key="MedicineEdit" Role="0,1,2,3" ImageIndex="13" Description="" />
+        <TreeMenuItem No="1" Title="Quản lý phác đồ" Key="FigureEdit" Role="0,1,3" ImageIndex="13" Description="" />
+        <TreeMenuItem No="1" Title="Quản lý bệnh nhân" Key="PatientEdit" Role="0,1,3" ImageIndex="13" Description="" />
+        <TreeMenuItem No="1" Title="Quản lý người sử dụng" Key="UserManageForm" Role="0,1,2,3" ImageIndex="13" Description="" />
       </Childs>
     </TreeMenuItem>
   </MenuItems>

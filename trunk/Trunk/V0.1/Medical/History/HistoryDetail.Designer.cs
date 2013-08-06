@@ -26,9 +26,10 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistoryDetail));
             this.cboFigure = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.bdsPrescription = new System.Windows.Forms.BindingSource(this.components);
+            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
@@ -73,6 +74,10 @@
             this.cboFigure.TabIndex = 3;
             this.cboFigure.ValueMember = "Id";
             // 
+            // bdsPrescription
+            // 
+            this.bdsPrescription.DataSource = typeof(Medical.Data.Entities.Prescription);
+            // 
             // textBoxX3
             // 
             this.textBoxX3.BackColor = System.Drawing.Color.White;
@@ -90,10 +95,6 @@
             this.textBoxX3.ReadOnly = true;
             this.textBoxX3.Size = new System.Drawing.Size(200, 21);
             this.textBoxX3.TabIndex = 1;
-            // 
-            // bdsPrescription
-            // 
-            this.bdsPrescription.DataSource = typeof(Medical.Data.Entities.Prescription);
             // 
             // labelX3
             // 
@@ -415,6 +416,7 @@
             this.Controls.Add(this.panelEx2);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HistoryDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Chi tiết";
