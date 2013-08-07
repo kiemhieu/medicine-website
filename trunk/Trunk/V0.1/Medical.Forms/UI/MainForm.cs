@@ -376,5 +376,10 @@ namespace Medical.Forms.UI
             var serverForm = new Database();
             serverForm.ShowDialog();
         }
+
+        private void MnuHelpClick(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }
