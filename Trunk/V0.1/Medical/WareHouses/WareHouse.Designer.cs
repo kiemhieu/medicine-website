@@ -28,6 +28,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WareHouse));
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.txtMedicine = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -270,12 +271,12 @@
             this.ctmMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSetup});
             this.ctmMenu.Name = "contextMenuStrip1";
-            this.ctmMenu.Size = new System.Drawing.Size(197, 26);
+            this.ctmMenu.Size = new System.Drawing.Size(212, 26);
             // 
             // mnuSetup
             // 
             this.mnuSetup.Name = "mnuSetup";
-            this.mnuSetup.Size = new System.Drawing.Size(196, 22);
+            this.mnuSetup.Size = new System.Drawing.Size(211, 22);
             this.mnuSetup.Text = "Thiết lập tồn kho tối thiểu";
             this.mnuSetup.Click += new System.EventHandler(this.MnuSetupClick);
             // 
@@ -287,6 +288,7 @@
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WareHouse";
             this.Text = "Tồn kho";
             this.Load += new System.EventHandler(this.WareHouseLoad);

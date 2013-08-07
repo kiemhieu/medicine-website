@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportWareHouseIOByMonth));
             this.DS_ReportMedicineIOByMonthBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.dateTimeInput1 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.btnReport = new DevComponents.DotNetBar.ButtonX();
@@ -48,18 +47,6 @@
             // 
             this.DS_ReportMedicineIOByMonthBindingSource.DataMember = "_ReportMedicineIOByMonth";
             this.DS_ReportMedicineIOByMonthBindingSource.DataSource = typeof(Medical.Data.Dataset.DS_ReportMedicineIOByMonth);
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DS_ReportMedicineIO";
-            reportDataSource1.Value = this.DS_ReportMedicineIOByMonthBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Medical.Reports.ReportInventoryByMonth.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 25);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(741, 383);
-            this.reportViewer1.TabIndex = 13;
             // 
             // panelEx1
             // 
@@ -188,9 +175,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(741, 408);
-            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportWareHouseIOByMonth";
             this.Text = "Báo cáo nhập xuất kho";
             this.Load += new System.EventHandler(this.ReportWareHouseIOByMonth_Load);

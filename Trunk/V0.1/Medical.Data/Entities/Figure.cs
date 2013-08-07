@@ -20,6 +20,7 @@ namespace Medical.Data.Entities
 
         public virtual List<FigureDetail> FigureDetail { get; set; }
         public virtual Clinic Clinic { get; set; }
+
         [NotMapped]
         public string ClinicName
         {
