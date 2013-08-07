@@ -135,6 +135,31 @@
   <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>253, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAA
+        AAAkJCQHMTExhzExMegxMTHyMTEx8jExMfIzMzP0MTEx+zExMfszMzP0MTEx8jExMfIxMTHyMTEx6DEx
+        MYckJCQHMzMzRTMzM/8zMzP/MzMz/zMzM/8zMzP/MzMz+TExMdgxMTHYMzMz+TMzM/8zMzP/MzMz/zMz
+        M/8zMzP/MzMzRTMzM2MzMzP/MzMz/zMzM/8zMzP/MzMz/zExMcMAAAAAAAAAADExMcMzMzP/MzMz/zMz
+        M/8zMzP/MzMz/zMzM2MyMjJgMzMz/zMzM/8zMzP/MzMz/zMzM/8xMTHSAAAAAAAAAAAxMTHSMzMz/zMz
+        M/8zMzP/MzMz/zMzM/8yMjJgMjIyYDMzM/8zMzP/MzMz/zMzM4EyMjJMMzMzOwAAAAAAAAAAMzMzOzIy
+        MkwzMzOBMzMz/zMzM/8zMzP/MjIyYDIyMmAzMzP/MzMz/zMzM/8xMTE5AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAMTExOTMzM/8zMzP/MzMz/zIyMmAyMjJgMzMz/zMzM/8zMzP/MjIydTQ0NDoyMjItAAAAAAAA
+        AAAyMjItNDQ0OjIyMnUzMzP/MzMz/zMzM/8yMjJgMjIyZTMzM/8zMzP/MzMz/zMzM/8zMzP/MjIyzwAA
+        AAAAAAAAMjIyzzMzM/8zMzP/MzMz/zMzM/8zMzP/MjIyZTExMT4zMzPzMzMz/zMzM/8zMzP/MzMz/zMz
+        M8IAAAAAAAAAADMzM8IzMzP/MzMz/zMzM/8zMzP/MzMz8zExMT4zMzMeLy8vOzIyMrcyMjL/MzMz/zMz
+        M/8xMTHyMjIyxTIyMsUxMTHyMzMz/zMzM/8yMjL/MjIytjAwMDozMzMeMTExzTMzM7I2NjYhPDw8XDAw
+        MOYzMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/8wMDDmPDw8XDY2NiEyMjKwMjIyzjc3NzcyMjLPMjIy8TU1
+        NVozMzMeMjIynDMzM/8zMzP/MzMz/zMzM/8yMjKcMzMzHjU1NVoyMjLxMjIyzzc3NzcAAAAAODg4CTU1
+        NYAwMDD6MzMzrTg4OBsxMTFDNDQ01zExMdcwMDBEODg4GzMzM60wMDD6NTU1gDg4OAkAAAAAAAAAAAAA
+        AAAAAAAAMjIyNzQ0NMwzMzPuNTU1Wi4uLgsuLi4LNTU1WjMzM+40NDTMMjIyNwAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAA4ODgJNTU1fTExMfIzMzOtMzMzrTExMfI1NTV9ODg4CQAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0NDQ1NDQ0xDQ0NMQ0NDQ1AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAmAAAAJgABgCYAAYAmAAGAJgAH4CYAAYAmAAGAJgABgCYAAAAmAAAAJgAAACYAgAEmAOAH
+        JgDwDyYA/D8mAA==
+</value>
+  </data>
   <metadata name="ctmMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>376, 17</value>
   </metadata>

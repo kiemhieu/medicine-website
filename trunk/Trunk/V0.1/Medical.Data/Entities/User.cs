@@ -21,5 +21,25 @@ namespace Medical.Data.Entities
         public DateTime LastUpdatedDate { get; set; }
         public int? LastUpdatedUser { get; set; }
         public int Version { get; set; }
+
+        [NotMapped]
+        public String RoleName
+        {
+            get
+            {
+                switch (Role)
+                {
+                    case 0:
+                        return "Quản trị viên";
+                    case 1:
+                        return "Bác sĩ";
+                    case 2:
+                        return "Dược sĩ";
+                    case 3:
+                        return "";
+                }
+                return "";
+            }
+        }
     }
 }

@@ -45,15 +45,17 @@
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLogin = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.thoatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dongBoHoaDuLieuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cấuHìnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ngườiSửDụngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.doiMatKhauToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuServer = new System.Windows.Forms.ToolStripMenuItem();
             this.trợGiúpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chươngTrìnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trungTâmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,19 +65,13 @@
             this.txtClinic = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.MainToolBar = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.worker = new System.ComponentModel.BackgroundWorker();
             this.dockingPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.mnuServer = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.MainMenu.SuspendLayout();
             this.statusBar.SuspendLayout();
-            this.MainToolBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainMenu
@@ -93,38 +89,41 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.openToolStripMenuItem,
+            this.mnuLogin,
+            this.mnuLogout,
             this.toolStripSeparator1,
-            this.thoatToolStripMenuItem});
+            this.mnuExit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.fileToolStripMenuItem.Text = "Tệp tin";
             // 
-            // toolStripMenuItem1
+            // mnuLogin
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
-            this.toolStripMenuItem1.Text = "Đăng nhập";
+            this.mnuLogin.Image = global::Medical.Forms.Properties.Resources.login;
+            this.mnuLogin.Name = "mnuLogin";
+            this.mnuLogin.Size = new System.Drawing.Size(152, 22);
+            this.mnuLogin.Text = "Đăng nhập";
             // 
-            // openToolStripMenuItem
+            // mnuLogout
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.openToolStripMenuItem.Text = "Đăng xuất";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            this.mnuLogout.Image = global::Medical.Forms.Properties.Resources.logout;
+            this.mnuLogout.Name = "mnuLogout";
+            this.mnuLogout.Size = new System.Drawing.Size(152, 22);
+            this.mnuLogout.Text = "Đăng xuất";
+            this.mnuLogout.Click += new System.EventHandler(this.OpenToolStripMenuItemClick);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(129, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
-            // thoatToolStripMenuItem
+            // mnuExit
             // 
-            this.thoatToolStripMenuItem.Name = "thoatToolStripMenuItem";
-            this.thoatToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.thoatToolStripMenuItem.Text = "Thoát";
-            this.thoatToolStripMenuItem.Click += new System.EventHandler(this.thoatToolStripMenuItem_Click);
+            this.mnuExit.Image = global::Medical.Forms.Properties.Resources.stop;
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.Size = new System.Drawing.Size(152, 22);
+            this.mnuExit.Text = "Thoát";
+            this.mnuExit.Click += new System.EventHandler(this.ThoatToolStripMenuItemClick);
             // 
             // editToolStripMenuItem
             // 
@@ -144,7 +143,7 @@
             this.dongBoHoaDuLieuToolStripMenuItem.Name = "dongBoHoaDuLieuToolStripMenuItem";
             this.dongBoHoaDuLieuToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.dongBoHoaDuLieuToolStripMenuItem.Text = "Đồng bộ hóa dữ liệu";
-            this.dongBoHoaDuLieuToolStripMenuItem.Click += new System.EventHandler(this.dongBoHoaDuLieuToolStripMenuItem_Click);
+            this.dongBoHoaDuLieuToolStripMenuItem.Click += new System.EventHandler(this.DongBoHoaDuLieuToolStripMenuItemClick);
             // 
             // cấuHìnhToolStripMenuItem
             // 
@@ -163,7 +162,19 @@
             this.doiMatKhauToolStripMenuItem.Name = "doiMatKhauToolStripMenuItem";
             this.doiMatKhauToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.doiMatKhauToolStripMenuItem.Text = "Đổi mật khẩu";
-            this.doiMatKhauToolStripMenuItem.Click += new System.EventHandler(this.doiMatKhauToolStripMenuItem_Click);
+            this.doiMatKhauToolStripMenuItem.Click += new System.EventHandler(this.DoiMatKhauToolStripMenuItemClick);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(179, 6);
+            // 
+            // mnuServer
+            // 
+            this.mnuServer.Name = "mnuServer";
+            this.mnuServer.Size = new System.Drawing.Size(182, 22);
+            this.mnuServer.Text = "Máy chủ";
+            this.mnuServer.Click += new System.EventHandler(this.MnuServerClick);
             // 
             // trợGiúpToolStripMenuItem
             // 
@@ -248,36 +259,6 @@
             this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.toolStripProgressBar.Visible = false;
             // 
-            // MainToolBar
-            // 
-            this.MainToolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2});
-            this.MainToolBar.Location = new System.Drawing.Point(0, 24);
-            this.MainToolBar.Name = "MainToolBar";
-            this.MainToolBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.MainToolBar.Size = new System.Drawing.Size(900, 25);
-            this.MainToolBar.TabIndex = 2;
-            this.MainToolBar.Text = "toolStrip1";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::Medical.Forms.Properties.Resources.info;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::Medical.Forms.Properties.Resources.warehouse;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
-            // 
             // folderBrowserDialog
             // 
             this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
@@ -306,11 +287,11 @@
             this.dockingPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.dockingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dockingPanel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dockingPanel.Location = new System.Drawing.Point(0, 49);
+            this.dockingPanel.Location = new System.Drawing.Point(0, 24);
             this.dockingPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dockingPanel.Name = "dockingPanel";
             this.dockingPanel.ShowDocumentIcon = true;
-            this.dockingPanel.Size = new System.Drawing.Size(900, 532);
+            this.dockingPanel.Size = new System.Drawing.Size(900, 557);
             dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
             dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
             autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
@@ -359,25 +340,12 @@
             this.dockingPanel.Skin = dockPanelSkin1;
             this.dockingPanel.TabIndex = 4;
             // 
-            // mnuServer
-            // 
-            this.mnuServer.Name = "mnuServer";
-            this.mnuServer.Size = new System.Drawing.Size(182, 22);
-            this.mnuServer.Text = "Máy chủ";
-            this.mnuServer.Click += new System.EventHandler(this.MnuServerClick);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(179, 6);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 607);
             this.Controls.Add(this.dockingPanel);
-            this.Controls.Add(this.MainToolBar);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.MainMenu);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -393,8 +361,6 @@
             this.MainMenu.PerformLayout();
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
-            this.MainToolBar.ResumeLayout(false);
-            this.MainToolBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,18 +370,16 @@
 
         private System.Windows.Forms.MenuStrip MainMenu;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuLogout;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatus;
-        private System.Windows.Forms.ToolStrip MainToolBar;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.ComponentModel.BackgroundWorker worker;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
-        private System.Windows.Forms.ToolStripMenuItem thoatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuExit;
         private System.Windows.Forms.ToolStripMenuItem dongBoHoaDuLieuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cấuHìnhToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trợGiúpToolStripMenuItem;
@@ -426,9 +390,8 @@
         private System.Windows.Forms.ToolStripSplitButton logViewer;
         private System.Windows.Forms.ToolStripStatusLabel txtLoggedIn;
         private System.Windows.Forms.ToolStripStatusLabel txtClinic;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripMenuItem doiMatKhauToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mnuLogin;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem mnuServer;

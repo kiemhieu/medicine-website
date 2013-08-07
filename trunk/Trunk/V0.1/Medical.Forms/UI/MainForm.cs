@@ -49,7 +49,7 @@ namespace Medical.Forms.UI
             ProgressiveDialogWraper.Instance.Parent = this;
             this.TopMenu.CreateMenuItem( AppContext.LoggedInUser.Role, this._treeMenuGui.TreeViewMenu);
             this.TopMenu.MenuItemClicked += TrivMenuMenuItemClicked;
-            this.TopMenu.CreateToolBar(this.MainToolBar, AppContext.LoggedInUser.Role);
+            // this.TopMenu.CreateToolBar(this.MainToolBar, AppContext.LoggedInUser.Role);
 
             this.ViewManager = new ViewManager(this.ModuleContainer, this.dockingPanel);
             // ViewManager.OnRequestDialogEventArgs += ViewManagerOnRequestDialogEventArgs;
@@ -178,7 +178,7 @@ namespace Medical.Forms.UI
 
         private void MainForm_Load(object sender, System.EventArgs e)
         {
-            Console.WriteLine("Hello");
+            // Console.WriteLine("Hello");
         }
 
         /// <summary>
@@ -318,13 +318,20 @@ namespace Medical.Forms.UI
 
             if (AppContext.Authenticated)
             {
-                this.txtLoggedIn.Text = AppContext.LoggedInUser.UserName;
-                this.txtClinic.Text = AppContext.CurrentClinic.Name;
+                this.txtLoggedIn.Text = String.Format("{0}:{1}", AppContext.LoggedInUser.RoleName, AppContext.LoggedInUser.UserName);
+                this.txtClinic.Text = String.Format("Phòng khám: {0}", AppContext.CurrentClinic.Name);
+                this.mnuLogout.Enabled = true;
+                this.mnuLogin.Enabled = false;
+            }
+            else
+            {
+                this.mnuLogout.Enabled = false;
+                this.mnuLogin.Enabled = true;
             }
             this.CommonInitilize();
         }
 
-        private void openToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void OpenToolStripMenuItemClick(object sender, System.EventArgs e)
         {
             var login = new Login();
             login.ShowDialog(this);
@@ -333,11 +340,17 @@ namespace Medical.Forms.UI
             {
                 this.txtLoggedIn.Text = AppContext.LoggedInUser.UserName;
                 this.txtClinic.Text = AppContext.CurrentClinic.Name;
+                this.mnuLogout.Enabled = true;
+                this.mnuLogin.Enabled = false;
+            } else
+            {
+                this.mnuLogout.Enabled = false;
+                this.mnuLogin.Enabled = true;
             }
             this.CommonInitilize();
         }
 
-        private void doiMatKhauToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void DoiMatKhauToolStripMenuItemClick(object sender, System.EventArgs e)
         {
             ChangePassword changePass = new ChangePassword(AppContext.LoggedInUser);
             changePass.ShowDialog(this);
@@ -345,22 +358,17 @@ namespace Medical.Forms.UI
             
         }
 
-        private void thoatToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void ThoatToolStripMenuItemClick(object sender, System.EventArgs e)
         {
             var dialogResult = MessageDialog.Instance.ShowMessage(this, "Q010", "");
             if (dialogResult == DialogResult.No) return;
             else Environment.Exit(0);
         }
 
-        private void dongBoHoaDuLieuToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void DongBoHoaDuLieuToolStripMenuItemClick(object sender, System.EventArgs e)
         {
             frmSynchr frmSynchr = new frmSynchr();
             frmSynchr.ShowDialog(this);
-        }
-
-        private void toolStripMenuItem3_Click(object sender, System.EventArgs e)
-        {
-
         }
 
         private void MnuServerClick(object sender, System.EventArgs e)
