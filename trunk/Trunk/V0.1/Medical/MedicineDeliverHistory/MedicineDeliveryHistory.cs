@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
 using Medical.Data;
 using Medical.Data.Entities.Views;
 using Medical.Data.EntitiyExtend;
@@ -76,33 +77,43 @@ namespace Medical.MedicineDeliverHistory
             this.dataGridViewX1.ResetBindings();
         }
 
-        private void cboDate_ValueChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Cboes the date value changed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void CboDateValueChanged(object sender, EventArgs e)
         {
             UpdateGrid();
         }
 
-        private void cboStatus_SelectedValueChanged(object sender, EventArgs e)
-        {
-            UpdateGrid();
-
-        }
-
-        private void btnDeliver_Click(object sender, EventArgs e)
-        {
-            this.bdsDeliver.EndEdit();
-            var selectedItem = (VMedicineDeliverList) this.bdsDeliver.Current;
-            var deliveryDetail = new MedicineDeliverHistory.DeliveryDetail (selectedItem.Id);
-            deliveryDetail.ShowDialog();
-            UpdateGrid();
-        }
-
-        private void dataGridViewX1_DoubleClick(object sender, EventArgs e)
+        /// <summary>
+        /// Datas the grid view x1 double click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void DataGridViewX1DoubleClick(object sender, EventArgs e)
         {
             this.bdsDeliver.EndEdit();
             var selectedItem = (VMedicineDeliverList)this.bdsDeliver.Current;
             var deliveryDetail = new MedicineDeliverHistory.DeliveryDetail(selectedItem.Id);
             deliveryDetail.ShowDialog();
             UpdateGrid();
+        }
+
+        /// <summary>
+        /// Datas the grid view x1 data binding complete.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="DataGridViewBindingCompleteEventArgs"/> instance containing the event data.</param>
+        private void DataGridViewX1DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            var gridView = (DataGridViewX)sender;
+            if (null == gridView) return;
+            foreach (DataGridViewRow r in gridView.Rows)
+            {
+                gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
+            }
         }
     }
 }

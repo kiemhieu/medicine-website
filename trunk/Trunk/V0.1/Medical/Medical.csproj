@@ -633,7 +633,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BadMedicine\" />
-    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\save_16x16.png" />
