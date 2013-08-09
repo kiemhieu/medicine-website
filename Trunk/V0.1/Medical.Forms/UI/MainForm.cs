@@ -367,8 +367,13 @@ namespace Medical.Forms.UI
 
         private void DongBoHoaDuLieuToolStripMenuItemClick(object sender, System.EventArgs e)
         {
-            frmSynchr frmSynchr = new frmSynchr();
-            frmSynchr.ShowDialog(this);
+            Sync.Sync sync = new Sync.Sync();
+            sync.DoSyncMaster();
+
+            // Sync.Sync sync = new Sync.Sync();
+            // MessageBox.Show(this,sync.Test());
+            //frmSynchr frmSynchr = new frmSynchr();
+            //frmSynchr.ShowDialog(this);
         }
 
         private void MnuServerClick(object sender, System.EventArgs e)
