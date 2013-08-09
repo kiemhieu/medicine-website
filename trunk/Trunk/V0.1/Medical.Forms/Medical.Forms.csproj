@@ -237,6 +237,10 @@
       <Project>{169CF0C0-C72D-424A-9CC4-55D95E275755}</Project>
       <Name>Medical.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Medical.Sync\Medical.Sync.csproj">
+      <Project>{110e7c44-20fa-479c-91e9-c673355ba788}</Project>
+      <Name>Medical.Sync</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\accept.png" />
