@@ -112,7 +112,7 @@
             this.cboDate.Size = new System.Drawing.Size(120, 20);
             this.cboDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cboDate.TabIndex = 0;
-            this.cboDate.ValueChanged += new System.EventHandler(this.cboDate_ValueChanged);
+            this.cboDate.ValueChanged += new System.EventHandler(this.CboDateValueChanged);
             // 
             // dataGridViewX1
             // 
@@ -155,11 +155,12 @@
             this.dataGridViewX1.MultiSelect = false;
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
-            this.dataGridViewX1.RowHeadersVisible = false;
+            this.dataGridViewX1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(980, 476);
             this.dataGridViewX1.TabIndex = 1;
-            this.dataGridViewX1.DoubleClick += new System.EventHandler(this.dataGridViewX1_DoubleClick);
+            this.dataGridViewX1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DataGridViewX1DataBindingComplete);
+            this.dataGridViewX1.DoubleClick += new System.EventHandler(this.DataGridViewX1DoubleClick);
             // 
             // codeDataGridViewTextBoxColumn
             // 
@@ -167,7 +168,6 @@
             this.codeDataGridViewTextBoxColumn.HeaderText = "Mã";
             this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
             this.codeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codeDataGridViewTextBoxColumn.Width = 50;
             // 
             // patientNameDataGridViewTextBoxColumn
             // 
@@ -215,18 +215,18 @@
             this.toolStripMenuItem1,
             this.hủyPhátThuốcToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(158, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(160, 48);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
             this.toolStripMenuItem1.Text = "Phát thuốc";
             // 
             // hủyPhátThuốcToolStripMenuItem
             // 
             this.hủyPhátThuốcToolStripMenuItem.Name = "hủyPhátThuốcToolStripMenuItem";
-            this.hủyPhátThuốcToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.hủyPhátThuốcToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.hủyPhátThuốcToolStripMenuItem.Text = "Hủy phát thuốc";
             // 
             // bdsDeliver
@@ -250,8 +250,11 @@
             // 
             // cboClinic
             // 
+            this.cboClinic.DisabledBackColor = System.Drawing.Color.White;
+            this.cboClinic.DisabledForeColor = System.Drawing.Color.Black;
             this.cboClinic.DisplayMember = "Name";
             this.cboClinic.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboClinic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboClinic.Enabled = false;
             this.cboClinic.FocusCuesEnabled = false;
             this.cboClinic.FormattingEnabled = true;
