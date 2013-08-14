@@ -7,38 +7,24 @@ using System.Text;
 
 namespace Medical.Sync.ClientAdapter
 {
-    public class PatienAdapter : ClientAdapterBase
+    public class WareHouseClientAdapter : ClientAdapterBase
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PatienAdapter"/> class.
-        /// </summary>
-        /// <param name="connection">The connection.</param>
-        public PatienAdapter(SqlConnection connection) : base(connection)
+        public WareHouseClientAdapter(SqlConnection connection) : base(connection)
         {
         }
 
-        /// <summary>
-        /// Creates the select command.
-        /// </summary>
-        /// <param name="connection"></param>
-        /// <returns></returns>
         protected override SqlCommand CreateSelectCommand(SqlConnection connection)
         {
-            String commandBuilder = String.Format("Select * from Patient Where LastSync IS NULL OR LastSync < LastUpdatedDate");
+            String commandBuilder = String.Format("Select * from WareHouse Where LastSync IS NULL OR LastSync < LastUpdatedDate");
             SqlCommand sqlCommand = new SqlCommand(commandBuilder, connection);
             return sqlCommand;
         }
 
-        /// <summary>
-        /// Creates the update command.
-        /// </summary>
-        /// <param name="connection"></param>
-        /// <returns></returns>
         protected override SqlCommand CreateUpdateCommand(SqlConnection connection)
         {
             StringBuilder commandBuilder = new StringBuilder();
-            commandBuilder.Append(" UPDATE Patient SET LastSync = @lastSync WHERE Id = @id ");
-            
+            commandBuilder.Append(" UPDATE WareHouse SET LastSync = @lastSync WHERE Id = @id ");
+
             SqlCommand sqlCommand = new SqlCommand(commandBuilder.ToString(), connection);
 
             // Add parameter
