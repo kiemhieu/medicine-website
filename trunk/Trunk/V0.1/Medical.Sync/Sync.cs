@@ -39,9 +39,16 @@ namespace Medical.Sync
             Console.WriteLine("Completed");
         }
 
-        public void DoSyncData()
+        public void DoSync(int clinicId)
         {
-
+            DoSync("Patient", clinicId);
+            DoSync("MedicineDelivery", clinicId);
+            DoSync("MedicineDeliveryDetail", clinicId);
+            DoSync("MedicinePlan", clinicId);
+            DoSync("MedicinePlanDetail", clinicId);
+            DoSync("WareHouse", clinicId);
+            DoSync("WareHouseIO", clinicId);
+            DoSync("WareHouseIODetail", clinicId);
         }
 
         private String GetConnectionString()
@@ -55,45 +62,61 @@ namespace Medical.Sync
             return sync.GetConnectionString();
         }
 
-        public DataTable GetSyncTable(String key)
+        /// <summary>
+        /// Gets the sync table.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="clinicId">The clinic id.</param>
+        /// <returns></returns>
+        /// <exception cref="System.Exception"></exception>
+        public DataTable DoSync(String key, int clinicId)
         {
-            SqlConnection connection = new SqlConnection(GetConnectionString());
-            ClientAdapterBase clientAdapter;
+            ClientAdapterBase clientAdapter = CreateAdapter(key);
             SyncSoap syncObject = new SyncSoapClient();
-            switch (key)
+            int counting = 0;
+            do
             {
-                case "Patient" :
-                    clientAdapter = new PatienAdapter(connection);
-                    int counting = 0;
-                    do
-                    {
-                        DataTable table = clientAdapter.GetData("Patient", 100, out counting);
-                        DataSet ds = new DataSet();
-                        ds.Tables.Add(table);
-                        String message = String.Empty;
-                        bool result = syncObject.SyncTable(out message, 12, ds);
-                        if (result)
-                        {
-                            clientAdapter.Update(table);
-                        }
-                    } while (counting > 0);
-                    break;
-            }
+                var message = String.Empty;
+                var ds = new DataSet();
+                var table = clientAdapter.GetData("Patient", 100, out counting);
+                ds.Tables.Add(table);
+                var result = syncObject.SyncTable(out message, clinicId, ds);
+                if (result) clientAdapter.Update(table);
+                else
+                    throw new Exception(message);
+            } while (counting > 0);
             return null;
         }
 
-        private DateTime? GetLastTimeSync(String key)
+        /// <summary>
+        /// Creates the adapter.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
+        private ClientAdapterBase CreateAdapter(String key)
         {
-            SqlConnection connection = new SqlConnection(GetConnectionString());
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            SqlCommand selectCommand = new SqlCommand("Select * from TableSyncTime Where Name = @name");
-            SqlParameter parameter = new SqlParameter("@name", SqlDbType.VarChar, 50) {Value = key};
-            selectCommand.Parameters.Add(parameter);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            if (table.Rows.Count == 0) return null;
-            if (table.Rows[0]["LastSync"] == DBNull.Value) return null;
-            return Convert.ToDateTime(table.Rows[0]["LastSync"]);
+            var connection = new SqlConnection(GetConnectionString());
+            switch (key)
+            {
+                case "Patient":
+                    return  new PatienAdapter(connection);
+                case "MedicineDelivery":
+                    return new MedicineDeliveryClientAdapter(connection);
+                case "MedicineDeliveryDetail":
+                    return new MedicineDeliveryDetailClientAdapter(connection);
+                case "MedicinePlan":
+                    return new MedicinePlanClientAdapter(connection);
+                case "MedicinePlanDetail":
+                    return new MedicinePlanDetailClientAdapter(connection);
+                case "WareHouse":
+                    return new WareHouseClientAdapter(connection);
+                case "WareHouseIO":
+                    return new WareHouseIOClientAdapter(connection);
+                case "WareHouseIODetail":
+                    return new WareHouseIODetailClientAdapter(connection);
+            }
+            return null;
         }
+        
     }
 }

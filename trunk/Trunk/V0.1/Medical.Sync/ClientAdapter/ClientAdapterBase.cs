@@ -43,7 +43,7 @@ namespace Medical.Sync.ClientAdapter
         public DataTable GetData(String keyName, int maxRow, out int counting)
         {
             DataTable dataTable = new DataTable(keyName);
-            counting = this.adapter.Fill(0, maxRow, new DataTable[] { dataTable });
+            counting = maxRow <= 0 ? this.adapter.Fill(dataTable) : this.adapter.Fill(0, maxRow, new DataTable[] { dataTable });
             if (counting > 0) UpdateSyncTime(dataTable);
             return dataTable;
         }
@@ -57,6 +57,7 @@ namespace Medical.Sync.ClientAdapter
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 dataRow["LastSync"] = DateTime.Now;
+                dataRow.SetModified();
             }
         }
 

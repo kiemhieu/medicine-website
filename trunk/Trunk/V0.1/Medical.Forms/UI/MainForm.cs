@@ -369,7 +369,7 @@ namespace Medical.Forms.UI
         {
             Sync.Sync sync = new Sync.Sync();
             sync.DoSyncMaster();
-            sync.GetSyncTable("Patient");
+            sync.DoSync(AppContext.CurrentClinicId);
 
             // Sync.Sync sync = new Sync.Sync();
             // MessageBox.Show(this,sync.Test());
