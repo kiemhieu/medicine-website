@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientAdapter\ClientAdapterBase.cs" />
+    <Compile Include="ClientAdapter\PatienAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\SyncService\Reference.cs">
       <AutoGen>True</AutoGen>

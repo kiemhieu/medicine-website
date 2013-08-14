@@ -20,16 +20,18 @@ namespace Medical.Server.Sync
         /// <summary>
         /// Syncs the specified data table.
         /// </summary>
+        /// <param name="clinicId">The clinic id.</param>
         /// <param name="dataTable">The data table.</param>
-        public abstract void Sync(DataTable dataTable);
+        public abstract void Sync(int clinicId, DataTable dataTable);
 
         /// <summary>
         /// Removes the specified list.
         /// </summary>
+        /// <param name="clinicId">The clinic id.</param>
         /// <param name="list">The list.</param>
-        public void Remove(List<int> list)
+        public void Remove(int clinicId, List<int> list)
         {
-            SqlDataAdapter adapter = this.BuildAdapter(list);
+            SqlDataAdapter adapter = this.BuildAdapter(clinicId, list);
             DataTable removedTable = new DataTable("removed");
             adapter.Fill(removedTable);
             if (removedTable.Rows == null || removedTable.Rows.Count == 0) return;
@@ -43,14 +45,15 @@ namespace Medical.Server.Sync
         /// <summary>
         /// Builds the adapter.
         /// </summary>
-        /// <param name="connection">The connection.</param>
+        /// <param name="clinic">The clinic.</param>
+        /// <param name="list">The list.</param>
         /// <returns></returns>
-        protected SqlDataAdapter BuildAdapter(List<int> list)
+        protected SqlDataAdapter BuildAdapter(int clinic, List<int> list)
         {
 
             SqlDataAdapter adapter = new SqlDataAdapter
                                          {
-                                             SelectCommand = CreateSelectCommand(connection, list),
+                                             SelectCommand = CreateSelectCommand(connection, clinic, list),
                                              InsertCommand = CreateInsertCommand(connection),
                                              UpdateCommand = CreateUpdateCommand(connection),
                                              DeleteCommand = CreateDeleteCommand(connection)
@@ -62,9 +65,10 @@ namespace Medical.Server.Sync
         /// Creates the select command.
         /// </summary>
         /// <param name="connection">The connection.</param>
+        /// <param name="clinicId">The clinic id.</param>
         /// <param name="ids">The ids.</param>
         /// <returns></returns>
-        protected abstract SqlCommand CreateSelectCommand(SqlConnection connection, List<int> ids);
+        protected abstract SqlCommand CreateSelectCommand(SqlConnection connection, int clinicId, List<int> ids);
 
 
         /// <summary>

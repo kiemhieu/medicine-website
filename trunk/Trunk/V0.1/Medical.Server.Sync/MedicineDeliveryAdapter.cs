@@ -8,17 +8,12 @@ using System.Threading.Tasks;
 
 namespace Medical.Server.Sync
 {
-    public class PatientAdapter : AdapterBase
+    public class MedicineDeliveryAdapter : AdapterBase
     {
-        public PatientAdapter(SqlConnection connection) : base(connection)
+        public MedicineDeliveryAdapter(SqlConnection connection) : base(connection)
         {
         }
 
-        /// <summary>
-        /// Syncs the specified data table.
-        /// </summary>
-        /// <param name="clinicId">The clinic id.</param>
-        /// <param name="dataTable">The data table.</param>
         public override void Sync(int clinicId, DataTable dataTable)
         {
             List<int> ids = new List<int>();
@@ -39,14 +34,10 @@ namespace Medical.Server.Sync
                 foreach (DataRow orgRow in original.Rows)
                 {
                     if (!row["Id"].Equals(orgRow["Id"])) continue;
-                    orgRow["Code"] = row["Code"];
-                    orgRow["Name"] = row["Name"];
-                    orgRow["BirthYear"] = row["BirthYear"];
-                    orgRow["Sexual"] = row["Sexual"];
-                    orgRow["Phone"] = row["Phone"];
-                    orgRow["Address"] = row["Address"];
-                    orgRow["StartDate"] = row["StartDate"];
-                    orgRow["Description"] = row["Description"];
+                    orgRow["ClinicId"] = row["ClinicId"];
+                    orgRow["PatientId"] = row["PatientId"];
+                    orgRow["PrescriptionId"] = row["PrescriptionId"]; 
+                    orgRow["Date"] = row["Date"];
                     orgRow["CreatedDate"] = row["CreatedDate"];
                     orgRow["CreatedUser"] = row["CreatedUser"];
                     orgRow["LastUpdatedDate"] = row["LastUpdatedDate"];
@@ -61,14 +52,9 @@ namespace Medical.Server.Sync
                 DataRow newRow = original.NewRow();
                 newRow["Id"] = row["Id"];
                 newRow["ClinicId"] = row["ClinicId"];
-                newRow["Code"] = row["Code"];
-                newRow["Name"] = row["Name"];
-                newRow["BirthYear"] = row["BirthYear"];
-                newRow["Sexual"] = row["Sexual"];
-                newRow["Phone"] = row["Phone"];
-                newRow["Address"] = row["Address"];
-                newRow["StartDate"] = row["StartDate"];
-                newRow["Description"] = row["Description"];
+                newRow["PatientId"] = row["PatientId"];
+                newRow["PrescriptionId"] = row["PrescriptionId"]; 
+                newRow["Date"] = row["Date"];
                 newRow["CreatedDate"] = row["CreatedDate"];
                 newRow["CreatedUser"] = row["CreatedUser"];
                 newRow["LastUpdatedDate"] = row["LastUpdatedDate"];
@@ -97,9 +83,9 @@ namespace Medical.Server.Sync
             {
                 idString = String.Join(",", ids);
             }
-            String commandBuilder = String.Format("Select * from Patient Where Id in ({0}) And ClinicId = @clinicId", idString);
+            String commandBuilder = String.Format("Select * from MedicineDelivery Where Id in ({0}) And ClinicId = @clinicId", idString);
             SqlCommand sqlCommand = new SqlCommand(commandBuilder, connection);
-            SqlParameter parameter = new SqlParameter("@clinicId", SqlDbType.Int, 4) {Value = clinicId};
+            SqlParameter parameter = new SqlParameter("@clinicId", SqlDbType.Int, 4) { Value = clinicId };
             sqlCommand.Parameters.Add(parameter);
             return sqlCommand;
         }
@@ -112,16 +98,11 @@ namespace Medical.Server.Sync
         protected override SqlCommand CreateUpdateCommand(SqlConnection connection)
         {
             StringBuilder commandBuilder = new StringBuilder();
-            commandBuilder.Append(" UPDATE Patient ");
+            commandBuilder.Append(" UPDATE MedicineDelivery ");
             commandBuilder.Append(" SET ");
-            commandBuilder.Append("  ,Code = @code ");
-            commandBuilder.Append("  ,Name = @name ");
-            commandBuilder.Append("  ,BirthYear = @birthYear ");
-            commandBuilder.Append("  ,Sexual = @sexual ");
-            commandBuilder.Append("  ,Phone = @phone ");
-            commandBuilder.Append("  ,Address = @address ");
-            commandBuilder.Append("  ,StartDate = @startDate ");
-            commandBuilder.Append("  ,Description = @description ");
+            commandBuilder.Append("  PatientId = @patientId ");
+            commandBuilder.Append("  ,PrescriptionId = @prescriptionId ");
+            commandBuilder.Append("  ,Date = @date ");
             commandBuilder.Append("  ,CreatedDate = @createdDate ");
             commandBuilder.Append("  ,CreatedUser = @createdUser ");
             commandBuilder.Append("  ,LastUpdatedDate = @lastUpdatedDate ");
@@ -132,14 +113,9 @@ namespace Medical.Server.Sync
             SqlCommand sqlCommand = new SqlCommand(commandBuilder.ToString(), connection);
 
             // Add parameter
-            sqlCommand.Parameters.Add("@code", SqlDbType.VarChar, 10, "Code");
-            sqlCommand.Parameters.Add("@name", SqlDbType.NVarChar, 100, "Name");
-            sqlCommand.Parameters.Add("@birthYear", SqlDbType.Int, 4, "BirthYear");
-            sqlCommand.Parameters.Add("@sexual", SqlDbType.Char, 1, "Sexual");
-            sqlCommand.Parameters.Add("@phone", SqlDbType.Char, 15, "Phone");
-            sqlCommand.Parameters.Add("@address", SqlDbType.NVarChar, 200, "Address");
-            sqlCommand.Parameters.Add("@startDate", SqlDbType.DateTime, 8, "StartDate");
-            sqlCommand.Parameters.Add("@description", SqlDbType.NVarChar, 4000, "Description");
+            sqlCommand.Parameters.Add("@patientId", SqlDbType.Int, 4, "PatientId");
+            sqlCommand.Parameters.Add("@prescriptionId", SqlDbType.BigInt, 8, "PrescriptionId");
+            sqlCommand.Parameters.Add("@date", SqlDbType.DateTime, 8, "Date");
             sqlCommand.Parameters.Add("@createdDate", SqlDbType.DateTime, 8, "CreatedDate");
             sqlCommand.Parameters.Add("@createdUser", SqlDbType.Int, 4, "CreatedUser");
             sqlCommand.Parameters.Add("@lastUpdatedDate", SqlDbType.DateTime, 8, "LastUpdatedDate");
@@ -147,7 +123,7 @@ namespace Medical.Server.Sync
             sqlCommand.Parameters.Add("@version", SqlDbType.Int, 4, "Version");
 
             // Add key
-            sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.Int, 4, "Id") { SourceVersion = DataRowVersion.Original });
+            sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.BigInt, 8, "Id") { SourceVersion = DataRowVersion.Original });
             sqlCommand.Parameters.Add(new SqlParameter("@clinicId", SqlDbType.Int, 4, "ClinicId") { SourceVersion = DataRowVersion.Original });
             return sqlCommand;
         }
@@ -155,30 +131,20 @@ namespace Medical.Server.Sync
         protected override SqlCommand CreateDeleteCommand(SqlConnection connection)
         {
             SqlCommand sqlCommand = new SqlCommand("Delete from Patient Where Id = @id and ClinicId = @clinicId", connection);
-            sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.Int, 4, "Id") { SourceVersion = DataRowVersion.Original });
+            sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.BigInt, 8, "Id") { SourceVersion = DataRowVersion.Original });
             sqlCommand.Parameters.Add(new SqlParameter("@clinicId", SqlDbType.Int, 4, "ClinicId") { SourceVersion = DataRowVersion.Original });
             return sqlCommand;
         }
 
-        /// <summary>
-        /// Creates the insert command.
-        /// </summary>
-        /// <param name="connection"></param>
-        /// <returns></returns>
         protected override SqlCommand CreateInsertCommand(SqlConnection connection)
         {
             StringBuilder commandBuilder = new StringBuilder();
-            commandBuilder.Append(" INSERT INTO Patient ");
+            commandBuilder.Append(" INSERT INTO MedicineDelivery ");
             commandBuilder.Append("   (Id ");
             commandBuilder.Append("   ,ClinicId ");
-            commandBuilder.Append("   ,Code ");
-            commandBuilder.Append("   ,Name ");
-            commandBuilder.Append("   ,BirthYear ");
-            commandBuilder.Append("   ,Sexual ");
-            commandBuilder.Append("   ,Phone ");
-            commandBuilder.Append("   ,Address ");
-            commandBuilder.Append("   ,StartDate ");
-            commandBuilder.Append("   ,Description ");
+            commandBuilder.Append("   ,PatientId ");
+            commandBuilder.Append("   ,PrescriptionId ");
+            commandBuilder.Append("   ,Date ");
             commandBuilder.Append("   ,CreatedDate ");
             commandBuilder.Append("   ,CreatedUser ");
             commandBuilder.Append("   ,LastUpdatedDate ");
@@ -187,33 +153,23 @@ namespace Medical.Server.Sync
             commandBuilder.Append("  VALUES ");
             commandBuilder.Append("   (@id ");
             commandBuilder.Append("   ,@clinicId ");
-            commandBuilder.Append("   ,@code ");
-            commandBuilder.Append("   ,@name ");
-            commandBuilder.Append("   ,@birthYear ");
-            commandBuilder.Append("   ,@sexual ");
-            commandBuilder.Append("   ,@phone ");
-            commandBuilder.Append("   ,@address ");
-            commandBuilder.Append("   ,@startDate ");
-            commandBuilder.Append("   ,@description ");
+            commandBuilder.Append("   ,@patientId ");
+            commandBuilder.Append("   ,@prescriptionId ");
+            commandBuilder.Append("   ,@date ");
             commandBuilder.Append("   ,@createdDate ");
             commandBuilder.Append("   ,@createdUser ");
             commandBuilder.Append("   ,@lastUpdatedDate ");
             commandBuilder.Append("   ,@lastUpdatedUser ");
-            commandBuilder.Append("   ,@version)  ");
+            commandBuilder.Append("   ,@version) ");
 
             SqlCommand sqlCommand = new SqlCommand(commandBuilder.ToString(), connection);
 
             // Add parameter
-            sqlCommand.Parameters.Add("@id", SqlDbType.Int, 4, "Id");
+            sqlCommand.Parameters.Add("@id", SqlDbType.BigInt, 8, "Id");
             sqlCommand.Parameters.Add("@clinicId", SqlDbType.Int, 4, "ClinicId");
-            sqlCommand.Parameters.Add("@code", SqlDbType.VarChar, 10, "Code");
-            sqlCommand.Parameters.Add("@name", SqlDbType.NVarChar, 100, "Name");
-            sqlCommand.Parameters.Add("@birthYear", SqlDbType.Int, 4, "BirthYear");
-            sqlCommand.Parameters.Add("@sexual", SqlDbType.Char, 1, "Sexual");
-            sqlCommand.Parameters.Add("@phone", SqlDbType.Char, 15, "Phone");
-            sqlCommand.Parameters.Add("@address", SqlDbType.NVarChar, 200, "Address");
-            sqlCommand.Parameters.Add("@startDate", SqlDbType.DateTime, 8, "StartDate");
-            sqlCommand.Parameters.Add("@description", SqlDbType.NVarChar, 4000, "Description");
+            sqlCommand.Parameters.Add("@patientId", SqlDbType.Int, 4, "PatientId");
+            sqlCommand.Parameters.Add("@prescriptionId", SqlDbType.BigInt, 8, "PrescriptionId");
+            sqlCommand.Parameters.Add("@date", SqlDbType.DateTime, 8, "Date");
             sqlCommand.Parameters.Add("@createdDate", SqlDbType.DateTime, 8, "CreatedDate");
             sqlCommand.Parameters.Add("@createdUser", SqlDbType.Int, 4, "CreatedUser");
             sqlCommand.Parameters.Add("@lastUpdatedDate", SqlDbType.DateTime, 8, "LastUpdatedDate");

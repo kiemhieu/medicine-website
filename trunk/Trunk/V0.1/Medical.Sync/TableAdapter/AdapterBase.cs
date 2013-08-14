@@ -43,7 +43,6 @@ namespace Medical.Sync.TableAdapter
             return adapter;
         }
 
-
         /// <summary>
         /// Creates the select command.
         /// </summary>
@@ -61,7 +60,6 @@ namespace Medical.Sync.TableAdapter
         /// </summary>
         /// <returns></returns>
         protected abstract SqlCommand CreateDeleteCommand(SqlConnection connection);
-
 
         /// <summary>
         /// Creates the insert command.

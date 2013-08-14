@@ -27,6 +27,14 @@ namespace Medical.Sync.SyncService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetMasterData", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet GetMasterData();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SyncTable", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool SyncTable(out string message, int clinicId, System.Data.DataSet dataset);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TestConnection", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool TestConnection();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -66,6 +74,14 @@ namespace Medical.Sync.SyncService {
         
         public System.Data.DataSet GetMasterData() {
             return base.Channel.GetMasterData();
+        }
+        
+        public bool SyncTable(out string message, int clinicId, System.Data.DataSet dataset) {
+            return base.Channel.SyncTable(out message, clinicId, dataset);
+        }
+        
+        public bool TestConnection() {
+            return base.Channel.TestConnection();
         }
     }
 }
