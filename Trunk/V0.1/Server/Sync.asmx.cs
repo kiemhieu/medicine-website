@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using Medical.Server.Sync;
 
 namespace Server
 {
@@ -52,5 +53,31 @@ namespace Server
             return dataset;
         }
 
+        [WebMethod]
+        public bool SyncTable(int clinicId, DataSet dataset, out String message)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings[ConnectionStringName].ConnectionString;
+            message = String.Empty;
+            DataTable dt = dataset.Tables[0];
+            String tableName = dt.TableName;
+            switch (tableName)
+            {
+                case "Patient" :
+                    SqlConnection connection = new SqlConnection(connectionString);
+                    PatientAdapter patientAdapter = new PatientAdapter(connection);
+                    patientAdapter.Sync(clinicId, dt);
+                    break;
+                default:
+                    break;
+
+            }
+            return true;
+        }
+
+        [WebMethod]
+        public bool TestConnection()
+        {
+            return true;
+        }
     }
 }

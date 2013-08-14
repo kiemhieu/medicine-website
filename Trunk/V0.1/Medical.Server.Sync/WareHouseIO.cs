@@ -8,17 +8,12 @@ using System.Threading.Tasks;
 
 namespace Medical.Server.Sync
 {
-    public class PatientAdapter : AdapterBase
+    public class WareHouseIO : AdapterBase
     {
-        public PatientAdapter(SqlConnection connection) : base(connection)
+        public WareHouseIO(SqlConnection connection) : base(connection)
         {
         }
 
-        /// <summary>
-        /// Syncs the specified data table.
-        /// </summary>
-        /// <param name="clinicId">The clinic id.</param>
-        /// <param name="dataTable">The data table.</param>
         public override void Sync(int clinicId, DataTable dataTable)
         {
             List<int> ids = new List<int>();
@@ -39,18 +34,16 @@ namespace Medical.Server.Sync
                 foreach (DataRow orgRow in original.Rows)
                 {
                     if (!row["Id"].Equals(orgRow["Id"])) continue;
-                    orgRow["Code"] = row["Code"];
-                    orgRow["Name"] = row["Name"];
-                    orgRow["BirthYear"] = row["BirthYear"];
-                    orgRow["Sexual"] = row["Sexual"];
+                    orgRow["Type"] = row["Type"];
+                    orgRow["Date"] = row["Date"];
+                    orgRow["No"] = row["No"];
+                    orgRow["Person"] = row["Person"];
                     orgRow["Phone"] = row["Phone"];
                     orgRow["Address"] = row["Address"];
-                    orgRow["StartDate"] = row["StartDate"];
-                    orgRow["Description"] = row["Description"];
-                    orgRow["CreatedDate"] = row["CreatedDate"];
+                    orgRow["Note"] = row["Note"];
+                    orgRow["AttachmentNo"] = row["AttachmentNo"];
                     orgRow["CreatedUser"] = row["CreatedUser"];
-                    orgRow["LastUpdatedDate"] = row["LastUpdatedDate"];
-                    orgRow["LastUpdatedUser"] = row["LastUpdatedUser"];
+                    orgRow["CreatedDate"] = row["CreatedDate"];
                     orgRow["Version"] = row["Version"];
                     isExist = true;
                     Console.WriteLine("Update row Id: " + row["Id"]);
@@ -60,19 +53,17 @@ namespace Medical.Server.Sync
                 if (isExist) continue;
                 DataRow newRow = original.NewRow();
                 newRow["Id"] = row["Id"];
+                newRow["Type"] = row["Type"];
                 newRow["ClinicId"] = row["ClinicId"];
-                newRow["Code"] = row["Code"];
-                newRow["Name"] = row["Name"];
-                newRow["BirthYear"] = row["BirthYear"];
-                newRow["Sexual"] = row["Sexual"];
+                newRow["Date"] = row["Date"];
+                newRow["No"] = row["No"];
+                newRow["Person"] = row["Person"];
                 newRow["Phone"] = row["Phone"];
                 newRow["Address"] = row["Address"];
-                newRow["StartDate"] = row["StartDate"];
-                newRow["Description"] = row["Description"];
-                newRow["CreatedDate"] = row["CreatedDate"];
+                newRow["Note"] = row["Note"];
+                newRow["AttachmentNo"] = row["AttachmentNo"];
                 newRow["CreatedUser"] = row["CreatedUser"];
-                newRow["LastUpdatedDate"] = row["LastUpdatedDate"];
-                newRow["LastUpdatedUser"] = row["LastUpdatedUser"];
+                newRow["CreatedDate"] = row["CreatedDate"];
                 newRow["Version"] = row["Version"];
                 Console.WriteLine("Add row Id: " + row["Id"]);
                 original.Rows.Add(newRow);
@@ -97,9 +88,9 @@ namespace Medical.Server.Sync
             {
                 idString = String.Join(",", ids);
             }
-            String commandBuilder = String.Format("Select * from Patient Where Id in ({0}) And ClinicId = @clinicId", idString);
+            String commandBuilder = String.Format("Select * from WareHouseIO Where Id in ({0}) And ClinicId = @clinicId", idString);
             SqlCommand sqlCommand = new SqlCommand(commandBuilder, connection);
-            SqlParameter parameter = new SqlParameter("@clinicId", SqlDbType.Int, 4) {Value = clinicId};
+            SqlParameter parameter = new SqlParameter("@clinicId", SqlDbType.Int, 4) { Value = clinicId };
             sqlCommand.Parameters.Add(parameter);
             return sqlCommand;
         }
@@ -112,38 +103,34 @@ namespace Medical.Server.Sync
         protected override SqlCommand CreateUpdateCommand(SqlConnection connection)
         {
             StringBuilder commandBuilder = new StringBuilder();
-            commandBuilder.Append(" UPDATE Patient ");
+            commandBuilder.Append(" UPDATE WareHouseIO ");
             commandBuilder.Append(" SET ");
-            commandBuilder.Append("  ,Code = @code ");
-            commandBuilder.Append("  ,Name = @name ");
-            commandBuilder.Append("  ,BirthYear = @birthYear ");
-            commandBuilder.Append("  ,Sexual = @sexual ");
+            commandBuilder.Append("  Type = @type ");
+            commandBuilder.Append("  ,Date = @date ");
+            commandBuilder.Append("  ,No = @no ");
+            commandBuilder.Append("  ,Person = @person ");
             commandBuilder.Append("  ,Phone = @phone ");
             commandBuilder.Append("  ,Address = @address ");
-            commandBuilder.Append("  ,StartDate = @startDate ");
-            commandBuilder.Append("  ,Description = @description ");
-            commandBuilder.Append("  ,CreatedDate = @createdDate ");
+            commandBuilder.Append("  ,Note = @note ");
+            commandBuilder.Append("  ,AttachmentNo = @attachmentNo ");
             commandBuilder.Append("  ,CreatedUser = @createdUser ");
-            commandBuilder.Append("  ,LastUpdatedDate = @lastUpdatedDate ");
-            commandBuilder.Append("  ,LastUpdatedUser = @lastUpdatedUser ");
+            commandBuilder.Append("  ,CreatedDate = @createdDate ");
             commandBuilder.Append("  ,Version = @version ");
-            commandBuilder.Append(" WHERE Id = @id AND ClinicId = @clinicId  ");
+            commandBuilder.Append(" WHERE Id = @id AND ClinicId = @clinicId ");
 
             SqlCommand sqlCommand = new SqlCommand(commandBuilder.ToString(), connection);
 
             // Add parameter
-            sqlCommand.Parameters.Add("@code", SqlDbType.VarChar, 10, "Code");
-            sqlCommand.Parameters.Add("@name", SqlDbType.NVarChar, 100, "Name");
-            sqlCommand.Parameters.Add("@birthYear", SqlDbType.Int, 4, "BirthYear");
-            sqlCommand.Parameters.Add("@sexual", SqlDbType.Char, 1, "Sexual");
-            sqlCommand.Parameters.Add("@phone", SqlDbType.Char, 15, "Phone");
-            sqlCommand.Parameters.Add("@address", SqlDbType.NVarChar, 200, "Address");
-            sqlCommand.Parameters.Add("@startDate", SqlDbType.DateTime, 8, "StartDate");
-            sqlCommand.Parameters.Add("@description", SqlDbType.NVarChar, 4000, "Description");
-            sqlCommand.Parameters.Add("@createdDate", SqlDbType.DateTime, 8, "CreatedDate");
+            sqlCommand.Parameters.Add("@type", SqlDbType.Char, 1, "Type");
+            sqlCommand.Parameters.Add("@date", SqlDbType.DateTime, 8, "Date");
+            sqlCommand.Parameters.Add("@no", SqlDbType.VarChar, 20, "No");
+            sqlCommand.Parameters.Add("@person", SqlDbType.NVarChar, 100, "Person");
+            sqlCommand.Parameters.Add("@phone", SqlDbType.VarChar, 20, "Phone");
+            sqlCommand.Parameters.Add("@address", SqlDbType.VarChar, 120, "Address");
+            sqlCommand.Parameters.Add("@note", SqlDbType.NVarChar, 250, "Note");
+            sqlCommand.Parameters.Add("@attachmentNo", SqlDbType.NVarChar, 50, "AttachmentNo");
             sqlCommand.Parameters.Add("@createdUser", SqlDbType.Int, 4, "CreatedUser");
-            sqlCommand.Parameters.Add("@lastUpdatedDate", SqlDbType.DateTime, 8, "LastUpdatedDate");
-            sqlCommand.Parameters.Add("@lastUpdatedUser", SqlDbType.Int, 4, "LastUpdatedUser");
+            sqlCommand.Parameters.Add("@createdDate", SqlDbType.DateTime, 8, "CreatedDate");
             sqlCommand.Parameters.Add("@version", SqlDbType.Int, 4, "Version");
 
             // Add key
@@ -154,70 +141,59 @@ namespace Medical.Server.Sync
 
         protected override SqlCommand CreateDeleteCommand(SqlConnection connection)
         {
-            SqlCommand sqlCommand = new SqlCommand("Delete from Patient Where Id = @id and ClinicId = @clinicId", connection);
+            SqlCommand sqlCommand = new SqlCommand("Delete from WareHouseIO Where Id = @id and ClinicId = @clinicId", connection);
             sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.Int, 4, "Id") { SourceVersion = DataRowVersion.Original });
             sqlCommand.Parameters.Add(new SqlParameter("@clinicId", SqlDbType.Int, 4, "ClinicId") { SourceVersion = DataRowVersion.Original });
             return sqlCommand;
         }
 
-        /// <summary>
-        /// Creates the insert command.
-        /// </summary>
-        /// <param name="connection"></param>
-        /// <returns></returns>
         protected override SqlCommand CreateInsertCommand(SqlConnection connection)
         {
             StringBuilder commandBuilder = new StringBuilder();
-            commandBuilder.Append(" INSERT INTO Patient ");
+            commandBuilder.Append(" INSERT INTO WareHouseIO ");
             commandBuilder.Append("   (Id ");
+            commandBuilder.Append("   ,Type ");
             commandBuilder.Append("   ,ClinicId ");
-            commandBuilder.Append("   ,Code ");
-            commandBuilder.Append("   ,Name ");
-            commandBuilder.Append("   ,BirthYear ");
-            commandBuilder.Append("   ,Sexual ");
+            commandBuilder.Append("   ,Date ");
+            commandBuilder.Append("   ,No ");
+            commandBuilder.Append("   ,Person ");
             commandBuilder.Append("   ,Phone ");
             commandBuilder.Append("   ,Address ");
-            commandBuilder.Append("   ,StartDate ");
-            commandBuilder.Append("   ,Description ");
-            commandBuilder.Append("   ,CreatedDate ");
+            commandBuilder.Append("   ,Note ");
+            commandBuilder.Append("   ,AttachmentNo ");
             commandBuilder.Append("   ,CreatedUser ");
-            commandBuilder.Append("   ,LastUpdatedDate ");
-            commandBuilder.Append("   ,LastUpdatedUser ");
+            commandBuilder.Append("   ,CreatedDate ");
             commandBuilder.Append("   ,Version) ");
             commandBuilder.Append("  VALUES ");
             commandBuilder.Append("   (@id ");
+            commandBuilder.Append("   ,@type ");
             commandBuilder.Append("   ,@clinicId ");
-            commandBuilder.Append("   ,@code ");
-            commandBuilder.Append("   ,@name ");
-            commandBuilder.Append("   ,@birthYear ");
-            commandBuilder.Append("   ,@sexual ");
+            commandBuilder.Append("   ,@date ");
+            commandBuilder.Append("   ,@no ");
+            commandBuilder.Append("   ,@person ");
             commandBuilder.Append("   ,@phone ");
             commandBuilder.Append("   ,@address ");
-            commandBuilder.Append("   ,@startDate ");
-            commandBuilder.Append("   ,@description ");
-            commandBuilder.Append("   ,@createdDate ");
+            commandBuilder.Append("   ,@note ");
+            commandBuilder.Append("   ,@attachmentNo ");
             commandBuilder.Append("   ,@createdUser ");
-            commandBuilder.Append("   ,@lastUpdatedDate ");
-            commandBuilder.Append("   ,@lastUpdatedUser ");
-            commandBuilder.Append("   ,@version)  ");
+            commandBuilder.Append("   ,@createdDate ");
+            commandBuilder.Append("   ,@version) ");
 
             SqlCommand sqlCommand = new SqlCommand(commandBuilder.ToString(), connection);
 
             // Add parameter
             sqlCommand.Parameters.Add("@id", SqlDbType.Int, 4, "Id");
+            sqlCommand.Parameters.Add("@type", SqlDbType.Char, 1, "Type");
             sqlCommand.Parameters.Add("@clinicId", SqlDbType.Int, 4, "ClinicId");
-            sqlCommand.Parameters.Add("@code", SqlDbType.VarChar, 10, "Code");
-            sqlCommand.Parameters.Add("@name", SqlDbType.NVarChar, 100, "Name");
-            sqlCommand.Parameters.Add("@birthYear", SqlDbType.Int, 4, "BirthYear");
-            sqlCommand.Parameters.Add("@sexual", SqlDbType.Char, 1, "Sexual");
-            sqlCommand.Parameters.Add("@phone", SqlDbType.Char, 15, "Phone");
-            sqlCommand.Parameters.Add("@address", SqlDbType.NVarChar, 200, "Address");
-            sqlCommand.Parameters.Add("@startDate", SqlDbType.DateTime, 8, "StartDate");
-            sqlCommand.Parameters.Add("@description", SqlDbType.NVarChar, 4000, "Description");
-            sqlCommand.Parameters.Add("@createdDate", SqlDbType.DateTime, 8, "CreatedDate");
+            sqlCommand.Parameters.Add("@date", SqlDbType.DateTime, 8, "Date");
+            sqlCommand.Parameters.Add("@no", SqlDbType.VarChar, 20, "No");
+            sqlCommand.Parameters.Add("@person", SqlDbType.NVarChar, 100, "Person");
+            sqlCommand.Parameters.Add("@phone", SqlDbType.VarChar, 20, "Phone");
+            sqlCommand.Parameters.Add("@address", SqlDbType.VarChar, 120, "Address");
+            sqlCommand.Parameters.Add("@note", SqlDbType.NVarChar, 250, "Note");
+            sqlCommand.Parameters.Add("@attachmentNo", SqlDbType.NVarChar, 50, "AttachmentNo");
             sqlCommand.Parameters.Add("@createdUser", SqlDbType.Int, 4, "CreatedUser");
-            sqlCommand.Parameters.Add("@lastUpdatedDate", SqlDbType.DateTime, 8, "LastUpdatedDate");
-            sqlCommand.Parameters.Add("@lastUpdatedUser", SqlDbType.Int, 4, "LastUpdatedUser");
+            sqlCommand.Parameters.Add("@createdDate", SqlDbType.DateTime, 8, "CreatedDate");
             sqlCommand.Parameters.Add("@version", SqlDbType.Int, 4, "Version");
 
             return sqlCommand;
