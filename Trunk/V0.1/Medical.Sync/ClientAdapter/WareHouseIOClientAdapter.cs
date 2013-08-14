@@ -33,12 +33,12 @@ namespace Medical.Sync.ClientAdapter
         protected override SqlCommand CreateUpdateCommand(SqlConnection connection)
         {
             StringBuilder commandBuilder = new StringBuilder();
-            commandBuilder.Append(" UPDATE WareHouseIO SET LastSync = @lastSync WHERE Id = @id ");
+            commandBuilder.Append(" UPDATE WareHouseIO SET LastSync = GETDATE() WHERE Id = @id ");
 
             SqlCommand sqlCommand = new SqlCommand(commandBuilder.ToString(), connection);
 
             // Add parameter
-            sqlCommand.Parameters.Add("@lastSync", SqlDbType.DateTime, 8, "LastSync");
+            // sqlCommand.Parameters.Add("@lastSync", SqlDbType.DateTime, 8, "LastSync");
             sqlCommand.Parameters.Add(new SqlParameter("@id", SqlDbType.Int, 4, "Id") { SourceVersion = DataRowVersion.Original });
             return sqlCommand;
         }

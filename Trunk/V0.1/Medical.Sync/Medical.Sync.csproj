@@ -46,6 +46,8 @@
     <Compile Include="ClientAdapter\ClientAdapterBase.cs" />
     <Compile Include="ClientAdapter\MedicineDeliveryClientAdapter.cs" />
     <Compile Include="ClientAdapter\MedicineDeliveryDetailClientAdapter.cs" />
+    <Compile Include="ClientAdapter\MedicinePlanClientAdapter.cs" />
+    <Compile Include="ClientAdapter\MedicinePlanDetailClientAdapter.cs" />
     <Compile Include="ClientAdapter\PatienAdapter.cs" />
     <Compile Include="ClientAdapter\WareHouseClientAdapter.cs" />
     <Compile Include="ClientAdapter\WareHouseIOClientAdapter.cs" />
