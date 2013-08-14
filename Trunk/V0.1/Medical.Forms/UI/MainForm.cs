@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 using Medical.Data;
 using Medical.Forms.Enums;
@@ -219,7 +220,7 @@ namespace Medical.Forms.UI
             dialog.ShowDialog(this);
         }
 
-        private void worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        private void WorkerDoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             Console.WriteLine(">>>> Run method");
             var a = e.Argument as Action;
@@ -228,13 +229,16 @@ namespace Medical.Forms.UI
 
         private void WorkerProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
-            var arg = e.UserState as ProgressiveUpdateArgs;
+            this.toolStripProgressBar.Value = e.ProgressPercentage;
+            var arg = e.UserState as String;
             if (arg == null) return;
-            UpdateProgressive(arg);
+            this.toolStripStatus.Text = arg;
+            this.Update();
+            // UpdateProgressive(arg);
             //this.Invoke(new Method(this.UpdateProgressive), arg);
         }
 
-        private void worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        private void WorkerRunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             ProcessEndWorker(e.Error);
         }
@@ -246,9 +250,9 @@ namespace Medical.Forms.UI
 
             if (error == null)
             {
-                MessageDialog.Instance.ShowMessage(this, "MSG0001");
+                // MessageDialog.Instance.ShowMessage(this, "MSG0001");
                 this.toolStripProgressBar.Visible = false;
-                this.toolStripStatus.Text = "Action performed successfully";
+                this.toolStripStatus.Text = "Đồng bộ dữ liệu thành công lúc " + DateTime.Now.ToString("HH:mm");
             }
             else
             {
@@ -367,14 +371,25 @@ namespace Medical.Forms.UI
 
         private void DongBoHoaDuLieuToolStripMenuItemClick(object sender, System.EventArgs e)
         {
-            Sync.Sync sync = new Sync.Sync();
-            sync.DoSyncMaster();
-            sync.DoSync(AppContext.CurrentClinicId);
+            if (this.worker.IsBusy)
+            {
+                MessageDialog.Instance.ShowMessage(this, "MSG0005", "Tiến trình đồng bộ hóa đang được thực hiện");
+                return;
+            }
+            var action = new Action(Sync);
+            this.worker.RunWorkerAsync(action);
 
             // Sync.Sync sync = new Sync.Sync();
             // MessageBox.Show(this,sync.Test());
             //frmSynchr frmSynchr = new frmSynchr();
             //frmSynchr.ShowDialog(this);
+        }
+
+        private void Sync()
+        {
+            var sync = new Sync.Sync { Worker = this.worker };
+            sync.DoSyncMaster();
+            sync.DoSync(AppContext.CurrentClinicId);
         }
 
         private void MnuServerClick(object sender, System.EventArgs e)

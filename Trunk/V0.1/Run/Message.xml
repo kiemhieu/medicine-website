@@ -19,6 +19,12 @@
     <Button>OK</Button>
   </Message>
   <Message>
+    <Code>MSG0001</Code>
+    <Content>Đồng bộ dữ liệu thành công</Content>
+    <Type>Question</Type>
+    <Button>YesNo</Button>
+  </Message>
+  <Message>
     <Code>MSG0002</Code>
     <Content>Do you want to exit</Content>
     <Type>Question</Type>
