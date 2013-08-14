@@ -15,7 +15,7 @@ namespace Medical.Sync.ClientAdapter
 
         protected override SqlCommand CreateSelectCommand(SqlConnection connection)
         {
-            String commandBuilder = String.Format("Select * from WareHouseIODetail Where LastSync IS NULL OR LastSync < LastUpdatedDate");
+            String commandBuilder = String.Format("Select * from WareHouseIODetail Where LastSync IS NULL OR LastSync < CreatedDate");
             SqlCommand sqlCommand = new SqlCommand(commandBuilder, connection);
             return sqlCommand;
         }

@@ -25,7 +25,6 @@ namespace Run.Implementation
         /// <param name="param">The param.</param>
         public void LogOutPut(string messageId, LogType logType, params object[] param)
         {
-            /*
             string message = this.MessageProvider.GetMessageByID(messageId).Content;
             switch (logType)
             {
@@ -44,7 +43,6 @@ namespace Run.Implementation
                 default:
                     break;
             }
-             */
         }
 
         public IMessageManager MessageProvider { get; set;  }
