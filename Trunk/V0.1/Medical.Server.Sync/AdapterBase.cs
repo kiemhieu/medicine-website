@@ -18,11 +18,36 @@ namespace Medical.Server.Sync
         }
 
         /// <summary>
-        /// Syncs the specified data table.
+        /// Creates the adapter.
         /// </summary>
-        /// <param name="clinicId">The clinic id.</param>
-        /// <param name="dataTable">The data table.</param>
-        public abstract void Sync(int clinicId, DataTable dataTable);
+        /// <param name="key">The key.</param>
+        /// <param name="connection">The connection.</param>
+        /// <returns></returns>
+        public static AdapterBase CreateAdapter(string key, SqlConnection connection)
+        {
+            switch (key)
+            {
+                case "Patient":
+                    return new PatientAdapter(connection);
+                case "MedicineDelivery":
+                    return new MedicineDeliveryAdapter(connection);
+                case "MedicineDeliveryDetail":
+                    return new MedicineDeliveryDetailAdapter(connection);
+                case "MedicinePlan":
+                    return new MedicinePlanAdapter(connection);
+                case "MedicinePlanDetail":
+                    return new MedicinePlanDetailAdapter(connection);
+                case "WareHouse":
+                    return new WareHouseAdapter(connection);
+                case "WareHouseIO":
+                    return new WareHouseIOAdapter(connection);
+                case "WareHouseIODetail":
+                    return new WareHouseIODetailAdapter(connection);
+                default:
+                    return null;
+            }
+
+        }
 
         /// <summary>
         /// Removes the specified list.
@@ -62,6 +87,13 @@ namespace Medical.Server.Sync
         }
 
         /// <summary>
+        /// Syncs the specified data table.
+        /// </summary>
+        /// <param name="clinicId">The clinic id.</param>
+        /// <param name="dataTable">The data table.</param>
+        public abstract void Sync(int clinicId, DataTable dataTable);
+
+        /// <summary>
         /// Creates the select command.
         /// </summary>
         /// <param name="connection">The connection.</param>
@@ -69,7 +101,6 @@ namespace Medical.Server.Sync
         /// <param name="ids">The ids.</param>
         /// <returns></returns>
         protected abstract SqlCommand CreateSelectCommand(SqlConnection connection, int clinicId, List<int> ids);
-
 
         /// <summary>
         /// Creates the select command.

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Medical.Server.Sync
 {
-    public class WareHouseIO : AdapterBase
+    public class WareHouseIOAdapter : AdapterBase
     {
-        public WareHouseIO(SqlConnection connection) : base(connection)
+        public WareHouseIOAdapter(SqlConnection connection) : base(connection)
         {
         }
 

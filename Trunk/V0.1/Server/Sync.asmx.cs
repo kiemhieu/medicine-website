@@ -28,8 +28,7 @@ namespace Server
             return "Hello World";
         }
 
-        [WebMethod]
-        public String GetConnectionString()
+        private String GetConnectionString()
         {
             return ConfigurationManager.ConnectionStrings[ConnectionStringName].ConnectionString;
         }
@@ -79,5 +78,41 @@ namespace Server
         {
             return true;
         }
+
+        [WebMethod]
+        public bool Remove(int clinicId, DataSet ds, out String message)
+        {
+            DataTable dt = ds.Tables[0];
+            Dictionary<String, List<int>> table = new Dictionary<string, List<int>>();
+            foreach (DataRow row in dt.Rows)
+            {
+                String key = Convert.ToString(row["TableName"]);
+                List<int> ids = table[key];
+                if (ids == null)
+                {
+                    ids = new List<int> {Convert.ToInt32(row["Id"])};
+                    table.Add(key, ids);
+                }
+                else
+                {
+                    ids.Add(Convert.ToInt32(row["Id"]));
+                }
+            }
+            return true;
+        }
+
+        private bool Remove(int clinicId, String key, List<int> ids)
+        {
+            AdapterBase adapter;
+            SqlConnection connection = new SqlConnection(GetConnectionString());
+            switch (key)
+            {
+                case "Patient" :
+                    adapter = new PatientAdapter(connection);
+                case "":
+            }
+        }
+
+
     }
 }
