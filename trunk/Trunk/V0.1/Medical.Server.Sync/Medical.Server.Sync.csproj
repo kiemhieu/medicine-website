@@ -43,10 +43,11 @@
     <Compile Include="MedicineDeliveryAdapter.cs" />
     <Compile Include="MedicineDeliveryDetailAdapter.cs" />
     <Compile Include="MedicinePlanAdapter.cs" />
+    <Compile Include="MedicinePlanDetailAdapter.cs" />
     <Compile Include="PatientAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WareHouseAdapter.cs" />
-    <Compile Include="WareHouseIO.cs" />
+    <Compile Include="WareHouseIOAdapter.cs" />
     <Compile Include="WareHouseIODetailAdapter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
