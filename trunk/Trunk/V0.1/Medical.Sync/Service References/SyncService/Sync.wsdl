@@ -12,16 +12,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetConnectionString">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetConnectionStringResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetConnectionStringResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="GetMasterData">
         <s:complexType />
       </s:element>
@@ -72,6 +62,29 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="Remove">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clinicId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RemoveResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -79,12 +92,6 @@
   </wsdl:message>
   <wsdl:message name="HelloWorldSoapOut">
     <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetConnectionStringSoapIn">
-    <wsdl:part name="parameters" element="tns:GetConnectionString" />
-  </wsdl:message>
-  <wsdl:message name="GetConnectionStringSoapOut">
-    <wsdl:part name="parameters" element="tns:GetConnectionStringResponse" />
   </wsdl:message>
   <wsdl:message name="GetMasterDataSoapIn">
     <wsdl:part name="parameters" element="tns:GetMasterData" />
@@ -104,14 +111,16 @@
   <wsdl:message name="TestConnectionSoapOut">
     <wsdl:part name="parameters" element="tns:TestConnectionResponse" />
   </wsdl:message>
+  <wsdl:message name="RemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:Remove" />
+  </wsdl:message>
+  <wsdl:message name="RemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveResponse" />
+  </wsdl:message>
   <wsdl:portType name="SyncSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
       <wsdl:output message="tns:HelloWorldSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetConnectionString">
-      <wsdl:input message="tns:GetConnectionStringSoapIn" />
-      <wsdl:output message="tns:GetConnectionStringSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetMasterData">
       <wsdl:input message="tns:GetMasterDataSoapIn" />
@@ -125,20 +134,15 @@
       <wsdl:input message="tns:TestConnectionSoapIn" />
       <wsdl:output message="tns:TestConnectionSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="Remove">
+      <wsdl:input message="tns:RemoveSoapIn" />
+      <wsdl:output message="tns:RemoveSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SyncSoap" type="tns:SyncSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="HelloWorld">
       <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetConnectionString">
-      <soap:operation soapAction="http://tempuri.org/GetConnectionString" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -173,20 +177,20 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Remove">
+      <soap:operation soapAction="http://tempuri.org/Remove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="SyncSoap12" type="tns:SyncSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="HelloWorld">
       <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetConnectionString">
-      <soap12:operation soapAction="http://tempuri.org/GetConnectionString" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -214,6 +218,15 @@
     </wsdl:operation>
     <wsdl:operation name="TestConnection">
       <soap12:operation soapAction="http://tempuri.org/TestConnection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remove">
+      <soap12:operation soapAction="http://tempuri.org/Remove" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -9,14 +9,18 @@ namespace Medical.Sync.ClientAdapter
 {
     public class TableChangeClientAdapter : ClientAdapterBase
     {
-        public TableChangeClientAdapter(SqlConnection connection) : base(connection)
+        private String key;
+        public TableChangeClientAdapter(SqlConnection connection, String key) : base(connection)
         {
+            this.key = key;
         }
 
         protected override SqlCommand CreateSelectCommand(SqlConnection connection)
         {
-            var commandBuilder = String.Format("Select * from TableChange");
+            var commandBuilder = String.Format("Select * from TableChange Where TableName = @tableName");
             var sqlCommand = new SqlCommand(commandBuilder, connection);
+            var parameter = new SqlParameter("@tableName", SqlDbType.VarChar, 50) {Value = this.key};
+            sqlCommand.Parameters.Add(parameter);
             return sqlCommand;
         }
 
