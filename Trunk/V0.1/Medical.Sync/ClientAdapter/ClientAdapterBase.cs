@@ -56,7 +56,7 @@ namespace Medical.Sync.ClientAdapter
         {
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                dataRow["LastSync"] = DateTime.Now;
+                // dataRow["LastSync"] = DateTime.Now;
                 dataRow.SetModified();
             }
         }

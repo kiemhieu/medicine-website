@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Services;
 using Medical.Server.Sync;
@@ -28,11 +29,6 @@ namespace Server
             return "Hello World";
         }
 
-        private String GetConnectionString()
-        {
-            return ConfigurationManager.ConnectionStrings[ConnectionStringName].ConnectionString;
-        }
-
         [WebMethod]
         public DataSet GetMasterData()
         {
@@ -55,22 +51,20 @@ namespace Server
         [WebMethod]
         public bool SyncTable(int clinicId, DataSet dataset, out String message)
         {
-            String connectionString = ConfigurationManager.ConnectionStrings[ConnectionStringName].ConnectionString;
             message = String.Empty;
             DataTable dt = dataset.Tables[0];
-            String tableName = dt.TableName;
-            switch (tableName)
+            String key = dt.TableName;
+            try
             {
-                case "Patient" :
-                    SqlConnection connection = new SqlConnection(connectionString);
-                    PatientAdapter patientAdapter = new PatientAdapter(connection);
-                    patientAdapter.Sync(clinicId, dt);
-                    break;
-                default:
-                    break;
-
+                AdapterBase adapter = CreateAdapter(key);
+                adapter.Sync(clinicId, dt);
+                return true;
             }
-            return true;
+            catch(Exception ex)
+            {
+                message = BuildExceptionMessage(ex);
+                return false;
+            }
         }
 
         [WebMethod]
@@ -82,37 +76,91 @@ namespace Server
         [WebMethod]
         public bool Remove(int clinicId, DataSet ds, out String message)
         {
-            DataTable dt = ds.Tables[0];
-            Dictionary<String, List<int>> table = new Dictionary<string, List<int>>();
-            foreach (DataRow row in dt.Rows)
+            try
             {
-                String key = Convert.ToString(row["TableName"]);
-                List<int> ids = table[key];
-                if (ids == null)
+                var dt = ds.Tables[0];
+                String key = dt.TableName;
+                message = String.Empty;
+
+                List<int> ids = new List<int>();
+                foreach (DataRow row in dt.Rows)
                 {
-                    ids = new List<int> {Convert.ToInt32(row["Id"])};
-                    table.Add(key, ids);
+                    int id = Convert.ToInt32(row["id"]);
+                    ids.Add(id);
                 }
-                else
-                {
-                    ids.Add(Convert.ToInt32(row["Id"]));
-                }
+                var adapter = CreateAdapter(key);
+                adapter.Remove(clinicId, ids);
+                return true;
             }
-            return true;
+            catch (Exception ex)
+            {
+                message = BuildExceptionMessage(ex);
+                return false;
+            }
         }
 
-        private bool Remove(int clinicId, String key, List<int> ids)
+        /// <summary>
+        /// Creates the adapter.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
+        private AdapterBase CreateAdapter(String key)
         {
-            AdapterBase adapter;
-            SqlConnection connection = new SqlConnection(GetConnectionString());
+            var connection = new SqlConnection(GetConnectionString());
             switch (key)
             {
-                case "Patient" :
-                    adapter = new PatientAdapter(connection);
-                case "":
+                case "Patient":
+                    return new PatientAdapter(connection);
+                case "MedicineDelivery":
+                    return new MedicineDeliveryAdapter(connection);
+                case "MedicineDeliveryDetail":
+                    return new MedicineDeliveryDetailAdapter(connection);
+                case "MedicinePlan":
+                    return new MedicinePlanAdapter(connection);
+                case "MedicinePlanDetail":
+                    return new MedicinePlanDetailAdapter(connection);
+                case "WareHouse":
+                    return new WareHouseAdapter(connection);
+                case "WareHouseIO":
+                    return new WareHouseIOAdapter(connection);
+                case "WareHouseIODetail":
+                    return new WareHouseIODetailAdapter(connection);
             }
+            return null;
         }
 
+        /// <summary>
+        /// Gets the connection string.
+        /// </summary>
+        /// <returns></returns>
+        private String GetConnectionString()
+        {
+            return ConfigurationManager.ConnectionStrings[ConnectionStringName].ConnectionString;
+        }
+
+        /// <summary>
+        /// Exceptions the builder.
+        /// </summary>
+        /// <param name="ex">The ex.</param>
+        /// <returns></returns>
+        private String BuildExceptionMessage(Exception ex)
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append(ex.Message);
+            builder.Append(ex.Source);
+            builder.Append(ex.StackTrace);
+
+            Exception exx = ex.InnerException;
+            while (exx != null)
+            {
+                builder.Append(exx.Message);
+                builder.Append(exx.Source);
+                builder.Append(exx.StackTrace);
+                exx = exx.InnerException;
+            }
+
+            return builder.ToString();
+        }
 
     }
 }

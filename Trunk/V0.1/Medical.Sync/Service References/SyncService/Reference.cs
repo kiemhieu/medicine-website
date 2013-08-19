@@ -20,10 +20,6 @@ namespace Medical.Sync.SyncService {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string HelloWorld();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetConnectionString", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetConnectionString();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetMasterData", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet GetMasterData();
@@ -35,6 +31,10 @@ namespace Medical.Sync.SyncService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TestConnection", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         bool TestConnection();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Remove", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool Remove(out string message, int clinicId, System.Data.DataSet ds);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -68,10 +68,6 @@ namespace Medical.Sync.SyncService {
             return base.Channel.HelloWorld();
         }
         
-        public string GetConnectionString() {
-            return base.Channel.GetConnectionString();
-        }
-        
         public System.Data.DataSet GetMasterData() {
             return base.Channel.GetMasterData();
         }
@@ -82,6 +78,10 @@ namespace Medical.Sync.SyncService {
         
         public bool TestConnection() {
             return base.Channel.TestConnection();
+        }
+        
+        public bool Remove(out string message, int clinicId, System.Data.DataSet ds) {
+            return base.Channel.Remove(out message, clinicId, ds);
         }
     }
 }

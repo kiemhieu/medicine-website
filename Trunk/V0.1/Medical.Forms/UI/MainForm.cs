@@ -388,8 +388,16 @@ namespace Medical.Forms.UI
         private void Sync()
         {
             var sync = new Sync.Sync { Worker = this.worker };
-            sync.DoSyncMaster();
-            sync.DoSync(AppContext.CurrentClinicId);
+            try
+            {
+                sync.DoSyncMaster();
+                sync.DoSync(AppContext.CurrentClinicId);
+                sync.DoRemove(AppContext.CurrentClinicId);
+            }
+            finally
+            {
+                sync.UpdateSyncResult(AppContext.CurrentClinicId);
+            }
         }
 
         private void MnuServerClick(object sender, System.EventArgs e)
@@ -401,6 +409,21 @@ namespace Medical.Forms.UI
         private void MnuHelpClick(object sender, System.EventArgs e)
         {
 
+        }
+
+        private void MnuCheckingClick(object sender, System.EventArgs e)
+        {
+            var sync = new Sync.Sync();
+            String message;
+            if (sync.TestConnection(out message))
+            {
+                MessageDialog.Instance.ShowMessage(this, "MSG0005", "Kết nối thành công");
+            }
+            else
+            {
+                MessageDialog.Instance.ShowMessage(this, "MSG0005", "Kết nối không thành công\n" + message);
+            }
+            
         }
     }
 }

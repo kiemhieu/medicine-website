@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin5 = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
-            WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin5 = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient13 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient29 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin dockPaneStripSkin5 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient dockPaneStripGradient5 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient30 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient14 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient31 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient5 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient32 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient33 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient15 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient34 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient35 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin1 = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
+            WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin1 = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient1 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin dockPaneStripSkin1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient dockPaneStripGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient2 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient2 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient3 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient4 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient5 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient6 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLogin = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,13 +59,15 @@
             this.logViewer = new System.Windows.Forms.ToolStripSplitButton();
             this.txtLoggedIn = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtClinic = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.worker = new System.ComponentModel.BackgroundWorker();
             this.dockingPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.mnuChecking = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -90,34 +92,34 @@
             this.toolStripSeparator1,
             this.mnuExit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.fileToolStripMenuItem.Text = "Tệp tin";
             // 
             // mnuLogin
             // 
             this.mnuLogin.Image = global::Medical.Forms.Properties.Resources.login;
             this.mnuLogin.Name = "mnuLogin";
-            this.mnuLogin.Size = new System.Drawing.Size(133, 22);
+            this.mnuLogin.Size = new System.Drawing.Size(132, 22);
             this.mnuLogin.Text = "Đăng nhập";
             // 
             // mnuLogout
             // 
             this.mnuLogout.Image = global::Medical.Forms.Properties.Resources.logout;
             this.mnuLogout.Name = "mnuLogout";
-            this.mnuLogout.Size = new System.Drawing.Size(133, 22);
+            this.mnuLogout.Size = new System.Drawing.Size(132, 22);
             this.mnuLogout.Text = "Đăng xuất";
             this.mnuLogout.Click += new System.EventHandler(this.OpenToolStripMenuItemClick);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(130, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(129, 6);
             // 
             // mnuExit
             // 
             this.mnuExit.Image = global::Medical.Forms.Properties.Resources.stop;
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(133, 22);
+            this.mnuExit.Size = new System.Drawing.Size(132, 22);
             this.mnuExit.Text = "Thoát";
             this.mnuExit.Click += new System.EventHandler(this.ThoatToolStripMenuItemClick);
             // 
@@ -127,16 +129,17 @@
             this.mnuSync,
             this.mnuChangePassword,
             this.toolStripSeparator2,
+            this.mnuChecking,
             this.mnuServer});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.editToolStripMenuItem.Text = "Hệ thống";
             // 
             // mnuSync
             // 
             this.mnuSync.Image = global::Medical.Forms.Properties.Resources.sync;
             this.mnuSync.Name = "mnuSync";
-            this.mnuSync.Size = new System.Drawing.Size(185, 22);
+            this.mnuSync.Size = new System.Drawing.Size(206, 22);
             this.mnuSync.Text = "Đồng bộ hóa dữ liệu";
             this.mnuSync.Click += new System.EventHandler(this.DongBoHoaDuLieuToolStripMenuItemClick);
             // 
@@ -144,27 +147,27 @@
             // 
             this.mnuChangePassword.Image = global::Medical.Forms.Properties.Resources.user_chat;
             this.mnuChangePassword.Name = "mnuChangePassword";
-            this.mnuChangePassword.Size = new System.Drawing.Size(185, 22);
+            this.mnuChangePassword.Size = new System.Drawing.Size(206, 22);
             this.mnuChangePassword.Text = "Đổi mật khẩu";
             this.mnuChangePassword.Click += new System.EventHandler(this.DoiMatKhauToolStripMenuItemClick);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(182, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(203, 6);
             // 
             // mnuServer
             // 
             this.mnuServer.Image = global::Medical.Forms.Properties.Resources.computer_retro;
             this.mnuServer.Name = "mnuServer";
-            this.mnuServer.Size = new System.Drawing.Size(185, 22);
+            this.mnuServer.Size = new System.Drawing.Size(206, 22);
             this.mnuServer.Text = "Máy chủ";
             this.mnuServer.Click += new System.EventHandler(this.MnuServerClick);
             // 
             // mnuHelp
             // 
             this.mnuHelp.Name = "mnuHelp";
-            this.mnuHelp.Size = new System.Drawing.Size(65, 20);
+            this.mnuHelp.Size = new System.Drawing.Size(64, 20);
             this.mnuHelp.Text = "Trợ giúp";
             this.mnuHelp.Click += new System.EventHandler(this.MnuHelpClick);
             // 
@@ -174,6 +177,7 @@
             this.logViewer,
             this.txtLoggedIn,
             this.txtClinic,
+            this.toolStripSplitButton1,
             this.toolStripProgressBar,
             this.toolStripStatus});
             this.statusBar.Location = new System.Drawing.Point(0, 581);
@@ -195,9 +199,9 @@
             // txtLoggedIn
             // 
             this.txtLoggedIn.AutoSize = false;
-            this.txtLoggedIn.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.txtLoggedIn.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.txtLoggedIn.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.txtLoggedIn.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLoggedIn.Name = "txtLoggedIn";
@@ -207,14 +211,20 @@
             // txtClinic
             // 
             this.txtClinic.AutoSize = false;
-            this.txtClinic.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.txtClinic.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.txtClinic.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.txtClinic.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClinic.Name = "txtClinic";
             this.txtClinic.Size = new System.Drawing.Size(200, 21);
             this.txtClinic.Text = "---";
+            // 
+            // toolStripProgressBar
+            // 
+            this.toolStripProgressBar.AutoSize = false;
+            this.toolStripProgressBar.Name = "toolStripProgressBar";
+            this.toolStripProgressBar.Size = new System.Drawing.Size(100, 20);
             // 
             // toolStripStatus
             // 
@@ -259,59 +269,69 @@
             this.dockingPanel.Name = "dockingPanel";
             this.dockingPanel.ShowDocumentIcon = true;
             this.dockingPanel.Size = new System.Drawing.Size(900, 557);
-            dockPanelGradient13.EndColor = System.Drawing.SystemColors.ControlLight;
-            dockPanelGradient13.StartColor = System.Drawing.SystemColors.ControlLight;
-            autoHideStripSkin5.DockStripGradient = dockPanelGradient13;
-            tabGradient29.EndColor = System.Drawing.SystemColors.Control;
-            tabGradient29.StartColor = System.Drawing.SystemColors.Control;
-            tabGradient29.TextColor = System.Drawing.SystemColors.ControlDarkDark;
-            autoHideStripSkin5.TabGradient = tabGradient29;
-            autoHideStripSkin5.TextFont = new System.Drawing.Font("Segoe UI", 9F);
-            dockPanelSkin5.AutoHideStripSkin = autoHideStripSkin5;
-            tabGradient30.EndColor = System.Drawing.SystemColors.ControlLightLight;
-            tabGradient30.StartColor = System.Drawing.SystemColors.ControlLightLight;
-            tabGradient30.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripGradient5.ActiveTabGradient = tabGradient30;
-            dockPanelGradient14.EndColor = System.Drawing.SystemColors.Control;
-            dockPanelGradient14.StartColor = System.Drawing.SystemColors.Control;
-            dockPaneStripGradient5.DockStripGradient = dockPanelGradient14;
-            tabGradient31.EndColor = System.Drawing.SystemColors.ControlLight;
-            tabGradient31.StartColor = System.Drawing.SystemColors.ControlLight;
-            tabGradient31.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripGradient5.InactiveTabGradient = tabGradient31;
-            dockPaneStripSkin5.DocumentGradient = dockPaneStripGradient5;
-            dockPaneStripSkin5.TextFont = new System.Drawing.Font("Segoe UI", 9F);
-            tabGradient32.EndColor = System.Drawing.SystemColors.ActiveCaption;
-            tabGradient32.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            tabGradient32.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
-            tabGradient32.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dockPaneStripToolWindowGradient5.ActiveCaptionGradient = tabGradient32;
-            tabGradient33.EndColor = System.Drawing.SystemColors.Control;
-            tabGradient33.StartColor = System.Drawing.SystemColors.Control;
-            tabGradient33.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripToolWindowGradient5.ActiveTabGradient = tabGradient33;
-            dockPanelGradient15.EndColor = System.Drawing.SystemColors.ControlLight;
-            dockPanelGradient15.StartColor = System.Drawing.SystemColors.ControlLight;
-            dockPaneStripToolWindowGradient5.DockStripGradient = dockPanelGradient15;
-            tabGradient34.EndColor = System.Drawing.SystemColors.InactiveCaption;
-            tabGradient34.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            tabGradient34.StartColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            tabGradient34.TextColor = System.Drawing.SystemColors.InactiveCaptionText;
-            dockPaneStripToolWindowGradient5.InactiveCaptionGradient = tabGradient34;
-            tabGradient35.EndColor = System.Drawing.Color.Transparent;
-            tabGradient35.StartColor = System.Drawing.Color.Transparent;
-            tabGradient35.TextColor = System.Drawing.SystemColors.ControlDarkDark;
-            dockPaneStripToolWindowGradient5.InactiveTabGradient = tabGradient35;
-            dockPaneStripSkin5.ToolWindowGradient = dockPaneStripToolWindowGradient5;
-            dockPanelSkin5.DockPaneStripSkin = dockPaneStripSkin5;
-            this.dockingPanel.Skin = dockPanelSkin5;
+            dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
+            dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
+            autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
+            tabGradient1.EndColor = System.Drawing.SystemColors.Control;
+            tabGradient1.StartColor = System.Drawing.SystemColors.Control;
+            tabGradient1.TextColor = System.Drawing.SystemColors.ControlDarkDark;
+            autoHideStripSkin1.TabGradient = tabGradient1;
+            autoHideStripSkin1.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            dockPanelSkin1.AutoHideStripSkin = autoHideStripSkin1;
+            tabGradient2.EndColor = System.Drawing.SystemColors.ControlLightLight;
+            tabGradient2.StartColor = System.Drawing.SystemColors.ControlLightLight;
+            tabGradient2.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripGradient1.ActiveTabGradient = tabGradient2;
+            dockPanelGradient2.EndColor = System.Drawing.SystemColors.Control;
+            dockPanelGradient2.StartColor = System.Drawing.SystemColors.Control;
+            dockPaneStripGradient1.DockStripGradient = dockPanelGradient2;
+            tabGradient3.EndColor = System.Drawing.SystemColors.ControlLight;
+            tabGradient3.StartColor = System.Drawing.SystemColors.ControlLight;
+            tabGradient3.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripGradient1.InactiveTabGradient = tabGradient3;
+            dockPaneStripSkin1.DocumentGradient = dockPaneStripGradient1;
+            dockPaneStripSkin1.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            tabGradient4.EndColor = System.Drawing.SystemColors.ActiveCaption;
+            tabGradient4.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            tabGradient4.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
+            tabGradient4.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dockPaneStripToolWindowGradient1.ActiveCaptionGradient = tabGradient4;
+            tabGradient5.EndColor = System.Drawing.SystemColors.Control;
+            tabGradient5.StartColor = System.Drawing.SystemColors.Control;
+            tabGradient5.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripToolWindowGradient1.ActiveTabGradient = tabGradient5;
+            dockPanelGradient3.EndColor = System.Drawing.SystemColors.ControlLight;
+            dockPanelGradient3.StartColor = System.Drawing.SystemColors.ControlLight;
+            dockPaneStripToolWindowGradient1.DockStripGradient = dockPanelGradient3;
+            tabGradient6.EndColor = System.Drawing.SystemColors.InactiveCaption;
+            tabGradient6.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            tabGradient6.StartColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            tabGradient6.TextColor = System.Drawing.SystemColors.InactiveCaptionText;
+            dockPaneStripToolWindowGradient1.InactiveCaptionGradient = tabGradient6;
+            tabGradient7.EndColor = System.Drawing.Color.Transparent;
+            tabGradient7.StartColor = System.Drawing.Color.Transparent;
+            tabGradient7.TextColor = System.Drawing.SystemColors.ControlDarkDark;
+            dockPaneStripToolWindowGradient1.InactiveTabGradient = tabGradient7;
+            dockPaneStripSkin1.ToolWindowGradient = dockPaneStripToolWindowGradient1;
+            dockPanelSkin1.DockPaneStripSkin = dockPaneStripSkin1;
+            this.dockingPanel.Skin = dockPanelSkin1;
             this.dockingPanel.TabIndex = 4;
             // 
-            // toolStripProgressBar
+            // toolStripSplitButton1
             // 
-            this.toolStripProgressBar.AutoSize = false;
-            this.toolStripProgressBar.Name = "toolStripProgressBar";
-            this.toolStripProgressBar.Size = new System.Drawing.Size(100, 20);
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton1.Image = global::Medical.Forms.Properties.Resources.info;
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(29, 24);
+            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
+            // 
+            // mnuChecking
+            // 
+            this.mnuChecking.Name = "mnuChecking";
+            this.mnuChecking.Size = new System.Drawing.Size(206, 22);
+            this.mnuChecking.Text = "Kiểm tra kết nối máy chủ";
+            this.mnuChecking.Click += new System.EventHandler(this.MnuCheckingClick);
             // 
             // MainForm
             // 
@@ -364,5 +384,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem mnuServer;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripSplitButton1;
+        private System.Windows.Forms.ToolStripMenuItem mnuChecking;
     }
 }

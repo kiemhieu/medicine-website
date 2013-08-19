@@ -15,6 +15,7 @@ namespace Medical.Data.Entities
         public string Description { get; set; }
         public int Type { get; set; }
         public DateTime? LastSyncTime { get; set; }
+        public String SyncMessage { get; set; }
         public DateTime CreatedDate { get; set; }
         public int CreatedUser { get; set; }
         public DateTime LastUpdatedDate { get; set; }
