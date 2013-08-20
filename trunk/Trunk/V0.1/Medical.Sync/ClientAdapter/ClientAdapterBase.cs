@@ -10,7 +10,7 @@ namespace Medical.Sync.ClientAdapter
     public abstract class  ClientAdapterBase
     {
         private SqlConnection connection;
-        private SqlDataAdapter adapter;
+        protected SqlDataAdapter adapter;
 
         protected ClientAdapterBase(SqlConnection connection)
         {

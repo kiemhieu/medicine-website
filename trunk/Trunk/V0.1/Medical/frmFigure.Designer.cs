@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFigure));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grd = new DevComponents.DotNetBar.Controls.DataGridViewX();
@@ -84,7 +83,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.grd.DefaultCellStyle = dataGridViewCellStyle1;
             this.grd.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.grd.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.grd.Location = new System.Drawing.Point(0, 25);
             this.grd.Name = "grd";
             this.grd.Size = new System.Drawing.Size(510, 162);
@@ -157,7 +156,7 @@
             // tsbtnDelete
             // 
             this.tsbtnDelete.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbtnDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDelete.Image")));
+            this.tsbtnDelete.Image = global::Medical.Properties.Resources.delete;
             this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnDelete.MergeIndex = 1;
             this.tsbtnDelete.Name = "tsbtnDelete";
@@ -168,7 +167,7 @@
             // tsbtnEdit
             // 
             this.tsbtnEdit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbtnEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnEdit.Image")));
+            this.tsbtnEdit.Image = global::Medical.Properties.Resources.edit;
             this.tsbtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnEdit.Name = "tsbtnEdit";
             this.tsbtnEdit.Size = new System.Drawing.Size(46, 22);
@@ -178,7 +177,7 @@
             // tsbtnInsert
             // 
             this.tsbtnInsert.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbtnInsert.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnInsert.Image")));
+            this.tsbtnInsert.Image = global::Medical.Properties.Resources.add;
             this.tsbtnInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnInsert.MergeIndex = 0;
             this.tsbtnInsert.Name = "tsbtnInsert";
@@ -225,7 +224,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.grdDetail.DefaultCellStyle = dataGridViewCellStyle3;
             this.grdDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdDetail.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.grdDetail.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.grdDetail.Location = new System.Drawing.Point(0, 187);
             this.grdDetail.MultiSelect = false;
             this.grdDetail.Name = "grdDetail";
@@ -260,7 +259,7 @@
             // 
             this.bdsFigureDetail.DataSource = typeof(Medical.Data.Entities.FigureDetail);
             // 
-            // frmFigure
+            // FrmFigure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

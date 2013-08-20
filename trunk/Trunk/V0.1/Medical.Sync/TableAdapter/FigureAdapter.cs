@@ -111,6 +111,7 @@ namespace Medical.Sync.TableAdapter
         protected override SqlCommand CreateInsertCommand(SqlConnection connection)
         {
             StringBuilder commandBuilder = new StringBuilder();
+            commandBuilder.Append(" Set Identity_Insert Figure On; ");
             commandBuilder.Append(" INSERT INTO Figure ");
             commandBuilder.Append("   (Id ");
             commandBuilder.Append("   ,Name ");
@@ -126,7 +127,8 @@ namespace Medical.Sync.TableAdapter
             commandBuilder.Append("   ,@description ");
             commandBuilder.Append("   ,@lastUpdatedDate ");
             commandBuilder.Append("   ,@lastUpdatedUser ");
-            commandBuilder.Append("   ,@version) ");
+            commandBuilder.Append("   ,@version); ");
+            commandBuilder.Append(" Set Identity_Insert Figure Off; ");
             SqlCommand sqlCommand = new SqlCommand(commandBuilder.ToString(), connection);
 
 

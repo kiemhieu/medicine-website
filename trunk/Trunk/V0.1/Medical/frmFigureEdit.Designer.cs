@@ -31,13 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.txtGhiChu = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.bdsFigure = new System.Windows.Forms.BindingSource(this.components);
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.lblFigureName = new DevComponents.DotNetBar.LabelX();
             this.txtFigureName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.btnCancle = new DevComponents.DotNetBar.ButtonX();
             this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
             this.grdDetail = new DevComponents.DotNetBar.Controls.DataGridViewX();
@@ -45,25 +43,12 @@
             this.bdsMedicine = new System.Windows.Forms.BindingSource(this.components);
             this.volumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsFigureDetail = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1.SuspendLayout();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bdsFigure)).BeginInit();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsFigureDetail)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtGhiChu);
-            this.panel1.Controls.Add(this.labelX1);
-            this.panel1.Controls.Add(this.lblFigureName);
-            this.panel1.Controls.Add(this.txtFigureName);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(373, 90);
-            this.panel1.TabIndex = 2;
             // 
             // txtGhiChu
             // 
@@ -75,10 +60,9 @@
             this.txtGhiChu.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtGhiChu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsFigure, "Description", true));
             this.txtGhiChu.ForeColor = System.Drawing.Color.Black;
-            this.txtGhiChu.Location = new System.Drawing.Point(108, 36);
-            this.txtGhiChu.Multiline = true;
+            this.txtGhiChu.Location = new System.Drawing.Point(80, 38);
             this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(259, 48);
+            this.txtGhiChu.Size = new System.Drawing.Size(380, 20);
             this.txtGhiChu.TabIndex = 7;
             // 
             // bdsFigure
@@ -87,29 +71,33 @@
             // 
             // labelX1
             // 
+            this.labelX1.AutoSize = true;
             // 
             // 
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.labelX1.Location = new System.Drawing.Point(17, 36);
+            this.labelX1.Location = new System.Drawing.Point(10, 41);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(75, 23);
+            this.labelX1.Size = new System.Drawing.Size(40, 15);
+            this.labelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.labelX1.TabIndex = 6;
             this.labelX1.Text = "Ghi chú";
             // 
             // lblFigureName
             // 
+            this.lblFigureName.AutoSize = true;
             // 
             // 
             // 
             this.lblFigureName.BackgroundStyle.Class = "";
             this.lblFigureName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblFigureName.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.lblFigureName.Location = new System.Drawing.Point(17, 7);
+            this.lblFigureName.Location = new System.Drawing.Point(10, 15);
             this.lblFigureName.Name = "lblFigureName";
-            this.lblFigureName.Size = new System.Drawing.Size(75, 23);
+            this.lblFigureName.Size = new System.Drawing.Size(64, 15);
+            this.lblFigureName.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.lblFigureName.TabIndex = 5;
             this.lblFigureName.Text = "Tên phác đồ";
             // 
@@ -124,46 +112,38 @@
             this.txtFigureName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsFigure, "Name", true));
             this.txtFigureName.Font = new System.Drawing.Font("Arial", 8.25F);
             this.txtFigureName.ForeColor = System.Drawing.Color.Black;
-            this.txtFigureName.Location = new System.Drawing.Point(108, 6);
+            this.txtFigureName.Location = new System.Drawing.Point(80, 12);
             this.txtFigureName.Name = "txtFigureName";
             this.txtFigureName.Size = new System.Drawing.Size(170, 20);
             this.txtFigureName.TabIndex = 4;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnCancle);
-            this.panel2.Controls.Add(this.btnUpdate);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 90);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(373, 40);
-            this.panel2.TabIndex = 3;
             // 
             // btnCancle
             // 
             this.btnCancle.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCancle.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCancle.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btnCancle.Location = new System.Drawing.Point(292, 3);
+            this.btnCancle.Image = global::Medical.Properties.Resources.cancel;
+            this.btnCancle.Location = new System.Drawing.Point(340, 333);
             this.btnCancle.Name = "btnCancle";
-            this.btnCancle.Size = new System.Drawing.Size(75, 23);
+            this.btnCancle.Size = new System.Drawing.Size(120, 23);
             this.btnCancle.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCancle.TabIndex = 3;
-            this.btnCancle.Text = "Hủy";
-            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+            this.btnCancle.Text = "Bỏ qua";
+            this.btnCancle.Click += new System.EventHandler(this.BtnCancleClick);
             // 
             // btnUpdate
             // 
             this.btnUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnUpdate.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btnUpdate.Location = new System.Drawing.Point(211, 3);
+            this.btnUpdate.Image = global::Medical.Properties.Resources.accept;
+            this.btnUpdate.Location = new System.Drawing.Point(214, 333);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.Size = new System.Drawing.Size(120, 23);
             this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "Cập nhật";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnUpdate.Click += new System.EventHandler(this.BtnUpdateClick);
             // 
             // grdDetail
             // 
@@ -192,16 +172,15 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.grdDetail.DefaultCellStyle = dataGridViewCellStyle2;
-            this.grdDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdDetail.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.grdDetail.Location = new System.Drawing.Point(0, 130);
+            this.grdDetail.Location = new System.Drawing.Point(6, 65);
             this.grdDetail.MultiSelect = false;
             this.grdDetail.Name = "grdDetail";
             this.grdDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdDetail.Size = new System.Drawing.Size(373, 257);
+            this.grdDetail.Size = new System.Drawing.Size(454, 257);
             this.grdDetail.TabIndex = 9;
-            this.grdDetail.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDetail_CellEndEdit);
-            this.grdDetail.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.grdDetail_DataBindingComplete);
+            this.grdDetail.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrdDetailCellEndEdit);
+            this.grdDetail.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.GrdDetailDataBindingComplete);
             // 
             // medicineIdDataGridViewTextBoxColumn1
             // 
@@ -229,37 +208,48 @@
             // bdsFigureDetail
             // 
             this.bdsFigureDetail.DataSource = typeof(Medical.Data.Entities.FigureDetail);
-            this.bdsFigureDetail.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bdsFigureDetail_ListChanged);
+            this.bdsFigureDetail.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.BdsFigureDetailListChanged);
             // 
-            // frmFigureEdit
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
+            // 
+            // FrmFigureEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 387);
+            this.ClientSize = new System.Drawing.Size(469, 368);
+            this.ControlBox = false;
+            this.Controls.Add(this.txtGhiChu);
+            this.Controls.Add(this.btnCancle);
+            this.Controls.Add(this.labelX1);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.lblFigureName);
             this.Controls.Add(this.grdDetail);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.txtFigureName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmFigureEdit";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cập nhật phác đồ";
-            this.Activated += new System.EventHandler(this.frmFigureEdit_Activated);
-            this.panel1.ResumeLayout(false);
+            this.Activated += new System.EventHandler(this.FrmFigureEditActivated);
             ((System.ComponentModel.ISupportInitialize)(this.bdsFigure)).EndInit();
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMedicine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsFigureDetail)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
         private DevComponents.DotNetBar.Controls.TextBoxX txtGhiChu;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX lblFigureName;
         private DevComponents.DotNetBar.Controls.TextBoxX txtFigureName;
-        private System.Windows.Forms.Panel panel2;
         private DevComponents.DotNetBar.ButtonX btnCancle;
         private DevComponents.DotNetBar.ButtonX btnUpdate;
         private DevComponents.DotNetBar.Controls.DataGridViewX grdDetail;
@@ -268,6 +258,7 @@
         private System.Windows.Forms.BindingSource bdsFigure;
         private System.Windows.Forms.DataGridViewComboBoxColumn medicineIdDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn volumnDataGridViewTextBoxColumn;
+        private DevComponents.DotNetBar.StyleManager styleManager1;
 
     }
 }

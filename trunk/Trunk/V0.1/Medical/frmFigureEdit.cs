@@ -6,6 +6,8 @@ using DevComponents.DotNetBar.Controls;
 using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.Repositories;
+using Medical.Forms.Implements;
+using Medical.Forms.UI;
 
 namespace Medical
 {
@@ -36,7 +38,7 @@ namespace Medical
             InitializeComponent();
             if (IdFigureEdit <= 0)
             {
-                cleanItems();
+                CleanItems();
                 ReadOnlyItems(false);
                 var medicines = _medicineRepo.GetAll();
                 medicines.Insert(0, new Medicine() { Id = 0, Name = "..." });
@@ -66,36 +68,50 @@ namespace Medical
             Initialize(_figure);
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void BtnUpdateClick(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Bạn có muốn cập nhật không?", "Cập nhật", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-            if (dr == DialogResult.OK)
+            try
             {
-                // Figure ent = FillToEntity();
-                if (_figure.Id == 0) figureRepository.Insert(_figure);
-                else figureRepository.Update(_figure);
+                var result = MessageDialog.Instance.ShowMessage(this, "Q011");
+                if (result == DialogResult.No) return;
 
+                if (_figure.Id == 0)
+                {
+                    figureRepository.Insert(_figure);
+                    return;
+                }
+                    
+                figureRepository.Update(_figure);
+            }
+            catch (Exception ex)
+            {
+                // MessageDialog.Instance.ShowMessage(this, "ERR0002", ex.Message);
+                ExceptionHandler.Instance.HandlerException(ex);
+            }
+            finally
+            {
                 this.Close();
             }
         }
 
-        private void btnCancle_Click(object sender, EventArgs e)
+        private void BtnCancleClick(object sender, EventArgs e)
         {
             FrmFigureEdit.IdFigureEdit = -1;
             this.Close();
         }
 
-        private void cleanItems()
+        private void CleanItems()
         {
             this.txtGhiChu.Text = "";
             this.txtFigureName.Text = "";
         }
+
         private void ReadOnlyItems(bool isTrue)
         {
             this.txtGhiChu.ReadOnly = isTrue;
             this.txtFigureName.ReadOnly = isTrue;
         }
+
         private Figure FillToEntity()
         {
             Figure ent;
@@ -131,7 +147,7 @@ namespace Medical
             bdsFigureDetail.DataSource = ent.FigureDetail;
         }
 
-        private void grdDetail_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void GrdDetailCellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             var figureDetail = (FigureDetail)this.bdsFigureDetail.Current;
 
@@ -142,7 +158,7 @@ namespace Medical
             if (CheckDuplicate(figureDetail.MedicineId)) figureDetail.AddError("MedicineId", "Thuốc đã tồn tại");
         }
 
-        private void bdsFigureDetail_ListChanged(object sender, ListChangedEventArgs e)
+        private void BdsFigureDetailListChanged(object sender, ListChangedEventArgs e)
         {
             if (e.ListChangedType == ListChangedType.ItemAdded)
             {
@@ -165,7 +181,7 @@ namespace Medical
             return true;
         }
 
-        private void grdDetail_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void GrdDetailDataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             var gridView = (DataGridViewX)sender;
             if (null == gridView) return;
@@ -177,10 +193,9 @@ namespace Medical
             }
         }
 
-        private void frmFigureEdit_Activated(object sender, EventArgs e)
+        private void FrmFigureEditActivated(object sender, EventArgs e)
         {
 
         }
-
     }
 }
