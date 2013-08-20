@@ -90,8 +90,6 @@ namespace Medical.Forms.UI
             logViewer.Image = System.Drawing.Image.FromFile(_iconPath + "\\erro_occur.png");
         }
 
-        
-
         private void ViewManagerViewChange(object sender, ViewChangeEventArgs e)
         {
             switch (e.Status)
@@ -230,9 +228,12 @@ namespace Medical.Forms.UI
         private void WorkerProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             this.toolStripProgressBar.Value = e.ProgressPercentage;
+            
+            if (e.ProgressPercentage == 0) this.toolStripProgressBar.Visible = true;
             var arg = e.UserState as String;
             if (arg == null) return;
             this.toolStripStatus.Text = arg;
+            ProgressiveDialog.Instance.UpdateStatus(arg);
             this.Update();
             // UpdateProgressive(arg);
             //this.Invoke(new Method(this.UpdateProgressive), arg);
@@ -378,6 +379,7 @@ namespace Medical.Forms.UI
             }
             var action = new Action(Sync);
             this.worker.RunWorkerAsync(action);
+            ProgressiveDialog.Instance.ShowProgress(this);
 
             // Sync.Sync sync = new Sync.Sync();
             // MessageBox.Show(this,sync.Test());
@@ -413,17 +415,8 @@ namespace Medical.Forms.UI
 
         private void MnuCheckingClick(object sender, System.EventArgs e)
         {
-            var sync = new Sync.Sync();
-            String message;
-            if (sync.TestConnection(out message))
-            {
-                MessageDialog.Instance.ShowMessage(this, "MSG0005", "Kết nối thành công");
-            }
-            else
-            {
-                MessageDialog.Instance.ShowMessage(this, "MSG0005", "Kết nối không thành công\n" + message);
-            }
-            
+            var form = new CheckingConnectionForm();
+            form.ShowDialog(this);
         }
     }
 }

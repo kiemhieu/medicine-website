@@ -64,9 +64,13 @@ namespace Medical.Sync
                 var figureAdapter = new FigureAdapter(connection);
                 figureAdapter.Sync(dataset.Tables[2]);
 
-                Update(20, "Cập nhập dữ liệu phác đồ ");
+                Update(18, "Cập nhập dữ liệu phác đồ ");
                 var figureDetailAdapter = new FigureDetailAdapter(connection);
                 figureDetailAdapter.Sync(dataset.Tables[3]);
+
+                Update(20, "Cập nhập dữ liệu dự trù ");
+                var medicinePlanAdapter = new MedicinePlanAdapter(connection);
+                medicinePlanAdapter.Sync(dataset.Tables[4]);
 
             }
             catch (Exception ex)
@@ -293,13 +297,12 @@ namespace Medical.Sync
             {
                 connection.Open();
                 int result = command.ExecuteNonQuery();
-            } finally
+            }
+            finally
             {
                 if (connection.State == ConnectionState.Open) connection.Close();
             }
-            
-        }
 
-        
+        }
     }
 }

@@ -32,7 +32,7 @@ namespace Server
         [WebMethod]
         public DataSet GetMasterData()
         {
-            String[] tables = new string[] { "Define", "Medicine","Figure", "FigureDetail"};
+            String[] tables = new string[] { "Define", "Medicine","Figure", "FigureDetail", "MedicinePlan"};
             DataSet dataset = new DataSet("Tables");
             SqlConnection connection = new SqlConnection(GetConnectionString());
 
