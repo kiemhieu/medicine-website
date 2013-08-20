@@ -113,6 +113,12 @@
     <Compile Include="UI\ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\CheckingConnectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CheckingConnectionForm.Designer.cs">
+      <DependentUpon>CheckingConnectionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Database.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CheckingConnectionForm.resx">
+      <DependentUpon>CheckingConnectionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Database.resx">
       <DependentUpon>Database.cs</DependentUpon>

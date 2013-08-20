@@ -36,10 +36,10 @@
             // 
             this.progressBar1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.progressBar1.ForeColor = System.Drawing.Color.White;
-            this.progressBar1.Location = new System.Drawing.Point(12, 39);
+            this.progressBar1.Location = new System.Drawing.Point(12, 48);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(439, 21);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.Size = new System.Drawing.Size(439, 10);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 0;
             // 
             // label1

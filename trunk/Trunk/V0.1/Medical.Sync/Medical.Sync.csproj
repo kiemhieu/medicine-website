@@ -66,6 +66,7 @@
     <Compile Include="TableAdapter\FigureDetailAdapter.cs" />
     <Compile Include="TableAdapter\ITableAdapter.cs" />
     <Compile Include="TableAdapter\MedicineAdapter.cs" />
+    <Compile Include="TableAdapter\MedicinePlanAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
