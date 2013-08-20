@@ -123,10 +123,6 @@
       <Project>{110e7c44-20fa-479c-91e9-c673355ba788}</Project>
       <Name>Medical.Sync</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Medical.Test\Medical.Test.csproj">
-      <Project>{4BE62B2C-8E0B-4085-80A2-CB589F68B73D}</Project>
-      <Name>Medical.Test</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Medical\Medical.csproj">
       <Project>{997738FB-AE93-444C-9D9F-A89BCBF68192}</Project>
       <Name>Medical</Name>
