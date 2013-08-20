@@ -13,13 +13,15 @@ namespace Medical.Sync.ClientAdapter
         public TableChangeClientAdapter(SqlConnection connection, String key) : base(connection)
         {
             this.key = key;
+            this.adapter = BuildAdapter();
+
         }
 
         protected override SqlCommand CreateSelectCommand(SqlConnection connection)
         {
             var commandBuilder = String.Format("Select * from TableChange Where TableName = @tableName");
             var sqlCommand = new SqlCommand(commandBuilder, connection);
-            var parameter = new SqlParameter("@tableName", SqlDbType.VarChar, 50) {Value = this.key};
+            var parameter = new SqlParameter("@tableName", SqlDbType.VarChar, 50) { Value = this.key };
             sqlCommand.Parameters.Add(parameter);
             return sqlCommand;
         }
