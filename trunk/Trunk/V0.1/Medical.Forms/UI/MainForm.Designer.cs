@@ -43,6 +43,7 @@
             WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient6 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLogin = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,12 +54,14 @@
             this.mnuSync = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuChecking = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuServer = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.logViewer = new System.Windows.Forms.ToolStripSplitButton();
             this.txtLoggedIn = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtClinic = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -66,8 +69,6 @@
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.worker = new System.ComponentModel.BackgroundWorker();
             this.dockingPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.mnuChecking = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -156,6 +157,13 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(203, 6);
             // 
+            // mnuChecking
+            // 
+            this.mnuChecking.Name = "mnuChecking";
+            this.mnuChecking.Size = new System.Drawing.Size(206, 22);
+            this.mnuChecking.Text = "Kiểm tra kết nối máy chủ";
+            this.mnuChecking.Click += new System.EventHandler(this.MnuCheckingClick);
+            // 
             // mnuServer
             // 
             this.mnuServer.Image = global::Medical.Forms.Properties.Resources.computer_retro;
@@ -219,6 +227,15 @@
             this.txtClinic.Name = "txtClinic";
             this.txtClinic.Size = new System.Drawing.Size(200, 21);
             this.txtClinic.Text = "---";
+            // 
+            // toolStripSplitButton1
+            // 
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton1.Image = global::Medical.Forms.Properties.Resources.info;
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(29, 24);
+            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
             // 
             // toolStripProgressBar
             // 
@@ -317,22 +334,6 @@
             this.dockingPanel.Skin = dockPanelSkin1;
             this.dockingPanel.TabIndex = 4;
             // 
-            // toolStripSplitButton1
-            // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSplitButton1.Image = global::Medical.Forms.Properties.Resources.info;
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(29, 24);
-            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
-            // 
-            // mnuChecking
-            // 
-            this.mnuChecking.Name = "mnuChecking";
-            this.mnuChecking.Size = new System.Drawing.Size(206, 22);
-            this.mnuChecking.Text = "Kiểm tra kết nối máy chủ";
-            this.mnuChecking.Click += new System.EventHandler(this.MnuCheckingClick);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -342,13 +343,14 @@
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.MainMenu);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.MainMenu;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Load += new System.EventHandler(this.MainFormLoad);
             this.Shown += new System.EventHandler(this.MainFormShown);
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();

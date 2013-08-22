@@ -71,6 +71,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>symbol.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
       <HintPath>..\Lib\Castle.Core.dll</HintPath>
@@ -210,21 +213,54 @@
     <Content Include="Icons\tools.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="ico\cham_tai_kham.ico" />
-    <Content Include="ico\edit_property.ico" />
-    <Content Include="ico\kham_benh.ico" />
-    <Content Include="ico\kham_benh_main.ico" />
-    <Content Include="ico\kham_benh_nhan.ico" />
-    <Content Include="ico\kho_main.ico" />
-    <Content Include="ico\lap_du_tru.ico" />
-    <Content Include="ico\nhat_ky.ico" />
-    <Content Include="ico\phat_thuoc.ico" />
-    <Content Include="ico\phat_thuoc_main.ico" />
-    <Content Include="ico\report.ico" />
-    <Content Include="ico\report_page.ico" />
-    <Content Include="ico\settings.ico" />
-    <Content Include="ico\warehouse_in.ico" />
-    <Content Include="ico\warehouse_out.ico" />
+    <Content Include="ico\cham_tai_kham.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\edit_property.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\kham_benh.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\kham_benh_main.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\kham_benh_nhan.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\kho_main.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\lap_du_tru.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\nhat_ky.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\phat_thuoc.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\phat_thuoc_main.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\report.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\report_page.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\settings.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\symbol.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\warehouse_in.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico\warehouse_out.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\cham_tai_kham.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -277,6 +313,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="symbol.ico" />
     <Content Include="target.ico" />
     <Content Include="TreeMenu.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
