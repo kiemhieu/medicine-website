@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Threading;
 using System.Windows.Forms;
 using Medical.Data;
@@ -175,7 +176,7 @@ namespace Medical.Forms.UI
             }
         }
 
-        private void MainForm_Load(object sender, System.EventArgs e)
+        private void MainFormLoad(object sender, System.EventArgs e)
         {
             // Console.WriteLine("Hello");
         }
@@ -317,7 +318,16 @@ namespace Medical.Forms.UI
             }
         }
 
-        private void MainFormShown(object sender, System.EventArgs e) {
+        private void MainFormShown(object sender, System.EventArgs e)
+        {
+
+            Boolean isFirstRun = Boolean.Parse(ConfigurationManager.AppSettings.Get("FirstRun"));
+            if (isFirstRun)
+            {
+                var selectClinic = new ClinicSelection();
+                selectClinic.ShowDialog(this);
+            }
+
             var login = new Login();
             login.ShowDialog(this);
 
