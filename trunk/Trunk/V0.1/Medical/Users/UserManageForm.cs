@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DevComponents.DotNetBar.Controls;
 using Medical.Data;
 using Medical.Data.Entities;
 using Medical.Data.EntitiyExtend;
@@ -12,7 +13,7 @@ namespace Medical.Users
     public partial class UserManageForm : DockContent
     {
 
-        private readonly IUserRepository userRepo = new UserRepository();
+        private readonly IUserRepository _userRepo = new UserRepository();
 
         public UserManageForm()
         {
@@ -39,7 +40,7 @@ namespace Medical.Users
         /// Searhes this instance.
         /// </summary>
         private void Searh() {
-            this.bdgUser.DataSource = userRepo.Get(AppContext.CurrentClinicId);
+            this.bdgUser.DataSource = _userRepo.Get(AppContext.CurrentClinicId);
             this.bdgUser.ResetBindings(true);
             this.grdUser.ResetBindings();
             this.grdUser.Refresh();
@@ -77,48 +78,7 @@ namespace Medical.Users
             // this.Close();
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            this.bdgUser.EndEdit();
-            var _user = (User)this.bdgUser.Current;
-            if (_user == null)
-            {
-                MessageDialog.Instance.ShowMessage(this, "M001", "Bệnh nhân");
-                return;
-            }
-            var frmedit = new UserRegister(_user);
-            frmedit.ShowDialog();
-            Searh();
-            this.bdgUser.Clear();
-            this.bdgUser.DataSource = userRepo.GetAll();
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            this.bdgUser.EndEdit();
-            var _user = (User)this.bdgUser.Current;
-            if (_user == null)
-            {
-                MessageDialog.Instance.ShowMessage(this, "M001", "loại thuốc");
-                return;
-            }
-
-            var dialogResult = MessageDialog.Instance.ShowMessage(this, "Q003", String.Format("Bệnh nhân {0}", _user.Name));
-
-            if (dialogResult == DialogResult.No) return;
-            try
-            {
-                this.userRepo.Delete(_user.Id);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            this.bdgUser.Clear();
-            this.bdgUser.DataSource = userRepo.GetAll();
-        }
-
-        private void btnRegister_Click(object sender, EventArgs e)
+        private void BtnRegisterClick(object sender, EventArgs e)
         {
             var frmedit = new UserRegister();
             frmedit.ShowDialog();
@@ -128,9 +88,14 @@ namespace Medical.Users
             //this.bdgUser.DataSource = userRepo.GetAll();
         }
 
-        private void grdUser_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void GrdUserDataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-
+            var gridView = (DataGridViewX)sender;
+            if (null == gridView) return;
+            foreach (DataGridViewRow r in gridView.Rows)
+            {
+                gridView.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
+            }
         }
 
     }

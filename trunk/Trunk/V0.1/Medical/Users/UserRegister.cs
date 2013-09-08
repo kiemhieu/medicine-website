@@ -11,6 +11,7 @@ using Medical.Data.Entities;
 using Medical.Data.EntitiyExtend;
 using Medical.Data.Repositories;
 using Medical.Forms.Implements;
+using Medical.Forms.UI;
 
 namespace Medical.Users
 {
@@ -126,7 +127,7 @@ namespace Medical.Users
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSaveClick(object sender, EventArgs e)
         {
             try
             {
@@ -134,16 +135,19 @@ namespace Medical.Users
                 //this.User.Sexual = rdaMale.Checked ? "M" : "F";
 
                 if (!this.ValidateForm()) return;
+
+                var warningConfirm = MessageDialog.Instance.ShowMessage(this, "Q011");
+                if (warningConfirm == DialogResult.No) return;
                 if (_isAddNew)
                 {
-                    var result = MessageBox.Show(this, "Đăng kí bệnh nhân mới, tiếp tục ?", "Xác nhận đăng ký", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.No) return;
+                    //var result = MessageBox.Show(this, "Đăng kí bệnh nhân mới, tiếp tục ?", "Xác nhận đăng ký", MessageBoxButtons.YesNo);
+                    //if (result == DialogResult.No) return;
                     this._userRepository.Insert(this.User);
                 }
                 else
                 {
-                    var result = MessageBox.Show(this, "Thay đổi thông tin bệnh nhân mới, tiếp tục ?", "Xác nhận thay đổi", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.No) return;
+                    //var result = MessageBox.Show(this, "Thay đổi thông tin bệnh nhân mới, tiếp tục ?", "Xác nhận thay đổi", MessageBoxButtons.YesNo);
+                    //if (result == DialogResult.No) return;
                     this._userRepository.Update(this.User);
                 }
                 DialogResult = DialogResult.Yes;

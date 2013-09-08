@@ -92,12 +92,7 @@ namespace Medical
                 result = false;
             }
 
-            if (string.IsNullOrEmpty(this.Patient.Phone))
-            {
-                SetError(txtPhone, "Chưa nhập số điện thoại");
-                result = false;
-            }
-            else if (this.Patient.Phone.Length < 8)
+            if (!string.IsNullOrEmpty(this.Patient.Phone) && this.Patient.Phone.Length < 8)
             {
                 SetError(txtPhone, "Số điện thoại không hợp lệ");
                 result = false;
