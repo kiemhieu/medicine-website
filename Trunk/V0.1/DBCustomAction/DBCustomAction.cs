@@ -109,8 +109,8 @@ namespace DBCustomAction
                 ExecuteSQL("master", builder.ToString());
                 String str = GetSQL("sql.txt");
 
-                var form = new LogShow(str);
-                form.ShowDialog();
+                // var form = new LogShow(str);
+                // form.ShowDialog();
                 ExecuteSQL(dbName, str);
             }
             catch(Exception ex)
