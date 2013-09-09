@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.Server.Sync", "Medi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{34A763BF-7CFB-45EE-8852-9EF27048F149}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Medical.Setup.Client", "Medical.Setup.Client\Medical.Setup.Client.vdproj", "{2B3B52E6-7AAC-4CCE-BA66-247107D453D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -151,6 +153,18 @@ Global
 		{34A763BF-7CFB-45EE-8852-9EF27048F149}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{34A763BF-7CFB-45EE-8852-9EF27048F149}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{34A763BF-7CFB-45EE-8852-9EF27048F149}.Release|x86.ActiveCfg = Release|Any CPU
+		{2B3B52E6-7AAC-4CCE-BA66-247107D453D3}.Debug|Any CPU.ActiveCfg = Debug
+		{2B3B52E6-7AAC-4CCE-BA66-247107D453D3}.Debug|Any CPU.Build.0 = Debug
+		{2B3B52E6-7AAC-4CCE-BA66-247107D453D3}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{2B3B52E6-7AAC-4CCE-BA66-247107D453D3}.Debug|Mixed Platforms.Build.0 = Debug
+		{2B3B52E6-7AAC-4CCE-BA66-247107D453D3}.Debug|x86.ActiveCfg = Debug
+		{2B3B52E6-7AAC-4CCE-BA66-247107D453D3}.Debug|x86.Build.0 = Debug
+		{2B3B52E6-7AAC-4CCE-BA66-247107D453D3}.Release|Any CPU.ActiveCfg = Release
+		{2B3B52E6-7AAC-4CCE-BA66-247107D453D3}.Release|Any CPU.Build.0 = Release
+		{2B3B52E6-7AAC-4CCE-BA66-247107D453D3}.Release|Mixed Platforms.ActiveCfg = Release
+		{2B3B52E6-7AAC-4CCE-BA66-247107D453D3}.Release|Mixed Platforms.Build.0 = Release
+		{2B3B52E6-7AAC-4CCE-BA66-247107D453D3}.Release|x86.ActiveCfg = Release
+		{2B3B52E6-7AAC-4CCE-BA66-247107D453D3}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
