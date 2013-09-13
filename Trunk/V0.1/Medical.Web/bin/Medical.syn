@@ -1,0 +1,10 @@
+[Medical.Synchronization.ConnectionInfo]
+SqlDbname=Medical
+SqlUser=sa
+SqlPass=sa@123
+SqlServer=HieuNK-PC
+[Medical.Synchronization.SVConnectionInfo]
+SqlDbname=Medical.Web
+SqlUser=sa
+SqlPass=sa@123
+SqlServer=HieuNK-PC
