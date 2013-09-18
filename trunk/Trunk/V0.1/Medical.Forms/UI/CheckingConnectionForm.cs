@@ -47,10 +47,10 @@ namespace Medical.Forms.UI
         /// <param name="e">The <see cref="DoWorkEventArgs"/> instance containing the event data.</param>
         private void BackgroundWorker1DoWork(object sender, DoWorkEventArgs e)
         {
-            var sync = new Sync.Sync();
-            String message;
-            bool result = sync.TestConnection(out message);
-            e.Result = new Object[] { result, message };
+            //var sync = new Sync.Sync();
+            //String message;
+           // bool result = sync.TestConnection(out message);
+            //e.Result = new Object[] { result, message };
         }
 
         /// <summary>
