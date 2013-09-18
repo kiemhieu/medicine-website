@@ -399,17 +399,17 @@ namespace Medical.Forms.UI
 
         private void Sync()
         {
-            var sync = new Sync.Sync { Worker = this.worker };
-            try
-            {
-                sync.DoSyncMaster();
-                sync.DoSync(AppContext.CurrentClinicId);
-                sync.DoRemove(AppContext.CurrentClinicId);
-            }
-            finally
-            {
-                sync.UpdateSyncResult(AppContext.CurrentClinicId);
-            }
+            //var sync = new Sync.Sync { Worker = this.worker };
+            //try
+            //{
+            //    sync.DoSyncMaster();
+            //    sync.DoSync(AppContext.CurrentClinicId);
+            //    sync.DoRemove(AppContext.CurrentClinicId);
+            //}
+            //finally
+            //{
+            //    sync.UpdateSyncResult(AppContext.CurrentClinicId);
+            //}
         }
 
         private void MnuServerClick(object sender, System.EventArgs e)
