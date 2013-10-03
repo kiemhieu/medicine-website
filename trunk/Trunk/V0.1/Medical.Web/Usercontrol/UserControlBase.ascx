@@ -29,7 +29,7 @@
                     <tr>
                         <td align="left" style="width: 80px">Phòng Khám</td>
                         <td align="left">
-                            <asp:DropDownList ID="ddlClinic" runat="server" Width="400px" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="ddlClinic_SelectedIndexChanged"></asp:DropDownList></td>
+                            <asp:DropDownList ID="ddlClinic" runat="server" Width="400px" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="ddlClinic_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList></td>
                     </tr>
                 </table>
             </fieldset>
