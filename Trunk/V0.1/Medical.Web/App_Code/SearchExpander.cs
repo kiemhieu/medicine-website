@@ -15,12 +15,24 @@ public class SearchExpander
     /// <param name="type"></param>
     public SearchExpander(string columnname, string display, Type type)
     {
+        this.BeenSearch = true;
         this.ColumnName = columnname;
         this.Display = display;
         this.Type = type;
         this.Refference = null;
         this.HasDetail = false;
         this.DisplayRefferenceColumn = "Name"; 
+    }
+
+    public SearchExpander(bool beensearch, string columnname, string display, Type type)
+    {
+        this.BeenSearch = beensearch;
+        this.ColumnName = columnname;
+        this.Display = display;
+        this.Type = type;
+        this.Refference = null;
+        this.HasDetail = false;
+        this.DisplayRefferenceColumn = "Name";
     }
 
     /// <summary>
@@ -31,6 +43,7 @@ public class SearchExpander
     /// <param name="type"></param>
     public SearchExpander(string columnname, string display, Type type, bool hasdetail)
     {
+        this.BeenSearch = true;
         this.ColumnName = columnname;
         this.Display = display;
         this.Type = type;
@@ -47,6 +60,7 @@ public class SearchExpander
     /// <param name="type"></param>
     public SearchExpander(string columnname, string display, Type type, string refferencecolumn, Type refference)
     {
+        this.BeenSearch = true;
         this.ColumnName = columnname;
         this.Display = display;
         this.Type = type;
@@ -64,6 +78,7 @@ public class SearchExpander
     /// <param name="type"></param>
     public SearchExpander(string columnname, string display, Type type, string refferencecolumn, string displayrefferencecolumn, Type refference)
     {
+        this.BeenSearch = true;
         this.ColumnName = columnname;
         this.Display = display;
         this.Type = type;
@@ -72,6 +87,8 @@ public class SearchExpander
         this.HasDetail = false;
         this.DisplayRefferenceColumn = displayrefferencecolumn;
     }
+
+    public bool BeenSearch { get; set; }
 
     public string ColumnName { get; set; }
 
