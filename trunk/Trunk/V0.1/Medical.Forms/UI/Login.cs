@@ -52,7 +52,6 @@ namespace Medical.Forms.UI {
             this.err.Clear();
             userRepo = new UserRepository();
             var isValid = userRepo.Login(this.txtUser.Text, this.txtPass.Text, AppContext.CurrentClinicId);
-            isValid = true;
             if (isValid)
             {
                 AppContext.Authenticated = true;
