@@ -255,6 +255,10 @@
       <Project>{169CF0C0-C72D-424A-9CC4-55D95E275755}</Project>
       <Name>Medical.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Medical.Synchronization\Medical.Synchronization.csproj">
+      <Project>{9f526d34-5736-4ba5-889b-9e371a45fa27}</Project>
+      <Name>Medical.Synchronization</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\accept.png" />
