@@ -235,4 +235,9 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
     {
         LoadList();
     }
+
+    protected void ddlClinic_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }
