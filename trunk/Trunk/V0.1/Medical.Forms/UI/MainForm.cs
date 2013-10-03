@@ -419,7 +419,8 @@ namespace Medical.Forms.UI
 
         private void synservice_SendingCompleted(object sender, System.EventArgs e)
         {
-            MessageDialog.Instance.ShowMessage(this, "MSG0005", "Tiến trình đồng bộ hóa được thực hiện thành công");
+            //MessageDialog.Instance.ShowMessage(this, "MSG0005", "Tiến trình đồng bộ hóa được thực hiện thành công");
+            MessageBox.Show("Tiến trình đồng bộ hóa được thực hiện thành công", "MSG0005");
         }
 
         private void MnuServerClick(object sender, System.EventArgs e)
