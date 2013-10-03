@@ -25,7 +25,12 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
             searchConditions = value;
             if (searchConditions != null && searchConditions.Count > 0)
             {
-                rptConditions.DataSource = searchConditions;
+                List<SearchExpander> searchcdt = new List<SearchExpander>();
+                foreach (SearchExpander c in searchConditions)
+                {
+                    if (c.BeenSearch) searchcdt.Add(c);
+                }
+                rptConditions.DataSource = searchcdt;
                 rptConditions.DataBind();
             }
         }

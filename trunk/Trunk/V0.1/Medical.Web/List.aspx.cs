@@ -132,15 +132,15 @@ public partial class List : System.Web.UI.Page
             {
                 uctListBase.TableName = Constant_Table.PATIENT;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
-                searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
-                searchConditions.Add(new SearchExpander("Code", "Code", typeof(string)));
-                searchConditions.Add(new SearchExpander("Name", "Name", typeof(string)));
-                searchConditions.Add(new SearchExpander("BirthYear", "BirthYear", typeof(int)));
-                searchConditions.Add(new SearchExpander("Sexual", "Sexual", typeof(char)));
-                searchConditions.Add(new SearchExpander("Phone", "Phone", typeof(string)));
-                searchConditions.Add(new SearchExpander("Address", "Address", typeof(string)));
-                searchConditions.Add(new SearchExpander("StartDate", "StartDate", typeof(DateTime)));
-                searchConditions.Add(new SearchExpander("Description", "Description", typeof(string)));
+                //searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
+                searchConditions.Add(new SearchExpander(false, "Code", "Mã", typeof(string)));
+                searchConditions.Add(new SearchExpander("Name", "Họ và tên", typeof(string)));
+                searchConditions.Add(new SearchExpander("BirthYear", "Năm sinh", typeof(int)));
+                searchConditions.Add(new SearchExpander(false, "Sexual", "Giới tính", typeof(char)));
+                //searchConditions.Add(new SearchExpander("Phone", "Phone", typeof(string)));
+                searchConditions.Add(new SearchExpander(false, "Address", "Địa chỉ", typeof(string)));
+                //searchConditions.Add(new SearchExpander("StartDate", "StartDate", typeof(DateTime)));
+                searchConditions.Add(new SearchExpander(false, "Description", "Ghi chú", typeof(string)));
                 uctListBase.SearchConditions = searchConditions;
             }
             else if (segment.ToUpper() == Constant_Table.PATIENT_FIGURE.ToUpper())
