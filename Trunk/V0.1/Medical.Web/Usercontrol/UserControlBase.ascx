@@ -8,10 +8,8 @@
                     <asp:Repeater ID="rptConditions" runat="server">
                         <ItemTemplate>
                             <tr>
-                                <td align="left"><%# Eval("Display") %> </td>
-                            </tr>
-                            <tr>
                                 <td align="left">
+                                    <%# Eval("Display") %><br />
                                     <input type="text" id="<%# Eval("ColumnName") %>" name="<%# Eval("ColumnName") %>" style="width: 100%;" value="<%#Request[(string)Eval("ColumnName")] %>"></input>
                                 </td>
                             </tr>
@@ -31,7 +29,7 @@
                     <tr>
                         <td align="left" style="width: 80px">Phòng Khám</td>
                         <td align="left">
-                            <asp:DropDownList ID="ddlClinic" runat="server" Width="400px" DataTextField="Name" DataValueField="Id"></asp:DropDownList></td>
+                            <asp:DropDownList ID="ddlClinic" runat="server" Width="400px" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="ddlClinic_SelectedIndexChanged"></asp:DropDownList></td>
                     </tr>
                 </table>
             </fieldset>
