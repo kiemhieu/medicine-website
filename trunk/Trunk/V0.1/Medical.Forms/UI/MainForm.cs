@@ -410,6 +410,16 @@ namespace Medical.Forms.UI
             //{
             //    sync.UpdateSyncResult(AppContext.CurrentClinicId);
             //}
+
+            //HieuNK - fix synchronize
+            Medical.Synchronization.Synchronize synservice = new Medical.Synchronization.Synchronize();
+            synservice.SendingCompleted += synservice_SendingCompleted;
+            synservice.SendAll(AppContext.CurrentClinicId.ToString()); 
+        }
+
+        private void synservice_SendingCompleted(object sender, System.EventArgs e)
+        {
+            MessageDialog.Instance.ShowMessage(this, "MSG0005", "Tiến trình đồng bộ hóa được thực hiện thành công");
         }
 
         private void MnuServerClick(object sender, System.EventArgs e)
