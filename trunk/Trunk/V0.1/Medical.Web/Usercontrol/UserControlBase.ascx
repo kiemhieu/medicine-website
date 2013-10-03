@@ -5,14 +5,6 @@
         <td id="tdSearch" runat="server" style="width: 200px; vertical-align: top;">
             <fieldset>
                 <table width="100%" class="tbl">
-                    <tr>
-                        <td align="left">Phòng Khám</td>
-                    </tr>
-                    <tr>
-                        <td align="left">
-                            <asp:DropDownList ID="ddlClinic" runat="server" Width="100%" DataTextField="Name" DataValueField="Id"></asp:DropDownList>
-                        </td>
-                    </tr>
                     <asp:Repeater ID="rptConditions" runat="server">
                         <ItemTemplate>
                             <tr>
@@ -34,6 +26,16 @@
             </fieldset>
         </td>
         <td style="vertical-align: top;">
+            <fieldset style="margin-bottom: 10px;">
+                <table width="100%" class="tbl">
+                    <tr>
+                        <td align="left" style="width: 80px">Phòng Khám</td>
+                        <td align="left">
+                            <asp:DropDownList ID="ddlClinic" runat="server" Width="400px" DataTextField="Name" DataValueField="Id"></asp:DropDownList></td>
+                    </tr>
+                </table>
+            </fieldset>
+
             <fieldset>
                 <div style="padding: 5px 0px 5px 0px">
                     <asp:Label runat="server" ID="lblThongBaoSoLuongBanGhi"></asp:Label>
