@@ -48,10 +48,10 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                 //Initial columns of grid
                 if (segments.Count != 3)
                 {
-                    BoundField tempField = new BoundField();
-                    tempField.HeaderText = "Phòng khám";
-                    tempField.DataField = "ClinicName";
-                    gvListData.Columns.Add(tempField);
+                    //BoundField tempField = new BoundField();
+                    //tempField.HeaderText = "Phòng khám";
+                    //tempField.DataField = "ClinicName";
+                    //gvListData.Columns.Add(tempField);
                 }
                 else
                 {
@@ -136,7 +136,7 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
     {
         string sSelect = "SELECT Clinic.Name AS ClinicName, [" + TableName + "].ClientID";
         string sInnerjoin = "\n INNER JOIN Clinic ON [" + TableName + "].ClientID = Clinic.Id";
-        string sWhere = "\n WHERE 1=1 ";
+        string sWhere = "\n WHERE Clinic.Id =" + ddlClinic.SelectedValue + " ";
         string sSQL = string.Empty;
         string sListFields = string.Empty;
         List<SqlParameter> parames = new List<SqlParameter>();
@@ -238,6 +238,6 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
 
     protected void ddlClinic_SelectedIndexChanged(object sender, EventArgs e)
     {
-
+        LoadList();
     }
 }
