@@ -1,0 +1,11 @@
+[Medical.Synchronization.ConnectionInfo]
+SqlDbname=Medical
+SqlUser=sa
+SqlPass=sa@123
+SqlServer=HieuNK-PC
+[Medical.Synchronization.SVConnectionInfo]
+SoapAddress=http://localhost:5384/Services/SynService.asmx
+SqlDbname=Medical.Web
+SqlUser=sa
+SqlPass=sa@123
+SqlServer=HieuNK-PC
