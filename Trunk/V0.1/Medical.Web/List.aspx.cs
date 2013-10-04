@@ -165,9 +165,9 @@ public partial class List : System.Web.UI.Page
                 searchConditions.Add(new SearchExpander(false, "LastUpdatedDate", "Thời gian", "{0:HH:ss}", typeof(DateTime)));
                 searchConditions.Add(new SearchExpander("DoctorId", "Bác sĩ", typeof(int), "Id", typeof(User)));
                 //searchConditions.Add(new SearchExpander("Date", "Date", typeof(int)));
-                searchConditions.Add(new SearchExpander("RecheckDate", "Hẹn tái khám", typeof(DateTime)));
+                searchConditions.Add(new SearchExpander(false, "RecheckDate", "Hẹn tái khám", null, typeof(DateTime)));
                 searchConditions.Add(new SearchExpander("FigureId", "Phác đồ", typeof(int), "Id", typeof(Figure)));
-                searchConditions.Add(new SearchExpander("Note", "Tình trạng", typeof(object)));
+                searchConditions.Add(new SearchExpander(false, "Note", "Tình trạng", null, typeof(object)));
                 //searchConditions.Add(new SearchExpander("CreatedDate", "CreatedDate", typeof(DateTime)));
                 //searchConditions.Add(new SearchExpander("LastUpdatedUser", "LastUpdatedUser", typeof(int), "Id", typeof(User)));
                 //searchConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
