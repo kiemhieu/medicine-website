@@ -178,14 +178,16 @@ public partial class List : System.Web.UI.Page
             {
                 uctListBase.TableName = Constant_Table.PRESCRIPTION_DETAIL;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
-                searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
-                searchConditions.Add(new SearchExpander("PrescriptionId", "PrescriptionId", typeof(int)));
-                searchConditions.Add(new SearchExpander("FigureDetailId", "FigureDetailId", typeof(int)));
-                searchConditions.Add(new SearchExpander("MedicineId", "Thuốc", typeof(int), "Id", typeof(Medicine)));
+                //searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
+                //searchConditions.Add(new SearchExpander("PrescriptionId", "PrescriptionId", typeof(int)));
+                //searchConditions.Add(new SearchExpander("FigureDetailId", "FigureDetailId", typeof(int)));
+                searchConditions.Add(new SearchExpander("MedicineId", "Tên biệt dược", typeof(int), "Id", typeof(Medicine)));
+                //searchConditions.Add(new SearchExpander("TradeName","TradeName",typeof(int)));
+                //searchConditions.Add(new SearchExpander("UnitName", "TradeName", typeof(int)));
+                searchConditions.Add(new SearchExpander("VolumnPerDay", "Liều lượng", typeof(int)));
                 searchConditions.Add(new SearchExpander("Day", "Số ngày", typeof(int)));
-                searchConditions.Add(new SearchExpander("VolumnPerDay", "Số lần trong ngày", typeof(int)));
                 searchConditions.Add(new SearchExpander("Amount", "Số lượng", typeof(int)));
-                searchConditions.Add(new SearchExpander("Description", "Diễn giải", typeof(string)));
+                searchConditions.Add(new SearchExpander("Description", "Tình trạng", typeof(string)));
                 //searchConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
                 uctListBase.SearchConditions = searchConditions;
             }
