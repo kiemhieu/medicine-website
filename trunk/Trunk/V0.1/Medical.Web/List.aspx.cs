@@ -42,7 +42,7 @@ public partial class List : System.Web.UI.Page
                 searchConditions.Add(new SearchExpander("ID", "Mã thuốc", typeof(int)));
                 searchConditions.Add(new SearchExpander("Name", "Tên thuốc", typeof(string)));
                 searchConditions.Add(new SearchExpander("TradeName", "Tên thương mại", typeof(string)));
-                searchConditions.Add(new SearchExpander("Unit", "Đơn vị", typeof(int)));
+                searchConditions.Add(new SearchExpander("Unit", "Đơn vị", typeof(int), "Id", typeof(Define)));
                 searchConditions.Add(new SearchExpander("LastUpdatedDate", "Cập nhật ngày", typeof(DateTime)));
                 searchConditions.Add(new SearchExpander("LastUpdatedBy", "Bởi", typeof(string), "Id", typeof(User)));
                 uctListBase.SearchConditions = searchConditions;

@@ -61,6 +61,8 @@ namespace Medical.Synchronization
                 TableName = Constant_Table.WAREHOUSE_MINIMUM_ALLOW;
             else if (type.Name == typeof(User).Name)
                 TableName = Constant_Table.USER;
+            else if (type.Name == typeof(Define).Name)
+                TableName = Constant_Table.DEFINE;
             return TableName;
         }
     }

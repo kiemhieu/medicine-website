@@ -250,6 +250,7 @@ namespace Medical.Synchronization
     /// </summary>
     public class Constant_Table
     {
+        public const string DEFINE = "Define";
         public const string FIGURE = "Figure";
         public const string FIGUREDE_DETAIL = "FigureDetail";
         public const string MEDICINE = "Medicine";
