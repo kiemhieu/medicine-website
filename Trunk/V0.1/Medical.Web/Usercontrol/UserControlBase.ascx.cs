@@ -79,6 +79,7 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                         {
                             boundField.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
                             boundField.DataFormatString = "{0:dd/MM/yyyy}";
+                            if (!string.IsNullOrEmpty(seardcondition.DisplayFormat)) boundField.DataFormatString = seardcondition.DisplayFormat;
                         }
                         gvListData.Columns.Add(boundField);
                     }

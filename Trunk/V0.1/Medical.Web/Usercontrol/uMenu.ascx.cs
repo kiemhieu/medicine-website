@@ -88,7 +88,7 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
 
         RadMenuItem chucNangCon11 = new RadMenuItem();
         chucNangCon11.Value = Constant_Table.PRESCRIPTION;
-        chucNangCon11.Text = "Danh sách đơn thuốc";// +Constant_Table.PRESCRIPTION;
+        chucNangCon11.Text = "Nhật ký khám bệnh";// +Constant_Table.PRESCRIPTION;
         chucNangCon11.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.PRESCRIPTION).ToLower();
         chucNangCha.Items.Add(chucNangCon11);
 

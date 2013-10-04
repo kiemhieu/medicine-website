@@ -15,6 +15,7 @@ public class SearchExpander
     /// <param name="type"></param>
     public SearchExpander(string columnname, string display, Type type)
     {
+        this.DisplayFormat = null;
         this.BeenSearch = true;
         this.ColumnName = columnname;
         this.Display = display;
@@ -24,8 +25,9 @@ public class SearchExpander
         this.DisplayRefferenceColumn = "Name"; 
     }
 
-    public SearchExpander(bool beensearch, string columnname, string display, Type type)
+    public SearchExpander(bool beensearch, string columnname, string display, string displayformat, Type type)
     {
+        this.DisplayFormat = displayformat;
         this.BeenSearch = beensearch;
         this.ColumnName = columnname;
         this.Display = display;
@@ -43,6 +45,7 @@ public class SearchExpander
     /// <param name="type"></param>
     public SearchExpander(string columnname, string display, Type type, bool hasdetail)
     {
+        this.DisplayFormat = null;
         this.BeenSearch = true;
         this.ColumnName = columnname;
         this.Display = display;
@@ -60,6 +63,7 @@ public class SearchExpander
     /// <param name="type"></param>
     public SearchExpander(string columnname, string display, Type type, string refferencecolumn, Type refference)
     {
+        this.DisplayFormat = null;
         this.BeenSearch = true;
         this.ColumnName = columnname;
         this.Display = display;
@@ -78,6 +82,7 @@ public class SearchExpander
     /// <param name="type"></param>
     public SearchExpander(string columnname, string display, Type type, string refferencecolumn, string displayrefferencecolumn, Type refference)
     {
+        this.DisplayFormat = null;
         this.BeenSearch = true;
         this.ColumnName = columnname;
         this.Display = display;
@@ -87,6 +92,8 @@ public class SearchExpander
         this.HasDetail = false;
         this.DisplayRefferenceColumn = displayrefferencecolumn;
     }
+
+    public string DisplayFormat { get; set; }
 
     public bool BeenSearch { get; set; }
 
