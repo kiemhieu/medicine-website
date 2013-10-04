@@ -133,14 +133,14 @@ public partial class List : System.Web.UI.Page
                 uctListBase.TableName = Constant_Table.PATIENT;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
                 //searchConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
-                searchConditions.Add(new SearchExpander(false, "Code", "Mã", typeof(string)));
+                searchConditions.Add(new SearchExpander(false, "Code", "Mã", null, typeof(string)));
                 searchConditions.Add(new SearchExpander("Name", "Họ và tên", typeof(string)));
                 searchConditions.Add(new SearchExpander("BirthYear", "Năm sinh", typeof(int)));
-                searchConditions.Add(new SearchExpander(false, "Sexual", "Giới tính", typeof(char)));
+                searchConditions.Add(new SearchExpander(false, "Sexual", "Giới tính", null, typeof(char)));
                 //searchConditions.Add(new SearchExpander("Phone", "Phone", typeof(string)));
-                searchConditions.Add(new SearchExpander(false, "Address", "Địa chỉ", typeof(string)));
+                searchConditions.Add(new SearchExpander(false, "Address", "Địa chỉ", null, typeof(string)));
                 //searchConditions.Add(new SearchExpander("StartDate", "StartDate", typeof(DateTime)));
-                searchConditions.Add(new SearchExpander(false, "Description", "Ghi chú", typeof(string)));
+                searchConditions.Add(new SearchExpander(false, "Description", "Ghi chú", null, typeof(string)));
                 uctListBase.SearchConditions = searchConditions;
             }
             else if (segment.ToUpper() == Constant_Table.PATIENT_FIGURE.ToUpper())
@@ -160,14 +160,16 @@ public partial class List : System.Web.UI.Page
             {
                 uctListBase.TableName = Constant_Table.PRESCRIPTION;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
-                searchConditions.Add(new SearchExpander("Id", "Id", typeof(int), true));
+                //searchConditions.Add(new SearchExpander("Id", "Id", typeof(int), true));
                 searchConditions.Add(new SearchExpander("PatientId", "Bệnh nhân", typeof(int), "Id", typeof(Patient)));
+                searchConditions.Add(new SearchExpander(false, "LastUpdatedDate", "Thời gian", "{0:HH:ss}", typeof(DateTime)));
                 searchConditions.Add(new SearchExpander("DoctorId", "Bác sĩ", typeof(int), "Id", typeof(User)));
-                searchConditions.Add(new SearchExpander("Date", "Date", typeof(int)));
+                //searchConditions.Add(new SearchExpander("Date", "Date", typeof(int)));
+                searchConditions.Add(new SearchExpander("RecheckDate", "Hẹn tái khám", typeof(DateTime)));
                 searchConditions.Add(new SearchExpander("FigureId", "Phác đồ", typeof(int), "Id", typeof(Figure)));
-                searchConditions.Add(new SearchExpander("Note", "Note", typeof(object)));
-                searchConditions.Add(new SearchExpander("CreatedDate", "CreatedDate", typeof(DateTime)));
-                searchConditions.Add(new SearchExpander("LastUpdatedUser", "LastUpdatedUser", typeof(int), "Id", typeof(User)));
+                searchConditions.Add(new SearchExpander("Note", "Tình trạng", typeof(object)));
+                //searchConditions.Add(new SearchExpander("CreatedDate", "CreatedDate", typeof(DateTime)));
+                //searchConditions.Add(new SearchExpander("LastUpdatedUser", "LastUpdatedUser", typeof(int), "Id", typeof(User)));
                 //searchConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
                 uctListBase.SearchConditions = searchConditions;
 
