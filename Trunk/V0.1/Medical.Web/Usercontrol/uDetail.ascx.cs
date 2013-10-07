@@ -111,7 +111,7 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
     private void LoadList()
     {
         if (string.IsNullOrEmpty(TableName)) return;
-
+        
         string sSelect = "SELECT Clinic.Name AS ClinicName, [" + TableName + "].ClientID";
         string sInnerjoin = "\n INNER JOIN Clinic ON [" + TableName + "].ClientID = Clinic.Id";
         string sWhere = "\n WHERE 1=1 ";
