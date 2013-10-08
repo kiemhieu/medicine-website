@@ -15,6 +15,7 @@ public class SearchExpander
     /// <param name="type"></param>
     public SearchExpander(string columnname, string display, Type type)
     {
+        this.HasLinkRef = false;
         this.DisplayFormat = null;
         this.BeenSearch = true;
         this.ColumnName = columnname;
@@ -22,11 +23,12 @@ public class SearchExpander
         this.Type = type;
         this.Refference = null;
         this.HasDetail = false;
-        this.DisplayRefferenceColumn = "Name"; 
+        this.DisplayRefferenceColumn = "Name";
     }
 
     public SearchExpander(bool beensearch, string columnname, string display, string displayformat, Type type)
     {
+        this.HasLinkRef = false;
         this.DisplayFormat = displayformat;
         this.BeenSearch = beensearch;
         this.ColumnName = columnname;
@@ -45,6 +47,7 @@ public class SearchExpander
     /// <param name="type"></param>
     public SearchExpander(string columnname, string display, Type type, bool hasdetail)
     {
+        this.HasLinkRef = false;
         this.DisplayFormat = null;
         this.BeenSearch = true;
         this.ColumnName = columnname;
@@ -63,6 +66,7 @@ public class SearchExpander
     /// <param name="type"></param>
     public SearchExpander(string columnname, string display, Type type, string refferencecolumn, Type refference)
     {
+        this.HasLinkRef = false;
         this.DisplayFormat = null;
         this.BeenSearch = true;
         this.ColumnName = columnname;
@@ -82,6 +86,7 @@ public class SearchExpander
     /// <param name="type"></param>
     public SearchExpander(string columnname, string display, Type type, string refferencecolumn, string displayrefferencecolumn, Type refference)
     {
+        this.HasLinkRef = false;
         this.DisplayFormat = null;
         this.BeenSearch = true;
         this.ColumnName = columnname;
@@ -92,6 +97,28 @@ public class SearchExpander
         this.HasDetail = false;
         this.DisplayRefferenceColumn = displayrefferencecolumn;
     }
+
+    /// <summary>
+    /// Constructor 1 - has refference column
+    /// </summary>
+    /// <param name="columnname"></param>
+    /// <param name="display"></param>
+    /// <param name="type"></param>
+    public SearchExpander(string columnname, string display, Type type, string refferencecolumn, string displayrefferencecolumn, Type refference, bool haslinkref)
+    {
+        this.HasLinkRef = haslinkref;
+        this.DisplayFormat = null;
+        this.BeenSearch = true;
+        this.ColumnName = columnname;
+        this.Display = display;
+        this.Type = type;
+        this.RefferenceColumn = refferencecolumn;
+        this.Refference = refference;
+        this.HasDetail = false;
+        this.DisplayRefferenceColumn = displayrefferencecolumn;
+    }
+
+    public bool HasLinkRef { get; set; }
 
     public string DisplayFormat { get; set; }
 
