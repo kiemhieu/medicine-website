@@ -88,30 +88,41 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                     else if (!seardcondition.HasDetail && seardcondition.Refference != null)
                     {
                         string RefTableName = WebCore.GetTableName(seardcondition.Refference);
-                        HyperLinkField linkField = new HyperLinkField();
-                        linkField.DataNavigateUrlFields = new string[] { "ClientId", seardcondition.ColumnName };
-                        linkField.DataNavigateUrlFormatString = FriendlyUrl.Href("~/list").ToLower() + "/" + RefTableName.ToLower() + "/{0}/{1}";
-                        linkField.HeaderText = seardcondition.Display;
-                        linkField.DataTextField = RefTableName + seardcondition.DisplayRefferenceColumn;
-
-
-                        if (seardcondition.DisplayRefferenceColumn.ToLower().Contains("date"))
+                        if (seardcondition.HasLinkRef)
                         {
-                            linkField.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
-                            linkField.DataTextFormatString = "{0:dd/MM/yyyy}";
+                            HyperLinkField linkField = new HyperLinkField();
+                            linkField.DataNavigateUrlFields = new string[] { "ClientId", seardcondition.ColumnName };
+                            linkField.DataNavigateUrlFormatString = FriendlyUrl.Href("~/list").ToLower() + "/" + RefTableName.ToLower() + "/{0}/{1}";
+                            linkField.HeaderText = seardcondition.Display;
+                            linkField.DataTextField = RefTableName + seardcondition.DisplayRefferenceColumn;
+
+
+                            if (seardcondition.DisplayRefferenceColumn.ToLower().Contains("date"))
+                            {
+                                linkField.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
+                                linkField.DataTextFormatString = "{0:dd/MM/yyyy}";
+                            }
+                            gvListData.Columns.Add(linkField);
                         }
-                        gvListData.Columns.Add(linkField);
+                        else
+                        {
+                            BoundField linkField = new BoundField();
+                            linkField.DataField = RefTableName + seardcondition.DisplayRefferenceColumn;
+                            linkField.HeaderText = seardcondition.Display;
+                            gvListData.Columns.Add(linkField);
+                        }
                     }
                     //===========================================================================
                     //Link field when have detail
                     else
                     {
-                        HyperLinkField linkField = new HyperLinkField();
-                        linkField.DataNavigateUrlFields = new string[] { "ClientId", "Id" };
-                        linkField.DataNavigateUrlFormatString = FriendlyUrl.Href("~/detail").ToLower() + "/" + TableName.ToLower().Replace("detail", "") + "/{0}/{1}";
-                        linkField.HeaderText = seardcondition.Display;
-                        linkField.DataTextField = seardcondition.ColumnName;
-                        gvListData.Columns.Add(linkField);
+                            HyperLinkField linkField = new HyperLinkField();
+                            linkField.DataNavigateUrlFields = new string[] { "ClientId", "Id" };
+                            linkField.DataNavigateUrlFormatString = FriendlyUrl.Href("~/detail").ToLower() + "/" + TableName.ToLower().Replace("detail", "") + "/{0}/{1}";
+                            linkField.HeaderText = seardcondition.Display;
+                            linkField.Text = "Chi tiết";
+                            //linkField.DataTextField = seardcondition.DisplayRefferenceColumn;
+                            gvListData.Columns.Add(linkField);
                     }
                 }
 
