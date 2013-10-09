@@ -75,7 +75,7 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                         boundField.DataField = seardcondition.ColumnName;
                         boundField.HeaderText = seardcondition.Display;
 
-                        if (seardcondition.Type == typeof(DateTime))
+                        if (seardcondition.PKType == typeof(DateTime))
                         {
                             boundField.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
                             boundField.DataFormatString = "{0:dd/MM/yyyy}";
@@ -193,7 +193,7 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                 else if (requesCondition != null && requesCondition.ToString() != string.Empty)
                 {
                     // Select like when search in string type
-                    if (seardcondition.Type == typeof(string))
+                    if (seardcondition.PKType == typeof(string))
                     {
                         sWhere += " AND " + TableName + ".[" + seardcondition.ColumnName + "] LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
                         sSQL += " AND " + TableName + ".[" + seardcondition.ColumnName + "] LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
