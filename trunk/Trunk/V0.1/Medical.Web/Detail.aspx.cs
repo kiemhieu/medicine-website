@@ -76,16 +76,15 @@ public partial class Detail : System.Web.UI.Page
                 else if (segment.ToUpper() == Constant_Table.PRESCRIPTION.ToUpper())
                 {
                     List<SearchExpander> HeaderConditions = new List<SearchExpander>();
-                    //HeaderConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
-                    //HeaderConditions.Add(new SearchExpander("PrescriptionId", "PrescriptionId", typeof(int)));
-                    //HeaderConditions.Add(new SearchExpander("FigureDetailId", "FigureDetailId", typeof(int)));
-                    HeaderConditions.Add(new SearchExpander("MedicineId", "Tên biệt dược", typeof(int), "Id", typeof(Medicine)));
-                    //HeaderConditions.Add(new SearchExpander("TradeName","TradeName",typeof(int)));
-                    //HeaderConditions.Add(new SearchExpander("UnitName", "TradeName", typeof(int)));
-                    HeaderConditions.Add(new SearchExpander("VolumnPerDay", "Liều lượng", typeof(int)));
-                    HeaderConditions.Add(new SearchExpander("Day", "Số ngày", typeof(int)));
-                    HeaderConditions.Add(new SearchExpander("Amount", "Số lượng", typeof(int)));
-                    HeaderConditions.Add(new SearchExpander("Description", "Tình trạng", typeof(string)));
+                    HeaderConditions.Add(new SearchExpander("PatientId", "Bệnh nhân", typeof(int), "Id", typeof(Patient)));
+                    HeaderConditions.Add(new SearchExpander(false, "LastUpdatedDate", "Thời gian", "{0:HH:ss}", typeof(DateTime)));
+                    HeaderConditions.Add(new SearchExpander("DoctorId", "Bác sĩ", typeof(int), "Id", typeof(User)));
+                    //HeaderConditions.Add(new SearchExpander("Date", "Date", typeof(int)));
+                    HeaderConditions.Add(new SearchExpander(false, "RecheckDate", "Hẹn tái khám", null, typeof(DateTime)));
+                    HeaderConditions.Add(new SearchExpander("FigureId", "Phác đồ", typeof(int), "Id", typeof(Figure)));
+                    HeaderConditions.Add(new SearchExpander(false, "Note", "Tình trạng", null, typeof(object)));
+                    //HeaderConditions.Add(new SearchExpander("CreatedDate", "CreatedDate", typeof(DateTime)));
+                    //HeaderConditions.Add(new SearchExpander("LastUpdatedUser", "LastUpdatedUser", typeof(int), "Id", typeof(User)));
                     //HeaderConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
                     uctDetail.HeaderConditions = HeaderConditions;
                 }
