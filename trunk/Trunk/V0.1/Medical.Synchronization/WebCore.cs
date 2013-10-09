@@ -20,6 +20,7 @@ namespace Medical.Synchronization
         public static string GetTableName(Type type)
         {
             string TableName = string.Empty;
+            if (type == null) return TableName;
 
             if (type.Name == typeof(Figure).Name)
                 TableName = Constant_Table.FIGURE;
