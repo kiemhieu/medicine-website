@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="uDetail.ascx.cs" Inherits="Usercontrol_uDetail" %>
 <%@ Register Namespace="ASPnetControls" Assembly="ASPnetPagerV2_8" TagPrefix="cc" %>
 <fieldset>
-    <table width="100%" class="tbl">
+    <table width="500" class="tbl">
         <asp:Repeater ID="rptConditions" runat="server">
             <ItemTemplate>
                 <tr>
