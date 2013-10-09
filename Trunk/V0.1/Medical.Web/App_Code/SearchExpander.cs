@@ -15,6 +15,7 @@ public class SearchExpander
     /// <param name="pktype"></param>
     public SearchExpander(string columnname, string display, Type pktype)
     {
+        this.Type = null;
         this.HasLinkRef = false;
         this.DisplayFormat = null;
         this.BeenSearch = true;
@@ -28,6 +29,7 @@ public class SearchExpander
 
     public SearchExpander(bool beensearch, string columnname, string display, string displayformat, Type pktype)
     {
+        this.Type = null;
         this.HasLinkRef = false;
         this.DisplayFormat = displayformat;
         this.BeenSearch = beensearch;
@@ -47,6 +49,7 @@ public class SearchExpander
     /// <param name="pktype"></param>
     public SearchExpander(string columnname, string display, Type pktype, bool hasdetail)
     {
+        this.Type = null;
         this.HasLinkRef = false;
         this.DisplayFormat = null;
         this.BeenSearch = true;
@@ -66,6 +69,7 @@ public class SearchExpander
     /// <param name="pktype"></param>
     public SearchExpander(string columnname, string display, Type pktype, string refferencecolumn, Type refference)
     {
+        this.Type = null;
         this.HasLinkRef = false;
         this.DisplayFormat = null;
         this.BeenSearch = true;
@@ -86,6 +90,22 @@ public class SearchExpander
     /// <param name="pktype"></param>
     public SearchExpander(string columnname, string display, Type pktype, string refferencecolumn, string displayrefferencecolumn, Type refference)
     {
+        this.Type = null;
+        this.HasLinkRef = false;
+        this.DisplayFormat = null;
+        this.BeenSearch = true;
+        this.ColumnName = columnname;
+        this.Display = display;
+        this.PKType = pktype;
+        this.RefferenceColumn = refferencecolumn;
+        this.Refference = refference;
+        this.HasDetail = false;
+        this.DisplayRefferenceColumn = displayrefferencecolumn;
+    }
+
+    public SearchExpander(string columnname, string display, Type pktype, Type type, string refferencecolumn, string displayrefferencecolumn, Type refference)
+    {
+        this.Type = type;
         this.HasLinkRef = false;
         this.DisplayFormat = null;
         this.BeenSearch = true;
@@ -106,6 +126,22 @@ public class SearchExpander
     /// <param name="pktype"></param>
     public SearchExpander(string columnname, string display, Type pktype, string refferencecolumn, string displayrefferencecolumn, Type refference, bool haslinkref)
     {
+        this.Type = null;
+        this.HasLinkRef = haslinkref;
+        this.DisplayFormat = null;
+        this.BeenSearch = true;
+        this.ColumnName = columnname;
+        this.Display = display;
+        this.PKType = pktype;
+        this.RefferenceColumn = refferencecolumn;
+        this.Refference = refference;
+        this.HasDetail = false;
+        this.DisplayRefferenceColumn = displayrefferencecolumn;
+    }
+
+    public SearchExpander(string columnname, string display, Type pktype, Type type, string refferencecolumn, string displayrefferencecolumn, Type refference, bool haslinkref)
+    {
+        this.Type = type;
         this.HasLinkRef = haslinkref;
         this.DisplayFormat = null;
         this.BeenSearch = true;
@@ -135,6 +171,8 @@ public class SearchExpander
     public string DisplayRefferenceColumn { get; set; }
 
     public Type PKType { get; set; }
+
+    public Type Type { get; set; }
 
     public bool HasDetail { get; set; }
 }
