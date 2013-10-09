@@ -78,7 +78,7 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
                     boundField.DataField = seardcondition.ColumnName;
                     boundField.HeaderText = seardcondition.Display;
 
-                    if (seardcondition.Type == typeof(DateTime))
+                    if (seardcondition.PKType == typeof(DateTime))
                     {
                         boundField.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
                         boundField.DataFormatString = "{0:dd/MM/yyyy}";
@@ -223,11 +223,14 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
                 DetailConditions = searchConditions;
                 break;
             case "prescriptiondetail":
-                searchConditions.Add(new SearchExpander("PrescriptionId", "PrescriptionId", typeof(int)));
-                searchConditions.Add(new SearchExpander("FigureDetailId", "FigureDetailId", typeof(int), "Id", "Id", typeof(FigureDetail)));
-                searchConditions.Add(new SearchExpander("MedicineId", "Thuốc", typeof(int), "Id", typeof(Medicine)));
+                ////searchConditions.Add(new SearchExpander("PrescriptionId", "PrescriptionId", typeof(int)));
+                ////searchConditions.Add(new SearchExpander("FigureDetailId", "FigureDetailId", typeof(int), "Id", "Id", typeof(FigureDetail)));
+                searchConditions.Add(new SearchExpander("MedicineId", "Tên biệt dược", typeof(int), "Id", typeof(Medicine)));
+                //searchConditions.Add(new SearchExpander("", "Hoạt chất", typeof(int)));
+                //searchConditions.Add(new SearchExpander("", "Đơn vị", typeof(int)));
+                searchConditions.Add(new SearchExpander("Unit", "WareHouseIODetailId", typeof(int), "Id", "Id", typeof(Define)));
+                searchConditions.Add(new SearchExpander("VolumnPerDay", "Liều lượng", typeof(int)));
                 searchConditions.Add(new SearchExpander("Day", "Số ngày", typeof(int)));
-                searchConditions.Add(new SearchExpander("VolumnPerDay", "Số lần trong ngày", typeof(int)));
                 searchConditions.Add(new SearchExpander("Amount", "Số lượng", typeof(int)));
                 searchConditions.Add(new SearchExpander("Description", "Diễn giải", typeof(string)));
                 DetailConditions = searchConditions;
