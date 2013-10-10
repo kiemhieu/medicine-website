@@ -32,38 +32,7 @@ public partial class Detail : System.Web.UI.Page
                 uctDetail.ClientId = ClientId;
                 uctDetail.Id = Id;
             }
-
-            InitializeHeaderDetail();
-
-            InitializeHeaderValues();
         }
     }
 
-    private void InitializeHeaderValues()
-    {
-        IList<string> segments = Request.GetFriendlyUrlSegments();
-        var TableName = segments[0].ToUpper();
-        var ClientId = segments[1];
-        var Id = segments[2];
-
-
-        string sSQL = "SELECT * FROM [" + TableName + "] WHERE ID=" + Id.ToString();
-        DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, sSQL, null);
-        if (uctDetail.HeaderConditions != null)
-            foreach (SearchExpander searchCondition in uctDetail.HeaderConditions)
-            {
-                searchCondition.Value = dataset.Tables[0].Rows[0][searchCondition.ColumnName];
-                // searchCondition.ColumnName
-            }
-
-        uctDetail.DataBind();
-    }
-
-    /// <summary>
-    /// Initial header of detail usercontrol
-    /// </summary>
-    private void InitializeHeaderDetail()
-    {
-        
-    }
 }
