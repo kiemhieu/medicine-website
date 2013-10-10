@@ -175,4 +175,6 @@ public class SearchExpander
     public Type Type { get; set; }
 
     public bool HasDetail { get; set; }
+
+    public object Value { get; set; }
 }

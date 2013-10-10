@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using Microsoft.AspNet.FriendlyUrls;
 using Medical.Synchronization.Basic;
 using System.Collections;
+using System.Web.UI.HtmlControls;
 
 public partial class Usercontrol_uDetail : System.Web.UI.UserControl
 {
@@ -50,14 +51,14 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
                 ClientId = segments[1];
                 Id = segments[2];
             }
-
+            
             //Init column with name
             Initializate();
 
             // Initial columns with earch table name
             InitializateGrid();
 
-            LoadList();
+            LoadList(); 
         }
     }
 
