@@ -25,24 +25,12 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
         chucNangCon1.Text = "Phác đồ thuốc (" + Constant_Table.FIGURE + ")";
         chucNangCon1.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.FIGURE).ToLower();
         chucNangCha.Items.Add(chucNangCon1);
-
-        //RadMenuItem chucNangCon2 = new RadMenuItem();
-        //chucNangCon2.Value = Constant_Table.FIGUREDE_DETAIL;
-        //chucNangCon2.Text = "Phác đồ chi tiết";//"Danh sách " + Constant_Table.FIGUREDE_DETAIL;
-        //chucNangCon2.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.FIGUREDE_DETAIL).ToLower();
-        //chucNangCha.Items.Add(chucNangCon2);
-
+        
         RadMenuItem chucNangCon2_1 = new RadMenuItem();
         chucNangCon2_1.Value = Constant_Table.MEDICINE;
         chucNangCon2_1.Text = "Danh sách thuốc sử dụng";// +Constant_Table.MEDICINE;
         chucNangCon2_1.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.MEDICINE).ToLower();
         chucNangCha.Items.Add(chucNangCon2_1);
-
-        RadMenuItem chucNangCon9 = new RadMenuItem();
-        chucNangCon9.Value = Constant_Table.PATIENT;
-        chucNangCon9.Text = "Danh sách bệnh nhân";// + Constant_Table.PATIENT;
-        chucNangCon9.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.PATIENT).ToLower();
-        chucNangCha.Items.Add(chucNangCon9);
 
         RadMenuItem chucNangCon3 = new RadMenuItem();
         chucNangCon3.Value = Constant_Table.MEDICIN_DELIVERY_DETAIL;
@@ -55,12 +43,6 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
         chucNangCon4.Text = "Danh sách " + Constant_Table.MEDICIN_DELIVERY_DETAIL_ALLOCATE;
         chucNangCon4.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.MEDICIN_DELIVERY_DETAIL_ALLOCATE).ToLower();
         chucNangCha.Items.Add(chucNangCon4);
-
-        RadMenuItem chucNangCon5 = new RadMenuItem();
-        chucNangCon5.Value = Constant_Table.MEDICINE_DELIVERY;
-        chucNangCon5.Text = "Danh sách " + Constant_Table.MEDICINE_DELIVERY;
-        chucNangCon5.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.MEDICINE_DELIVERY).ToLower();
-        chucNangCha.Items.Add(chucNangCon5);
 
         RadMenuItem chucNangCon6 = new RadMenuItem();
         chucNangCon6.Value = Constant_Table.MEDICINE_PLAN;
@@ -85,18 +67,6 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
         chucNangCon10.Text = "Danh sách " + Constant_Table.PATIENT_FIGURE;
         chucNangCon10.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.PATIENT_FIGURE).ToLower();
         chucNangCha.Items.Add(chucNangCon10);
-
-        RadMenuItem chucNangCon11 = new RadMenuItem();
-        chucNangCon11.Value = Constant_Table.PRESCRIPTION;
-        chucNangCon11.Text = "Nhật ký khám bệnh";// +Constant_Table.PRESCRIPTION;
-        chucNangCon11.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.PRESCRIPTION).ToLower();
-        chucNangCha.Items.Add(chucNangCon11);
-
-        RadMenuItem chucNangCon12 = new RadMenuItem();
-        chucNangCon12.Value = Constant_Table.PRESCRIPTION_DETAIL;
-        chucNangCon12.Text = "Danh sách " + Constant_Table.PRESCRIPTION_DETAIL;
-        chucNangCon12.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.PRESCRIPTION_DETAIL).ToLower();
-        chucNangCha.Items.Add(chucNangCon12);
 
         RadMenuItem chucNangCon13 = new RadMenuItem();
         chucNangCon13.Value = Constant_Table.WAREHOUSE;
@@ -140,12 +110,6 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
         chucNangCon19.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.USER).ToLower();
         chucNangCha.Items.Add(chucNangCon19);
 
-        //RadMenuItem chucNangCon = new RadMenuItem();
-        //chucNangCon.Value = Constant_Table.FIGURE;
-        //chucNangCon.Text = "Danh sách " + Constant_Table.FIGURE;
-        //chucNangCon.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.FIGURE);
-        //chucNangCha.Items.Add(chucNangCon);
-        //}
         htCheckMenu.Clear();
         htCheckMenu = null;
     }
@@ -164,27 +128,43 @@ public partial class Usercontrol_uMenu : System.Web.UI.UserControl
         this.menuTop.Items.Add(chucNang);
         InsertChildItem(chucNang);
 
-        //foreach (DataRow dr in ds.Tables[0].Rows)
-        //{
-        //    if (htCheckMenu.Contains(dr["ChucNangId"])) continue;
-        //    else htCheckMenu.Add(dr["ChucNangId"], dr["ChucNangId"]);
+        RadMenuItem cnQLBenhNhan = new RadMenuItem();
+        cnQLBenhNhan.Value = "2";
+        cnQLBenhNhan.Text = "Quản lý bệnh nhân";
+        cnQLBenhNhan.NavigateUrl = "";
+        this.menuTop.Items.Add(cnQLBenhNhan); 
+        InsertChildItemBN(cnQLBenhNhan);
 
-        //    if (int.Parse(dr["ChucNangChaId"].ToString()) == -1)
-        //    {
-        //        RadMenuItem chucNang = new RadMenuItem();
-        //        chucNang.Value = dr["ChucNangId"].ToString();
-        //        chucNang.Text = dr["TenChucNang"].ToString();
-        //        chucNang.NavigateUrl = dr["LienKet"].ToString();
-        //        this.menuTop.Items.Add(chucNang);
-        //        InsertChildItem(chucNang, ds.Tables[0]);
-        //    }
-        //}
-        //}
+        RadMenuItem chucNangCon5 = new RadMenuItem();
+        chucNangCon5.Value = Constant_Table.MEDICINE_DELIVERY;
+        chucNangCon5.Text = "Nhật ký cấp phát thuốc";
+        chucNangCon5.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.MEDICINE_DELIVERY).ToLower();
+        this.menuTop.Items.Add(chucNangCon5);
 
         if (htCheckMenu != null)
         {
             htCheckMenu.Clear();
             htCheckMenu = null;
         }
+    }
+
+    private void InsertChildItemBN(RadMenuItem chucNangCha)
+    {
+        RadMenuItem chucNangCon9 = new RadMenuItem();
+        chucNangCon9.Value = Constant_Table.PATIENT;
+        chucNangCon9.Text = "Danh sách bệnh nhân";// + Constant_Table.PATIENT;
+        chucNangCon9.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.PATIENT).ToLower();
+        chucNangCha.Items.Add(chucNangCon9);
+
+        RadMenuItem chucNangCon11 = new RadMenuItem();
+        chucNangCon11.Value = Constant_Table.PRESCRIPTION;
+        chucNangCon11.Text = "Nhật ký khám bệnh";// +Constant_Table.PRESCRIPTION;
+        chucNangCon11.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.PRESCRIPTION).ToLower();
+        chucNangCha.Items.Add(chucNangCon11);
+        //RadMenuItem chucNangCon12 = new RadMenuItem();
+        //chucNangCon12.Value = Constant_Table.PRESCRIPTION_DETAIL;
+        //chucNangCon12.Text = "Danh sách " + Constant_Table.PRESCRIPTION_DETAIL;
+        //chucNangCon12.NavigateUrl = FriendlyUrl.Href("~/list", Constant_Table.PRESCRIPTION_DETAIL).ToLower();
+        //chucNangCha.Items.Add(chucNangCon12);
     }
 }
