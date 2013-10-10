@@ -26,16 +26,7 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
         set
         {
             headerConditions = value;
-            if (headerConditions != null && headerConditions.Count > 0)
-            {
-                List<SearchExpander> searchcdt = new List<SearchExpander>();
-                foreach (SearchExpander c in headerConditions)
-                {
-                    if (c.BeenSearch) searchcdt.Add(c);
-                }
-                rptConditions.DataSource = searchcdt;
-                rptConditions.DataBind();
-            }
+            InitializateHeaderData();
         }
     }
 
@@ -51,14 +42,196 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
                 ClientId = segments[1];
                 Id = segments[2];
             }
-            
+
+            InitializateHeader();
+
             //Init column with name
-            Initializate();
+            InitializateGridHeader();
 
             // Initial columns with earch table name
             InitializateGrid();
 
-            LoadList(); 
+            LoadList();
+        }
+    }
+
+    private void InitializateHeaderData()
+    {
+        if (string.IsNullOrEmpty(TableName)) return;
+
+        string tableName = TableName.Replace("detail", "");
+
+        string sSelect = "SELECT Clinic.Name AS ClinicName, [" + tableName + "].ClientID";
+        string sInnerjoin = "\n INNER JOIN Clinic ON [" + tableName + "].ClientID = Clinic.Id";
+        string sWhere = "\n WHERE 1=1 ";
+        string sSQL = string.Empty;
+        string sListFields = string.Empty;
+        List<SqlParameter> parames = new List<SqlParameter>();
+        int i = -1;
+
+        if (HeaderConditions != null && !string.IsNullOrEmpty(tableName) && tableName.Length > 0)
+        {
+            var conditionTables = new Hashtable();
+            conditionTables.Add("Clinic", "Clinic");
+            foreach (SearchExpander seardcondition in HeaderConditions)
+            {
+                i++;
+                SqlParameter param = null;
+                if (seardcondition.Type == null) sSelect += ", [" + tableName + "]." + seardcondition.ColumnName; 
+
+                if (seardcondition.Refference != null)
+                {
+                    string BeetwenRefTableName = WebCore.GetTableName(seardcondition.Type);
+                    string RefTableName = WebCore.GetTableName(seardcondition.Refference);
+
+                    //Add column to sellect
+                    if (seardcondition.Type == null) sSelect += ", [" + RefTableName + "]." + seardcondition.DisplayRefferenceColumn + " as " + RefTableName + seardcondition.DisplayRefferenceColumn;
+                    else sSelect += ", [" + RefTableName + "]." + seardcondition.DisplayRefferenceColumn + " as " + RefTableName + seardcondition.DisplayRefferenceColumn;
+
+                    //===========================================================================
+                    //Join table has column refference
+                    if (!conditionTables.ContainsKey(RefTableName))
+                    {
+                        if (seardcondition.Type == null)
+                        {
+                            sInnerjoin += "\n LEFT OUTER JOIN [" + RefTableName + "] ON [" + RefTableName + "]." + seardcondition.RefferenceColumn + " = [" + tableName + "]." + seardcondition.ColumnName;
+                            conditionTables.Add(RefTableName, RefTableName);
+                        }
+                        else
+                        {
+                            sInnerjoin += "\n LEFT OUTER JOIN [" + RefTableName + "] ON [" + RefTableName + "]." + seardcondition.RefferenceColumn + " = [" + BeetwenRefTableName + "]." + seardcondition.ColumnName;
+                            conditionTables.Add(RefTableName, RefTableName);
+                        }
+                    }
+
+                }
+                //Check condition
+                else
+                {
+
+                }
+            }
+            // Check with client ID
+            if (!string.IsNullOrEmpty(ClientID)) sWhere += " AND [" + tableName + "].ClientId=" + ClientId;
+            if (!string.IsNullOrEmpty(Id)) sWhere += " AND [" + tableName + "].Id=" + Id;
+
+            if (tableName == "medicineplandetail") sWhere = sWhere.Replace("medicineplanId", "PlanId");
+            // Group all querry 
+            sSelect += " FROM [" + tableName + "]";
+            sSQL = sSelect + sInnerjoin + sWhere;
+
+            DataSet dataset = SqlHelper.ExecuteDataset(Config.SVConnectionString, CommandType.Text, sSQL, null);
+            if (this.HeaderConditions != null)
+                foreach (SearchExpander searchCondition in this.HeaderConditions)
+                {
+                    string RefTableName = WebCore.GetTableName(searchCondition.Refference);
+                    if (searchCondition.Refference != null)
+                        searchCondition.Value = dataset.Tables[0].Rows[0][RefTableName + searchCondition.DisplayRefferenceColumn];
+                    else
+                        searchCondition.Value = dataset.Tables[0].Rows[0][searchCondition.ColumnName];
+                }
+            this.DataBind();
+
+            if (this.HeaderConditions != null && this.HeaderConditions.Count > 0)
+            {
+                List<SearchExpander> searchcdt = new List<SearchExpander>();
+                foreach (SearchExpander c in headerConditions)
+                {
+                    if (c.BeenSearch) searchcdt.Add(c);
+                }
+                rptConditions.DataSource = searchcdt;
+                rptConditions.DataBind();
+            }
+        }
+    }
+
+    private void InitializateHeader()
+    {
+        foreach (var segment in Request.GetFriendlyUrlSegments())
+        {
+            if (segment.ToUpper() == Constant_Table.FIGUREDE_DETAIL.ToUpper())
+            {
+                List<SearchExpander> headerConditions = new List<SearchExpander>();
+                headerConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
+                headerConditions.Add(new SearchExpander("FigureId", "Phác đồ", typeof(int), "Id", typeof(Figure)));
+                headerConditions.Add(new SearchExpander("MedicineId", "Thuốc", typeof(int), "Id", typeof(Medicine)));
+                headerConditions.Add(new SearchExpander("Volumn", "Volumn", typeof(int)));
+                //HeaderConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
+                this.HeaderConditions = headerConditions;
+            }
+            else if (segment.ToUpper() == Constant_Table.MEDICINE_DELIVERY.ToUpper())
+            {
+                List<SearchExpander> HeaderConditions = new List<SearchExpander>();
+                HeaderConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("MedicineDeliveryId", "MedicineDeliveryId", typeof(int), "Id", "Id", typeof(MedicineDelivery)));
+                HeaderConditions.Add(new SearchExpander("PrescriptionDetailId", "PrescriptionDetailId", typeof(int), "Id", "Id", typeof(PrescriptionDetail)));
+                HeaderConditions.Add(new SearchExpander("MedicineId", "Tên thuốc", typeof(int), "Id", typeof(Medicine)));
+                HeaderConditions.Add(new SearchExpander("Volumn", "Volumn", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("Unit", "Unit", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("LastUpdatedDate", "Ngày cập nhật", typeof(DateTime)));
+                //HeaderConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
+                this.HeaderConditions = HeaderConditions;
+            }
+            else if (segment.ToUpper() == Constant_Table.MEDICINE_PLAN.ToUpper())
+            {
+                List<SearchExpander> HeaderConditions = new List<SearchExpander>();
+                HeaderConditions.Add(new SearchExpander("Id", "Id", typeof(string)));
+                HeaderConditions.Add(new SearchExpander("PlanId", "PlanId", typeof(int), "Id", "Id", typeof(MedicinePlan)));
+                HeaderConditions.Add(new SearchExpander("MedicineId", "MedicineId", typeof(int), "Id", typeof(Medicine)));
+                HeaderConditions.Add(new SearchExpander("InStock", "InStock", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("LastMonthUsage", "LastMonthUsage", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("CurrentMonthUsage", "CurrentMonthUsage", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("UnitPrice", "UnitPrice", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("Amount", "Số lượng", typeof(int)));
+                //HeaderConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
+                this.HeaderConditions = HeaderConditions;
+            }
+            else if (segment.ToUpper() == Constant_Table.PRESCRIPTION.ToUpper())
+            {
+                List<SearchExpander> HeaderConditions = new List<SearchExpander>();
+                HeaderConditions.Add(new SearchExpander("PatientId", "Bệnh nhân", typeof(int), "Id", typeof(Patient)));
+                HeaderConditions.Add(new SearchExpander(false, "LastUpdatedDate", "Thời gian", "{0:HH:ss}", typeof(DateTime)));
+                HeaderConditions.Add(new SearchExpander("DoctorId", "Bác sĩ", typeof(int), "Id", typeof(User)));
+                //HeaderConditions.Add(new SearchExpander("Date", "Date", typeof(int)));
+                HeaderConditions.Add(new SearchExpander(false, "RecheckDate", "Hẹn tái khám", null, typeof(DateTime)));
+                HeaderConditions.Add(new SearchExpander("FigureId", "Phác đồ", typeof(int), "Id", typeof(Figure)));
+                HeaderConditions.Add(new SearchExpander(false, "Note", "Tình trạng", null, typeof(object)));
+                //HeaderConditions.Add(new SearchExpander("CreatedDate", "CreatedDate", typeof(DateTime)));
+                //HeaderConditions.Add(new SearchExpander("LastUpdatedUser", "LastUpdatedUser", typeof(int), "Id", typeof(User)));
+                //HeaderConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
+                this.HeaderConditions = HeaderConditions;
+            }
+            else if (segment.ToUpper() == Constant_Table.WAREHOUSE.ToUpper())
+            {
+                List<SearchExpander> HeaderConditions = new List<SearchExpander>();
+                HeaderConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("WareHouseId", "WareHouseId", typeof(int), "Id", "Id", typeof(WareHouse)));
+                HeaderConditions.Add(new SearchExpander("WareHouseIODetailId", "WareHouseIODetailId", typeof(int), "Id", "Id", typeof(WareHouseIODetail)));
+                HeaderConditions.Add(new SearchExpander("MedicineId", "MedicineId", typeof(int), "Id", typeof(Medicine)));
+                HeaderConditions.Add(new SearchExpander("LotNo", "LotNo", typeof(string)));
+                HeaderConditions.Add(new SearchExpander("ExpiredDate", "Ngày hết hạn", typeof(DateTime)));
+                HeaderConditions.Add(new SearchExpander("Unit", "Đơn vị", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("UnitPrice", "Đơn giá", typeof(string)));
+                HeaderConditions.Add(new SearchExpander("LastUpdatedDate", "Ngày cập nhật", typeof(int)));
+                this.HeaderConditions = HeaderConditions;
+            }
+            else if (segment.ToUpper() == Constant_Table.WAREHOUSE_IO.ToUpper())
+            {
+                List<SearchExpander> HeaderConditions = new List<SearchExpander>();
+                HeaderConditions.Add(new SearchExpander("Id", "Id", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("WareHouseIOId", "Thủ kho", typeof(int), "Id", "Person", typeof(WareHouseIO)));
+                HeaderConditions.Add(new SearchExpander("MedicineId", "Tên thuốc", typeof(int), "Id", typeof(Medicine)));
+                HeaderConditions.Add(new SearchExpander("LotNo", "LotNo", typeof(string)));
+                HeaderConditions.Add(new SearchExpander("ExpireDate", "Ngày hết hạn", typeof(DateTime)));
+                HeaderConditions.Add(new SearchExpander("Qty", "Số lượng", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("UnitPrice", "Đơn giá", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("Unit", "Đơn vị", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("Amount", "Số lượng", typeof(int)));
+                this.HeaderConditions = HeaderConditions;
+            }
+            else //Do nothing
+            {
+            }
         }
     }
 
@@ -222,7 +395,7 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
         }
     }
 
-    private void Initializate()
+    private void InitializateGridHeader()
     {
         List<SearchExpander> searchConditions = new List<SearchExpander>();
         switch (TableName)
