@@ -152,6 +152,7 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
         string sSQL = string.Empty;
         string sListFields = string.Empty;
         List<SqlParameter> parames = new List<SqlParameter>();
+        Hashtable hashParames = new Hashtable();
         int i = -1;
 
         if (searchConditions != null && !string.IsNullOrEmpty(TableName) && TableName.Length > 0)
@@ -186,7 +187,7 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                         sWhere += " AND  [" + RefTableName + "]." + seardcondition.DisplayRefferenceColumn + " LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
                         //Param
                         param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? string.Empty);
-                        parames.Add(param);
+                        if (!hashParames.ContainsKey(param.ParameterName)) { parames.Add(param); hashParames.Add(param.ParameterName, param.ParameterName); }
                     }
                 }
                 //Check condition
@@ -206,12 +207,14 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                         sSQL += " AND " + TableName + ".[" + seardcondition.ColumnName + "] = @" + seardcondition.ColumnName + " ";
                         param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? DBNull.Value);
                     }
-                    parames.Add(param);
+                    if (!hashParames.ContainsKey(param.ParameterName)) { parames.Add(param); hashParames.Add(param.ParameterName, param.ParameterName); }
                 }
             }
             // Check with client ID
             if (!string.IsNullOrEmpty(ClientID)) sWhere += " AND [" + TableName + "].ClientId=" + ClientID;
             if (!string.IsNullOrEmpty(Id)) sWhere += " AND [" + TableName + "].Id=" + Id;
+            hashParames.Clear();
+            hashParames = null;
 
             // Group all querry 
             sSelect += " FROM [" + TableName + "]";
@@ -220,6 +223,8 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
             gvListData.AutoGenerateColumns = false;
             gvListData.DataSource = dataset;
             gvListData.DataBind();
+            parames.Clear();
+            parames = null;
 
             if (dataset != null && dataset.Tables.Count > 0) pager.ItemCount = dataset.Tables[0].Rows.Count;
         }
