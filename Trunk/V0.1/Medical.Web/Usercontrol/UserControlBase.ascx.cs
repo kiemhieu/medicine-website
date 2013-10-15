@@ -16,7 +16,9 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
     public string TableName { get; set; }
     private string ClientID { get; set; }
     private string Id { get; set; }
+    private SearchExpander groupBy;
     private List<SearchExpander> searchConditions;
+
     public List<SearchExpander> SearchConditions
     {
         get { return searchConditions; }
@@ -32,6 +34,21 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                 }
                 rptConditions.DataSource = searchcdt;
                 rptConditions.DataBind();
+            }
+        }
+    }
+
+    public SearchExpander GroupBy
+    {
+        get { return groupBy; }
+        set {
+            groupBy = value;
+            //Todo
+            lblGroupBy.Visible = true;
+            lblGroupBy.Text = groupBy.Display;
+            if (groupBy.PKType == typeof(DateTime))
+            {
+                cldGroupBy.Visible = true;
             }
         }
     }

@@ -33,7 +33,9 @@
                         <td align="left" style="width: 80px">
                             <asp:Label ID="lblGroupBy" runat="server" Text="  " Visible="false"></asp:Label></td>
                         <td align="left">
-                            <asp:DropDownList ID="drdGroupBy" runat="server" Visible="false"></asp:DropDownList></td>
+                            <asp:DropDownList ID="ddlGroupBy" runat="server" Visible="false"></asp:DropDownList>
+                            <asp:Calendar ID="cldGroupBy" runat="server"></asp:Calendar>
+                        </td>
                     </tr>
                 </table>
             </fieldset>
