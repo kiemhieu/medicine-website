@@ -58,6 +58,9 @@ public partial class List : System.Web.UI.Page
                 searchConditions.Add(new SearchExpander("LastUpdatedUser", "Bác sĩ", typeof(string), "Id", typeof(User)));
                 searchConditions.Add(new SearchExpander("Date", "Địa chỉ", typeof(DateTime)));
                 uctListBase.SearchConditions = searchConditions;
+
+                SearchExpander groupBy = new SearchExpander("Date", "Ngày", typeof(DateTime));
+                uctListBase.GroupBy = groupBy;
             }
             else if (segment.ToUpper() == Constant_Table.MEDICIN_DELIVERY_DETAIL.ToUpper())
             {
