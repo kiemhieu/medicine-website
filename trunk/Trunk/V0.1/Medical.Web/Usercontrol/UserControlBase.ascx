@@ -28,8 +28,12 @@
                 <table width="100%" class="tbl">
                     <tr>
                         <td align="left" style="width: 80px">Phòng Khám</td>
+                        <td align="left" style="width: 305px">
+                            <asp:DropDownList ID="ddlClinic" runat="server" Width="300px" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="ddlClinic_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList></td>
+                        <td align="left" style="width: 80px">
+                            <asp:Label ID="lblGroupBy" runat="server" Text="  " Visible="false"></asp:Label></td>
                         <td align="left">
-                            <asp:DropDownList ID="ddlClinic" runat="server" Width="400px" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="ddlClinic_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList></td>
+                            <asp:DropDownList ID="drdGroupBy" runat="server" Visible="false"></asp:DropDownList></td>
                     </tr>
                 </table>
             </fieldset>
