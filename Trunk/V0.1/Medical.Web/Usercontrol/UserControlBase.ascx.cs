@@ -16,7 +16,7 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
     public string TableName { get; set; }
     private string ClientID { get; set; }
     private string Id { get; set; }
-    private SearchExpander groupBy;
+    private SearchExpander groupBy = null;
     private List<SearchExpander> searchConditions;
 
     public List<SearchExpander> SearchConditions
@@ -41,14 +41,16 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
     public SearchExpander GroupBy
     {
         get { return groupBy; }
-        set {
+        set
+        {
             groupBy = value;
             //Todo
             lblGroupBy.Visible = true;
             lblGroupBy.Text = groupBy.Display;
             if (groupBy.PKType == typeof(DateTime))
             {
-                cldGroupBy.Visible = true;
+                txtGroupBy.Visible = true;
+                btnCalendar.Visible = true;
             }
         }
     }
@@ -57,6 +59,8 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
     {
         if (!IsPostBack)
         {
+            txtGroupBy.Text = DateTime.Today.ToString("dd/MM/yyyy");
+
             if (searchConditions != null && !string.IsNullOrEmpty(TableName) && TableName.Length > 0)
             {
                 var segments = Request.GetFriendlyUrlSegments();
@@ -233,6 +237,22 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
             hashParames.Clear();
             hashParames = null;
 
+            //Check group by
+            if (this.GroupBy != null)
+            {
+                sWhere += " AND [" + TableName + "]." + this.GroupBy.ColumnName;
+                if (this.GroupBy.PKType == typeof(DateTime))
+                {
+                    sWhere += " between @" + this.GroupBy.ColumnName + " AND @" + this.GroupBy.ColumnName + "2";
+                    DateTime selectDate = DateTime.Today;
+                    DateTime.TryParseExact(txtGroupBy.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out selectDate);
+                    SqlParameter param1 = new SqlParameter("@" + this.GroupBy.ColumnName, selectDate);
+                    SqlParameter param2 = new SqlParameter("@" + this.GroupBy.ColumnName + "2", selectDate.AddDays(1));
+                    parames.Add(param1);
+                    parames.Add(param2);
+                }
+            }
+
             // Group all querry 
             sSelect += " FROM [" + TableName + "]";
             sSQL = sSelect + sInnerjoin + sWhere;
@@ -288,9 +308,14 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
         string displayColumnReff = DisplayColumnReff == null ? string.Empty : DisplayColumnReff.ToString();
         if (Refference != null)
         {
-            string RefTableName = WebCore.GetTableName(Refference ==null?null:(Type)Refference);
+            string RefTableName = WebCore.GetTableName(Refference == null ? null : (Type)Refference);
             return RefTableName + displayColumnReff;
         }
         return columnName;
+    }
+
+    protected void txtGroupBy_TextChanged(object sender, EventArgs e)
+    {
+        LoadList();
     }
 }
