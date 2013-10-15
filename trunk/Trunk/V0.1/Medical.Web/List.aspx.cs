@@ -53,7 +53,7 @@ public partial class List : System.Web.UI.Page
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
                 searchConditions.Add(new SearchExpander("ID", "Mã", typeof(int)));
                 searchConditions.Add(new SearchExpander("PatientId", "Họ và tên", typeof(int), "Id", typeof(Patient)));
-                //searchConditions.Add(new SearchExpander("PatientId", "Năm sinh", typeof(int), typeof(MedicineDelivery), "Id", "BirthYear", typeof(Patient), false));
+                searchConditions.Add(new SearchExpander("PatientId", "Năm sinh", typeof(int), typeof(MedicineDelivery), "Id", "BirthYear", typeof(Patient), false));
                 searchConditions.Add(new SearchExpander("PatientId", "Giới tính", typeof(int), typeof(MedicineDelivery), "Id", "Sexual", typeof(Patient), false));
                 searchConditions.Add(new SearchExpander("LastUpdatedUser", "Bác sĩ", typeof(string), "Id", typeof(User)));
                 searchConditions.Add(new SearchExpander("Date", "Địa chỉ", typeof(DateTime)));
