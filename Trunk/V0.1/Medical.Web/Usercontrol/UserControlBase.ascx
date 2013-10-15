@@ -10,7 +10,7 @@
                             <tr>
                                 <td align="left">
                                     <%# Eval("Display") %><br />
-                                    <input type="text" id="<%# Eval("ColumnName") %>" name="<%# Eval("ColumnName") %>" style="width: 100%;" value="<%#Request[(string)Eval("ColumnName")] %>"></input>
+                                    <input type="text" id="<%# GetIDControl(Eval("ColumnName"), Eval("Refference"), Eval("DisplayRefferenceColumn")) %>" name="<%# GetIDControl(Eval("ColumnName"), Eval("Refference"), Eval("DisplayRefferenceColumn")) %>" style="width: 100%;" value="<%#Request[GetIDControl(Eval("ColumnName"), Eval("Refference"), Eval("DisplayRefferenceColumn"))]%>"></input>
                                 </td>
                             </tr>
                         </ItemTemplate>
