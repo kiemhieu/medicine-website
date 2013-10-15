@@ -116,13 +116,13 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                     //Link field when have detail
                     else
                     {
-                            HyperLinkField linkField = new HyperLinkField();
-                            linkField.DataNavigateUrlFields = new string[] { "ClientId", "Id" };
-                            linkField.DataNavigateUrlFormatString = FriendlyUrl.Href("~/detail").ToLower() + "/" + TableName.ToLower().Replace("detail", "") + "/{0}/{1}";
-                            linkField.HeaderText = seardcondition.Display;
-                            linkField.Text = "Chi tiết";
-                            //linkField.DataTextField = seardcondition.DisplayRefferenceColumn;
-                            gvListData.Columns.Add(linkField);
+                        HyperLinkField linkField = new HyperLinkField();
+                        linkField.DataNavigateUrlFields = new string[] { "ClientId", "Id" };
+                        linkField.DataNavigateUrlFormatString = FriendlyUrl.Href("~/detail").ToLower() + "/" + TableName.ToLower().Replace("detail", "") + "/{0}/{1}";
+                        linkField.HeaderText = seardcondition.Display;
+                        linkField.Text = "Chi tiết";
+                        //linkField.DataTextField = seardcondition.DisplayRefferenceColumn;
+                        gvListData.Columns.Add(linkField);
                     }
                 }
 
@@ -162,7 +162,7 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
             foreach (SearchExpander seardcondition in searchConditions)
             {
                 i++;
-                object requesCondition = Request[seardcondition.ColumnName];
+                object requesCondition = Request[GetIDControl(seardcondition.ColumnName, seardcondition.Refference, seardcondition.DisplayRefferenceColumn)];
                 SqlParameter param = null;
                 sSelect += ", [" + TableName + "]." + seardcondition.ColumnName;
                 if (seardcondition.Refference != null)
@@ -184,9 +184,9 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                     if (requesCondition != null && requesCondition.ToString() != string.Empty)
                     {
                         //Where condition
-                        sWhere += " AND  [" + RefTableName + "]." + seardcondition.DisplayRefferenceColumn + " LIKE '%' + @" + seardcondition.ColumnName + " + '%' ";
+                        sWhere += " AND  [" + RefTableName + "]." + seardcondition.DisplayRefferenceColumn + " LIKE '%' + @" + RefTableName + seardcondition.DisplayRefferenceColumn + " + '%' ";
                         //Param
-                        param = new SqlParameter("@" + seardcondition.ColumnName, requesCondition ?? string.Empty);
+                        param = new SqlParameter("@" + RefTableName + seardcondition.DisplayRefferenceColumn, requesCondition ?? string.Empty);
                         if (!hashParames.ContainsKey(param.ParameterName)) { parames.Add(param); hashParames.Add(param.ParameterName, param.ParameterName); }
                     }
                 }
@@ -256,5 +256,24 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
     protected void ddlClinic_SelectedIndexChanged(object sender, EventArgs e)
     {
         LoadList();
+    }
+
+    /// <summary>
+    /// Generate ID of control
+    /// </summary>
+    /// <param name="ColumnName"></param>
+    /// <param name="Refference"></param>
+    /// <param name="DisplayColumnReff"></param>
+    /// <returns></returns>
+    protected string GetIDControl(object ColumnName, object Refference, object DisplayColumnReff)
+    {
+        string columnName = ColumnName == null ? string.Empty : ColumnName.ToString();
+        string displayColumnReff = DisplayColumnReff == null ? string.Empty : DisplayColumnReff.ToString();
+        if (Refference != null)
+        {
+            string RefTableName = WebCore.GetTableName(Refference ==null?null:(Type)Refference);
+            return RefTableName + displayColumnReff;
+        }
+        return columnName;
     }
 }
