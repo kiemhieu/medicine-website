@@ -93,12 +93,13 @@ public partial class List : System.Web.UI.Page
             {
                 uctListBase.TableName = Constant_Table.MEDICINE_PLAN;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
-                searchConditions.Add(new SearchExpander("Id", "Id", typeof(int), true));
+                searchConditions.Add(new SearchExpander("Id", "", typeof(int), true));
                 searchConditions.Add(new SearchExpander("Year", "Năm", typeof(int)));
                 searchConditions.Add(new SearchExpander("Month", "Tháng", typeof(int)));
-                searchConditions.Add(new SearchExpander("Date", "Ngày", typeof(DateTime)));
+                searchConditions.Add(new SearchExpander("CreatedUser", "Người lập", typeof(string), "Id", typeof(User)));
+                searchConditions.Add(new SearchExpander("LastUpdatedDate", "Sửa lần cuối", typeof(DateTime)));
+                searchConditions.Add(new SearchExpander("Date", "Ngày lập", typeof(DateTime)));
                 searchConditions.Add(new SearchExpander("Note", "Ghi chú", typeof(string)));
-                searchConditions.Add(new SearchExpander("LastUpdatedDate", "Ngày cập nhật", typeof(DateTime)));
                 //searchConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
                 uctListBase.SearchConditions = searchConditions;
             }
@@ -175,7 +176,6 @@ public partial class List : System.Web.UI.Page
                 //searchConditions.Add(new SearchExpander("LastUpdatedUser", "LastUpdatedUser", typeof(int), "Id", typeof(User)));
                 //searchConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
                 uctListBase.SearchConditions = searchConditions;
-
             }
             else if (segment.ToUpper() == Constant_Table.PRESCRIPTION_DETAIL.ToUpper())
             {
@@ -198,12 +198,13 @@ public partial class List : System.Web.UI.Page
             {
                 uctListBase.TableName = Constant_Table.WAREHOUSE;
                 List<SearchExpander> searchConditions = new List<SearchExpander>();
-                searchConditions.Add(new SearchExpander("Id", "Id", typeof(int), true));
-                searchConditions.Add(new SearchExpander("MedicineId", "Tên thuốc", typeof(int), "Id", typeof(Medicine)));
-                searchConditions.Add(new SearchExpander("Volumn", "Volumn", typeof(int)));
-                searchConditions.Add(new SearchExpander("MinAllowed", "Lượng tối thiểu", typeof(int)));
-                searchConditions.Add(new SearchExpander("LastUpdatedUser", "Người cập nhật", typeof(int), "Id", typeof(User)));
-                searchConditions.Add(new SearchExpander("LastUpdatedDate", "LastUpdatedDate", typeof(DateTime)));
+                //searchConditions.Add(new SearchExpander("Id", "", typeof(int), true));
+                searchConditions.Add(new SearchExpander("MedicineId", "Tên biệt dược", typeof(int), "Id", typeof(Medicine)));
+                searchConditions.Add(new SearchExpander("Unit", "Đơn vị", typeof(int), typeof(Medicine), "Id", "Name", typeof(Define), false));
+                searchConditions.Add(new SearchExpander("MinAllowed", "Tồn kho an toàn", typeof(int)));
+                searchConditions.Add(new SearchExpander("Volumn", "Số lượng trong kho", typeof(int)));
+                //searchConditions.Add(new SearchExpander("LastUpdatedUser", "Người cập nhật", typeof(int), "Id", typeof(User)));
+                //searchConditions.Add(new SearchExpander("LastUpdatedDate", "LastUpdatedDate", typeof(DateTime)));
                 //searchConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
                 uctListBase.SearchConditions = searchConditions;
             }
