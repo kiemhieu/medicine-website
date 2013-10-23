@@ -111,12 +111,14 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                         string RefTableName = WebCore.GetTableName(seardcondition.Refference);
                         if (seardcondition.HasLinkRef)
                         {
+                            string BeetwenTableName = WebCore.GetTableName(seardcondition.Type);
                             HyperLinkField linkField = new HyperLinkField();
-                            linkField.DataNavigateUrlFields = new string[] { "ClientId", seardcondition.ColumnName };
+                            if (seardcondition.Type == null) linkField.DataNavigateUrlFields = new string[] { "ClientId", seardcondition.ColumnName };
+                            else linkField.DataNavigateUrlFields = new string[] { "ClientId", BeetwenTableName + seardcondition.RefferenceColumn };
                             linkField.DataNavigateUrlFormatString = FriendlyUrl.Href("~/list").ToLower() + "/" + RefTableName.ToLower() + "/{0}/{1}";
                             linkField.HeaderText = seardcondition.Display;
-                            linkField.DataTextField = RefTableName + seardcondition.DisplayRefferenceColumn;
-
+                            if (seardcondition.Type == null) linkField.DataTextField = RefTableName + seardcondition.DisplayRefferenceColumn;
+                            else linkField.DataTextField = RefTableName + seardcondition.DisplayRefferenceColumn;
 
                             if (seardcondition.DisplayRefferenceColumn.ToLower().Contains("date"))
                             {
@@ -185,9 +187,10 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                 i++;
                 object requesCondition = Request[GetIDControl(seardcondition.ColumnName, seardcondition.Refference, seardcondition.DisplayRefferenceColumn)];
                 SqlParameter param = null;
-                sSelect += ", [" + TableName + "]." + seardcondition.ColumnName;
+                if (seardcondition.Type == null) sSelect += ", [" + TableName + "]." + seardcondition.ColumnName;
                 if (seardcondition.Refference != null)
                 {
+                    string BeetwenRefTableName = WebCore.GetTableName(seardcondition.Type);
                     string RefTableName = WebCore.GetTableName(seardcondition.Refference);
                     //Add column to sellect
                     sSelect += ", [" + RefTableName + "]." + seardcondition.DisplayRefferenceColumn + " as " + RefTableName + seardcondition.DisplayRefferenceColumn;
@@ -196,8 +199,16 @@ public partial class Usercontrol_UserControlBase : System.Web.UI.UserControl
                     //Join table has column refference
                     if (!conditionTables.ContainsKey(RefTableName))
                     {
-                        sInnerjoin += "\n LEFT OUTER JOIN [" + RefTableName + "] ON [" + RefTableName + "]." + seardcondition.RefferenceColumn + " = [" + TableName + "]." + seardcondition.ColumnName;
-                        conditionTables.Add(RefTableName, RefTableName);
+                        if (seardcondition.Type == null)
+                        {
+                            sInnerjoin += "\n LEFT OUTER JOIN [" + RefTableName + "] ON [" + RefTableName + "]." + seardcondition.RefferenceColumn + " = [" + TableName + "]." + seardcondition.ColumnName;
+                            conditionTables.Add(RefTableName, RefTableName);
+                        }
+                        else
+                        {
+                            sInnerjoin += "\n LEFT OUTER JOIN [" + RefTableName + "] ON [" + RefTableName + "]." + seardcondition.RefferenceColumn + " = [" + BeetwenRefTableName + "]." + seardcondition.ColumnName;
+                            conditionTables.Add(RefTableName, RefTableName);
+                        }
                     }
 
                     //===========================================================================

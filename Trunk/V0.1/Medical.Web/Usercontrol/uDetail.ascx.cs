@@ -98,15 +98,13 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
             else if (segment.ToUpper() == Constant_Table.MEDICINE_PLAN.ToUpper())
             {
                 List<SearchExpander> HeaderConditions = new List<SearchExpander>();
-                HeaderConditions.Add(new SearchExpander("Id", "Id", typeof(string)));
-                HeaderConditions.Add(new SearchExpander("PlanId", "PlanId", typeof(int), "Id", "Id", typeof(MedicinePlan)));
-                HeaderConditions.Add(new SearchExpander("MedicineId", "MedicineId", typeof(int), "Id", typeof(Medicine)));
-                HeaderConditions.Add(new SearchExpander("InStock", "InStock", typeof(int)));
-                HeaderConditions.Add(new SearchExpander("LastMonthUsage", "LastMonthUsage", typeof(int)));
-                HeaderConditions.Add(new SearchExpander("CurrentMonthUsage", "CurrentMonthUsage", typeof(int)));
-                HeaderConditions.Add(new SearchExpander("UnitPrice", "UnitPrice", typeof(int)));
-                HeaderConditions.Add(new SearchExpander("Amount", "Số lượng", typeof(int)));
-                //HeaderConditions.Add(new SearchExpander("Version", "Version", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("Month", "Tháng", typeof(string)));
+                HeaderConditions.Add(new SearchExpander("Year", "Năm", typeof(int)));
+                HeaderConditions.Add(new SearchExpander("CreatedUser", "Người lập", typeof(int), "Id", "Name", typeof(User)));
+                HeaderConditions.Add(new SearchExpander(true, "Date", "Ngày", "{0:dd/MM/yyyy}", typeof(DateTime)));
+                HeaderConditions.Add(new SearchExpander("ApproveId", "Người duyệt", typeof(int), "Id", "Name", typeof(User)));
+                HeaderConditions.Add(new SearchExpander(true, "ApproveDate", "Ngày duyệt", "{0:dd/MM/yyyy}", typeof(DateTime)));
+                HeaderConditions.Add(new SearchExpander("Note", "Ghi chú", typeof(string)));
                 this.HeaderConditions = HeaderConditions;
             }
             else if (segment.ToUpper() == Constant_Table.PRESCRIPTION.ToUpper())
