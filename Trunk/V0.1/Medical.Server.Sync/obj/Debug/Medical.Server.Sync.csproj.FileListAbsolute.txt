@@ -1,0 +1,4 @@
+D:\CSharp.HieuNK\QL_Duoc\trunk\Trunk\V0.1\Medical.Server.Sync\bin\Debug\Medical.Server.Sync.dll
+D:\CSharp.HieuNK\QL_Duoc\trunk\Trunk\V0.1\Medical.Server.Sync\bin\Debug\Medical.Server.Sync.pdb
+D:\CSharp.HieuNK\QL_Duoc\trunk\Trunk\V0.1\Medical.Server.Sync\obj\Debug\Medical.Server.Sync.dll
+D:\CSharp.HieuNK\QL_Duoc\trunk\Trunk\V0.1\Medical.Server.Sync\obj\Debug\Medical.Server.Sync.pdb

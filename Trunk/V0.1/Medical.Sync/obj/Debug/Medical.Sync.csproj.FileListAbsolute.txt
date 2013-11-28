@@ -1,0 +1,5 @@
+D:\CSharp.HieuNK\QL_Duoc\trunk\Trunk\V0.1\Medical.Sync\bin\Debug\Medical.Sync.dll.config
+D:\CSharp.HieuNK\QL_Duoc\trunk\Trunk\V0.1\Medical.Sync\bin\Debug\Medical.Sync.dll
+D:\CSharp.HieuNK\QL_Duoc\trunk\Trunk\V0.1\Medical.Sync\bin\Debug\Medical.Sync.pdb
+D:\CSharp.HieuNK\QL_Duoc\trunk\Trunk\V0.1\Medical.Sync\obj\Debug\Medical.Sync.dll
+D:\CSharp.HieuNK\QL_Duoc\trunk\Trunk\V0.1\Medical.Sync\obj\Debug\Medical.Sync.pdb
