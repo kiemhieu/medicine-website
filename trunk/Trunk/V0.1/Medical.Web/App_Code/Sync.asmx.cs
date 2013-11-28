@@ -135,7 +135,7 @@ namespace Server
         /// <returns></returns>
         private String GetConnectionString()
         {
-            return ConfigurationManager.ConnectionStrings[ConnectionStringName].ConnectionString;
+            return Medical.Synchronization.Config.ConnectionString;
         }
 
         /// <summary>
