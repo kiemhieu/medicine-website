@@ -38,6 +38,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Medical.Web", "Medical.Web\", "{1A4333E2-7A67-4A25-9048-FE4438E98709}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{110e7c44-20fa-479c-91e9-c673355ba788}|Medical.Sync.dll;{9f526d34-5736-4ba5-889b-9e371a45fa27}|Medical.Synchronization.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Medical.Web"
 		Debug.AspNetCompiler.PhysicalPath = "Medical.Web\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Medical.Web\"

@@ -155,6 +155,7 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\serversync.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
