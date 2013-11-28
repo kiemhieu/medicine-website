@@ -35,6 +35,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.Sync", "Medical.Syn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.Server.Sync", "Medical.Server.Sync\Medical.Server.Sync.csproj", "{C5D52304-3037-475F-8330-7E6173C50D93}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Medical.Web", "Medical.Web\", "{1A4333E2-7A67-4A25-9048-FE4438E98709}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/Medical.Web"
+		Debug.AspNetCompiler.PhysicalPath = "Medical.Web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Medical.Web\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Medical.Web"
+		Release.AspNetCompiler.PhysicalPath = "Medical.Web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Medical.Web\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "5384"
+		VWDVirtualPath = "/"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Medical.Data.vsmdi
@@ -351,6 +372,31 @@ Global
 		{C5D52304-3037-475F-8330-7E6173C50D93}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C5D52304-3037-475F-8330-7E6173C50D93}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
 		{C5D52304-3037-475F-8330-7E6173C50D93}.SingleImage|x86.ActiveCfg = Release|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.CD_ROM|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.CD_ROM|Any CPU.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.CD_ROM|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.CD_ROM|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.CD_ROM|x86.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.DVD-5|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.DVD-5|x86.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.Release|x86.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.SingleImage|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.SingleImage|Any CPU.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.SingleImage|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.SingleImage|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1A4333E2-7A67-4A25-9048-FE4438E98709}.SingleImage|x86.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

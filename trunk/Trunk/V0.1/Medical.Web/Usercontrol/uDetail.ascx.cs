@@ -175,11 +175,13 @@ public partial class Usercontrol_uDetail : System.Web.UI.UserControl
             case "medicineplandetail":
                 searchConditions.Add(new SearchExpander("Id", "Id", typeof(string)));
                 searchConditions.Add(new SearchExpander("MedicineId", "Tên thuốc", typeof(int), "Id", typeof(Medicine)));
-                searchConditions.Add(new SearchExpander("InStock", "InStock", typeof(int)));
-                searchConditions.Add(new SearchExpander("LastMonthUsage", "LastMonthUsage", typeof(int)));
-                searchConditions.Add(new SearchExpander("CurrentMonthUsage", "CurrentMonthUsage", typeof(int)));
-                searchConditions.Add(new SearchExpander("UnitPrice", "Đơn giá", typeof(int)));
-                searchConditions.Add(new SearchExpander("Amount", "Số lượng", typeof(int)));
+                searchConditions.Add(new SearchExpander("Unit", "Đơn vị", typeof(int), typeof(Medicine), "Id", "Name", typeof(Define), false));
+                searchConditions.Add(new SearchExpander("InStock", "Tồn kho", typeof(int)));
+                searchConditions.Add(new SearchExpander("LastMonthUsage", "Lượng dùng tháng trước", typeof(int)));
+                searchConditions.Add(new SearchExpander("CurrentMonthUsage", "Lượng dùng tháng này", typeof(int)));
+                searchConditions.Add(new SearchExpander("Required", "Dự trù thêm", typeof(int)));
+                //searchConditions.Add(new SearchExpander("UnitPrice", "Đơn giá", typeof(int)));
+                //searchConditions.Add(new SearchExpander("Amount", "Số lượng", typeof(int)));
                 DetailConditions = searchConditions;
                 break;
             case "prescriptiondetail":
