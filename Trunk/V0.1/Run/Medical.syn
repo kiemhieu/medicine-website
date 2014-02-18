@@ -4,7 +4,7 @@ SqlUser=sa
 SqlPass=sa@123
 SqlServer=HieuNK-PC
 [Medical.Synchronization.SVConnectionInfo]
-SoapAddress=http://localhost:5384/Services/SynService.asmx
+SoapAddress=http://opchanoipac.org.vn/Services/SynService.asmx
 SqlDbname=Medical.Web
 SqlUser=sa
 SqlPass=sa@123
