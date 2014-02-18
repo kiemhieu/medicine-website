@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<castle>
-  <components>
-    <component id="godPlus" service="ConsoleApplication1.Interface1, ConsoleApplication1" type="ConsoleApplication1.GobPlus, ConsoleApplication1"/>
-    <component id="myPlus" service="ConsoleApplication1.Interface1, ConsoleApplication1" type="ConsoleApplication1.FuckingPlus, ConsoleApplication1"/>
-  </components>
-</castle>
